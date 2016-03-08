@@ -10,8 +10,7 @@ GameObject:
   - 4: {fileID: 401116}
   - 114: {fileID: 11458296}
   - 120: {fileID: 12001502}
-  - 212: {fileID: 21267922}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Rope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +24,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.116318, y: 1.3127575, z: 0}
+  m_LocalPosition: {x: 0.28928536, y: -1.2294655, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -48,6 +47,8 @@ MonoBehaviour:
   beginning_rope_piece: {fileID: 0}
   end_rope_piece: {fileID: 0}
   direction: {x: 0, y: 0}
+  number_of_segments: 15
+  size_of_rope_pieces: 0.2
 --- !u!120 &12001502
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -87,36 +88,6 @@ LineRenderer:
       serializedVersion: 2
       rgba: 4284313967
   m_UseWorldSpace: 1
---- !u!212 &21267922
-SpriteRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187862}
-  m_Enabled: 0
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5b1a64ea234fb2343b8d0686c51280de, type: 3}
-  m_Color: {r: 0.43365946, g: 0.44117647, b: 0.3633218, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

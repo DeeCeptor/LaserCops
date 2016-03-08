@@ -6,6 +6,7 @@ using UnityEngine;
 public class RopeGenerator : MonoBehaviour
 {
     private LineRenderer line;
+    public string line_layer;
     public List<GameObject> joints;
     private int vertexCount;
     private float NTDistance;
@@ -31,6 +32,96 @@ public class RopeGenerator : MonoBehaviour
     void Start()
     {
         //Throw_Rope();
+    }
+
+
+
+    public void Generate_Rope_Between_Anchors()
+    {
+        if (beginning_anchor == null || end_anchor == null)
+        {
+            beginning_anchor = gameObject;
+            end_anchor = gameObject;
+        }
+        joints = new List<GameObject>();
+        line = GetComponent<LineRenderer>();
+        vertexCount = number_of_segments;
+        // vertexCount = (((int)Vector2.Distance(beginning.transform.position, end.transform.position)) * 3) - 1;
+
+        line.SetWidth(0.1f, 0.1f);  // 0.05f
+        line.sortingLayerName = line_layer;
+        Vector3 dir = beginning_anchor.transform.position - end_anchor.transform.position;
+
+        for (int i = 0; i < vertexCount; i++)
+        {
+            GameObject segment = ((GameObject)Instantiate(emptyPrefab,
+                new Vector3(beginning_anchor.transform.position.x, beginning_anchor.transform.position.y, 0) - ((dir / (float)vertexCount) * i), Quaternion.identity));
+            joints.Add(segment);
+            segment.transform.parent = transform;
+        }
+
+        // Connect all the joints and and make their parents this object
+        for (int j = 0; j < joints.Count - 1; j++)
+        {
+            //joints[j].transform.parent = this.transform;
+            joints[j].GetComponent<HingeJoint2D>().connectedBody = joints[j + 1].GetComponent<Rigidbody2D>();
+        }
+
+        // Set their neighbours
+        for (int x = 0; x < joints.Count; x++)
+        {
+            int above_int = Mathf.Clamp(x - 1, 0, joints.Count - 1);
+            int below_int = Mathf.Clamp(x + 1, 0, joints.Count - 1);
+            joints[x].GetComponent<Link>().above = joints[above_int];
+            joints[x].GetComponent<Link>().below = joints[below_int];
+            joints[x].GetComponent<Link>().top_most = joints[0];
+            joints[x].GetComponent<Link>().bottom_most = joints[joints.Count - 1];
+            joints[x].GetComponent<Link>().position_from_top_in_rope = x;
+            joints[x].GetComponent<Link>().position_from_bottom_in_rope = joints.Count - x;
+            joints[x].GetComponent<Link>().all_segments = joints;
+            joints[x].GetComponent<Link>().rope = this;
+        }
+
+        // Disable joints on the end
+        //joints[vertexCount - 1].GetComponent<HingeJoint2D>().enabled = false;
+
+        // Throw the first one
+
+
+        // Set connections on ends
+        // Where player is
+        /*SpringJoint2D jo = joints[0].AddComponent<SpringJoint2D>();
+        jo.connectedBody = beginning.GetComponent<Rigidbody2D>();
+        jo.frequency = 0;*/
+        /*DistanceJoint2D jo = joints[0].AddComponent<DistanceJoint2D>();
+        jo.connectedBody = beginning.GetComponent<Rigidbody2D>();
+        jo.distance = 0.2f;*/
+        HingeJoint2D jo = joints[0].AddComponent<HingeJoint2D>();
+        jo.connectedBody = beginning_anchor.GetComponent<Rigidbody2D>();
+        beginning_rope_piece = joints[0];
+        jo = joints[joints.Count - 1].GetComponent<HingeJoint2D>();
+        jo.anchor = new Vector2(0, 0);
+        jo.connectedBody = end_anchor.GetComponent<Rigidbody2D>();
+        end_rope_piece = joints[joints.Count - 1];
+        joints.Add(end_anchor);
+
+        //end_anchor.GetComponent<Rigidbody2D>().AddForce(throwForce, ForceMode2D.Force);
+        //end_anchor.AddComponent<RopeAttachScript>();
+        /*
+        joints[vertexCount - 1].GetComponent<HingeJoint2D>().connectedBody = end.GetComponent<Rigidbody2D>();
+        joints[vertexCount - 1].GetComponent<HingeJoint2D>().anchor = Vector2.zero;
+        joints[vertexCount - 1].GetComponent<HingeJoint2D>().connectedAnchor = Vector2.zero;*/
+        //joints[vertexCount - 1].GetComponent<Rigidbody2D>().isKinematic = true;
+    }
+
+
+    void Update()
+    {
+        line.SetVertexCount(joints.Count);
+        for (int i = 0; i < joints.Count; i++)
+        {
+            line.SetPosition(i, joints[i].transform.position);
+        }
     }
 
     /*
@@ -144,89 +235,4 @@ joints[9].GetComponent<Rigidbody2D>().AddForce(throw_direction * (throw_force * 
         ObjectManager.object_manager.AddRope(this.gameObject);
     }
     */
-
-    public void Generate_Rope_Between_Anchors()
-    {
-        if (beginning_anchor == null || end_anchor == null)
-        {
-            beginning_anchor = gameObject;
-            end_anchor = gameObject;
-        }
-        joints = new List<GameObject>();
-        line = GetComponent<LineRenderer>();
-        vertexCount = 12;
-        // vertexCount = (((int)Vector2.Distance(beginning.transform.position, end.transform.position)) * 3) - 1;
-
-        line.SetWidth(0.1f, 0.1f);  // 0.05f
-        Vector3 dir = beginning_anchor.transform.position - end_anchor.transform.position;
-
-        for (int i = 0; i < vertexCount; i++)
-        {
-            GameObject segment = ((GameObject)Instantiate(emptyPrefab, 
-                new Vector3(beginning_anchor.transform.position.x, beginning_anchor.transform.position.y, 0) - ((dir / (float)vertexCount) * i), Quaternion.identity));
-            joints.Add(segment);
-            segment.transform.parent = transform;
-        }
-
-        // Connect all the joints and and make their parents this object
-        for (int j = 0; j < joints.Count - 1; j++)
-        {
-            //joints[j].transform.parent = this.transform;
-            joints[j].GetComponent<HingeJoint2D>().connectedBody = joints[j + 1].GetComponent<Rigidbody2D>();
-        }
-
-        // Set their neighbours
-        for (int x = 0; x < joints.Count; x++)
-        {
-            int above_int = Mathf.Clamp(x - 1, 0, joints.Count - 1);
-            int below_int = Mathf.Clamp(x + 1, 0, joints.Count - 1);
-            joints[x].GetComponent<Link>().above = joints[above_int];
-            joints[x].GetComponent<Link>().below = joints[below_int];
-            joints[x].GetComponent<Link>().top_most = joints[0];
-            joints[x].GetComponent<Link>().bottom_most = joints[joints.Count - 1];
-            joints[x].GetComponent<Link>().position_from_top_in_rope = x;
-            joints[x].GetComponent<Link>().position_from_bottom_in_rope = joints.Count - x;
-            joints[x].GetComponent<Link>().all_segments = joints;
-            joints[x].GetComponent<Link>().rope = this;
-        }
-
-        // Disable joints on the end
-        //joints[vertexCount - 1].GetComponent<HingeJoint2D>().enabled = false;
-
-        // Throw the first one
-
-
-        // Set connections on ends
-        // Where player is
-        /*SpringJoint2D jo = joints[0].AddComponent<SpringJoint2D>();
-        jo.connectedBody = beginning.GetComponent<Rigidbody2D>();
-        jo.frequency = 0;*/
-        /*DistanceJoint2D jo = joints[0].AddComponent<DistanceJoint2D>();
-        jo.connectedBody = beginning.GetComponent<Rigidbody2D>();
-        jo.distance = 0.2f;*/
-        HingeJoint2D jo = joints[0].AddComponent<HingeJoint2D>();
-        jo.connectedBody = beginning_anchor.GetComponent<Rigidbody2D>();
-        jo = joints[joints.Count - 1].GetComponent<HingeJoint2D>();
-        jo.anchor = new Vector2(0, 0);
-        jo.connectedBody = end_anchor.GetComponent<Rigidbody2D>();
-        joints.Add(end_anchor);
-
-        //end_anchor.GetComponent<Rigidbody2D>().AddForce(throwForce, ForceMode2D.Force);
-        //end_anchor.AddComponent<RopeAttachScript>();
-        /*
-        joints[vertexCount - 1].GetComponent<HingeJoint2D>().connectedBody = end.GetComponent<Rigidbody2D>();
-        joints[vertexCount - 1].GetComponent<HingeJoint2D>().anchor = Vector2.zero;
-        joints[vertexCount - 1].GetComponent<HingeJoint2D>().connectedAnchor = Vector2.zero;*/
-        //joints[vertexCount - 1].GetComponent<Rigidbody2D>().isKinematic = true;
-    }
-
-
-    void Update()
-    {
-            line.SetVertexCount(joints.Count);
-            for (int i = 0; i < joints.Count; i++)
-            {
-                line.SetPosition(i, joints[i].transform.position);
-            }
-    }
 }

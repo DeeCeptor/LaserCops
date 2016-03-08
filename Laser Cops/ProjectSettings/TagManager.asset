@@ -22,7 +22,7 @@ TagManager:
   - Obstacles
   - Player
   - Civillian
-  - 
+  - Tether
   - 
   - 
   - 
@@ -45,4 +45,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Terrain
+    uniqueID: 3052778159
+    locked: 0
+  - name: Enemies
+    uniqueID: 874025413
+    locked: 0
+  - name: Powerups
+    uniqueID: 424224613
+    locked: 0
+  - name: Tether
+    uniqueID: 711191555
+    locked: 0
+  - name: Player
+    uniqueID: 1444785843
     locked: 0
