@@ -13,7 +13,34 @@ public class basicArenaEnemy : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
-	}
+	void FixedUpdate () {
+        if (playerToTrack != null)
+        {
+            Vector2 dir = playerToTrack.position - transform.position;
+            GetComponent<Rigidbody2D>().velocity = dir.normalized * speed;
+        }
+
+        else
+        {
+            players = GameObject.FindGameObjectsWithTag("Player");
+            if (players.Length > 0)
+            {
+                int randInt = Random.Range(0, players.Length);
+                playerToTrack = players[randInt].transform;
+            }
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Tether"))
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        Destroy(gameObject);
+    }
 }
