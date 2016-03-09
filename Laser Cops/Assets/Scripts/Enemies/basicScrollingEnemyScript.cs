@@ -1,17 +1,22 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class basicScrollingEnemyScript : MonoBehaviour {
+public class basicScrollingEnemyScript : MonoBehaviour
+{
     public float speed = 0.25f;
-	// Use this for initialization
-	void Start () {
+
+
+    void Start ()
+    {
         GetComponent<Rigidbody2D>().gravityScale = speed;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+
+    void Update ()
+    {
 	
 	}
+
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -20,6 +25,7 @@ public class basicScrollingEnemyScript : MonoBehaviour {
             Die();
         }
     }
+
 
     public void Die()
     {
