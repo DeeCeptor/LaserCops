@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Obstacle
   - Civillian
+  - Rope
   layers:
   - Default
   - TransparentFX
@@ -45,6 +46,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2931165837
     locked: 0
   - name: Terrain
     uniqueID: 3052778159

@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 494054}
   - 58: {fileID: 5877326}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RopeClimbingTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ GameObject:
   - 58: {fileID: 5823208}
   - 233: {fileID: 23361760}
   - 114: {fileID: 11431108}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RopePiece
   m_TagString: Rope
   m_Icon: {fileID: 0}
@@ -253,7 +253,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
