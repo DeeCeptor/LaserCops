@@ -9,7 +9,7 @@ TagManager:
   - Enemy
   - Obstacle
   - Civillian
-  - Rope
+  - TetherManager
   layers:
   - Default
   - TransparentFX
@@ -23,9 +23,9 @@ TagManager:
   - Obstacles
   - Player
   - Civillian
-  - Tether
-  - 
-  - 
+  - DestructiveTether
+  - CaptureTether
+  - InactiveTether
   - 
   - 
   - 

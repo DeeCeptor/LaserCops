@@ -28,9 +28,11 @@ public class RopeGenerator : MonoBehaviour
     {
         line = this.GetComponent<LineRenderer>();
         Generate_Rope_Between_Anchors();
+
     }
     void Start()
     {
+        Tether.tether.tether_links = joints;
         //Throw_Rope();
     }
 

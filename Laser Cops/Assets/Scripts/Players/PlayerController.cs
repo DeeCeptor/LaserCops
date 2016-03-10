@@ -24,6 +24,9 @@ public class PlayerController : PlayerInput
 
         physics.velocity = new Vector2(this.direction.x * x_speed, this.direction.y * y_speed);
 
+        if (tether_switched)
+            Tether.tether.SwitchTether();
+
         // Force the player to remain within view of the camera
         StayOnScreen();
     }
