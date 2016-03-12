@@ -86,20 +86,25 @@ public class Tether : MonoBehaviour
         {
             primary_colour = primary_destroy_colour;
             secondary_colour = secondary_destroy_colour;
+            SetTetherLayer("DestructiveTether");
         }
         else if (mode == TetherMode.Capture)
         {
             primary_colour = primary_capture_colour;
             secondary_colour = secondary_capture_colour;
+            SetTetherLayer("CaptureTether");
         }
         Debug.Log("Setting tether " + mode);
         cur_tether_mode = mode;
     }
 
 
-    public void SetTetherLayer()
+    public void SetTetherLayer(string layer_name)
     {
-
+        foreach (GameObject link in tether_links)
+        {
+            link.layer = LayerMask.NameToLayer(layer_name);
+        }
     }
 
 
@@ -115,9 +120,6 @@ public class Tether : MonoBehaviour
 
     public void UpdateTetherGraphics()
     {
-        if (links == null)
-            links = Tether.tether.tether_links;
-
         if (noise == null)
             noise = new Perlin();
 
@@ -127,13 +129,13 @@ public class Tether : MonoBehaviour
 
         for (int i = 0; i < particles.Length; i++)
         {
-            int cur_link = (int)(((float)links.Count) * ((float)i / (float)particles.Length));
+            int cur_link = (int)(((float)tether_links.Count) * ((float)i / (float)particles.Length));
             int prev_link = Mathf.Max(0, cur_link - 1);//(int)(((float)links.Count) * ((float)Mathf.Max(0, (i - 1)) / (float)particles.Length));
-            float t = ((float)i % (float)links.Count / (float)links.Count);
+            float t = ((float)i % (float)tether_links.Count / (float)tether_links.Count);
 
             //Vector3 position = links[prev_link].transform.position * t + links[cur_link].transform.position * (1 - t);
-            Vector2 position = Vector2.Lerp(links[prev_link].transform.position,
-                links[cur_link].transform.position,
+            Vector2 position = Vector2.Lerp(tether_links[prev_link].transform.position,
+                tether_links[cur_link].transform.position,
                 t);
             //Debug.Log(i + " : " + position.x + " : between : " + links[prev_link].transform.position + links[cur_link].transform.position + t + " : prev: " + prev_link + " cur: " + cur_link);
             /*

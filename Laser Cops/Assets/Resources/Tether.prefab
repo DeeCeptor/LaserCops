@@ -13,7 +13,6 @@ GameObject:
   - 114: {fileID: 11448868}
   - 26: {fileID: 2601324}
   - 15: {fileID: 1581070}
-  - 114: {fileID: 11483152}
   m_Layer: 0
   m_Name: Tether
   m_TagString: TetherManager
@@ -70,7 +69,7 @@ ParticleRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3e22b64ead113e4fa0004239cf342b59, type: 2}
+  - {fileID: 2100000, guid: 74f6b337fd35bf1488446ca90ace8bfb, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -123,7 +122,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148464}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9745a9d7e7127ce46b489dcf5e4c4f1c, type: 3}
   m_Name: 
@@ -134,20 +133,13 @@ MonoBehaviour:
   right_width: 0.06
   cur_tether_mode: 1
   tether_links: []
---- !u!114 &11483152
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 148464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bda425f5f1ec297459a61b1920234376, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zigs: 90
-  speed: 1
+  zigs: 160
+  speed: 2
   scale: 1.5
+  primary_destroy_colour: {r: 1, g: 0, b: 0, a: 1}
+  secondary_destroy_colour: {r: 1, g: 1, b: 1, a: 1}
+  primary_capture_colour: {r: 0, g: 0, b: 1, a: 1}
+  secondary_capture_colour: {r: 1, g: 1, b: 1, a: 1}
 --- !u!120 &12021174
 LineRenderer:
   m_ObjectHideFlags: 1
