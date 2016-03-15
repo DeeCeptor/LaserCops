@@ -10,6 +10,12 @@ public class TrackShotScrolling : MonoBehaviour{
     public float shotCounter;
     public GameObject bullet;
     public bool active = false;
+
+    //true if you want it to disable itself when the player is close
+    public bool playerCloseDisable = true;
+    //how close the player must be to disable the shot
+    public float disableDistance = 2f;
+
     // Use this for initialization
     void Start () {
         players = GameObject.FindGameObjectsWithTag("Player");
@@ -63,11 +69,32 @@ public class TrackShotScrolling : MonoBehaviour{
         active = true;
         shotCounter = Time.time + shotDelay;
     }
-
+    
     public void shoot()
     {
-        GameObject bulletSpawned = (GameObject)Instantiate(bullet,transform.position,transform.rotation);
-        BulletScript bulletStats = bulletSpawned.GetComponent<BulletScript>();
-        bulletStats.target = playerToTrack.position;
+        if (!playerCloseDisable)
+        {
+            GameObject bulletSpawned = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
+            BulletScript bulletStats = bulletSpawned.GetComponent<BulletScript>();
+            bulletStats.target = playerToTrack.position;
+        }
+
+        else
+        {
+            bool fire = true;
+            for (int i = 0; i < PlayerTrackScript.playerInfo.players.Length; i++)
+            {
+                if ((PlayerTrackScript.playerInfo.players[i].transform.position - transform.position).magnitude < disableDistance)
+                {
+                    fire = false;
+                }
+            }
+            if (fire)
+            {
+                GameObject bulletSpawned = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
+                BulletScript bulletStats = bulletSpawned.GetComponent<BulletScript>();
+                bulletStats.target = playerToTrack.position;
+            }
+        }
     }
 }

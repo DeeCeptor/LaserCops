@@ -10,6 +10,8 @@ TagManager:
   - Obstacle
   - Civillian
   - TetherManager
+  - ReboundingBullet
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -26,8 +28,8 @@ TagManager:
   - DestructiveTether
   - CaptureTether
   - InactiveTether
-  - 
-  - 
+  - Bullet
+  - ReboundingBullet
   - 
   - 
   - 

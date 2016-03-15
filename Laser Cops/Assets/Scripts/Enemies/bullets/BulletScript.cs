@@ -4,16 +4,16 @@ using System.Collections;
 public class BulletScript : MonoBehaviour {
     public Vector3 target;
     public float speed = 3f;
-    private Vector2 direction;
+    public Vector2 dir;
 	// Use this for initialization
 	void Start () {
-        direction = target - transform.position;
+        dir = target - transform.position;
     }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
         
-        GetComponent<Rigidbody2D>().velocity = direction.normalized * speed;
+        GetComponent<Rigidbody2D>().velocity = dir.normalized * speed;
     }
 
     void OnCollisionEnter2D(Collision2D collision)

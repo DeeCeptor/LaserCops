@@ -1,58 +1,40 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-//class for which direction the enemy will be travelling in
-public enum direction
-{
-    up = 0, left = 1, down = 2, right = 3
-};
-
-//this is a template for scrolling enemies and simply falls but has methods for doing more complex things
-public class basicScrollingEnemyScript : MonoBehaviour
-{
+public class ObstacleScrollScript : MonoBehaviour {
     public float speed = 2f;
     public bool active = false;
-    
+
     //this is used for the enemies speed when OFFSCREEN do not change unless you know what you're doing in which case I'm a comment not a cop
     private float inactiveSpeed = 1f;
 
     //direction the enemy will travel towards
     public direction travelDirection = direction.left;
-
     // Use this for initialization
-    void Start()
+    void Start () {
+	
+	}
+	
+	// Update is called once per frame
+	void FixedUpdate ()
     {
-        initiate();
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        if (!active)
-        {
-            CheckActive();
-            moveInactive();
-        }
-        else
-        {
-            CheckDeath();
-            moveActive();
-        }
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Tether"))
-        {
-            Die();
-        }
+            if (!active)
+            {
+                CheckActive();
+                moveInactive();
+            }
+            else
+            {
+                CheckDeath();
+                moveActive();
+            }
     }
 
     public void moveInactive()
     {
-        if(travelDirection == direction.left)
+        if (travelDirection == direction.left)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-inactiveSpeed,0);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(-inactiveSpeed, 0);
         }
         else if (travelDirection == direction.up)
         {
@@ -135,4 +117,3 @@ public class basicScrollingEnemyScript : MonoBehaviour
         }
     }
 }
-

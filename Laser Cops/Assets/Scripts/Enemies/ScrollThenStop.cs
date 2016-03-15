@@ -8,7 +8,7 @@ public class ScrollThenStop : basicScrollingEnemyScript {
     public bool rotateWhenStopped = true;
     public float rotateSpeed = 1f;
     //set this to true if you want it to go again after it stops
-    public bool goAgain = false;
+    public bool goAgain = true;
     public float timeTillGoAgain = 5f;
     public bool stopped = false;
 	// Use this for initialization
@@ -21,10 +21,12 @@ public class ScrollThenStop : basicScrollingEnemyScript {
         if (!active)
         {
             CheckActive();
+            moveInactive();
         }
         else
         {
-            if(!stopped)
+            moveActive();
+            if (!stopped)
             {
                 if(stopCounter < Time.time)
                 {
@@ -33,7 +35,10 @@ public class ScrollThenStop : basicScrollingEnemyScript {
             }
             else
             {
-                transform.Rotate(new Vector3(0,0,rotateSpeed));
+                if (rotateWhenStopped)
+                {
+                    transform.Rotate(new Vector3(0, 0, rotateSpeed));
+                }
                 if(goAgain)
                 {
                     if(stopCounter < Time.time)
@@ -60,14 +65,12 @@ public class ScrollThenStop : basicScrollingEnemyScript {
         stopCounter = Time.time + timeTillGoAgain;
         stopped = true;
         Rigidbody2D rigid = GetComponent<Rigidbody2D>();
-        rigid.gravityScale = 0;
         rigid.constraints = RigidbodyConstraints2D.FreezePosition;
     }
 
     public void unfreeze()
     {
         Rigidbody2D rigid = GetComponent<Rigidbody2D>();
-        rigid.gravityScale = speed;
         rigid.constraints = RigidbodyConstraints2D.None;
     }
 
