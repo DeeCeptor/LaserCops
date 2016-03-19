@@ -55,7 +55,7 @@ private float TimeX = 1.0f;
 private Vector4 ScreenResolution;
 private Material SCMaterial;
 private float[] Matrix9;
-private float Brightness = 0f;
+//private float Brightness = 0f;
 #endregion
 #region Properties
 Material material

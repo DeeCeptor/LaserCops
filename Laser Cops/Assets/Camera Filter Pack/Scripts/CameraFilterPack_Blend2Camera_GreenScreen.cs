@@ -13,7 +13,7 @@ public Camera Camera2;
 private float TimeX = 1.0f;
 
 private Material SCMaterial;
-private float SwitchCameraToCamera2 = 0f;
+//private float SwitchCameraToCamera2 = 0f;
 [Range(0f, 1f)]
 public float BlendFX = 1f;
 [Range(-0.2f, 0.2f)]
