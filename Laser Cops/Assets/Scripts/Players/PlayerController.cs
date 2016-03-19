@@ -11,7 +11,11 @@ public class PlayerController : PlayerInput
 
     // Car
     public GameObject car_sprite;   // Sprite we'll be rotating using animation
+    float default_rotation; // Rotation we return to if doing nothing
     float desired_rotation;
+    float rotation_changing_speed = 0.2f;   // How quickly we lerp between rotations
+    float max_turning_rotation = 20f;
+    float sideways_turning_speed = 50.0f;
 
     // SPARKS (we reuse the same spark gameobjects when grinding)
     Dictionary<GameObject, ParticleSystem> in_use_grinding_sparks = new Dictionary<GameObject, ParticleSystem>();
@@ -22,6 +26,8 @@ public class PlayerController : PlayerInput
     void Awake ()
     {
         physics = this.GetComponent<Rigidbody2D>();
+        default_rotation = transform.rotation.eulerAngles.z;
+        desired_rotation = default_rotation;
     }
 	void Start ()
     {
@@ -51,13 +57,34 @@ public class PlayerController : PlayerInput
 
         // Force the player to remain within view of the camera
         StayOnScreen();
+
+        // ROTATION
+        // Lerp to our desired rotation
+        physics.MoveRotation(Mathf.Lerp(transform.eulerAngles.z, desired_rotation, rotation_changing_speed));
+        //transform.eulerAngles = new Vector3(0, 0, 
+        //    Mathf.Lerp(transform.eulerAngles.z, desired_rotation, 0.01f));
     }
     // Slightly rotate car to make it look like turning
     public void TurningCar(float amount)
     {
         if (amount > 0)
         {
-
+            // Sideways: going left
+            // Turn more as we keep turning
+            desired_rotation = Mathf.Min(desired_rotation + (Time.deltaTime * sideways_turning_speed), default_rotation + max_turning_rotation);
+            rotation_changing_speed = 0.2f;
+        }
+        else if (amount < 0)
+        {
+            // Sideways: going right
+            desired_rotation = Mathf.Max(desired_rotation - (sideways_turning_speed * Time.deltaTime), default_rotation - max_turning_rotation);
+            rotation_changing_speed = 0.2f;
+        }
+        else
+        {
+            // Not turning, return to normal rotation
+            desired_rotation = default_rotation;
+            rotation_changing_speed = 0.05f;
         }
     }
 
