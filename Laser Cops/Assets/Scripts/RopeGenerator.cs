@@ -105,7 +105,8 @@ public class RopeGenerator : MonoBehaviour
         jo.anchor = new Vector2(0, 0);
         jo.connectedBody = end_anchor.GetComponent<Rigidbody2D>();
         end_rope_piece = joints[joints.Count - 1];
-        joints.Add(end_anchor);
+
+        //joints.Add(end_anchor);
 
         //end_anchor.GetComponent<Rigidbody2D>().AddForce(throwForce, ForceMode2D.Force);
         //end_anchor.AddComponent<RopeAttachScript>();

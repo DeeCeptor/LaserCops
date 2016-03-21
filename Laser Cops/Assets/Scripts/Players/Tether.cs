@@ -87,12 +87,30 @@ public class Tether : MonoBehaviour
             primary_colour = primary_destroy_colour;
             secondary_colour = secondary_destroy_colour;
             SetTetherLayer("DestructiveTether");
+
+            // Spawn sparks to show the tether has changed modes
+            for (int x = 0; x < tether_links.Count; x += 2)
+            {
+                GameObject sparks = (GameObject)GameObject.Instantiate(Resources.Load("Graphics/Tether Change Sparks") as GameObject,
+                    tether_links[x].transform.position, Quaternion.identity);
+                sparks.GetComponent<ParticleSystem>().startColor = primary_destroy_colour;
+                Destroy(sparks, 1.0f);
+            }
         }
         else if (mode == TetherMode.Capture)
         {
             primary_colour = primary_capture_colour;
             secondary_colour = secondary_capture_colour;
             SetTetherLayer("CaptureTether");
+
+            // Spawn sparks to show the tether has changed modes
+            for (int x = 0; x < tether_links.Count; x += 2)
+            {
+                GameObject sparks = (GameObject)GameObject.Instantiate(Resources.Load("Graphics/Tether Change Sparks") as GameObject,
+                    tether_links[x].transform.position, Quaternion.identity);
+                sparks.GetComponent<ParticleSystem>().startColor = primary_capture_colour;
+                Destroy(sparks, 1.0f);
+            }
         }
         Debug.Log("Setting tether " + mode);
         cur_tether_mode = mode;

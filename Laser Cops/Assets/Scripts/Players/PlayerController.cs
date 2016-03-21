@@ -22,6 +22,8 @@ public class PlayerController : PlayerInput
     List<ParticleSystem> free_grinding_sparks = new List<ParticleSystem>();
     public GameObject grinding_sparks;
 
+    public List<ParticleSystem> moving_forward_particles = new List<ParticleSystem>();  // Boosters and stuff turn on when moving forward
+    public List<ParticleSystem> moving_backwards_particles = new List<ParticleSystem>();    // Brakes for slowing down
 
     void Awake ()
     {
@@ -49,10 +51,13 @@ public class PlayerController : PlayerInput
         if (GameState.game_state.going_sideways)
         {
             TurningCar(new_speed.y);
+            AccelerateDecelartingCar(new_speed.x);
         }
         else
         {
+            Debug.Log("A");
             TurningCar(new_speed.x);
+            AccelerateDecelartingCar(new_speed.y);
         }
 
         // Force the player to remain within view of the camera
@@ -85,6 +90,56 @@ public class PlayerController : PlayerInput
             // Not turning, return to normal rotation
             desired_rotation = default_rotation;
             rotation_changing_speed = 0.05f;
+        }
+    }
+    public void AccelerateDecelartingCar(float amount)
+    {
+        // Accelerating
+        if (amount > 0)
+        {
+            // Turn on accelerating
+            foreach (ParticleSystem ps in moving_forward_particles)
+            {
+                if (!ps.isPlaying)
+                    ps.Play();
+            }
+            // Turn off braking
+            foreach (ParticleSystem ps in moving_backwards_particles)
+            {
+                if (ps.isPlaying)
+                    ps.Stop();
+            }
+        }
+        // Decelerating
+        else if (amount < 0)
+        {
+            // Turn off acceleration
+            foreach (ParticleSystem ps in moving_forward_particles)
+            {
+                if (ps.isPlaying)
+                    ps.Stop();
+            }
+            // Turn on braking
+            foreach (ParticleSystem ps in moving_backwards_particles)
+            {
+                if (!ps.isPlaying)
+                    ps.Play();
+            }
+        }
+        else
+        {
+            // Turn off acceleration
+            foreach (ParticleSystem ps in moving_forward_particles)
+            {
+                if (ps.isPlaying)
+                    ps.Stop();
+            }
+            // Turn off braking
+            foreach (ParticleSystem ps in moving_backwards_particles)
+            {
+                if (ps.isPlaying)
+                    ps.Stop();
+            }
         }
     }
 
