@@ -8,6 +8,7 @@ public class GameState : MonoBehaviour
     public bool paused = false; // Paused by player
     public bool game_over = false;  // Lost the game
 
+    public bool going_sideways = true;
 
     void Awake ()
     {
@@ -32,6 +33,11 @@ public class GameState : MonoBehaviour
     {
         Physics2D.gravity = new_gravity;
         Physics.gravity = new_gravity;
+
+        if (Mathf.Abs(new_gravity.x) >= Mathf.Abs(new_gravity.y))
+            going_sideways = true;
+        else
+            going_sideways = false;
     }
 
 

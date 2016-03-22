@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////
+///////////////////////////////////////////
 //  CameraFilterPack v2.0 - by VETASOFT 2015 ///
 ///////////////////////////////////////////
 using UnityEngine;
@@ -17,7 +17,7 @@ public class CameraFilterPack_Oculus_NightVision2 : MonoBehaviour {
 	private Vector4 ScreenResolution;
 	private Material SCMaterial;
 	private float[] Matrix9;
-	private float Brightness = 0f;
+	//private float Brightness = 0f;
 	#endregion
 	#region Properties
 	Material material

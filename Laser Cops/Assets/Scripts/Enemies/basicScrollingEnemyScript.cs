@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 //class for which direction the enemy will be travelling in
@@ -90,6 +90,7 @@ public class basicScrollingEnemyScript : MonoBehaviour
 
     public void Die()
     {
+        EffectsManager.effects.ViolentExplosion(this.transform.position);
         Destroy(gameObject);
     }
 

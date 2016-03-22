@@ -20,7 +20,7 @@ private float Value3 = 1f;
 [Range(0f, 10f)]
 private float Value4 = 1f;
 
-float deltaTime = 0.0f;
+//float deltaTime = 0.0f;
 public static float ChangeValue;
 public static int ChangeValue2;
 public static float ChangeValue3;

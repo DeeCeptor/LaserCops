@@ -12,6 +12,7 @@ TagManager:
   - TetherManager
   - ReboundingBullet
   - Boss
+  - TractorBeam
   layers:
   - Default
   - TransparentFX
@@ -30,8 +31,8 @@ TagManager:
   - InactiveTether
   - Bullet
   - ReboundingBullet
-  - 
-  - 
+  - Background
+  - Not glowing
   - 
   - 
   - 
@@ -66,4 +67,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1444785843
+    locked: 0
+  - name: Effects
+    uniqueID: 1874583701
     locked: 0

@@ -4,7 +4,7 @@ using System.Collections;
 // http://answers.unity3d.com/questions/1032656/trail-renderer-on-a-non-moving-object.html
 public class ManualTrail : MonoBehaviour
 {
-    public int trailResolution;
+    public int trailResolution;     // Number of points on the line
     LineRenderer lineRenderer;
 
     Vector3[] lineSegmentPositions;

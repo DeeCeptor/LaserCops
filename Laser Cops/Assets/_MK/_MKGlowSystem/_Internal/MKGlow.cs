@@ -2,7 +2,7 @@
 // MKGlowSystem								 //
 //											 //
 // Created by Michael Kremmel on 23.12.2014  //
-// Copyright © 2015 All rights reserved.     //
+// Copyright ï¿½ 2015 All rights reserved.     //
 ///////////////////////////////////////////////
 
 using UnityEngine;
@@ -382,10 +382,15 @@ namespace MKGlowSystem
             else
             {
                 if (GlowCamera)
+                {
                     DestroyImmediate(GlowCamera);
+                }
                 if (GlowCameraObject)
+                {
                     DestroyImmediate(GlowCameraObject);
+                }
             }
+            GlowCamera.cullingMask = Camera.main.cullingMask;
 
             Mathf.Clamp(BlurSpread, 0.2f, 2f);
             Mathf.Clamp(BlurIterations, 0, 11);
@@ -503,6 +508,7 @@ namespace MKGlowSystem
             Vector2 TextureSize;
             TextureSize.x = source.width / Samples;
             TextureSize.y = source.height / Samples;
+
             RenderTexture glowBuffer = RenderTexture.GetTemporary((int)TextureSize.x, (int)TextureSize.y, 0);
 
             if (GlowQuality == MKGlowQuality.Low)
