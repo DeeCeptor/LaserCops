@@ -6,11 +6,11 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: SpriteGlow
-  m_Shader: {fileID: 4800000, guid: a1919258d368e3944a77cf3d7e6a4bc8, type: 3}
+  m_Name: NewSpriteGlow
+  m_Shader: {fileID: 4800000, guid: 74db66f016826774ebe09e275eecdf0d, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: b2cd0cc8ad11217fa0004318cf342b59, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -82,14 +82,7 @@ Material:
         first:
           name: _MKGlowTex
         second:
-          m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _ToonShade
-        second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 11b9a0665d49f314b97c2b8fae5cabfe, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -105,6 +98,10 @@ Material:
         first:
           name: _Cutoff
         second: 0.5
+      data:
+        first:
+          name: PixelSnap
+        second: 0
       data:
         first:
           name: _Parallax
@@ -144,15 +141,15 @@ Material:
       data:
         first:
           name: _MKGlowPower
-        second: 2.5
-      data:
-        first:
-          name: _MKGlowTexStrength
         second: 1
       data:
         first:
-          name: _MKGlowOffSet
+          name: _MKGlowTexStrength
         second: 0
+      data:
+        first:
+          name: _MKGlowOffSet
+        second: 0.075
     m_Colors:
       data:
         first:
@@ -165,7 +162,7 @@ Material:
       data:
         first:
           name: _MKGlowColor
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: 1, g: 1, b: 1, a: 0.472}
       data:
         first:
           name: _MKGlowTexColor

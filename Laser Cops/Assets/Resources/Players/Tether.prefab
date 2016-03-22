@@ -114,7 +114,7 @@ MonoBehaviour:
   beginning_rope_piece: {fileID: 0}
   end_rope_piece: {fileID: 0}
   direction: {x: 0, y: 0}
-  number_of_segments: 15
+  number_of_segments: 20
   size_of_rope_pieces: 0.2
 --- !u!114 &11448868
 MonoBehaviour:
@@ -133,7 +133,7 @@ MonoBehaviour:
   right_width: 0.06
   cur_tether_mode: 1
   tether_links: []
-  zigs: 160
+  zigs: 300
   speed: 2
   scale: 1.5
   primary_destroy_colour: {r: 1, g: 0, b: 0, a: 1}

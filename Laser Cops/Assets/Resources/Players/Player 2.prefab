@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 442828}
   - 198: {fileID: 19876202}
   - 199: {fileID: 19945350}
-  m_Layer: 18
+  m_Layer: 10
   m_Name: Thruster System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - 4: {fileID: 473918}
   - 198: {fileID: 19811052}
   - 199: {fileID: 19970906}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BackLeftBrakingSparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - 4: {fileID: 494086}
   - 198: {fileID: 19875438}
   - 199: {fileID: 19947356}
-  m_Layer: 18
+  m_Layer: 10
   m_Name: Smoke System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   - 4: {fileID: 491646}
   - 198: {fileID: 19821840}
   - 199: {fileID: 19908140}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BackLeftBrakingSparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,7 +238,7 @@ GameObject:
   - 4: {fileID: 497896}
   - 198: {fileID: 19893988}
   - 199: {fileID: 19979578}
-  m_Layer: 18
+  m_Layer: 10
   m_Name: Heat System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   - 4: {fileID: 445852}
   - 198: {fileID: 19825718}
   - 199: {fileID: 19903518}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FrontLeftBrakingSparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -272,7 +272,7 @@ GameObject:
   - 4: {fileID: 472326}
   - 198: {fileID: 19845080}
   - 199: {fileID: 19910450}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FrontRightBrakingSparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
