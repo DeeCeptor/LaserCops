@@ -27,7 +27,9 @@ public class reboundableBullet : BulletScript
 
         else if(collision.gameObject.tag == "Boss" && rebounding)
         {
-            //Todo when making boss
+            BossHealthScript bossHealth = collision.gameObject.GetComponent<BossHealthScript>();
+            bossHealth.health = bossHealth.health - damageToBoss;
+            Destroy(gameObject);
         }
 
 
