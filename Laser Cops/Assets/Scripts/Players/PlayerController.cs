@@ -165,7 +165,30 @@ public class PlayerController : PlayerInput
     public void Die()
     {
         Debug.Log("Player " + player_number + " died");
+
+        ClearGrindingSparks();
+
+        // Destroy tether
+        Tether.tether.DestroyTether();
+
         Destroy(gameObject);
+    }
+    public void ClearGrindingSparks()
+    {
+        // Remove grinding sparks
+        List<ParticleSystem> sparks = new List<ParticleSystem>();
+        foreach (KeyValuePair<GameObject, ParticleSystem> entry in in_use_grinding_sparks)
+        {
+            sparks.Add(entry.Value);
+        }
+        foreach (ParticleSystem ps in free_grinding_sparks)
+        {
+            sparks.Add(ps);
+        }
+        for (int x = 0; x < sparks.Count; x++)
+        {
+            Destroy(sparks[x].gameObject);
+        }
     }
 
 
@@ -198,11 +221,6 @@ public class PlayerController : PlayerInput
     {
         // Show sparks on the side of the car it was hit on
         CollisionAt(collision.contacts[0].point);
-
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            Die();
-        }
 
         ParticleSystem sparks;
         // New collision, grab a grinding sparks if we've used one before

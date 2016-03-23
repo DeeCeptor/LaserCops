@@ -313,22 +313,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &199690
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 406232}
-  - 212: {fileID: 21297578}
-  m_Layer: 18
-  m_Name: Selective Glow Car (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!4 &404408
 Transform:
   m_ObjectHideFlags: 1
@@ -353,18 +337,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 460120}
   m_RootOrder: 10
---- !u!4 &406232
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 199690}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 471432}
-  m_RootOrder: 2
 --- !u!4 &411786
 Transform:
   m_ObjectHideFlags: 1
@@ -549,7 +521,6 @@ Transform:
   m_Children:
   - {fileID: 460120}
   - {fileID: 485518}
-  - {fileID: 406232}
   m_Father: {fileID: 465108}
   m_RootOrder: 0
 --- !u!4 &485518
@@ -690,6 +661,8 @@ MonoBehaviour:
   player_number: 1
   direction: {x: 0, y: 0}
   tether_switched: 0
+  Max_Health: 100
+  Health: 0
   car_sprite: {fileID: 168594}
   grinding_sparks: {fileID: 163914, guid: c0615df646395f3468b8b705517fffda, type: 2}
   moving_forward_particles:
@@ -13192,36 +13165,6 @@ SpriteRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 168594}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1444785843
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 11b9a0665d49f314b97c2b8fae5cabfe, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
---- !u!212 &21297578
-SpriteRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 199690}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0

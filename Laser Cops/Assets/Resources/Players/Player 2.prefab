@@ -604,6 +604,8 @@ MonoBehaviour:
   player_number: 2
   direction: {x: 0, y: 0}
   tether_switched: 0
+  Max_Health: 100
+  Health: 0
   car_sprite: {fileID: 106154}
   grinding_sparks: {fileID: 163914, guid: c0615df646395f3468b8b705517fffda, type: 2}
   moving_forward_particles:
@@ -13167,7 +13169,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9604745916b5ea1439c6317d55ee3d85, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
