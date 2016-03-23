@@ -9,6 +9,11 @@ public class PlayerController : PlayerInput
 
     Vector2 screen_margins = new Vector2(0.2f, 0.2f);
 
+
+    public float Max_Health = 100f;
+    public float Health;
+
+
     // Car
     public GameObject car_sprite;   // Sprite we'll be rotating using animation
     float default_rotation; // Rotation we return to if doing nothing
@@ -30,10 +35,13 @@ public class PlayerController : PlayerInput
         physics = this.GetComponent<Rigidbody2D>();
         default_rotation = transform.rotation.eulerAngles.z;
         desired_rotation = default_rotation;
+
+        Health = Max_Health;
     }
 	void Start ()
     {
-
+        GameState.game_state.Players.Add(this);
+        UIManager.ui_manager.UpdateHealth();
     }
 
     void Update ()
@@ -143,6 +151,24 @@ public class PlayerController : PlayerInput
         }
     }
 
+
+    public void TakeHit(float damage)
+    {
+        Health -= damage;
+        Health = Mathf.Max(0, Health);
+
+        // Set health bar
+
+        if (Health <= 0)
+            Die();
+    }
+    public void Die()
+    {
+        Debug.Log("Player " + player_number + " died");
+        Destroy(gameObject);
+    }
+
+
     void StayOnScreen()
     {
         /*
@@ -211,11 +237,6 @@ public class PlayerController : PlayerInput
         sparks.Stop();
         in_use_grinding_sparks.Remove(sparks.gameObject);
         free_grinding_sparks.Add(sparks);
-    }
-
-    public void Die()
-    {
-        Destroy(gameObject);
     }
 
     public void CollisionAt(Vector2 position)

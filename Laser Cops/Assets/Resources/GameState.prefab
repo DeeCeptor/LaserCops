@@ -10,6 +10,8 @@ GameObject:
   - 4: {fileID: 467292}
   - 114: {fileID: 11444262}
   - 114: {fileID: 11436190}
+  - 114: {fileID: 11473594}
+  - 114: {fileID: 11456912}
   m_Layer: 10
   m_Name: GameState
   m_TagString: GameController
@@ -66,6 +68,43 @@ MonoBehaviour:
   paused: 0
   game_over: 0
   going_sideways: 1
+  Players: []
+--- !u!114 &11456912
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59dee8fdd555b99479926b529e3f0834, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player_1_health: {fileID: 0}
+  player_2_health: {fileID: 0}
+--- !u!114 &11473594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f3ba6238458a247bc7112d8f5dc4b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glow: {fileID: 0}
+  from_blur_spread: 0
+  normal_blur_spread: 0
+  from_blur_iterations: 0
+  normal_blur_iterations: 0
+  from_blur_offset: 0
+  normal_blur_offset: 0
+  from_blur_samples: 0
+  normal_blur_samples: 0
+  from_glow_intensity: 0
+  normal_glow_intensity: 0
+  speed_of_adjusting_glow: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
