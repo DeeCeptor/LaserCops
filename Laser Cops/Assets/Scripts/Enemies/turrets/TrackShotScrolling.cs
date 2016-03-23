@@ -82,9 +82,9 @@ public class TrackShotScrolling : MonoBehaviour{
         else
         {
             bool fire = true;
-            for (int i = 0; i < PlayerTrackScript.playerInfo.players.Length; i++)
+			for (int i = 0; i < GameState.game_state.Players.Count; i++)
             {
-                if ((PlayerTrackScript.playerInfo.players[i].transform.position - transform.position).magnitude < disableDistance)
+				if ((GameState.game_state.Players[i].transform.position - transform.position).magnitude < disableDistance)
                 {
                     fire = false;
                 }

@@ -19,14 +19,21 @@ public class BulletScript : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.gameObject.CompareTag("Enemy"))
-        {
-            Die();
-        }
+        
 
 		if(collision.gameObject.CompareTag("Player"))
 		{
 			collision.gameObject.GetComponent<PlayerController>().TakeHit(damage);
+		}
+
+		if (collision.gameObject.tag == "VIP")
+		{
+			collision.gameObject.GetComponent<VIPScript>().TakeHit( damage);
+		}
+
+		if (!collision.gameObject.CompareTag("Enemy"))
+		{
+			Die();
 		}
     }
 

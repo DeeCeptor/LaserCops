@@ -13,6 +13,7 @@ TagManager:
   - ReboundingBullet
   - Boss
   - TractorBeam
+  - VIP
   layers:
   - Default
   - TransparentFX
@@ -33,7 +34,7 @@ TagManager:
   - ReboundingBullet
   - Background
   - Not glowing
-  - 
+  - VIP
   - 
   - 
   - 
