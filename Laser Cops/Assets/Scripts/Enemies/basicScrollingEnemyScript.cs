@@ -54,6 +54,11 @@ public class basicScrollingEnemyScript : MonoBehaviour
 		{
 			collision.gameObject.GetComponent<PlayerController>().TakeHit( collisionDamage);
 		}
+
+		else if (collision.gameObject.tag == "VIP")
+		{
+			collision.gameObject.GetComponent<VIPScript>().TakeHit( collisionDamage);
+		}
     }
 
     public void moveInactive()
