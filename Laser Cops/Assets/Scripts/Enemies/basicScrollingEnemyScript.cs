@@ -12,6 +12,9 @@ public class basicScrollingEnemyScript : MonoBehaviour
 {
     public float speed = 2f;
     public bool active = false;
+	public float collisionDamage = 0.3f;
+	public int pointValue = 20;
+	public float health = 1f;
     
     //this is used for the enemies speed when OFFSCREEN do not change unless you know what you're doing in which case I'm a comment not a cop
     private float inactiveSpeed = 1f;
@@ -46,6 +49,11 @@ public class basicScrollingEnemyScript : MonoBehaviour
         {
             Die();
         }
+
+		else if (collision.gameObject.tag == "Player")
+		{
+			collision.gameObject.GetComponent<PlayerController>().TakeHit( collisionDamage);
+		}
     }
 
     public void moveInactive()
@@ -92,7 +100,14 @@ public class basicScrollingEnemyScript : MonoBehaviour
     {
         EffectsManager.effects.ViolentExplosion(this.transform.position);
         Destroy(gameObject);
+		UIManager.ui_manager.ChangeScore(-pointValue);
     }
+
+	//to be used whenthe enemy dies offscreen
+	public void DieOffScreen()
+	{
+		Destroy(gameObject);
+	}
 
     public void initiate()
     {
@@ -132,8 +147,18 @@ public class basicScrollingEnemyScript : MonoBehaviour
     {
         if (!GetComponent<SpriteRenderer>().isVisible)
         {
-            Die();
+            DieOffScreen();
         }
+
+		if(health<=0)
+		{
+			Die();
+		}
     }
+
+	public void TakeHit(float damage)
+	{
+		health -= damage;
+	}
 }
 

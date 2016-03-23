@@ -4,6 +4,7 @@ using System.Collections;
 public class ObstacleScrollScript : MonoBehaviour {
     public float speed = 2f;
     public bool active = false;
+	public float damage = 1f;
 
     //this is used for the enemies speed when OFFSCREEN do not change unless you know what you're doing in which case I'm a comment not a cop
     private float inactiveSpeed = 1f;
@@ -29,6 +30,14 @@ public class ObstacleScrollScript : MonoBehaviour {
                 moveActive();
             }
     }
+
+	public void OnCollisionStay2D(Collision2D collision)
+	{
+		if(collision.gameObject.tag == "Player")
+		{
+			collision.gameObject.GetComponent<PlayerController>().TakeHit(damage);
+		}
+	}
 
     public void moveInactive()
     {

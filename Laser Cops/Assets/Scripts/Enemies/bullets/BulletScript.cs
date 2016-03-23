@@ -5,6 +5,7 @@ public class BulletScript : MonoBehaviour {
     public Vector3 target;
     public float speed = 3f;
     public Vector2 dir;
+	public float damage = 15f;
 	// Use this for initialization
 	void Start () {
         dir = target - transform.position;
@@ -22,6 +23,11 @@ public class BulletScript : MonoBehaviour {
         {
             Die();
         }
+
+		if(collision.gameObject.CompareTag("Player"))
+		{
+			collision.gameObject.GetComponent<PlayerController>().TakeHit(damage);
+		}
     }
 
     public void Die()
