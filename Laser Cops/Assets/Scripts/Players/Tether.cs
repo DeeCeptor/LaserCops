@@ -5,6 +5,8 @@ public class Tether : MonoBehaviour
 {
     public static Tether tether;
 
+    public float Damage = 1f;   // Damage done by the tether to enemies
+
     LineRenderer line;
 
     public Color standard_colour;
@@ -179,7 +181,9 @@ public class Tether : MonoBehaviour
 
             // Oscillate colour
             // Red / white is cool staticy look
-            particles[i].color = Color.Lerp(primary_colour, secondary_colour, Random.value);
+            Color c = Color.Lerp(primary_colour, secondary_colour, Random.value);
+            c.a = Random.value;
+            particles[i].color = c;
             //particles[i].color = Color.white;
         }
 

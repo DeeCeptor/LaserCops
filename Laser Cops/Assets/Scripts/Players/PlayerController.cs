@@ -13,6 +13,7 @@ public class PlayerController : PlayerInput
     public float Max_Health = 100f;
     public float Health;
 
+    public float Grinding_Damage = 0.3f;    // How much damage we do by grinding against enemies
 
     // Car
     public GameObject car_sprite;   // Sprite we'll be rotating using animation
@@ -158,6 +159,7 @@ public class PlayerController : PlayerInput
         Health = Mathf.Max(0, Health);
 
         // Set health bar
+        UIManager.ui_manager.UpdateHealth();
 
         if (Health <= 0)
             Die();

@@ -12,6 +12,8 @@ public class basicScrollingEnemyScript : MonoBehaviour
 {
     public float speed = 2f;
     public bool active = false;
+    public bool die_in_one_hit = false;
+    public bool takes_grinding_damage = false;
 	public float collisionDamage = 0.3f;
 	public int pointValue = 20;
 	public float health = 1f;
@@ -45,20 +47,37 @@ public class basicScrollingEnemyScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        ResolveCollision(collision);
+    }
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        ResolveCollision(collision);
+    }
+    void ResolveCollision(Collision2D collision)
+    {
         if (collision.gameObject.CompareTag("Tether"))
         {
-            Die();
+            if (die_in_one_hit)
+                Die();
+            else
+                TakeHit(Tether.tether.Damage);
+        }
+        else if (collision.gameObject.tag == "Player")
+        {
+            // Hurt the player
+            collision.gameObject.GetComponent<PlayerController>().TakeHit(collisionDamage);
+
+            if (takes_grinding_damage)
+            {
+                // Hurt this enemy cause it's grinding against the player
+                this.TakeHit(collision.gameObject.GetComponent<PlayerController>().Grinding_Damage);
+            }
         }
 
-		else if (collision.gameObject.tag == "Player")
-		{
-			collision.gameObject.GetComponent<PlayerController>().TakeHit( collisionDamage);
-		}
-
-		else if (collision.gameObject.tag == "VIP")
-		{
-			collision.gameObject.GetComponent<VIPScript>().TakeHit( collisionDamage);
-		}
+        else if (collision.gameObject.tag == "VIP")
+        {
+            collision.gameObject.GetComponent<VIPScript>().TakeHit(collisionDamage);
+        }
     }
 
     public void moveInactive()
