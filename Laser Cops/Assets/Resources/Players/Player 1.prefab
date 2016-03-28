@@ -40,7 +40,7 @@ GameObject:
   - 4: {fileID: 421814}
   - 198: {fileID: 19885038}
   - 199: {fileID: 19950054}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FrontLeftBrakingSparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - 4: {fileID: 490480}
   - 198: {fileID: 19840222}
   - 199: {fileID: 19959738}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BackLeftBrakingSparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - 4: {fileID: 404408}
   - 198: {fileID: 19882014}
   - 199: {fileID: 19995542}
-  m_Layer: 18
+  m_Layer: 10
   m_Name: Heat System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - 4: {fileID: 435870}
   - 198: {fileID: 19876356}
   - 199: {fileID: 19906010}
-  m_Layer: 18
+  m_Layer: 10
   m_Name: Thruster System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   - 4: {fileID: 454864}
   - 198: {fileID: 19837894}
   - 199: {fileID: 19950130}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FrontRightBrakingSparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   - 4: {fileID: 405128}
   - 198: {fileID: 19874480}
   - 199: {fileID: 19912602}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BackLeftBrakingSparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,7 +306,7 @@ GameObject:
   - 4: {fileID: 411792}
   - 198: {fileID: 19845620}
   - 199: {fileID: 19948802}
-  m_Layer: 18
+  m_Layer: 10
   m_Name: Smoke System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -663,6 +663,7 @@ MonoBehaviour:
   tether_switched: 0
   Max_Health: 100
   Health: 0
+  Grinding_Damage: 0.3
   car_sprite: {fileID: 168594}
   grinding_sparks: {fileID: 163914, guid: c0615df646395f3468b8b705517fffda, type: 2}
   moving_forward_particles:

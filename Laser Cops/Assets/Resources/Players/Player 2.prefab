@@ -606,6 +606,7 @@ MonoBehaviour:
   tether_switched: 0
   Max_Health: 100
   Health: 0
+  Grinding_Damage: 0.3
   car_sprite: {fileID: 106154}
   grinding_sparks: {fileID: 163914, guid: c0615df646395f3468b8b705517fffda, type: 2}
   moving_forward_particles:
@@ -13020,7 +13021,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1874583701
-  m_SortingOrder: 5
+  m_SortingOrder: 6
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
