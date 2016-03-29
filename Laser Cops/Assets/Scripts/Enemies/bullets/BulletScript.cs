@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class BulletScript : MonoBehaviour {
@@ -15,6 +15,9 @@ public class BulletScript : MonoBehaviour {
 	void FixedUpdate () {
         
         GetComponent<Rigidbody2D>().velocity = dir.normalized * speed;
+
+        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -23,6 +26,9 @@ public class BulletScript : MonoBehaviour {
 
 		if(collision.gameObject.CompareTag("Player"))
 		{
+            // Spawn small sparks and explosion
+            EffectsManager.effects.BulletHitPlayer(collision.contacts[0].point);
+
 			collision.gameObject.GetComponent<PlayerController>().TakeHit(damage);
 		}
 

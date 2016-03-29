@@ -81,6 +81,13 @@ public class EffectsManager : MonoBehaviour
     }
 
 
+    public void BulletHitPlayer(Vector2 position)
+    {
+        Destroy((GameObject)GameObject.Instantiate(Resources.Load("Graphics/Burst Small Fireball") as GameObject,
+            position, Quaternion.identity), 2.0f);
+    }
+
+
     void Update ()
     {
 	    // Lerp between values

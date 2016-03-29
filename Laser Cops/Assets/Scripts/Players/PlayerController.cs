@@ -229,6 +229,9 @@ public class PlayerController : PlayerInput
     // Shower of sparks on a collision!
     void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
+            return;
+
         // Show sparks on the side of the car it was hit on
         CollisionAt(collision.contacts[0].point);
 
