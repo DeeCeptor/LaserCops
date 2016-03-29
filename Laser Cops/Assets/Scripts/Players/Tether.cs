@@ -130,7 +130,8 @@ public class Tether : MonoBehaviour
     // Removes the tether and all its links
     public void DestroyTether()
     {
-        Destroy(this.gameObject);
+        if (this.gameObject != null)
+            Destroy(this.gameObject);
     }
 
     void Update()

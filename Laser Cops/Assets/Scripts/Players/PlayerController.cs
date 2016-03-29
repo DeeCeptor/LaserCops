@@ -31,7 +31,7 @@ public class PlayerController : PlayerInput
     public List<ParticleSystem> moving_forward_particles = new List<ParticleSystem>();  // Boosters and stuff turn on when moving forward
     public List<ParticleSystem> moving_backwards_particles = new List<ParticleSystem>();    // Brakes for slowing down
 
-    void Awake ()
+    void Awake()
     {
         physics = this.GetComponent<Rigidbody2D>();
         default_rotation = transform.rotation.eulerAngles.z;
@@ -39,13 +39,13 @@ public class PlayerController : PlayerInput
 
         Health = Max_Health;
     }
-	void Start ()
+    void Start()
     {
         GameState.game_state.Players.Add(this);
         UIManager.ui_manager.UpdateHealth();
     }
 
-    void Update ()
+    void Update()
     {
         UpdateInputs();
 
@@ -171,9 +171,16 @@ public class PlayerController : PlayerInput
         ClearGrindingSparks();
 
         // Destroy tether
-        Tether.tether.DestroyTether();
+        if (Tether.tether != null)
+            Tether.tether.DestroyTether();
 
-        Destroy(gameObject);
+        EffectsManager.effects.ViolentExplosion(this.transform.position);
+
+        this.gameObject.layer = LayerMask.NameToLayer("Obstacles");
+        this.gameObject.tag = "Obstacle";
+        this.gameObject.AddComponent<PlayerDying>();
+        Destroy(this);
+        //Destroy(gameObject);
     }
     public void ClearGrindingSparks()
     {
@@ -189,7 +196,8 @@ public class PlayerController : PlayerInput
         }
         for (int x = 0; x < sparks.Count; x++)
         {
-            Destroy(sparks[x].gameObject);
+            if (sparks != null && sparks[x] != null && sparks[x].gameObject != null)
+                Destroy(sparks[x].gameObject);
         }
     }
 
@@ -211,10 +219,10 @@ public class PlayerController : PlayerInput
         */
         Vector3 minScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
         Vector3 maxScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
-        
+
         transform.position = new Vector3(
-            Mathf.Clamp(transform.position.x, minScreenBounds.x + screen_margins.x, maxScreenBounds.x - screen_margins.y), 
-            Mathf.Clamp(transform.position.y, minScreenBounds.y + screen_margins.x, maxScreenBounds.y - screen_margins.y), 
+            Mathf.Clamp(transform.position.x, minScreenBounds.x + screen_margins.x, maxScreenBounds.x - screen_margins.y),
+            Mathf.Clamp(transform.position.y, minScreenBounds.y + screen_margins.x, maxScreenBounds.y - screen_margins.y),
             transform.position.z);
     }
 
@@ -235,7 +243,7 @@ public class PlayerController : PlayerInput
         else
         {
             // Need to spawn a new grinding sparks
-            sparks = ((GameObject) GameObject.Instantiate(grinding_sparks)).GetComponent<ParticleSystem>();
+            sparks = ((GameObject)GameObject.Instantiate(grinding_sparks)).GetComponent<ParticleSystem>();
         }
 
         // Set its position and add it to the dictionary
@@ -247,8 +255,14 @@ public class PlayerController : PlayerInput
     // Show grinding sparks when touching another object
     void OnCollisionStay2D(Collision2D coll)
     {
+        if (coll.gameObject == null)
+            return;
+
         // Update the position of the grinding
-        in_use_grinding_sparks[coll.gameObject].gameObject.transform.position = coll.contacts[0].point;
+        if (in_use_grinding_sparks.ContainsKey(coll.gameObject) && in_use_grinding_sparks[coll.gameObject] != null)
+            in_use_grinding_sparks[coll.gameObject].gameObject.transform.position = coll.contacts[0].point;
+        else
+            in_use_grinding_sparks.Remove(coll.gameObject);
     }
     // Stop grinding against the object we were pushing against
     void OnCollisionExit2D(Collision2D coll)
@@ -262,5 +276,11 @@ public class PlayerController : PlayerInput
     public void CollisionAt(Vector2 position)
     {
 
+    }
+
+
+    void OnDestroy()
+    {
+        ClearGrindingSparks();
     }
 }
