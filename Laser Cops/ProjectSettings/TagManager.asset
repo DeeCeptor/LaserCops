@@ -60,6 +60,9 @@ TagManager:
   - name: Enemies
     uniqueID: 874025413
     locked: 0
+  - name: Bullets
+    uniqueID: 4022665297
+    locked: 0
   - name: Powerups
     uniqueID: 424224613
     locked: 0
@@ -71,4 +74,7 @@ TagManager:
     locked: 0
   - name: Effects
     uniqueID: 1874583701
+    locked: 0
+  - name: Topmost
+    uniqueID: 2185591609
     locked: 0

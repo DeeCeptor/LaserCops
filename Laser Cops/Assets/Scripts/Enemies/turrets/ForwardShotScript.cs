@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class ForwardShotScript : MonoBehaviour {
@@ -7,6 +7,7 @@ public class ForwardShotScript : MonoBehaviour {
     public float shotCounter;
     public GameObject bullet;
     public bool active = false;
+    public bool only_shoot_on_command = false;  // Will only fire when shoot() is called
 
     //true if you want it to disable itself when the player is close
     public bool playerCloseDisable = true;
@@ -22,17 +23,20 @@ public class ForwardShotScript : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (active)
+        if (!only_shoot_on_command)
         {
-            if (shotCounter < Time.time)
+            if (active)
             {
-                shotCounter = Time.time + shotDelay;
-                shoot();
+                if (shotCounter < Time.time)
+                {
+                    shotCounter = Time.time + shotDelay;
+                    shoot();
+                }
             }
-        }
-        else
-        {
-            checkActive();
+            else
+            {
+                checkActive();
+            }
         }
     }
 
