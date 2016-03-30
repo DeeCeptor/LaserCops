@@ -10,8 +10,8 @@ GameObject:
   - 4: {fileID: 426896}
   - 212: {fileID: 21223466}
   - 50: {fileID: 5067020}
-  - 58: {fileID: 5895662}
   - 114: {fileID: 11489140}
+  - 61: {fileID: 6139366}
   m_Layer: 8
   m_Name: ScrollThenChase
   m_TagString: Enemy
@@ -26,8 +26,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191754}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 2.49, y: -0.04, z: 1}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalPosition: {x: 22.914772, y: -6.109409, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -48,8 +48,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &5895662
-CircleCollider2D:
+--- !u!61 &6139366
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -61,7 +61,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.08
+  m_Size: {x: 1.4099998, y: 2.4999998}
 --- !u!114 &11489140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -80,6 +80,7 @@ MonoBehaviour:
   collisionDamage: 0.1
   pointValue: 20
   health: 50
+  inactiveSpeed: 1
   travelDirection: 1
   timeTillStop: 2
   stopCounter: 0
@@ -116,7 +117,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 97e10fe3ddda3b64aabea000cfdaf9bf, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -126,7 +127,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.z
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 191754}

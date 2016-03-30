@@ -10,8 +10,8 @@ GameObject:
   - 4: {fileID: 411084}
   - 212: {fileID: 21274890}
   - 50: {fileID: 5090808}
-  - 58: {fileID: 5803358}
   - 114: {fileID: 11401290}
+  - 61: {fileID: 6135760}
   m_Layer: 8
   m_Name: Bruiser
   m_TagString: Enemy
@@ -25,9 +25,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107442}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 32.7533, y: -1.6125287, z: 1}
-  m_LocalScale: {x: 7, y: 5, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
+  m_LocalPosition: {x: 15.050598, y: 4.1160107, z: 2}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -39,7 +39,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107442}
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 2
   m_LinearDrag: 1
   m_AngularDrag: 1
   m_GravityScale: 0
@@ -48,8 +48,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &5803358
-CircleCollider2D:
+--- !u!61 &6135760
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -59,9 +59,9 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.00000023841858, y: 0}
   serializedVersion: 2
-  m_Radius: 0.06
+  m_Size: {x: 1.4099998, y: 2.4999998}
 --- !u!114 &11401290
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -80,6 +80,7 @@ MonoBehaviour:
   collisionDamage: 0.5
   pointValue: 20
   health: 150
+  inactiveSpeed: 1
   travelDirection: 1
   timeTillStop: 3
   stopCounter: 0
@@ -116,7 +117,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 97e10fe3ddda3b64aabea000cfdaf9bf, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -126,7 +127,20 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 97e10fe3ddda3b64aabea000cfdaf9bf,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 107442}

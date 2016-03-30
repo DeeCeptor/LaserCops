@@ -72,6 +72,7 @@ public class ScrollThenStop : basicScrollingEnemyScript {
     {
         Rigidbody2D rigid = GetComponent<Rigidbody2D>();
         rigid.constraints = RigidbodyConstraints2D.None;
+        rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     public new void Activate()

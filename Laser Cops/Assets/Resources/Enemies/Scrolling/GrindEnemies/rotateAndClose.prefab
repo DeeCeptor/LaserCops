@@ -26,8 +26,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140436}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 22.632442, y: -1, z: 1}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalPosition: {x: 20.516777, y: -5.3134356, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -81,6 +81,7 @@ MonoBehaviour:
   pointValue: 20
   health: 50
   active: 0
+  inactiveSpeed: 1
   travelDirection: 1
   dir: {x: 0, y: 0}
   collisionDamage: 0.2

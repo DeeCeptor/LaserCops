@@ -16,6 +16,7 @@ public class trackVIPScript : TrackShotScrolling {
         }
         if (active)
         {
+            faceTarget(VIP.position);
             if (shotCounter < Time.time)
             {
                 shotCounter = Time.time + shotDelay;

@@ -27,6 +27,7 @@ public class TrackShotScrolling : MonoBehaviour{
 	void FixedUpdate () {
         if (active)
         {
+            faceTarget(playerToTrack.position);
             if (shotCounter < Time.time)
             {
                 shotCounter = Time.time + shotDelay;
@@ -61,6 +62,14 @@ public class TrackShotScrolling : MonoBehaviour{
         {
             Activate();
         }
+    }
+
+    public void faceTarget(Vector3 Target)
+    {
+        Vector3 vectorToTarget = Target - transform.position;
+        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+        Quaternion q = Quaternion.AngleAxis(angle +90, Vector3.forward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime);
     }
 
     //activate the turret
