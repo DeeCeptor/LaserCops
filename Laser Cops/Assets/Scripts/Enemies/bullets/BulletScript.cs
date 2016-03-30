@@ -24,7 +24,7 @@ public class BulletScript : MonoBehaviour {
     {
         
 
-		if(collision.gameObject.CompareTag("Player"))
+		if(collision.gameObject.tag == "Player")
 		{
             // Spawn small sparks and explosion
             EffectsManager.effects.BulletHitPlayer(collision.contacts[0].point);

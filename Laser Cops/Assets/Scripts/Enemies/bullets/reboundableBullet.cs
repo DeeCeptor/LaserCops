@@ -10,7 +10,20 @@ public class reboundableBullet : BulletScript
     
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Tether")
+        if (collision.gameObject.tag == "Player")
+        {
+            // Spawn small sparks and explosion
+            EffectsManager.effects.BulletHitPlayer(collision.contacts[0].point);
+
+            collision.gameObject.GetComponent<PlayerController>().TakeHit(damage);
+        }
+
+        if (collision.gameObject.tag == "VIP")
+        {
+            collision.gameObject.GetComponent<VIPScript>().TakeHit(damage);
+        }
+
+        if (collision.gameObject.tag == "Tether")
         {
             gameObject.tag = "ReboundingBullet";
             rebounding = true;
