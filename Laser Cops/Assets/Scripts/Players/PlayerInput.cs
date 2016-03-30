@@ -10,6 +10,7 @@ public class PlayerInput : MonoBehaviour
     public bool tether_held_down = false;
     public bool tether_released_this_instant = false;
     public bool boosted_this_instant = false;
+    public bool disable_tether_held_down = false;
 
     // Doesn't get call unless base.Start is called
     void Start ()
@@ -33,5 +34,7 @@ public class PlayerInput : MonoBehaviour
         tether_released_this_instant = Input.GetButtonUp("Switch Tether " + player_number);
 
         boosted_this_instant = Input.GetButtonDown("Player " + player_number + " Boost");
+
+        disable_tether_held_down = Input.GetButton("Disable Tether");
     }
 }

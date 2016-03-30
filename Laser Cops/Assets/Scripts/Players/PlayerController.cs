@@ -91,11 +91,13 @@ public class PlayerController : PlayerInput
         physics.velocity = new_speed;
 
 
-        if (tether_held_down)
+        if (disable_tether_held_down)
         {
-
+            Tether.tether.TetherHeldDown();
         }
-        if (tether_released_this_instant)
+        else
+            Tether.tether.TetherReleased();
+        if (tether_switched)
             Tether.tether.SwitchTether();
 
         // Animate car turning

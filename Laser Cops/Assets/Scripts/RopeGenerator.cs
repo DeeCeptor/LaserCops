@@ -6,6 +6,8 @@ using UnityEngine;
 public class RopeGenerator : MonoBehaviour
 {
     private LineRenderer line;
+    public Transform rope_pieces_parent;
+
     public string line_layer;
     public List<GameObject> joints;
     private int vertexCount;
@@ -24,9 +26,10 @@ public class RopeGenerator : MonoBehaviour
     //public List<PlatformerCharacter2D> players_on_rope = new List<PlatformerCharacter2D>();
 
 
+
     void Awake()
     {
-        line = this.GetComponent<LineRenderer>();
+        line = rope_pieces_parent.GetComponent<LineRenderer>();
         Generate_Rope_Between_Anchors();
 
     }
@@ -46,12 +49,12 @@ public class RopeGenerator : MonoBehaviour
             end_anchor = gameObject;
         }
         joints = new List<GameObject>();
-        line = GetComponent<LineRenderer>();
+        //line = GetComponent<LineRenderer>();
         vertexCount = number_of_segments;
         // vertexCount = (((int)Vector2.Distance(beginning.transform.position, end.transform.position)) * 3) - 1;
 
-        line.SetWidth(0.1f, 0.1f);  // 0.05f
-        line.sortingLayerName = line_layer;
+        //line.SetWidth(0.1f, 0.1f);  // 0.05f
+        //line.sortingLayerName = line_layer;
         Vector3 dir = beginning_anchor.transform.position - end_anchor.transform.position;
 
         for (int i = 0; i < vertexCount; i++)
@@ -59,7 +62,7 @@ public class RopeGenerator : MonoBehaviour
             GameObject segment = ((GameObject)Instantiate(emptyPrefab,
                 new Vector3(beginning_anchor.transform.position.x, beginning_anchor.transform.position.y, 0) - ((dir / (float)vertexCount) * i), Quaternion.identity));
             joints.Add(segment);
-            segment.transform.parent = transform;
+            segment.transform.parent = rope_pieces_parent;
         }
 
         // Connect all the joints and and make their parents this object

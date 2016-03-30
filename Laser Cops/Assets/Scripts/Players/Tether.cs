@@ -15,20 +15,19 @@ public class Tether : MonoBehaviour
     public float left_width = 0.1f;
     public float right_width = 0.1f;
 
-    Color cur_left;
-    Color cur_right;
-
     float cur_tether_switching_cooldown;
     float tether_switching_cooldown = 0.4f;
 
     public enum TetherMode { None, Destroy, Capture };
     public TetherMode cur_tether_mode = TetherMode.Destroy;
+    public TetherMode prev_tether_mode = TetherMode.Destroy;
 
+    public GameObject tether_links_parent;
     public List<GameObject> tether_links;
 
 
     // TETHER GRAPHICS
-    public int zigs = 140;      // How many particles
+    public int zigs = 300;      // How many particles
     public float speed = 1f;    // How quickly do they oscillate
     public float scale = 1.5f;
 
@@ -44,38 +43,42 @@ public class Tether : MonoBehaviour
     float oneOverZigs;
 
     private Particle[] particles;
-    List<GameObject> links;
+    //List<GameObject> links;
 
-    ParticleEmitter particle_emitter;
+    public ParticleEmitter particle_emitter;
 
 
     void Awake ()
     {
         tether = this;
-        line = this.GetComponent<LineRenderer>();
-        particle_emitter = this.GetComponent<ParticleEmitter>();
+        //line = tether_links_parent.GetComponent<LineRenderer>();
     }
 	void Start ()
     {
+        /*
         cur_left = standard_colour;
         cur_right = pulsating_colour;
         line.SetColors(cur_left, cur_right);
         line.SetWidth(left_width, right_width);
+        */
 
         SetTetherMode(TetherMode.Destroy);
 
         oneOverZigs = 1f / (float)zigs;
-        GetComponent<ParticleEmitter>().emit = false;
+        particle_emitter.emit = false;
 
-        GetComponent<ParticleEmitter>().Emit(zigs);
+        particle_emitter.Emit(zigs);
         particles = particle_emitter.particles;
     }
 
     int num_players_holding_down_tether_button;
+    // Called when the player is holding down the button
     public void TetherHeldDown()
     {
+        num_players_holding_down_tether_button++;
+
         // If both players are holding down the tether, disable it
-        if (num_players_holding_down_tether_button > 1)
+        if (num_players_holding_down_tether_button > 0)
             DisableTether();
     }
     public void TetherReleased()
@@ -84,23 +87,39 @@ public class Tether : MonoBehaviour
     }
     public void DisableTether()
     {
-        cur_tether_mode = TetherMode.None;
-        foreach (GameObject obj in links)
+        if (cur_tether_mode != TetherMode.None)
         {
-            obj.SetActive(false);
+            cur_tether_mode = TetherMode.None;
+
+            tether_links_parent.SetActive(false);
+            /*
+            foreach (GameObject obj in tether_links)
+            {
+                obj.SetActive(false);
+            }*/
         }
     }
     public void EnableTether()
     {
-        foreach (GameObject obj in links)
+        if (cur_tether_mode == TetherMode.None)
         {
-            obj.SetActive(true);
+            Debug.Log(prev_tether_mode);
+            cur_tether_mode = prev_tether_mode;
+            SetTetherMode(cur_tether_mode);
+
+            tether_links_parent.SetActive(true);
+            /*
+            foreach (GameObject obj in tether_links)
+            {
+                obj.SetActive(true);
+            }*/
         }
     }
     public void SwitchTether()
     {
         if (cur_tether_switching_cooldown <= 0)
         {
+            prev_tether_mode = cur_tether_mode;
             cur_tether_switching_cooldown = tether_switching_cooldown;
 
             if (cur_tether_mode == TetherMode.Destroy)
@@ -163,6 +182,7 @@ public class Tether : MonoBehaviour
 
     void LateUpdate()
     {
+        num_players_holding_down_tether_button = 0;
         cur_tether_switching_cooldown -= Time.deltaTime;
         // Pulsates between the 2 colours, end from end
         //line.SetColors()
@@ -171,9 +191,9 @@ public class Tether : MonoBehaviour
 
         // Turn on/off tether based on its mode
         if (cur_tether_mode == TetherMode.None)
-            particle_emitter.gameObject.SetActive(false);
+            particle_emitter.enabled = (false);
         else
-            particle_emitter.gameObject.SetActive(true);
+            particle_emitter.enabled = (true);
     }
 
 
@@ -221,6 +241,6 @@ public class Tether : MonoBehaviour
             //particles[i].color = Color.white;
         }
 
-        GetComponent<ParticleEmitter>().particles = particles;
+        particle_emitter.particles = particles;
     }
 }
