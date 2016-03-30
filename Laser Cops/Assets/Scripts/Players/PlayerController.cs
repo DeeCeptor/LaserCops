@@ -15,6 +15,13 @@ public class PlayerController : PlayerInput
 
     public float Grinding_Damage = 0.3f;    // How much damage we do by grinding against enemies
 
+    // Boost
+    float boost_cooldown = 1.5f;
+    float boost_cur_cooldown = 0f;
+    float boost_duration = .5f;
+    float boost_cur_duration = 0f;
+    float boost_speed_modifier = 2f;
+
     // Car
     public GameObject car_sprite;   // Sprite we'll be rotating using animation
     float default_rotation; // Rotation we return to if doing nothing
@@ -30,6 +37,8 @@ public class PlayerController : PlayerInput
 
     public List<ParticleSystem> moving_forward_particles = new List<ParticleSystem>();  // Boosters and stuff turn on when moving forward
     public List<ParticleSystem> moving_backwards_particles = new List<ParticleSystem>();    // Brakes for slowing down
+
+
 
     void Awake()
     {
@@ -50,9 +59,43 @@ public class PlayerController : PlayerInput
         UpdateInputs();
 
         Vector2 new_speed = new Vector2(this.direction.x * x_speed, this.direction.y * y_speed);
+
+        // BOOST
+        boost_cur_cooldown -= Time.deltaTime;
+        boost_cur_duration -= Time.deltaTime;
+        // Check if we boosted
+        if (boosted_this_instant)
+        {
+            // Is the boost on cooldown?
+            if (boost_cur_cooldown <= 0)
+            {
+                boost_cur_cooldown = boost_cooldown;
+                boost_cur_duration = boost_duration;
+            }
+        }
+
+        if (boost_cur_duration > 0)
+        {
+            // Apply boost speed!
+            if (GameState.game_state.going_sideways)
+            {
+                new_speed.x = x_speed * boost_speed_modifier;
+            }
+            else
+            {
+                new_speed.y = y_speed * boost_speed_modifier;
+            }
+        }
+
+        // Set our actual velocity
         physics.velocity = new_speed;
 
-        if (tether_switched)
+
+        if (tether_held_down)
+        {
+
+        }
+        if (tether_released_this_instant)
             Tether.tether.SwitchTether();
 
         // Animate car turning
