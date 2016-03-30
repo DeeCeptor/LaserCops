@@ -109,16 +109,18 @@ public class CivillianScript : MonoBehaviour {
 	// Update is called once per frame
 	public void OnCollisionStay2D(Collision2D collision)
 	{
-		if(collision.gameObject.layer == 13)
+		if(collision.gameObject.layer == saveLayer)
 		{
-			Destroy(gameObject);
-			UIManager.ui_manager.ChangeScore(pointsForSave);
+            UIManager.ui_manager.ChangeScore(pointsForSave);
+            Destroy(gameObject);
+			
 		}
 
-		if(collision.gameObject.layer == 12)
+		if(collision.gameObject.layer == destroyLayer)
 		{
-			Destroy(gameObject);
-			UIManager.ui_manager.ChangeScore(-pointPenaltyForKill);
+            EffectsManager.effects.ViolentExplosion(this.transform.position);
+            UIManager.ui_manager.ChangeScore(-pointPenaltyForKill);
+            Destroy(gameObject);
 		}
 	}
 }
