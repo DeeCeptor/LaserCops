@@ -35,11 +35,15 @@ public class PlayerController : PlayerInput
     List<ParticleSystem> free_grinding_sparks = new List<ParticleSystem>();
     public GameObject grinding_sparks;
 
+
+    // Particles
     public List<ParticleSystem> moving_forward_particles = new List<ParticleSystem>();  // Boosters and stuff turn on when moving forward
     public List<ParticleSystem> moving_backwards_particles = new List<ParticleSystem>();    // Brakes for slowing down
 
+    public List<ParticleSystem> minor_damage_particles = new List<ParticleSystem>();
+    public List<ParticleSystem> major_damage_particles = new List<ParticleSystem>();
 
-
+    
     void Awake()
     {
         physics = this.GetComponent<Rigidbody2D>();
@@ -199,11 +203,31 @@ public class PlayerController : PlayerInput
 
     public void TakeHit(float damage)
     {
+        float prev_health = Health;
+
         Health -= damage;
         Health = Mathf.Max(0, Health);
 
         // Set health bar
         UIManager.ui_manager.UpdateHealth();
+
+        // Turn on smoke and fire to show the player is damaged
+        if (prev_health > 50f && Health < 50f)
+        {
+            foreach (ParticleSystem p in minor_damage_particles)
+            {
+                if (!p.isPlaying)
+                    p.Play();
+            }
+        }
+        else if (prev_health > 25f && Health < 25f)
+        {
+            foreach (ParticleSystem p in major_damage_particles)
+            {
+                if (!p.isPlaying)
+                    p.Play();
+            }
+        }
 
         if (Health <= 0)
             Die();
@@ -298,6 +322,8 @@ public class PlayerController : PlayerInput
 
         if (!in_use_grinding_sparks.ContainsKey(collision.gameObject))
             in_use_grinding_sparks.Add(collision.gameObject, sparks);
+
+        sparks.GetComponent<TurnOffSparks>().time_remaining = sparks.GetComponent<TurnOffSparks>().start_time_remaining;
     }
     // Show grinding sparks when touching another object
     void OnCollisionStay2D(Collision2D coll)
@@ -307,7 +333,11 @@ public class PlayerController : PlayerInput
 
         // Update the position of the grinding
         if (in_use_grinding_sparks.ContainsKey(coll.gameObject) && in_use_grinding_sparks[coll.gameObject] != null)
-            in_use_grinding_sparks[coll.gameObject].gameObject.transform.position = coll.contacts[0].point;
+        {
+            ParticleSystem p = in_use_grinding_sparks[coll.gameObject];
+            p.gameObject.transform.position = coll.contacts[0].point;
+            p.GetComponent<TurnOffSparks>().time_remaining = p.GetComponent<TurnOffSparks>().start_time_remaining;
+        }
         else
             in_use_grinding_sparks.Remove(coll.gameObject);
     }
