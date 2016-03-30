@@ -12,11 +12,19 @@ public class GameState : MonoBehaviour
     public bool going_sideways = true;
 
     public List<PlayerController> Players = new List<PlayerController>();
+    public GameObject[] PlayerObjects;
+    public bool VIP = false;
+    public GameObject VIPObject;
 
     void Awake ()
     {
         game_state = this;
         SetGameSettings();
+        PlayerObjects = GameObject.FindGameObjectsWithTag("Player");
+        if (VIP)
+        {
+            VIPObject = GameObject.FindGameObjectWithTag("VIP");
+        }
     }
 	void Start ()
     {

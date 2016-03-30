@@ -182,6 +182,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   active: 0
+  die_in_one_hit: 0
+  takes_grinding_damage: 1
+  collisionDamage: 0.3
+  pointValue: 20
+  health: 1
   travelDirection: 1
 --- !u!114 &11446602
 MonoBehaviour:
@@ -343,7 +348,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: takes_grinding_damage
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 148260}
