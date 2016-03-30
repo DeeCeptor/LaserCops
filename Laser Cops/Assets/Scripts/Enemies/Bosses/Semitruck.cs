@@ -91,9 +91,9 @@ public class Semitruck : MonoBehaviour
 
         // Move up
         StartMoving(new Vector2(0f, 20f));
-        while (truck.transform.position.y < 4.5f)
+        while (truck.transform.position.y < 5f)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.01f);
         }
         StopMoving();
 
@@ -101,7 +101,7 @@ public class Semitruck : MonoBehaviour
         StartMoving(new Vector2(20f, 0f));
         while (truck.transform.position.x < 18f)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.01f);
         }
         StopMoving();
 
@@ -154,9 +154,9 @@ public class Semitruck : MonoBehaviour
 
         // Move down
         StartMoving(new Vector2(0f, -20f));
-        while (truck.transform.position.y > -4.5f)
+        while (truck.transform.position.y > -5f)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.01f);
         }
         StopMoving();
 
@@ -164,7 +164,7 @@ public class Semitruck : MonoBehaviour
         StartMoving(new Vector2(20f, 0f));
         while (truck.transform.position.x < 18f)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.01f);
         }
         StopMoving();
 

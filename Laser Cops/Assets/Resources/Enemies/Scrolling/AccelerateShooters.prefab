@@ -151,7 +151,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1.2, y: 2.5}
+  m_Size: {x: 1.06, y: 2.5}
 --- !u!114 &11434234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotDelay: 1
   shotCounter: 0
-  bullet: {fileID: 109042, guid: 21af6f355b3b9494cb6f604ff67f128b, type: 2}
+  bullet: {fileID: 179674, guid: e205d6cdda05cc14cb94ab844aa0c471, type: 2}
   active: 0
   only_shoot_on_command: 0
   playerCloseDisable: 1
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotDelay: 1
   shotCounter: 0
-  bullet: {fileID: 109042, guid: 21af6f355b3b9494cb6f604ff67f128b, type: 2}
+  bullet: {fileID: 179674, guid: e205d6cdda05cc14cb94ab844aa0c471, type: 2}
   active: 0
   only_shoot_on_command: 0
   playerCloseDisable: 1
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotDelay: 1
   shotCounter: 0
-  bullet: {fileID: 109042, guid: 21af6f355b3b9494cb6f604ff67f128b, type: 2}
+  bullet: {fileID: 179674, guid: e205d6cdda05cc14cb94ab844aa0c471, type: 2}
   active: 0
   only_shoot_on_command: 0
   playerCloseDisable: 1
@@ -362,6 +362,14 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 97e10fe3ddda3b64aabea000cfdaf9bf,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Size.x
+      value: 1.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 179674, guid: e205d6cdda05cc14cb94ab844aa0c471, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 148260}
