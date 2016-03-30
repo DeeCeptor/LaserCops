@@ -10,8 +10,9 @@ GameObject:
   - 4: {fileID: 407758}
   - 212: {fileID: 21280108}
   - 50: {fileID: 5069638}
-  - 58: {fileID: 5886456}
   - 114: {fileID: 11492444}
+  - 114: {fileID: 11495816}
+  - 61: {fileID: 6173820}
   m_Layer: 8
   m_Name: rotateAndClose
   m_TagString: Enemy
@@ -26,8 +27,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140436}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 20.516777, y: -5.3134356, z: 1}
-  m_LocalScale: {x: 6, y: 6, z: 1}
+  m_LocalPosition: {x: 13.57, y: -0.97, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -48,8 +49,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &5886456
-CircleCollider2D:
+--- !u!61 &6173820
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -61,7 +62,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.08
+  m_Size: {x: 1.14, y: 2.4999998}
 --- !u!114 &11492444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -87,6 +88,17 @@ MonoBehaviour:
   collisionDamage: 0.2
   rotateClockwise: 0
   rotationSpeed: 2
+--- !u!114 &11495816
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebdd88aff913cba4fa2552f0c66f35dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21280108
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -97,7 +109,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8abc8130da488fe499026ac4216b2b33, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -113,7 +125,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 97e10fe3ddda3b64aabea000cfdaf9bf, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -123,7 +135,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8abc8130da488fe499026ac4216b2b33, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 140436}

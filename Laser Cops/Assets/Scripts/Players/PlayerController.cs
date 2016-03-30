@@ -4,8 +4,8 @@ using System.Collections.Generic;
 public class PlayerController : PlayerInput
 {
     Rigidbody2D physics;
-    float x_speed = 3.5f;
-    float y_speed = 3.5f;
+    float x_speed = 6f;
+    float y_speed = 6f;
 
     Vector2 screen_margins = new Vector2(0.2f, 0.2f);
 
@@ -64,7 +64,6 @@ public class PlayerController : PlayerInput
         }
         else
         {
-            Debug.Log("A");
             TurningCar(new_speed.x);
             AccelerateDecelartingCar(new_speed.y);
         }
@@ -176,7 +175,7 @@ public class PlayerController : PlayerInput
 
         EffectsManager.effects.ViolentExplosion(this.transform.position);
 
-        this.gameObject.layer = LayerMask.NameToLayer("Obstacles");
+        this.gameObject.layer = LayerMask.NameToLayer("Dead Player");
         this.gameObject.tag = "Obstacle";
         this.gameObject.AddComponent<PlayerDying>();
         Destroy(this);

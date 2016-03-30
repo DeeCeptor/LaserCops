@@ -12,6 +12,7 @@ GameObject:
   - 50: {fileID: 5064912}
   - 114: {fileID: 11464918}
   - 61: {fileID: 6149638}
+  - 114: {fileID: 11439910}
   m_Layer: 8
   m_Name: ScrollThenStopAccelerate
   m_TagString: Enemy
@@ -151,7 +152,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1.2499999, y: 2.4999998}
+  m_Size: {x: 1.06, y: 2.4999998}
 --- !u!114 &11427352
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,7 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotDelay: 0.2
   shotCounter: 0
-  bullet: {fileID: 109042, guid: 21af6f355b3b9494cb6f604ff67f128b, type: 2}
+  bullet: {fileID: 179674, guid: e205d6cdda05cc14cb94ab844aa0c471, type: 2}
   active: 0
   only_shoot_on_command: 0
   playerCloseDisable: 1
@@ -175,6 +176,17 @@ MonoBehaviour:
   deactivateAfterTime: 1
   timeTillDeactivation: 3
   deactivatedColor: {r: 0, g: 0, b: 0, a: 1}
+--- !u!114 &11439910
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebdd88aff913cba4fa2552f0c66f35dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11449030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -188,7 +200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotDelay: 0.2
   shotCounter: 0
-  bullet: {fileID: 109042, guid: 21af6f355b3b9494cb6f604ff67f128b, type: 2}
+  bullet: {fileID: 179674, guid: e205d6cdda05cc14cb94ab844aa0c471, type: 2}
   active: 0
   only_shoot_on_command: 0
   playerCloseDisable: 1
@@ -211,7 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotDelay: 0.2
   shotCounter: 0
-  bullet: {fileID: 109042, guid: 21af6f355b3b9494cb6f604ff67f128b, type: 2}
+  bullet: {fileID: 179674, guid: e205d6cdda05cc14cb94ab844aa0c471, type: 2}
   active: 0
   only_shoot_on_command: 0
   playerCloseDisable: 1
@@ -258,7 +270,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8abc8130da488fe499026ac4216b2b33, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -274,7 +286,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 54492f055987da94bbd6bbe73404ecc0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 97e10fe3ddda3b64aabea000cfdaf9bf, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -399,6 +411,23 @@ Prefab:
       propertyPath: goAgain
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 97e10fe3ddda3b64aabea000cfdaf9bf,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8abc8130da488fe499026ac4216b2b33, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Size.x
+      value: 1.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 179674, guid: e205d6cdda05cc14cb94ab844aa0c471, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 153906}
