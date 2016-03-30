@@ -18,7 +18,7 @@ public class TrackShotScrolling : MonoBehaviour{
 
     // Use this for initialization
     void Start () {
-        players = GameObject.FindGameObjectsWithTag("Player");
+        players = GameState.game_state.PlayerObjects;
         int randInt = Random.Range(0, players.Length);
         playerToTrack = players[randInt].transform;
     }
@@ -38,7 +38,7 @@ public class TrackShotScrolling : MonoBehaviour{
 
                 else
                 {
-                    players = GameObject.FindGameObjectsWithTag("Player");
+                    players = GameState.game_state.PlayerObjects;
                     if (players.Length > 0)
                     {
                         int randInt = Random.Range(0, players.Length);

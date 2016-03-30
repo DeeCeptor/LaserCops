@@ -7,7 +7,7 @@ public class ObstacleScrollScript : MonoBehaviour {
 	public float damage = 1f;
 
     //this is used for the enemies speed when OFFSCREEN do not change unless you know what you're doing in which case I'm a comment not a cop
-    private float inactiveSpeed = 1f;
+    public float inactiveSpeed = 1f;
 
     //direction the enemy will travel towards
     public direction travelDirection = direction.left;
