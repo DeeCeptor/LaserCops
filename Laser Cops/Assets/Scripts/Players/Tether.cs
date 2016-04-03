@@ -107,6 +107,9 @@ public class Tether : MonoBehaviour
             cur_tether_mode = prev_tether_mode;
             SetTetherMode(cur_tether_mode);
 
+            HingeJoint2D jo = tether_links[0].GetComponents<HingeJoint2D>()[1];
+            jo.autoConfigureConnectedAnchor = false;
+
             tether_links_parent.SetActive(true);
             /*
             foreach (GameObject obj in tether_links)
@@ -162,6 +165,8 @@ public class Tether : MonoBehaviour
         }
         Debug.Log("Setting tether " + mode);
         cur_tether_mode = mode;
+
+        SoundMixer.sound_manager.PlayShortSpark();
     }
 
 

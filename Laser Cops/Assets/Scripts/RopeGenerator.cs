@@ -102,7 +102,7 @@ public class RopeGenerator : MonoBehaviour
         jo.connectedBody = beginning.GetComponent<Rigidbody2D>();
         jo.distance = 0.2f;*/
         HingeJoint2D jo = joints[0].AddComponent<HingeJoint2D>();
-        jo.autoConfigureConnectedAnchor = false;
+        //jo.autoConfigureConnectedAnchor = false;
         jo.connectedBody = beginning_anchor.GetComponent<Rigidbody2D>();
         beginning_rope_piece = joints[0];
         jo = joints[joints.Count - 1].GetComponent<HingeJoint2D>();

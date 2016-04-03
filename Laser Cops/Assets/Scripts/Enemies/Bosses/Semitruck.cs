@@ -7,7 +7,6 @@ public class Semitruck : MonoBehaviour
     public HingeJoint2D joint;
     JointMotor2D motor;
     public GameObject truck;
-    RigidbodyConstraints2D truck_constraints;
     public Rigidbody2D truck_physics;
     public GameObject trailer;
     public Rigidbody2D trailer_physics;
@@ -21,6 +20,8 @@ public class Semitruck : MonoBehaviour
 
     public List<string> queued_attacks = new List<string>();
 
+    public float difficulty_adjuster = 0f;
+
     public bool performing_attack = false;
 
     void Awake ()
@@ -29,13 +30,11 @@ public class Semitruck : MonoBehaviour
     }
 	void Start ()
     {
-        queued_attacks.Add("Opening");
-        queued_attacks.Add("MoveUpFireLasersDown");
-        queued_attacks.Add("MoveDownFireLasersUp");
-        //StartCoroutine(Opening());
-        //StartCoroutine(MoveUpFireLasersDown());
-        //StartCoroutine("MoveUpFireLasersDown");
-        //StartCoroutine(MoveDownFireLasersUp());
+        queued_attacks.Add("DriveForwardSwingingTrailer");
+        //queued_attacks.Add("SwingTrailerDown");
+        //queued_attacks.Add("Opening");
+        //queued_attacks.Add("MoveUpFireLasersDown");
+        //queued_attacks.Add("MoveDownFireLasersUp");
     }
 
     void Update()
@@ -60,12 +59,33 @@ public class Semitruck : MonoBehaviour
         }
     }
 
+    public void SetTrailerRotationSpeed(float speed)
+    {
+        motor.motorSpeed = speed;
+        joint.motor = motor;
 
+        if (speed != 0)
+        {
+            trailer_physics.constraints = RigidbodyConstraints2D.None;
+        }
+        else
+        {
+            trailer_physics.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+    }
+    public float GetTrailerAngle()
+    {
+        if (trailer.transform.rotation.eulerAngles.z > 180f)
+            return trailer.transform.rotation.eulerAngles.z - 360f;
+        else
+            return trailer.transform.rotation.eulerAngles.z;
+    }
 
 
     // ATTACKS
     public IEnumerator Opening()
     {
+        Debug.Log("Opening");
         // Play honking noise
 
         // Have truck move up
@@ -84,6 +104,8 @@ public class Semitruck : MonoBehaviour
     // Move up (up, fire lazers downwards, players dodge left/right
     public IEnumerator MoveUpFireLasersDown()
     {
+        Debug.Log("MoveUpFireLasersDown");
+
         SignalLeft();
         yield return new WaitForSeconds(1f);
 
@@ -147,6 +169,8 @@ public class Semitruck : MonoBehaviour
     // Move up (up, fire lazers downwards, players dodge left/right
     public IEnumerator MoveDownFireLasersUp()
     {
+        Debug.Log("MoveDownFireLasersUp");
+
         SignalRight();
         yield return new WaitForSeconds(1f);
 
@@ -205,8 +229,61 @@ public class Semitruck : MonoBehaviour
         performing_attack = false;
         yield return null;
     }
+    // Swings the trailer in an arc downwards
+    public IEnumerator SwingTrailerDown()
+    {
+        Debug.Log("SwingTrailerDown");
 
+        SetTrailerRotationSpeed(30f);
 
+        while (trailer.transform.eulerAngles.z < 90f)
+            yield return new WaitForSeconds(0.01f);
+
+        SetTrailerRotationSpeed(-50f);
+
+        while (trailer.transform.eulerAngles.z > 0.5f)
+            yield return new WaitForSeconds(0.01f);
+
+        SetTrailerRotationSpeed(0f);
+
+        performing_attack = false;
+        yield return null;
+    }
+    public IEnumerator DriveForwardSwingingTrailer()
+    {
+        Debug.Log("DriveForwardSwingingTrailer");
+
+        // Move to the center and left of the screen
+        StartMoving(new Vector2(-5.0f, 0));
+        while (truck.transform.position.x > -16f)
+        {
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        // Drive forward swinging the trailer
+        StartMoving(new Vector2(5.0f, 0));
+        bool swinging_down = true;
+        SetTrailerRotationSpeed(30f);
+        while (truck.transform.position.x < 15f)
+        {
+            if (swinging_down && GetTrailerAngle() > 70f)
+            {
+                swinging_down = !swinging_down;
+                SetTrailerRotationSpeed(-30f);
+            }
+            else if (!swinging_down && GetTrailerAngle() < -70f)
+            {
+                swinging_down = !swinging_down;
+                SetTrailerRotationSpeed(30f);
+            }
+
+            yield return new WaitForSeconds(0.01f);
+        }
+        StopMoving();
+
+        performing_attack = false;
+        yield return null;
+    }
 
 
     // END ATTACKS
@@ -239,7 +316,7 @@ public class Semitruck : MonoBehaviour
         cur_truck_speed = Vector3.zero;
         truck_physics.velocity = Vector2.zero;
         motor.motorSpeed = 0f;
-        truck_constraints = RigidbodyConstraints2D.FreezePosition;
+        truck_physics.constraints = RigidbodyConstraints2D.FreezePosition;
     }
     public void SignalLeft()
     {

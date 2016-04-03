@@ -12,7 +12,7 @@ GameObject:
   - 61: {fileID: 6161774}
   - 61: {fileID: 6120856}
   - 114: {fileID: 11424830}
-  m_Layer: 20
+  m_Layer: 22
   m_Name: Highway With Edges
   m_TagString: Untagged
   m_Icon: {fileID: 0}
