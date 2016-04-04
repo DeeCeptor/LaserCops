@@ -30,9 +30,9 @@ public class SoundMixer : MonoBehaviour
 	}
 
 
-    public void PlaySound(AudioSource sound)
+    public void PlaySound(AudioSource sound, float volume_scale)
     {
-        sound.PlayOneShotSoundManaged(sound.clip);
+        sound.PlayOneShotSoundManaged(sound.clip, volume_scale);
     }
     public void PlayMusic(AudioSource music)
     {
@@ -48,19 +48,39 @@ public class SoundMixer : MonoBehaviour
     // SOUND EFFECTS
     public void PlayLazerShot()
     {
-        PlaySound(Sounds[0]);
+        PlaySound(Sounds[0], 1f);
     }
     public void PlayNotification()
     {
-        PlaySound(Sounds[1]);
+        PlaySound(Sounds[1], 1f);
     }
     public void PlayShortSpark()
     {
-        PlaySound(Sounds[2]);
+        PlaySound(Sounds[2], 1f);
     }
     public void PlayLongElectricShock()
     {
-        PlaySound(Sounds[3]);
+        PlaySound(Sounds[3], 1f);
+    }
+    public void PlayCarRev()
+    {
+        PlaySound(Sounds[4], 0.3f);
+    }
+    public void PlayLong8bitLazer()
+    {
+        PlaySound(Sounds[5], 1f);
+    }
+    public void Play8bitExplosion()
+    {
+        PlaySound(Sounds[6], 1f);
+    }
+    public void PlayChargeUp()
+    {
+        PlaySound(Sounds[7], 1f);
+    }
+    public void PlayGrinding()
+    {
+        PlaySound(Sounds[8], 1f);
     }
 
 

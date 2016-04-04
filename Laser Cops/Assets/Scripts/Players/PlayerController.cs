@@ -89,6 +89,7 @@ public class PlayerController : PlayerInput
             {
                 new_speed.y = y_speed * boost_speed_modifier;
             }
+            SoundMixer.sound_manager.PlayCarRev();
         }
 
         // Set our actual velocity

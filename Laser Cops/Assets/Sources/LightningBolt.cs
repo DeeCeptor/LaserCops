@@ -5,7 +5,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class LightningBolt : MonoBehaviour
+public class LightningBolta : MonoBehaviour
 {
 	public Transform target;
 	public int zigs = 100;

@@ -88,6 +88,13 @@ public class EffectsManager : MonoBehaviour
     }
 
 
+    public void TetherDamageSparks(Vector2 position)
+    {
+        Destroy((GameObject)GameObject.Instantiate(Resources.Load("Graphics/Tether Damage Sparks") as GameObject,
+            position, Quaternion.identity), 4.0f);
+    }
+
+
     void Update ()
     {
 	    // Lerp between values

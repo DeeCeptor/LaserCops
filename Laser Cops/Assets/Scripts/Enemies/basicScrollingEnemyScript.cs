@@ -57,6 +57,8 @@ public class basicScrollingEnemyScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Tether"))
         {
+            EffectsManager.effects.TetherDamageSparks(collision.contacts[0].point);
+
             if (die_in_one_hit)
                 Die();
             else
@@ -122,9 +124,10 @@ public class basicScrollingEnemyScript : MonoBehaviour
 
     public void Die()
     {
+        SoundMixer.sound_manager.Play8bitExplosion();
         EffectsManager.effects.ViolentExplosion(this.transform.position);
+        UIManager.ui_manager.ChangeScore(-pointValue);
         Destroy(gameObject);
-		UIManager.ui_manager.ChangeScore(-pointValue);
     }
 
 	//to be used whenthe enemy dies offscreen
