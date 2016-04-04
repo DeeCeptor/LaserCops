@@ -101,6 +101,7 @@ public class PlayerController : PlayerInput
         }
         else
             Tether.tether.TetherReleased();
+
         if (tether_switched)
             Tether.tether.SwitchTether();
 
@@ -109,16 +110,16 @@ public class PlayerController : PlayerInput
         if (GameState.game_state.going_sideways)
         {
             TurningCar(new_speed.y);
-            AccelerateDecelartingCar(new_speed.x);
+            AccelerateDeceleratingCar(new_speed.x);
         }
         else
         {
             TurningCar(new_speed.x);
-            AccelerateDecelartingCar(new_speed.y);
+            AccelerateDeceleratingCar(new_speed.y);
         }
 
         // Force the player to remain within view of the camera
-        StayOnScreen();
+        //StayOnScreen();
 
         // ROTATION
         // Lerp to our desired rotation
@@ -149,7 +150,7 @@ public class PlayerController : PlayerInput
             rotation_changing_speed = 0.05f;
         }
     }
-    public void AccelerateDecelartingCar(float amount)
+    public void AccelerateDeceleratingCar(float amount)
     {
         // Accelerating
         if (amount > 0)
@@ -285,6 +286,7 @@ public class PlayerController : PlayerInput
         if (end_pos != this.transform.position)
             this.transform.position = end_pos;
         */
+
         Vector3 minScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
         Vector3 maxScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
 
@@ -348,6 +350,15 @@ public class PlayerController : PlayerInput
         sparks.Stop();
         in_use_grinding_sparks.Remove(sparks.gameObject);
         free_grinding_sparks.Add(sparks);
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Check to see if we die
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Death Zone"))
+        {
+            Die();
+            return;
+        }
     }
 
     public void CollisionAt(Vector2 position)
