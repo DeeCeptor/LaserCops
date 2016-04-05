@@ -24,6 +24,8 @@ public class basicScrollingEnemyScript : MonoBehaviour
     //direction the enemy will travel towards
     public direction travelDirection = direction.left;
 
+    float tether_lightning_cooldown;
+
     // Use this for initialization
     void Start()
     {
@@ -33,6 +35,8 @@ public class basicScrollingEnemyScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        tether_lightning_cooldown -= Time.deltaTime;
+
         if (!active)
         {
             CheckActive();
@@ -55,9 +59,9 @@ public class basicScrollingEnemyScript : MonoBehaviour
     }
     void ResolveCollision(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Tether"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("DestructiveTether"))
         {
-            EffectsManager.effects.TetherDamageSparks(collision.contacts[0].point);
+            HitByTetherGraphics(collision);
 
             if (die_in_one_hit)
                 Die();
@@ -79,6 +83,18 @@ public class basicScrollingEnemyScript : MonoBehaviour
         else if (collision.gameObject.tag == "VIP")
         {
             collision.gameObject.GetComponent<VIPScript>().TakeHit(collisionDamage);
+        }
+    }
+
+    public void HitByTetherGraphics(Collision2D collision)
+    {
+        SoundMixer.sound_manager.PlaySyncopatedLazer();
+
+        if (tether_lightning_cooldown <= 0)
+        {
+            tether_lightning_cooldown = 0.1f;
+            //EffectsManager.effects.TetherDamageSparks(collision.contacts[0].point);
+            TetherLightning.tether_lightning.BranchLightning(Tether.tether.GetRandomLink().transform.position, this.transform.position);
         }
     }
 

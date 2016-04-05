@@ -4,9 +4,14 @@ using System.Collections.Generic;
 
 public class TetherLightning : MonoBehaviour
 {
+    public static TetherLightning tether_lightning;
+
     //Prefabs to be assigned in Editor
     public GameObject BoltPrefab;
     public GameObject BranchPrefab;
+
+    float cur_lightning_cooldown = 0f;
+    float lightning_cooldown = 0.05f;
 
     //For pooling
     List<GameObject> activeBoltsObj;
@@ -42,7 +47,7 @@ public class TetherLightning : MonoBehaviour
 
     //For handling mouse clicks
     int clicks = 0;
-    Vector2 pos1, pos2;
+    //Vector2 pos1, pos2;
 
     //For storing all of the pixels that need to be drawn by the bolts 
     List<Vector2> textPoints = new List<Vector2>();
@@ -50,6 +55,10 @@ public class TetherLightning : MonoBehaviour
     //true in text mode
     bool shouldText = false;
 
+    void Awake()
+    {
+        tether_lightning = this;
+    }
     void Start()
     {
         //Initialize lists
@@ -81,10 +90,29 @@ public class TetherLightning : MonoBehaviour
 
         //Start up a coroutine to capture the pixels we'll be drawing from our text (need the coroutine or error)
         //StartCoroutine(TextCapture());
-
-
-        currentMode = Mode.moving;
     }
+
+
+    // Creates a forked 
+    public void BranchLightning(Vector2 to, Vector2 from)
+    {
+        //instantiate from our branch prefab
+        GameObject branchObj = (GameObject)GameObject.Instantiate(BranchPrefab);
+
+        //get the branch component
+        BranchLightning branchComponent = branchObj.GetComponent<BranchLightning>();
+
+        //initialize the branch component using our position data
+        branchComponent.Initialize(to, from, BoltPrefab);
+
+        //add it to the list of active branches
+        branchesObj.Add(branchObj);
+    }
+    public void RegularBolt(Vector2 to, Vector2 from, float thickness, Color color)
+    {
+        CreatePooledBolt(to, from, color, thickness);
+    }
+
 
     void Update()
     {
@@ -120,28 +148,20 @@ public class TetherLightning : MonoBehaviour
         }
 
 
-        if (Input.GetMouseButton(0))
+        // Shoot out lightning periodically if the tether is turned on
+        cur_lightning_cooldown -= Time.deltaTime;
+        if (Tether.tether.cur_tether_mode != Tether.TetherMode.None &&
+            cur_lightning_cooldown <= 0 && Tether.tether.middle_link != null)
         {
+            currentMode = Mode.bolt;
+            cur_lightning_cooldown = lightning_cooldown;
+
             // Spawn moving bolts constantly
-            Vector2 pos1 = new Vector2(1, 1);
-            Vector2 pos2 = new Vector2(7, 7);
-            //get the "velocity" so we know what direction to send the bolt in after initial creation
-            lightningVelocity = (pos2 - pos1).normalized;
+            Vector2 pos1 = GameState.game_state.PlayerObjects[0].transform.position;
+            Vector2 pos2 = GameState.game_state.PlayerObjects[1].transform.position;
 
-            //instantiate from our bolt prefab
-            boltObj = (GameObject)GameObject.Instantiate(BoltPrefab);
-
-            //get the bolt component
-            boltComponent = boltObj.GetComponent<LightningBolt>();
-
-            //initialize it with 5 max segments
-            boltComponent.Initialize(5);
-
-            //activate the bolt using our position data
-            boltComponent.ActivateBolt(pos1, pos2, Color.white, 1f);
-
-            //add it to our list
-            movingBolt.Add(boltObj);
+            CreatePooledBolt(pos1, Tether.tether.middle_link.transform.position, Tether.tether.primary_colour, 1f);
+            CreatePooledBolt(pos2, Tether.tether.middle_link.transform.position, Tether.tether.primary_colour, 1f);
         }
         /*
         //check for key press and set mode accordingly
@@ -284,12 +304,6 @@ public class TetherLightning : MonoBehaviour
             if (clicks > 1) clicks = 0;
         }*/
 
-        //if in node mode
-        if (currentMode == Mode.nodes)
-        {
-            //constantly create a (pooled) bolt between the two assigned positions
-            CreatePooledBolt(pos1, pos2, Color.white, 1f);
-        }
 
         //loop through any active branches
         for (int i = branchesObj.Count - 1; i >= 0; i--)

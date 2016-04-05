@@ -29,4 +29,29 @@ public class TetherClamping : MonoBehaviour
                 Mathf.Clamp(this.transform.position.y, player_2.transform.position.y, player_1.transform.position.y));
         }
 	}
+
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
+        {
+            GameState.game_state.tether_touching_obstacle = true;
+            GameState.game_state.time_last_touched_obstacle = Time.time;
+        }
+    }
+    void OnCollisionStay2D(Collision2D coll)
+    {
+        if (coll.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
+        {
+            GameState.game_state.tether_touching_obstacle = true;
+            GameState.game_state.time_last_touched_obstacle = Time.time;
+        }
+    }
+    void OnCollisionExit2D(Collision2D coll)
+    {
+        if (coll.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
+        {
+            //GameState.game_state.tether_touching_obstacle = false;
+        }
+    }
 }

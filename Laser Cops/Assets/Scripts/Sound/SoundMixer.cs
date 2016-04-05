@@ -82,6 +82,10 @@ public class SoundMixer : MonoBehaviour
     {
         PlaySound(Sounds[8], 1f);
     }
+    public void PlaySyncopatedLazer()
+    {
+        PlaySound(Sounds[9], 1f);
+    }
 
 
     // MUSIC

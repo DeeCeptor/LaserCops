@@ -16,6 +16,10 @@ public class GameState : MonoBehaviour
     public bool VIP = false;
     public GameObject VIPObject;
 
+    public bool tether_touching_obstacle = false;
+    public float time_last_touched_obstacle;
+    float turn_off_tether_touching_obstacle_time = 0.3f;
+
     void Awake ()
     {
         game_state = this;
@@ -74,6 +78,14 @@ public class GameState : MonoBehaviour
         {
             // Timer is running if we're not paused
             elapsed_game_time += Time.deltaTime;
+        }
+
+
+        // Is the tether touching an obstacle?
+        if (tether_touching_obstacle && 
+            time_last_touched_obstacle + turn_off_tether_touching_obstacle_time < Time.time)
+        {
+            tether_touching_obstacle = false;
         }
     }
 

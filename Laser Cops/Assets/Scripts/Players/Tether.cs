@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class Tether : MonoBehaviour
 {
@@ -24,15 +25,15 @@ public class Tether : MonoBehaviour
 
     public GameObject tether_links_parent;
     public List<GameObject> tether_links;
-
+    public GameObject middle_link;
 
     // TETHER GRAPHICS
     public int zigs = 300;      // How many particles
     public float speed = 1f;    // How quickly do they oscillate
     public float scale = 1.5f;
 
-    Color primary_colour;
-    Color secondary_colour;
+    public Color primary_colour;
+    public Color secondary_colour;
 
     public Color primary_destroy_colour = Color.red;
     public Color secondary_destroy_colour = Color.white;
@@ -69,6 +70,13 @@ public class Tether : MonoBehaviour
 
         particle_emitter.Emit(zigs);
         particles = particle_emitter.particles;
+
+        StartCoroutine(delayed_Start());
+    }
+    IEnumerator delayed_Start()
+    {
+        yield return new WaitForSeconds(0.1f);
+        middle_link = tether_links[tether_links.Count / 2];
     }
 
     int num_players_holding_down_tether_button;
@@ -167,6 +175,12 @@ public class Tether : MonoBehaviour
         cur_tether_mode = mode;
 
         SoundMixer.sound_manager.PlayShortSpark();
+    }
+
+
+    public GameObject GetRandomLink()
+    {
+        return tether_links[Random.Range(0, tether_links.Count)];
     }
 
 

@@ -40,6 +40,8 @@ public class PlayerController : PlayerInput
     public List<ParticleSystem> moving_forward_particles = new List<ParticleSystem>();  // Boosters and stuff turn on when moving forward
     public List<ParticleSystem> moving_backwards_particles = new List<ParticleSystem>();    // Brakes for slowing down
 
+    public List<ParticleSystem> booster_particles = new List<ParticleSystem>();     // Happens when you boost
+
     public List<ParticleSystem> minor_damage_particles = new List<ParticleSystem>();
     public List<ParticleSystem> major_damage_particles = new List<ParticleSystem>();
 
@@ -73,6 +75,12 @@ public class PlayerController : PlayerInput
             // Is the boost on cooldown?
             if (boost_cur_cooldown <= 0)
             {
+                // WE BOOSTIN
+                foreach (ParticleSystem p in booster_particles)
+                {
+                    p.Play();
+                }
+
                 boost_cur_cooldown = boost_cooldown;
                 boost_cur_duration = boost_duration;
             }
@@ -92,9 +100,20 @@ public class PlayerController : PlayerInput
             SoundMixer.sound_manager.PlayCarRev();
         }
 
-        // Set our actual velocity
-        physics.velocity = new_speed;
 
+        // Can only steer properly when we're not caught on an obstacle
+        if (GameState.game_state.tether_touching_obstacle)
+        {
+            if (GameState.game_state.going_sideways)
+                physics.velocity = new Vector2(physics.velocity.x, new_speed.y);
+            else
+                physics.velocity = new Vector2(new_speed.x, physics.velocity.y);
+        }
+        else
+        {
+            // Set our actual velocity
+            physics.velocity = new_speed;
+        }
 
         if (disable_tether_held_down)
         {
@@ -238,6 +257,7 @@ public class PlayerController : PlayerInput
     {
         Debug.Log("Player " + player_number + " died");
 
+        SoundMixer.sound_manager.Play8bitExplosion();
         ClearGrindingSparks();
 
         // Destroy tether
@@ -355,7 +375,7 @@ public class PlayerController : PlayerInput
     void OnTriggerEnter2D(Collider2D collision)
     {
         // Check to see if we die
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Death Zone"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Death Zone") && GameState.game_state.tether_touching_obstacle)
         {
             Die();
             return;
