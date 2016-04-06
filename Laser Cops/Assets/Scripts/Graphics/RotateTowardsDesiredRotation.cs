@@ -38,7 +38,6 @@ public class RotateTowardsDesiredRotation : MonoBehaviour
         // ROTATION
         // Lerp to our desired rotation
         //this.transform.rotation = Quaternion.identity;
-        Debug.Log(this.transform.eulerAngles + ":"+ player.default_rotation);
         float offset = 0;
         if (player.desired_rotation > player.default_rotation)
         {

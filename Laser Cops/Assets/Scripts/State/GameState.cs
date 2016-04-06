@@ -15,6 +15,8 @@ public class GameState : MonoBehaviour
     public float elapsed_game_time = 0f;
     public bool going_sideways = true;
 
+    public float inactive_speed = 1.0f;     // How quickly objects move when offscreen
+
     public List<PlayerController> Players = new List<PlayerController>();
     public GameObject[] PlayerObjects;
     public bool VIP = false;

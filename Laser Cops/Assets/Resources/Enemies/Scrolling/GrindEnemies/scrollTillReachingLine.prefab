@@ -15,7 +15,7 @@ GameObject:
   - 114: {fileID: 11469648}
   - 114: {fileID: 11456150}
   m_Layer: 8
-  m_Name: scrollTillRechingLine
+  m_Name: scrollTillReachingLine
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,7 +94,6 @@ MonoBehaviour:
   collisionDamage: 0.3
   pointValue: 20
   health: 1
-  inactiveSpeed: 1
   travelDirection: 1
   timeTillStop: 3
   stopCounter: 0
