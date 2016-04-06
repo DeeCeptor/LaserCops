@@ -12,6 +12,7 @@ GameObject:
   - 50: {fileID: 5041278}
   - 114: {fileID: 11427836}
   - 61: {fileID: 6131224}
+  - 114: {fileID: 11441010}
   m_Layer: 8
   m_Name: basicForwardShootEnemy
   m_TagString: Enemy
@@ -112,6 +113,18 @@ MonoBehaviour:
   health: 1
   inactiveSpeed: 1
   travelDirection: 1
+--- !u!114 &11441010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5856db298e3415342a1bfbb970eab11f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cell_size: 1
 --- !u!114 &11468400
 MonoBehaviour:
   m_ObjectHideFlags: 1
