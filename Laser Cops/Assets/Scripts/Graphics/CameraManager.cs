@@ -10,7 +10,7 @@ public class CameraManager : MonoBehaviour
     void Awake ()
     {
         cam = Camera.main;
-        ChangeZoom(10f, 0.5f);
+        ChangeZoom(desired_size, 0.5f);
     }
     void Start ()
     {
@@ -35,7 +35,7 @@ public class CameraManager : MonoBehaviour
             }
             else
             {
-                this.cam.orthographicSize = Mathf.Max(desired_size, this.cam.orthographicSize + Time.deltaTime * zoom_speed);
+                this.cam.orthographicSize = Mathf.Max(desired_size, this.cam.orthographicSize - Time.deltaTime * zoom_speed);
             }
         }
 	}
