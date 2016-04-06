@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 //this script will make a turret fire forward after a number of seconds then deactivate later
@@ -40,7 +40,7 @@ public class initiateOnTimeTurret : ForwardShotScript {
 
     public new void checkActive()
     {
-        if (GetComponent<SpriteRenderer>().isVisible)
+        if (GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
         {
             Activate();
         }

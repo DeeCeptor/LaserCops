@@ -32,7 +32,6 @@ public class RotateTowardsVelocity : MonoBehaviour
             TurningCar(physics.velocity.x);
         }
 
-
         // ROTATION
         // Lerp to our desired rotation
         physics.MoveRotation(Mathf.Lerp(transform.eulerAngles.z, desired_rotation, rotation_changing_speed));

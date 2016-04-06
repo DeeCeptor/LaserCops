@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class CivillianScript : MonoBehaviour {
@@ -79,7 +79,7 @@ public class CivillianScript : MonoBehaviour {
 
 	public void CheckActive()
 	{
-		if (GetComponent<SpriteRenderer>().isVisible)
+		if (GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
 		{
 			Activate();
 		}
@@ -94,7 +94,7 @@ public class CivillianScript : MonoBehaviour {
 	//after activating the enemy should die if it leaves the screen
 	public void CheckDeath()
 	{
-		if (!GetComponent<SpriteRenderer>().isVisible)
+		if (!GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
 		{
 			Die();
 		}

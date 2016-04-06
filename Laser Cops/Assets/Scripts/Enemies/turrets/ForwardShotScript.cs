@@ -42,7 +42,7 @@ public class ForwardShotScript : MonoBehaviour {
 
     public void checkActive()
     {
-        if (GetComponent<SpriteRenderer>().isVisible)
+        if (GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
         {
             Activate();
         }

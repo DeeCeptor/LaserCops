@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 //an enemy that scrolls down the screen and then freezes in place and rotates
@@ -53,7 +53,7 @@ public class ScrollThenStop : basicScrollingEnemyScript {
 
     public new void CheckActive()
     {
-        if (GetComponent<SpriteRenderer>().isVisible)
+        if (GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
         {
             Activate();
         }
@@ -65,14 +65,14 @@ public class ScrollThenStop : basicScrollingEnemyScript {
         stopCounter = Time.time + timeTillGoAgain;
         stopped = true;
         Rigidbody2D rigid = GetComponent<Rigidbody2D>();
-        rigid.constraints = RigidbodyConstraints2D.FreezePosition;
+        //rigid.constraints = RigidbodyConstraints2D.FreezePosition;
     }
 
     public void unfreeze()
     {
         Rigidbody2D rigid = GetComponent<Rigidbody2D>();
         rigid.constraints = RigidbodyConstraints2D.None;
-        rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
+        //rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     public new void Activate()
