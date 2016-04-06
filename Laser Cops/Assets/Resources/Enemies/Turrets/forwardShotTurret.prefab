@@ -44,6 +44,7 @@ MonoBehaviour:
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
   active: 0
+  only_shoot_on_command: 0
   playerCloseDisable: 1
   disableDistance: 2
 --- !u!212 &21262598
