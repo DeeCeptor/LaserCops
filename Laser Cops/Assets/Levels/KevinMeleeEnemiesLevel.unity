@@ -412,19 +412,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22439154, guid: 421940b3f8d044c48989421aeb1fd49f, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22439154, guid: 421940b3f8d044c48989421aeb1fd49f, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22461624, guid: 421940b3f8d044c48989421aeb1fd49f, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22461624, guid: 421940b3f8d044c48989421aeb1fd49f, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22470136, guid: 421940b3f8d044c48989421aeb1fd49f, type: 2}
       propertyPath: m_AnchorMin.y
@@ -2758,7 +2758,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 407758, guid: 5db1bd214dbe04742b2313bc9fdf4c77, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 93.5
+      value: 81.3
       objectReference: {fileID: 0}
     - target: {fileID: 407758, guid: 5db1bd214dbe04742b2313bc9fdf4c77, type: 2}
       propertyPath: m_LocalPosition.y
@@ -3108,7 +3108,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 407758, guid: 5db1bd214dbe04742b2313bc9fdf4c77, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 90.4
+      value: 78.2
       objectReference: {fileID: 0}
     - target: {fileID: 407758, guid: 5db1bd214dbe04742b2313bc9fdf4c77, type: 2}
       propertyPath: m_LocalPosition.y
@@ -3684,10 +3684,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 197892, guid: 5ba8216c4c0e132449ff08adc50e4b49, type: 2}
-      propertyPath: m_Name
-      value: FlankingLine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5ba8216c4c0e132449ff08adc50e4b49, type: 2}
   m_IsPrefabParent: 0
@@ -4185,7 +4181,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 407758, guid: 5db1bd214dbe04742b2313bc9fdf4c77, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 87.6
+      value: 75.4
       objectReference: {fileID: 0}
     - target: {fileID: 407758, guid: 5db1bd214dbe04742b2313bc9fdf4c77, type: 2}
       propertyPath: m_LocalPosition.y
@@ -4255,7 +4251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0c3e97975253db4c91691a589f16250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  desired_size: 7
+  desired_size: 10
 --- !u!114 &1974261720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4345,7 +4341,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 10
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2

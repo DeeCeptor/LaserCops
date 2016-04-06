@@ -11,7 +11,7 @@ GameObject:
   - 212: {fileID: 21262664}
   - 114: {fileID: 11441416}
   - 50: {fileID: 5078168}
-  - 58: {fileID: 5812462}
+  - 61: {fileID: 6174422}
   m_Layer: 11
   m_Name: Civillian
   m_TagString: Civillian
@@ -25,9 +25,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106488}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.18, y: 0.7152301, z: 1}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
+  m_LocalPosition: {x: 23.7, y: -0.4, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -48,8 +48,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &5812462
-CircleCollider2D:
+--- !u!61 &6174422
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -61,7 +61,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Size: {x: 1.2499999, y: 2.4999998}
 --- !u!114 &11441416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -107,7 +107,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 54492f055987da94bbd6bbe73404ecc0, type: 3}
   m_Color: {r: 0.11724138, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

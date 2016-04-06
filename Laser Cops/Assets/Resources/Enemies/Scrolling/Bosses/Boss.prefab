@@ -201,7 +201,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 185110}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: -0.05283178, y: -0.0264, z: -1}
+  m_LocalPosition: {x: -0.05283178, y: -0.0331, z: -1}
   m_LocalScale: {x: 0.05, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 436088}
@@ -225,7 +225,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105170}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: -0.05283178, y: -0.0084, z: -1}
+  m_LocalPosition: {x: -0.05283178, y: -0.0151, z: -1}
   m_LocalScale: {x: 0.05, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 436088}
@@ -237,7 +237,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 57.5, y: 0.32, z: 0}
+  m_LocalPosition: {x: 58.8, y: -0.03031063, z: 0}
   m_LocalScale: {x: 30, y: 60, z: 1}
   m_Children:
   - {fileID: 439264}
@@ -259,7 +259,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128252}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: -0.05336825, y: 0.0267, z: -1}
+  m_LocalPosition: {x: -0.05336825, y: 0.02, z: -1}
   m_LocalScale: {x: 0.05, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 436088}
@@ -283,7 +283,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132044}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: -0.05283178, y: 0.0095, z: -1}
+  m_LocalPosition: {x: -0.05283178, y: 0.0028, z: -1}
   m_LocalScale: {x: 0.05, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 436088}
@@ -331,7 +331,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138012}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: -0.05283178, y: -0.0449, z: -1}
+  m_LocalPosition: {x: -0.05283178, y: -0.0516, z: -1}
   m_LocalScale: {x: 0.05, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 436088}
@@ -380,7 +380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotDelay: 0.5
   shotCounter: 0
-  bullet: {fileID: 109042, guid: 21af6f355b3b9494cb6f604ff67f128b, type: 2}
+  bullet: {fileID: 0}
   active: 0
   playerCloseDisable: 1
   disableDistance: 2
@@ -399,6 +399,7 @@ MonoBehaviour:
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
   active: 0
+  only_shoot_on_command: 0
   playerCloseDisable: 1
   disableDistance: 2
 --- !u!114 &11426138
@@ -416,6 +417,7 @@ MonoBehaviour:
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
   active: 0
+  only_shoot_on_command: 0
   playerCloseDisable: 1
   disableDistance: 2
 --- !u!114 &11427140
@@ -464,9 +466,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.25
-  limit: 2
+  limit: 0.5
   limitCounter: 0
-  horizontal: 0
+  horizontal: 1
 --- !u!114 &11451792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -480,7 +482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotDelay: 0.5
   shotCounter: 0
-  bullet: {fileID: 109042, guid: 21af6f355b3b9494cb6f604ff67f128b, type: 2}
+  bullet: {fileID: 0}
   active: 0
   playerCloseDisable: 1
   disableDistance: 2
@@ -510,9 +512,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.25
-  limit: 2
+  limit: 0.5
   limitCounter: 0
-  horizontal: 0
+  horizontal: 1
 --- !u!114 &11467196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -548,6 +550,7 @@ MonoBehaviour:
   collisionDamage: 0.3
   pointValue: 20
   health: 1
+  inactiveSpeed: 1
   travelDirection: 1
   timeTillStop: 2
   stopCounter: 0
@@ -567,10 +570,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624bac116c5c2ce478b1680f0372b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 1
+  shotDelay: 0.75
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
   active: 0
+  only_shoot_on_command: 0
   playerCloseDisable: 1
   disableDistance: 2
 --- !u!114 &11482148
@@ -585,9 +589,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.25
-  limit: 2
+  limit: 0.5
   limitCounter: 0
-  horizontal: 0
+  horizontal: 1
 --- !u!114 &11485990
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -603,6 +607,7 @@ MonoBehaviour:
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
   active: 0
+  only_shoot_on_command: 0
   playerCloseDisable: 1
   disableDistance: 2
 --- !u!114 &11488666
@@ -617,9 +622,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.25
-  limit: 2
+  limit: 0.5
   limitCounter: 0
-  horizontal: 0
+  horizontal: 1
 --- !u!114 &11495822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -632,9 +637,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.25
-  limit: 2
+  limit: 0.5
   limitCounter: 0
-  horizontal: 0
+  horizontal: 1
 --- !u!212 &21201772
 SpriteRenderer:
   m_ObjectHideFlags: 1
