@@ -109,7 +109,7 @@ public class GameState : MonoBehaviour
         {
             Debug.Log("You lose!");
             game_over = true;
-            ReturnToMenu(3f);
+            ChangeScene(3f, level_to_load_on_defeat);
         }
     }
     public void Victory()
@@ -118,20 +118,21 @@ public class GameState : MonoBehaviour
         {
             Debug.Log("You won the level!");
             game_over = true;
-            ReturnToMenu(3f);
+            ChangeScene(3f, level_to_load_on_victory);
         }
     }
 
 
-    public void ReturnToMenu(float delay)
+    public void ChangeScene(float delay, string scene_to_load)
     {
         Time.timeScale = 1;
-        StartCoroutine(loadMenu(delay));
+        StartCoroutine(loadMenu(delay, scene_to_load));
     }
-    public IEnumerator loadMenu(float delay)
+    public IEnumerator loadMenu(float delay, string scene_to_load)
     {
         yield return new WaitForSeconds(delay);
-        SceneManager.LoadScene("Menu");
+
+        SceneManager.LoadScene(scene_to_load);
         yield return null;
     }
 

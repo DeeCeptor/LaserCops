@@ -6,7 +6,8 @@ public class RotateTowardsDesiredRotation : MonoBehaviour
     PlayerController player;
     Rigidbody2D physics;
     float default_rotation; // Rotation we return to if doing nothing
-    float rotation_changing_speed = 0.5f;   // How quickly we lerp between rotations
+    float rotation_changing_speed = 0.04f;   // How quickly we lerp between rotations
+    float wheel_offset = 40f;
     //float max_turning_rotation = 20f;
     //float sideways_turning_speed = 100.0f;
 
@@ -36,7 +37,18 @@ public class RotateTowardsDesiredRotation : MonoBehaviour
 
         // ROTATION
         // Lerp to our desired rotation
-        this.transform.eulerAngles = new Vector3(0, 0, Mathf.Lerp(this.transform.eulerAngles.z, player.desired_rotation, rotation_changing_speed));
+        //this.transform.rotation = Quaternion.identity;
+        Debug.Log(this.transform.eulerAngles + ":"+ player.default_rotation);
+        float offset = 0;
+        if (player.desired_rotation > player.default_rotation)
+        {
+            offset = wheel_offset;
+        }
+        else if (player.desired_rotation < player.default_rotation)
+        {
+            offset = -wheel_offset;
+        }
+        this.transform.eulerAngles = new Vector3(0, 0, Mathf.Lerp(this.transform.eulerAngles.z, (player.desired_rotation) + offset, rotation_changing_speed));
     }
     /*
     // Slightly rotate car to make it look like turning
