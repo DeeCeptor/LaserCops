@@ -24,8 +24,8 @@ public class PlayerController : PlayerInput
 
     // Car
     public GameObject car_sprite;   // Sprite we'll be rotating using animation
-    float default_rotation; // Rotation we return to if doing nothing
-    float desired_rotation;
+    public float default_rotation; // Rotation we return to if doing nothing
+    public float desired_rotation;
     float rotation_changing_speed = 0.2f;   // How quickly we lerp between rotations
     float max_turning_rotation = 20f;
     float sideways_turning_speed = 50.0f;
