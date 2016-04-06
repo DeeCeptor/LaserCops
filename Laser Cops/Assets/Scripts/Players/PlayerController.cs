@@ -269,6 +269,9 @@ public class PlayerController : PlayerInput
         this.gameObject.layer = LayerMask.NameToLayer("Dead Player");
         this.gameObject.tag = "Obstacle";
         this.gameObject.AddComponent<PlayerDying>();
+
+        GameState.game_state.GameOver();
+
         Destroy(this);
         //Destroy(gameObject);
     }

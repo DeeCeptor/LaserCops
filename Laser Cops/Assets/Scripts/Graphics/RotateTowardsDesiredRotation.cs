@@ -7,8 +7,8 @@ public class RotateTowardsDesiredRotation : MonoBehaviour
     Rigidbody2D physics;
     float default_rotation; // Rotation we return to if doing nothing
     float rotation_changing_speed = 0.5f;   // How quickly we lerp between rotations
-    float max_turning_rotation = 20f;
-    float sideways_turning_speed = 100.0f;
+    //float max_turning_rotation = 20f;
+    //float sideways_turning_speed = 100.0f;
 
     void Start()
     {
