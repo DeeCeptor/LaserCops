@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 class BranchLightning : MonoBehaviour
@@ -15,7 +15,7 @@ class BranchLightning : MonoBehaviour
 	//End position of branch
 	public Vector2 End { get; private set; }
 	
-	static Random rand = new Random();
+	//static Random rand = new Random();
 
 	public void Initialize(Vector2 start, Vector2 end, GameObject boltPrefab)
 	{

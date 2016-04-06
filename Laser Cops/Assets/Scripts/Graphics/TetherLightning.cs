@@ -32,9 +32,6 @@ public class TetherLightning : MonoBehaviour
         burst
     }
 
-    //The current mode the demo is in
-    Mode currentMode = Mode.bolt;
-
     //Will contain all of the pieces for the moving bolt
     List<GameObject> movingBolt = new List<GameObject>();
 
@@ -46,14 +43,12 @@ public class TetherLightning : MonoBehaviour
     List<GameObject> branchesObj;
 
     //For handling mouse clicks
-    int clicks = 0;
     //Vector2 pos1, pos2;
 
     //For storing all of the pixels that need to be drawn by the bolts 
     List<Vector2> textPoints = new List<Vector2>();
 
     //true in text mode
-    bool shouldText = false;
 
     void Awake()
     {
@@ -153,7 +148,6 @@ public class TetherLightning : MonoBehaviour
         if (Tether.tether.cur_tether_mode != Tether.TetherMode.None &&
             cur_lightning_cooldown <= 0 && Tether.tether.middle_link != null)
         {
-            currentMode = Mode.bolt;
             cur_lightning_cooldown = lightning_cooldown;
 
             // Spawn moving bolts constantly

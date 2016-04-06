@@ -165,9 +165,12 @@ MonoBehaviour:
   prev_tether_mode: 1
   tether_links_parent: {fileID: 108428}
   tether_links: []
+  middle_link: {fileID: 0}
   zigs: 500
   speed: 2
   scale: 1.5
+  primary_colour: {r: 0, g: 0, b: 0, a: 0}
+  secondary_colour: {r: 0, g: 0, b: 0, a: 0}
   primary_destroy_colour: {r: 1, g: 0, b: 0, a: 0.428}
   secondary_destroy_colour: {r: 0.89705884, g: 0.48228282, b: 0.2572448, a: 0.422}
   primary_capture_colour: {r: 0, g: 0, b: 1, a: 0.503}
