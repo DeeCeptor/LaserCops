@@ -4,7 +4,7 @@ using System.Collections;
 public class scrollThenChase : ScrollThenStop {
     public float speedAfterStop = 2f;
     private Transform playerToTrack;
-    private GameObject[] players;
+    public GameObject[] players;
     //direction to move in once chasing player used internally but may be used by scripts that inherit this script
     public Vector2 dir;
     // Use this for initialization

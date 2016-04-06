@@ -16,7 +16,8 @@ public class SpawnAtTime : MonoBehaviour {
 	void FixedUpdate () {
         if (spawnCounter < Time.time)
         {
-            Instantiate(objectToSpawn,transform.position,transform.rotation);
+            GameObject objectSpawned = (GameObject)Instantiate(objectToSpawn,transform.position,transform.rotation);
+            objectSpawned.transform.SetParent(transform.parent);
             spawnCounter = float.PositiveInfinity;
         }
     }

@@ -22,7 +22,6 @@ public class LaserBullet : BulletScript
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("enter");
         if (collision.gameObject.tag == "Player")
         {
             if (sparkCounter < Time.time)
@@ -43,7 +42,6 @@ public class LaserBullet : BulletScript
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("stay");
         if (collision.gameObject.tag == "Player")
         {
             if (sparkCounter < Time.time)
