@@ -9,3 +9,27 @@ EditorBuildSettings:
     path: Assets/Menus/SplashScreen.unity
   - enabled: 1
     path: Assets/Menus/LevelSelect.unity
+  - enabled: 1
+    path: Assets/Levels/MichaelLevelMelee.unity
+  - enabled: 1
+    path: Assets/Levels/MichaelLevel.unity
+  - enabled: 1
+    path: Assets/Menus/SceneSelect.unity
+  - enabled: 1
+    path: Assets/Levels/KevinVIPLevel.unity
+  - enabled: 1
+    path: Assets/Levels/KevinVIP2Level.unity
+  - enabled: 1
+    path: Assets/Levels/KevinTestLevel1.unity
+  - enabled: 1
+    path: Assets/Levels/KevinShootLevel2.unity
+  - enabled: 1
+    path: Assets/Levels/KevinSceneSelectTest.unity
+  - enabled: 1
+    path: Assets/Levels/KevinObstaclesScene.unity
+  - enabled: 1
+    path: Assets/Levels/KevinMeleeEnemiesLevel.unity
+  - enabled: 1
+    path: Assets/Levels/kevinGrindLevel2.unity
+  - enabled: 1
+    path: Assets/Levels/KevinFasterObstacleScreen.unity
