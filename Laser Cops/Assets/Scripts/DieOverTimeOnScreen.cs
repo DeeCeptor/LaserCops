@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 //dies after being on screen for x seconds
@@ -45,7 +45,7 @@ public class DieOverTimeOnScreen : MonoBehaviour {
 
     public void CheckActive()
     {
-        if (GetComponent<SpriteRenderer>().isVisible)
+        if (GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
         {
             Activate();
         }

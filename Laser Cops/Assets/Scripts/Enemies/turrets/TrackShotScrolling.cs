@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 //a turret that shoots at one of the players
@@ -58,7 +58,7 @@ public class TrackShotScrolling : MonoBehaviour{
     //see if the turret needs to activate
     public void checkActive()
     {
-        if(GetComponent<SpriteRenderer>().isVisible)
+        if(GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
         {
             Activate();
         }

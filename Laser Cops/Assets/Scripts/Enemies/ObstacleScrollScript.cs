@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class ObstacleScrollScript : MonoBehaviour {
@@ -92,7 +92,7 @@ public class ObstacleScrollScript : MonoBehaviour {
     //check if enemy is on screen. Scrolling enemies should not shoot offscreen
     public bool isActive()
     {
-        if (GetComponent<SpriteRenderer>().isVisible)
+        if (GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
         {
             return true;
         }
@@ -105,7 +105,7 @@ public class ObstacleScrollScript : MonoBehaviour {
     //check if enemy has entered the screen and must activate
     public void CheckActive()
     {
-        if (GetComponent<SpriteRenderer>().isVisible)
+        if (GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
         {
             Activate();
         }
@@ -120,7 +120,7 @@ public class ObstacleScrollScript : MonoBehaviour {
     //after activating the enemy should die if it leaves the screen
     public void CheckDeath()
     {
-        if (!GetComponent<SpriteRenderer>().isVisible)
+        if (!GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
         {
             Die();
         }

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 //an enemy that scrolls down the screen and then freezes in place and rotates
@@ -53,7 +53,7 @@ public class ScrollThenStop : basicScrollingEnemyScript {
 
     public new void CheckActive()
     {
-        if (GetComponent<SpriteRenderer>().isVisible)
+        if (GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
         {
             Activate();
         }

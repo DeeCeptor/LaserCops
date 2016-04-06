@@ -107,6 +107,25 @@ public class TetherLightning : MonoBehaviour
     {
         CreatePooledBolt(to, from, color, thickness);
     }
+    public void BurstLightning(Vector2 to, Vector2 from)
+    {
+        Vector2 diff = from - to;
+
+        //define how many bolts we want in our circle
+        int boltsInBurst = 10;
+
+        for (int i = 0; i < boltsInBurst; i++)
+        {
+            // Rotate around the z axis to the appropriate angle
+            Quaternion rot = Quaternion.AngleAxis((360f / boltsInBurst) * i, new Vector3(0, 0, 1));
+
+            // Calculate the end position for the bolt
+            Vector2 boltEnd = (Vector2)(rot * diff) + from;
+
+            // Create a (pooled) bolt from pos1 to boltEnd
+            CreatePooledBolt(from, boltEnd, Color.white, 1f);
+        }
+    }
 
 
     void Update()

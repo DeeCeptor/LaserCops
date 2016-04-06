@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class basicArenaEnemy : MonoBehaviour {
@@ -132,7 +132,7 @@ public class basicArenaEnemy : MonoBehaviour {
 
     public void CheckActive()
     {
-        if (GetComponent<SpriteRenderer>().isVisible)
+        if (GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
         {
             Activate();
         }

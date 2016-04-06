@@ -142,6 +142,7 @@ public class basicScrollingEnemyScript : MonoBehaviour
     {
         SoundMixer.sound_manager.Play8bitExplosion();
         EffectsManager.effects.ViolentExplosion(this.transform.position);
+        TetherLightning.tether_lightning.BurstLightning((Vector2)this.transform.position + new Vector2(Random.Range(-1, 1), Random.Range(-1, 1)), (Vector2) this.transform.position);
         UIManager.ui_manager.ChangeScore(-pointValue);
         Destroy(gameObject);
     }
@@ -160,7 +161,7 @@ public class basicScrollingEnemyScript : MonoBehaviour
     //check if enemy is on screen. Scrolling enemies should not shoot offscreen
     public bool isActive()
     {
-        if (GetComponent<SpriteRenderer>().isVisible)
+        if (GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
         {
             return true;
         }
@@ -173,7 +174,7 @@ public class basicScrollingEnemyScript : MonoBehaviour
     //check if enemy has entered the screen and must activate
     public void CheckActive()
     {
-        if (GetComponent<SpriteRenderer>().isVisible)
+        if (GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
         {
             Activate();
         }
@@ -188,7 +189,7 @@ public class basicScrollingEnemyScript : MonoBehaviour
     //after activating the enemy should die if it leaves the screen
     public void CheckDeath()
     {
-        if (!GetComponent<SpriteRenderer>().isVisible)
+        if (!GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
         {
             DieOffScreen();
         }
