@@ -84,6 +84,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 428756}
+  - 114: {fileID: 11459000}
   m_Layer: 0
   m_Name: FlankingLine
   m_TagString: Untagged
@@ -98,7 +99,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192488}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 23.882706, y: 3.3181572, z: 1}
+  m_LocalPosition: {x: -4.5, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 428756}
@@ -110,7 +111,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197892}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -90.55348, y: 10.382567, z: 0}
+  m_LocalPosition: {x: 92, y: 6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 440802}
@@ -126,7 +127,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122018}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 34.39427, y: 3.282158, z: 1}
+  m_LocalPosition: {x: 4.5, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 428756}
@@ -138,7 +139,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193598}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 26.83458, y: 3.282158, z: 1}
+  m_LocalPosition: {x: -1.5, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 428756}
@@ -150,7 +151,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148346}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 30.398434, y: 3.282158, z: 1}
+  m_LocalPosition: {x: 1.5, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 428756}
@@ -307,6 +308,7 @@ MonoBehaviour:
   timeTillGoAgain: 0
   stopped: 0
   speedAfterStop: 3
+  players: []
   dir: {x: 0, y: 0}
 --- !u!114 &11411850
 MonoBehaviour:
@@ -336,6 +338,7 @@ MonoBehaviour:
   timeTillGoAgain: 0
   stopped: 0
   speedAfterStop: 3
+  players: []
   dir: {x: 0, y: 0}
 --- !u!114 &11428742
 MonoBehaviour:
@@ -365,6 +368,7 @@ MonoBehaviour:
   timeTillGoAgain: 0
   stopped: 0
   speedAfterStop: 3
+  players: []
   dir: {x: 0, y: 0}
 --- !u!114 &11457812
 MonoBehaviour:
@@ -394,7 +398,20 @@ MonoBehaviour:
   timeTillGoAgain: 0
   stopped: 0
   speedAfterStop: 3
+  players: []
   dir: {x: 0, y: 0}
+--- !u!114 &11459000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5856db298e3415342a1bfbb970eab11f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cell_size: 1
 --- !u!212 &21228480
 SpriteRenderer:
   m_ObjectHideFlags: 1

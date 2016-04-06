@@ -29,6 +29,7 @@ GameObject:
   - 50: {fileID: 5056164}
   - 114: {fileID: 11425222}
   - 61: {fileID: 6116988}
+  - 114: {fileID: 11423234}
   m_Layer: 8
   m_Name: TriShootEnemy
   m_TagString: Enemy
@@ -188,6 +189,18 @@ MonoBehaviour:
   only_shoot_on_command: 0
   playerCloseDisable: 1
   disableDistance: 2
+--- !u!114 &11423234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5856db298e3415342a1bfbb970eab11f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cell_size: 1
 --- !u!114 &11425222
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11401290}
   - 61: {fileID: 6135760}
   - 114: {fileID: 11408756}
+  - 114: {fileID: 11405824}
   m_Layer: 8
   m_Name: Bruiser
   m_TagString: Enemy
@@ -80,7 +81,7 @@ MonoBehaviour:
   takes_grinding_damage: 0
   collisionDamage: 0.5
   pointValue: 20
-  health: 150
+  health: 450
   inactiveSpeed: 1
   travelDirection: 1
   timeTillStop: 3
@@ -91,7 +92,20 @@ MonoBehaviour:
   timeTillGoAgain: 0
   stopped: 0
   speedAfterStop: 1.5
+  players: []
   dir: {x: 0, y: 0}
+--- !u!114 &11405824
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5856db298e3415342a1bfbb970eab11f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cell_size: 1
 --- !u!114 &11408756
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11492444}
   - 114: {fileID: 11495816}
   - 61: {fileID: 6173820}
+  - 114: {fileID: 11429736}
   m_Layer: 8
   m_Name: rotateAndClose
   m_TagString: Enemy
@@ -63,6 +64,18 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1.14, y: 2.4999998}
+--- !u!114 &11429736
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5856db298e3415342a1bfbb970eab11f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cell_size: 1
 --- !u!114 &11492444
 MonoBehaviour:
   m_ObjectHideFlags: 1
