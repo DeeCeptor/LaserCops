@@ -1694,12 +1694,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deb11fedcef1f2743a7023e4d8122934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level_to_load_on_victory: LevelSelect
-  level_to_load_on_defeat: LevelSelect
+  level_to_load_on_victory: SceneSelect
+  level_to_load_on_defeat: SceneSelect
   paused: 0
   game_over: 0
   elapsed_game_time: 0
   going_sideways: 1
+  inactive_speed: 1
   Players: []
   PlayerObjects: []
   VIP: 0

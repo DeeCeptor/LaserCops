@@ -59,7 +59,8 @@ public class scrollThenChase : ScrollThenStop
         }
 
         dir = playerToTrack.position - transform.position;
-        GetComponent<Rigidbody2D>().velocity = dir.normalized * speed;
+        desired_velocity = dir.normalized * speed;
+        GetComponent<Rigidbody2D>().velocity = desired_velocity;
     }
 
     public void SelectTarget()

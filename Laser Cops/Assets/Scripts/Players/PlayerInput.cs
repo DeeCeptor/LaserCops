@@ -26,8 +26,16 @@ public class PlayerInput : MonoBehaviour
 
     public void UpdateInputs()
     {
-        direction.x = Input.GetAxis("Player " + player_number + " X Steering");
-        direction.y = Input.GetAxis("Player " + player_number + " Y Steering");
+        if (GameState.game_state.going_sideways)
+        {
+            direction.x = Input.GetAxis("Player " + player_number + " X Steering");
+            direction.y = Input.GetAxis("Player " + player_number + " Y Steering");
+        }
+        else
+        {
+            direction.x = Input.GetAxis("Player " + player_number + " Y Steering");
+            direction.y = Input.GetAxis("Player " + player_number + " X Steering");
+        }
 
         tether_switched = Input.GetButtonDown("Switch Tether " + player_number);
         tether_held_down = Input.GetButton("Switch Tether " + player_number);
