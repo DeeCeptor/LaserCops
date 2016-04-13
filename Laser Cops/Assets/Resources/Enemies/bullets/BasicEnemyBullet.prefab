@@ -126,7 +126,7 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   speed: 3
   dir: {x: 0, y: 0}
-  damage: 15
+  damage: 10
 --- !u!198 &19841148
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -1706,6 +1706,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_SortingLayerID
       value: -272301999
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damage
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

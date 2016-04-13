@@ -16,11 +16,13 @@ public class reboundableBullet : BulletScript
             EffectsManager.effects.BulletHitPlayer(collision.contacts[0].point);
 
             collision.gameObject.GetComponent<PlayerController>().TakeHit(damage);
+            Destroy(gameObject);
         }
 
         if (collision.gameObject.tag == "VIP")
         {
             collision.gameObject.GetComponent<VIPScript>().TakeHit(damage);
+            Destroy(gameObject);
         }
 
         if (collision.gameObject.tag == "Tether")

@@ -15,7 +15,7 @@ public class SideToSide : basicScrollingEnemyScript {
     public bool pos = true;
 	// Use this for initialization
 	void Start () {
-        switchCounter = Time.time + switchTime;
+        switchCounter = Time.time + switchTime/2;
 	}
 	
 	// Update is called once per frame

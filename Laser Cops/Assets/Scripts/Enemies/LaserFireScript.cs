@@ -34,7 +34,7 @@ public class LaserFireScript : ForwardShotScript {
         if (!playerCloseDisable)
         {
             GameObject bulletSpawned = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
-            bulletSpawned.transform.position = bulletSpawned.transform.position + (transform.up * laserLength);
+            bulletSpawned.transform.position = bulletSpawned.transform.position - (transform.up * laserLength);
             bulletSpawned.transform.SetParent(transform);
         }
 
