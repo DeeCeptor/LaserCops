@@ -608,7 +608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624bac116c5c2ce478b1680f0372b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 1
+  shotDelay: 5
   shotCounter: 0
   bullet: {fileID: 179674, guid: e205d6cdda05cc14cb94ab844aa0c471, type: 2}
   active: 0
@@ -665,7 +665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624bac116c5c2ce478b1680f0372b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 1
+  shotDelay: 5
   shotCounter: 0
   bullet: {fileID: 179674, guid: e205d6cdda05cc14cb94ab844aa0c471, type: 2}
   active: 0
@@ -724,7 +724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624bac116c5c2ce478b1680f0372b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 1
+  shotDelay: 5
   shotCounter: 0
   bullet: {fileID: 179674, guid: e205d6cdda05cc14cb94ab844aa0c471, type: 2}
   active: 0

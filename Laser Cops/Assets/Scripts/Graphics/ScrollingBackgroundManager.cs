@@ -6,6 +6,7 @@ public class ScrollingBackgroundManager : MonoBehaviour
     // Objects that repeatedly scrolling scrolling
     public List<GameObject> Background_Objects;
     public float scrolling_speed = -15f;
+    public float back_edge = -40;
 
     void Start ()
     {
@@ -54,7 +55,7 @@ public class ScrollingBackgroundManager : MonoBehaviour
 
         for(int x = 0; x < Background_Objects.Count; x++)
         {
-            if (Background_Objects[x].transform.position.x <= -40)
+            if (Background_Objects[x].transform.position.x <= back_edge)
                 PlaceAtBack(Background_Objects[x]);
         }
     }

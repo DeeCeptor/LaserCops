@@ -10,7 +10,7 @@ public class CameraManager : MonoBehaviour
     void Awake ()
     {
         cam = Camera.main;
-        ChangeZoom(desired_size, 0.5f);
+        ChangeZoom(this.cam.orthographicSize, 0.5f);
     }
     void Start ()
     {
