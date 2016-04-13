@@ -134,7 +134,8 @@ public class GameState : MonoBehaviour
         {
             Debug.Log("You lose!");
             game_over = true;
-            ChangeScene(3f, level_to_load_on_defeat);
+            UIManager.ui_manager.SetAnnouncementText("You lost!", 9999);
+            ChangeScene(5f, level_to_load_on_defeat);
         }
     }
     public void Victory()
@@ -143,7 +144,8 @@ public class GameState : MonoBehaviour
         {
             Debug.Log("You won the level!");
             game_over = true;
-            ChangeScene(3f, level_to_load_on_victory);
+            UIManager.ui_manager.SetAnnouncementText("You win!", 9999);
+            ChangeScene(5f, level_to_load_on_victory);
         }
     }
 

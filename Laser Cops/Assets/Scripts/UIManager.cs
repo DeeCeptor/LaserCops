@@ -84,16 +84,18 @@ public class UIManager : MonoBehaviour
     }
 
 
-    public void SetAnnouncementText(string announcement)
+    public void SetAnnouncementText(string announcement, float length_of_announcement = 1f)
     {
+        announcement_cooldown = length_of_announcement;
         announcements.Enqueue(announcement);
     }
-    public void SetAnnouncementText(string[] new_announcements)
+    public void SetAnnouncementText(string[] new_announcements, float length_of_announcement = 1f)
     {
         foreach (string s in new_announcements)
         {
             announcements.Enqueue(s);
         }
+        announcement_cooldown = length_of_announcement;
     }
 
 
@@ -111,9 +113,11 @@ public class UIManager : MonoBehaviour
                 // Switch text
                 announcement_text.text = announcements.Dequeue();
                 cur_announcement_cooldown = announcement_cooldown;
+                Debug.Log("Switch " + announcement_text.text + ":" + Time.time);
             }
             else if (announcement_text.text != "")
             {
+                Debug.Log("empty " + Time.time);
                 announcement_text.text = "";
             }
         }
