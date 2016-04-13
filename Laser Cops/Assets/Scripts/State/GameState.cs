@@ -26,7 +26,11 @@ public class GameState : MonoBehaviour
     public float time_last_touched_obstacle;
     float turn_off_tether_touching_obstacle_time = 0.3f;
 
-    void Awake ()
+    public bool debug_invulnerability = false;
+    bool debugging = true;
+    bool increased_speed = false;
+
+    void Awake()
     {
         game_state = this;
         SetGameSettings();
@@ -36,10 +40,10 @@ public class GameState : MonoBehaviour
             VIPObject = GameObject.FindGameObjectWithTag("VIP");
         }
     }
-	void Start ()
+    void Start()
     {
-	
-	}
+
+    }
 
 
     public void SetGameSettings()
@@ -86,12 +90,31 @@ public class GameState : MonoBehaviour
             elapsed_game_time += Time.deltaTime;
         }
 
-
         // Is the tether touching an obstacle?
-        if (tether_touching_obstacle && 
+        if (tether_touching_obstacle &&
             time_last_touched_obstacle + turn_off_tether_touching_obstacle_time < Time.time)
         {
             tether_touching_obstacle = false;
+        }
+
+        if (debugging)
+        {
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                debug_invulnerability = !debug_invulnerability;
+            }
+
+            if (Input.GetKey(KeyCode.BackQuote))
+            {
+                increased_speed = true;
+                debug_invulnerability = true;
+                Time.timeScale = 5f;
+            }
+            else
+            {
+                increased_speed = false;
+                Time.timeScale = 1;
+            }
         }
     }
 
@@ -148,5 +171,17 @@ public class GameState : MonoBehaviour
     {
         Time.timeScale = 0;
         //PauseMenu.SetActive(true);
+    }
+
+
+    void OnGUI()
+    {
+        if (debugging)
+        {
+            if (debug_invulnerability)
+                GUI.Label(new Rect(0, 0, 300, 100), "Invulnerable");
+            if (increased_speed)
+                GUI.Label(new Rect(0, 50, 300, 100), "10X");
+        }
     }
 }

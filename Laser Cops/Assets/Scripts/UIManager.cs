@@ -19,6 +19,11 @@ public class UIManager : MonoBehaviour
     [HideInInspector]
     public string time_string = "Time: ";
 
+    public Slider bottom_health_bar;
+    public Image bottom_health_bar_background;
+    public Text bottom_text_name;
+    public GameObject bottom_bar;
+
     void Awake ()
     {
         ui_manager = this;
@@ -53,6 +58,22 @@ public class UIManager : MonoBehaviour
     {
         score_text.text = score_string + score;
     }
+
+
+    public void ActivateBottomHealthBar(string boss_name, Color color, float max_health)
+    {
+        bottom_text_name.text = boss_name;
+        bottom_health_bar_background.color = color;
+        bottom_health_bar.minValue = 0;
+        bottom_health_bar.maxValue = max_health;
+
+        bottom_bar.SetActive(true);
+    }
+    public void UpdateBottomHealthBar(float cur_health)
+    {
+        bottom_health_bar.value = cur_health;
+    }
+
 
     void LateUpdate ()
     {

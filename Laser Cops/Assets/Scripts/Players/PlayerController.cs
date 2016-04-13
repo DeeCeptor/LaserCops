@@ -224,6 +224,9 @@ public class PlayerController : PlayerInput
 
     public void TakeHit(float damage)
     {
+        if (GameState.game_state.debug_invulnerability)
+            damage = 0;
+
         float prev_health = Health;
 
         Health -= damage;

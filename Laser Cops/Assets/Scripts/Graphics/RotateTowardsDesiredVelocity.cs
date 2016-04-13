@@ -17,7 +17,7 @@ public class RotateTowardsDesiredVelocity : MonoBehaviour
         player = transform.root.GetComponent<basicScrollingEnemyScript>();
 
         if (!player)
-            Destroy(this.gameObject);
+            Destroy(this);
     }
 
 
