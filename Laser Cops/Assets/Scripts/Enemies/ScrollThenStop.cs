@@ -2,7 +2,8 @@ using UnityEngine;
 using System.Collections;
 
 //an enemy that scrolls down the screen and then freezes in place and rotates
-public class ScrollThenStop : basicScrollingEnemyScript {
+public class ScrollThenStop : basicScrollingEnemyScript
+{
     public float timeTillStop = 3f;
     public float stopCounter;
     public bool rotateWhenStopped = true;
@@ -11,13 +12,17 @@ public class ScrollThenStop : basicScrollingEnemyScript {
     public bool goAgain = true;
     public float timeTillGoAgain = 5f;
     public bool stopped = false;
-	// Use this for initialization
-	void Start () {
+
+    void Start ()
+    {
         initiate();
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+
+
+    void FixedUpdate ()
+    {
+        tether_lightning_cooldown -= Time.deltaTime;
+
         if (!active)
         {
             CheckActive();

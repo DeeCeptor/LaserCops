@@ -13,7 +13,9 @@ public class GameState : MonoBehaviour
     public bool paused = false; // Paused by player
     public bool game_over = false;  // Lost the game
     public float elapsed_game_time = 0f;
-    public bool going_sideways = true;
+    public bool going_sideways;
+
+    public float inactive_speed = 1.0f;     // How quickly objects move when offscreen
 
     public List<PlayerController> Players = new List<PlayerController>();
     public GameObject[] PlayerObjects;

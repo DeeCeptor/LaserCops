@@ -335,7 +335,7 @@ public class PlayerController : PlayerInput
         {
             sparks = free_grinding_sparks[0];
             free_grinding_sparks.RemoveAt(0);
-            sparks.Play();
+            sparks.GetComponent<TurnOffSparks>().StartSparks();
         }
         else
         {
@@ -362,7 +362,7 @@ public class PlayerController : PlayerInput
         {
             ParticleSystem p = in_use_grinding_sparks[coll.gameObject];
             p.gameObject.transform.position = coll.contacts[0].point;
-            p.GetComponent<TurnOffSparks>().time_remaining = p.GetComponent<TurnOffSparks>().start_time_remaining;
+            p.GetComponent<TurnOffSparks>().StartSparks();
         }
         else
             in_use_grinding_sparks.Remove(coll.gameObject);
@@ -371,7 +371,7 @@ public class PlayerController : PlayerInput
     void OnCollisionExit2D(Collision2D coll)
     {
         ParticleSystem sparks = in_use_grinding_sparks[coll.gameObject];
-        sparks.Stop();
+        sparks.GetComponent<TurnOffSparks>().StopSparks();
         in_use_grinding_sparks.Remove(sparks.gameObject);
         free_grinding_sparks.Add(sparks);
     }

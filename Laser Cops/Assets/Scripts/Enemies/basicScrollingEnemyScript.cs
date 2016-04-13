@@ -17,14 +17,17 @@ public class basicScrollingEnemyScript : MonoBehaviour
 	public float collisionDamage = 0.3f;
 	public int pointValue = 20;
 	public float health = 1f;
+
+    [HideInInspector]
+    public Vector2 desired_velocity = Vector2.zero;
     
     //this is used for the enemies speed when OFFSCREEN do not change unless you know what you're doing in which case I'm a comment not a cop
-    public float inactiveSpeed = 1f;
+    //public float GameState.game_state.inactive_speed = 1f;
 
     //direction the enemy will travel towards
     public direction travelDirection = direction.left;
 
-    float tether_lightning_cooldown;
+    protected float tether_lightning_cooldown;
 
     // Use this for initialization
     void Start()
@@ -102,19 +105,19 @@ public class basicScrollingEnemyScript : MonoBehaviour
     {
         if(travelDirection == direction.left)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-inactiveSpeed,0);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(-GameState.game_state.inactive_speed,0);
         }
         else if (travelDirection == direction.up)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, inactiveSpeed);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, GameState.game_state.inactive_speed);
         }
         else if (travelDirection == direction.right)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(inactiveSpeed, 0);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(GameState.game_state.inactive_speed, 0);
         }
         else if (travelDirection == direction.down)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, -inactiveSpeed);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, -GameState.game_state.inactive_speed);
         }
     }
 
@@ -122,19 +125,23 @@ public class basicScrollingEnemyScript : MonoBehaviour
     {
         if (travelDirection == direction.left)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, 0);
+            desired_velocity = new Vector2(-speed, 0);
+            GetComponent<Rigidbody2D>().velocity = desired_velocity;
         }
         else if (travelDirection == direction.up)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, speed);
+            desired_velocity = new Vector2(0, speed);
+            GetComponent<Rigidbody2D>().velocity = desired_velocity;
         }
         else if (travelDirection == direction.right)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(speed, 0);
+            desired_velocity = new Vector2(speed, 0);
+            GetComponent<Rigidbody2D>().velocity = desired_velocity;
         }
         else if (travelDirection == direction.down)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, -speed);
+            desired_velocity = new Vector2(0, -speed);
+            GetComponent<Rigidbody2D>().velocity = desired_velocity;
         }
     }
 

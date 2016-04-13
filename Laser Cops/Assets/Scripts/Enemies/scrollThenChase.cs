@@ -1,19 +1,24 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class scrollThenChase : ScrollThenStop {
+public class scrollThenChase : ScrollThenStop
+{
     public float speedAfterStop = 2f;
     private Transform playerToTrack;
     public GameObject[] players;
     //direction to move in once chasing player used internally but may be used by scripts that inherit this script
     public Vector2 dir;
-    // Use this for initialization
-    void Start () {
+
+    void Start ()
+    {
 	
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+
+
+    void FixedUpdate ()
+    {
+        tether_lightning_cooldown -= Time.deltaTime;
+
         if (!active)
         {
             CheckActive();
@@ -54,7 +59,8 @@ public class scrollThenChase : ScrollThenStop {
         }
 
         dir = playerToTrack.position - transform.position;
-        GetComponent<Rigidbody2D>().velocity = dir.normalized * speed;
+        desired_velocity = dir.normalized * speed;
+        GetComponent<Rigidbody2D>().velocity = desired_velocity;
     }
 
     public void SelectTarget()
