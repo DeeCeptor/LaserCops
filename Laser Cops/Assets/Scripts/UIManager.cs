@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class UIManager : MonoBehaviour
 {
@@ -24,6 +25,12 @@ public class UIManager : MonoBehaviour
     public Text bottom_text_name;
     public GameObject bottom_bar;
 
+    public Text announcement_text;
+    [HideInInspector]
+    public Queue<string> announcements = new Queue<string>();
+    float cur_announcement_cooldown;
+    float announcement_cooldown = 1f;
+
     void Awake ()
     {
         ui_manager = this;
@@ -32,6 +39,8 @@ public class UIManager : MonoBehaviour
     {
         UpdateHealth();
         UpdateScore();
+
+        SetAnnouncementText(new string[] { "3", "2", "1", "Go!" });
 	}
 
     public void UpdateHealth()
@@ -75,9 +84,38 @@ public class UIManager : MonoBehaviour
     }
 
 
+    public void SetAnnouncementText(string announcement)
+    {
+        announcements.Enqueue(announcement);
+    }
+    public void SetAnnouncementText(string[] new_announcements)
+    {
+        foreach (string s in new_announcements)
+        {
+            announcements.Enqueue(s);
+        }
+    }
+
+
     void LateUpdate ()
     {
         // Update the time
         time_text.text = time_string + GameState.game_state.getFormattedTime(GameState.game_state.elapsed_game_time);
+
+        // Update announcement text
+        cur_announcement_cooldown -= Time.deltaTime;
+        if (cur_announcement_cooldown <= 0)
+        {
+            if (announcements.Count > 0)
+            {
+                // Switch text
+                announcement_text.text = announcements.Dequeue();
+                cur_announcement_cooldown = announcement_cooldown;
+            }
+            else if (announcement_text.text != "")
+            {
+                announcement_text.text = "";
+            }
+        }
 	}
 }
