@@ -92,10 +92,12 @@ public class PlayerController : PlayerInput
             if (GameState.game_state.going_sideways)
             {
                 new_speed.x = x_speed * boost_speed_modifier;
+                new_speed.y = new_speed.y * boost_speed_modifier;
             }
             else
             {
                 new_speed.y = y_speed * boost_speed_modifier;
+                new_speed.x = new_speed.x * boost_speed_modifier;
             }
             SoundMixer.sound_manager.PlayCarRev();
         }

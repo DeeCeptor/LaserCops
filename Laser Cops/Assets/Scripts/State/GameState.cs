@@ -183,7 +183,7 @@ public class GameState : MonoBehaviour
             if (debug_invulnerability)
                 GUI.Label(new Rect(0, 0, 300, 100), "Invulnerable");
             if (increased_speed)
-                GUI.Label(new Rect(0, 50, 300, 100), "10X");
+                GUI.Label(new Rect(0, 50, 300, 100), Time.timeScale + "X");
         }
     }
 }
