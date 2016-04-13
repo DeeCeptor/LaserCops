@@ -70,7 +70,7 @@ public class ScrollThenStop : basicScrollingEnemyScript
         stopCounter = Time.time + timeTillGoAgain;
         stopped = true;
         Rigidbody2D rigid = GetComponent<Rigidbody2D>();
-        //rigid.constraints = RigidbodyConstraints2D.FreezePosition;
+        rigid.constraints = RigidbodyConstraints2D.FreezePosition;
     }
 
     public void unfreeze()
