@@ -128,6 +128,15 @@ public class GameState : MonoBehaviour
     }
 
 
+    public void PlayerHitDeathzone()
+    {
+        for (int x = 0; x < Players.Count; x++)
+        {
+            Players[x].Die();
+        }
+    }
+
+
     public void GameOver()
     {
         if (!game_over)

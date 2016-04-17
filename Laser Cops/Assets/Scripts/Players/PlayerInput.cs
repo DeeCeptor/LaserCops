@@ -43,6 +43,11 @@ public class PlayerInput : MonoBehaviour
 
         boosted_this_instant = Input.GetButtonDown("Player " + player_number + " Boost");
 
-        disable_tether_held_down = Input.GetButton("Disable Tether");
+        if (Input.GetButton("Disable Tether") || Input.GetAxisRaw("Disable Tether") != 0)
+        {
+            disable_tether_held_down = true;
+        }
+        else
+            disable_tether_held_down = false;
     }
 }
