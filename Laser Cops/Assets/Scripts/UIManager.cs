@@ -103,7 +103,7 @@ public class UIManager : MonoBehaviour
     {
         // Update the time
         time_text.text = time_string + GameState.game_state.getFormattedTime(GameState.game_state.elapsed_game_time);
-
+        UpdateScore();
         // Update announcement text
         cur_announcement_cooldown -= Time.deltaTime;
         if (cur_announcement_cooldown <= 0)

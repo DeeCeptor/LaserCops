@@ -12,6 +12,7 @@ GameObject:
   - 50: {fileID: 5023272}
   - 114: {fileID: 11411850}
   - 61: {fileID: 6169732}
+  - 114: {fileID: 11457826}
   m_Layer: 8
   m_Name: Flanker (3)
   m_TagString: Enemy
@@ -31,6 +32,7 @@ GameObject:
   - 50: {fileID: 5049292}
   - 114: {fileID: 11457812}
   - 61: {fileID: 6164464}
+  - 114: {fileID: 11457082}
   m_Layer: 8
   m_Name: Flanker (2)
   m_TagString: Enemy
@@ -50,6 +52,7 @@ GameObject:
   - 50: {fileID: 5018556}
   - 114: {fileID: 11407506}
   - 61: {fileID: 6182024}
+  - 114: {fileID: 11452470}
   m_Layer: 8
   m_Name: Flanker
   m_TagString: Enemy
@@ -69,6 +72,7 @@ GameObject:
   - 50: {fileID: 5012208}
   - 114: {fileID: 11428742}
   - 61: {fileID: 6159388}
+  - 114: {fileID: 11495088}
   m_Layer: 8
   m_Name: Flanker (1)
   m_TagString: Enemy
@@ -99,7 +103,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192488}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: -1.5, y: 0, z: 1}
+  m_LocalPosition: {x: -4.24, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 428756}
@@ -111,7 +115,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197892}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 106, y: -6, z: 0}
+  m_LocalPosition: {x: 7.2972984, y: 8.728539, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 440802}
@@ -127,7 +131,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122018}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 1.5, y: 0, z: 1}
+  m_LocalPosition: {x: 3.77, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 428756}
@@ -139,7 +143,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193598}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: -0.5, y: 0, z: 1}
+  m_LocalPosition: {x: -1.55, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 428756}
@@ -151,7 +155,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148346}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 0.5, y: 0, z: 1}
+  m_LocalPosition: {x: 1.08, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 428756}
@@ -370,6 +374,28 @@ MonoBehaviour:
   speedAfterStop: 3
   players: []
   dir: {x: 0, y: 0}
+--- !u!114 &11452470
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebdd88aff913cba4fa2552f0c66f35dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11457082
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebdd88aff913cba4fa2552f0c66f35dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11457812
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -400,6 +426,17 @@ MonoBehaviour:
   speedAfterStop: 3
   players: []
   dir: {x: 0, y: 0}
+--- !u!114 &11457826
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebdd88aff913cba4fa2552f0c66f35dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11459000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -412,6 +449,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cell_size: 1
+--- !u!114 &11495088
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebdd88aff913cba4fa2552f0c66f35dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21228480
 SpriteRenderer:
   m_ObjectHideFlags: 1

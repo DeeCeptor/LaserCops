@@ -37,3 +37,7 @@ EditorBuildSettings:
     path: Assets/Levels/KevinScene.unity
   - enabled: 1
     path: Assets/Levels/DiscoBall.unity
+  - enabled: 1
+    path: Assets/Levels/Michael DodgeObstacles.unity
+  - enabled: 1
+    path: Assets/Levels/Michael Shooting Waves.unity
