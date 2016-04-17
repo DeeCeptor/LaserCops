@@ -113,11 +113,9 @@ public class UIManager : MonoBehaviour
                 // Switch text
                 announcement_text.text = announcements.Dequeue();
                 cur_announcement_cooldown = announcement_cooldown;
-                Debug.Log("Switch " + announcement_text.text + ":" + Time.time);
             }
             else if (announcement_text.text != "")
             {
-                Debug.Log("empty " + Time.time);
                 announcement_text.text = "";
             }
         }

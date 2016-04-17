@@ -92,10 +92,12 @@ public class PlayerController : PlayerInput
             if (GameState.game_state.going_sideways)
             {
                 new_speed.x = x_speed * boost_speed_modifier;
+                new_speed.y = new_speed.y * boost_speed_modifier;
             }
             else
             {
                 new_speed.y = y_speed * boost_speed_modifier;
+                new_speed.x = new_speed.x * boost_speed_modifier;
             }
             SoundMixer.sound_manager.PlayCarRev();
         }
@@ -167,7 +169,7 @@ public class PlayerController : PlayerInput
         {
             // Not turning, return to normal rotation
             desired_rotation = default_rotation;
-            rotation_changing_speed = 0.05f;
+            rotation_changing_speed = 0.1f;
         }
     }
     public void AccelerateDeceleratingCar(float amount)
@@ -383,7 +385,7 @@ public class PlayerController : PlayerInput
         // Check to see if we die
         if (collision.gameObject.layer == LayerMask.NameToLayer("Death Zone") && GameState.game_state.tether_touching_obstacle)
         {
-            Die();
+            HitDeathZone();
             return;
         }
     }
@@ -391,6 +393,12 @@ public class PlayerController : PlayerInput
     public void CollisionAt(Vector2 position)
     {
 
+    }
+
+    public void HitDeathZone()
+    {
+        // Have other player die too
+        GameState.game_state.PlayerHitDeathzone();
     }
 
 

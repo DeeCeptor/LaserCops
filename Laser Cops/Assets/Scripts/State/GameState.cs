@@ -128,6 +128,15 @@ public class GameState : MonoBehaviour
     }
 
 
+    public void PlayerHitDeathzone()
+    {
+        for (int x = 0; x < Players.Count; x++)
+        {
+            Players[x].Die();
+        }
+    }
+
+
     public void GameOver()
     {
         if (!game_over)
@@ -183,7 +192,7 @@ public class GameState : MonoBehaviour
             if (debug_invulnerability)
                 GUI.Label(new Rect(0, 0, 300, 100), "Invulnerable");
             if (increased_speed)
-                GUI.Label(new Rect(0, 50, 300, 100), "10X");
+                GUI.Label(new Rect(0, 50, 300, 100), Time.timeScale + "X");
         }
     }
 }
