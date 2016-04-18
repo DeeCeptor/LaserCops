@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class BossHealthScript : MonoBehaviour {
@@ -11,7 +11,9 @@ public class BossHealthScript : MonoBehaviour {
 	public int[] stageHealthpoints;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
+        UIManager.ui_manager.ActivateBottomHealthBar("Welcome to the GUNSHIP", Color.red, 50);
 	}
 	
 	// Update is called once per frame
@@ -26,6 +28,7 @@ public class BossHealthScript : MonoBehaviour {
 	public void takeHit(float damage)
 	{
 		health -= damage;
+        UIManager.ui_manager.UpdateBottomHealthBar(health);
 	}
 
     public void Die()

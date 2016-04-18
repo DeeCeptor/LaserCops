@@ -80,6 +80,7 @@ public class UIManager : MonoBehaviour
     }
     public void UpdateBottomHealthBar(float cur_health)
     {
+        Debug.Log(cur_health);
         bottom_health_bar.value = cur_health;
     }
 
