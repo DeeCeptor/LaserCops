@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11447172}
   - 61: {fileID: 6197804}
   - 114: {fileID: 11439974}
+  - 114: {fileID: 11471348}
   m_Layer: 8
   m_Name: BackwardShootingEnemy
   m_TagString: Enemy
@@ -617,6 +618,24 @@ MonoBehaviour:
   health: 1
   desired_velocity: {x: 0, y: 0}
   travelDirection: 1
+--- !u!114 &11471348
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8001c0b333b214cf6819aa35fc6da60a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_VectorGrid: {fileID: 0}
+  m_ForceScale: 1
+  m_Directional: 0
+  m_ForceDirection: {x: 0, y: 0, z: 0}
+  m_Radius: 1
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_HasColor: 0
 --- !u!114 &11486546
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -9,6 +9,12 @@ public class PlayerController : PlayerInput
 
     Vector2 screen_margins = new Vector2(0.2f, 0.2f);
 
+    // Grid attributes
+    public Color primary_colour;
+    float normal_grid_force = 1f;
+    float normal_grid_radius = 1f;
+    float boost_grid_force = 3f;
+    float boost_grid_radius = 2f;
 
     public float Max_Health = 100f;
     public float Health;
@@ -65,6 +71,8 @@ public class PlayerController : PlayerInput
         UpdateInputs();
 
         Vector2 new_speed = new Vector2(this.direction.x * x_speed, this.direction.y * y_speed);
+        float grid_ripple_force = normal_grid_force;
+        float grid_ripple_radius = normal_grid_radius;
 
         // BOOST
         boost_cur_cooldown -= Time.deltaTime;
@@ -99,6 +107,8 @@ public class PlayerController : PlayerInput
                 new_speed.y = y_speed * boost_speed_modifier;
                 new_speed.x = new_speed.x * boost_speed_modifier;
             }
+            grid_ripple_force = boost_grid_force;
+            grid_ripple_radius = boost_grid_radius;
             SoundMixer.sound_manager.PlayCarRev();
         }
 
@@ -148,6 +158,10 @@ public class PlayerController : PlayerInput
         physics.MoveRotation(Mathf.Lerp(transform.eulerAngles.z, desired_rotation, rotation_changing_speed));
         //transform.eulerAngles = new Vector3(0, 0, 
         //    Mathf.Lerp(transform.eulerAngles.z, desired_rotation, 0.01f));
+
+
+        // Ripple the grid behind the car
+        VectorGrid.grid.AddGridForce(this.transform.position, grid_ripple_force, grid_ripple_radius, primary_colour, true);
     }
     // Slightly rotate car to make it look like turning
     public void TurningCar(float amount)
@@ -270,6 +284,9 @@ public class PlayerController : PlayerInput
             Tether.tether.DestroyTether();
 
         EffectsManager.effects.ViolentExplosion(this.transform.position);
+        EffectsManager.effects.GridExplosion(this.transform.position, 1f, 15f, primary_colour);
+
+        GameState.game_state.ChangeTimescale(0.3f);
 
         this.gameObject.layer = LayerMask.NameToLayer("Dead Player");
         this.gameObject.tag = "Obstacle";

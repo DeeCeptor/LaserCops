@@ -96,6 +96,7 @@ GameObject:
   - 61: {fileID: 6108942}
   - 114: {fileID: 11479782}
   - 114: {fileID: 11447650}
+  - 114: {fileID: 11481540}
   m_Layer: 8
   m_Name: MostBasicEnemy
   m_TagString: Enemy
@@ -599,6 +600,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cell_size: 1
+--- !u!114 &11481540
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8001c0b333b214cf6819aa35fc6da60a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_VectorGrid: {fileID: 0}
+  m_ForceScale: 1
+  m_Directional: 0
+  m_ForceDirection: {x: 0, y: 0, z: 0}
+  m_Radius: 1
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_HasColor: 0
 --- !u!120 &12015082
 LineRenderer:
   m_ObjectHideFlags: 1

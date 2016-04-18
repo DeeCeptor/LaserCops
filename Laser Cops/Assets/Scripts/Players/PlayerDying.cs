@@ -6,6 +6,8 @@ public class PlayerDying : MonoBehaviour
     Rigidbody2D physics;
     float time_left = 4.0f;
     float rotation_speed = 300.0f;
+    float sparks = 0.1f;
+    float sparks_cooldown = 0.5f;
 
     void Start ()
     {
@@ -21,6 +23,15 @@ public class PlayerDying : MonoBehaviour
 
     void Update ()
     {
+        VectorGrid.grid.AddGridForce(this.transform.position, 1, Random.Range(0.1f, 2f), Color.red, true);
+
+        sparks -= Time.deltaTime;
+        if (sparks <= 0)
+        {
+            sparks = sparks_cooldown;
+            EffectsManager.effects.ViolentExplosion(this.transform.position);
+        }
+
         // Constantly rotate
         physics.MoveRotation(this.physics.rotation + Time.deltaTime * rotation_speed);
 
