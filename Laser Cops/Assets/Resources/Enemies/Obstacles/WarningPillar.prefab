@@ -85,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 172370}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 32, y: 0, z: 0}
+  m_LocalPosition: {x: 20, y: 3, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 456058}
@@ -183,7 +183,7 @@ MonoBehaviour:
   speed: 20
   active: 0
   damage: 0.5
-  dieDelay: 3
+  dieDelay: 2
   dieCounter: 0
   dying: 0
   inactiveSpeed: 1

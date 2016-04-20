@@ -39,8 +39,9 @@ public class GameState : MonoBehaviour
 
     void Awake()
     {
-        normal_physics_delta_time = Time.fixedDeltaTime;
         game_state = this;
+
+
         SetGameSettings();
         PlayerObjects = GameObject.FindGameObjectsWithTag("Player");
         if (VIP)
@@ -53,7 +54,7 @@ public class GameState : MonoBehaviour
 
     }
 
-
+    // Sets physics and graphics stuff
     public void SetGameSettings()
     {
         // Vastly improves frame rate, making stars scrolling by not look terrible
@@ -61,6 +62,11 @@ public class GameState : MonoBehaviour
 
         // Set the correct gravity
         SetGravity(new Vector3(-9.81f, 0));
+
+        normal_physics_delta_time = Time.fixedDeltaTime;
+        //		Application.targetFrameRate = 60;
+        default_position_iterations = Physics2D.positionIterations;
+        default_velocity_iterations = Physics2D.velocityIterations;
     }
     public void SetGravity(Vector2 new_gravity)
     {

@@ -21,21 +21,13 @@ public class ScrollDemoManager : MonoBehaviour
 	
 	void Start()
 	{
-		Application.targetFrameRate = 60;
-	}
+
+    }
 	
 	// Update is called once per frame
 	void Update () 
 	{
 		Color color = new Color(m_Red/255.0f, m_Green/255.0f, m_Blue/255.0f, 1.0f);
-
-		if(Input.GetMouseButton(0))
-		{
-			Ray screenRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-			Vector3 worldPosition = screenRay.GetPoint(m_VectorGrid.transform.position.z - Camera.main.transform.position.z);
-			worldPosition.z = m_VectorGrid.transform.position.z;
-			m_VectorGrid.AddGridForce(worldPosition, m_ExplosiveForce * 0.1f, m_ForceRadius, color, true);
-		}
 		
 		if(m_RandomiseColor)
 		{
