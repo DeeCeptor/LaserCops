@@ -6,6 +6,7 @@ public class CivillianScript : MonoBehaviour {
 	//they are subtracted from the score and should be positive
 	public int pointPenaltyForKill = 200;
 	public int pointPenaltyForAbandon = 0;
+    public float healthToGainBack = 15f;
 	//layer for the save ad destroy tether
 	public int saveLayer = 13;
 	public int destroyLayer = 12;
@@ -112,6 +113,12 @@ public class CivillianScript : MonoBehaviour {
 		if(collision.gameObject.layer == saveLayer)
 		{
             UIManager.ui_manager.ChangeScore(pointsForSave);
+            GameObject[] playerObjects = GameState.game_state.PlayerObjects;
+            for(int i = 0; i < playerObjects.Length;i++)
+            {
+                PlayerController playerScript = playerObjects[i].GetComponent<PlayerController>();
+                playerScript.TakeHit(-healthToGainBack);
+            }
             Destroy(gameObject);
 			
 		}

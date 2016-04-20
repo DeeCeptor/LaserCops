@@ -36,14 +36,17 @@ public class reboundableBullet : BulletScript
 
         else if(collision.gameObject.tag == "Enemy" && rebounding)
         {
-            Destroy(collision.gameObject);
+            basicScrollingEnemyScript enemyHealth = collision.gameObject.GetComponent<basicScrollingEnemyScript>();
+            enemyHealth.Die();
             Destroy(gameObject);
+
         }
 
         else if(collision.gameObject.tag == "Boss" && rebounding)
         {
             BossHealthScript bossHealth = collision.gameObject.GetComponent<BossHealthScript>();
-            bossHealth.health = bossHealth.health - damageToBoss;
+            bossHealth.takeHit(damageToBoss);
+            EffectsManager.effects.ViolentExplosion(this.transform.position);
             Destroy(gameObject);
         }
 
