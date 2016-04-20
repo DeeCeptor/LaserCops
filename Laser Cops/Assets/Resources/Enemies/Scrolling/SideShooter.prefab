@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11462288}
   - 61: {fileID: 6195280}
   - 114: {fileID: 11467970}
+  - 114: {fileID: 11435942}
   m_Layer: 8
   m_Name: SideShooter
   m_TagString: Enemy
@@ -189,6 +190,24 @@ MonoBehaviour:
   only_shoot_on_command: 0
   playerCloseDisable: 1
   disableDistance: 2
+--- !u!114 &11435942
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8001c0b333b214cf6819aa35fc6da60a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_VectorGrid: {fileID: 0}
+  m_ForceScale: 1
+  m_Directional: 0
+  m_ForceDirection: {x: 0, y: 0, z: 0}
+  m_Radius: 1
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_HasColor: 0
 --- !u!114 &11451444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -225,7 +244,7 @@ MonoBehaviour:
   collisionDamage: 0.3
   pointValue: 20
   health: 1
-  inactiveSpeed: 1
+  desired_velocity: {x: 0, y: 0}
   travelDirection: 0
 --- !u!114 &11467970
 MonoBehaviour:

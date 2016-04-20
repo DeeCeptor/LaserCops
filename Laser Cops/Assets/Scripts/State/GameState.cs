@@ -30,8 +30,11 @@ public class GameState : MonoBehaviour
     bool debugging = true;
     bool increased_speed = false;
 
+    float normal_physics_delta_time;
+
     void Awake()
     {
+        normal_physics_delta_time = Time.fixedDeltaTime;
         game_state = this;
         SetGameSettings();
         PlayerObjects = GameObject.FindGameObjectsWithTag("Player");
@@ -110,7 +113,7 @@ public class GameState : MonoBehaviour
                 debug_invulnerability = true;
                 Time.timeScale = 5f;
             }
-            else
+            else if (Time.timeScale > 1)
             {
                 increased_speed = false;
                 Time.timeScale = 1;
@@ -159,15 +162,22 @@ public class GameState : MonoBehaviour
     }
 
 
+    public void ChangeTimescale(float new_timescale)
+    {
+        Time.timeScale = new_timescale;
+        Time.fixedDeltaTime = new_timescale * normal_physics_delta_time;
+    }
+
+
     public void ChangeScene(float delay, string scene_to_load)
     {
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         StartCoroutine(loadMenu(delay, scene_to_load));
     }
     public IEnumerator loadMenu(float delay, string scene_to_load)
     {
         yield return new WaitForSeconds(delay);
-
+        ChangeTimescale(1f);
         SceneManager.LoadScene(scene_to_load);
         yield return null;
     }
@@ -190,9 +200,9 @@ public class GameState : MonoBehaviour
         if (debugging)
         {
             if (debug_invulnerability)
-                GUI.Label(new Rect(0, 0, 300, 100), "Invulnerable");
-            if (increased_speed)
-                GUI.Label(new Rect(0, 50, 300, 100), Time.timeScale + "X");
+                GUI.Label(new Rect(0, 10, 300, 100), "Invulnerable");
+            if (true)
+                GUI.Label(new Rect(0, 0, 300, 100), Time.timeScale + "X");
         }
     }
 }

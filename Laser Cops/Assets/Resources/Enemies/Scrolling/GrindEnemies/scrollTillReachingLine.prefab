@@ -116,6 +116,7 @@ GameObject:
   - 114: {fileID: 11476796}
   - 114: {fileID: 11469648}
   - 114: {fileID: 11456150}
+  - 114: {fileID: 11420516}
   m_Layer: 8
   m_Name: scrollTillReachingLine
   m_TagString: Enemy
@@ -477,6 +478,24 @@ MonoBehaviour:
   offset: 1
   localDirectionToUse: 1
   lagTime: 0.05
+--- !u!114 &11420516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8001c0b333b214cf6819aa35fc6da60a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_VectorGrid: {fileID: 0}
+  m_ForceScale: 1
+  m_Directional: 0
+  m_ForceDirection: {x: 0, y: 0, z: 0}
+  m_Radius: 1
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_HasColor: 1
 --- !u!114 &11423138
 MonoBehaviour:
   m_ObjectHideFlags: 1

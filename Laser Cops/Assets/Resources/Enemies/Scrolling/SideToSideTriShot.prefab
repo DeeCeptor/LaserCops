@@ -32,6 +32,7 @@ GameObject:
   - 61: {fileID: 6178978}
   - 114: {fileID: 11468668}
   - 114: {fileID: 11415090}
+  - 114: {fileID: 11483068}
   m_Layer: 8
   m_Name: SideToSideTriShot
   m_TagString: Enemy
@@ -750,6 +751,24 @@ MonoBehaviour:
   switchCounter: 0
   upDown: 1
   pos: 1
+--- !u!114 &11483068
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8001c0b333b214cf6819aa35fc6da60a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_VectorGrid: {fileID: 0}
+  m_ForceScale: 1
+  m_Directional: 0
+  m_ForceDirection: {x: 0, y: 0, z: 0}
+  m_Radius: 1
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_HasColor: 0
 --- !u!114 &11493318
 MonoBehaviour:
   m_ObjectHideFlags: 1
