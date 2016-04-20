@@ -4,7 +4,10 @@ using System.Collections;
 public class ObstacleScrollScript : MonoBehaviour {
     public float speed = 2f;
     public bool active = false;
-	public float damage = 1f;
+	public float damage = 0.5f;
+    public float dieDelay = 1f;
+    public float dieCounter;
+    public bool dying = false;
 
     //this is used for the enemies speed when OFFSCREEN do not change unless you know what you're doing in which case I'm a comment not a cop
     public float inactiveSpeed = 1f;
@@ -29,6 +32,13 @@ public class ObstacleScrollScript : MonoBehaviour {
                 CheckDeath();
                 moveActive();
             }
+        if(dying)
+        {
+            if(dieCounter > Time.time)
+            {
+                Die();
+            }
+        }
     }
 
 	public void OnCollisionStay2D(Collision2D collision)
@@ -122,7 +132,8 @@ public class ObstacleScrollScript : MonoBehaviour {
     {
         if (!GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
         {
-            Die();
+            dying = true;
+            dieCounter = Time.time + dieDelay;
         }
     }
 }

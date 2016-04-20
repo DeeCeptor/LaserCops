@@ -2,13 +2,13 @@ using UnityEngine;
 using System.Collections;
 
 public class BossHealthScript : MonoBehaviour {
-    public float health = 50f;
+    public float health = 20f;
     //if this field is empty the boss will die when out of health. otherwise the boss will change form when it runs out of health
     public GameObject nextStage;
 	//number of stages the boss will have
 	public int stages = 3;
-	//number of health points for each stage transition to trigger on. highest health should be highest in the array
-	public int[] stageHealthpoints;
+	//number of healthpoints remaining for the boss overall(across multiple forms)
+	public float overallHealth = 60;
 
 	// Use this for initialization
 	void Start ()
@@ -28,7 +28,8 @@ public class BossHealthScript : MonoBehaviour {
 	public void takeHit(float damage)
 	{
 		health -= damage;
-        UIManager.ui_manager.UpdateBottomHealthBar(health);
+        overallHealth -= damage;
+        UIManager.ui_manager.UpdateBottomHealthBar(overallHealth);
 	}
 
     public void Die()
