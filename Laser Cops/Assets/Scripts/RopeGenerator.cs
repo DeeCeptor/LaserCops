@@ -22,7 +22,7 @@ public class RopeGenerator : MonoBehaviour
     public Vector2 direction;// = new Vector2(1, 0);
 
     public int number_of_segments = 40;
-    public float size_of_rope_pieces = 0.2f;
+    //public float size_of_rope_pieces = 0.2f;
     //public List<PlatformerCharacter2D> players_on_rope = new List<PlatformerCharacter2D>();
 
 

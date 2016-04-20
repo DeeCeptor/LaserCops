@@ -22,19 +22,20 @@ public class ObstacleScrollScript : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate ()
     {
-            if (!active)
-            {
-                CheckActive();
-                moveInactive();
-            }
-            else
-            {
-                CheckDeath();
-                moveActive();
-            }
+        if (!active)
+        {
+            CheckActive();
+            moveInactive();
+        }
+        else
+        {
+            CheckDeath();
+            moveActive();
+        }
+
         if(dying)
         {
-            if(dieCounter > Time.time)
+            if (dieCounter < Time.time)
             {
                 Die();
             }
@@ -91,7 +92,7 @@ public class ObstacleScrollScript : MonoBehaviour {
 
     public void Die()
     {
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 
     public void initiate()
@@ -130,7 +131,7 @@ public class ObstacleScrollScript : MonoBehaviour {
     //after activating the enemy should die if it leaves the screen
     public void CheckDeath()
     {
-        if (!GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
+        if (!dying && !GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
         {
             dying = true;
             dieCounter = Time.time + dieDelay;

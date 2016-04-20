@@ -32,6 +32,11 @@ public class GameState : MonoBehaviour
 
     float normal_physics_delta_time;
 
+    int default_velocity_iterations;
+    int default_position_iterations;
+    public static int intensive_velocity_iterations = 900;
+    public static int intensive_position_iterations = 900;
+
     void Awake()
     {
         normal_physics_delta_time = Time.fixedDeltaTime;
@@ -98,6 +103,7 @@ public class GameState : MonoBehaviour
             time_last_touched_obstacle + turn_off_tether_touching_obstacle_time < Time.time)
         {
             tether_touching_obstacle = false;
+            ResetVelocityPositionIterations();
         }
 
         if (debugging)
@@ -166,6 +172,16 @@ public class GameState : MonoBehaviour
     {
         Time.timeScale = new_timescale;
         Time.fixedDeltaTime = new_timescale * normal_physics_delta_time;
+    }
+    public void ResetVelocityPositionIterations()
+    {
+        Physics2D.velocityIterations = default_velocity_iterations;
+        Physics2D.positionIterations = default_position_iterations;
+    }
+    public void SetVelocityPositionIterations(int velocity_iterations, int position_iterations)
+    {
+        Physics2D.velocityIterations = velocity_iterations;
+        Physics2D.positionIterations = position_iterations;
     }
 
 

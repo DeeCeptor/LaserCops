@@ -7,6 +7,11 @@ public class PlayerController : PlayerInput
     float x_speed = 6f;
     float y_speed = 6f;
 
+    // OBSTACLES
+    bool touching_forward_obstacle = false;
+    float cur_touching_forward_obstacle = 0f;
+    float touching_forward_obstacle_cooldown = 0.5f;
+
     Vector2 screen_margins = new Vector2(0.2f, 0.2f);
 
     // Grid attributes
@@ -117,9 +122,13 @@ public class PlayerController : PlayerInput
         if (GameState.game_state.tether_touching_obstacle)
         {
             if (GameState.game_state.going_sideways)
+            {
                 physics.velocity = new Vector2(physics.velocity.x, new_speed.y);
+            }
             else
+            {
                 physics.velocity = new Vector2(new_speed.x, physics.velocity.y);
+            }
         }
         else
         {
@@ -148,6 +157,13 @@ public class PlayerController : PlayerInput
         {
             TurningCar(new_speed.x);
             AccelerateDeceleratingCar(new_speed.y);
+        }
+
+        // OBSTACLES
+        cur_touching_forward_obstacle -= Time.deltaTime;
+        if (cur_touching_forward_obstacle <= 0)
+        {
+            touching_forward_obstacle = false;
         }
 
         // Force the player to remain within view of the camera
@@ -292,6 +308,7 @@ public class PlayerController : PlayerInput
         this.gameObject.tag = "Obstacle";
         this.gameObject.AddComponent<PlayerDying>();
 
+        GameState.game_state.Players.Remove(this);
         GameState.game_state.GameOver();
 
         Destroy(this);
@@ -348,6 +365,9 @@ public class PlayerController : PlayerInput
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
             return;
 
+
+
+        // SPARKS
         // Show sparks on the side of the car it was hit on
         CollisionAt(collision.contacts[0].point);
 
@@ -371,7 +391,7 @@ public class PlayerController : PlayerInput
         if (!in_use_grinding_sparks.ContainsKey(collision.gameObject))
             in_use_grinding_sparks.Add(collision.gameObject, sparks);
 
-        sparks.GetComponent<TurnOffSparks>().time_remaining = sparks.GetComponent<TurnOffSparks>().start_time_remaining;
+        //sparks.GetComponent<TurnOffSparks>().time_remaining = sparks.GetComponent<TurnOffSparks>().start_time_remaining;
     }
     // Show grinding sparks when touching another object
     void OnCollisionStay2D(Collision2D coll)
@@ -379,6 +399,9 @@ public class PlayerController : PlayerInput
         if (coll.gameObject == null)
             return;
 
+
+
+        // SPARKS
         // Update the position of the grinding
         if (in_use_grinding_sparks.ContainsKey(coll.gameObject) && in_use_grinding_sparks[coll.gameObject] != null)
         {
@@ -397,13 +420,38 @@ public class PlayerController : PlayerInput
         in_use_grinding_sparks.Remove(sparks.gameObject);
         free_grinding_sparks.Add(sparks);
     }
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D coll)
     {
         // Check to see if we die
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Death Zone") && GameState.game_state.tether_touching_obstacle)
+        if (coll.gameObject.layer == LayerMask.NameToLayer("Death Zone") 
+            && (GameState.game_state.tether_touching_obstacle || touching_forward_obstacle))
         {
             HitDeathZone();
             return;
+        }
+        else
+        {
+            if (coll.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
+            {
+                cur_touching_forward_obstacle = touching_forward_obstacle_cooldown;
+                touching_forward_obstacle = true;
+            }
+        }
+    }
+    void OnTriggerStay2D(Collider2D coll)
+    {
+        if (coll.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
+        {
+            cur_touching_forward_obstacle = touching_forward_obstacle_cooldown;
+            touching_forward_obstacle = true;
+        }
+    }
+    void OnTriggerExit2D(Collider2D coll)
+    {
+        if (coll.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
+        {
+            cur_touching_forward_obstacle = 0;
+            touching_forward_obstacle = false;
         }
     }
 

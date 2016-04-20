@@ -31,20 +31,26 @@ public class TetherClamping : MonoBehaviour
 	}
 
 
+    public void TouchedObstacle()
+    {
+        GameState.game_state.tether_touching_obstacle = true;
+        GameState.game_state.time_last_touched_obstacle = Time.time;
+        GameState.game_state.SetVelocityPositionIterations(GameState.intensive_velocity_iterations, GameState.intensive_position_iterations);
+    }
+
+
     void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
         {
-            GameState.game_state.tether_touching_obstacle = true;
-            GameState.game_state.time_last_touched_obstacle = Time.time;
+            TouchedObstacle();
         }
     }
     void OnCollisionStay2D(Collision2D coll)
     {
         if (coll.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
         {
-            GameState.game_state.tether_touching_obstacle = true;
-            GameState.game_state.time_last_touched_obstacle = Time.time;
+            TouchedObstacle();
         }
     }
     void OnCollisionExit2D(Collision2D coll)
