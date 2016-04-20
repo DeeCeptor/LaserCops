@@ -45,7 +45,8 @@ public class EffectsManager : MonoBehaviour
 
     public void GridExplosion(Vector2 position, float force, float radius, Color color)
     {
-        VectorGrid.grid.AddGridForce((Vector3)position, force, radius, color, true);
+        if (VectorGrid.grid)
+            VectorGrid.grid.AddGridForce((Vector3)position, force, radius, color, true);
     }
     
     public void FlashScreen()

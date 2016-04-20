@@ -23,7 +23,7 @@ public class PlayerDying : MonoBehaviour
 
     void Update ()
     {
-        VectorGrid.grid.AddGridForce(this.transform.position, 1, Random.Range(0.1f, 2f), Color.red, true);
+        EffectsManager.effects.GridExplosion(this.transform.position, 1, Random.Range(0.1f, 2f), Color.red);
 
         sparks -= Time.deltaTime;
         if (sparks <= 0)
