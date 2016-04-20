@@ -17,7 +17,7 @@ public class PlayerController : PlayerInput
     // Grid attributes
     public Color primary_colour;
     float normal_grid_force = 1f;
-    float normal_grid_radius = 1f;
+    float normal_grid_radius = 1.2f;
     float boost_grid_force = 3f;
     float boost_grid_radius = 2f;
 
@@ -453,6 +453,15 @@ public class PlayerController : PlayerInput
             cur_touching_forward_obstacle = touching_forward_obstacle_cooldown;
             touching_forward_obstacle = true;
         }
+
+        // Check to see if we die
+        if (coll.gameObject.layer == LayerMask.NameToLayer("Death Zone")
+            && (GameState.game_state.tether_touching_obstacle || touching_forward_obstacle))
+        {
+            HitDeathZone();
+            return;
+        }
+
     }
     void OnTriggerExit2D(Collider2D coll)
     {
