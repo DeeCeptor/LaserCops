@@ -36,9 +36,10 @@ public class ScrollThenStopBoss : basicScrollingEnemyScript
         }
         else
         {
-            moveActive();
+            
             if (!stopped)
             {
+                moveActive();
                 if (stopCounter < Time.time)
                 {
                     FreezePosition();
@@ -76,8 +77,9 @@ public class ScrollThenStopBoss : basicScrollingEnemyScript
         stopCounter = Time.time + timeTillGoAgain;
         stopped = true;
         Rigidbody2D rigid = GetComponent<Rigidbody2D>();
-        rigid.isKinematic = false;
+        //rigid.isKinematic = false;
         rigid.constraints = RigidbodyConstraints2D.FreezeAll;
+        rigid.velocity = Vector3.zero;
     }
 
     public void unfreeze()
