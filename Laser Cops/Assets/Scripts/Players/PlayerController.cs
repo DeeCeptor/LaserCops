@@ -161,7 +161,7 @@ public class PlayerController : PlayerInput
 
 
         // Ripple the grid behind the car
-        VectorGrid.grid.AddGridForce(this.transform.position, grid_ripple_force, grid_ripple_radius, primary_colour, true);
+        EffectsManager.effects.GridExplosion((Vector2)transform.position, grid_ripple_force, grid_ripple_radius, primary_colour);
     }
     // Slightly rotate car to make it look like turning
     public void TurningCar(float amount)
