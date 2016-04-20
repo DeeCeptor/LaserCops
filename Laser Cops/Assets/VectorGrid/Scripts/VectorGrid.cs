@@ -18,6 +18,8 @@ public class VectorGrid : MonoBehaviour
 {
     public static VectorGrid grid;
 
+    public MeshRenderer mesh;
+
 	// How many grid points make up the grid in each direction
 	public int m_GridWidth = 16;
 	public int m_GridHeight = 16;
@@ -139,6 +141,7 @@ public class VectorGrid : MonoBehaviour
     void Awake()
     {
         grid = this;
+        mesh = this.GetComponent<MeshRenderer>();
     }
 	/// <summary>
 	/// Start this instance.

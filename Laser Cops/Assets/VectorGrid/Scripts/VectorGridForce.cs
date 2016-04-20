@@ -11,16 +11,20 @@ public class VectorGridForce : MonoBehaviour
 	public float m_Radius;
 	public Color m_Color = Color.white;
 	public bool m_HasColor;
+    bool activated = false;
 
     void Start ()
     {
         m_VectorGrid = VectorGrid.grid;
+
+        if (!m_VectorGrid)
+            Destroy(this);
     }
 
 	// Update is called once per frame
 	void Update () 
 	{
-		if(m_VectorGrid)
+		if(activated)
 		{
 			if(m_Directional)
 			{
@@ -31,5 +35,10 @@ public class VectorGridForce : MonoBehaviour
 				m_VectorGrid.AddGridForce(this.transform.position, m_ForceScale, m_Radius, m_Color, m_HasColor);
 			}
 		}
+        // Check if over the grid
+        else if(m_VectorGrid.mesh.bounds.Intersects(this.GetComponent<BoxCollider2D>().bounds))
+        {
+            activated = true;
+        }
 	}
 }
