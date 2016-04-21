@@ -145,16 +145,18 @@ public class basicScrollingEnemyScript : MonoBehaviour
         }
     }
 
-    public void CutSprite()
+    public GameObject[] CutSprite()
     {
         Sprite corpseSprite = gameObject.GetComponent<SpriteRenderer>().sprite;
         Texture2D[] corpses = new Texture2D[2];
         Texture2D tex;
+        GameObject[] corpse_objects = new GameObject[2];
 
         //instantiate the new sprites for cutting
         for (int i = 0; i < 2; i++)
         {
             GameObject corpseSpawned = (GameObject)Instantiate(Resources.Load("enemies/EmptyCorpse"), transform.position, transform.rotation);
+            corpse_objects[i] = corpseSpawned;
             corpseSpawned.transform.localScale = transform.localScale;
 
             tex = gameObject.GetComponent<SpriteRenderer>().sprite.texture;
@@ -278,7 +280,7 @@ public class basicScrollingEnemyScript : MonoBehaviour
 
         }
 
-        
+        return corpse_objects;
     }
 
     public void Die()
@@ -287,7 +289,11 @@ public class basicScrollingEnemyScript : MonoBehaviour
         EffectsManager.effects.ViolentExplosion(this.transform.position);
         TetherLightning.tether_lightning.BurstLightning((Vector2)this.transform.position + new Vector2(Random.Range(-1, 1), Random.Range(-1, 1)), (Vector2) this.transform.position);
         UIManager.ui_manager.ChangeScore(pointValue);
-        CutSprite();
+
+        GameObject[] corpses = CutSprite();
+        corpses[0].GetComponent<EnemyDying>().JustDied(1);
+        corpses[1].GetComponent<EnemyDying>().JustDied(-1);
+
         Destroy(gameObject);
     }
 

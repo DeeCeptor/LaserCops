@@ -86,7 +86,10 @@ public class SoundMixer : MonoBehaviour
     {
         PlaySound(Sounds[9], 1f);
     }
-
+    public void PlayTransferHealth()
+    {
+        PlaySound(Sounds[10], 1f);
+    }
 
     // MUSIC
     public void Play2ndBallad()
