@@ -379,22 +379,7 @@ public class PlayerController : PlayerInput
 
         if (coll.gameObject.tag == "Player")
         {
-            // Equalize health between players
-            // Get other player
-            PlayerController other_p = coll.gameObject.GetComponent<PlayerController>();
-
-            if (other_p.Health < this.Health)
-            {
-                // Transfer health if we have health to give
-                float health_transferred = Mathf.Min(Time.deltaTime * HP_transfer_rate, this.Health - other_p.Health);
-                other_p.AdjustHealth(health_transferred);
-                this.AdjustHealth(-health_transferred);
-
-                if (health_transferred > 0.1f)
-                {
-                    SoundMixer.sound_manager.PlayTransferHealth();
-                }
-            }
+            TransferHealth(coll.gameObject);
         }
         else
         {
@@ -433,22 +418,7 @@ public class PlayerController : PlayerInput
 
         if (coll.gameObject.tag == "Player")
         {
-            // Equalize health between players
-            // Get other player
-            PlayerController other_p = coll.gameObject.GetComponent<PlayerController>();
-
-            if (other_p.Health < this.Health)
-            {
-                // Transfer health if we have health to give
-                float health_transferred = Mathf.Min(Time.deltaTime * HP_transfer_rate, (this.Health - other_p.Health) / 2f);
-                other_p.AdjustHealth(health_transferred);
-                this.AdjustHealth(-health_transferred);
-
-                if (health_transferred > 0.1f)
-                {
-                    SoundMixer.sound_manager.PlayTransferHealth();
-                }
-            }
+            TransferHealth(coll.gameObject);
         }
         else
         {
@@ -525,6 +495,36 @@ public class PlayerController : PlayerInput
     {
 
     }
+
+    float last_health_transfer_lightning;
+
+    // Equalize health between players
+    public void TransferHealth(GameObject other_player)
+    {
+        // Get other player
+        PlayerController other_p = other_player.GetComponent<PlayerController>();
+
+        if (other_p.Health < this.Health)
+        {
+            // Transfer health if we have health to give
+            float health_transferred = Mathf.Min(Time.deltaTime * HP_transfer_rate, (this.Health - other_p.Health) / 2f);
+            other_p.AdjustHealth(health_transferred);
+            this.AdjustHealth(-health_transferred);
+
+            if (health_transferred > 0.1f)
+            {
+                SoundMixer.sound_manager.PlayTransferHealth();
+
+                if (last_health_transfer_lightning + 0.03f < Time.time)
+                {
+                    TetherLightning.tether_lightning.RegularBolt(this.transform.position, other_player.transform.position, 0.5f, Color.green, 5);
+                    last_health_transfer_lightning = Time.time;
+                }
+            }
+
+        }
+    }
+
 
     public void HitDeathZone()
     {
