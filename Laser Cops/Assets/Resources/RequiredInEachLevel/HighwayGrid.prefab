@@ -144,9 +144,10 @@ GameObject:
   - 23: {fileID: 2316032}
   - 114: {fileID: 11478518}
   - 114: {fileID: 11428522}
+  - 61: {fileID: 6163308}
   m_Layer: 0
   m_Name: HighwayGrid
-  m_TagString: Untagged
+  m_TagString: Grid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -440,6 +441,20 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+--- !u!61 &6163308
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179760}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: -0.14999962, y: -0.14999986}
+  serializedVersion: 2
+  m_Size: {x: 37.3, y: 15.700001}
 --- !u!114 &11428522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -488,7 +503,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8c3e05d6f44a34985144f2a5ef7a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GridWidth: 150
+  mesh: {fileID: 2316032}
+  m_GridWidth: 125
   m_GridHeight: 53
   m_GridScale: 0.3
   m_MaxFogDistance: 1
@@ -521,7 +537,7 @@ MonoBehaviour:
   m_TrackedCamera: {fileID: 0}
   m_ParallaxScroll: {x: 1, y: 1}
   m_AllowHorizontalScroll: 1
-  m_AllowVerticalScroll: 1
+  m_AllowVerticalScroll: 0
   m_EnableDiagnostics: 0
 --- !u!114 &11489282
 MonoBehaviour:

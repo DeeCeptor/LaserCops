@@ -3,7 +3,7 @@ using System.Collections;
 
 public class TurnOffSparks : MonoBehaviour
 {
-    public float time_remaining = 0.5f;
+    public float time_remaining = 0.9f;
     public float start_time_remaining = 0.5f;
     ParticleSystem p;
     AudioSource audio;
@@ -19,19 +19,23 @@ public class TurnOffSparks : MonoBehaviour
     {
         time_remaining = start_time_remaining;
 
-        if (!p.isPlaying)
+        //this.gameObject.SetActive(true);
+
+        p.enableEmission = true;
+        if (!audio.isPlaying)
         {
-            p.Play();
             audio.Play();
         }
     }
     public void StopSparks()
     {
-        if (p.isPlaying)
+        p.enableEmission = false;
+        if (audio.isPlaying)
         {
-            p.Stop();
+            //p.Stop();
             audio.Stop();
         }
+        //this.gameObject.SetActive(false);
         time_remaining = 0;
     }
 
@@ -41,19 +45,16 @@ public class TurnOffSparks : MonoBehaviour
 
         if (time_remaining <= 0)
         {
-            if (p.isPlaying)
-            {
-                p.Stop();
-                audio.Stop();
-            }
+            StopSparks();
+            //this.gameObject.SetActive(false);
         }
         else
         {
-            if (!p.isPlaying)
+            p.enableEmission = true;
+            if (!audio.isPlaying)
             {
-                p.Play();
                 audio.Play();
             }
         }
-	}
+    }
 }

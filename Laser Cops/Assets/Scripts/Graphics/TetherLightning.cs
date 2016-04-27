@@ -103,11 +103,11 @@ public class TetherLightning : MonoBehaviour
         //add it to the list of active branches
         branchesObj.Add(branchObj);
     }
-    public void RegularBolt(Vector2 to, Vector2 from, float thickness, Color color)
+    public void RegularBolt(Vector2 to, Vector2 from, float thickness, Color color, int sorting_order)
     {
-        CreatePooledBolt(to, from, color, thickness);
+        CreatePooledBolt(to, from, color, thickness, sorting_order);
     }
-    public void BurstLightning(Vector2 to, Vector2 from)
+    public void BurstLightning(Vector2 to, Vector2 from, int sorting_order)
     {
         Vector2 diff = from - to;
 
@@ -123,7 +123,7 @@ public class TetherLightning : MonoBehaviour
             Vector2 boltEnd = (Vector2)(rot * diff) + from;
 
             // Create a (pooled) bolt from pos1 to boltEnd
-            CreatePooledBolt(from, boltEnd, Color.white, 1f);
+            CreatePooledBolt(from, boltEnd, Color.white, 1f, sorting_order);
         }
     }
 
@@ -173,8 +173,8 @@ public class TetherLightning : MonoBehaviour
             Vector2 pos1 = GameState.game_state.PlayerObjects[0].transform.position;
             Vector2 pos2 = GameState.game_state.PlayerObjects[1].transform.position;
 
-            CreatePooledBolt(pos1, Tether.tether.middle_link.transform.position, Tether.tether.primary_colour, 1f);
-            CreatePooledBolt(pos2, Tether.tether.middle_link.transform.position, Tether.tether.primary_colour, 1f);
+            CreatePooledBolt(pos1, Tether.tether.middle_link.transform.position, Tether.tether.primary_colour, 1f, -1);
+            CreatePooledBolt(pos2, Tether.tether.middle_link.transform.position, Tether.tether.primary_colour, 1f, -1);
         }
         /*
         //check for key press and set mode accordingly
@@ -449,9 +449,9 @@ public class TetherLightning : MonoBehaviour
         return ((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
     }
 
-    void CreatePooledBolt(Vector2 source, Vector2 dest, Color color, float thickness)
+    void CreatePooledBolt(Vector2 source, Vector2 dest, Color color, float thickness, int sprite_sorting_order)
     {
-        //if there is an inactive bolt to pull from the pool
+        // If there is an inactive bolt to pull from the pool
         if (inactiveBoltsObj.Count > 0)
         {
             //pull the GameObject
@@ -469,6 +469,11 @@ public class TetherLightning : MonoBehaviour
 
             //activate the bolt using the given position data
             boltComponent.ActivateBolt(source, dest, color, thickness);
+
+            foreach (SpriteRenderer s in boltObj.GetComponentsInChildren<SpriteRenderer>())
+            {
+                s.sortingOrder = sprite_sorting_order;
+            }
         }
     }
 
