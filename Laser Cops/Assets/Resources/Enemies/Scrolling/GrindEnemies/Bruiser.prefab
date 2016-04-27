@@ -240,7 +240,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107442}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 11, y: 6, z: 2}
+  m_LocalPosition: {x: 150, y: 0, z: 2}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 406428}
@@ -476,7 +476,7 @@ MonoBehaviour:
   takes_grinding_damage: 0
   collisionDamage: 0.5
   pointValue: 20
-  health: 450
+  health: 350
   desired_velocity: {x: 0, y: 0}
   travelDirection: 1
   timeTillStop: 3
