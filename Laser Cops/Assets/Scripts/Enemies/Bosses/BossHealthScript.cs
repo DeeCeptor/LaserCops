@@ -43,5 +43,9 @@ public class BossHealthScript : MonoBehaviour {
         {
             Instantiate(nextStage,transform.position,transform.rotation);
         }
+        else
+        {
+            GameState.game_state.Victory();
+        }
     }
 }
