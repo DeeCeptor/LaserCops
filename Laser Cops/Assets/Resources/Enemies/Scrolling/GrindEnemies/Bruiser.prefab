@@ -240,7 +240,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107442}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 150, y: 0, z: 2}
+  m_LocalPosition: {x: 10.297298, y: 6.7285395, z: 1}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 406428}
@@ -487,6 +487,7 @@ MonoBehaviour:
   timeTillGoAgain: 0
   stopped: 0
   speedAfterStop: 1.5
+  playerToTrack: {fileID: 0}
   players: []
   dir: {x: 0, y: 0}
 --- !u!114 &11401388
@@ -495,7 +496,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107442}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8001c0b333b214cf6819aa35fc6da60a, type: 3}
   m_Name: 
@@ -507,6 +508,7 @@ MonoBehaviour:
   m_Radius: 1
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_HasColor: 1
+  activated: 0
 --- !u!114 &11405824
 MonoBehaviour:
   m_ObjectHideFlags: 1

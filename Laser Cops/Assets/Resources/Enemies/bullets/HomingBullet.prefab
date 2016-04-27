@@ -15,6 +15,7 @@ GameObject:
   - 198: {fileID: 19879228}
   - 199: {fileID: 19949068}
   - 114: {fileID: 11421802}
+  - 114: {fileID: 11468714}
   m_Layer: 15
   m_Name: HomingBullet
   m_TagString: Enemy
@@ -126,6 +127,18 @@ MonoBehaviour:
   speed: 2
   damage: 10
   trackingPower: 3
+--- !u!114 &11468714
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 120478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6753f33a9ec346e499f6e2240d3749d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondsTillDeath: 8
 --- !u!198 &19879228
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -1697,7 +1710,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: secondsTillDeath
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 120478}
