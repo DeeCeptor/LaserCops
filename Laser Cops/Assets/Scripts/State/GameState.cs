@@ -112,6 +112,11 @@ public class GameState : MonoBehaviour
             ResetVelocityPositionIterations();
         }
 
+        if(VIP && VIPObject == null)
+        {
+            GameOver();
+        }
+
         if (debugging)
         {
             if (Input.GetKeyDown(KeyCode.Tab))
