@@ -43,6 +43,11 @@ public class EffectsManager : MonoBehaviour
     }
 
 
+    public void GridWake(Vector2 position, float force, float radius, Color color)
+    {
+        if (GraphicalSettings.Show_Wakes)
+            GridExplosion(position, force, radius, color);
+    }
     public void GridExplosion(Vector2 position, float force, float radius, Color color)
     {
         if (VectorGrid.grid)
@@ -74,7 +79,7 @@ public class EffectsManager : MonoBehaviour
             glow.BlurIterations = (int) Mathf.Lerp(cur_blur_iterations, normal_blur_iterations, cur_time / (time / 2));
             yield return new WaitForSeconds(wait_time);
         }
-        Debug.Log("D0ne");
+        Debug.Log("Done");
     }
 
     // Creates a shower of sparks at the designated position
@@ -96,6 +101,33 @@ public class EffectsManager : MonoBehaviour
     {
         Destroy((GameObject)GameObject.Instantiate(Resources.Load("Graphics/Tether Damage Sparks") as GameObject,
             position, Quaternion.identity), 4.0f);
+    }
+
+
+    public GameObject spawnMovingText(Vector3 location, string message)
+    {
+        GameObject score = Instantiate(Resources.Load("FloatingScore", typeof(GameObject))) as GameObject;
+        score.GetComponent<Rigidbody2D>().velocity = new Vector3(Random.Range(-1, 1), 6, 0);
+        score.GetComponent<TextMesh>().text = message;
+        score.transform.position = location;
+        return score;
+    }
+    public GameObject spawnMovingText(Vector3 location, string message, Vector3 velocity)
+    {
+        GameObject score = Instantiate(Resources.Load("FloatingScore", typeof(GameObject))) as GameObject;
+        score.GetComponent<Rigidbody2D>().velocity = velocity;
+        score.GetComponent<TextMesh>().text = message;
+        score.transform.position = location;
+        return score;
+    }
+    public GameObject spawnMovingText(Vector3 location, string message, Vector3 velocity, int size)
+    {
+        GameObject score = Instantiate(Resources.Load("FloatingScore", typeof(GameObject))) as GameObject;
+        score.GetComponent<Rigidbody2D>().velocity = velocity;
+        score.GetComponent<TextMesh>().text = message;
+        score.GetComponent<TextMesh>().fontSize = size;
+        score.transform.position = location;
+        return score;
     }
 
 

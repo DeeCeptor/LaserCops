@@ -34,7 +34,8 @@ public class ScrollDemoManager : MonoBehaviour
 			UpdateRandomColor();
 		}
 
-		m_VectorGrid.Scroll(m_ScrollSpeed * Time.deltaTime);
+        if (GraphicalSettings.Scroll_Grid)  
+		    m_VectorGrid.Scroll(m_ScrollSpeed * Time.deltaTime);
 	}
 	
 	void UpdateRandomColor()

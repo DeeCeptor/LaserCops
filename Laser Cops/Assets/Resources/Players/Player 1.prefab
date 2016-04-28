@@ -8,6 +8,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 471432}
+  - 61: {fileID: 6133970}
+  - 114: {fileID: 11405222}
   m_Layer: 10
   m_Name: VisibleCar
   m_TagString: Untagged
@@ -733,6 +735,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!61 &6133970
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101442}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: -0.0027546498, y: 0.95995426}
+  serializedVersion: 2
+  m_Size: {x: 1.1934389, y: 0.73260605}
 --- !u!61 &6147190
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -829,6 +845,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11405222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc32942d2fba4ea4895b6115b76fcfb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11410770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -930,6 +957,8 @@ MonoBehaviour:
   Max_Health: 100
   Health: 0
   Grinding_Damage: 0.3
+  currently_boosting: 0
+  boosting_damage: 1
   car_sprite: {fileID: 168594}
   default_rotation: 0
   desired_rotation: 0

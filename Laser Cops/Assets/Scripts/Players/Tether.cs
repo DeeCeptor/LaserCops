@@ -6,7 +6,7 @@ public class Tether : MonoBehaviour
 {
     public static Tether tether;
 
-    public float Damage = 1f;   // Damage done by the tether to enemies
+    public float Damage = 0.7f;   // Damage done by the tether to enemies
 
     LineRenderer line;
 
@@ -128,7 +128,7 @@ public class Tether : MonoBehaviour
     }
     public void SwitchTether()
     {
-        if (cur_tether_switching_cooldown <= 0)
+        if (cur_tether_mode != TetherMode.None && cur_tether_switching_cooldown <= 0)
         {
             prev_tether_mode = cur_tether_mode;
             cur_tether_switching_cooldown = tether_switching_cooldown;

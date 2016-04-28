@@ -15,6 +15,9 @@ public class UIManager : MonoBehaviour
     public string score_string = "Score: ";
     [HideInInspector]
     public int score;
+    float multiplier;   // Multiplier we are at
+    public Slider multiplier_slider;
+    public Text multiplierText;
 
     public Text time_text;
     [HideInInspector]
@@ -61,7 +64,21 @@ public class UIManager : MonoBehaviour
 
     public void ChangeScore(int amount)
     {
+        ChangeScore(amount, Vector3.zero);
+    }
+    public void ChangeScore(int amount, Vector3 position)
+    {
         score += amount;
+        score = Mathf.Max(0, score);    // Score can't go below 0
+
+        if (position != Vector3.zero)
+            EffectsManager.effects.spawnMovingText(position, "+" + amount);
+
+        multiplier_slider.value += ((float)amount) / (multiplier * 100);
+        if (multiplier_slider.value >= 1)
+            addMultiplierLevel();
+
+        UpdateScore();
     }
     public void UpdateScore()
     {
@@ -97,6 +114,58 @@ public class UIManager : MonoBehaviour
             announcements.Enqueue(s);
         }
         announcement_cooldown = length_of_announcement;
+    }
+
+
+    public void addMultiplierLevel()
+    {
+        multiplier_slider.value = 0.4f;
+        multiplier += 0.2f;
+        setMultiplierText();
+        Vector3 pos = new Vector3(
+            Camera.main.ScreenToWorldPoint(multiplierText.transform.position).x,
+            Camera.main.ScreenToWorldPoint(multiplierText.transform.position).y,
+            0);
+        EffectsManager.effects.spawnMovingText(pos, "+0.2!", Vector3.up * 2, 40).transform.SetParent(Camera.main.transform);
+        /*
+        if (multiplier >= nextMultiplierSound && multiplierSounds.Count > 0)
+        {
+            // Play sound, increase amount we need for next multiplier sound
+            nextMultiplierSound++;
+            AudioSource.PlayClipAtPoint(multiplierSounds[0], Camera.main.transform.position);
+            multiplierSounds.RemoveAt(0);   // Remove the sound so we don't hear it again
+
+            // Show announcement text on screen
+            Vector3 posi = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height, -1));
+            posi.z = -1;
+            string text = multiplierAnnouncements[0];
+            multiplierAnnouncements.RemoveAt(0);
+            spawnMovingText(posi, text, Vector3.down * 10, 80).transform.SetParent(Camera.main.transform);
+        }*/
+    }
+    public void lowerMultiplierLevel()
+    {
+        if (multiplier > 1.0f)
+        {
+            // Lower level if we can
+            multiplier_slider.value = 0.9f;
+            multiplier -= 0.2f;
+            setMultiplierText();
+        }
+    }
+    public void setMultiplierText()
+    {
+        multiplierText.text = "X" + multiplier.ToString("0.00");
+    }
+
+
+    void Update ()
+    {
+        // Adjust score multiplier
+        // Update cleaniplier
+        multiplier_slider.value -= Time.deltaTime / 10;
+        if (multiplier_slider.value <= 0)
+            lowerMultiplierLevel();
     }
 
 

@@ -233,3 +233,12 @@ public class GameState : MonoBehaviour
         }
     }
 }
+
+
+public static class GraphicalSettings
+{
+    public static bool Show_Planets = true;
+    public static bool Show_Skybox = true;  // Shows the skybox
+    public static bool Scroll_Grid = true;  // Whether the grid moves or not
+    public static bool Show_Wakes = true;   // Whether cars create wakes with the highway grid
+}

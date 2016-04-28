@@ -29,9 +29,12 @@ public class PlayerController : PlayerInput
     // Boost
     float boost_cooldown = 1.5f;
     float boost_cur_cooldown = 0f;
-    float boost_duration = .5f;
+    float boost_duration = .4f;
     float boost_cur_duration = 0f;
-    float boost_speed_modifier = 2f;
+    float boost_speed_modifier = 3f;
+    [HideInInspector]
+    public bool currently_boosting = false;
+    public float boosting_damage = 1.0f;
 
     // Car
     public GameObject car_sprite;   // Sprite we'll be rotating using animation
@@ -115,7 +118,10 @@ public class PlayerController : PlayerInput
             grid_ripple_force = boost_grid_force;
             grid_ripple_radius = boost_grid_radius;
             SoundMixer.sound_manager.PlayCarRev();
+            currently_boosting = true;
         }
+        else
+            currently_boosting = false;
 
 
         // Can only steer properly when we're not caught on an obstacle
@@ -175,7 +181,7 @@ public class PlayerController : PlayerInput
 
 
         // Ripple the grid behind the car
-        EffectsManager.effects.GridExplosion((Vector2)transform.position, grid_ripple_force, grid_ripple_radius, primary_colour);
+        EffectsManager.effects.GridWake((Vector2)transform.position, grid_ripple_force, grid_ripple_radius, primary_colour);
     }
     void FixedUpdate()
     {
@@ -312,7 +318,7 @@ public class PlayerController : PlayerInput
             Tether.tether.DestroyTether();
 
         EffectsManager.effects.ViolentExplosion(this.transform.position);
-        EffectsManager.effects.GridExplosion(this.transform.position, 1f, 15f, primary_colour);
+        EffectsManager.effects.GridExplosion(this.transform.position, 2f, 9f, primary_colour);
 
         GameState.game_state.ChangeTimescale(0.3f);
 

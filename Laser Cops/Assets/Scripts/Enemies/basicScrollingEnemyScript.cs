@@ -15,7 +15,7 @@ public class basicScrollingEnemyScript : MonoBehaviour
     public bool die_in_one_hit = false;
     public bool takes_grinding_damage = false;
 	public float collisionDamage = 0.3f;
-	public int pointValue = 20;
+	public int pointValue = 100;
 	public float health = 1f;
 
     [HideInInspector]
@@ -288,7 +288,8 @@ public class basicScrollingEnemyScript : MonoBehaviour
         SoundMixer.sound_manager.Play8bitExplosion();
         EffectsManager.effects.ViolentExplosion(this.transform.position);
         TetherLightning.tether_lightning.BurstLightning((Vector2)this.transform.position + new Vector2(Random.Range(-1, 1), Random.Range(-1, 1)), (Vector2) this.transform.position, 5);
-        UIManager.ui_manager.ChangeScore(pointValue);
+        UIManager.ui_manager.ChangeScore(pointValue, this.transform.position);
+        EffectsManager.effects.GridExplosion(this.transform.position, 2f, 8f, Color.red);
 
         GameObject[] corpses = CutSprite();
         corpses[0].GetComponent<EnemyDying>().JustDied(1);
