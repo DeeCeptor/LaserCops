@@ -6,17 +6,27 @@ public class rotateAndClose : basicArenaEnemy {
     public float rotationSpeed = 2f;
 	// Use this for initialization
 	void Start () {
-	
-	}
+        int rand = Random.Range(0, 1);
+        if (rand == 0)
+        {
+            rotateClockwise = true;
+        }
+
+        if (rand == 1)
+        {
+            rotateClockwise = false;
+        }
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        if (!active)
+        if (active == false)
         {
+            
             CheckActive();
             moveInactive();
         }
-        else
+        if(active == true)
         {
             Follow();
             RotateAround();
@@ -26,18 +36,16 @@ public class rotateAndClose : basicArenaEnemy {
 
     public void RotateAround()
     {
-        Vector3 vectorToTarget = playerToTrack.position - transform.position;
-        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
-        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * speed);
-
-        if(!rotateClockwise)
+        
+        Vector2 velocity = GetComponent<Rigidbody2D>().velocity;
+        if (rotateClockwise)
         {
-            GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity + (Vector2)(transform.up * rotationSpeed);
+            velocity = velocity + (new Vector2(-velocity.y,velocity.x).normalized * rotationSpeed);
         }
-        else
+        else if(!rotateClockwise)
         {
-            GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity + (Vector2)(-transform.up * rotationSpeed);
+            velocity = velocity + (new Vector2(-velocity.y,velocity.x).normalized * -rotationSpeed);
         }
+        GetComponent<Rigidbody2D>().velocity = velocity;
     }
 }

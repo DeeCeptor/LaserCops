@@ -10,26 +10,26 @@ public class trackVIPScript : TrackShotScrolling {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-	    if(VIP == null)
+        if (VIP != null)
         {
-            VIP = GameState.game_state.VIPObject.transform;
-        }
-        if (active)
-        {
-            faceTarget(VIP.position);
-            if (shotCounter < Time.time)
-            {
-                shotCounter = Time.time + shotDelay;
 
-                if (VIP != null)
+            if (active)
+            {
+                faceTarget(VIP.position);
+                if (shotCounter < Time.time)
                 {
-                    Shoot();
+                    shotCounter = Time.time + shotDelay;
+
+                    if (VIP != null)
+                    {
+                        Shoot();
+                    }
                 }
             }
-        }
-        else
-        {
-            checkActive();
+            else
+            {
+                checkActive();
+            }
         }
     }
 

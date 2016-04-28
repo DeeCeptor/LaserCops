@@ -23,20 +23,22 @@ public class basicArenaEnemy : MonoBehaviour {
     public float collisionDamage = 1f;
 	// Use this for initialization
 	void Start () {
-        players = GameObject.FindGameObjectsWithTag("Player");
+        players = GameState.game_state.PlayerObjects;
         int randInt = Random.Range(0,players.Length);
         playerToTrack = players[randInt].transform;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        if (!active)
+        if (active == false)
         {
+            
             CheckActive();
             moveInactive();
         }
         else
         {
+            
             Follow();
             CheckDeath();
         }
@@ -107,11 +109,12 @@ public class basicArenaEnemy : MonoBehaviour {
 	{
 		EffectsManager.effects.ViolentExplosion(this.transform.position);
 		Destroy(gameObject);
-		UIManager.ui_manager.ChangeScore(-pointValue, this.transform.position);
+		UIManager.ui_manager.ChangeScore(pointValue);
 	}
 
     public void moveInactive()
     {
+        
         if (travelDirection == direction.left)
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(-inactiveSpeed, 0);
