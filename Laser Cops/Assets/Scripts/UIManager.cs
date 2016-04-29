@@ -42,7 +42,6 @@ public class UIManager : MonoBehaviour
     {
         UpdateHealth();
         UpdateScore();
-
         SetAnnouncementText(new string[] { "3", "2", "1", "Go!" });
 	}
 
@@ -68,6 +67,8 @@ public class UIManager : MonoBehaviour
     }
     public void ChangeScore(int amount, Vector3 position)
     {
+        Tether.tether.AddLink();
+
         score += amount;
         score = Mathf.Max(0, score);    // Score can't go below 0
 
@@ -155,7 +156,7 @@ public class UIManager : MonoBehaviour
     }
     public void setMultiplierText()
     {
-        multiplierText.text = "X" + multiplier.ToString("0.00");
+        multiplierText.text = "X" + multiplier.ToString("0.00" + " Length: " + Tether.tether.tether_links.Count);
     }
 
 

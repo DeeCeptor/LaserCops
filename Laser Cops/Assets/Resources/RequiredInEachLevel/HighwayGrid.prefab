@@ -560,7 +560,7 @@ MonoBehaviour:
   mesh: {fileID: 2316032}
   m_GridWidth: 125
   m_GridHeight: 53
-  m_GridScale: 0.5
+  m_GridScale: 0.3
   m_MaxFogDistance: 1
   m_MaxFogAlphaScale: 1
   m_TwoWayFog: 1
@@ -577,7 +577,7 @@ MonoBehaviour:
   m_SpringDamping: 0.06
   m_EdgeSpringStiffness: 1
   m_EdgeSpringDamping: 0.1
-  m_ClampEdges: 1
+  m_ClampEdges: 0
   m_LooseSpringStiffness: 0.002
   m_LooseSpringDamping: 0.002
   m_LooseSpringInterval: 3

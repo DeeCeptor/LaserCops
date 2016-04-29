@@ -15,6 +15,15 @@ public class GameState : MonoBehaviour
     public float elapsed_game_time = 0f;
     public bool going_sideways;
 
+    // Mode settings
+    public GameMode game_mode = GameMode.Cooperative;
+    public enum GameMode { Cooperative, Competitive, TetherOn, NoTether, OneHitKill, Chained, Gravity }
+    public bool can_disable_tether = true;
+    public bool can_change_tether_mode = true;
+    public bool can_boost = true;
+    public bool chained_to_center = false;
+    public bool can_transfer_health = true;
+
     public float inactive_speed = 1.0f;     // How quickly objects move when offscreen
 
     public List<PlayerController> Players = new List<PlayerController>();
@@ -22,14 +31,15 @@ public class GameState : MonoBehaviour
     public bool VIP = false;
     public GameObject VIPObject;
 
+    [HideInInspector]
     public bool tether_touching_obstacle = false;
+    [HideInInspector]
     public float time_last_touched_obstacle;
     float turn_off_tether_touching_obstacle_time = 0.3f;
 
     public bool debug_invulnerability = false;
     bool debugging = true;
     bool increased_speed = false;
-
     float normal_physics_delta_time;
 
     int default_velocity_iterations;
@@ -41,8 +51,9 @@ public class GameState : MonoBehaviour
     {
         game_state = this;
 
+        SetGameMode();
+        SetSettings();
 
-        SetGameSettings();
         PlayerObjects = GameObject.FindGameObjectsWithTag("Player");
         if (VIP)
         {
@@ -51,11 +62,93 @@ public class GameState : MonoBehaviour
     }
     void Start()
     {
+        game_mode = GameMode.Cooperative;
+    }
 
+
+    public void SetGameMode()
+    {
+        // Look for the game mode selector
+        GameObject obj = GameObject.FindGameObjectWithTag("GameMode");
+        if (obj)
+        {
+            Debug.Log("Found game mode setting");
+            switch (obj.GetComponent<Mode>().mode)
+            {
+                case GameMode.Cooperative:
+                    Cooperative();
+                    break;
+                case GameMode.Competitive:
+                    Competitive();
+                    break;
+                case GameMode.NoTether:
+                    NoTether();
+                    break;
+                case GameMode.TetherOn:
+                    TetherOn();
+                    break;
+                case GameMode.OneHitKill:
+                    OneHitKill();
+                    break;
+
+            }
+            Destroy(obj);
+        }
+        else
+        {
+            // Didn't find a selected game mode, just used cooperative
+            Debug.Log("Couldn't find game mode");
+            Cooperative();
+        }
+    }
+    public void Cooperative()
+    {
+        Debug.Log("SetCooperative");
+        can_disable_tether = true;
+        can_change_tether_mode = true;
+        can_boost = true;
+        chained_to_center = false;
+        can_transfer_health = true;
+    }
+    public void Competitive()
+    {
+        Debug.Log("SetCompetitive");
+        can_disable_tether = true;
+        can_change_tether_mode = true;
+        can_boost = true;
+        chained_to_center = false;
+        can_transfer_health = false;
+    }
+    public void NoTether()
+    {
+        Debug.Log("NoTether");
+        can_disable_tether = false;
+        can_change_tether_mode = false;
+        can_boost = true;
+        chained_to_center = false;
+        can_transfer_health = true;
+    }
+    public void TetherOn()
+    {
+        Debug.Log("TetherOn");
+        can_disable_tether = false;
+        can_change_tether_mode = true;
+        can_boost = true;
+        chained_to_center = false;
+        can_transfer_health = true;
+    }
+    public void OneHitKill()
+    {
+        Debug.Log("OneHitKill");
+        can_disable_tether = true;
+        can_change_tether_mode = true;
+        can_boost = true;
+        chained_to_center = false;
+        can_transfer_health = true;
     }
 
     // Sets physics and graphics stuff
-    public void SetGameSettings()
+    public void SetSettings()
     {
         // Vastly improves frame rate, making stars scrolling by not look terrible
         QualitySettings.vSyncCount = 0;

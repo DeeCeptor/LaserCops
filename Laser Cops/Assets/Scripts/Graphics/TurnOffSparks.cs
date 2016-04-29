@@ -18,9 +18,11 @@ public class TurnOffSparks : MonoBehaviour
     public void StartSparks()
     {
         time_remaining = start_time_remaining;
-
+        PlaySparks();
+    }
+    public void PlaySparks()
+    {
         //this.gameObject.SetActive(true);
-
         p.enableEmission = true;
         if (!_audio.isPlaying)
         {
@@ -50,11 +52,7 @@ public class TurnOffSparks : MonoBehaviour
         }
         else
         {
-            p.enableEmission = true;
-            if (!_audio.isPlaying)
-            {
-                _audio.Play();
-            }
+            PlaySparks();
         }
     }
 }

@@ -58,7 +58,6 @@ public class PlayerController : PlayerInput
 
     public List<ParticleSystem> minor_damage_particles = new List<ParticleSystem>();
     public List<ParticleSystem> major_damage_particles = new List<ParticleSystem>();
-
     
     void Awake()
     {
@@ -142,14 +141,14 @@ public class PlayerController : PlayerInput
             physics.velocity = new_speed;
         }
 
-        if (disable_tether_held_down)
+        if (disable_tether_held_down && GameState.game_state.can_disable_tether)
         {
             Tether.tether.TetherHeldDown();
         }
         else
             Tether.tether.TetherReleased();
 
-        if (tether_switched)
+        if (tether_switched && GameState.game_state.can_change_tether_mode)
             Tether.tether.SwitchTether();
 
         // Animate car turning
@@ -507,27 +506,29 @@ public class PlayerController : PlayerInput
     // Equalize health between players
     public void TransferHealth(GameObject other_player)
     {
-        // Get other player
-        PlayerController other_p = other_player.GetComponent<PlayerController>();
-
-        if (other_p.Health < this.Health)
+        if (GameState.game_state.can_transfer_health)
         {
-            // Transfer health if we have health to give
-            float health_transferred = Mathf.Min(Time.deltaTime * HP_transfer_rate, (this.Health - other_p.Health) / 2f);
-            other_p.AdjustHealth(health_transferred);
-            this.AdjustHealth(-health_transferred);
+            // Get other player
+            PlayerController other_p = other_player.GetComponent<PlayerController>();
 
-            if (health_transferred > 0.1f)
+            if (other_p.Health < this.Health)
             {
-                SoundMixer.sound_manager.PlayTransferHealth();
+                // Transfer health if we have health to give
+                float health_transferred = Mathf.Min(Time.deltaTime * HP_transfer_rate, (this.Health - other_p.Health) / 2f);
+                other_p.AdjustHealth(health_transferred);
+                this.AdjustHealth(-health_transferred);
 
-                if (last_health_transfer_lightning + 0.03f < Time.time)
+                if (health_transferred > 0.1f)
                 {
-                    TetherLightning.tether_lightning.RegularBolt(this.transform.position, other_player.transform.position, 0.5f, Color.green, 5);
-                    last_health_transfer_lightning = Time.time;
+                    SoundMixer.sound_manager.PlayTransferHealth();
+
+                    if (last_health_transfer_lightning + 0.03f < Time.time)
+                    {
+                        TetherLightning.tether_lightning.RegularBolt(this.transform.position, other_player.transform.position, 0.5f, Color.green, 5);
+                        last_health_transfer_lightning = Time.time;
+                    }
                 }
             }
-
         }
     }
 

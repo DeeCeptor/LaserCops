@@ -77,6 +77,7 @@ public class Tether : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         middle_link = tether_links[tether_links.Count / 2];
+        UIManager.ui_manager.setMultiplierText();
     }
 
     int num_players_holding_down_tether_button;
@@ -181,6 +182,38 @@ public class Tether : MonoBehaviour
     public GameObject GetRandomLink()
     {
         return tether_links[Random.Range(0, tether_links.Count)];
+    }
+    // Adds a new link to the rope
+    public void AddLink()
+    {
+        int new_link_position = 2;
+
+        GameObject segment = ((GameObject)Instantiate(RopeGenerator.rope_generator.emptyPrefab,
+            tether_links[1].transform.position, 
+            Quaternion.identity));
+        segment.transform.parent = tether_links_parent.transform;
+        tether_links.Insert(2, segment);
+
+        // Set the new link to connect
+        tether_links[new_link_position].GetComponent<HingeJoint2D>().connectedBody = tether_links[new_link_position + 1].GetComponent<Rigidbody2D>();
+        // Set the first link to connect to the new link
+        tether_links[new_link_position - 1].GetComponent<HingeJoint2D>().connectedBody = tether_links[new_link_position].GetComponent<Rigidbody2D>();
+
+        // Set new link neighbours
+        segment.GetComponent<Link>().all_segments = tether_links;
+        segment.GetComponent<Link>().rope = RopeGenerator.rope_generator;
+        segment.GetComponent<Link>().above = tether_links[new_link_position + 1];
+        segment.GetComponent<Link>().below = tether_links[new_link_position - 1];
+        segment.GetComponent<Link>().top_most = tether_links[0];
+        segment.GetComponent<Link>().bottom_most = tether_links[tether_links.Count - 1];
+
+        tether_links[new_link_position - 1].GetComponent<Link>().above = segment;
+        tether_links[new_link_position + 1].GetComponent<Link>().below = segment;
+
+        // Recalculate middle
+        middle_link = tether_links[tether_links.Count / 2];
+
+        UIManager.ui_manager.setMultiplierText();
     }
 
 

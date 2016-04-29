@@ -15,6 +15,7 @@ TagManager:
   - TractorBeam
   - VIP
   - Grid
+  - GameMode
   layers:
   - Default
   - TransparentFX

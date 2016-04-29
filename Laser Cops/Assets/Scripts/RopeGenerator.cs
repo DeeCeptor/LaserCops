@@ -5,6 +5,7 @@ using UnityEngine;
 // http://answers.unity3d.com/questions/871729/pulling-up-a-rope.html
 public class RopeGenerator : MonoBehaviour
 {
+    public static RopeGenerator rope_generator;
     private LineRenderer line;
     public Transform rope_pieces_parent;
 
@@ -29,9 +30,10 @@ public class RopeGenerator : MonoBehaviour
 
     void Awake()
     {
+        rope_generator = this;
         line = rope_pieces_parent.GetComponent<LineRenderer>();
-        Generate_Rope_Between_Anchors();
 
+        Generate_Rope_Between_Anchors();
     }
     void Start()
     {
