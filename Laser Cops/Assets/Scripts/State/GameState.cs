@@ -18,6 +18,7 @@ public class GameState : MonoBehaviour
     // Mode settings
     public GameMode game_mode = GameMode.Cooperative;
     public enum GameMode { Cooperative, Competitive, TetherOn, NoTether, OneHitKill, Chained, Gravity }
+    public bool no_tether = false;
     public bool can_disable_tether = true;
     public bool can_change_tether_mode = true;
     public bool can_boost = true;
@@ -62,7 +63,7 @@ public class GameState : MonoBehaviour
     }
     void Start()
     {
-        game_mode = GameMode.Cooperative;
+
     }
 
 
@@ -73,6 +74,7 @@ public class GameState : MonoBehaviour
         if (obj)
         {
             Debug.Log("Found game mode setting");
+            game_mode = obj.GetComponent<Mode>().mode;
             switch (obj.GetComponent<Mode>().mode)
             {
                 case GameMode.Cooperative:
@@ -127,6 +129,7 @@ public class GameState : MonoBehaviour
         can_boost = true;
         chained_to_center = false;
         can_transfer_health = true;
+        no_tether = true;
     }
     public void TetherOn()
     {
@@ -250,6 +253,28 @@ public class GameState : MonoBehaviour
     }
 
 
+    // Checks if this is a game over
+    public void CheckGameOver()
+    {
+        if (!game_over)
+        {
+            switch (game_mode)
+            {
+                case GameMode.Competitive:
+                    if (Players.Count <= 1)
+                    {
+                        Victory("Player " + Players[0].player_number + " Wins!");
+                    }
+                    break;
+                default:
+                    if (Players.Count <= 1)
+                    {
+                        GameOver();
+                    }
+                    break;
+            }
+        }
+    }
     public void GameOver()
     {
         if (!game_over)
@@ -257,17 +282,17 @@ public class GameState : MonoBehaviour
             Debug.Log("You lose!");
             game_over = true;
             UIManager.ui_manager.SetAnnouncementText("You lost!", 9999);
-            ChangeScene(5f, level_to_load_on_defeat);
+            ChangeScene(2f, level_to_load_on_defeat);
         }
     }
-    public void Victory()
+    public void Victory(string text = "You beat the level!")
     {
         if (!game_over)
         {
-            Debug.Log("You won the level!");
+            Debug.Log(text);
             game_over = true;
-            UIManager.ui_manager.SetAnnouncementText("You win!", 9999);
-            ChangeScene(5f, level_to_load_on_victory);
+            UIManager.ui_manager.SetAnnouncementText(text, 9999);
+            ChangeScene(2f, level_to_load_on_victory);
         }
     }
 

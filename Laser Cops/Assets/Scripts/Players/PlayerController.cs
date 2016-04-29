@@ -64,11 +64,13 @@ public class PlayerController : PlayerInput
         physics = this.GetComponent<Rigidbody2D>();
         default_rotation = transform.rotation.eulerAngles.z;
         desired_rotation = default_rotation;
-
-        Health = Max_Health;
     }
     void Start()
     {
+        if (GameState.game_state.game_mode == GameState.GameMode.OneHitKill)
+            this.Max_Health = 0.1f;
+
+        Health = Max_Health;
         GameState.game_state.Players.Add(this);
         UIManager.ui_manager.UpdateHealth();
     }
@@ -326,7 +328,7 @@ public class PlayerController : PlayerInput
         this.gameObject.AddComponent<PlayerDying>();
 
         GameState.game_state.Players.Remove(this);
-        GameState.game_state.GameOver();
+        GameState.game_state.CheckGameOver();
 
         Destroy(this);
         //Destroy(gameObject);
@@ -442,7 +444,7 @@ public class PlayerController : PlayerInput
     // Stop grinding against the object we were pushing against
     void OnCollisionExit2D(Collision2D coll)
     {
-        if (in_use_grinding_sparks.ContainsKey(coll.gameObject))
+        if (in_use_grinding_sparks.ContainsKey(coll.gameObject) && !coll.gameObject)
         {
             ParticleSystem sparks = in_use_grinding_sparks[coll.gameObject];
             sparks.GetComponent<TurnOffSparks>().StopSparks();

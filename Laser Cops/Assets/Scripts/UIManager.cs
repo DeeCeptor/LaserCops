@@ -51,11 +51,11 @@ public class UIManager : MonoBehaviour
         {
             if (player.player_number == 1)
             {
-                player_1_health.value = player.Health;
+                player_1_health.value = player.Health / player.Max_Health * 100;
             }
             else if (player.player_number == 2)
             {
-                player_2_health.value = player.Health;
+                player_2_health.value = player.Health / player.Max_Health * 100;
             }
         }
     }
