@@ -92,6 +92,9 @@ public class GameState : MonoBehaviour
                 case GameMode.OneHitKill:
                     OneHitKill();
                     break;
+                case GameMode.Chained:
+                    Chained();
+                    break;
 
             }
             Destroy(obj);
@@ -148,6 +151,16 @@ public class GameState : MonoBehaviour
         can_boost = true;
         chained_to_center = false;
         can_transfer_health = true;
+    }
+    public void Chained()
+    {
+        Debug.Log("Chained");
+        can_disable_tether = false;
+        can_change_tether_mode = true;
+        can_boost = true;
+        chained_to_center = true;
+        can_transfer_health = true;
+        no_tether = false;
     }
 
     // Sets physics and graphics stuff
@@ -306,6 +319,12 @@ public class GameState : MonoBehaviour
     {
         Physics2D.velocityIterations = default_velocity_iterations;
         Physics2D.positionIterations = default_position_iterations;
+    }
+    public void SetNewDefaultVelocityPositionIterations(int velocity_iterations, int position_iterations)
+    {
+        default_position_iterations = position_iterations;
+        default_velocity_iterations = velocity_iterations;
+        ResetVelocityPositionIterations();
     }
     public void SetVelocityPositionIterations(int velocity_iterations, int position_iterations)
     {

@@ -50,6 +50,7 @@ public class Tether : MonoBehaviour
 
 
     public Transform rope_pieces_parent;
+    public HingeJoint2D anchor;
 
     //public string line_layer;
     //public List<GameObject> joints;
@@ -104,17 +105,35 @@ public class Tether : MonoBehaviour
         }
 
         if (!GameState.game_state.no_tether)
+        {
             Generate_Rope_Between_Anchors();
+
+            if (GameState.game_state.chained_to_center)
+            {
+                // Requires increased physics
+                GameState.game_state.SetNewDefaultVelocityPositionIterations(600, 600);
+
+                // Spawn middle anchor
+                GameObject obj = (GameObject)Instantiate(Resources.Load("Anchor"), Vector3.zero, Quaternion.identity);
+                anchor = obj.GetComponent<HingeJoint2D>();
+            }
+            CalculateMiddleLink();
+
+            UIManager.ui_manager.setMultiplierText();
+        }
         else
             tether_links_parent.SetActive(false);
-
-        UIManager.ui_manager.setMultiplierText();
     }
 
 
     public void CalculateMiddleLink()
     {
         middle_link = tether_links[tether_links.Count / 2];
+
+        if (GameState.game_state.chained_to_center)
+        {
+            anchor.connectedBody = middle_link.GetComponent<Rigidbody2D>();
+        }
     }
     public void Generate_Rope_Between_Anchors()
     {

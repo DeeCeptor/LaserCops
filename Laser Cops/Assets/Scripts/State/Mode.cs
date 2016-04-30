@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System;
@@ -7,6 +8,8 @@ public class Mode : MonoBehaviour
 {
     public GameState.GameMode mode = GameState.GameMode.Cooperative;
     public string level_to_load;
+    public Toggle object_to_select_after_clicking;
+    public GameObject settings_menu;
 
     void Awake()
     {
@@ -31,6 +34,12 @@ public class Mode : MonoBehaviour
     public void SetLevelToLoad(string level_name)
     {
         level_to_load = level_name;
+
+        if (!object_to_select_after_clicking)
+        {
+            settings_menu.SetActive(true);
+            object_to_select_after_clicking.Select();
+        }
     }
 
     public void Load_Level()
