@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -15,5 +15,5 @@ public class Link : MonoBehaviour
 
     public List<GameObject> all_segments;
 
-    public RopeGenerator rope;
+    public Tether rope;
 }

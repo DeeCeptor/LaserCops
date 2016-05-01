@@ -505,7 +505,7 @@ MonoBehaviour:
   takes_grinding_damage: 0
   collisionDamage: 0.3
   pointValue: 20
-  health: 1
+  health: 20
   desired_velocity: {x: 0, y: 0}
   travelDirection: 1
 --- !u!114 &11432980

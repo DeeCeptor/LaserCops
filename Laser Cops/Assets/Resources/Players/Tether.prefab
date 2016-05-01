@@ -42,7 +42,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 413106}
-  - 114: {fileID: 11402112}
   - 114: {fileID: 11448868}
   m_Layer: 0
   m_Name: Tether
@@ -152,28 +151,6 @@ ParticleRenderer:
     x Tile: 1
     y Tile: 1
     cycles: 1
---- !u!114 &11402112
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 148464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f11475eb1ad5924799d08b5a785800e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rope_pieces_parent: {fileID: 435894}
-  line_layer: Tether
-  joints: []
-  emptyPrefab: {fileID: 113638, guid: f42585be319f52a43bb410d2d185ca5a, type: 2}
-  beginning_anchor: {fileID: 0}
-  end_anchor: {fileID: 0}
-  beginning_rope_piece: {fileID: 0}
-  end_rope_piece: {fileID: 0}
-  direction: {x: 0, y: 0}
-  number_of_segments: 30
-  size_of_rope_pieces: 0.2
 --- !u!114 &11434276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -218,6 +195,14 @@ MonoBehaviour:
   primary_capture_colour: {r: 0, g: 0, b: 1, a: 0.503}
   secondary_capture_colour: {r: 1, g: 1, b: 1, a: 0.434}
   particle_emitter: {fileID: 1511032}
+  rope_pieces_parent: {fileID: 435894}
+  emptyPrefab: {fileID: 113638, guid: f42585be319f52a43bb410d2d185ca5a, type: 2}
+  beginning_anchor: {fileID: 0}
+  end_anchor: {fileID: 0}
+  beginning_rope_piece: {fileID: 0}
+  end_rope_piece: {fileID: 0}
+  direction: {x: 0, y: 0}
+  number_of_segments: 40
 --- !u!120 &12047682
 LineRenderer:
   m_ObjectHideFlags: 1

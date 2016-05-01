@@ -16,17 +16,20 @@ public class TetherClamping : MonoBehaviour
 
     void Update ()
     {
-        if (player_1.transform.position.y < player_2.transform.position.y)
+        if (!GameState.game_state.chained_to_center)
         {
-            this.transform.position = new Vector3(
-                transform.position.x,//Mathf.Clamp(this.transform.position.x, player_1.transform.position.x, player_2.transform.position.x), 
-                Mathf.Clamp(this.transform.position.y, player_1.transform.position.y, player_2.transform.position.y));
-        }
-        else
-        {
-            this.transform.position = new Vector3(
-                transform.position.x,//Mathf.Clamp(this.transform.position.x, player_1.transform.position.x, player_2.transform.position.x), 
-                Mathf.Clamp(this.transform.position.y, player_2.transform.position.y, player_1.transform.position.y));
+            if (player_1.transform.position.y < player_2.transform.position.y)
+            {
+                this.transform.position = new Vector3(
+                    transform.position.x,//Mathf.Clamp(this.transform.position.x, player_1.transform.position.x, player_2.transform.position.x), 
+                    Mathf.Clamp(this.transform.position.y, player_1.transform.position.y, player_2.transform.position.y));
+            }
+            else
+            {
+                this.transform.position = new Vector3(
+                    transform.position.x,//Mathf.Clamp(this.transform.position.x, player_1.transform.position.x, player_2.transform.position.x), 
+                    Mathf.Clamp(this.transform.position.y, player_2.transform.position.y, player_1.transform.position.y));
+            }
         }
 	}
 

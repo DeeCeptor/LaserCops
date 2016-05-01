@@ -15,6 +15,16 @@ public class GameState : MonoBehaviour
     public float elapsed_game_time = 0f;
     public bool going_sideways;
 
+    // Mode settings
+    public GameMode game_mode = GameMode.Cooperative;
+    public enum GameMode { Cooperative, Competitive, TetherOn, NoTether, OneHitKill, Chained, Gravity }
+    public bool no_tether = false;
+    public bool can_disable_tether = true;
+    public bool can_change_tether_mode = true;
+    public bool can_boost = true;
+    public bool chained_to_center = false;
+    public bool can_transfer_health = true;
+
     public float inactive_speed = 1.0f;     // How quickly objects move when offscreen
 
     public List<PlayerController> Players = new List<PlayerController>();
@@ -22,14 +32,15 @@ public class GameState : MonoBehaviour
     public bool VIP = false;
     public GameObject VIPObject;
 
+    [HideInInspector]
     public bool tether_touching_obstacle = false;
+    [HideInInspector]
     public float time_last_touched_obstacle;
     float turn_off_tether_touching_obstacle_time = 0.3f;
 
     public bool debug_invulnerability = false;
     bool debugging = true;
     bool increased_speed = false;
-
     float normal_physics_delta_time;
 
     int default_velocity_iterations;
@@ -41,8 +52,9 @@ public class GameState : MonoBehaviour
     {
         game_state = this;
 
+        SetGameMode();
+        SetSettings();
 
-        SetGameSettings();
         PlayerObjects = GameObject.FindGameObjectsWithTag("Player");
         if (VIP)
         {
@@ -54,8 +66,105 @@ public class GameState : MonoBehaviour
 
     }
 
+
+    public void SetGameMode()
+    {
+        // Look for the game mode selector
+        GameObject obj = GameObject.FindGameObjectWithTag("GameMode");
+        if (obj)
+        {
+            Debug.Log("Found game mode setting");
+            game_mode = obj.GetComponent<Mode>().mode;
+            switch (obj.GetComponent<Mode>().mode)
+            {
+                case GameMode.Cooperative:
+                    Cooperative();
+                    break;
+                case GameMode.Competitive:
+                    Competitive();
+                    break;
+                case GameMode.NoTether:
+                    NoTether();
+                    break;
+                case GameMode.TetherOn:
+                    TetherOn();
+                    break;
+                case GameMode.OneHitKill:
+                    OneHitKill();
+                    break;
+                case GameMode.Chained:
+                    Chained();
+                    break;
+
+            }
+            Destroy(obj);
+        }
+        else
+        {
+            // Didn't find a selected game mode, just used cooperative
+            Debug.Log("Couldn't find game mode");
+            Cooperative();
+        }
+    }
+    public void Cooperative()
+    {
+        Debug.Log("SetCooperative");
+        can_disable_tether = true;
+        can_change_tether_mode = true;
+        can_boost = true;
+        chained_to_center = false;
+        can_transfer_health = true;
+    }
+    public void Competitive()
+    {
+        Debug.Log("SetCompetitive");
+        can_disable_tether = true;
+        can_change_tether_mode = true;
+        can_boost = true;
+        chained_to_center = false;
+        can_transfer_health = false;
+    }
+    public void NoTether()
+    {
+        Debug.Log("NoTether");
+        can_disable_tether = false;
+        can_change_tether_mode = false;
+        can_boost = true;
+        chained_to_center = false;
+        can_transfer_health = true;
+        no_tether = true;
+    }
+    public void TetherOn()
+    {
+        Debug.Log("TetherOn");
+        can_disable_tether = false;
+        can_change_tether_mode = true;
+        can_boost = true;
+        chained_to_center = false;
+        can_transfer_health = true;
+    }
+    public void OneHitKill()
+    {
+        Debug.Log("OneHitKill");
+        can_disable_tether = true;
+        can_change_tether_mode = true;
+        can_boost = true;
+        chained_to_center = false;
+        can_transfer_health = true;
+    }
+    public void Chained()
+    {
+        Debug.Log("Chained");
+        can_disable_tether = false;
+        can_change_tether_mode = true;
+        can_boost = true;
+        chained_to_center = true;
+        can_transfer_health = true;
+        no_tether = false;
+    }
+
     // Sets physics and graphics stuff
-    public void SetGameSettings()
+    public void SetSettings()
     {
         // Vastly improves frame rate, making stars scrolling by not look terrible
         QualitySettings.vSyncCount = 0;
@@ -157,6 +266,28 @@ public class GameState : MonoBehaviour
     }
 
 
+    // Checks if this is a game over
+    public void CheckGameOver()
+    {
+        if (!game_over)
+        {
+            switch (game_mode)
+            {
+                case GameMode.Competitive:
+                    if (Players.Count <= 1)
+                    {
+                        Victory("Player " + Players[0].player_number + " Wins!");
+                    }
+                    break;
+                default:
+                    if (Players.Count <= 1)
+                    {
+                        GameOver();
+                    }
+                    break;
+            }
+        }
+    }
     public void GameOver()
     {
         if (!game_over)
@@ -164,17 +295,17 @@ public class GameState : MonoBehaviour
             Debug.Log("You lose!");
             game_over = true;
             UIManager.ui_manager.SetAnnouncementText("You lost!", 9999);
-            ChangeScene(5f, level_to_load_on_defeat);
+            ChangeScene(2f, level_to_load_on_defeat);
         }
     }
-    public void Victory()
+    public void Victory(string text = "You beat the level!")
     {
         if (!game_over)
         {
-            Debug.Log("You won the level!");
+            Debug.Log(text);
             game_over = true;
-            UIManager.ui_manager.SetAnnouncementText("You win!", 9999);
-            ChangeScene(5f, level_to_load_on_victory);
+            UIManager.ui_manager.SetAnnouncementText(text, 9999);
+            ChangeScene(2f, level_to_load_on_victory);
         }
     }
 
@@ -188,6 +319,12 @@ public class GameState : MonoBehaviour
     {
         Physics2D.velocityIterations = default_velocity_iterations;
         Physics2D.positionIterations = default_position_iterations;
+    }
+    public void SetNewDefaultVelocityPositionIterations(int velocity_iterations, int position_iterations)
+    {
+        default_position_iterations = position_iterations;
+        default_velocity_iterations = velocity_iterations;
+        ResetVelocityPositionIterations();
     }
     public void SetVelocityPositionIterations(int velocity_iterations, int position_iterations)
     {
@@ -232,4 +369,13 @@ public class GameState : MonoBehaviour
                 GUI.Label(new Rect(0, 0, 300, 100), Time.timeScale + "X");
         }
     }
+}
+
+
+public static class GraphicalSettings
+{
+    public static bool Show_Planets = true;
+    public static bool Show_Skybox = true;  // Shows the skybox
+    public static bool Scroll_Grid = true;  // Whether the grid moves or not
+    public static bool Show_Wakes = true;   // Whether cars create wakes with the highway grid
 }

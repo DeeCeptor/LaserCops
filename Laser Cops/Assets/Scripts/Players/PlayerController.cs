@@ -29,9 +29,12 @@ public class PlayerController : PlayerInput
     // Boost
     float boost_cooldown = 1.5f;
     float boost_cur_cooldown = 0f;
-    float boost_duration = .5f;
+    float boost_duration = .4f;
     float boost_cur_duration = 0f;
-    float boost_speed_modifier = 2f;
+    float boost_speed_modifier = 3f;
+    [HideInInspector]
+    public bool currently_boosting = false;
+    public float boosting_damage = 1.0f;
 
     // Car
     public GameObject car_sprite;   // Sprite we'll be rotating using animation
@@ -55,18 +58,19 @@ public class PlayerController : PlayerInput
 
     public List<ParticleSystem> minor_damage_particles = new List<ParticleSystem>();
     public List<ParticleSystem> major_damage_particles = new List<ParticleSystem>();
-
     
     void Awake()
     {
         physics = this.GetComponent<Rigidbody2D>();
         default_rotation = transform.rotation.eulerAngles.z;
         desired_rotation = default_rotation;
-
-        Health = Max_Health;
     }
     void Start()
     {
+        if (GameState.game_state.game_mode == GameState.GameMode.OneHitKill)
+            this.Max_Health = 0.1f;
+
+        Health = Max_Health;
         GameState.game_state.Players.Add(this);
         UIManager.ui_manager.UpdateHealth();
     }
@@ -115,7 +119,10 @@ public class PlayerController : PlayerInput
             grid_ripple_force = boost_grid_force;
             grid_ripple_radius = boost_grid_radius;
             SoundMixer.sound_manager.PlayCarRev();
+            currently_boosting = true;
         }
+        else
+            currently_boosting = false;
 
 
         // Can only steer properly when we're not caught on an obstacle
@@ -136,14 +143,14 @@ public class PlayerController : PlayerInput
             physics.velocity = new_speed;
         }
 
-        if (disable_tether_held_down)
+        if (disable_tether_held_down && GameState.game_state.can_disable_tether)
         {
             Tether.tether.TetherHeldDown();
         }
         else
             Tether.tether.TetherReleased();
 
-        if (tether_switched)
+        if (tether_switched && GameState.game_state.can_change_tether_mode)
             Tether.tether.SwitchTether();
 
         // Animate car turning
@@ -175,7 +182,7 @@ public class PlayerController : PlayerInput
 
 
         // Ripple the grid behind the car
-        EffectsManager.effects.GridExplosion((Vector2)transform.position, grid_ripple_force, grid_ripple_radius, primary_colour);
+        EffectsManager.effects.GridWake((Vector2)transform.position, grid_ripple_force, grid_ripple_radius, primary_colour);
     }
     void FixedUpdate()
     {
@@ -312,7 +319,7 @@ public class PlayerController : PlayerInput
             Tether.tether.DestroyTether();
 
         EffectsManager.effects.ViolentExplosion(this.transform.position);
-        EffectsManager.effects.GridExplosion(this.transform.position, 1f, 15f, primary_colour);
+        EffectsManager.effects.GridExplosion(this.transform.position, 2f, 9f, primary_colour);
 
         GameState.game_state.ChangeTimescale(0.3f);
 
@@ -321,7 +328,7 @@ public class PlayerController : PlayerInput
         this.gameObject.AddComponent<PlayerDying>();
 
         GameState.game_state.Players.Remove(this);
-        GameState.game_state.GameOver();
+        GameState.game_state.CheckGameOver();
 
         Destroy(this);
         //Destroy(gameObject);
@@ -437,7 +444,7 @@ public class PlayerController : PlayerInput
     // Stop grinding against the object we were pushing against
     void OnCollisionExit2D(Collision2D coll)
     {
-        if (in_use_grinding_sparks.ContainsKey(coll.gameObject))
+        if (in_use_grinding_sparks.ContainsKey(coll.gameObject) && !coll.gameObject)
         {
             ParticleSystem sparks = in_use_grinding_sparks[coll.gameObject];
             sparks.GetComponent<TurnOffSparks>().StopSparks();
@@ -501,27 +508,29 @@ public class PlayerController : PlayerInput
     // Equalize health between players
     public void TransferHealth(GameObject other_player)
     {
-        // Get other player
-        PlayerController other_p = other_player.GetComponent<PlayerController>();
-
-        if (other_p.Health < this.Health)
+        if (GameState.game_state.can_transfer_health)
         {
-            // Transfer health if we have health to give
-            float health_transferred = Mathf.Min(Time.deltaTime * HP_transfer_rate, (this.Health - other_p.Health) / 2f);
-            other_p.AdjustHealth(health_transferred);
-            this.AdjustHealth(-health_transferred);
+            // Get other player
+            PlayerController other_p = other_player.GetComponent<PlayerController>();
 
-            if (health_transferred > 0.1f)
+            if (other_p.Health < this.Health)
             {
-                SoundMixer.sound_manager.PlayTransferHealth();
+                // Transfer health if we have health to give
+                float health_transferred = Mathf.Min(Time.deltaTime * HP_transfer_rate, (this.Health - other_p.Health) / 2f);
+                other_p.AdjustHealth(health_transferred);
+                this.AdjustHealth(-health_transferred);
 
-                if (last_health_transfer_lightning + 0.03f < Time.time)
+                if (health_transferred > 0.1f)
                 {
-                    TetherLightning.tether_lightning.RegularBolt(this.transform.position, other_player.transform.position, 0.5f, Color.green, 5);
-                    last_health_transfer_lightning = Time.time;
+                    SoundMixer.sound_manager.PlayTransferHealth();
+
+                    if (last_health_transfer_lightning + 0.03f < Time.time)
+                    {
+                        TetherLightning.tether_lightning.RegularBolt(this.transform.position, other_player.transform.position, 0.5f, Color.green, 5);
+                        last_health_transfer_lightning = Time.time;
+                    }
                 }
             }
-
         }
     }
 

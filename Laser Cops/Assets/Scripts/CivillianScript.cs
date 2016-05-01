@@ -104,7 +104,7 @@ public class CivillianScript : MonoBehaviour {
 	public void Die()
 	{
 		Destroy(gameObject);
-		UIManager.ui_manager.ChangeScore(-pointPenaltyForAbandon);
+		UIManager.ui_manager.ChangeScore(-pointPenaltyForAbandon, this.transform.position);
 	}
 	
 	// Update is called once per frame
@@ -112,7 +112,7 @@ public class CivillianScript : MonoBehaviour {
 	{
 		if(collision.gameObject.layer == saveLayer)
 		{
-            UIManager.ui_manager.ChangeScore(pointsForSave);
+            UIManager.ui_manager.ChangeScore(pointsForSave, this.transform.position);
             GameObject[] playerObjects = GameState.game_state.PlayerObjects;
             for(int i = 0; i < playerObjects.Length;i++)
             {
@@ -126,7 +126,7 @@ public class CivillianScript : MonoBehaviour {
 		if(collision.gameObject.layer == destroyLayer)
 		{
             EffectsManager.effects.ViolentExplosion(this.transform.position);
-            UIManager.ui_manager.ChangeScore(-pointPenaltyForKill);
+            UIManager.ui_manager.ChangeScore(-pointPenaltyForKill, this.transform.position);
             Destroy(gameObject);
 		}
 	}

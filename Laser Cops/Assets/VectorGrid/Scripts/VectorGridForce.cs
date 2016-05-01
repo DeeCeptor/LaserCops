@@ -14,7 +14,7 @@ public class VectorGridForce : MonoBehaviour
     public bool activated = false;
     BoxCollider2D box;
     float counter = 0;
-    float cooldown = 0.05f;
+    float wake_cooldown = 0.04f;
 
     void Start ()
     {
@@ -43,9 +43,10 @@ public class VectorGridForce : MonoBehaviour
                 }
                 else
                 {
-                    m_VectorGrid.AddGridForce(this.transform.position, m_ForceScale, m_Radius, m_Color, m_HasColor);
+                    EffectsManager.effects.GridWake(this.transform.position, m_ForceScale, m_Radius, m_Color);
+                    //m_VectorGrid.AddGridForce(this.transform.position, m_ForceScale, m_Radius, m_Color, m_HasColor);
                 }
-                counter = cooldown;
+                counter = wake_cooldown;
             }
 		}
         // Check if over the grid

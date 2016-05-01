@@ -15,6 +15,7 @@ TagManager:
   - TractorBeam
   - VIP
   - Grid
+  - GameMode
   layers:
   - Default
   - TransparentFX
@@ -78,4 +79,7 @@ TagManager:
     locked: 0
   - name: Topmost
     uniqueID: 2185591609
+    locked: 0
+  - name: Text
+    uniqueID: 2712641533
     locked: 0

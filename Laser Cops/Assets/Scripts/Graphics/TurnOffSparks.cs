@@ -6,34 +6,36 @@ public class TurnOffSparks : MonoBehaviour
     public float time_remaining = 0.9f;
     public float start_time_remaining = 0.5f;
     ParticleSystem p;
-    AudioSource audio;
+    AudioSource _audio;
 
     void Start ()
     {
         p = this.GetComponent<ParticleSystem>();
-        audio = this.GetComponent<AudioSource>();
+        _audio = this.GetComponent<AudioSource>();
     }
 
 
     public void StartSparks()
     {
         time_remaining = start_time_remaining;
-
+        PlaySparks();
+    }
+    public void PlaySparks()
+    {
         //this.gameObject.SetActive(true);
-
         p.enableEmission = true;
-        if (!audio.isPlaying)
+        if (!_audio.isPlaying)
         {
-            audio.Play();
+            _audio.Play();
         }
     }
     public void StopSparks()
     {
         p.enableEmission = false;
-        if (audio.isPlaying)
+        if (_audio.isPlaying)
         {
             //p.Stop();
-            audio.Stop();
+            _audio.Stop();
         }
         //this.gameObject.SetActive(false);
         time_remaining = 0;
@@ -50,11 +52,7 @@ public class TurnOffSparks : MonoBehaviour
         }
         else
         {
-            p.enableEmission = true;
-            if (!audio.isPlaying)
-            {
-                audio.Play();
-            }
+            PlaySparks();
         }
     }
 }
