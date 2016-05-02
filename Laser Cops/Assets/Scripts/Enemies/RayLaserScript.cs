@@ -31,7 +31,7 @@ public class RayLaserScript : MonoBehaviour {
     void Start () {
         
         shotCounter = shotDelay + Time.time;
-        layersToIgnore = ~((1<<12)|(1<<13) | (1 << 15));
+        layersToIgnore = ~((1<<12)|(1<<13) | (1 << 15)|(1<<0));
 	}
 	
 	void FixedUpdate () {
@@ -56,6 +56,7 @@ public class RayLaserScript : MonoBehaviour {
 
     public void Shoot()
     {
+        
         //see if there is an obstacle in the way
         hit = Physics2D.Raycast(transform.position, -transform.up,float.PositiveInfinity,layersToIgnore);
         //if there is an obstacle then 
@@ -63,7 +64,6 @@ public class RayLaserScript : MonoBehaviour {
         {
             laserRenderer.SetPosition(0, transform.position);
             laserRenderer.SetPosition(1, hit.point);
-
         }
         else
         {

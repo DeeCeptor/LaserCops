@@ -91,13 +91,13 @@ public class basicScrollingEnemyScript : MonoBehaviour
             collision.gameObject.GetComponent<VIPScript>().TakeHit(collisionDamage);
         }
 
-        else if (collision.gameObject.layer == LayerMask.NameToLayer("RamBoundary"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("RamBoundary"))
         {
             // Hurt the enemy
             TakeHit(collision.gameObject.GetComponent<HurtPlayerOnTouch>().collisionDamage*5);
         }
 
-        else if (collision.gameObject.tag == "Obstacle")
+        if (collision.gameObject.tag == "Obstacle")
         {
             if (beingRammed)
             {
