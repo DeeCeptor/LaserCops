@@ -25,6 +25,12 @@ public class GameState : MonoBehaviour
     public bool chained_to_center = false;
     public bool can_transfer_health = true;
 
+    // Difficulty settings
+    public Difficulty current_difficulty = Difficulty.Normal;
+    public enum Difficulty {  Normal, Hard };
+    public float Player_Health_Modifier = 1.0f; // Multiplies the player's max health (hard makes this number lower)
+    public float Enemy_Health_Modifier = 1.0f;  // Multiplies each enemies' health (hard makes this number higher)
+
     public float inactive_speed = 1.0f;     // How quickly objects move when offscreen
 
     public List<PlayerController> Players = new List<PlayerController>();
@@ -74,8 +80,23 @@ public class GameState : MonoBehaviour
         if (obj)
         {
             Debug.Log("Found game mode setting");
-            game_mode = obj.GetComponent<Mode>().mode;
-            switch (obj.GetComponent<Mode>().mode)
+            Mode mode = obj.GetComponent<Mode>();
+
+            current_difficulty = mode.difficulty;
+            switch (mode.difficulty)
+            {
+                case Difficulty.Normal:
+                    Player_Health_Modifier = 1.0f;
+                    Enemy_Health_Modifier = 1.0f;
+                    break;
+                case Difficulty.Hard:
+                    Player_Health_Modifier = 0.7f;
+                    Enemy_Health_Modifier = 1.4f;
+                    break;
+            }
+
+            game_mode = mode.mode;
+            switch (mode.mode)
             {
                 case GameMode.Cooperative:
                     Cooperative();
