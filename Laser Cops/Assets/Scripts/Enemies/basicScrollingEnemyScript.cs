@@ -17,6 +17,7 @@ public class basicScrollingEnemyScript : MonoBehaviour
 	public float collisionDamage = 0.3f;
 	public int pointValue = 100;
 	public float health = 1f;
+    public bool beingRammed = false;
 
     [HideInInspector]
     public Vector2 desired_velocity = Vector2.zero;
@@ -76,6 +77,7 @@ public class basicScrollingEnemyScript : MonoBehaviour
         {
             // Hurt the player
             collision.gameObject.GetComponent<PlayerController>().TakeHit(collisionDamage);
+            beingRammed = true;
 
             if (takes_grinding_damage)
             {
@@ -97,11 +99,14 @@ public class basicScrollingEnemyScript : MonoBehaviour
 
         else if (collision.gameObject.tag == "Obstacle")
         {
-            // Hurt the enemy
-            TakeHit(collision.gameObject.GetComponent<ObstacleScrollScript>().damage * 5);
-            if(collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > 10)
+            if (beingRammed)
             {
-                Die();
+                // Hurt the enemy
+                TakeHit(collision.gameObject.GetComponent<ObstacleScrollScript>().damage * 5);
+                if (collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > 10)
+                {
+                    Die();
+                }
             }
         }
     }
