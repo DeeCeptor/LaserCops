@@ -104,7 +104,7 @@ public class basicScrollingEnemyScript : MonoBehaviour
                 // Hurt the enemy
                 TakeHit(collision.gameObject.GetComponent<ObstacleScrollScript>().damage * 5);
             }
-            if (collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > 10)
+            if (collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude >= 10)
             {
                 Die();
             }
