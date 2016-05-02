@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HomingBulletScript : MonoBehaviour {
-    public float speed = 2;
+public class HomingBulletScript : BulletScript {
     private Transform playerToTrack;
     private GameObject[] players;
-    public float damage = 10f;
     //the LOWER this is the faster it will track
     public float trackingPower = 3f;
     // Use this for initialization
@@ -22,14 +20,6 @@ public class HomingBulletScript : MonoBehaviour {
         float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
         Quaternion q = Quaternion.AngleAxis(angle + 90, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime/trackingPower);
-    }
-
-    public void CheckDeath()
-    {
-        if (!GetComponent<SpriteRenderer>().isVisible)
-        {
-            Die();
-        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -49,14 +39,9 @@ public class HomingBulletScript : MonoBehaviour {
             collision.gameObject.GetComponent<VIPScript>().TakeHit(damage);
         }
 
-        else if (!collision.gameObject.CompareTag("Enemy"))
+        if (!collision.gameObject.CompareTag("Enemy"))
         {
             Die();
         }
-    }
-
-    public void Die()
-    {
-        Destroy(gameObject);
     }
 }

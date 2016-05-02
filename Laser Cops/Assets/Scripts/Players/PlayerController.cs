@@ -144,17 +144,18 @@ public class PlayerController : PlayerInput
             // Set our actual velocity
             physics.velocity = new_speed;
         }
-
-        if (disable_tether_held_down && GameState.game_state.can_disable_tether)
+        if (Tether.tether!=null)
         {
-            Tether.tether.TetherHeldDown();
+            if (disable_tether_held_down && GameState.game_state.can_disable_tether)
+            {
+                Tether.tether.TetherHeldDown();
+            }
+            else
+                Tether.tether.TetherReleased();
+
+            if (tether_switched && GameState.game_state.can_change_tether_mode)
+                Tether.tether.SwitchTether();
         }
-        else
-            Tether.tether.TetherReleased();
-
-        if (tether_switched && GameState.game_state.can_change_tether_mode)
-            Tether.tether.SwitchTether();
-
         // Animate car turning
         // Animate breaking/accelerating forwards
         if (GameState.game_state.going_sideways)
@@ -531,8 +532,11 @@ public class PlayerController : PlayerInput
 
                     if (last_health_transfer_lightning + 0.03f < Time.time)
                     {
-                        TetherLightning.tether_lightning.RegularBolt(this.transform.position, other_player.transform.position, 0.5f, Color.green, 5);
-                        last_health_transfer_lightning = Time.time;
+                        if (Tether.tether!=null)
+                        {
+                            TetherLightning.tether_lightning.RegularBolt(this.transform.position, other_player.transform.position, 0.5f, Color.green, 5);
+                            last_health_transfer_lightning = Time.time;
+                        }
                     }
                 }
             }
