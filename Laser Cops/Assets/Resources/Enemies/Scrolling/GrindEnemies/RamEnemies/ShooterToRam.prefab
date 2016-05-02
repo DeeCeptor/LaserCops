@@ -588,7 +588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624bac116c5c2ce478b1680f0372b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 4
+  shotDelay: 6
   shotCounter: 0
   bullet: {fileID: 120478, guid: b0de785363611694fb2b365840c214d2, type: 2}
   active: 0
@@ -1013,6 +1013,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: takes_grinding_damage
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shotDelay
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

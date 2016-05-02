@@ -13,7 +13,6 @@ GameObject:
   - 114: {fileID: 11464918}
   - 61: {fileID: 6149638}
   - 114: {fileID: 11439910}
-  - 114: {fileID: 11454210}
   m_Layer: 8
   m_Name: ScrollThenStopAccelerate
   m_TagString: Enemy
@@ -103,7 +102,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 153906}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 67.863335, y: 5.1863055, z: 0}
+  m_LocalPosition: {x: 73.56458, y: 8.286305, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 465814}
@@ -211,25 +210,6 @@ MonoBehaviour:
   deactivateAfterTime: 1
   timeTillDeactivation: 3
   deactivatedColor: {r: 0, g: 0, b: 0, a: 1}
---- !u!114 &11454210
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 153906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8001c0b333b214cf6819aa35fc6da60a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_VectorGrid: {fileID: 0}
-  m_ForceScale: 1
-  m_Directional: 0
-  m_ForceDirection: {x: 0, y: 0, z: 0}
-  m_Radius: 1
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_HasColor: 1
-  activated: 0
 --- !u!114 &11456744
 MonoBehaviour:
   m_ObjectHideFlags: 1

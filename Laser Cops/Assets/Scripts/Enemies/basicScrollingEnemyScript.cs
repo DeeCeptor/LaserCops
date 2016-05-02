@@ -71,6 +71,7 @@ public class basicScrollingEnemyScript : MonoBehaviour
             else
                 TakeHit(Tether.tether.Damage);
         }
+
         else if (collision.gameObject.tag == "Player")
         {
             // Hurt the player
@@ -86,6 +87,22 @@ public class basicScrollingEnemyScript : MonoBehaviour
         else if (collision.gameObject.tag == "VIP")
         {
             collision.gameObject.GetComponent<VIPScript>().TakeHit(collisionDamage);
+        }
+
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("RamBoundary"))
+        {
+            // Hurt the enemy
+            TakeHit(collision.gameObject.GetComponent<HurtPlayerOnTouch>().collisionDamage*5);
+        }
+
+        else if (collision.gameObject.tag == "Obstacle")
+        {
+            // Hurt the enemy
+            TakeHit(collision.gameObject.GetComponent<ObstacleScrollScript>().damage * 5);
+            if(collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > 10)
+            {
+                Die();
+            }
         }
     }
 
@@ -287,7 +304,7 @@ public class basicScrollingEnemyScript : MonoBehaviour
     {
         SoundMixer.sound_manager.Play8bitExplosion();
         EffectsManager.effects.ViolentExplosion(this.transform.position);
-        TetherLightning.tether_lightning.BurstLightning((Vector2)this.transform.position + new Vector2(Random.Range(-1, 1), Random.Range(-1, 1)), (Vector2) this.transform.position, 5);
+        //TetherLightning.tether_lightning.BurstLightning((Vector2)this.transform.position + new Vector2(Random.Range(-1, 1), Random.Range(-1, 1)), (Vector2) this.transform.position, 5);
         UIManager.ui_manager.ChangeScore(pointValue, this.transform.position);
         EffectsManager.effects.GridExplosion(this.transform.position, 2f, 8f, Color.red);
 

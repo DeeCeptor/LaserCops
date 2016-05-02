@@ -70,7 +70,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170266}
   m_UseAutoMass: 0
-  m_Mass: 20
+  m_Mass: 8
   m_LinearDrag: 1
   m_AngularDrag: 1
   m_GravityScale: 0
@@ -140,7 +140,7 @@ MonoBehaviour:
   takes_grinding_damage: 0
   collisionDamage: 0
   pointValue: 20
-  health: 200
+  health: 100
   desired_velocity: {x: 0, y: 0}
   travelDirection: 1
   timeTillStop: 3
