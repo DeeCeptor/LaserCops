@@ -30,12 +30,29 @@ public class basicScrollingEnemyScript : MonoBehaviour
 
     protected float tether_lightning_cooldown;
 
+    ManualTrail[] objects_to_activate_when_active;
+
     // Use this for initialization
     void Start()
     {
         initiate();
+
+        // Turn off trails
+        /*
+        objects_to_activate_when_active = this.GetComponentsInChildren<ManualTrail>();
+        foreach (ManualTrail trail in objects_to_activate_when_active)
+        {
+            trail.gameObject.SetActive(false);
+        }*/
     }
 
+    void Update()
+    {
+        if (!active)
+        {
+            CheckActive();
+        }
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -43,7 +60,6 @@ public class basicScrollingEnemyScript : MonoBehaviour
 
         if (!active)
         {
-            CheckActive();
             moveInactive();
         }
         else
@@ -357,6 +373,14 @@ public class basicScrollingEnemyScript : MonoBehaviour
     public void Activate()
     {
         active = true;
+
+        /*
+        Debug.Log("ACtivating");
+        // Turn on trails
+        foreach (ManualTrail trail in objects_to_activate_when_active)
+        {
+            trail.gameObject.SetActive(true);
+        }*/
     }
 
     //after activating the enemy should die if it leaves the screen

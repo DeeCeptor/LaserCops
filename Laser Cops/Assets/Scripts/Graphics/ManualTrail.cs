@@ -42,7 +42,7 @@ public class ManualTrail : MonoBehaviour
     }
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
 

@@ -17,7 +17,7 @@ public class PlayerController : PlayerInput
     // Grid attributes
     public Color primary_colour;
     float normal_grid_force = 1f;
-    float normal_grid_radius = 1.2f;
+    float normal_grid_radius = 1.5f;
     float boost_grid_force = 3f;
     float boost_grid_radius = 2f;
 
