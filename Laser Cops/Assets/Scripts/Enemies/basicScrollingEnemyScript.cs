@@ -393,7 +393,6 @@ public class basicScrollingEnemyScript : MonoBehaviour
     {
         active = true;
         
-        Debug.Log("ACtivating");
         // Turn on trails
         foreach (ManualTrail trail in objects_to_activate_when_active)
         {

@@ -598,6 +598,7 @@ MonoBehaviour:
   collisionDamage: 0.1
   pointValue: 20
   health: 50
+  beingRammed: 0
   desired_velocity: {x: 0, y: 0}
   travelDirection: 1
   timeTillStop: 2
