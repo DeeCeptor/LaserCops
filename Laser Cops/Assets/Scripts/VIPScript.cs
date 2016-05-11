@@ -117,8 +117,7 @@ public class VIPScript : MonoBehaviour {
             }
             currentIterations = currentIterations + 1;
         }
-
-        Texture2D sprite = corpses[0];
+        
         //array of pixel arrays
         Color32[][] vertices = new Color32[2][];
 

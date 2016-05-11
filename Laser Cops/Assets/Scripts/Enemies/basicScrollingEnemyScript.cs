@@ -38,12 +38,12 @@ public class basicScrollingEnemyScript : MonoBehaviour
         initiate();
 
         // Turn off trails
-        /*
+
         objects_to_activate_when_active = this.GetComponentsInChildren<ManualTrail>();
         foreach (ManualTrail trail in objects_to_activate_when_active)
         {
             trail.gameObject.SetActive(false);
-        }*/
+        }
     }
 
     // Update is called once per frame
@@ -54,12 +54,38 @@ public class basicScrollingEnemyScript : MonoBehaviour
         if (!active)
         {
             moveInactive();
-            CheckActive();
         }
         else
         {
             CheckDeath();
             moveActive();
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag.Equals("MainCamera"))
+        {
+            Activate();
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D collider)
+    {
+        if (!active)
+        {
+            if (collider.gameObject.tag.Equals("MainCamera"))
+            {
+                Activate();
+            }
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "MainCamera")
+        {
+            DieOffScreen();
         }
     }
 
@@ -279,8 +305,7 @@ public class basicScrollingEnemyScript : MonoBehaviour
             }
             currentIterations = currentIterations + 1;
         }
-
-        Texture2D sprite = corpses[0];
+        
         //array of pixel arrays
         Color32[][] vertices = new Color32[2][];
 
@@ -367,23 +392,24 @@ public class basicScrollingEnemyScript : MonoBehaviour
     public void Activate()
     {
         active = true;
-
-        /*
+        
         Debug.Log("ACtivating");
         // Turn on trails
         foreach (ManualTrail trail in objects_to_activate_when_active)
         {
             trail.gameObject.SetActive(true);
-        }*/
+        }
     }
 
     //after activating the enemy should die if it leaves the screen
     public void CheckDeath()
     {
+        /*
         if (!GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
         {
             DieOffScreen();
         }
+        */
 
 		if(health<=0)
 		{

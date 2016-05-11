@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BouncyVIPDieScript : MonoBehaviour {
+public class BouncyVIPDieScript : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-	
-	}
+    // Use this for initialization
+    void Start()
+    {
+
+    }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.gameObject.layer == LayerMask.NameToLayer("Death Zone"))
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Death Zone"))
         {
             Die();
         }
@@ -117,7 +119,6 @@ public class BouncyVIPDieScript : MonoBehaviour {
             currentIterations = currentIterations + 1;
         }
 
-        Texture2D sprite = corpses[0];
         //array of pixel arrays
         Color32[][] vertices = new Color32[2][];
 
@@ -159,9 +160,10 @@ public class BouncyVIPDieScript : MonoBehaviour {
         CutSprite();
         Destroy(gameObject);
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 }
