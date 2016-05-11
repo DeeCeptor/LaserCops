@@ -52,7 +52,7 @@ public class SceneManager : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.LogError("No starting Conversation set. Please drag in a Conversation into the SceneManager's Starting Conversation field.\n" + e.Message);
+            //Debug.LogError("No starting Conversation set. Please drag in a Conversation into the SceneManager's Starting Conversation field.\n" + e.Message);
         }
     }
 
