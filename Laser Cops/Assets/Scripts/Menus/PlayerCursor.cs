@@ -10,6 +10,7 @@ public class PlayerCursor : MonoBehaviour
 
     float min_y_difference = 1f;
     float min_x_difference = 1f;
+    float move_speed = 4f;
 
 	void Start () 
 	{
@@ -122,12 +123,15 @@ public class PlayerCursor : MonoBehaviour
         else
         {
             // Move towards destination
-            this.transform.position = Vector3.MoveTowards(this.transform.position, destination_node.transform.position, 0.03f);
+            this.transform.position = Vector3.MoveTowards(this.transform.position, destination_node.transform.position, move_speed * Time.deltaTime);
 
-            // Rotate towards it
-            var dir = destination_node.transform.position - transform.position;
-            var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            if (Vector3.Distance(destination_node.transform.position, transform.position) > 0.5f)
+            {
+                // Rotate towards it
+                var dir = destination_node.transform.position - transform.position;
+                var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            }
         }
     }
 }

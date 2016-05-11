@@ -20,7 +20,7 @@ public class SoundMixer : MonoBehaviour
     }
     void Start ()
     {
-        PlayRaiser();
+        //PlayRaiser();
     }
 
 
@@ -89,6 +89,10 @@ public class SoundMixer : MonoBehaviour
     public void PlayTransferHealth()
     {
         PlaySound(Sounds[10], 1f);
+    }
+    public void Play8bitBeep()
+    {
+        PlaySound(Sounds[11], 1f);
     }
 
     // MUSIC

@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour
         line.SetVertexCount(levels.Count);
         for (int x = 0; x < levels.Count; x++)
         {
-            line.SetPosition(x, levels[x].transform.position);
+            line.SetPosition(x, new Vector3(levels[x].transform.position.x, levels[x].transform.position.y, 0.01f));
         }
 
         level_nodes = this.GetComponentsInChildren<LevelNode>();
@@ -48,6 +48,8 @@ public class LevelManager : MonoBehaviour
 
         level_text_name.text = level.level_name;
         level_settings.SetActive(false);
+
+        SoundMixer.sound_manager.Play8bitBeep();
     }
     public void SelectLevel(LevelNode level)
     {
@@ -59,6 +61,9 @@ public class LevelManager : MonoBehaviour
 
         GameObject myEventSystem = GameObject.Find("EventSystem");
         myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(object_to_select);
+
+        // Play sound
+        SoundMixer.sound_manager.PlayNotification();
     }
     public void DeselectLevels()
     {
