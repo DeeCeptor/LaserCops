@@ -119,7 +119,7 @@ public class Tether : MonoBehaviour
             }
             CalculateMiddleLink();
 
-            UIManager.ui_manager.setMultiplierText();
+            InGameUIManager.ui_manager.setMultiplierText();
         }
         else
             tether_links_parent.SetActive(false);
@@ -351,7 +351,7 @@ public class Tether : MonoBehaviour
         // Recalculate middle
         CalculateMiddleLink();
 
-        UIManager.ui_manager.setMultiplierText();
+        InGameUIManager.ui_manager.setMultiplierText();
     }
 
 

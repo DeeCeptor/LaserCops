@@ -320,7 +320,7 @@ public class basicScrollingEnemyScript : MonoBehaviour
         SoundMixer.sound_manager.Play8bitExplosion();
         EffectsManager.effects.ViolentExplosion(this.transform.position);
         //TetherLightning.tether_lightning.BurstLightning((Vector2)this.transform.position + new Vector2(Random.Range(-1, 1), Random.Range(-1, 1)), (Vector2) this.transform.position, 5);
-        UIManager.ui_manager.ChangeScore(pointValue, this.transform.position);
+        InGameUIManager.ui_manager.ChangeScore(pointValue, this.transform.position);
         EffectsManager.effects.GridExplosion(this.transform.position, 2f, 8f, Color.red);
 
         GameObject[] corpses = CutSprite();

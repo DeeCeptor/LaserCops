@@ -132,7 +132,7 @@ GameObject:
   - 23: {fileID: 2316032}
   - 114: {fileID: 11478518}
   - 114: {fileID: 11428522}
-  - 61: {fileID: 6163308}
+  - 61: {fileID: 6158464}
   m_Layer: 0
   m_Name: HighwayGrid
   m_TagString: Grid
@@ -405,7 +405,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!61 &6163308
+--- !u!61 &6158464
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -416,9 +416,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: -0.14999962, y: -0.14999986}
+  m_Offset: {x: -0.3000002, y: -0.29999995}
   serializedVersion: 2
-  m_Size: {x: 37.3, y: 15.700001}
+  m_Size: {x: 37.5, y: 15.300001}
 --- !u!61 &6181392
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -558,9 +558,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mesh: {fileID: 2316032}
-  m_GridWidth: 125
-  m_GridHeight: 53
-  m_GridScale: 0.3
+  m_GridWidth: 63
+  m_GridHeight: 26
+  m_GridScale: 0.6
   m_MaxFogDistance: 1
   m_MaxFogAlphaScale: 1
   m_TwoWayFog: 1
@@ -569,17 +569,17 @@ MonoBehaviour:
   m_VelocityDamping: 0.98
   m_ThickLineSpawnColor: {r: 0, g: 1, b: 0.95862055, a: 1}
   m_ThinLineSpawnColor: {r: 1, g: 1, b: 1, a: 0.584}
-  m_ThickLineWidth: 0.1
-  m_ThinLineWidth: 0.07
+  m_ThickLineWidth: 0.3
+  m_ThinLineWidth: 0.2
   m_ThickLineSpacingX: 6
-  m_ThickLineSpacingY: 6
-  m_SpringStiffness: 0.28
-  m_SpringDamping: 0.06
+  m_ThickLineSpacingY: 5
+  m_SpringStiffness: 0.14
+  m_SpringDamping: 0.02
   m_EdgeSpringStiffness: 1
   m_EdgeSpringDamping: 0.1
   m_ClampEdges: 0
-  m_LooseSpringStiffness: 0.002
-  m_LooseSpringDamping: 0.002
+  m_LooseSpringStiffness: 0.001
+  m_LooseSpringDamping: 0.001
   m_LooseSpringInterval: 3
   m_RestDistanceScalar: 1
   m_GridSmoothingFactor: 0

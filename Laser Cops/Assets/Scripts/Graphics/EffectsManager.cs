@@ -45,7 +45,7 @@ public class EffectsManager : MonoBehaviour
 
     public void GridWake(Vector2 position, float force, float radius, Color color)
     {
-        if (GraphicalSettings.Show_Wakes)
+        if (GraphicalSettings.graphical_settings.Show_Wakes)
             GridExplosion(position, force, radius, color);
     }
     public void GridExplosion(Vector2 position, float force, float radius, Color color)

@@ -50,6 +50,6 @@ public class Mode : MonoBehaviour
     public void Load_Level()
     {
         Debug.Log("Loading level " + level_to_load);
-        SceneManager.LoadScene(level_to_load);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(level_to_load);
     }
 }

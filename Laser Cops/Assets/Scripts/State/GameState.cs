@@ -213,6 +213,7 @@ public class GameState : MonoBehaviour
 
     void Update()
     {
+        /*
         if (Input.GetButtonDown("Pause") && !game_over)
         {
             if (Time.timeScale == 0)
@@ -225,7 +226,7 @@ public class GameState : MonoBehaviour
                 // Currently unpaused, pause game
                 Pause();
             }
-        }
+        }*/
 
         // Not paused and not game over
         if (Time.timeScale != 0 && !game_over)
@@ -315,7 +316,7 @@ public class GameState : MonoBehaviour
         {
             Debug.Log("You lose!");
             game_over = true;
-            UIManager.ui_manager.SetAnnouncementText("You lost!", 9999);
+            InGameUIManager.ui_manager.SetAnnouncementText("You lost!", 9999);
             ChangeScene(2f, level_to_load_on_defeat);
         }
     }
@@ -325,7 +326,7 @@ public class GameState : MonoBehaviour
         {
             Debug.Log(text);
             game_over = true;
-            UIManager.ui_manager.SetAnnouncementText(text, 9999);
+            InGameUIManager.ui_manager.SetAnnouncementText(text, 9999);
             ChangeScene(2f, level_to_load_on_victory);
         }
     }
@@ -363,7 +364,7 @@ public class GameState : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         ChangeTimescale(1f);
-        SceneManager.LoadScene(scene_to_load);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(scene_to_load);
         yield return null;
     }
 
@@ -390,13 +391,4 @@ public class GameState : MonoBehaviour
                 GUI.Label(new Rect(0, 0, 300, 100), Time.timeScale + "X");
         }
     }
-}
-
-
-public static class GraphicalSettings
-{
-    public static bool Show_Planets = true;
-    public static bool Show_Skybox = true;  // Shows the skybox
-    public static bool Scroll_Grid = true;  // Whether the grid moves or not
-    public static bool Show_Wakes = true;   // Whether cars create wakes with the highway grid
 }
