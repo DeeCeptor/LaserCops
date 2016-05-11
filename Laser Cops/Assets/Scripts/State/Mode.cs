@@ -39,12 +39,12 @@ public class Mode : MonoBehaviour
     public void SetLevelToLoad(string level_name)
     {
         level_to_load = level_name;
-
+        /*
         if (!object_to_select_after_clicking)
         {
             settings_menu.SetActive(true);
             object_to_select_after_clicking.Select();
-        }
+        }*/
     }
 
     public void Load_Level()
