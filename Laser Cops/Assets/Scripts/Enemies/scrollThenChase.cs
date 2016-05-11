@@ -21,7 +21,6 @@ public class scrollThenChase : ScrollThenStop
 
         if (!active)
         {
-            CheckActive();
             moveInactive();
         }
         else
