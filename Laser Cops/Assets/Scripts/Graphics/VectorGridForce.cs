@@ -5,16 +5,16 @@ public class VectorGridForce : MonoBehaviour
 {
     [HideInInspector]
 	public VectorGrid m_VectorGrid;
-	public float m_ForceScale;
-	public bool m_Directional;
+    float m_ForceScale = 2f;
+    float m_Radius = 1.5f;
+    public bool m_Directional;
 	public Vector3 m_ForceDirection;
-	public float m_Radius;
 	public Color m_Color = Color.white;
     public bool m_HasColor = true;
     public bool activated = false;
     BoxCollider2D box;
     float counter = 0;
-    float wake_cooldown = 0.04f;
+    float wake_cooldown = 0.01f;
 
     void Start ()
     {

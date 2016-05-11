@@ -36,10 +36,6 @@ Material:
         second: 0
       data:
         first:
-          name: _InvFade
-        second: 1
-      data:
-        first:
           name: _MKGlowPower
         second: 1.63
       data:
@@ -50,6 +46,10 @@ Material:
         first:
           name: _MKGlowOffSet
         second: 0.15
+      data:
+        first:
+          name: _InvFade
+        second: 1
     m_Colors:
       data:
         first:
@@ -58,7 +58,7 @@ Material:
       data:
         first:
           name: _MKGlowColor
-        second: {r: 1, g: 0, b: 0, a: 0.234}
+        second: {r: 1, g: 0, b: 0, a: 0.084}
       data:
         first:
           name: _MKGlowTexColor

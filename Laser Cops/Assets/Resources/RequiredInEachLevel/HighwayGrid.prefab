@@ -569,7 +569,7 @@ MonoBehaviour:
   m_VelocityDamping: 0.98
   m_ThickLineSpawnColor: {r: 0, g: 1, b: 0.95862055, a: 1}
   m_ThinLineSpawnColor: {r: 1, g: 1, b: 1, a: 0.584}
-  m_ThickLineWidth: 0.3
+  m_ThickLineWidth: 1
   m_ThinLineWidth: 0.2
   m_ThickLineSpacingX: 6
   m_ThickLineSpacingY: 5
