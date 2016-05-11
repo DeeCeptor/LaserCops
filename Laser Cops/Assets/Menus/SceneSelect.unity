@@ -602,11 +602,11 @@ Prefab:
     - target: {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
       propertyPath: previous_node
       value: 
-      objectReference: {fileID: 150390017}
+      objectReference: {fileID: 0}
     - target: {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
       propertyPath: next_node
       value: 
-      objectReference: {fileID: 945279550}
+      objectReference: {fileID: 0}
     - target: {fileID: 21218328, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
       propertyPath: m_SortingLayerID
       value: 711191555
@@ -623,7 +623,8 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &88126017
@@ -911,12 +912,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 137836491}
---- !u!114 &150390017 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9,
-    type: 2}
-  m_PrefabInternal: {fileID: 911262663}
-  m_Script: {fileID: 11500000, guid: 21792637ac183df40920ead019d8f9ad, type: 3}
 --- !u!1 &150626089
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,12 +1710,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &246819026 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9,
-    type: 2}
-  m_PrefabInternal: {fileID: 1214282425}
-  m_Script: {fileID: 11500000, guid: 21792637ac183df40920ead019d8f9ad, type: 3}
 --- !u!1 &263149670
 GameObject:
   m_ObjectHideFlags: 0
@@ -1903,6 +1892,32 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
+--- !u!1 &268283372 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 144362, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
+  m_PrefabInternal: {fileID: 911262663}
+--- !u!114 &268283374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 268283372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e29ea3e5e7f8b4483332ef60bd8090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level_name: a level
+  level_to_load: 
+  next_node: {fileID: 355476409}
+  previous_node: {fileID: 1824864956}
+  is_cutscene: 0
+  coop: 1
+  competitive: 1
+  chained: 1
+  no_tether: 1
+  tether_on: 1
+  one_hit_kill: 1
 --- !u!28 &269939093
 Texture2D:
   m_ObjectHideFlags: 0
@@ -2670,6 +2685,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!1 &355476407 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 144362, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
+  m_PrefabInternal: {fileID: 80306354}
+--- !u!114 &355476409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 355476407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e29ea3e5e7f8b4483332ef60bd8090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level_name: a level
+  level_to_load: 
+  next_node: {fileID: 1511471505}
+  previous_node: {fileID: 268283374}
+  is_cutscene: 0
+  coop: 1
+  competitive: 1
+  chained: 1
+  no_tether: 1
+  tether_on: 1
+  one_hit_kill: 1
 --- !u!1 &367269881
 GameObject:
   m_ObjectHideFlags: 0
@@ -3759,12 +3800,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 569160244}
---- !u!114 &579092754 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9,
-    type: 2}
-  m_PrefabInternal: {fileID: 1664291431}
-  m_Script: {fileID: 11500000, guid: 21792637ac183df40920ead019d8f9ad, type: 3}
 --- !u!1 &602987349
 GameObject:
   m_ObjectHideFlags: 0
@@ -4221,12 +4256,6 @@ Texture2D:
     offset: 0
     size: 0
     path: 
---- !u!114 &713489676 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9,
-    type: 2}
-  m_PrefabInternal: {fileID: 80306354}
-  m_Script: {fileID: 11500000, guid: 21792637ac183df40920ead019d8f9ad, type: 3}
 --- !u!1 &725033307
 GameObject:
   m_ObjectHideFlags: 0
@@ -5039,11 +5068,11 @@ Prefab:
     - target: {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
       propertyPath: next_node
       value: 
-      objectReference: {fileID: 713489676}
+      objectReference: {fileID: 0}
     - target: {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
       propertyPath: previous_node
       value: 
-      objectReference: {fileID: 246819026}
+      objectReference: {fileID: 0}
     - target: {fileID: 21218328, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
       propertyPath: m_SortingLayerID
       value: 711191555
@@ -5060,7 +5089,8 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
   m_IsPrefabParent: 0
 --- !u!28 &915786469
@@ -5576,12 +5606,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 943265371}
---- !u!114 &945279550 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9,
-    type: 2}
-  m_PrefabInternal: {fileID: 963793243}
-  m_Script: {fileID: 11500000, guid: 21792637ac183df40920ead019d8f9ad, type: 3}
 --- !u!1 &960696364
 GameObject:
   m_ObjectHideFlags: 0
@@ -5762,11 +5786,11 @@ Prefab:
     - target: {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
       propertyPath: previous_node
       value: 
-      objectReference: {fileID: 713489676}
+      objectReference: {fileID: 0}
     - target: {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
       propertyPath: next_node
       value: 
-      objectReference: {fileID: 945279550}
+      objectReference: {fileID: 0}
     - target: {fileID: 21218328, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
       propertyPath: m_SortingLayerID
       value: 711191555
@@ -5783,7 +5807,8 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
   m_IsPrefabParent: 0
 --- !u!28 &981846052
@@ -8513,9 +8538,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99e29ea3e5e7f8b4483332ef60bd8090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level_name: level_1
+  level_name: a level
   level_to_load: level_1
-  next_node: {fileID: 579092754}
+  next_node: {fileID: 1343845264}
   previous_node: {fileID: 1058318445}
   is_cutscene: 0
   coop: 1
@@ -9747,11 +9772,11 @@ Prefab:
     - target: {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
       propertyPath: next_node
       value: 
-      objectReference: {fileID: 150390017}
+      objectReference: {fileID: 0}
     - target: {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
       propertyPath: previous_node
       value: 
-      objectReference: {fileID: 579092754}
+      objectReference: {fileID: 0}
     - target: {fileID: 21218328, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
       propertyPath: m_SortingLayerID
       value: 711191555
@@ -9768,7 +9793,8 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1216291889
@@ -10430,7 +10456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c5f61a5b994d548987a3acc677e00f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starting_node: {fileID: 0}
+  starting_node: {fileID: 1058318445}
   hovering_over_level: {fileID: 0}
   destination_node: {fileID: 0}
 --- !u!1 &1316102504
@@ -10774,6 +10800,32 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!1 &1343845262 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 144362, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
+  m_PrefabInternal: {fileID: 1664291431}
+--- !u!114 &1343845264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1343845262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e29ea3e5e7f8b4483332ef60bd8090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level_name: a level
+  level_to_load: 
+  next_node: {fileID: 1824864956}
+  previous_node: {fileID: 1058318445}
+  is_cutscene: 0
+  coop: 1
+  competitive: 1
+  chained: 1
+  no_tether: 1
+  tether_on: 1
+  one_hit_kill: 1
 --- !u!1 &1347133146
 GameObject:
   m_ObjectHideFlags: 0
@@ -11328,7 +11380,7 @@ Prefab:
     - target: {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
       propertyPath: next_node
       value: 
-      objectReference: {fileID: 579092754}
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
@@ -11688,6 +11740,32 @@ CanvasRenderer:
 Transform:
   m_PrefabParentObject: {fileID: 482432, guid: 452f8f58772cede42bfd4b65d50a1c3c, type: 2}
   m_PrefabInternal: {fileID: 1409242892}
+--- !u!1 &1511471503 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 144362, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
+  m_PrefabInternal: {fileID: 963793243}
+--- !u!114 &1511471505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1511471503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e29ea3e5e7f8b4483332ef60bd8090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level_name: a level
+  level_to_load: 
+  next_node: {fileID: 1511471505}
+  previous_node: {fileID: 355476409}
+  is_cutscene: 0
+  coop: 1
+  competitive: 1
+  chained: 1
+  no_tether: 1
+  tether_on: 1
+  one_hit_kill: 1
 --- !u!1 &1525495683
 GameObject:
   m_ObjectHideFlags: 0
@@ -14309,11 +14387,11 @@ Prefab:
     - target: {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
       propertyPath: previous_node
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1058318445}
     - target: {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
       propertyPath: next_node
       value: 
-      objectReference: {fileID: 246819026}
+      objectReference: {fileID: 0}
     - target: {fileID: 144362, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
       propertyPath: m_Name
       value: Level2
@@ -14334,7 +14412,8 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1667166970
@@ -15659,6 +15738,32 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1808227090}
+--- !u!1 &1824864954 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 144362, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
+  m_PrefabInternal: {fileID: 1214282425}
+--- !u!114 &1824864956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1824864954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e29ea3e5e7f8b4483332ef60bd8090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level_name: Ocean Waves
+  level_to_load: Ocean Waves
+  next_node: {fileID: 268283374}
+  previous_node: {fileID: 1343845264}
+  is_cutscene: 0
+  coop: 1
+  competitive: 1
+  chained: 1
+  no_tether: 1
+  tether_on: 1
+  one_hit_kill: 1
 --- !u!1 &1854110255
 GameObject:
   m_ObjectHideFlags: 0

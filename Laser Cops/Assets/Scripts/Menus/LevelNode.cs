@@ -34,6 +34,7 @@ public class LevelNode : MonoBehaviour
         {
             selected = true;
 
+            LevelIsSelected();
             LevelManager.level_manager.SelectLevel(this);
         }
     }
