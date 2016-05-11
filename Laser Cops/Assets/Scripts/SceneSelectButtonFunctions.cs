@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +16,6 @@ public class SceneSelectButtonFunctions : MonoBehaviour {
 
     public void SelectScene(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
     }
 }

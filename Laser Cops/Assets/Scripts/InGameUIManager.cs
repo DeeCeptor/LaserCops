@@ -3,9 +3,9 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class UIManager : MonoBehaviour
+public class InGameUIManager : MonoBehaviour
 {
-    public static UIManager ui_manager;
+    public static InGameUIManager ui_manager;
 
     public Slider player_1_health;
     public Slider player_2_health;

@@ -15,9 +15,9 @@ public class BossHealthScript : MonoBehaviour {
     void Start ()
     {
         
-        if(!UIManager.ui_manager.bottom_bar.activeInHierarchy)
+        if(!InGameUIManager.ui_manager.bottom_bar.activeInHierarchy)
         {
-            UIManager.ui_manager.ActivateBottomHealthBar(bossName, Color.red, overallHealth);
+            InGameUIManager.ui_manager.ActivateBottomHealthBar(bossName, Color.red, overallHealth);
         }
     }
 	
@@ -34,7 +34,7 @@ public class BossHealthScript : MonoBehaviour {
 	{
 		health -= damage;
         overallHealth -= damage;
-        UIManager.ui_manager.UpdateBottomHealthBar(overallHealth);
+        InGameUIManager.ui_manager.UpdateBottomHealthBar(overallHealth);
 	}
 
     void OnCollisionEnter2D(Collision2D collision)

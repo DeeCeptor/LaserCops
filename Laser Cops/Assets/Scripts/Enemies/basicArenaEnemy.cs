@@ -109,7 +109,7 @@ public class basicArenaEnemy : MonoBehaviour {
 	{
 		EffectsManager.effects.ViolentExplosion(this.transform.position);
 		Destroy(gameObject);
-		UIManager.ui_manager.ChangeScore(pointValue);
+        InGameUIManager.ui_manager.ChangeScore(pointValue);
 	}
 
     public void moveInactive()

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class VIPScript : MonoBehaviour {
@@ -9,7 +9,7 @@ public class VIPScript : MonoBehaviour {
 	public float friendlyFireDamage = 0.2f;
 	// Use this for initialization
 	void Start () {
-        UIManager.ui_manager.ActivateBottomHealthBar("VIP", Color.green, health);
+        InGameUIManager.ui_manager.ActivateBottomHealthBar("VIP", Color.green, health);
     }
 	
 	// Update is called once per frame
@@ -164,7 +164,7 @@ public class VIPScript : MonoBehaviour {
 	public void TakeHit(float damage)
 	{
 		health -= damage;
-        UIManager.ui_manager.UpdateBottomHealthBar(health);
+        InGameUIManager.ui_manager.UpdateBottomHealthBar(health);
         if (health <= 0)
 		{
             

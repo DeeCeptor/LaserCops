@@ -74,7 +74,7 @@ public class PlayerController : PlayerInput
 
         Health = Max_Health;
         GameState.game_state.Players.Add(this);
-        UIManager.ui_manager.UpdateHealth();
+        InGameUIManager.ui_manager.UpdateHealth();
     }
 
     void Update()
@@ -275,7 +275,7 @@ public class PlayerController : PlayerInput
         Health = Mathf.Clamp(Health + amount, 0, Max_Health);
 
         // Set health bar
-        UIManager.ui_manager.UpdateHealth();
+        InGameUIManager.ui_manager.UpdateHealth();
     }
 
     public void TakeHit(float damage)
@@ -313,7 +313,7 @@ public class PlayerController : PlayerInput
         Debug.Log("Player " + player_number + " died");
 
         Health = 0;
-        UIManager.ui_manager.UpdateHealth();
+        InGameUIManager.ui_manager.UpdateHealth();
         SoundMixer.sound_manager.Play8bitExplosion();
         ClearGrindingSparks();
 
