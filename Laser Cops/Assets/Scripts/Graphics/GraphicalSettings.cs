@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GraphicalSettings : MonoBehaviour 
 {
@@ -26,9 +27,15 @@ public class GraphicalSettings : MonoBehaviour
     public bool Show_Wakes  // Whether cars create wakes with the highway grid
     {
         get { return show_wakes; }
-        set { show_wakes = value; }
+        set {
+            show_wakes = value;
+            SaveGraphicalSetting("Show_Wakes", value);
+        }
     }
     private bool show_wakes = true;
+
+    public Toggle Show_Wakes_Toggle;
+
 
     void Awake()
     {
@@ -36,11 +43,21 @@ public class GraphicalSettings : MonoBehaviour
     }
     void Start () 
 	{
-	
+        LoadGraphicalSettings();
 	}
 	
+    public void LoadGraphicalSettings()
+    {
+        Show_Wakes = System.Convert.ToBoolean(PlayerPrefs.GetInt("Show_Wakes", 1));
+        Show_Wakes_Toggle.isOn = Show_Wakes;
+    }
+    public void SaveGraphicalSetting(string key, bool value)
+    {
+        PlayerPrefs.SetInt(key, System.Convert.ToInt32(value));
+        PlayerPrefs.Save();
+    }
 
-	void Update () 
+    void Update () 
 	{
 	
 	}

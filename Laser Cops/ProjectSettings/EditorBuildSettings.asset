@@ -10,9 +10,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Menus/LevelSelect.unity
   - enabled: 1
-    path: Assets/Levels/Michael Easy Melee.unity
+    path: Assets/Levels/Michael/Gettin' Pushy.unity
   - enabled: 1
-    path: Assets/Levels/MichaelLevel.unity
+    path: Assets/Levels/Michael/MichaelLevel.unity
   - enabled: 1
     path: Assets/Menus/SceneSelect.unity
   - enabled: 1
@@ -38,6 +38,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/DiscoBall.unity
   - enabled: 1
-    path: Assets/Levels/Michael DodgeObstacles.unity
+    path: Assets/Levels/Michael/Michael DodgeObstacles.unity
   - enabled: 1
-    path: Assets/Levels/Michael Shooting Waves.unity
+    path: Assets/Levels/Michael/Ocean Waves.unity
