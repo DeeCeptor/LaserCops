@@ -37,6 +37,10 @@ public class LevelNode : MonoBehaviour
             LevelManager.level_manager.SelectLevel(this);
         }
     }
+    public virtual void LevelIsSelected()
+    {
+
+    }
     public void DeselectLevel()
     {
         selected = false;
@@ -54,10 +58,4 @@ public class LevelNode : MonoBehaviour
             SelectLevel();
         }
     }
-
-
-	void Update () 
-	{
-
-	}
 }

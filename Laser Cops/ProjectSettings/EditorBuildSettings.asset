@@ -14,29 +14,29 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Michael/MichaelLevel.unity
   - enabled: 1
-    path: Assets/Menus/SceneSelect.unity
+    path: Assets/Menus/SceneSelect Old.unity
   - enabled: 1
-    path: Assets/Levels/KevinVIPLevel.unity
+    path: Assets/Levels/Kevin/KevinVIPLevel.unity
   - enabled: 1
-    path: Assets/Levels/KevinVIP2Level.unity
+    path: Assets/Levels/Kevin/KevinVIP2Level.unity
   - enabled: 1
-    path: Assets/Levels/KevinTestLevel1.unity
+    path: Assets/Levels/Kevin/KevinTestLevel1.unity
   - enabled: 1
-    path: Assets/Levels/KevinShootLevel2.unity
+    path: Assets/Levels/Kevin/KevinShootLevel2.unity
   - enabled: 1
-    path: Assets/Levels/KevinSceneSelectTest.unity
+    path: Assets/Levels/Kevin/KevinSceneSelectTest.unity
   - enabled: 1
-    path: Assets/Levels/KevinObstaclesScene.unity
+    path: Assets/Levels/Kevin/SlowObstaclesScene.unity
   - enabled: 1
-    path: Assets/Levels/KevinMeleeEnemiesLevel.unity
+    path: Assets/Levels/Kevin/MeleeEnemiesLevel.unity
   - enabled: 0
     path: Assets/Levels/kevinGrindLevel2.unity
   - enabled: 1
-    path: Assets/Levels/KevinFasterObstacleScreen.unity
+    path: Assets/Levels/Kevin/FasterObstacleScene.unity
   - enabled: 1
-    path: Assets/Levels/KevinScene.unity
+    path: Assets/Levels/Kevin/KevinScene.unity
   - enabled: 1
-    path: Assets/Levels/DiscoBall.unity
+    path: Assets/Levels/Kevin/DiscoBall.unity
   - enabled: 1
     path: Assets/Levels/Michael/Michael DodgeObstacles.unity
   - enabled: 1

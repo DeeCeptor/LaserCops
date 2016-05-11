@@ -8498,6 +8498,32 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
+--- !u!1 &1058318444 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 144362, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
+  m_PrefabInternal: {fileID: 1423985256}
+--- !u!114 &1058318445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1058318444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e29ea3e5e7f8b4483332ef60bd8090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level_name: level_1
+  level_to_load: level_1
+  next_node: {fileID: 579092754}
+  previous_node: {fileID: 1058318445}
+  is_cutscene: 0
+  coop: 1
+  competitive: 1
+  chained: 1
+  no_tether: 1
+  tether_on: 1
+  one_hit_kill: 1
 --- !u!1 &1058852743
 GameObject:
   m_ObjectHideFlags: 0
@@ -10404,7 +10430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c5f61a5b994d548987a3acc677e00f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starting_node: {fileID: 2011832041}
+  starting_node: {fileID: 0}
   hovering_over_level: {fileID: 0}
   destination_node: {fileID: 0}
 --- !u!1 &1316102504
@@ -11303,7 +11329,8 @@ Prefab:
       propertyPath: next_node
       value: 
       objectReference: {fileID: 579092754}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1434043753 stripped
@@ -14282,7 +14309,7 @@ Prefab:
     - target: {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
       propertyPath: previous_node
       value: 
-      objectReference: {fileID: 2011832041}
+      objectReference: {fileID: 0}
     - target: {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
       propertyPath: next_node
       value: 
@@ -16458,12 +16485,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1973171326}
---- !u!114 &2011832041 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9,
-    type: 2}
-  m_PrefabInternal: {fileID: 1423985256}
-  m_Script: {fileID: 11500000, guid: 21792637ac183df40920ead019d8f9ad, type: 3}
 --- !u!1 &2014432287
 GameObject:
   m_ObjectHideFlags: 0
@@ -16591,6 +16612,12 @@ MonoBehaviour:
   level_text_name: {fileID: 2103454402}
   level_settings: {fileID: 1731472523}
   object_to_select: {fileID: 151823920}
+  coop_mode: {fileID: 930368467}
+  competitive_mode: {fileID: 930368467}
+  no_tether_mode: {fileID: 1763259810}
+  tether_on_mode: {fileID: 263149670}
+  chained_mode: {fileID: 662079912}
+  one_hit_kill_mode: {fileID: 748139947}
 --- !u!120 &2047408380
 LineRenderer:
   m_ObjectHideFlags: 0

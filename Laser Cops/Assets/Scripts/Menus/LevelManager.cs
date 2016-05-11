@@ -15,6 +15,14 @@ public class LevelManager : MonoBehaviour
     public GameObject level_settings;
     public GameObject object_to_select;
 
+    public GameObject coop_mode;
+    public GameObject competitive_mode;
+    public GameObject no_tether_mode;
+    public GameObject tether_on_mode;
+    public GameObject chained_mode;
+    public GameObject one_hit_kill_mode;
+
+
     void Awake()
     {
         level_manager = this;
