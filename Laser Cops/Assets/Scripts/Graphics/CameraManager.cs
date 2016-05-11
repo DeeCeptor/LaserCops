@@ -7,15 +7,23 @@ public class CameraManager : MonoBehaviour
     float zoom_speed = 0.5f;        // How quickly the zoom changes
     Camera cam;
 
+    BoxCollider2D camera_region;
+
     void Awake ()
     {
         cam = Camera.main;
         ChangeZoom(this.cam.orthographicSize, 0.5f);
+        camera_region = this.GetComponent<BoxCollider2D>();
     }
     void Start ()
     {
-	
-	}
+        Vector3 minScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
+        Vector3 maxScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+
+        camera_region.size = new Vector2((Mathf.Abs(minScreenBounds.x) + Mathf.Abs(maxScreenBounds.x)) / 1 * this.transform.localScale.x,
+                                         (Mathf.Abs(minScreenBounds.y) + Mathf.Abs(maxScreenBounds.y)) / 1 * this.transform.localScale.y);
+
+    }
 
 
     public void ChangeZoom(float zoom_level, float speed)

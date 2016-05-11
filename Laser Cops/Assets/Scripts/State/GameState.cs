@@ -60,7 +60,7 @@ public class GameState : MonoBehaviour
 
         SetGameMode();
         SetSettings();
-
+        
         PlayerObjects = GameObject.FindGameObjectsWithTag("Player");
         if (VIP)
         {
