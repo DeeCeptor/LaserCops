@@ -46,13 +46,6 @@ public class basicScrollingEnemyScript : MonoBehaviour
         }*/
     }
 
-    void Update()
-    {
-        if (!active)
-        {
-            CheckActive();
-        }
-    }
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -61,6 +54,7 @@ public class basicScrollingEnemyScript : MonoBehaviour
         if (!active)
         {
             moveInactive();
+            CheckActive();
         }
         else
         {

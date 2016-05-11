@@ -9,14 +9,15 @@ public class BossHealthScript : MonoBehaviour {
 	public int stages = 3;
 	//number of healthpoints remaining for the boss overall(across multiple forms)
 	public float overallHealth = 60;
+    public string bossName = "Welcome to the GUNSHIP";
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         
         if(!UIManager.ui_manager.bottom_bar.activeInHierarchy)
         {
-            UIManager.ui_manager.ActivateBottomHealthBar("Welcome to the GUNSHIP", Color.red, overallHealth);
+            UIManager.ui_manager.ActivateBottomHealthBar(bossName, Color.red, overallHealth);
         }
     }
 	
@@ -35,6 +36,14 @@ public class BossHealthScript : MonoBehaviour {
         overallHealth -= damage;
         UIManager.ui_manager.UpdateBottomHealthBar(overallHealth);
 	}
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "BounceBomb")
+        {
+            takeHit(collision.gameObject.GetComponent<bounceBomb>().damageToBoss);
+        }
+    }
 
     public void Die()
     {

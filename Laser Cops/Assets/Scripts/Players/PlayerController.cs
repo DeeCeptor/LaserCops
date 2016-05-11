@@ -272,7 +272,7 @@ public class PlayerController : PlayerInput
 
     public void AdjustHealth(float amount)
     {
-        Health = Mathf.Clamp(Health + amount, 0, 100);
+        Health = Mathf.Clamp(Health + amount, 0, Max_Health);
 
         // Set health bar
         UIManager.ui_manager.UpdateHealth();

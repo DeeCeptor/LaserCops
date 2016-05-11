@@ -31,7 +31,7 @@ public class ScrollThenStopBoss : basicScrollingEnemyScript
     {
         if (!active)
         {
-            CheckActive();
+            CheckActiveB();
             moveInactive();
         }
         else
@@ -63,11 +63,11 @@ public class ScrollThenStopBoss : basicScrollingEnemyScript
         }
     }
 
-    public new void CheckActive()
+    public void CheckActiveB()
     {
         if (GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
         {
-            Activate();
+            ActivateB();
         }
     }
 
@@ -89,8 +89,9 @@ public class ScrollThenStopBoss : basicScrollingEnemyScript
         //rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
-    public new void Activate()
+    public void ActivateB()
     {
+        
         active = true;
         stopCounter = Time.time + timeTillStop;
     }

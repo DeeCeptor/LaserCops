@@ -11,12 +11,12 @@ public class SideToSideTurret : MonoBehaviour {
     //whether it has horizontal or vertical back and forth movement
     public bool horizontal = true;
     //whether the object is currently increasing in x or y value
-    bool up = true;
+    public bool up = true;
 
 	// Use this for initialization
 	void Start () {
-	
-	}
+        limitCounter = Time.time + limit - limitCounter;
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate ()
