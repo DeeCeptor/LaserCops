@@ -197,6 +197,7 @@ GameObject:
   - 114: {fileID: 11410146}
   - 114: {fileID: 11406336}
   - 114: {fileID: 11492716}
+  - 114: {fileID: 11464710}
   m_Layer: 8
   m_Name: CircleStrafer
   m_TagString: Enemy
@@ -375,7 +376,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!61 &6178520
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -568,6 +569,17 @@ MonoBehaviour:
   offset: 1
   localDirectionToUse: 1
   lagTime: 0.05
+--- !u!114 &11464710
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 198980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebdd88aff913cba4fa2552f0c66f35dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11492716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -579,6 +591,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c464d3ff6a7801c4a85f5a980447c75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  active: 0
+  die_in_one_hit: 0
+  takes_grinding_damage: 0
+  collisionDamage: 0.3
+  pointValue: 100
+  health: 90
+  beingRammed: 0
+  desired_velocity: {x: 0, y: 0}
+  travelDirection: 1
+  timeTillStop: 3
+  stopCounter: 0
+  rotateWhenStopped: 1
+  rotateSpeed: 1
+  goAgain: 1
+  timeTillGoAgain: 5
+  stopped: 0
+  speedAfterStop: 2
+  playerToTrack: {fileID: 0}
+  players: []
+  dir: {x: 0, y: 0}
+  circling: 0
+  circlingSpeed: 2
+  charging: 0
+  chargeSpeed: 7
+  chargeDir: {x: 0, y: 0, z: 0}
+  rotateClockwise: 0
+  flankTolerance: 0.2
+  chargeDuration: 1
+  chargeCounter: 0
 --- !u!114 &11492726
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -910,7 +952,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: health
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 198980}

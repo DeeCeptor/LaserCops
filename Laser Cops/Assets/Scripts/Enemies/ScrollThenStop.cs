@@ -25,7 +25,6 @@ public class ScrollThenStop : basicScrollingEnemyScript
 
         if (!active)
         {
-            CheckActive();
             moveInactive();
         }
         else
@@ -78,6 +77,33 @@ public class ScrollThenStop : basicScrollingEnemyScript
         Rigidbody2D rigid = GetComponent<Rigidbody2D>();
         rigid.constraints = RigidbodyConstraints2D.None;
         //rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag.Equals("MainCamera"))
+        {
+            Activate();
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D collider)
+    {
+        if (!active)
+        {
+            if (collider.gameObject.tag.Equals("MainCamera"))
+            {
+                Activate();
+            }
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "MainCamera")
+        {
+            DieOffScreen();
+        }
     }
 
     public new void Activate()
