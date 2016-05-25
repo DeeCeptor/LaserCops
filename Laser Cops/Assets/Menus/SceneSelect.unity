@@ -1907,8 +1907,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99e29ea3e5e7f8b4483332ef60bd8090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level_name: a level
-  level_to_load: 
+  level_name: Disco Dan
+  level_to_load: BounceBoss
   next_node: {fileID: 355476409}
   previous_node: {fileID: 1824864956}
   is_cutscene: 0
@@ -5031,7 +5031,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 144362, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
       propertyPath: m_Name
-      value: Level4
+      value: Disco Dan
       objectReference: {fileID: 0}
     - target: {fileID: 11440708, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
       propertyPath: radius
@@ -8538,7 +8538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99e29ea3e5e7f8b4483332ef60bd8090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level_name: a level
+  level_name: Bullet Purgatory
   level_to_load: level_1
   next_node: {fileID: 1343845264}
   previous_node: {fileID: 1058318445}
@@ -11375,7 +11375,7 @@ Prefab:
       objectReference: {fileID: 2131575240}
     - target: {fileID: 144362, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
       propertyPath: m_Name
-      value: Level1
+      value: KevinDemo1
       objectReference: {fileID: 0}
     - target: {fileID: 11432406, guid: 633e30ccb14f99d4abc9e8d2915a52b9, type: 2}
       propertyPath: next_node

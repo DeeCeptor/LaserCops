@@ -7,8 +7,8 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Menus/SplashScreen.unity
-  - enabled: 0
-    path: Assets/Menus/LevelSelect.unity
+  - enabled: 1
+    path: Assets/Menus/SceneSelect.unity
   - enabled: 1
     path: Assets/Levels/Michael/Gettin' Pushy.unity
   - enabled: 1
@@ -29,8 +29,6 @@ EditorBuildSettings:
     path: Assets/Levels/Kevin/SlowObstaclesScene.unity
   - enabled: 1
     path: Assets/Levels/Kevin/MeleeEnemiesLevel.unity
-  - enabled: 0
-    path: Assets/Levels/kevinGrindLevel2.unity
   - enabled: 1
     path: Assets/Levels/Kevin/FasterObstacleScene.unity
   - enabled: 1

@@ -3,7 +3,8 @@ using System.Collections;
 
 public class ScrollDemoManager : MonoBehaviour 
 {
-	public Vector2 m_ScrollSpeed;
+    public bool ignore_graphical_settings = false;
+    public Vector2 m_ScrollSpeed;
 
 	float m_ExplosiveForce = 1.0f;
 	float m_ForceRadius = 1.0f;
@@ -34,7 +35,7 @@ public class ScrollDemoManager : MonoBehaviour
 			UpdateRandomColor();
 		}
 
-        if (GraphicalSettings.graphical_settings.Scroll_Grid)  
+        if (ignore_graphical_settings || GraphicalSettings.graphical_settings.Scroll_Grid)  
 		    m_VectorGrid.Scroll(m_ScrollSpeed * Time.deltaTime);
 	}
 	
