@@ -1915,7 +1915,7 @@ MonoBehaviour:
   can_boost: 1
   chained_to_center: 0
   can_transfer_health: 1
-  current_difficulty: 0
+  current_difficulty: 1
   Player_Health_Modifier: 1
   Enemy_Health_Modifier: 1
   inactive_speed: 1

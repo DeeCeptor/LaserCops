@@ -27,7 +27,7 @@ public class GameState : MonoBehaviour
 
     // Difficulty settings
     public Difficulty current_difficulty = Difficulty.Normal;
-    public enum Difficulty {  Normal, Hard };
+    public enum Difficulty {  Easy, Normal, Hard };
     public float Player_Health_Modifier = 1.0f; // Multiplies the player's max health (hard makes this number lower)
     public float Enemy_Health_Modifier = 1.0f;  // Multiplies each enemies' health (hard makes this number higher)
 
