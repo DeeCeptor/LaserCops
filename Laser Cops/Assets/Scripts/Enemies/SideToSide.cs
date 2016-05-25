@@ -22,7 +22,6 @@ public class SideToSide : basicScrollingEnemyScript {
 	void FixedUpdate () {
         if (!active)
         {
-            CheckActive();
             moveInactive();
         }
 

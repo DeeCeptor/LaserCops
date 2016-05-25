@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11464918}
   - 61: {fileID: 6149638}
   - 114: {fileID: 11439910}
+  - 114: {fileID: 11494236}
   m_Layer: 8
   m_Name: ScrollThenStopAccelerate
   m_TagString: Enemy
@@ -102,7 +103,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 153906}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 73.56458, y: 8.286305, z: 0}
+  m_LocalPosition: {x: 84.07528, y: -5.6415076, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 465814}
@@ -164,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 270f5b618f3fda044938c3f8dbae669a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 0.3
+  shotDelay: 0.5
   shotCounter: 0
   bullet: {fileID: 179674, guid: e205d6cdda05cc14cb94ab844aa0c471, type: 2}
   active: 0
@@ -198,7 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 270f5b618f3fda044938c3f8dbae669a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 0.3
+  shotDelay: 0.5
   shotCounter: 0
   bullet: {fileID: 179674, guid: e205d6cdda05cc14cb94ab844aa0c471, type: 2}
   active: 0
@@ -221,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 270f5b618f3fda044938c3f8dbae669a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 0.3
+  shotDelay: 0.5
   shotCounter: 0
   bullet: {fileID: 179674, guid: e205d6cdda05cc14cb94ab844aa0c471, type: 2}
   active: 0
@@ -251,6 +252,7 @@ MonoBehaviour:
   collisionDamage: 0.3
   pointValue: 20
   health: 1
+  beingRammed: 0
   desired_velocity: {x: 0, y: 0}
   travelDirection: 1
   timeTillStop: 2
@@ -260,6 +262,18 @@ MonoBehaviour:
   goAgain: 1
   timeTillGoAgain: 3
   stopped: 0
+--- !u!114 &11494236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5856db298e3415342a1bfbb970eab11f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cell_size: 1
 --- !u!212 &21226810
 SpriteRenderer:
   m_ObjectHideFlags: 1

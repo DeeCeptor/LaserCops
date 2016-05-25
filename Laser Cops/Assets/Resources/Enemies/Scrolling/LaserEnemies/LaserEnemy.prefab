@@ -164,6 +164,7 @@ GameObject:
   - 61: {fileID: 6169562}
   - 114: {fileID: 11461040}
   - 114: {fileID: 11467952}
+  - 114: {fileID: 11429066}
   m_Layer: 8
   m_Name: LaserEnemy
   m_TagString: Enemy
@@ -228,7 +229,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171314}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: -15.935417, y: -0.7136946, z: 0}
+  m_LocalPosition: {x: 104, y: -7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 420288}
@@ -577,6 +578,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4fd9ce09786a4b4fb28815e25f396e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11429066
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebdd88aff913cba4fa2552f0c66f35dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11437766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -631,10 +643,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_VectorGrid: {fileID: 0}
-  m_ForceScale: 1
   m_Directional: 0
   m_ForceDirection: {x: 0, y: 0, z: 0}
-  m_Radius: 1
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_HasColor: 1
   activated: 0

@@ -19,6 +19,14 @@ public class basicScrollingEnemyScript : MonoBehaviour
 	public float health = 1f;
     public bool beingRammed = false;
 
+    //whether this enemy is colliding with another enemy
+    public bool enemyEnemyCollsion = false;
+    //which direction to go when hitting another enemy, this is determined upon the collision and just determines whether a negative multiplyer will be added to the perpendicular velocity
+    public bool ramNavPos = false;
+    //max time to spend avoiding a collision
+    public float collisionAvoidTime = 1f;
+    private float collisionAvoidCounter = 0f;
+
     [HideInInspector]
     public Vector2 desired_velocity = Vector2.zero;
     
@@ -59,6 +67,7 @@ public class basicScrollingEnemyScript : MonoBehaviour
         {
             CheckDeath();
             moveActive();
+            
         }
     }
 
@@ -145,6 +154,26 @@ public class basicScrollingEnemyScript : MonoBehaviour
                 Die();
             }
         }
+
+        else if(collision.gameObject.tag == "Enemy")
+        {
+            if(!enemyEnemyCollsion && collision.gameObject.GetComponent<basicScrollingEnemyScript>()!=null)
+            {
+                enemyEnemyCollsion = true;
+                collisionAvoidCounter = Time.time + collisionAvoidTime;
+                int rand = Random.Range(0,1);
+                if(rand == 1)
+                {
+                    ramNavPos = true;
+                    collision.gameObject.GetComponent<basicScrollingEnemyScript>().ramNavPos = false;
+                }
+                else
+                {
+                    ramNavPos = false;
+                    collision.gameObject.GetComponent<basicScrollingEnemyScript>().ramNavPos = true;
+                }
+            }
+        }
     }
 
     public void HitByTetherGraphics(Collision2D collision)
@@ -201,6 +230,29 @@ public class basicScrollingEnemyScript : MonoBehaviour
             desired_velocity = new Vector2(0, -speed);
             GetComponent<Rigidbody2D>().velocity = desired_velocity;
         }
+        if (enemyEnemyCollsion)
+        {
+            navigateAround();
+            if(collisionAvoidCounter < Time.time)
+            {
+                enemyEnemyCollsion = false;
+            }
+        }
+    }
+
+    //move perpendicularly to get away from the collision
+    public void navigateAround()
+    {
+        Vector2 velocity = GetComponent<Rigidbody2D>().velocity;
+        if (ramNavPos)
+        {
+            velocity = velocity + (new Vector2(-velocity.y, velocity.x).normalized);
+        }
+        else
+        {
+            velocity = velocity + (new Vector2(-velocity.y, velocity.x).normalized * -1);
+        }
+        GetComponent<Rigidbody2D>().velocity = velocity;
     }
 
     public GameObject[] CutSprite()

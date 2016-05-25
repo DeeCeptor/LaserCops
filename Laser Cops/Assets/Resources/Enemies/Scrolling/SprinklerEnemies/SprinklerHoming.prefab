@@ -215,6 +215,7 @@ GameObject:
   - 61: {fileID: 6164074}
   - 114: {fileID: 11459760}
   - 114: {fileID: 11461622}
+  - 114: {fileID: 11480730}
   m_Layer: 8
   m_Name: SprinklerHoming
   m_TagString: Enemy
@@ -266,7 +267,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183618}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 18, y: -4, z: 0}
+  m_LocalPosition: {x: 63, y: -8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 436904}
@@ -559,10 +560,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_VectorGrid: {fileID: 0}
-  m_ForceScale: 1
   m_Directional: 0
   m_ForceDirection: {x: 0, y: 0, z: 0}
-  m_Radius: 1
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_HasColor: 1
   activated: 0
@@ -634,6 +633,17 @@ MonoBehaviour:
   offset: 1
   localDirectionToUse: 1
   lagTime: 0.05
+--- !u!114 &11480730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebdd88aff913cba4fa2552f0c66f35dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11483482
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -645,7 +655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624bac116c5c2ce478b1680f0372b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 1.1
+  shotDelay: 2
   shotCounter: 0
   bullet: {fileID: 120478, guid: b0de785363611694fb2b365840c214d2, type: 2}
   active: 0
@@ -670,6 +680,10 @@ MonoBehaviour:
   collisionDamage: 0.3
   pointValue: 20
   health: 1
+  beingRammed: 0
+  enemyEnemyCollsion: 0
+  ramNavPos: 0
+  collisionAvoidTime: 1
   desired_velocity: {x: 0, y: 0}
   travelDirection: 1
 --- !u!120 &12043210
@@ -1014,7 +1028,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: shotDelay
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 183618}

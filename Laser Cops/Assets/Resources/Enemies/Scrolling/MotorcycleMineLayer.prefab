@@ -31,6 +31,7 @@ GameObject:
   - 61: {fileID: 6181418}
   - 114: {fileID: 11409632}
   - 114: {fileID: 11422362}
+  - 114: {fileID: 11452650}
   m_Layer: 8
   m_Name: MotorcycleMineLayer
   m_TagString: Enemy
@@ -60,7 +61,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171404}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 13, y: -14, z: 0}
+  m_LocalPosition: {x: 11.075283, y: -51.641506, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 416730}
@@ -146,13 +147,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_VectorGrid: {fileID: 0}
-  m_ForceScale: 1
   m_Directional: 0
   m_ForceDirection: {x: 0, y: 0, z: 0}
-  m_Radius: 1
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_HasColor: 1
   activated: 0
+--- !u!114 &11452650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebdd88aff913cba4fa2552f0c66f35dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11454004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,7 +180,7 @@ MonoBehaviour:
   takes_grinding_damage: 1
   collisionDamage: 0
   pointValue: 20
-  health: 50
+  health: 20
   beingRammed: 0
   desired_velocity: {x: 0, y: 0}
   travelDirection: 0
@@ -185,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 629f3f76ded65904dac4ed4045725025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 0.5
+  shotDelay: 1.5
   shotCounter: 0
   bullet: {fileID: 109344, guid: 48279890230bc8640a299d2aa8486950, type: 2}
   active: 0
@@ -194,7 +204,7 @@ MonoBehaviour:
   disableDistance: 2
   aimingLaser: {fileID: 106260, guid: 24c95d972daabbf42a1c762741e0f6d1, type: 2}
   laserLength: 60
-  laserDuration: 0.3
+  laserDuration: 0.5
   laserCounter: 0
   allowedDistance: 1
   playerInLine: 0
