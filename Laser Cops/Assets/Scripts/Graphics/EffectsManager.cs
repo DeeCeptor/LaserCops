@@ -43,9 +43,11 @@ public class EffectsManager : MonoBehaviour
     }
 
 
-    public void GridWake(Vector2 position, float force, float radius, Color color)
+    public void GridWake(Vector2 position, float force, float radius, Color color, bool enemy)
     {
-        if (GraphicalSettings.graphical_settings.Show_Wakes)
+        if (GraphicalSettings.graphical_settings.Show_Wakes
+            && ((enemy && GraphicalSettings.graphical_settings.Show_Enemy_Wakes) || (!enemy && GraphicalSettings.graphical_settings.Show_Player_Wakes))
+            )
             GridExplosion(position, force, radius, color);
     }
     public void GridExplosion(Vector2 position, float force, float radius, Color color)

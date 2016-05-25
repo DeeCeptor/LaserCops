@@ -484,16 +484,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151164}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8001c0b333b214cf6819aa35fc6da60a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_VectorGrid: {fileID: 0}
-  m_ForceScale: 1
   m_Directional: 0
   m_ForceDirection: {x: 0, y: 0, z: 0}
-  m_Radius: 1
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_HasColor: 1
   activated: 0
@@ -587,6 +585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5856db298e3415342a1bfbb970eab11f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  difficulty: 0
   cell_size: 1
 --- !u!114 &11469648
 MonoBehaviour:
@@ -606,6 +605,10 @@ MonoBehaviour:
   collisionDamage: 0.3
   pointValue: 20
   health: 1
+  beingRammed: 0
+  enemyEnemyCollsion: 0
+  ramNavPos: 0
+  collisionAvoidTime: 1
   desired_velocity: {x: 0, y: 0}
   travelDirection: 1
   timeTillStop: 3

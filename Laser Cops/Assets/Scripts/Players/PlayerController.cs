@@ -190,7 +190,7 @@ public class PlayerController : PlayerInput
         health_bar_image.color = new Color(health_bar_image.color.r, health_bar_image.color.g, health_bar_image.color.b, health_bar_image.color.a - Time.deltaTime * 1.0f);
 
         // Ripple the grid behind the car
-        EffectsManager.effects.GridWake((Vector2)transform.position, grid_ripple_force, grid_ripple_radius, primary_colour);
+        EffectsManager.effects.GridWake((Vector2)transform.position, grid_ripple_force, grid_ripple_radius, primary_colour, false);
     }
     void FixedUpdate()
     {

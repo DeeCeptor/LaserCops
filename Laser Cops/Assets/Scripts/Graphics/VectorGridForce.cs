@@ -43,7 +43,7 @@ public class VectorGridForce : MonoBehaviour
                 }
                 else
                 {
-                    EffectsManager.effects.GridWake(this.transform.position, m_ForceScale, m_Radius, m_Color);
+                    EffectsManager.effects.GridWake(this.transform.position, m_ForceScale, m_Radius, m_Color, true);
                     //m_VectorGrid.AddGridForce(this.transform.position, m_ForceScale, m_Radius, m_Color, m_HasColor);
                 }
                 counter = wake_cooldown;

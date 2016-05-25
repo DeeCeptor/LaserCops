@@ -140,7 +140,7 @@ GameObject:
   - 114: {fileID: 11434710}
   m_Layer: 10
   m_Name: GameState
-  m_TagString: GameController
+  m_TagString: GameMode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
