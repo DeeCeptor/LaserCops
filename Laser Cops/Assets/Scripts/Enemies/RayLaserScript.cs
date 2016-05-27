@@ -8,7 +8,7 @@ public class RayLaserScript : MonoBehaviour {
     //how long the shot lasts
     public int shotDuration = 150;
     //gives the player a time at the start of the shot where they see the laser but it cannot harm them
-    public int immuneFrames = 10;
+    public int immuneFrames = 50;
     //counter for immunitytime and shot duration
     public int TimeSinceShotCounter = 0;
     //counter for how long between shots
@@ -21,7 +21,7 @@ public class RayLaserScript : MonoBehaviour {
     //important note this is damage per "tick"
     public float damage = 0.5f;
     //layers to ignore for the raycast
-    LayerMask layersToIgnore;
+    public LayerMask layersToIgnore;
 
     //true if you want it to disable itself when the player is close
     public bool playerCloseDisable = true;
@@ -37,6 +37,7 @@ public class RayLaserScript : MonoBehaviour {
 	void FixedUpdate () {
 	    if(shotCounter < Time.time)
         {
+            laserRenderer.SetWidth(0.5f, 0.5f);
             shooting = true;
             TimeSinceShotCounter = 0;
             laserRenderer.enabled = true;
@@ -74,6 +75,7 @@ public class RayLaserScript : MonoBehaviour {
         //if the laser is supposed to do damage
         if (TimeSinceShotCounter > immuneFrames)
         {
+            laserRenderer.SetWidth(1,1);
             if(hit.collider!=null)
             {
                 if(hit.collider.gameObject.CompareTag("Player"))

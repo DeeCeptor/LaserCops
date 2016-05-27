@@ -75,6 +75,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageToBoss: 3
   respawnLocation: {x: 0, y: 0, z: 0}
+  maxSpeed: 8
+  centerAttraction: 0.05
 --- !u!212 &21234186
 SpriteRenderer:
   m_ObjectHideFlags: 1

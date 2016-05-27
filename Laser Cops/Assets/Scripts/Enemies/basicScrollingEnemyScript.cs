@@ -25,7 +25,7 @@ public class basicScrollingEnemyScript : MonoBehaviour
     public bool ramNavPos = false;
     //max time to spend avoiding a collision
     public float collisionAvoidTime = 1f;
-    private float collisionAvoidCounter = 0f;
+    public float collisionAvoidCounter = 0f;
 
     [HideInInspector]
     public Vector2 desired_velocity = Vector2.zero;

@@ -11,10 +11,16 @@ public class BossHealthScript : MonoBehaviour {
 	public float overallHealth = 60;
     public string bossName = "Welcome to the GUNSHIP";
 
+    //whether the boss should utilize immunity frames
+    public bool useImmunityTime = false;
+    //how many immunity frames the boss receives (if any)
+    public float immunityTime = 0.1f;
+    private float immunityCounter = 0f;
+
     // Use this for initialization
     void Start ()
     {
-        
+        immunityCounter = Time.time + immunityTime;
         if(!InGameUIManager.ui_manager.bottom_bar.activeInHierarchy)
         {
             InGameUIManager.ui_manager.ActivateBottomHealthBar(bossName, Color.red, overallHealth);
@@ -41,7 +47,19 @@ public class BossHealthScript : MonoBehaviour {
     {
         if(collision.gameObject.tag == "BounceBomb")
         {
-            takeHit(collision.gameObject.GetComponent<bounceBomb>().damageToBoss);
+            if(!useImmunityTime)
+            {
+                takeHit(collision.gameObject.GetComponent<bounceBomb>().damageToBoss);
+            }
+            else
+            {
+                if (immunityCounter < Time.time)
+                {
+                    immunityCounter = Time.time + immunityTime;
+                    takeHit(collision.gameObject.GetComponent<bounceBomb>().damageToBoss);
+                }
+            }
+
         }
     }
 
