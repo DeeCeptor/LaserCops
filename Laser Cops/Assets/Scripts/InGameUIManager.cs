@@ -21,7 +21,7 @@ public class InGameUIManager : MonoBehaviour
 
     public Text time_text;
     [HideInInspector]
-    public string time_string = "Time: ";
+    private string time_string = "";//"Time: ";
 
     public Slider bottom_health_bar;
     public Image bottom_health_bar_background;

@@ -468,6 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634577dac3b2a4accac4cb230adf6af5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ignore_graphical_settings: 0
   m_ScrollSpeed: {x: -11, y: 0}
   m_VectorGrid: {fileID: 11478518}
 --- !u!114 &11431886

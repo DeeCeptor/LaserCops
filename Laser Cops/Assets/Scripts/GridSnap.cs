@@ -5,7 +5,9 @@ using System.Collections;
 [ExecuteInEditMode]
 public class GridSnap : MonoBehaviour
 {
-    #if (UNITY_EDITOR)
+    public GameState.Difficulty difficulty = GameState.Difficulty.Easy;
+    Vector3 offset = new Vector3(-1, 1, 0);
+
     public float cell_size = 1f;
     private float x, y, z;
 
@@ -20,8 +22,24 @@ public class GridSnap : MonoBehaviour
         x = 0f;
         y = 0f;
         z = 0f;
+
+        switch (difficulty)
+        {
+            case GameState.Difficulty.Easy:
+                break;
+            case GameState.Difficulty.Normal:
+                if (GameState.game_state.current_difficulty == GameState.Difficulty.Easy)
+                    Destroy(this.gameObject);
+                break;
+            case GameState.Difficulty.Hard:
+                if (GameState.game_state.current_difficulty == GameState.Difficulty.Easy
+                    || GameState.game_state.current_difficulty == GameState.Difficulty.Normal)
+                    Destroy(this.gameObject);
+                break;
+        }
     }
 
+    #if (UNITY_EDITOR)
     void Update()
     {
         if (!Application.isPlaying)
@@ -72,6 +90,8 @@ public class GridSnap : MonoBehaviour
 
         if (distance != "" + 0)
             UnityEditor.Handles.Label(this.transform.position, distance);
+
+        UnityEditor.Handles.Label(this.transform.position + offset, difficulty + "");
     }
     #endif
 }

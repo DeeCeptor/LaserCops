@@ -9,13 +9,21 @@ public class TetherClamping : MonoBehaviour
 
     void Start ()
     {
+        /*
         player_1 = GameState.game_state.PlayerObjects[0].transform;
-        player_2 = GameState.game_state.PlayerObjects[1].transform;
+        player_2 = GameState.game_state.PlayerObjects[1].transform;*/
+        player_1 = GameState.game_state.Players[0].transform;
+        player_2 = GameState.game_state.Players[1].transform;
     }
 
 
     void Update ()
     {
+        if (!player_1)
+        {
+
+        }
+
         if (!GameState.game_state.chained_to_center)
         {
             if (player_1.transform.position.y < player_2.transform.position.y)

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class PlayerController : PlayerInput
 {
@@ -25,6 +26,7 @@ public class PlayerController : PlayerInput
     public float Health;
     float HP_transfer_rate = 15f;
     public float Grinding_Damage = 0.3f;    // How much damage we do by grinding against enemies
+    public Image health_bar_image;
 
     // Boost
     float boost_cooldown = 1.5f;
@@ -75,6 +77,7 @@ public class PlayerController : PlayerInput
         Health = Max_Health;
         GameState.game_state.Players.Add(this);
         InGameUIManager.ui_manager.UpdateHealth();
+        health_bar_image.color = new Color(health_bar_image.color.r, health_bar_image.color.g, health_bar_image.color.b, 0f);
     }
 
     void Update()
@@ -183,9 +186,11 @@ public class PlayerController : PlayerInput
         //transform.eulerAngles = new Vector3(0, 0, 
         //    Mathf.Lerp(transform.eulerAngles.z, desired_rotation, 0.01f));
 
+        // Start fading health bar
+        health_bar_image.color = new Color(health_bar_image.color.r, health_bar_image.color.g, health_bar_image.color.b, health_bar_image.color.a - Time.deltaTime * 1.0f);
 
         // Ripple the grid behind the car
-        EffectsManager.effects.GridWake((Vector2)transform.position, grid_ripple_force, grid_ripple_radius, primary_colour);
+        EffectsManager.effects.GridWake((Vector2)transform.position, grid_ripple_force, grid_ripple_radius, primary_colour, false);
     }
     void FixedUpdate()
     {
@@ -273,6 +278,9 @@ public class PlayerController : PlayerInput
     public void AdjustHealth(float amount)
     {
         Health = Mathf.Clamp(Health + amount, 0, Max_Health);
+
+        health_bar_image.fillAmount = Health / Max_Health;
+        health_bar_image.color = new Color(health_bar_image.color.r, health_bar_image.color.g, health_bar_image.color.b, 1f);
 
         // Set health bar
         InGameUIManager.ui_manager.UpdateHealth();

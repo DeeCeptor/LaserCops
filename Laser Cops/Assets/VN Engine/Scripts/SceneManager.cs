@@ -91,7 +91,7 @@ public class SceneManager : MonoBehaviour
         // Check for user input
         if (Input.GetKeyDown(KeyCode.Return)    // Enter
             || Input.GetKeyDown(KeyCode.KeypadEnter)    // Keypad enter
-            || (super_speed_delay <= 0 && (Input.GetKey(KeyCode.Space) ))   // Holding down space bar
+            //|| (super_speed_delay <= 0 && (Input.GetKey(KeyCode.Space) ))   // Holding down space bar
             || (fast_forwarding && super_speed_delay <= 0)  // Holding down the 'FAST' button
             )
         {

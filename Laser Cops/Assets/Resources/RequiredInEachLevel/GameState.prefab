@@ -140,7 +140,7 @@ GameObject:
   - 114: {fileID: 11434710}
   m_Layer: 10
   m_Name: GameState
-  m_TagString: GameController
+  m_TagString: GameMode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1915,7 +1915,7 @@ MonoBehaviour:
   can_boost: 1
   chained_to_center: 0
   can_transfer_health: 1
-  current_difficulty: 0
+  current_difficulty: 1
   Player_Health_Modifier: 1
   Enemy_Health_Modifier: 1
   inactive_speed: 1

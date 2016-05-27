@@ -145,6 +145,7 @@ GameObject:
   - 114: {fileID: 11492324}
   - 114: {fileID: 11477482}
   - 114: {fileID: 11430056}
+  - 114: {fileID: 11438350}
   m_Layer: 8
   m_Name: Charger
   m_TagString: Enemy
@@ -533,6 +534,10 @@ MonoBehaviour:
   collisionDamage: 0.3
   pointValue: 20
   health: 200
+  beingRammed: 0
+  enemyEnemyCollsion: 0
+  ramNavPos: 0
+  collisionAvoidTime: 1
   desired_velocity: {x: 0, y: 0}
   travelDirection: 1
   timeTillStop: 1
@@ -550,8 +555,25 @@ MonoBehaviour:
   chargeTimer: 0
   chargeDuration: 3
   chargeSpeed: 7
-  chargeTarget: {x: 0, y: 0, z: 0}
+  chargeDir: {x: 0, y: 0, z: 0}
   Charging: 0
+--- !u!114 &11438350
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8001c0b333b214cf6819aa35fc6da60a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_VectorGrid: {fileID: 0}
+  m_Directional: 0
+  m_ForceDirection: {x: 0, y: 0, z: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_HasColor: 0
+  activated: 0
 --- !u!114 &11453398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -585,6 +607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5856db298e3415342a1bfbb970eab11f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  difficulty: 0
   cell_size: 1
 --- !u!114 &11492324
 MonoBehaviour:
