@@ -2,7 +2,8 @@ using UnityEngine;
 using System.Collections;
 
 //dies after being on screen for x seconds
-public class DieOverTimeOnScreen : MonoBehaviour {
+public class DieOverTimeOnScreen : MonoBehaviour
+{
 
     //speed when offscreen
     public float inactiveSpeed = 1f;
@@ -13,7 +14,7 @@ public class DieOverTimeOnScreen : MonoBehaviour {
     public float activeSpeed = 1f;
     public bool active = false;
     public float timeToMoveOnScreen = 1f;
-    // Use this for initialization
+
     void Start () {
 	
 	}
@@ -95,6 +96,5 @@ public class DieOverTimeOnScreen : MonoBehaviour {
     {
         active = true;
         deathCounter = secondsTillDeath + Time.time;
-
     }
 }

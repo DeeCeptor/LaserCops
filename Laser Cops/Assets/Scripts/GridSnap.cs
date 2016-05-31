@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEditor;
 
 // https://www.youtube.com/watch?v=ukYbRmmlaTM
 [ExecuteInEditMode]
@@ -23,22 +24,23 @@ public class GridSnap : MonoBehaviour
         y = 0f;
         z = 0f;
 
-        #if (UNITY_EDITOR)
-        switch (difficulty)
+        if (EditorApplication.isPlaying)
         {
-            case GameState.Difficulty.Easy:
-                break;
-            case GameState.Difficulty.Normal:
-                if (GameState.game_state.current_difficulty == GameState.Difficulty.Easy)
-                    DestroyImmediate(this.gameObject);
-                break;
-            case GameState.Difficulty.Hard:
-                if (GameState.game_state.current_difficulty == GameState.Difficulty.Easy
-                    || GameState.game_state.current_difficulty == GameState.Difficulty.Normal)
-                    DestroyImmediate(this.gameObject);
-                break;
-        }
-        #endif
+            switch (difficulty)
+            {
+                case GameState.Difficulty.Easy:
+                    break;
+                case GameState.Difficulty.Normal:
+                    if (GameState.game_state.current_difficulty == GameState.Difficulty.Easy)
+                        DestroyImmediate(this.gameObject);
+                    break;
+                case GameState.Difficulty.Hard:
+                    if (GameState.game_state.current_difficulty == GameState.Difficulty.Easy
+                        || GameState.game_state.current_difficulty == GameState.Difficulty.Normal)
+                        DestroyImmediate(this.gameObject);
+                    break;
+            }
+         }
     }
 
     #if (UNITY_EDITOR)

@@ -117,7 +117,6 @@ public class basicScrollingEnemyScript : MonoBehaviour
             else
                 TakeHit(Tether.tether.Damage);
         }
-
         else if (collision.gameObject.tag == "Player")
         {
             // Hurt the player
@@ -130,7 +129,6 @@ public class basicScrollingEnemyScript : MonoBehaviour
                 this.TakeHit(collision.gameObject.GetComponent<PlayerController>().Grinding_Damage);
             }
         }
-
         else if (collision.gameObject.tag == "VIP")
         {
             collision.gameObject.GetComponent<VIPScript>().TakeHit(collisionDamage);

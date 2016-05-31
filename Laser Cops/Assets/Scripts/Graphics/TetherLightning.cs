@@ -107,7 +107,7 @@ public class TetherLightning : MonoBehaviour
     {
         CreatePooledBolt(to, from, color, thickness, sorting_order);
     }
-    public void BurstLightning(Vector2 to, Vector2 from, int sorting_order)
+    public void BurstLightning(Vector2 to, Vector2 from, int sorting_order, Color color)
     {
         Vector2 diff = from - to;
 
@@ -123,7 +123,7 @@ public class TetherLightning : MonoBehaviour
             Vector2 boltEnd = (Vector2)(rot * diff) + from;
 
             // Create a (pooled) bolt from pos1 to boltEnd
-            CreatePooledBolt(from, boltEnd, Color.white, 1f, sorting_order);
+            CreatePooledBolt(from, boltEnd, color, 1f, sorting_order);
         }
     }
 

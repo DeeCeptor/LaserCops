@@ -94,6 +94,10 @@ public class SoundMixer : MonoBehaviour
     {
         PlaySound(Sounds[11], 1f);
     }
+    public void PlayObstacleWarning()
+    {
+        PlaySound(Sounds[12], 0.5f);
+    }
 
     // MUSIC
     public void Play2ndBallad()

@@ -106,6 +106,34 @@ public class EffectsManager : MonoBehaviour
     }
 
 
+    public void PlayersHealed()
+    {
+        StartCoroutine(ContinualHealingBurst());
+    }
+    public IEnumerator ContinualHealingBurst()
+    {
+        foreach (PlayerController p in GameState.game_state.Players)
+        {
+            TetherLightning.tether_lightning.BurstLightning(p.transform.position, p.transform.position, 20, Color.green);
+        }
+        yield return new WaitForSeconds(0.2f);
+        foreach (PlayerController p in GameState.game_state.Players)
+        {
+            TetherLightning.tether_lightning.BurstLightning(p.transform.position, p.transform.position, 20, Color.green);
+        }
+        yield return new WaitForSeconds(0.3f);
+        foreach (PlayerController p in GameState.game_state.Players)
+        {
+            TetherLightning.tether_lightning.BurstLightning(p.transform.position, p.transform.position, 20, Color.green);
+        }
+        yield return new WaitForSeconds(0.3f);
+        foreach (PlayerController p in GameState.game_state.Players)
+        {
+            TetherLightning.tether_lightning.BurstLightning(p.transform.position, p.transform.position, 20, Color.green);
+        }
+    }
+
+
     public GameObject spawnMovingText(Vector3 location, string message)
     {
         GameObject score = Instantiate(Resources.Load("FloatingScore", typeof(GameObject))) as GameObject;

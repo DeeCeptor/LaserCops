@@ -112,22 +112,33 @@ public class CivillianScript : MonoBehaviour {
 	{
 		if(collision.gameObject.layer == saveLayer)
 		{
-            InGameUIManager.ui_manager.ChangeScore(pointsForSave, this.transform.position);
-            GameObject[] playerObjects = GameState.game_state.PlayerObjects;
-            for(int i = 0; i < playerObjects.Length;i++)
-            {
-                PlayerController playerScript = playerObjects[i].GetComponent<PlayerController>();
-                playerScript.TakeHit(-healthToGainBack);
-            }
-            Destroy(gameObject);
-			
+            Saved();
 		}
 
 		if(collision.gameObject.layer == destroyLayer)
 		{
+            EffectsManager.effects.spawnMovingText(this.transform.position, "Killed Civilian!");
             EffectsManager.effects.ViolentExplosion(this.transform.position);
             InGameUIManager.ui_manager.ChangeScore(-pointPenaltyForKill, this.transform.position);
             Destroy(gameObject);
 		}
 	}
+
+
+    public void Saved()
+    {
+        InGameUIManager.ui_manager.ChangeScore(pointsForSave, this.transform.position);
+        EffectsManager.effects.spawnMovingText(this.transform.position, "Saved!");
+        EffectsManager.effects.PlayersHealed();
+        SoundMixer.sound_manager.PlayNotification();
+
+        GameObject[] playerObjects = GameState.game_state.PlayerObjects;
+        for (int i = 0; i < playerObjects.Length; i++)
+        {
+            PlayerController playerScript = playerObjects[i].GetComponent<PlayerController>();
+            playerScript.TakeHit(-healthToGainBack);
+        }
+        Destroy(gameObject);
+
+    }
 }
