@@ -23,20 +23,22 @@ public class GridSnap : MonoBehaviour
         y = 0f;
         z = 0f;
 
+        #if (UNITY_EDITOR)
         switch (difficulty)
         {
             case GameState.Difficulty.Easy:
                 break;
             case GameState.Difficulty.Normal:
                 if (GameState.game_state.current_difficulty == GameState.Difficulty.Easy)
-                    Destroy(this.gameObject);
+                    DestroyImmediate(this.gameObject);
                 break;
             case GameState.Difficulty.Hard:
                 if (GameState.game_state.current_difficulty == GameState.Difficulty.Easy
                     || GameState.game_state.current_difficulty == GameState.Difficulty.Normal)
-                    Destroy(this.gameObject);
+                    DestroyImmediate(this.gameObject);
                 break;
         }
+        #endif
     }
 
     #if (UNITY_EDITOR)
