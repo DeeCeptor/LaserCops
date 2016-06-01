@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 441550}
   - 212: {fileID: 21257028}
+  - 114: {fileID: 11447466}
   - 61: {fileID: 6177310}
   - 114: {fileID: 11442224}
   - 50: {fileID: 5009530}
@@ -59,9 +60,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132578}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 28, y: -6.18, z: -0.5}
-  m_LocalScale: {x: 2.1970348, y: 0.053960297, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -1, w: -0.00000014901161}
+  m_LocalPosition: {x: 9.000014, y: 27.999992, z: -0.5}
+  m_LocalScale: {x: 2.1970348, y: 0.0539603, z: 1}
   m_Children:
   - {fileID: 487238}
   - {fileID: 457234}
@@ -154,6 +155,19 @@ MonoBehaviour:
   dying: 0
   inactiveSpeed: 1
   travelDirection: 1
+--- !u!114 &11447466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5856db298e3415342a1bfbb970eab11f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficulty: 0
+  cell_size: 1
 --- !u!114 &11498580
 MonoBehaviour:
   m_ObjectHideFlags: 1
