@@ -50,6 +50,7 @@ public class BossHealthScript : MonoBehaviour {
             if(!useImmunityTime)
             {
                 takeHit(collision.gameObject.GetComponent<bounceBomb>().damageToBoss);
+                EffectsManager.effects.ViolentExplosion(collision.contacts[0].point);
             }
             else
             {
@@ -57,6 +58,7 @@ public class BossHealthScript : MonoBehaviour {
                 {
                     immunityCounter = Time.time + immunityTime;
                     takeHit(collision.gameObject.GetComponent<bounceBomb>().damageToBoss);
+                    EffectsManager.effects.ViolentExplosion(collision.contacts[0].point);
                 }
             }
 
