@@ -354,7 +354,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162956}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 14, y: -2, z: 1}
+  m_LocalPosition: {x: -11, y: 1, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 486792}
@@ -538,6 +538,7 @@ MonoBehaviour:
   enemyEnemyCollsion: 0
   ramNavPos: 0
   collisionAvoidTime: 1
+  collisionAvoidCounter: 0
   desired_velocity: {x: 0, y: 0}
   travelDirection: 1
   timeTillStop: 1
@@ -851,7 +852,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 874025413
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 97e10fe3ddda3b64aabea000cfdaf9bf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 54492f055987da94bbd6bbe73404ecc0, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0

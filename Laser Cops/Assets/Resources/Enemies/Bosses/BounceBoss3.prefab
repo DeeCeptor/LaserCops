@@ -585,7 +585,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164792}
   m_LocalRotation: {x: 0, y: 0, z: -0.70710593, w: 0.70710766}
-  m_LocalPosition: {x: 66.52149, y: -0.5742293, z: 0}
+  m_LocalPosition: {x: 41.332237, y: -39.612713, z: 0}
   m_LocalScale: {x: 3.2558093, y: 3.2558122, z: 1.6279047}
   m_Children:
   - {fileID: 424256}
@@ -672,8 +672,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotDelay: 5
-  shotDuration: 150
-  immuneFrames: 50
+  shotDuration: 180
+  immuneFrames: 60
   TimeSinceShotCounter: 0
   shotCounter: 0
   laserRenderer: {fileID: 12005316}
@@ -700,8 +700,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotDelay: 5
-  shotDuration: 150
-  immuneFrames: 50
+  shotDuration: 180
+  immuneFrames: 60
   TimeSinceShotCounter: 0
   shotCounter: 0
   laserRenderer: {fileID: 12022830}
@@ -728,8 +728,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotDelay: 5
-  shotDuration: 150
-  immuneFrames: 50
+  shotDuration: 180
+  immuneFrames: 60
   TimeSinceShotCounter: 0
   shotCounter: 0
   laserRenderer: {fileID: 12088022}
@@ -756,8 +756,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotDelay: 5
-  shotDuration: 150
-  immuneFrames: 50
+  shotDuration: 180
+  immuneFrames: 60
   TimeSinceShotCounter: 0
   shotCounter: 0
   laserRenderer: {fileID: 12098100}
@@ -784,8 +784,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotDelay: 5
-  shotDuration: 150
-  immuneFrames: 50
+  shotDuration: 180
+  immuneFrames: 60
   TimeSinceShotCounter: 0
   shotCounter: 0
   laserRenderer: {fileID: 12048040}
@@ -812,8 +812,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotDelay: 5
-  shotDuration: 150
-  immuneFrames: 50
+  shotDuration: 180
+  immuneFrames: 60
   TimeSinceShotCounter: 0
   shotCounter: 0
   laserRenderer: {fileID: 12019164}
@@ -840,8 +840,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotDelay: 5
-  shotDuration: 150
-  immuneFrames: 50
+  shotDuration: 180
+  immuneFrames: 60
   TimeSinceShotCounter: 0
   shotCounter: 0
   laserRenderer: {fileID: 12008802}
@@ -868,8 +868,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotDelay: 5
-  shotDuration: 150
-  immuneFrames: 50
+  shotDuration: 180
+  immuneFrames: 60
   TimeSinceShotCounter: 0
   shotCounter: 0
   laserRenderer: {fileID: 12049550}
@@ -896,8 +896,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotDelay: 5
-  shotDuration: 150
-  immuneFrames: 50
+  shotDuration: 180
+  immuneFrames: 60
   TimeSinceShotCounter: 0
   shotCounter: 0
   laserRenderer: {fileID: 12074796}
@@ -924,8 +924,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotDelay: 5
-  shotDuration: 150
-  immuneFrames: 50
+  shotDuration: 180
+  immuneFrames: 60
   TimeSinceShotCounter: 0
   shotCounter: 0
   laserRenderer: {fileID: 12021550}
@@ -952,8 +952,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotDelay: 5
-  shotDuration: 150
-  immuneFrames: 50
+  shotDuration: 180
+  immuneFrames: 60
   TimeSinceShotCounter: 0
   shotCounter: 0
   laserRenderer: {fileID: 12038822}
@@ -998,8 +998,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotDelay: 5
-  shotDuration: 150
-  immuneFrames: 50
+  shotDuration: 180
+  immuneFrames: 60
   TimeSinceShotCounter: 0
   shotCounter: 0
   laserRenderer: {fileID: 12085596}
@@ -1026,8 +1026,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotDelay: 5
-  shotDuration: 150
-  immuneFrames: 50
+  shotDuration: 180
+  immuneFrames: 60
   TimeSinceShotCounter: 0
   shotCounter: 0
   laserRenderer: {fileID: 12021356}
@@ -1054,8 +1054,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotDelay: 5
-  shotDuration: 150
-  immuneFrames: 50
+  shotDuration: 180
+  immuneFrames: 60
   TimeSinceShotCounter: 0
   shotCounter: 0
   laserRenderer: {fileID: 12029770}
@@ -1082,8 +1082,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotDelay: 5
-  shotDuration: 150
-  immuneFrames: 50
+  shotDuration: 180
+  immuneFrames: 60
   TimeSinceShotCounter: 0
   shotCounter: 0
   laserRenderer: {fileID: 12080476}
@@ -1110,8 +1110,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotDelay: 5
-  shotDuration: 150
-  immuneFrames: 50
+  shotDuration: 180
+  immuneFrames: 60
   TimeSinceShotCounter: 0
   shotCounter: 0
   laserRenderer: {fileID: 12065246}

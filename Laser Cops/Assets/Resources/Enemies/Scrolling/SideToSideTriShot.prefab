@@ -27,7 +27,6 @@ GameObject:
   - 4: {fileID: 448968}
   - 212: {fileID: 21245360}
   - 50: {fileID: 5034470}
-  - 114: {fileID: 11458398}
   - 114: {fileID: 11476850}
   - 61: {fileID: 6178978}
   - 114: {fileID: 11468668}
@@ -379,7 +378,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 104840}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 32.075283, y: -4.6415076, z: 1}
+  m_LocalPosition: {x: -8, y: 2, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400798}
@@ -618,6 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5856db298e3415342a1bfbb970eab11f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  difficulty: 0
   cell_size: 1
 --- !u!114 &11427282
 MonoBehaviour:
@@ -666,30 +666,6 @@ MonoBehaviour:
   only_shoot_on_command: 0
   playerCloseDisable: 1
   disableDistance: 2
---- !u!114 &11458398
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104840}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d4d3d7be1e93444681dcc0c2cdf0cdd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  active: 0
-  die_in_one_hit: 0
-  takes_grinding_damage: 0
-  collisionDamage: 0.3
-  pointValue: 20
-  health: 1
-  beingRammed: 0
-  enemyEnemyCollsion: 0
-  ramNavPos: 0
-  collisionAvoidTime: 1
-  desired_velocity: {x: 0, y: 0}
-  travelDirection: 1
 --- !u!114 &11464832
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -752,6 +728,7 @@ MonoBehaviour:
   enemyEnemyCollsion: 0
   ramNavPos: 0
   collisionAvoidTime: 1
+  collisionAvoidCounter: 0
   desired_velocity: {x: 0, y: 0}
   travelDirection: 1
   sideSpeed: 2
@@ -765,7 +742,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 104840}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8001c0b333b214cf6819aa35fc6da60a, type: 3}
   m_Name: 

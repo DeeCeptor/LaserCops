@@ -11,7 +11,7 @@ public class scrollThenChase : ScrollThenStop
 
     void Start ()
     {
-	
+        
 	}
 
 
@@ -32,19 +32,17 @@ public class scrollThenChase : ScrollThenStop
                 moveActive();
                 if (stopCounter < Time.time)
                 {
-                    FreezePosition();
+                    stopped = true;
                 }
             }
             else
             {
                 Chase();
-                if (goAgain)
+                if (goAgain && stopped)
                 {
-                    if (stopCounter < Time.time)
-                    {
                         unfreeze();
                         speed = speedAfterStop;
-                    }
+                    stopped = true;
                 }
             }
         }
