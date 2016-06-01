@@ -12,6 +12,7 @@ GameObject:
   - 114: {fileID: 11468804}
   - 212: {fileID: 21218060}
   - 114: {fileID: 11486524}
+  - 114: {fileID: 11407920}
   m_Layer: 0
   m_Name: EndOfLevel
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 189796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.4, y: 0, z: 0}
+  m_LocalPosition: {x: 145, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -48,6 +49,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &11407920
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5856db298e3415342a1bfbb970eab11f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  remove_on_difficulty_higher_than: 0
+  difficulty: 0
+  cell_size: 1
 --- !u!114 &11468804
 MonoBehaviour:
   m_ObjectHideFlags: 1
