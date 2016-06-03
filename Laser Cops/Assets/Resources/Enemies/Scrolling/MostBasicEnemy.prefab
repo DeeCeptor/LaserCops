@@ -235,8 +235,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163314}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 19, y: 6, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.0000029, y: -25.999998, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 497172}
@@ -495,7 +495,12 @@ MonoBehaviour:
   takes_grinding_damage: 0
   collisionDamage: 0.3
   pointValue: 20
-  health: 200
+  health: 150
+  beingRammed: 0
+  enemyEnemyCollsion: 0
+  ramNavPos: 0
+  collisionAvoidTime: 1
+  collisionAvoidCounter: 0
   desired_velocity: {x: 0, y: 0}
   travelDirection: 1
 --- !u!114 &11446800
@@ -599,6 +604,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5856db298e3415342a1bfbb970eab11f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  remove_on_difficulty_higher_than: 0
+  difficulty: 0
   cell_size: 1
 --- !u!114 &11481540
 MonoBehaviour:
@@ -612,12 +619,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_VectorGrid: {fileID: 0}
-  m_ForceScale: 1
   m_Directional: 0
   m_ForceDirection: {x: 0, y: 0, z: 0}
-  m_Radius: 1
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_HasColor: 0
+  activated: 0
 --- !u!120 &12015082
 LineRenderer:
   m_ObjectHideFlags: 1

@@ -82,7 +82,7 @@ public class Tether : MonoBehaviour
         line.SetColors(cur_left, cur_right);
         line.SetWidth(left_width, right_width);
         */
-
+        prev_tether_mode = TetherMode.Destroy;
         SetTetherMode(TetherMode.Destroy);
 
         oneOverZigs = 1f / (float)zigs;
@@ -266,7 +266,7 @@ public class Tether : MonoBehaviour
     {
         if (cur_tether_mode != TetherMode.None && cur_tether_switching_cooldown <= 0)
         {
-            prev_tether_mode = cur_tether_mode;
+            Debug.Log("Switching");
             cur_tether_switching_cooldown = tether_switching_cooldown;
 
             if (cur_tether_mode == TetherMode.Destroy)
@@ -277,6 +277,8 @@ public class Tether : MonoBehaviour
     }
     public void SetTetherMode(TetherMode mode)
     {
+        prev_tether_mode = cur_tether_mode;
+
         if (mode == TetherMode.Destroy)
         {
             primary_colour = primary_destroy_colour;
