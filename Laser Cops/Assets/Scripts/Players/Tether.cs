@@ -233,6 +233,7 @@ public class Tether : MonoBehaviour
     {
         if (cur_tether_mode != TetherMode.None)
         {
+            prev_tether_mode = cur_tether_mode;
             cur_tether_mode = TetherMode.None;
 
             tether_links_parent.SetActive(false);
@@ -247,9 +248,9 @@ public class Tether : MonoBehaviour
     {
         if (cur_tether_mode == TetherMode.None)
         {
-            Debug.Log(prev_tether_mode);
-            cur_tether_mode = prev_tether_mode;
-            SetTetherMode(cur_tether_mode);
+            Debug.Log("PRevious: " + prev_tether_mode);
+            //cur_tether_mode = prev_tether_mode;
+            SetTetherMode(prev_tether_mode);
 
             HingeJoint2D jo = tether_links[0].GetComponents<HingeJoint2D>()[1];
             jo.autoConfigureConnectedAnchor = false;
@@ -279,7 +280,7 @@ public class Tether : MonoBehaviour
     {
         prev_tether_mode = cur_tether_mode;
 
-        if (mode == TetherMode.Destroy)
+        if (mode == TetherMode.Destroy || mode == TetherMode.None)
         {
             primary_colour = primary_destroy_colour;
             secondary_colour = secondary_destroy_colour;
@@ -293,6 +294,7 @@ public class Tether : MonoBehaviour
                 sparks.GetComponent<ParticleSystem>().startColor = primary_destroy_colour;
                 Destroy(sparks, 1.0f);
             }
+            cur_tether_mode = TetherMode.Destroy;
         }
         else if (mode == TetherMode.Capture)
         {
@@ -308,9 +310,9 @@ public class Tether : MonoBehaviour
                 sparks.GetComponent<ParticleSystem>().startColor = primary_capture_colour;
                 Destroy(sparks, 1.0f);
             }
+            cur_tether_mode = TetherMode.Capture;
         }
-        Debug.Log("Setting tether " + mode);
-        cur_tether_mode = mode;
+        Debug.Log("Setting tether " + cur_tether_mode);
 
         SoundMixer.sound_manager.PlayShortSpark();
     }
@@ -323,6 +325,8 @@ public class Tether : MonoBehaviour
     // Adds a new link to the rope
     public void AddLink()
     {
+        Debug.Log(tether_links.Count);
+
         if (GameState.game_state.no_tether)
             return;
 

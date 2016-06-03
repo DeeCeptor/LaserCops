@@ -42,11 +42,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 424936}
+  - 114: {fileID: 11416020}
+  - 114: {fileID: 11493708}
   - 212: {fileID: 21271510}
   - 61: {fileID: 6102714}
   - 50: {fileID: 5076094}
-  - 114: {fileID: 11493708}
-  - 114: {fileID: 11416020}
   m_Layer: 9
   m_Name: WarningTinyFastPillar
   m_TagString: Obstacle
@@ -72,8 +72,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187190}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31, y: -2, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071066, w: -0.70710695}
+  m_LocalPosition: {x: 6.000024, y: 44.999992, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 415000}
@@ -134,7 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5856db298e3415342a1bfbb970eab11f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficulty: 0
+  remove_on_difficulty_higher_than: 0
+  difficulty: 2
   cell_size: 0.25
 --- !u!114 &11421474
 MonoBehaviour:
@@ -176,7 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   active: 0
-  damage: 4
+  damage: 2
   dieDelay: 1
   dieCounter: 0
   dying: 0
