@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class AudioManager : MonoBehaviour
@@ -6,6 +6,9 @@ public class AudioManager : MonoBehaviour
     public static AudioManager audio_manager;
     public AudioSource background_music_audio_source;    // Music that plays in background. Only one track of music will ever be playing at once
     public AudioSource voice_audio_source;    // Audio source playing the talking of the voice actors
+
+    public AudioSource beep;
+    public AudioSource notification;
 
     bool muted = false;     // If muted, NO audio will play
     public GameObject sound_effect_prefab;  // Must be an object with an audiosource, and necessary for PlaySoundEffect nodes
@@ -30,6 +33,21 @@ public class AudioManager : MonoBehaviour
 	
 	}
 
+
+    public void PlayBeep()
+    {
+        Time.timeScale = 1.0f;
+        AudioSource.PlayClipAtPoint(beep.clip, Vector3.zero);
+        //beep.PlayOneShot(beep.clip);
+        //beep.PlayClipAtPoint(beep.clip, Camera.main.transform.position, 1.0f);
+        Time.timeScale = 0f;
+    }
+    public void PlayNotification()
+    {
+        Time.timeScale = 1.0f;
+        notification.Play();
+        Time.timeScale = 0f;
+    }
 
     // Fades out the current background music over seconds_it_takes_to_fade_out
     public IEnumerator Fade_Out_Music(float seconds_it_takes_to_fade_out)

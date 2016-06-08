@@ -36,7 +36,7 @@ public class Pause : MonoBehaviour
             pause_menu.SetActive(true);
             Time.timeScale = 0;
             paused = true;
-            AudioListener.pause = true;
+            AudioListener.pause = false;
         }
     }
 

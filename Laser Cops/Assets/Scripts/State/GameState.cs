@@ -324,9 +324,28 @@ public class GameState : MonoBehaviour
     {
         if (!game_over)
         {
-            Debug.Log(text);
+            Debug.Log(text + " on " + this.game_mode + " " + this.current_difficulty);
             game_over = true;
-            InGameUIManager.ui_manager.SetAnnouncementText(text, 9999);
+
+            // Score fact that we beat level, on this mode
+            PlayerPrefs.SetInt(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name, 1);
+            PlayerPrefs.SetInt(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " " + this.current_difficulty, 1);
+            PlayerPrefs.SetInt(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " " + this.game_mode, 1);
+
+            // Record score
+            int prev_high_score = PlayerPrefs.GetInt(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " High Score", 0);
+            if (InGameUIManager.ui_manager.score >= prev_high_score)
+            {
+                PlayerPrefs.SetInt(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " High Score", InGameUIManager.ui_manager.score);
+                InGameUIManager.ui_manager.SetAnnouncementText("New High Score: " + InGameUIManager.ui_manager.score, 9999);
+                Debug.Log("New high score : " + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " " + InGameUIManager.ui_manager.score);
+            }
+            else
+            {
+                InGameUIManager.ui_manager.SetAnnouncementText("Previous High Score: " + InGameUIManager.ui_manager.score, 9999);
+                Debug.Log("No new high score: " + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " " + InGameUIManager.ui_manager.score);
+            }
+
             ChangeScene(2f, level_to_load_on_victory);
         }
     }

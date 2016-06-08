@@ -12,12 +12,12 @@ public class LevelNode : MonoBehaviour
     bool hovering = false;
     bool selected = false;
     public bool is_cutscene = false;
+    public bool required_to_beat = true;
 
-	void Start () 
-	{
-	
-	}
-	
+    // Loaded stats
+    public bool beat_level = false;
+    public int best_score = 0;
+
 
     public void HoverOverLevel()
     {
