@@ -419,23 +419,24 @@ public class basicScrollingEnemyScript : MonoBehaviour
     //check if enemy is on screen. Scrolling enemies should not shoot offscreen
     public bool isActive()
     {
-        if (GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return active;
+        //if (GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
+        // {
+        //    return true;
+        //}
+        //else
+        //{
+        //     return false;
+        // }
     }
 
     //check if enemy has entered the screen and must activate
     public void CheckActive()
     {
-        if (GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
-        {
-            Activate();
-        }
+        //if (GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
+       // {
+       //     Activate();
+        //}
     }
 
     //put any behaviour that must be done when the enemy enters the screen here

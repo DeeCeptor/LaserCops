@@ -209,7 +209,7 @@ MonoBehaviour:
   disableDistance: 2
   aimingLaser: {fileID: 106260, guid: 24c95d972daabbf42a1c762741e0f6d1, type: 2}
   laserLength: 60
-  laserDuration: 0.5
+  laserDuration: 1
   laserCounter: 0
   allowedDistance: 1
   playerInLine: 0
@@ -283,6 +283,10 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: laserDuration
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

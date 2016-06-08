@@ -352,7 +352,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148260}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 43, y: -95, z: 0}
+  m_LocalPosition: {x: 12, y: -29, z: 0}
   m_LocalScale: {x: 1.2, y: 1, z: 1}
   m_Children:
   - {fileID: 472014}
@@ -752,7 +752,7 @@ MonoBehaviour:
   m_VectorGrid: {fileID: 0}
   m_Directional: 0
   m_ForceDirection: {x: 0, y: 0, z: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.18620688, b: 0, a: 1}
   m_HasColor: 0
   activated: 0
 --- !u!120 &12004644
@@ -968,7 +968,7 @@ SpriteRenderer:
   m_SortingLayerID: 874025413
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 54492f055987da94bbd6bbe73404ecc0, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.26896554, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!212 &21247004
@@ -998,7 +998,7 @@ SpriteRenderer:
   m_SortingLayerID: 874025413
   m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 12869f899bec52249b7897d90870437c, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.34901962, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!212 &21250070
@@ -1028,7 +1028,7 @@ SpriteRenderer:
   m_SortingLayerID: 874025413
   m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 12869f899bec52249b7897d90870437c, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.34901962, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!212 &21258858
@@ -1088,7 +1088,7 @@ SpriteRenderer:
   m_SortingLayerID: 874025413
   m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 12869f899bec52249b7897d90870437c, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.34901962, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!212 &21283598
@@ -1148,7 +1148,7 @@ SpriteRenderer:
   m_SortingLayerID: 874025413
   m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 12869f899bec52249b7897d90870437c, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.34901962, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!1001 &100100000
@@ -1181,7 +1181,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Color.g
-      value: 0.39310342
+      value: 0.18620688
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
