@@ -18,6 +18,9 @@ public class InGameUIManager : MonoBehaviour
     float multiplier;   // Multiplier we are at
     public Slider multiplier_slider;
     public Text multiplierText;
+    public int score_for_a_link = 20;
+    public int previous_link_score = 0;
+    public int score_needed_for_new_link = 20;
 
     public Text time_text;
     [HideInInspector]
@@ -67,11 +70,6 @@ public class InGameUIManager : MonoBehaviour
     }
     public void ChangeScore(int amount, Vector3 position)
     {
-        if (Tether.tether!=null)
-        {
-            Tether.tether.AddLink();
-        }
-
         score += amount;
         score = Mathf.Max(0, score);    // Score can't go below 0
 
@@ -81,6 +79,15 @@ public class InGameUIManager : MonoBehaviour
         multiplier_slider.value += ((float)amount) / (multiplier * 100);
         if (multiplier_slider.value >= 1)
             addMultiplierLevel();
+
+        // Add new links if we reached the necessary score
+        if (Tether.tether != null && score >= score_needed_for_new_link)
+        {
+            Tether.tether.AddLink();
+            previous_link_score = score;
+            score_for_a_link += 3;
+            score_needed_for_new_link = score + score_for_a_link;
+        }
 
         UpdateScore();
     }

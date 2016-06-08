@@ -6,6 +6,7 @@ using UnityEditor;
 [ExecuteInEditMode]
 public class GridSnap : MonoBehaviour
 {
+    public bool remove_on_difficulty_higher_than = false;
     public GameState.Difficulty difficulty = GameState.Difficulty.Easy;
     Vector3 offset = new Vector3(-1, 1, 0);
 
@@ -26,19 +27,38 @@ public class GridSnap : MonoBehaviour
 
         if (EditorApplication.isPlaying)
         {
-            switch (difficulty)
+            if (!remove_on_difficulty_higher_than)
             {
-                case GameState.Difficulty.Easy:
-                    break;
-                case GameState.Difficulty.Normal:
-                    if (GameState.game_state.current_difficulty == GameState.Difficulty.Easy)
-                        DestroyImmediate(this.gameObject);
-                    break;
-                case GameState.Difficulty.Hard:
-                    if (GameState.game_state.current_difficulty == GameState.Difficulty.Easy
-                        || GameState.game_state.current_difficulty == GameState.Difficulty.Normal)
-                        DestroyImmediate(this.gameObject);
-                    break;
+                switch (difficulty)
+                {
+                    case GameState.Difficulty.Easy:
+                        break;
+                    case GameState.Difficulty.Normal:
+                        if (GameState.game_state.current_difficulty == GameState.Difficulty.Easy)
+                            DestroyImmediate(this.gameObject);
+                        break;
+                    case GameState.Difficulty.Hard:
+                        if (GameState.game_state.current_difficulty == GameState.Difficulty.Easy
+                            || GameState.game_state.current_difficulty == GameState.Difficulty.Normal)
+                            DestroyImmediate(this.gameObject);
+                        break;
+                }
+            }
+            else
+            {
+                switch (difficulty)
+                {
+                    case GameState.Difficulty.Easy:
+                        if (GameState.game_state.current_difficulty != GameState.Difficulty.Easy)
+                            DestroyImmediate(this.gameObject);
+                        break;
+                    case GameState.Difficulty.Normal:
+                        if (GameState.game_state.current_difficulty == GameState.Difficulty.Hard)
+                            DestroyImmediate(this.gameObject);
+                        break;
+                    case GameState.Difficulty.Hard:
+                        break;
+                }
             }
          }
     }

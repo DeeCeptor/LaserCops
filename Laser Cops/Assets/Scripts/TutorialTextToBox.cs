@@ -1,13 +1,15 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
-public class TutorialTextToBox : MonoBehaviour {
+public class TutorialTextToBox : MonoBehaviour
+{
     public bool active = false;
-    public string textToDisplay;
+    public ConversationManager conversation_to_start;
 
-	// Use this for initialization
-	void Start () {
+
+	void Start ()
+    {
 	
 	}
 
@@ -40,13 +42,8 @@ public class TutorialTextToBox : MonoBehaviour {
 
     public void Activate()
     {
-        GameObject textBox = GameObject.Find("TutorialText");
-        textBox.GetComponent<Text>().text = textToDisplay;
+        SceneManager.scene_manager.Start_Conversation(conversation_to_start.gameObject);
         active = true;
+        Destroy(this.gameObject);
     }
-
-    // Update is called once per frame
-    void Update () {
-	
-	}
 }

@@ -8,12 +8,12 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 411084}
+  - 114: {fileID: 11401290}
+  - 114: {fileID: 11405824}
   - 212: {fileID: 21274890}
   - 50: {fileID: 5090808}
-  - 114: {fileID: 11401290}
   - 61: {fileID: 6135760}
   - 114: {fileID: 11408756}
-  - 114: {fileID: 11405824}
   - 114: {fileID: 11401388}
   m_Layer: 8
   m_Name: Bruiser
@@ -239,8 +239,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107442}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 10.297298, y: 6.7285395, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4, y: -0.99999946, z: 1}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 406428}
@@ -475,12 +475,13 @@ MonoBehaviour:
   die_in_one_hit: 0
   takes_grinding_damage: 0
   collisionDamage: 0.5
-  pointValue: 20
+  pointValue: 30
   health: 350
   beingRammed: 0
   enemyEnemyCollsion: 0
   ramNavPos: 0
   collisionAvoidTime: 1
+  collisionAvoidCounter: 0
   desired_velocity: {x: 0, y: 0}
   travelDirection: 1
   timeTillStop: 3
@@ -522,6 +523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5856db298e3415342a1bfbb970eab11f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  remove_on_difficulty_higher_than: 0
   difficulty: 0
   cell_size: 1
 --- !u!114 &11407616
