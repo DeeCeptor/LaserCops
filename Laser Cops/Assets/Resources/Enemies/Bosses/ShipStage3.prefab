@@ -366,6 +366,12 @@ MonoBehaviour:
   nextStage: {fileID: 0}
   stages: 3
   overallHealth: 20
+  bossName: Welcome to the GUNSHIP
+  pointValue: 2000
+  TimeBonus: 600
+  ChangeFormEffect: {fileID: 0}
+  useImmunityTime: 0
+  immunityTime: 0.1
 --- !u!114 &11418594
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -512,6 +518,10 @@ MonoBehaviour:
   pointValue: 20
   health: 10000
   beingRammed: 0
+  enemyEnemyCollsion: 0
+  ramNavPos: 0
+  collisionAvoidTime: 1
+  collisionAvoidCounter: 0
   desired_velocity: {x: 0, y: 0}
   travelDirection: 1
   sideSpeed: 1
@@ -829,6 +839,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: switchTime
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: beingRammed
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

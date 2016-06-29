@@ -206,7 +206,7 @@ MonoBehaviour:
   active: 0
   maxLaserLength: 100
   shooting: 0
-  damage: 1.5
+  damage: 1
   layersToIgnore:
     serializedVersion: 2
     m_Bits: 0
@@ -232,7 +232,7 @@ MonoBehaviour:
   active: 0
   maxLaserLength: 100
   shooting: 0
-  damage: 1.5
+  damage: 1
   layersToIgnore:
     serializedVersion: 2
     m_Bits: 0
@@ -258,7 +258,7 @@ MonoBehaviour:
   active: 0
   maxLaserLength: 100
   shooting: 0
-  damage: 1.5
+  damage: 1
   layersToIgnore:
     serializedVersion: 2
     m_Bits: 0
@@ -328,7 +328,7 @@ MonoBehaviour:
   active: 1
   maxLaserLength: 100
   shooting: 0
-  damage: 1.5
+  damage: 1
   layersToIgnore:
     serializedVersion: 2
     m_Bits: 0
@@ -684,7 +684,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: damage
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: immuneFrames

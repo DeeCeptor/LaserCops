@@ -59,7 +59,7 @@ public class RayLaserScript : MonoBehaviour {
     {
         
         //see if there is an obstacle in the way
-        hit = Physics2D.Raycast(transform.position, -transform.up,float.PositiveInfinity,layersToIgnore);
+        hit = Physics2D.Raycast(transform.position, transform.up,float.PositiveInfinity,layersToIgnore);
         //if there is an obstacle then 
         if (hit.collider != null)
         {
@@ -69,7 +69,7 @@ public class RayLaserScript : MonoBehaviour {
         else
         {
             laserRenderer.SetPosition(0, transform.position);
-            laserRenderer.SetPosition(1, transform.position - (transform.up * maxLaserLength));
+            laserRenderer.SetPosition(1, transform.position + (transform.up * maxLaserLength));
         }
 
         //if the laser is supposed to do damage

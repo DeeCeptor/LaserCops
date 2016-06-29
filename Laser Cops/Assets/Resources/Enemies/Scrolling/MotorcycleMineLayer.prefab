@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5856db298e3415342a1bfbb970eab11f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  remove_on_difficulty_higher_than: 0
   difficulty: 0
   cell_size: 1
 --- !u!114 &11422362
@@ -209,7 +210,7 @@ MonoBehaviour:
   disableDistance: 2
   aimingLaser: {fileID: 106260, guid: 24c95d972daabbf42a1c762741e0f6d1, type: 2}
   laserLength: 60
-  laserDuration: 1
+  laserDuration: 1.5
   laserCounter: 0
   allowedDistance: 1
   playerInLine: 0
@@ -287,7 +288,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: laserDuration
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

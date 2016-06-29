@@ -42,19 +42,19 @@ public class CivillianScript : MonoBehaviour {
 	{
 		if(travelDirection == direction.left)
 		{
-			GetComponent<Rigidbody2D>().velocity = new Vector2(-inactiveSpeed,0);
+			GetComponent<Rigidbody2D>().velocity = new Vector2(-GameState.game_state.inactive_speed,0);
 		}
 		else if (travelDirection == direction.up)
 		{
-			GetComponent<Rigidbody2D>().velocity = new Vector2(0, inactiveSpeed);
+			GetComponent<Rigidbody2D>().velocity = new Vector2(0, GameState.game_state.inactive_speed);
 		}
 		else if (travelDirection == direction.right)
 		{
-			GetComponent<Rigidbody2D>().velocity = new Vector2(inactiveSpeed, 0);
+			GetComponent<Rigidbody2D>().velocity = new Vector2(GameState.game_state.inactive_speed, 0);
 		}
 		else if (travelDirection == direction.down)
 		{
-			GetComponent<Rigidbody2D>().velocity = new Vector2(0, -inactiveSpeed);
+			GetComponent<Rigidbody2D>().velocity = new Vector2(0, -GameState.game_state.inactive_speed);
 		}
 	}
 
@@ -97,7 +97,7 @@ public class CivillianScript : MonoBehaviour {
 	{
 		if (!GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
 		{
-			Die();
+			Destroy(gameObject);
 		}
 	}
 
@@ -108,7 +108,7 @@ public class CivillianScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	public void OnCollisionStay2D(Collision2D collision)
+	public void OnCollisionEnter2D(Collision2D collision)
 	{
 		if(collision.gameObject.layer == saveLayer)
 		{

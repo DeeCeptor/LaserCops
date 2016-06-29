@@ -61,7 +61,7 @@ public class ForwardShotScript : MonoBehaviour {
         {
             GameObject bulletSpawned = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
             BulletScript bulletStats = bulletSpawned.GetComponent<BulletScript>();
-            bulletStats.target = transform.position - transform.up;
+            bulletStats.target = transform.position + transform.up;
         }
 
         else
@@ -78,7 +78,7 @@ public class ForwardShotScript : MonoBehaviour {
             {
                 GameObject bulletSpawned = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
                 BulletScript bulletStats = bulletSpawned.GetComponent<BulletScript>();
-                bulletStats.target = transform.position - transform.up;
+                bulletStats.target = transform.position + transform.up;
             }
         }
     }

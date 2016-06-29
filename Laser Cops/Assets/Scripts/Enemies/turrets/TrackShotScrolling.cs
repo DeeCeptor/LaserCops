@@ -68,7 +68,7 @@ public class TrackShotScrolling : MonoBehaviour{
     {
         Vector3 vectorToTarget = Target - transform.position;
         float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
-        Quaternion q = Quaternion.AngleAxis(angle +90, Vector3.forward);
+        Quaternion q = Quaternion.AngleAxis(angle -90, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime);
     }
 
