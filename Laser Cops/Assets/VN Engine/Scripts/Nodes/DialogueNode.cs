@@ -9,9 +9,14 @@ public class DialogueNode : Node
 	[TextArea(3,10)]
 	public string text;
     private string processed_text;
+
+    public float how_long_to_wait = 0f;     // How many seconds to wait before moving onto the next dialogue
+    public bool turn_off_UI_when_done = false;      // Set to true to hide dialogue UI when this node finishes
+
     public bool darken_all_other_characters = false;     // Darkens all other actors on the scene
     public bool bring_speaker_to_front = true;      // Changes the ordering so this actor will be in front of others
 	public bool clear_text_after = false;
+
 
     [HideInInspector]
 	public bool done_printing = false;
@@ -99,7 +104,12 @@ public class DialogueNode : Node
         done_voice_clip = false;
         running = false;
         base.Finish_Node();
-	}
+
+        if (turn_off_UI_when_done)
+        {
+            UIManager.ui_manager.entire_UI_panel.SetActive(false);
+        }
+    }
 
 
 	// Prints the text to the UI manager's dialogue text one character at a time.
@@ -137,8 +147,19 @@ public class DialogueNode : Node
             if (SceneManager.text_scroll_speed != 0)
 			    yield return new WaitForSeconds(SceneManager.text_scroll_speed);
 		}
+
 		done_printing = true;
+
+        if (how_long_to_wait != 0)
+        {
+            StartCoroutine(WaitFor(how_long_to_wait));
+        }
 	}
+    public IEnumerator WaitFor(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Finish_Node();
+    }
 
 
     string ProcessEntireDialogue(string dialogue)
