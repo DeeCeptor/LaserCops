@@ -3,6 +3,7 @@ using System.Collections;
 
 public class BossHealthScript : MonoBehaviour {
     public float health = 20f;
+    public GameObject formChangeConversation;
     //if this field is empty the boss will die when out of health. otherwise the boss will change form when it runs out of health
     public GameObject nextStage;
 	//number of stages the boss will have
@@ -46,6 +47,7 @@ public class BossHealthScript : MonoBehaviour {
         InGameUIManager.ui_manager.UpdateBottomHealthBar(overallHealth);
 	}
 
+    //cuts sprite as a death effect
     public GameObject[] CutSprite()
     {
         Sprite corpseSprite = gameObject.GetComponent<SpriteRenderer>().sprite;
@@ -226,11 +228,13 @@ public class BossHealthScript : MonoBehaviour {
         }
     }
 
+    //Changes forms or dies depending on whether this is the final form
     public void Die()
     {
         Destroy(gameObject);
         if(nextStage!=null)
         {
+            DeathConversation(formChangeConversation);
             if(ChangeFormEffect!= null)
             {
                 Instantiate(ChangeFormEffect, transform.position, transform.rotation);
@@ -239,8 +243,15 @@ public class BossHealthScript : MonoBehaviour {
         }
         else
         {
+            DeathConversation(formChangeConversation);
             Explode();
             GameState.game_state.Victory();
         }
+    }
+
+    //adds dialogue to the screen for changing forms or death
+    public void DeathConversation(GameObject conversation)
+    {
+        SceneManager.current_conversation = conversation.GetComponent<ConversationManager>();
     }
 }

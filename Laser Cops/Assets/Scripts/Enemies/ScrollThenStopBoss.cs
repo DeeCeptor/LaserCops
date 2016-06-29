@@ -15,6 +15,7 @@ public class ScrollThenStopBoss : basicScrollingEnemyScript
     void Start()
     {
         initiate();
+        stopCounter = Time.time + timeTillStop;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -89,11 +90,12 @@ public class ScrollThenStopBoss : basicScrollingEnemyScript
         //rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
+    //alternative activate that does not conflict with superClasses' activate
     public void ActivateB()
     {
         
         active = true;
-        stopCounter = Time.time + timeTillStop;
+        
     }
 
 }
