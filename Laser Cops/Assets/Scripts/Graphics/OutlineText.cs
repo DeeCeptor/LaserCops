@@ -42,7 +42,6 @@ public class OutlineText : MonoBehaviour
         // copy attributes
         for (int i = 0; i < transform.childCount; i++)
         {
-
             TextMesh other = transform.GetChild(i).GetComponent<TextMesh>();
             other.color = outlineColor;
             other.text = textMesh.text;
