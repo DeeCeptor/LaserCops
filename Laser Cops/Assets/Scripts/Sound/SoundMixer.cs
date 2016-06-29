@@ -12,7 +12,7 @@ public class SoundMixer : MonoBehaviour
     // MUSIC
     public List<AudioSource> Music = new List<AudioSource>();
     public AudioSource cur_music;   // Track currently playing
-
+    public AudioSource starting_music;
 
     void Awake ()
     {
@@ -21,6 +21,8 @@ public class SoundMixer : MonoBehaviour
     void Start ()
     {
         //PlayRaiser();
+        if (starting_music)
+            PlayMusic(starting_music);
     }
 
 
@@ -98,6 +100,14 @@ public class SoundMixer : MonoBehaviour
     {
         PlaySound(Sounds[12], 0.5f);
     }
+    public void PlayGettingHitExplosion()
+    {
+        PlaySound(Sounds[13], 0.5f);
+    }
+    public void PlayGettingHit()
+    {
+        PlaySound(Sounds[14], 0.5f);
+    }
 
     // MUSIC
     public void Play2ndBallad()
@@ -119,5 +129,15 @@ public class SoundMixer : MonoBehaviour
     public void PlayRaiser()
     {
         PlayMusic(Music[4]);
+    }
+
+    // Original music
+    public void PlayZoombaTitle()
+    {
+        PlayMusic(Music[5]);
+    }
+    public void PlayInPursuit()
+    {
+        PlayMusic(Music[6]);
     }
 }

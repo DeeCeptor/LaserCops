@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class reboundableBullet : BulletScript
@@ -15,7 +15,7 @@ public class reboundableBullet : BulletScript
             // Spawn small sparks and explosion
             EffectsManager.effects.BulletHitPlayer(collision.contacts[0].point);
 
-            collision.gameObject.GetComponent<PlayerController>().TakeHit(damage);
+            collision.gameObject.GetComponent<PlayerController>().TakeHit(damage, true);
             Destroy(gameObject);
         }
 

@@ -286,7 +286,7 @@ public class PlayerController : PlayerInput
         InGameUIManager.ui_manager.UpdateHealth();
     }
 
-    public void TakeHit(float damage)
+    public void TakeHit(float damage, bool getting_hit_explosion_noise = false)
     {
         if (GameState.game_state.debug_invulnerability)
             damage = 0;
@@ -294,6 +294,15 @@ public class PlayerController : PlayerInput
         float prev_health = Health;
 
         AdjustHealth(-damage);
+
+        if (getting_hit_explosion_noise)
+        {
+            SoundMixer.sound_manager.PlayGettingHitExplosion();
+        }
+        else
+        {
+            SoundMixer.sound_manager.PlayGettingHit();
+        }
 
         // Turn on smoke and fire to show the player is damaged
         if (prev_health > 50f && Health < 50f)

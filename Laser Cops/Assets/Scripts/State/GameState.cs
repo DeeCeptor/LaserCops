@@ -7,8 +7,8 @@ public class GameState : MonoBehaviour
 {
     public static GameState game_state;
 
-    public string level_to_load_on_victory = "LevelSelect";
-    public string level_to_load_on_defeat = "LevelSelect";
+    public string level_to_load_on_victory = "SceneSelect";
+    public string level_to_load_on_defeat = "SceneSelect";
 
     public bool paused = false; // Paused by player
     public bool game_over = false;  // Lost the game

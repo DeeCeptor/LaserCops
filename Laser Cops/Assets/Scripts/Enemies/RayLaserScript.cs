@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 //this class shoots a laser using a raycast and a line renderer that will shoot from the object until it hits a collider or reaches max laser length, damages player on contact
@@ -80,7 +80,7 @@ public class RayLaserScript : MonoBehaviour {
             {
                 if(hit.collider.gameObject.CompareTag("Player"))
                 {
-                    hit.collider.gameObject.GetComponent<PlayerController>().TakeHit(damage);
+                    hit.collider.gameObject.GetComponent<PlayerController>().TakeHit(damage, true);
                 }
             } 
         }

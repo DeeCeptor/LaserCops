@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class HomingBulletScript : BulletScript {
@@ -31,7 +31,7 @@ public class HomingBulletScript : BulletScript {
             // Spawn small sparks and explosion
             EffectsManager.effects.BulletHitPlayer(collision.contacts[0].point);
 
-            collision.gameObject.GetComponent<PlayerController>().TakeHit(damage);
+            collision.gameObject.GetComponent<PlayerController>().TakeHit(damage, true);
         }
 
         else if (collision.gameObject.tag == "VIP")

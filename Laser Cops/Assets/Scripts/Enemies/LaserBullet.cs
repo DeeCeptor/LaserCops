@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class LaserBullet : BulletScript
@@ -31,7 +31,7 @@ public class LaserBullet : BulletScript
                 sparkCounter = sparkCooldown + Time.time;
             }
 
-            collision.gameObject.GetComponent<PlayerController>().TakeHit(damage);
+            collision.gameObject.GetComponent<PlayerController>().TakeHit(damage, true);
         }
 
         if (collision.gameObject.tag == "VIP")
@@ -51,7 +51,7 @@ public class LaserBullet : BulletScript
                 sparkCounter = sparkCooldown + Time.time;
             }
 
-            collision.gameObject.GetComponent<PlayerController>().TakeHit(damage);
+            collision.gameObject.GetComponent<PlayerController>().TakeHit(damage, true);
         }
 
         if (collision.gameObject.tag == "VIP")
