@@ -4,9 +4,11 @@ using UnityEngine.UI;
 
 public class PlayerController : PlayerInput
 {
+    public _Colour player_colour;
+
     Rigidbody2D physics;
-    float x_speed = 6f;
-    float y_speed = 6f;
+    float x_speed = 7f;
+    float y_speed = 7f;
 
     // OBSTACLES
     bool touching_forward_obstacle = false;
