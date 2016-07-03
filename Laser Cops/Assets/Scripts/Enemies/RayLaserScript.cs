@@ -118,7 +118,7 @@ public class RayLaserScript : MonoBehaviour {
                 SoundMixer.sound_manager.PlayBigLazerSound();
                 SoundMixer.sound_manager.StopChargeUp();
             }
-            laserRenderer.SetWidth(1,1);
+            laserRenderer.SetWidth(2,1);
             if(hit.collider!=null)
             {
                 if(hit.collider.gameObject.CompareTag("Player"))

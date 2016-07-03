@@ -48,7 +48,14 @@ public class TrackShotScrolling : MonoBehaviour{
                     {
                         int randInt = Random.Range(0, players.Length);
                         playerToTrack = players[randInt].transform;
-
+                        if(playerToTrack.gameObject.name == "Player 1")
+                        {
+                            bulletColour = _Colour.Pink;
+                        }
+                        else
+                        {
+                            bulletColour = _Colour.Blue;
+                        }
                         shoot();
                     }
                 }
@@ -92,7 +99,24 @@ public class TrackShotScrolling : MonoBehaviour{
             BulletScript bulletStats = bulletSpawned.GetComponent<BulletScript>();
             bulletStats.target = playerToTrack.position;
             bulletStats.bullet_colour = bulletColour;
-                SoundMixer.sound_manager.PlayLazerShot();
+            if(bulletColour == _Colour.Red)
+            {
+                bulletSpawned.GetComponent<SpriteRenderer>().color = Color.red;
+            }
+            else if (bulletColour == _Colour.Pink)
+            {
+                bulletSpawned.GetComponent<SpriteRenderer>().color = Color.magenta;
+            }
+            if (bulletColour == _Colour.Blue)
+            {
+                bulletSpawned.GetComponent<SpriteRenderer>().color = Color.cyan;
+            }
+            if (bulletColour == _Colour.Yellow)
+            {
+                bulletSpawned.GetComponent<SpriteRenderer>().color = Color.yellow;
+            }
+
+            SoundMixer.sound_manager.PlayLazerShot();
         }
 
         else
@@ -111,6 +135,22 @@ public class TrackShotScrolling : MonoBehaviour{
                 BulletScript bulletStats = bulletSpawned.GetComponent<BulletScript>();
                 bulletStats.target = playerToTrack.position;
                 bulletStats.bullet_colour = bulletColour;
+                if (bulletColour == _Colour.Red)
+                {
+                    bulletSpawned.GetComponent<SpriteRenderer>().color = Color.red;
+                }
+                else if (bulletColour == _Colour.Pink)
+                {
+                    bulletSpawned.GetComponent<SpriteRenderer>().color = Color.magenta;
+                }
+                if (bulletColour == _Colour.Blue)
+                {
+                    bulletSpawned.GetComponent<SpriteRenderer>().color = Color.cyan;
+                }
+                if (bulletColour == _Colour.Yellow)
+                {
+                    bulletSpawned.GetComponent<SpriteRenderer>().color = Color.yellow;
+                }
                 SoundMixer.sound_manager.PlayLazerShot();
             }
         }

@@ -677,6 +677,8 @@ MonoBehaviour:
     m_Bits: 0
   silent: 0
   bullet_colour: 2
+  alternateBulletColour: 0
+  randomPinkOrBlue: 0
   playerCloseDisable: 0
   disableDistance: 2
 --- !u!114 &11402282
@@ -705,6 +707,8 @@ MonoBehaviour:
     m_Bits: 0
   silent: 0
   bullet_colour: 2
+  alternateBulletColour: 0
+  randomPinkOrBlue: 0
   playerCloseDisable: 0
   disableDistance: 2
 --- !u!114 &11409548
@@ -765,6 +769,8 @@ MonoBehaviour:
     m_Bits: 0
   silent: 0
   bullet_colour: 2
+  alternateBulletColour: 0
+  randomPinkOrBlue: 0
   playerCloseDisable: 0
   disableDistance: 2
 --- !u!114 &11415172
@@ -859,6 +865,8 @@ MonoBehaviour:
     m_Bits: 0
   silent: 0
   bullet_colour: 3
+  alternateBulletColour: 0
+  randomPinkOrBlue: 0
   playerCloseDisable: 0
   disableDistance: 2
 --- !u!114 &11427414
@@ -903,6 +911,8 @@ MonoBehaviour:
     m_Bits: 0
   silent: 0
   bullet_colour: 3
+  alternateBulletColour: 0
+  randomPinkOrBlue: 0
   playerCloseDisable: 0
   disableDistance: 2
 --- !u!114 &11429588
@@ -931,6 +941,8 @@ MonoBehaviour:
     m_Bits: 0
   silent: 0
   bullet_colour: 3
+  alternateBulletColour: 0
+  randomPinkOrBlue: 0
   playerCloseDisable: 0
   disableDistance: 2
 --- !u!114 &11431310
@@ -1013,6 +1025,8 @@ MonoBehaviour:
     m_Bits: 0
   silent: 0
   bullet_colour: 3
+  alternateBulletColour: 0
+  randomPinkOrBlue: 0
   playerCloseDisable: 0
   disableDistance: 2
 --- !u!114 &11448116
@@ -1041,6 +1055,8 @@ MonoBehaviour:
     m_Bits: 0
   silent: 0
   bullet_colour: 2
+  alternateBulletColour: 0
+  randomPinkOrBlue: 0
   playerCloseDisable: 0
   disableDistance: 2
 --- !u!114 &11458092
@@ -1161,6 +1177,8 @@ MonoBehaviour:
     m_Bits: 0
   silent: 0
   bullet_colour: 3
+  alternateBulletColour: 0
+  randomPinkOrBlue: 0
   playerCloseDisable: 0
   disableDistance: 2
 --- !u!114 &11492234
@@ -1189,6 +1207,8 @@ MonoBehaviour:
     m_Bits: 0
   silent: 0
   bullet_colour: 2
+  alternateBulletColour: 0
+  randomPinkOrBlue: 0
   playerCloseDisable: 0
   disableDistance: 2
 --- !u!114 &11499992
@@ -1235,8 +1255,8 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
   m_Parameters:
-    startWidth: 1
-    endWidth: 1
+    startWidth: 1.45
+    endWidth: 1.75
     m_StartColor:
       serializedVersion: 2
       rgba: 4294964224
@@ -1274,8 +1294,8 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
   m_Parameters:
-    startWidth: 1
-    endWidth: 1
+    startWidth: 1.45
+    endWidth: 1.75
     m_StartColor:
       serializedVersion: 2
       rgba: 4294956288
@@ -1313,8 +1333,8 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
   m_Parameters:
-    startWidth: 1
-    endWidth: 1
+    startWidth: 1.45
+    endWidth: 1.75
     m_StartColor:
       serializedVersion: 2
       rgba: 4294956288
@@ -1352,8 +1372,8 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
   m_Parameters:
-    startWidth: 1
-    endWidth: 1
+    startWidth: 1.45
+    endWidth: 1.75
     m_StartColor:
       serializedVersion: 2
       rgba: 4294964224
@@ -1391,8 +1411,8 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
   m_Parameters:
-    startWidth: 1
-    endWidth: 1
+    startWidth: 1.45
+    endWidth: 1.75
     m_StartColor:
       serializedVersion: 2
       rgba: 4293722367
@@ -1430,8 +1450,8 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
   m_Parameters:
-    startWidth: 1
-    endWidth: 1
+    startWidth: 1.45
+    endWidth: 1.75
     m_StartColor:
       serializedVersion: 2
       rgba: 4293722367
@@ -1469,8 +1489,8 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
   m_Parameters:
-    startWidth: 1
-    endWidth: 1
+    startWidth: 1.45
+    endWidth: 1.75
     m_StartColor:
       serializedVersion: 2
       rgba: 4294964224
@@ -1508,8 +1528,8 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
   m_Parameters:
-    startWidth: 1
-    endWidth: 1
+    startWidth: 1.45
+    endWidth: 1.75
     m_StartColor:
       serializedVersion: 2
       rgba: 4291690751
@@ -1547,8 +1567,8 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
   m_Parameters:
-    startWidth: 1
-    endWidth: 1
+    startWidth: 1.45
+    endWidth: 1.75
     m_StartColor:
       serializedVersion: 2
       rgba: 4291690751
@@ -1586,8 +1606,8 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
   m_Parameters:
-    startWidth: 1
-    endWidth: 1
+    startWidth: 1.45
+    endWidth: 1.75
     m_StartColor:
       serializedVersion: 2
       rgba: 4291690751
@@ -9667,6 +9687,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: limitCounter
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Parameters.startWidth
+      value: 1.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Parameters.endWidth
+      value: 1.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
