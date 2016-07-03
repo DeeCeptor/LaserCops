@@ -10,6 +10,10 @@ public class TrackShotScrolling : MonoBehaviour{
     public float shotCounter;
     public GameObject bullet;
     public bool active = false;
+    public _Colour bulletColour = _Colour.Red;
+
+    //this boolean indicates whether the shots are useless against a certain car this is important since it needs to shoot at the car it's bullets are effective against
+    public bool CarColour = false;
 
     //true if you want it to disable itself when the player is close
     public bool playerCloseDisable = true;
@@ -44,6 +48,7 @@ public class TrackShotScrolling : MonoBehaviour{
                     {
                         int randInt = Random.Range(0, players.Length);
                         playerToTrack = players[randInt].transform;
+
                         shoot();
                     }
                 }
@@ -86,6 +91,7 @@ public class TrackShotScrolling : MonoBehaviour{
             GameObject bulletSpawned = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
             BulletScript bulletStats = bulletSpawned.GetComponent<BulletScript>();
             bulletStats.target = playerToTrack.position;
+            bulletStats.bullet_colour = bulletColour;
                 SoundMixer.sound_manager.PlayLazerShot();
         }
 
@@ -104,7 +110,8 @@ public class TrackShotScrolling : MonoBehaviour{
                 GameObject bulletSpawned = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
                 BulletScript bulletStats = bulletSpawned.GetComponent<BulletScript>();
                 bulletStats.target = playerToTrack.position;
-                    SoundMixer.sound_manager.PlayLazerShot();
+                bulletStats.bullet_colour = bulletColour;
+                SoundMixer.sound_manager.PlayLazerShot();
             }
         }
     }

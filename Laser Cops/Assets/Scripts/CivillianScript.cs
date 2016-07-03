@@ -117,7 +117,7 @@ public class CivillianScript : MonoBehaviour {
 
 		if(collision.gameObject.layer == destroyLayer)
 		{
-            EffectsManager.effects.spawnMovingText(this.transform.position, "Killed Civilian!");
+            EffectsManager.effects.spawnMovingText(new Vector3(this.transform.position.x, this.transform.position.y + 3, this.transform.position.z), "Killed Civilian!");
             EffectsManager.effects.ViolentExplosion(this.transform.position);
             InGameUIManager.ui_manager.ChangeScore(-pointPenaltyForKill, this.transform.position);
             Destroy(gameObject);
@@ -128,7 +128,7 @@ public class CivillianScript : MonoBehaviour {
     public void Saved()
     {
         InGameUIManager.ui_manager.ChangeScore(pointsForSave, this.transform.position);
-        EffectsManager.effects.spawnMovingText(this.transform.position, "Saved!");
+        EffectsManager.effects.spawnMovingText(new Vector3(this.transform.position.x, this.transform.position.y + 3, this.transform.position.z), "Saved!");
         EffectsManager.effects.PlayersHealed();
         SoundMixer.sound_manager.PlayNotification();
 

@@ -80,11 +80,13 @@ public class RayLaserScript : MonoBehaviour {
                 {
                     if(bullet_colour == _Colour.Pink)
                     {
-
+                        bullet_colour = _Colour.Blue;
+                        laserRenderer.SetColors(Color.cyan, Color.cyan);
                     }
                     else
                     {
-
+                        bullet_colour = _Colour.Pink;
+                        laserRenderer.SetColors(Color.magenta, Color.magenta);
                     }
                 }
             }
