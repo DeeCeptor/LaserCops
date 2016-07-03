@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21214596}
   - 114: {fileID: 11479096}
   - 114: {fileID: 11413076}
+  - 82: {fileID: 8256172}
   m_Layer: 0
   m_Name: RotationTurret
   m_TagString: Untagged
@@ -30,6 +31,80 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!82 &8256172
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107734}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d25bff18c4612d5488f5ebd8ec0439fd, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &11413076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -64,6 +139,7 @@ MonoBehaviour:
   only_shoot_on_command: 0
   playerCloseDisable: 1
   disableDistance: 2
+  shootSound: {fileID: 8256172}
 --- !u!212 &21214596
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -90,7 +166,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 874025413
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: d981a6e50cb26f84a9455e838deaa9d3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ed936fb077a86646bf6b4c7ed61f778, type: 3}
   m_Color: {r: 0.9034482, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,7 +176,28 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0ed936fb077a86646bf6b4c7ed61f778,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d25bff18c4612d5488f5ebd8ec0439fd, type: 3}
+    - target: {fileID: 0}
+      propertyPath: shootSound
+      value: 
+      objectReference: {fileID: 8256172}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 107734}

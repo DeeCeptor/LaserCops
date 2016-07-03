@@ -62,6 +62,7 @@ public class ForwardShotScript : MonoBehaviour {
             GameObject bulletSpawned = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
             BulletScript bulletStats = bulletSpawned.GetComponent<BulletScript>();
             bulletStats.target = transform.position + transform.up;
+            SoundMixer.sound_manager.PlayLazerShot();
         }
 
         else
@@ -79,6 +80,7 @@ public class ForwardShotScript : MonoBehaviour {
                 GameObject bulletSpawned = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
                 BulletScript bulletStats = bulletSpawned.GetComponent<BulletScript>();
                 bulletStats.target = transform.position + transform.up;
+                    SoundMixer.sound_manager.PlayLazerShot();
             }
         }
     }

@@ -108,6 +108,10 @@ public class SoundMixer : MonoBehaviour
     {
         PlaySound(Sounds[14], 0.5f);
     }
+    public void PlayBigLazerSound()
+    {
+        PlaySound(Sounds[15], 0.5f);
+    }
 
     // MUSIC
     public void Play2ndBallad()

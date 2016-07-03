@@ -86,6 +86,7 @@ public class TrackShotScrolling : MonoBehaviour{
             GameObject bulletSpawned = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
             BulletScript bulletStats = bulletSpawned.GetComponent<BulletScript>();
             bulletStats.target = playerToTrack.position;
+                SoundMixer.sound_manager.PlayLazerShot();
         }
 
         else
@@ -103,6 +104,7 @@ public class TrackShotScrolling : MonoBehaviour{
                 GameObject bulletSpawned = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
                 BulletScript bulletStats = bulletSpawned.GetComponent<BulletScript>();
                 bulletStats.target = playerToTrack.position;
+                    SoundMixer.sound_manager.PlayLazerShot();
             }
         }
     }
