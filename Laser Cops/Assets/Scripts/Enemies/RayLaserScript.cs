@@ -54,6 +54,7 @@ public class RayLaserScript : MonoBehaviour {
         {
             if( TimeSinceShotCounter > shotDuration)
             {
+                SoundMixer.sound_manager.StopBigLazerSound();
                 shooting = false;
                 laserRenderer.enabled = false;
             }
@@ -84,6 +85,7 @@ public class RayLaserScript : MonoBehaviour {
             if (!silent)
             {
                 SoundMixer.sound_manager.PlayBigLazerSound();
+                SoundMixer.sound_manager.StopChargeUp();
             }
             laserRenderer.SetWidth(1,1);
             if(hit.collider!=null)

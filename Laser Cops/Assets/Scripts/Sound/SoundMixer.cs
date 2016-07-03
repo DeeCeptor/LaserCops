@@ -36,6 +36,10 @@ public class SoundMixer : MonoBehaviour
     {
         sound.PlayOneShotSoundManaged(sound.clip, volume_scale);
     }
+    public void StopSound(AudioSource sound)
+    {
+        sound.Stop();
+    }
     public void PlayMusic(AudioSource music)
     {
         cur_music = music;
@@ -78,7 +82,11 @@ public class SoundMixer : MonoBehaviour
     }
     public void PlayChargeUp()
     {
-        PlaySound(Sounds[7], 1f);
+        PlaySound(Sounds[7], 0.5f);
+    }
+    public void StopChargeUp()
+    {
+        StopSound(Sounds[7]);
     }
     public void PlayGrinding()
     {
@@ -110,7 +118,11 @@ public class SoundMixer : MonoBehaviour
     }
     public void PlayBigLazerSound()
     {
-        PlaySound(Sounds[15], 0.5f);
+        PlaySound(Sounds[15], 0.3f);
+    }
+    public void StopBigLazerSound()
+    {
+        StopSound(Sounds[15]);
     }
 
     // MUSIC

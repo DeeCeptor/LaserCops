@@ -4,11 +4,13 @@ using System.Collections;
 public class bounceBomb : MonoBehaviour {
 
     public float damageToBoss = 10f;
-    public Transform respawnLocation;
     //max speed ball should move as a magnitude of the velocity vector
     public float maxSpeed = 8f;
     //the x Co-ordinate of the left of screen set at the start
     public float xLeftOfScreen;
+
+    //the game Object that spawns the bounce bomb
+    public GameObject spawner;
 
     //speed bomb will move towards center
     public float centerAttraction = 0.01f;
@@ -46,8 +48,8 @@ public class bounceBomb : MonoBehaviour {
 
     public void Respawn()
     {
-        transform.position = respawnLocation.position;
-        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        //to do: respawn animation
+
+        Instantiate(spawner,new Vector3(xLeftOfScreen + 8,0,0),transform.rotation);
+        Destroy(gameObject);
     }
 }

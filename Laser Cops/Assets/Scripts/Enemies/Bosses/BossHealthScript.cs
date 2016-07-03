@@ -15,6 +15,10 @@ public class BossHealthScript : MonoBehaviour {
     public int TimeBonus = 600;
     public GameObject ChangeFormEffect;
 
+    //how much to multiply the damage for on easy and hard mode
+    public float easyDamageMultiplyer = 2;
+    public float hardDamageMultiplyer = 0.667f;
+
     //whether the boss should utilize immunity frames
     public bool useImmunityTime = false;
     //how many immunity frames the boss receives (if any)
@@ -210,7 +214,18 @@ public class BossHealthScript : MonoBehaviour {
         {
             if(!useImmunityTime)
             {
-                takeHit(collision.gameObject.GetComponent<bounceBomb>().damageToBoss);
+                if(GameState.game_state.current_difficulty == GameState.Difficulty.Hard)
+                {
+                    takeHit(collision.gameObject.GetComponent<bounceBomb>().damageToBoss*hardDamageMultiplyer);
+                }
+                else if (GameState.game_state.current_difficulty == GameState.Difficulty.Easy)
+                {
+                    takeHit(collision.gameObject.GetComponent<bounceBomb>().damageToBoss * easyDamageMultiplyer);
+                }
+                else
+                {
+                    takeHit(collision.gameObject.GetComponent<bounceBomb>().damageToBoss);
+                }
                 EffectsManager.effects.ViolentExplosion(collision.contacts[0].point);
                 collision.gameObject.GetComponent<bounceBomb>().Respawn();
             }
@@ -219,7 +234,18 @@ public class BossHealthScript : MonoBehaviour {
                 if (immunityCounter < Time.time)
                 {
                     immunityCounter = Time.time + immunityTime;
-                    takeHit(collision.gameObject.GetComponent<bounceBomb>().damageToBoss);
+                    if (GameState.game_state.current_difficulty == GameState.Difficulty.Hard)
+                    {
+                        takeHit(collision.gameObject.GetComponent<bounceBomb>().damageToBoss * hardDamageMultiplyer);
+                    }
+                    else if (GameState.game_state.current_difficulty == GameState.Difficulty.Easy)
+                    {
+                        takeHit(collision.gameObject.GetComponent<bounceBomb>().damageToBoss * easyDamageMultiplyer);
+                    }
+                    else
+                    {
+                        takeHit(collision.gameObject.GetComponent<bounceBomb>().damageToBoss);
+                    }
                     collision.gameObject.GetComponent<bounceBomb>().Respawn();
                     EffectsManager.effects.ViolentExplosion(collision.contacts[0].point);
                 }

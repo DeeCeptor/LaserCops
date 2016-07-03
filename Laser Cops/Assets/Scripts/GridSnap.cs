@@ -1,6 +1,7 @@
 using UnityEngine;
-using System.Collections;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 // https://www.youtube.com/watch?v=ukYbRmmlaTM
 [ExecuteInEditMode]
@@ -24,9 +25,11 @@ public class GridSnap : MonoBehaviour
         x = 0f;
         y = 0f;
         z = 0f;
-
-        if (EditorApplication.isPlaying)
+#if UNITY_EDITOR
+        if (UnityEditor.EditorApplication.isPlaying)
+#endif
         {
+
             if (!remove_on_difficulty_higher_than)
             {
                 switch (difficulty)
@@ -60,6 +63,7 @@ public class GridSnap : MonoBehaviour
                         break;
                 }
             }
+ 
          }
     }
 
