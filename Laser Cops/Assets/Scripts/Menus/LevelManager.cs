@@ -2,11 +2,14 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System;
+
 public class LevelManager : MonoBehaviour 
 {
     public static LevelManager level_manager;
     List<GameObject> levels = new List<GameObject>();
     LineRenderer line;
+    public LineRenderer line_2;
     LevelNode[] level_nodes;
     Mode game_mode;
     public Text high_score_text;
@@ -36,11 +39,34 @@ public class LevelManager : MonoBehaviour
         foreach (Transform child in transform)
             levels.Add(child.gameObject);
 
-        line.SetVertexCount(levels.Count);
-        for (int x = 0; x < levels.Count; x++)
+        line.SetVertexCount((levels.Count * 2) - 1);
+        line_2.SetVertexCount((levels.Count * 2) - 1);
+        Vector3[] positions = new Vector3[levels.Count * 2 - 1];
+
+        for (int x = 0; x < (levels.Count * 2) - 1; x++)
         {
-            line.SetPosition(x, new Vector3(levels[x].transform.position.x, levels[x].transform.position.y, 0.01f));
+            if (x % 2 == 0)     // Even number
+            {
+                positions[x] = new Vector3(levels[x / 2].transform.position.x, levels[x / 2].transform.position.y, 0.01f);
+            }
+            else if ((x / 2) + 1 < levels.Count)        // Odd number
+            {
+                positions[x] = new Vector3((levels[x / 2].transform.position.x + levels[(x / 2) + 1].transform.position.x) / 2,
+                    (levels[x / 2].transform.position.y + levels[(x / 2) + 1].transform.position.y) / 2, 
+                    0.01f);
+            }
         }
+        line.SetPositions(positions);
+        Array.Reverse(positions);
+        line_2.SetPositions(positions);
+        /*
+        for (int x = (levels.Count - 1); x >= 0; x--)
+        {
+            line_2.SetPosition(x, new Vector3(levels[x].transform.position.x, 
+                levels[x].transform.position.y,
+                0.01f));
+        }*/
+
 
         level_nodes = this.GetComponentsInChildren<LevelNode>();
 	}

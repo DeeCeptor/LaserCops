@@ -5,11 +5,26 @@ public class PlayableLevelNode : LevelNode
 {
     // Games modes allowed
     public bool coop = true;
+    public string coop_diff;
+
     public bool competitive = true;
+    public string competitive_diff;
+
     public bool chained = true;
+    public string chained_diff;
+
     public bool no_tether = true;
+    public string no_tether_diff;
+
     public bool tether_on = true;
+    public string tether_on_diff;
+
     public bool one_hit_kill = true;
+    public string one_hit_kill_diff;
+
+
+    public GameObject beaten_grouping;
+    string[] difficulties = { "Hard", "Normal", "Easy", "Unbeaten" }; 
 
     void Start()
     {
@@ -19,6 +34,117 @@ public class PlayableLevelNode : LevelNode
             next_node = this;
 
         best_score = PlayerPrefs.GetInt(level_to_load + " High Score", 0);
+
+        // Figure out what modes we've beaten and on what difficulty
+        int beat_diffi = -1;
+        if (coop)
+        {
+            beat_diffi = 3;
+            for (int x = 0; x < difficulties.Length - 1; x++)
+            {
+                bool won = System.Convert.ToBoolean(PlayerPrefs.GetInt(level_to_load + " " + GameState.GameMode.Cooperative + " " + difficulties[x], 0));
+                if (won)
+                {
+                    beat_diffi = x;
+                    break;
+                }
+            }
+
+            GameObject obj = GameObject.Instantiate(Resources.Load("Graphics/" + difficulties[beat_diffi]), Vector3.zero, Quaternion.identity) as GameObject;
+            obj.transform.SetParent(beaten_grouping.transform);
+            obj.transform.localScale = Vector3.one;
+            coop_diff = difficulties[beat_diffi];
+        }
+        if (competitive && beat_level)
+        {
+            beat_diffi = 3;
+            for (int x = 0; x < difficulties.Length - 1; x++)
+            {
+                bool won = System.Convert.ToBoolean(PlayerPrefs.GetInt(level_to_load + " " + GameState.GameMode.Competitive + " " + difficulties[x], 0));
+                if (won)
+                {
+                    beat_diffi = x;
+                    break;
+                }
+            }
+
+            GameObject obj = GameObject.Instantiate(Resources.Load("Graphics/" + difficulties[beat_diffi]), Vector3.zero, Quaternion.identity) as GameObject;
+            obj.transform.SetParent(beaten_grouping.transform);
+            obj.transform.localScale = Vector3.one;
+            competitive_diff = difficulties[beat_diffi];
+        }
+        if (chained && beat_level)
+        {
+            beat_diffi = 3;
+            for (int x = 0; x < difficulties.Length - 1; x++)
+            {
+                bool won = System.Convert.ToBoolean(PlayerPrefs.GetInt(level_to_load + " " + GameState.GameMode.Chained + " " + difficulties[x], 0));
+                if (won)
+                {
+                    beat_diffi = x;
+                    break;
+                }
+            }
+
+            GameObject obj = GameObject.Instantiate(Resources.Load("Graphics/" + difficulties[beat_diffi]), Vector3.zero, Quaternion.identity) as GameObject;
+            obj.transform.SetParent(beaten_grouping.transform);
+            obj.transform.localScale = Vector3.one;
+            chained_diff = difficulties[beat_diffi];
+        }
+        if (no_tether && beat_level)
+        {
+            beat_diffi = 3;
+            for (int x = 0; x < difficulties.Length - 1; x++)
+            {
+                bool won = System.Convert.ToBoolean(PlayerPrefs.GetInt(level_to_load + " " + GameState.GameMode.NoTether + " " + difficulties[x], 0));
+                if (won)
+                {
+                    beat_diffi = x;
+                    break;
+                }
+            }
+
+            GameObject obj = GameObject.Instantiate(Resources.Load("Graphics/" + difficulties[beat_diffi]), Vector3.zero, Quaternion.identity) as GameObject;
+            obj.transform.SetParent(beaten_grouping.transform);
+            obj.transform.localScale = Vector3.one;
+            no_tether_diff = difficulties[beat_diffi];
+        }
+        if (tether_on && beat_level)
+        {
+            beat_diffi = 3;
+            for (int x = 0; x < difficulties.Length - 1; x++)
+            {
+                bool won = System.Convert.ToBoolean(PlayerPrefs.GetInt(level_to_load + " " + GameState.GameMode.TetherOn + " " + difficulties[x], 0));
+                if (won)
+                {
+                    beat_diffi = x;
+                    break;
+                }
+            }
+
+            GameObject obj = GameObject.Instantiate(Resources.Load("Graphics/" + difficulties[beat_diffi]), Vector3.zero, Quaternion.identity) as GameObject;
+            obj.transform.SetParent(beaten_grouping.transform);
+            obj.transform.localScale = Vector3.one;
+            tether_on_diff = difficulties[beat_diffi];
+        }
+        if (one_hit_kill && beat_level)
+        {
+            beat_diffi = 3;
+            for (int x = 0; x < difficulties.Length - 1; x++)
+            {
+                bool won = System.Convert.ToBoolean(PlayerPrefs.GetInt(level_to_load + " " + GameState.GameMode.OneHitKill + " " + difficulties[x], 0));
+                if (won)
+                {
+                    beat_diffi = x;
+                    break;
+                }
+            }
+
+            GameObject obj = GameObject.Instantiate(Resources.Load("Graphics/" + difficulties[beat_diffi]), Vector3.zero, Quaternion.identity) as GameObject;
+            obj.transform.SetParent(beaten_grouping.transform);
+            obj.transform.localScale = Vector3.one;
+            one_hit_kill_diff = difficulties[beat_diffi];
+        }
     }
 
 

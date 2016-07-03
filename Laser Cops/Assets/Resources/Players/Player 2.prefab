@@ -495,7 +495,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140254}
   m_LocalRotation: {x: 0, y: 0, z: -0.70710516, w: 0.7071084}
-  m_LocalPosition: {x: 4.6, y: -5.8, z: 0}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 474060}
@@ -1054,6 +1054,7 @@ MonoBehaviour:
   tether_released_this_instant: 0
   boosted_this_instant: 0
   disable_tether_held_down: 0
+  player_colour: 2
   primary_colour: {r: 0.9803922, g: 0, b: 0.7607844, a: 1}
   Max_Health: 100
   Health: 0
