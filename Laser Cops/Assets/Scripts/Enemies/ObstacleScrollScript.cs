@@ -24,12 +24,10 @@ public class ObstacleScrollScript : MonoBehaviour {
     {
         if (!active)
         {
-            CheckActive();
             moveInactive();
         }
         else
         {
-            CheckDeath();
             moveActive();
         }
 
@@ -114,11 +112,30 @@ public class ObstacleScrollScript : MonoBehaviour {
     }
 
     //check if enemy has entered the screen and must activate
-    public void CheckActive()
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        if (GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
+        if (collider.gameObject.tag.Equals("MainCamera"))
         {
             Activate();
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D collider)
+    {
+        if (!active)
+        {
+            if (collider.gameObject.tag.Equals("MainCamera"))
+            {
+                Activate();
+            }
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "MainCamera")
+        {
+            StartDying();
         }
     }
 
@@ -129,12 +146,9 @@ public class ObstacleScrollScript : MonoBehaviour {
     }
 
     //after activating the enemy should die if it leaves the screen
-    public void CheckDeath()
+    public void StartDying()
     {
-        if (!dying && !GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
-        {
             dying = true;
             dieCounter = Time.time + dieDelay;
-        }
     }
 }

@@ -18,6 +18,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &109818
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 406598}
+  - 114: {fileID: 11494344}
+  - 82: {fileID: 8275706}
+  m_Layer: 0
+  m_Name: Dialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &111018
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,6 +355,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &183254
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 424564}
+  - 114: {fileID: 11444546}
+  m_Layer: 0
+  m_Name: Conversation (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &183292
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,6 +461,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 475504}
   m_RootOrder: 8
+--- !u!4 &406598
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109818}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 424564}
+  m_RootOrder: 0
 --- !u!4 &406612
 Transform:
   m_ObjectHideFlags: 1
@@ -464,6 +509,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 475504}
   m_RootOrder: 0
+--- !u!4 &424564
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183254}
+  m_LocalRotation: {x: 0, y: 0, z: 0.70710593, w: 0.70710766}
+  m_LocalPosition: {x: -10.95458, y: 5.2305055, z: 0}
+  m_LocalScale: {x: 0.30714303, y: 0.3071433, z: 0.6142866}
+  m_Children:
+  - {fileID: 406598}
+  m_Father: {fileID: 475504}
+  m_RootOrder: 21
 --- !u!4 &430304
 Transform:
   m_ObjectHideFlags: 1
@@ -591,7 +649,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164792}
   m_LocalRotation: {x: 0, y: 0, z: -0.70710593, w: 0.70710766}
-  m_LocalPosition: {x: -3.707469, y: -34.84108, z: 0}
+  m_LocalPosition: {x: -17.029427, y: -35.666065, z: 0}
   m_LocalScale: {x: 3.2558093, y: 3.2558122, z: 1.6279047}
   m_Children:
   - {fileID: 424256}
@@ -615,6 +673,7 @@ Transform:
   - {fileID: 489378}
   - {fileID: 432390}
   - {fileID: 458002}
+  - {fileID: 424564}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &487080
@@ -691,6 +750,80 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 8, y: 5.6}
+--- !u!82 &8275706
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109818}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &11400502
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1010,6 +1143,18 @@ MonoBehaviour:
   disableDistance: 2
   maxShotDelay: 8
   minShotDelay: 4
+--- !u!114 &11444546
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7598fdb9cbb025c4293438a58006c68f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroy_when_finished: 1
 --- !u!114 &11469510
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1022,6 +1167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
+  formChangeConversation: {fileID: 183254}
   nextStage: {fileID: 0}
   stages: 3
   overallHealth: 20
@@ -1143,6 +1289,28 @@ MonoBehaviour:
   disableDistance: 2
   maxShotDelay: 8
   minShotDelay: 4
+--- !u!114 &11494344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b40beeb965e5d9419bf817d6f7d59bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actor: 
+  textbox_title: Disco Dan
+  text: Gah! so uncool.
+  how_long_to_wait: 3
+  turn_off_UI_when_done: 1
+  darken_all_other_characters: 0
+  bring_speaker_to_front: 1
+  clear_text_after: 1
+  done_printing: 0
+  no_voice_playing: 0
+  done_voice_clip: 0
 --- !u!114 &11498542
 MonoBehaviour:
   m_ObjectHideFlags: 1

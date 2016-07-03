@@ -8,7 +8,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 407486}
-  - 212: {fileID: 21253110}
   - 61: {fileID: 6170078}
   - 50: {fileID: 5068974}
   - 114: {fileID: 11424224}
@@ -20,6 +19,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &188860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 416952}
+  - 212: {fileID: 21282608}
+  - 114: {fileID: 11499466}
+  m_Layer: 0
+  m_Name: New Sprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &407486
 Transform:
   m_ObjectHideFlags: 1
@@ -27,10 +43,23 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141694}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 68.5, y: -13, z: 0}
+  m_LocalPosition: {x: -3, y: -9, z: 0}
   m_LocalScale: {x: 1.026061, y: 1.026061, z: 0.20521222}
-  m_Children: []
+  m_Children:
+  - {fileID: 416952}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &416952
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188860}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.01, y: 0, z: -4.873004}
+  m_LocalScale: {x: 0.97460085, y: 0.97460085, z: 4.873004}
+  m_Children: []
+  m_Father: {fileID: 407486}
   m_RootOrder: 0
 --- !u!50 &5068974
 Rigidbody2D:
@@ -96,12 +125,24 @@ MonoBehaviour:
   dying: 0
   inactiveSpeed: 1
   travelDirection: 1
---- !u!212 &21253110
+--- !u!114 &11499466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 804a2fd2c9c001744a9f087d299f849a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: {x: 0, y: 0, z: 1}
+--- !u!212 &21282608
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141694}
+  m_GameObject: {fileID: 188860}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -140,6 +181,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: damage
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: rotationSpeed.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

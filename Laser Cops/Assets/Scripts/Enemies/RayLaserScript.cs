@@ -22,6 +22,8 @@ public class RayLaserScript : MonoBehaviour {
     public float damage = 0.5f;
     //layers to ignore for the raycast
     public LayerMask layersToIgnore;
+    //whether to play sound
+    public bool silent = false;
 
     //true if you want it to disable itself when the player is close
     public bool playerCloseDisable = true;
@@ -37,6 +39,10 @@ public class RayLaserScript : MonoBehaviour {
 	void FixedUpdate () {
 	    if(shotCounter < Time.time)
         {
+            if (!silent)
+            {
+                SoundMixer.sound_manager.PlayChargeUp();
+            }
             laserRenderer.SetWidth(0.5f, 0.5f);
             shooting = true;
             TimeSinceShotCounter = 0;
@@ -75,6 +81,10 @@ public class RayLaserScript : MonoBehaviour {
         //if the laser is supposed to do damage
         if (TimeSinceShotCounter > immuneFrames)
         {
+            if (!silent)
+            {
+                SoundMixer.sound_manager.PlayBigLazerSound();
+            }
             laserRenderer.SetWidth(1,1);
             if(hit.collider!=null)
             {

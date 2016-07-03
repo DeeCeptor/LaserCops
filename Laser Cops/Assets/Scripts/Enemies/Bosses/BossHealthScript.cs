@@ -252,6 +252,12 @@ public class BossHealthScript : MonoBehaviour {
     //adds dialogue to the screen for changing forms or death
     public void DeathConversation(GameObject conversation)
     {
-        SceneManager.current_conversation = conversation.GetComponent<ConversationManager>();
+        if (conversation!=null)
+        {
+            SceneManager.current_conversation = conversation.GetComponent<ConversationManager>();
+            conversation.GetComponent<ConversationManager>().Start_Conversation();
+            conversation.transform.parent = UIManager.ui_manager.entire_UI_panel.transform;
+            UIManager.ui_manager.entire_UI_panel.gameObject.SetActive(true);
+        }
     }
 }
