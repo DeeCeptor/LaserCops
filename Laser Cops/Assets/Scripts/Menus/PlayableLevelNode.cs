@@ -8,18 +8,23 @@ public class PlayableLevelNode : LevelNode
     public string coop_diff;
 
     public bool competitive = true;
+    [HideInInspector]
     public string competitive_diff;
 
     public bool chained = true;
+    [HideInInspector]
     public string chained_diff;
 
     public bool no_tether = true;
+    [HideInInspector]
     public string no_tether_diff;
 
     public bool tether_on = true;
+    [HideInInspector]
     public string tether_on_diff;
 
     public bool one_hit_kill = true;
+    [HideInInspector]
     public string one_hit_kill_diff;
 
 

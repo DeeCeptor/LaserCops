@@ -33,9 +33,9 @@ public class PlayerCursor : MonoBehaviour
 	void Update () 
 	{
         // Check if we're close enough to the destination
-        if (this.transform.position == destination_node.transform.position)
+        if (this.transform.position == destination_node.transform.position)// && !LevelManager.level_manager.level_settings.activeSelf)
         {
-            if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
+            if ((Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0) && !LevelManager.level_manager.selected_level)
             {
                 if (Mathf.Abs(Input.GetAxis("Vertical")) > Mathf.Abs((Input.GetAxis("Horizontal"))))
                 {
@@ -117,6 +117,10 @@ public class PlayerCursor : MonoBehaviour
                 if (Input.GetButtonDown("Submit"))
                 {
                     destination_node.Button_Clicked();
+                }
+                if (Input.GetButtonDown("Cancel"))
+                {
+                    LevelManager.level_manager.DeselectLevels();
                 }
             }
         }

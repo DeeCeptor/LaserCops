@@ -26,6 +26,7 @@ public class LevelManager : MonoBehaviour
     public GameObject chained_mode;
     public GameObject one_hit_kill_mode;
 
+    public bool selected_level = false;
 
     void Awake()
     {
@@ -99,6 +100,7 @@ public class LevelManager : MonoBehaviour
 
         // Play sound
         SoundMixer.sound_manager.PlayNotification();
+        selected_level = true;
     }
     public void DeselectLevels()
     {
@@ -108,11 +110,6 @@ public class LevelManager : MonoBehaviour
         {
             node.DeselectLevel();
         }
+        selected_level = false;
     }
-    
-
-	void Update () 
-	{
-	
-	}
 }

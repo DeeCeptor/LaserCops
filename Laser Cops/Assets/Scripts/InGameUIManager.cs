@@ -137,7 +137,7 @@ public class InGameUIManager : MonoBehaviour
             Camera.main.ScreenToWorldPoint(multiplierText.transform.position).x,
             Camera.main.ScreenToWorldPoint(multiplierText.transform.position).y,
             0);
-        EffectsManager.effects.spawnMovingText(pos, "+0.2!", Vector3.up * 2, 40).transform.SetParent(Camera.main.transform);
+        //EffectsManager.effects.spawnMovingText(pos, "+0.2!", Vector3.up * 2, 40).transform.SetParent(Camera.main.transform);
         /*
         if (multiplier >= nextMultiplierSound && multiplierSounds.Count > 0)
         {

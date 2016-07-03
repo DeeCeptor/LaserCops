@@ -24,6 +24,10 @@ public class PlayerController : PlayerInput
     float boost_grid_force = 3f;
     float boost_grid_radius = 2f;
 
+    [HideInInspector]
+    public float grid_ripple_force = 0;
+    public float grid_ripple_radius = 0;
+
     public float Max_Health = 100f;
     public float Health;
     float HP_transfer_rate = 15f;
@@ -63,6 +67,8 @@ public class PlayerController : PlayerInput
     public List<ParticleSystem> minor_damage_particles = new List<ParticleSystem>();
     public List<ParticleSystem> major_damage_particles = new List<ParticleSystem>();
     
+
+
     void Awake()
     {
         physics = this.GetComponent<Rigidbody2D>();
@@ -84,121 +90,124 @@ public class PlayerController : PlayerInput
 
     void Update()
     {
-        UpdateInputs();
-
-        Vector2 new_speed = new Vector2(this.direction.x * x_speed, this.direction.y * y_speed);
-        float grid_ripple_force = normal_grid_force;
-        float grid_ripple_radius = normal_grid_radius;
-
-        // BOOST
-        boost_cur_cooldown -= Time.deltaTime;
-        boost_cur_duration -= Time.deltaTime;
-        // Check if we boosted
-        if (boosted_this_instant)
+        if (!GameState.game_state.paused)
         {
-            // Is the boost on cooldown?
-            if (boost_cur_cooldown <= 0)
+            UpdateInputs();
+
+            Vector2 new_speed = new Vector2(this.direction.x * x_speed, this.direction.y * y_speed);
+            grid_ripple_force = normal_grid_force;
+            grid_ripple_radius = normal_grid_radius;
+
+            // BOOST
+            boost_cur_cooldown -= Time.deltaTime;
+            boost_cur_duration -= Time.deltaTime;
+            // Check if we boosted
+            if (boosted_this_instant)
             {
-                // WE BOOSTIN
-                foreach (ParticleSystem p in booster_particles)
+                // Is the boost on cooldown?
+                if (boost_cur_cooldown <= 0)
                 {
-                    p.Play();
+                    // WE BOOSTIN
+                    foreach (ParticleSystem p in booster_particles)
+                    {
+                        p.Play();
+                    }
+
+                    boost_cur_cooldown = boost_cooldown;
+                    boost_cur_duration = boost_duration;
                 }
-
-                boost_cur_cooldown = boost_cooldown;
-                boost_cur_duration = boost_duration;
             }
-        }
 
-        if (boost_cur_duration > 0)
-        {
-            // Apply boost speed!
+            if (boost_cur_duration > 0)
+            {
+                // Apply boost speed!
+                if (GameState.game_state.going_sideways)
+                {
+                    new_speed.x = x_speed * boost_speed_modifier;
+                    new_speed.y = new_speed.y * boost_speed_modifier;
+                }
+                else
+                {
+                    new_speed.y = y_speed * boost_speed_modifier;
+                    new_speed.x = new_speed.x * boost_speed_modifier;
+                }
+                grid_ripple_force = boost_grid_force;
+                grid_ripple_radius = boost_grid_radius;
+                SoundMixer.sound_manager.PlayCarRev();
+                currently_boosting = true;
+            }
+            else
+                currently_boosting = false;
+
+
+            // Can only steer properly when we're not caught on an obstacle
+            if (GameState.game_state.tether_touching_obstacle)
+            {
+                if (GameState.game_state.going_sideways)
+                {
+                    physics.velocity = new Vector2(physics.velocity.x, new_speed.y);
+                }
+                else
+                {
+                    physics.velocity = new Vector2(new_speed.x, physics.velocity.y);
+                }
+            }
+            else
+            {
+                // Set our actual velocity
+                physics.velocity = new_speed;
+            }
+            if (Tether.tether != null)
+            {
+                if (disable_tether_held_down && GameState.game_state.can_disable_tether)
+                {
+                    Tether.tether.TetherHeldDown();
+                }
+                else
+                    Tether.tether.TetherReleased();
+
+                if (tether_switched && GameState.game_state.can_change_tether_mode)
+                    Tether.tether.SwitchTether();
+            }
+            // Animate car turning
+            // Animate breaking/accelerating forwards
             if (GameState.game_state.going_sideways)
             {
-                new_speed.x = x_speed * boost_speed_modifier;
-                new_speed.y = new_speed.y * boost_speed_modifier;
+                TurningCar(new_speed.y);
+                AccelerateDeceleratingCar(new_speed.x);
             }
             else
             {
-                new_speed.y = y_speed * boost_speed_modifier;
-                new_speed.x = new_speed.x * boost_speed_modifier;
+                TurningCar(new_speed.x);
+                AccelerateDeceleratingCar(new_speed.y);
             }
-            grid_ripple_force = boost_grid_force;
-            grid_ripple_radius = boost_grid_radius;
-            SoundMixer.sound_manager.PlayCarRev();
-            currently_boosting = true;
-        }
-        else
-            currently_boosting = false;
 
-
-        // Can only steer properly when we're not caught on an obstacle
-        if (GameState.game_state.tether_touching_obstacle)
-        {
-            if (GameState.game_state.going_sideways)
+            // OBSTACLES
+            cur_touching_forward_obstacle -= Time.deltaTime;
+            if (cur_touching_forward_obstacle <= 0)
             {
-                physics.velocity = new Vector2(physics.velocity.x, new_speed.y);
+                touching_forward_obstacle = false;
             }
-            else
-            {
-                physics.velocity = new Vector2(new_speed.x, physics.velocity.y);
-            }
+
+            // Force the player to remain within view of the camera
+            //StayOnScreen();
+
+
+            //transform.eulerAngles = new Vector3(0, 0, 
+            //    Mathf.Lerp(transform.eulerAngles.z, desired_rotation, 0.01f));
+
+            // Start fading health bar
+            health_bar_image.color = new Color(health_bar_image.color.r, health_bar_image.color.g, health_bar_image.color.b, health_bar_image.color.a - Time.deltaTime * 1.0f);
         }
-        else
-        {
-            // Set our actual velocity
-            physics.velocity = new_speed;
-        }
-        if (Tether.tether!=null)
-        {
-            if (disable_tether_held_down && GameState.game_state.can_disable_tether)
-            {
-                Tether.tether.TetherHeldDown();
-            }
-            else
-                Tether.tether.TetherReleased();
-
-            if (tether_switched && GameState.game_state.can_change_tether_mode)
-                Tether.tether.SwitchTether();
-        }
-        // Animate car turning
-        // Animate breaking/accelerating forwards
-        if (GameState.game_state.going_sideways)
-        {
-            TurningCar(new_speed.y);
-            AccelerateDeceleratingCar(new_speed.x);
-        }
-        else
-        {
-            TurningCar(new_speed.x);
-            AccelerateDeceleratingCar(new_speed.y);
-        }
-
-        // OBSTACLES
-        cur_touching_forward_obstacle -= Time.deltaTime;
-        if (cur_touching_forward_obstacle <= 0)
-        {
-            touching_forward_obstacle = false;
-        }
-
-        // Force the player to remain within view of the camera
-        //StayOnScreen();
-
-
-        //transform.eulerAngles = new Vector3(0, 0, 
-        //    Mathf.Lerp(transform.eulerAngles.z, desired_rotation, 0.01f));
-
-        // Start fading health bar
-        health_bar_image.color = new Color(health_bar_image.color.r, health_bar_image.color.g, health_bar_image.color.b, health_bar_image.color.a - Time.deltaTime * 1.0f);
-
-        // Ripple the grid behind the car
-        EffectsManager.effects.GridWake((Vector2)transform.position, grid_ripple_force, grid_ripple_radius, primary_colour, false);
     }
     void FixedUpdate()
     {
         // ROTATION
         // Lerp to our desired rotation
         physics.MoveRotation(Mathf.Lerp(transform.eulerAngles.z, desired_rotation, rotation_changing_speed));
+
+        // Ripple the grid behind the car
+        EffectsManager.effects.GridWake((Vector2)transform.position, grid_ripple_force, grid_ripple_radius, primary_colour, false);
     }
 
 
