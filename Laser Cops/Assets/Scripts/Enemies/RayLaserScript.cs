@@ -24,6 +24,11 @@ public class RayLaserScript : MonoBehaviour {
     public LayerMask layersToIgnore;
     //whether to play sound
     public bool silent = false;
+    public _Colour bullet_colour = _Colour.Red;
+    //set to true to alternate between pink and blue each shot
+    public bool alternateBulletColour = false;
+    //set to true to randomely pick pink or blue when the object starts
+    public bool randomPinkOrBlue = false;
 
     //true if you want it to disable itself when the player is close
     public bool playerCloseDisable = true;
@@ -31,7 +36,19 @@ public class RayLaserScript : MonoBehaviour {
     public float disableDistance = 2f;
 
     void Start () {
-        
+        if(randomPinkOrBlue)
+        {
+            if(Random.Range(0,2) > 0)
+            {
+                bullet_colour = _Colour.Blue;
+                laserRenderer.SetColors(Color.cyan, Color.cyan);
+            }
+            else
+            {
+                bullet_colour = _Colour.Pink;
+                laserRenderer.SetColors(Color.magenta, Color.magenta);
+            }
+        }
         shotCounter = shotDelay + Time.time;
         layersToIgnore = ~((1<<12)|(1<<13) | (1 << 15)|(1<<0)| (1 << 22) | (1 << 23) | (1 << 24)| (1 << 8));
 	}
@@ -52,13 +69,25 @@ public class RayLaserScript : MonoBehaviour {
 
         if(shooting)
         {
-            if( TimeSinceShotCounter > shotDuration)
+            
+            Shoot();
+            if (TimeSinceShotCounter > shotDuration)
             {
                 SoundMixer.sound_manager.StopBigLazerSound();
                 shooting = false;
                 laserRenderer.enabled = false;
+                if(alternateBulletColour)
+                {
+                    if(bullet_colour == _Colour.Pink)
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+                }
             }
-            Shoot();
         }
 	}
 
@@ -92,7 +121,25 @@ public class RayLaserScript : MonoBehaviour {
             {
                 if(hit.collider.gameObject.CompareTag("Player"))
                 {
-                    hit.collider.gameObject.GetComponent<PlayerController>().TakeHit(damage, true);
+                    if(bullet_colour == _Colour.Red)
+                    {
+                        hit.collider.gameObject.GetComponent<PlayerController>().TakeHit(damage, true);
+                    }
+                    else if(bullet_colour == _Colour.Pink)
+                    {
+                        if(hit.collider.gameObject.name == "Player 1")
+                        {
+                            hit.collider.gameObject.GetComponent<PlayerController>().TakeHit(damage, true);
+                        }
+                    }
+                    else if (bullet_colour == _Colour.Blue)
+                    {
+                        if (hit.collider.gameObject.name == "Player 2")
+                        {
+                            hit.collider.gameObject.GetComponent<PlayerController>().TakeHit(damage, true);
+                        }
+                    }
+
                 }
             } 
         }

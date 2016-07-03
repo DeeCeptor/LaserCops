@@ -40,11 +40,24 @@ public class SecretMoonBossLaser : MonoBehaviour {
 
     public void Activate()
     {
+        int rand = Random.Range(0,2);
         active = true;
         for(int i = 0; i < transform.childCount; i++)
         {
             transform.GetChild(i).gameObject.SetActive(true);
-            transform.GetChild(i).gameObject.GetComponent<RayLaserScript>().active = true;
+            RayLaserScript laserScript = transform.GetChild(i).gameObject.GetComponent<RayLaserScript>();
+            laserScript.active = true;
+            if(rand == 0)
+            {
+                laserScript.bullet_colour = _Colour.Blue;
+                laserScript.laserRenderer.SetColors(Color.cyan, Color.cyan);
+            }
+            else
+            {
+                laserScript.bullet_colour = _Colour.Pink;
+                laserScript.laserRenderer.SetColors(Color.magenta, Color.magenta);
+            }
+
         }
         moveDirection = Random.insideUnitCircle;
         changeCounter = Time.time + timeTillChange;
