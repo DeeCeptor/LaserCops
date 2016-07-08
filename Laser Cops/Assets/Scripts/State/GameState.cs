@@ -10,6 +10,8 @@ public class GameState : MonoBehaviour
     public string level_to_load_on_victory = "SceneSelect";
     public string level_to_load_on_defeat = "SceneSelect";
 
+    public int number_of_players = 2;
+
     public bool paused = false; // Paused by player
     public bool game_over = false;  // Lost the game
     public float elapsed_game_time = 0f;
@@ -60,7 +62,21 @@ public class GameState : MonoBehaviour
 
         SetGameMode();
         SetSettings();
-        
+
+
+        if (number_of_players > 2)
+        {
+            // Spawn player 3
+            GameObject obj = Instantiate(Resources.Load("Players/Player 3") as GameObject);
+            obj.transform.position = new Vector2(0, 1);
+        }
+        if (number_of_players > 3)
+        {
+            // Spawn player 4
+            GameObject obj = Instantiate(Resources.Load("Players/Player 4") as GameObject);
+            obj.transform.position = new Vector2(0, -1);
+        }
+
         PlayerObjects = GameObject.FindGameObjectsWithTag("Player");
         if (VIP)
         {
