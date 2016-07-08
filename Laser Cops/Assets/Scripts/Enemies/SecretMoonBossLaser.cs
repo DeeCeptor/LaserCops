@@ -40,6 +40,7 @@ public class SecretMoonBossLaser : MonoBehaviour {
 
     public void Activate()
     {
+        GetComponent<SpriteRenderer>().sortingLayerName = "Enemies";
         int rand = Random.Range(0,2);
         active = true;
         for(int i = 0; i < transform.childCount; i++)

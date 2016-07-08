@@ -21,6 +21,7 @@ public class spin : MonoBehaviour {
             {
                 rotationSpeed.z = rotationSpeed.z + Random.Range(0, randomOffset);
             }
+            transform.rotation = new Quaternion(Random.rotation.x,Random.rotation.y,0,0);
         }
     }
 	
