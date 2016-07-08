@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 804a2fd2c9c001744a9f087d299f849a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomOffset: 0
+  randomOffset: 0.5
   rotationSpeed: {x: 0, y: 0, z: 0.25}
 --- !u!114 &11466368
 MonoBehaviour:
@@ -186,6 +186,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_SortingLayerID
       value: 874025413
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: randomOffset
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
