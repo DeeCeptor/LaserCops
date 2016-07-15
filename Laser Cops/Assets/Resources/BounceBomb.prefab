@@ -88,7 +88,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 702151cd4cdfbdc47bd79579f103aaed, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -119,6 +119,10 @@ Prefab:
       propertyPath: spawner
       value: 
       objectReference: {fileID: 168396, guid: bac6a1bd4b3bbbd4587bde1e20b49df1, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 702151cd4cdfbdc47bd79579f103aaed, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 156692}

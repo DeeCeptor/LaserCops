@@ -39,12 +39,19 @@ public class BulletScript : MonoBehaviour
 		if(collision.gameObject.tag == "Player")
 		{
             if (collision.gameObject.GetComponent<PlayerController>().player_colour == bullet_colour)
+            {
                 Die();
+                EffectsManager.effects.SameColorHit(collision.contacts[0].point, bullet_colour);
+            }
+            else
+            {
+                collision.gameObject.GetComponent<PlayerController>().TakeHit(damage, true);
+                EffectsManager.effects.BulletHitPlayer(collision.contacts[0].point);
+                
+            }
 
             // Spawn small sparks and explosion
-            EffectsManager.effects.BulletHitPlayer(collision.contacts[0].point);
-
-			collision.gameObject.GetComponent<PlayerController>().TakeHit(damage, true);
+            
 		}
 
 		if (collision.gameObject.tag == "VIP")

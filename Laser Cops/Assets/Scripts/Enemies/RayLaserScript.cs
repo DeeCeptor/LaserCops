@@ -111,7 +111,7 @@ public class RayLaserScript : MonoBehaviour {
         }
 
         //if the laser is supposed to do damage
-        if (TimeSinceShotCounter > immuneFrames)
+        if (TimeSinceShotCounter >= immuneFrames)
         {
             if (!silent)
             {
@@ -123,23 +123,9 @@ public class RayLaserScript : MonoBehaviour {
             {
                 if(hit.collider.gameObject.CompareTag("Player"))
                 {
-                    if(bullet_colour == _Colour.Red)
+                    if(bullet_colour != hit.collider.gameObject.GetComponent<PlayerController>().player_colour)
                     {
                         hit.collider.gameObject.GetComponent<PlayerController>().TakeHit(damage, true);
-                    }
-                    else if(bullet_colour == _Colour.Pink)
-                    {
-                        if(hit.collider.gameObject.name == "Player 1")
-                        {
-                            hit.collider.gameObject.GetComponent<PlayerController>().TakeHit(damage, true);
-                        }
-                    }
-                    else if (bullet_colour == _Colour.Blue)
-                    {
-                        if (hit.collider.gameObject.name == "Player 2")
-                        {
-                            hit.collider.gameObject.GetComponent<PlayerController>().TakeHit(damage, true);
-                        }
                     }
 
                 }

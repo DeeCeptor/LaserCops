@@ -105,6 +105,20 @@ public class EffectsManager : MonoBehaviour
             position, Quaternion.identity), 4.0f);
     }
 
+    public void SameColorHit(Vector2 position,_Colour bulletColor)
+    {
+        if (bulletColor == _Colour.Blue)
+        {
+            Destroy((GameObject)GameObject.Instantiate(Resources.Load("Graphics/Same Color Hit Blue") as GameObject,
+                position, Quaternion.identity), 4.0f);
+        }
+        else
+        {
+            Destroy((GameObject)GameObject.Instantiate(Resources.Load("Graphics/Same Color Hit Pink") as GameObject,
+                position, Quaternion.identity), 4.0f);
+        }
+    }
+
 
     public void PlayersHealed()
     {
