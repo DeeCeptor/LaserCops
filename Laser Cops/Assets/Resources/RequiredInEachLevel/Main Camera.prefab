@@ -14,9 +14,6 @@ GameObject:
   - 81: {fileID: 8111656}
   - 114: {fileID: 11418314}
   - 114: {fileID: 11443626}
-  - 114: {fileID: 11431410}
-  - 114: {fileID: 11467634}
-  - 114: {fileID: 11400308}
   - 114: {fileID: 11418576}
   - 61: {fileID: 6182082}
   m_Layer: 0
@@ -100,20 +97,6 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 118320}
   m_Enabled: 1
---- !u!114 &11400308
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 118320}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13dc47e06abe11242b4510f52d0a9b63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SCShader: {fileID: 4800000, guid: 4801d23c617117443b2dd8c9198c3406, type: 3}
-  Camera2: {fileID: 0}
-  BlendFX: 0
 --- !u!114 &11418314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,7 +119,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_GlowResolution: 0
-  m_ShowCutoutGlow: 1
+  m_ShowCutoutGlow: 0
   m_ShowTransparentGlow: 1
   m_GlowType: 0
   m_GlowQuality: 1
@@ -152,7 +135,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 118320}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07e77aeb6fb51424e84e4d3274d7864f, type: 3}
   m_Name: 
@@ -161,23 +144,6 @@ MonoBehaviour:
   Interferance_Size: 1
   Interferance_Speed: 0.5
   Contrast: 0.14
---- !u!114 &11431410
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 118320}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6696689921e7303418a6fb4e1b8d94bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Background_Objects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  scrolling_speed: -30
-  back_edge: -40
 --- !u!114 &11443626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -190,19 +156,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   desired_size: 10
---- !u!114 &11467634
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 118320}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a465897a4110b5449bfd6bec29c7504, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SCShader: {fileID: 4800000, guid: a2572006fbb69684d874996592576843, type: 3}
-  TRACKING: 1
 --- !u!124 &12425280
 Behaviour:
   m_ObjectHideFlags: 1
