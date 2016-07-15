@@ -156,4 +156,8 @@ public class SoundMixer : MonoBehaviour
     {
         PlayMusic(Music[6]);
     }
+    public void PlayLZMainTheme()
+    {
+        PlayMusic(Music[7]);
+    }
 }

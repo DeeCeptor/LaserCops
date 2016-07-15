@@ -104,6 +104,8 @@ public class LevelManager : MonoBehaviour
     }
     public void DeselectLevels()
     {
+        GameObject myEventSystem = GameObject.Find("EventSystem");
+        myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(object_to_select);
         selected_level_ui.SetActive(false);
         level_settings.SetActive(false);
         foreach (LevelNode node in level_nodes)

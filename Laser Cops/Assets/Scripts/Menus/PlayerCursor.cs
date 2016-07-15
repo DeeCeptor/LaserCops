@@ -120,7 +120,14 @@ public class PlayerCursor : MonoBehaviour
                 }
                 if (Input.GetButtonDown("Cancel"))
                 {
-                    LevelManager.level_manager.DeselectLevels();
+                    if (LevelManager.level_manager.selected_level)
+                    {
+                        LevelManager.level_manager.DeselectLevels();
+                    }
+                    else
+                    {
+                        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+                    }
                 }
             }
         }
