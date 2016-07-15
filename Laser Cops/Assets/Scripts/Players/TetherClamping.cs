@@ -19,12 +19,7 @@ public class TetherClamping : MonoBehaviour
 
     void Update ()
     {
-        if (!player_1)
-        {
-
-        }
-
-        if (!GameState.game_state.chained_to_center)
+        if (!GameState.game_state.chained_to_center && GameState.game_state.PlayerObjects.Length <= 2)
         {
             if (player_1.transform.position.y < player_2.transform.position.y)
             {

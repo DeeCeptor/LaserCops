@@ -12,7 +12,7 @@ public class CameraManager : MonoBehaviour
     void Awake ()
     {
         cam = Camera.main;
-        ChangeZoom(this.cam.orthographicSize, 0.5f);
+        ChangeZoom(this.cam.orthographicSize, 2f);// 0.5f);
         camera_region = this.GetComponent<BoxCollider2D>();
     }
     void Start ()
@@ -21,8 +21,9 @@ public class CameraManager : MonoBehaviour
         Vector3 maxScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
 
         camera_region.size = new Vector2((Mathf.Abs(minScreenBounds.x) + Mathf.Abs(maxScreenBounds.x)) / 1 * this.transform.localScale.x,
-                                         (Mathf.Abs(minScreenBounds.y) + Mathf.Abs(maxScreenBounds.y)) / 1 * this.transform.localScale.y);
+                                 (Mathf.Abs(minScreenBounds.y) + Mathf.Abs(maxScreenBounds.y)) / 1 * this.transform.localScale.y);
 
+        //this.enabled = false;
     }
 
 
