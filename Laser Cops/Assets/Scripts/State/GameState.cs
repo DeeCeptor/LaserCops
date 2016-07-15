@@ -48,6 +48,7 @@ public class GameState : MonoBehaviour
 
     public bool debug_invulnerability = false;
     bool debugging = true;
+    bool show_debugging_text = false;
     bool increased_speed = false;
     float normal_physics_delta_time;
 
@@ -421,10 +422,11 @@ public class GameState : MonoBehaviour
     {
         if (debugging)
         {
-            if (debug_invulnerability)
-                GUI.Label(new Rect(0, 0, 300, 100), "Invulnerable");
-            if (true)
+            if (show_debugging_text)
             {
+                if (debug_invulnerability)
+                    GUI.Label(new Rect(0, 0, 300, 100), "Invulnerable");
+
                 GUI.Label(new Rect(0, 10, 300, 100), Time.timeScale + "X");
                 GUI.Label(new Rect(0, 20, 300, 100), "Length:" + Tether.tether.tether_links.Count);
                 GUI.Label(new Rect(0, 30, 300, 100), "Score for new link:" + InGameUIManager.ui_manager.score_for_a_link);
