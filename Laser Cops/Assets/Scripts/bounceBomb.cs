@@ -48,8 +48,9 @@ public class bounceBomb : MonoBehaviour {
 
     public void Respawn()
     {
-
-        Instantiate(spawner,new Vector3(xLeftOfScreen + 8,0,0),transform.rotation);
+        Vector3 pos = GameState.game_state.Players[Random.Range(0, 2)].transform.position;
+        pos.x = pos.x + 2;
+        Instantiate(spawner,pos,transform.rotation);
         Destroy(gameObject);
     }
 }
