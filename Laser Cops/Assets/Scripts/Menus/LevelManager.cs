@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using System;
+using UnityEngine.EventSystems;
 
 public class LevelManager : MonoBehaviour 
 {
@@ -101,6 +102,11 @@ public class LevelManager : MonoBehaviour
         // Play sound
         SoundMixer.sound_manager.PlayNotification();
         selected_level = true;
+
+        // Set to coop game mode
+        //coop_mode.GetComponent<Toggle>().Select();
+        var pointer = new PointerEventData(EventSystem.current);
+        ExecuteEvents.Execute(coop_mode.gameObject, pointer, ExecuteEvents.pointerClickHandler);
     }
     public void DeselectLevels()
     {
