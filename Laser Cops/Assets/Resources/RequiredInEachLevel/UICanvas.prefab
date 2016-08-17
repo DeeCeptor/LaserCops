@@ -4456,6 +4456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59dee8fdd555b99479926b529e3f0834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pause_menu: {fileID: 113724}
   player_1_health: {fileID: 11407606}
   player_2_health: {fileID: 11411468}
   score_text: {fileID: 11473122}
@@ -6009,6 +6010,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0

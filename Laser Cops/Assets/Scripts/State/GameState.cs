@@ -230,7 +230,7 @@ public class GameState : MonoBehaviour
 
     void Update()
     {
-        /*
+        
         if (Input.GetButtonDown("Pause") && !game_over)
         {
             if (Time.timeScale == 0)
@@ -243,7 +243,7 @@ public class GameState : MonoBehaviour
                 // Currently unpaused, pause game
                 Pause();
             }
-        }*/
+        }
 
         // Not paused and not game over
         if (Time.timeScale != 0 && !game_over)
@@ -409,12 +409,12 @@ public class GameState : MonoBehaviour
     public void Unpause()
     {
         Time.timeScale = 1;
-        //PauseMenu.SetActive(false);
+        InGameUIManager.ui_manager.pause_menu.SetActive(false);
     }
     public void Pause()
     {
         Time.timeScale = 0;
-        //PauseMenu.SetActive(true);
+        InGameUIManager.ui_manager.pause_menu.SetActive(true);
     }
 
 

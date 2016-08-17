@@ -7,6 +7,8 @@ public class InGameUIManager : MonoBehaviour
 {
     public static InGameUIManager ui_manager;
 
+    public GameObject pause_menu;
+
     public Slider player_1_health;
     public Slider player_2_health;
 
