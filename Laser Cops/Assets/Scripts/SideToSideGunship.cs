@@ -29,18 +29,35 @@ public class SideToSideGunship : basicScrollingEnemyScript
 
     }
 
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag.Equals("MainCamera"))
+        {
+            Activate();
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D collider)
+    {
+        if (!active)
+        {
+            if (collider.gameObject.tag.Equals("MainCamera"))
+            {
+                Activate();
+            }
+        }
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
         if (!active)
         {
-            CheckActive();
             moveInactive();
         }
 
         else if (active)
         {
-            CheckDeath();
             moveActive();
 
             if (switchCounter < Time.time)

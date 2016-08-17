@@ -77,8 +77,9 @@ MonoBehaviour:
   speed: 3
   dir: {x: 0, y: 0}
   damage: 15
+  bullet_colour: 0
   damageToBoss: 2
-  reboundColor: {r: 0, g: 0, b: 1, a: 1}
+  reboundColor: {r: 0.44827592, g: 1, b: 0, a: 1}
   rebounding: 0
   reboundLayer: 16
 --- !u!212 &21240234
@@ -108,7 +109,7 @@ SpriteRenderer:
   m_SortingLayerID: -272301999
   m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.9724138, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!1001 &100100000
@@ -137,6 +138,30 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_SortingLayerID
       value: -272301999
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.g
+      value: 0.9724138
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: reboundColor.r
+      value: 0.44827592
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: reboundColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: reboundColor.b
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

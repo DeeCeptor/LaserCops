@@ -55,14 +55,6 @@ public class ScrollThenStop : basicScrollingEnemyScript
         }
     }
 
-    public new void CheckActive()
-    {
-        if (GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
-        {
-            Activate();
-        }
-    }
-
     //Freezes screen position
     public void FreezePosition()
     {

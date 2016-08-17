@@ -44,6 +44,7 @@ GameObject:
   - 4: {fileID: 466310}
   - 212: {fileID: 21247618}
   - 114: {fileID: 11426270}
+  - 114: {fileID: 11479642}
   m_Layer: 0
   m_Name: trackingTurret (3)
   m_TagString: Untagged
@@ -61,6 +62,7 @@ GameObject:
   - 4: {fileID: 464068}
   - 212: {fileID: 21269520}
   - 114: {fileID: 11443374}
+  - 114: {fileID: 11450548}
   m_Layer: 0
   m_Name: trackingTurret (2)
   m_TagString: Untagged
@@ -145,9 +147,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119574}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: 0.32003975, y: 2.292474, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 420582}
   m_RootOrder: 6
@@ -176,9 +178,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183264}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: 0.32003975, y: -2.3002439, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 420582}
   m_RootOrder: 1
@@ -188,9 +190,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192490}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: 2.1194544, y: 0.50747395, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 420582}
   m_RootOrder: 0
@@ -200,9 +202,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181398}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 2.146762, y: -1.947526, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
+  m_LocalPosition: {x: 1.9700003, y: -2.0292933, z: -1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 420582}
   m_RootOrder: 3
@@ -212,9 +214,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169692}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 2.146762, y: 1.9374739, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
+  m_LocalPosition: {x: 1.9700003, y: 1.9707067, z: -1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 420582}
   m_RootOrder: 2
@@ -224,9 +226,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147666}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: -0.7573366, y: 0.008515716, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 420582}
   m_RootOrder: 4
@@ -236,9 +238,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190890}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: 2.1194544, y: -0.5175261, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 420582}
   m_RootOrder: 5
@@ -333,9 +335,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
+  formChangeConversation: {fileID: 0}
   nextStage: {fileID: 178410, guid: 425c8493dc4959f42b239f9fbdddbaa0, type: 2}
   stages: 3
   overallHealth: 60
+  bossName: Welcome to the GUNSHIP
+  pointValue: 2000
+  TimeBonus: 600
+  ChangeFormEffect: {fileID: 0}
+  easyDamageMultiplyer: 2
+  hardDamageMultiplyer: 0.667
+  useImmunityTime: 0
+  immunityTime: 0.1
 --- !u!114 &11413130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -370,6 +381,8 @@ MonoBehaviour:
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
   active: 0
+  bulletColour: 0
+  CarColour: 0
   playerCloseDisable: 0
   disableDistance: 2
 --- !u!114 &11443374
@@ -387,8 +400,24 @@ MonoBehaviour:
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
   active: 0
+  bulletColour: 0
+  CarColour: 0
   playerCloseDisable: 0
   disableDistance: 2
+--- !u!114 &11450548
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5856db298e3415342a1bfbb970eab11f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  remove_on_difficulty_higher_than: 0
+  difficulty: 2
+  cell_size: 1
 --- !u!114 &11461710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -423,6 +452,8 @@ MonoBehaviour:
   shotCounter: 0
   bullet: {fileID: 197282, guid: 578a63072764d244a9a677bacfa12675, type: 2}
   active: 0
+  bulletColour: 1
+  CarColour: 0
   playerCloseDisable: 0
   disableDistance: 2
 --- !u!114 &11466804
@@ -444,6 +475,10 @@ MonoBehaviour:
   pointValue: 10000
   health: 10000
   beingRammed: 0
+  enemyEnemyCollsion: 0
+  ramNavPos: 0
+  collisionAvoidTime: 1
+  collisionAvoidCounter: 0
   desired_velocity: {x: 0, y: 0}
   travelDirection: 1
   timeTillStop: 8
@@ -468,8 +503,24 @@ MonoBehaviour:
   shotCounter: 0
   bullet: {fileID: 197282, guid: 578a63072764d244a9a677bacfa12675, type: 2}
   active: 0
+  bulletColour: 1
+  CarColour: 0
   playerCloseDisable: 0
   disableDistance: 2
+--- !u!114 &11479642
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5856db298e3415342a1bfbb970eab11f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  remove_on_difficulty_higher_than: 0
+  difficulty: 2
+  cell_size: 1
 --- !u!114 &11481566
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -515,7 +566,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 874025413
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d981a6e50cb26f84a9455e838deaa9d3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ed936fb077a86646bf6b4c7ed61f778, type: 3}
   m_Color: {r: 0.9034482, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -545,7 +596,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 874025413
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: d981a6e50cb26f84a9455e838deaa9d3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ed936fb077a86646bf6b4c7ed61f778, type: 3}
   m_Color: {r: 0.9034482, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -575,7 +626,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 874025413
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: d981a6e50cb26f84a9455e838deaa9d3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ed936fb077a86646bf6b4c7ed61f778, type: 3}
   m_Color: {r: 0.9034482, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -605,7 +656,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 874025413
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d981a6e50cb26f84a9455e838deaa9d3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ed936fb077a86646bf6b4c7ed61f778, type: 3}
   m_Color: {r: 0.9034482, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -635,7 +686,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 874025413
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: d981a6e50cb26f84a9455e838deaa9d3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ed936fb077a86646bf6b4c7ed61f778, type: 3}
   m_Color: {r: 0.9034482, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -695,7 +746,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 874025413
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d981a6e50cb26f84a9455e838deaa9d3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ed936fb077a86646bf6b4c7ed61f778, type: 3}
   m_Color: {r: 0.9034482, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -725,7 +776,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 874025413
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d981a6e50cb26f84a9455e838deaa9d3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ed936fb077a86646bf6b4c7ed61f778, type: 3}
   m_Color: {r: 0.9034482, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
