@@ -90,7 +90,12 @@ public class EffectsManager : MonoBehaviour
         Destroy((GameObject)GameObject.Instantiate(Resources.Load("Graphics/Explosion Sparks") as GameObject,
             position, Quaternion.identity), 2.0f);
     }
-
+    // Creates a shower of sparks at the designated position
+    public void BurstLargeFireball(Vector2 position)
+    {
+        Destroy((GameObject)GameObject.Instantiate(Resources.Load("Graphics/Burst Large Fireball") as GameObject,
+            position, Quaternion.identity), 4.0f);
+    }
 
     public void BulletHitPlayer(Vector2 position)
     {
@@ -98,7 +103,11 @@ public class EffectsManager : MonoBehaviour
             position, Quaternion.identity), 2.0f);
     }
 
-
+    public void TetherGrindSparks(Vector2 position)
+    {
+        Destroy((GameObject)GameObject.Instantiate(Resources.Load("Graphics/Lasting Grinding Sparks") as GameObject,
+            position, Quaternion.identity), 4.0f);
+    }
     public void TetherDamageSparks(Vector2 position)
     {
         Destroy((GameObject)GameObject.Instantiate(Resources.Load("Graphics/Tether Damage Sparks") as GameObject,

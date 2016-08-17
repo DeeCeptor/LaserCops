@@ -226,8 +226,8 @@ public class BossHealthScript : MonoBehaviour {
                 {
                     takeHit(collision.gameObject.GetComponent<bounceBomb>().damageToBoss);
                 }
-                EffectsManager.effects.ViolentExplosion(collision.contacts[0].point);
-                SoundMixer.sound_manager.PlayGettingHitExplosion();
+
+                TakeHitGraphics(collision);
                 collision.gameObject.GetComponent<bounceBomb>().Respawn();
             }
             else
@@ -247,12 +247,21 @@ public class BossHealthScript : MonoBehaviour {
                     {
                         takeHit(collision.gameObject.GetComponent<bounceBomb>().damageToBoss);
                     }
+
+                    TakeHitGraphics(collision);
                     collision.gameObject.GetComponent<bounceBomb>().Respawn();
-                    EffectsManager.effects.ViolentExplosion(collision.contacts[0].point);
                 }
             }
 
         }
+    }
+
+    public void TakeHitGraphics(Collision2D collision)
+    {
+        EffectsManager.effects.ViolentExplosion(collision.contacts[0].point);
+        EffectsManager.effects.TetherGrindSparks(collision.contacts[0].point);
+        EffectsManager.effects.BurstLargeFireball(collision.contacts[0].point);
+        SoundMixer.sound_manager.PlayGettingHitExplosion();
     }
 
     //Changes forms or dies depending on whether this is the final form
