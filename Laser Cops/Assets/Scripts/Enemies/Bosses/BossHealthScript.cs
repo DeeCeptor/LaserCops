@@ -227,6 +227,7 @@ public class BossHealthScript : MonoBehaviour {
                     takeHit(collision.gameObject.GetComponent<bounceBomb>().damageToBoss);
                 }
                 EffectsManager.effects.ViolentExplosion(collision.contacts[0].point);
+                SoundMixer.sound_manager.PlayGettingHitExplosion();
                 collision.gameObject.GetComponent<bounceBomb>().Respawn();
             }
             else
