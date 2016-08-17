@@ -5,6 +5,7 @@ public class PlayableLevelNode : LevelNode
 {
     // Games modes allowed
     public bool coop = true;
+    [HideInInspector]
     public string coop_diff;
 
     public bool competitive = true;

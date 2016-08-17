@@ -3,6 +3,7 @@ using System.Collections;
 
 public class EndLevel : MonoBehaviour
 {
+    bool activated = false;
     SpriteRenderer sprite;
 
 	void Start ()
@@ -12,17 +13,19 @@ public class EndLevel : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag.Equals("MainCamera"))
+        if (collider.gameObject.tag.Equals("MainCamera") && !activated)
         {
+            activated = true;
             GameState.game_state.Victory();
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
         }
     }
 
     void OnTriggerStay2D(Collider2D collider)
     {
-            if (collider.gameObject.tag.Equals("MainCamera"))
-            {
+        if (collider.gameObject.tag.Equals("MainCamera") && !activated)
+        {
+            activated = true;
             GameState.game_state.Victory();
         }
     }

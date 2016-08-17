@@ -33,9 +33,10 @@ public class PlayerCursor : MonoBehaviour
 	void Update () 
 	{
         // Check if we're close enough to the destination
-        if (this.transform.position == destination_node.transform.position)// && !LevelManager.level_manager.level_settings.activeSelf)
+        if (Vector3.Distance(this.transform.position, destination_node.transform.position) < 0.1)// this.transform.position == destination_node.transform.position)// && !LevelManager.level_manager.level_settings.activeSelf)
         {
-            if ((Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0) && !LevelManager.level_manager.selected_level)
+            // Accept input if close enough
+            if ((Mathf.Abs(Input.GetAxis("Vertical")) > 0.1f || Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1f) && !LevelManager.level_manager.selected_level)
             {
                 if (Mathf.Abs(Input.GetAxis("Vertical")) > Mathf.Abs((Input.GetAxis("Horizontal"))))
                 {
