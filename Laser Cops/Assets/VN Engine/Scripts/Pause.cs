@@ -22,7 +22,6 @@ public class Pause : MonoBehaviour
 
     public void Toggle_Pause()
     {
-        Debug.Log("A");
         if (paused)
         {
             // Unpause

@@ -408,11 +408,13 @@ public class GameState : MonoBehaviour
 
     public void Unpause()
     {
+        Debug.Log("Unpausing");
         Time.timeScale = 1;
         InGameUIManager.ui_manager.pause_menu.SetActive(false);
     }
     public void Pause()
     {
+        Debug.Log("Pausing");
         Time.timeScale = 0;
         InGameUIManager.ui_manager.pause_menu.SetActive(true);
     }
