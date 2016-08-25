@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class EndLevelScreen : MonoBehaviour 
 {
@@ -18,7 +19,7 @@ public class EndLevelScreen : MonoBehaviour
     public Color c1;
     public Color c2;
 
-    float time_till_menu = 6f;
+    float time_till_menu = 9f;
 
     void Awake ()
     {
@@ -73,6 +74,10 @@ public class EndLevelScreen : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        StartCoroutine(EnteredTrigger());
+    }
+    IEnumerator EnteredTrigger()
+    {
         if (coop_victory)
         {
             VictoryP1();
@@ -89,12 +94,15 @@ public class EndLevelScreen : MonoBehaviour
         {
 
         }
+
+        yield return new WaitForSeconds(1f);
+        text.gameObject.SetActive(true);
     }
 
 
     void Update () 
 	{
-        //Color.Lerp( Mathf.PingPong(Time.time, 1f);
+        text.color = Color.Lerp(c1, c2, Mathf.PingPong(Time.time, 1f));
 
         time_till_menu -= Time.deltaTime;
         if (time_till_menu <= 0)

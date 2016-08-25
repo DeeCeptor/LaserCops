@@ -211,7 +211,7 @@ public class GameState : MonoBehaviour
         SetGravity(new Vector3(-9.81f, 0));
 
         normal_physics_delta_time = Time.fixedDeltaTime;
-        //		Application.targetFrameRate = 60;
+        		Application.targetFrameRate = 120;
         default_position_iterations = Physics2D.positionIterations;
         default_velocity_iterations = Physics2D.velocityIterations;
     }

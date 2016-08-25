@@ -12529,9 +12529,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 14.93929, y: -0.022428513}
+  m_Offset: {x: 17.260462, y: -0.022428513}
   serializedVersion: 2
-  m_Size: {x: 5.73242, y: 36.476673}
+  m_Size: {x: 1.0900764, y: 36.476673}
 --- !u!1 &926808182
 GameObject:
   m_ObjectHideFlags: 0
@@ -25604,7 +25604,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 6
+      scalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -32002,7 +32002,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1304453368}
-  m_Mesh: {fileID: 1446864257}
+  m_Mesh: {fileID: 1465063805}
 --- !u!4 &1304453374
 Transform:
   m_ObjectHideFlags: 0
@@ -33715,7 +33715,7 @@ MonoBehaviour:
   offset: 1
   localDirectionToUse: 1
   lagTime: 0.05
---- !u!43 &1446864257
+--- !u!43 &1465063805
 Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -37305,7 +37305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1666294598
 Transform:
   m_ObjectHideFlags: 0
@@ -40938,7 +40938,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 6
+      scalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:

@@ -12,6 +12,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Menus/SceneSelect.unity
   - enabled: 1
+    path: Assets/Menus/EndLevelScreen.unity
+  - enabled: 1
     path: Assets/Levels/Kevin/Tutorial.unity
   - enabled: 1
     path: Assets/Levels/Kevin/BulletPurgatory.unity

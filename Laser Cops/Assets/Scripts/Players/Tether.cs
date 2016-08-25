@@ -336,7 +336,7 @@ public class Tether : MonoBehaviour
     // Adds a new link to the rope
     public void AddLink()
     {
-        Debug.Log(tether_links.Count);
+        //Debug.Log(tether_links.Count);
 
         if (GameState.game_state.no_tether)
             return;
