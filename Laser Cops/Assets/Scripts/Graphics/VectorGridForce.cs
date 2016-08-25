@@ -5,8 +5,8 @@ public class VectorGridForce : MonoBehaviour
 {
     [HideInInspector]
 	public VectorGrid m_VectorGrid;
-    float m_ForceScale = 2f;
-    float m_Radius = 1.5f;
+    public float m_ForceScale = 2f;
+    public float m_Radius = 1.5f;
     public bool m_Directional;
 	public Vector3 m_ForceDirection;
 	public Color m_Color = Color.white;
@@ -15,6 +15,7 @@ public class VectorGridForce : MonoBehaviour
     BoxCollider2D box;
     float counter = 0;
     float wake_cooldown = 0.01f;
+    public bool ignore_graphics_settings = false;
 
     void Start ()
     {
@@ -41,10 +42,13 @@ public class VectorGridForce : MonoBehaviour
                 {
                     m_VectorGrid.AddGridForce(this.transform.position, m_ForceDirection * m_ForceScale, m_Radius, m_Color, m_HasColor);
                 }
+                else if (ignore_graphics_settings)
+                {
+                    m_VectorGrid.AddGridForce(this.transform.position, m_ForceScale, m_Radius, m_Color, m_HasColor);
+                }
                 else
                 {
                     EffectsManager.effects.GridWake(this.transform.position, m_ForceScale, m_Radius, m_Color, true);
-                    //m_VectorGrid.AddGridForce(this.transform.position, m_ForceScale, m_Radius, m_Color, m_HasColor);
                 }
                 counter = wake_cooldown;
             }

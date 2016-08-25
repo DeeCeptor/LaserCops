@@ -6,6 +6,8 @@ public class PlayerController : PlayerInput
 {
     public _Colour player_colour;
 
+    public bool input_enabled = true;   // If false, no player input is accepted
+
     Rigidbody2D physics;
     float x_speed = 7f;
     float y_speed = 7f;
@@ -90,7 +92,7 @@ public class PlayerController : PlayerInput
 
     void Update()
     {
-        if (!GameState.game_state.paused)
+        if (!GameState.game_state.paused && input_enabled)
         {
             UpdateInputs();
 
