@@ -11,7 +11,8 @@ public class LevelManager : MonoBehaviour
     List<GameObject> levels = new List<GameObject>();
     LineRenderer line;
     public LineRenderer line_2;
-    LevelNode[] level_nodes;
+    [HideInInspector]
+    public LevelNode[] level_nodes;
     Mode game_mode;
     public Text high_score_text;
 
@@ -32,9 +33,7 @@ public class LevelManager : MonoBehaviour
     void Awake()
     {
         level_manager = this;
-    }
-    void Start()
-    {
+
         line = this.GetComponent<LineRenderer>();
         game_mode = GameObject.FindGameObjectWithTag("GameMode").GetComponent<Mode>();
 
@@ -54,7 +53,7 @@ public class LevelManager : MonoBehaviour
             else if ((x / 2) + 1 < levels.Count)        // Odd number
             {
                 positions[x] = new Vector3((levels[x / 2].transform.position.x + levels[(x / 2) + 1].transform.position.x) / 2,
-                    (levels[x / 2].transform.position.y + levels[(x / 2) + 1].transform.position.y) / 2, 
+                    (levels[x / 2].transform.position.y + levels[(x / 2) + 1].transform.position.y) / 2,
                     0.01f);
             }
         }
@@ -71,6 +70,10 @@ public class LevelManager : MonoBehaviour
 
 
         level_nodes = this.GetComponentsInChildren<LevelNode>();
+    }
+    void Start()
+    {
+
 	}
 	
 

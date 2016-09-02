@@ -298,9 +298,12 @@ public class GameState : MonoBehaviour
 
     public void PlayerHitDeathzone()
     {
-        for (int x = 0; x < Players.Count; x++)
+        if (GameMode.Competitive != game_mode)
         {
-            Players[x].Die();
+            for (int x = 0; x < Players.Count; x++)
+            {
+                Players[x].Die();
+            }
         }
     }
 
@@ -333,8 +336,24 @@ public class GameState : MonoBehaviour
         {
             Debug.Log("You lose!");
             game_over = true;
-            InGameUIManager.ui_manager.SetAnnouncementText("You lost!", 9999);
-            ChangeScene(2f, level_to_load_on_defeat);
+            //InGameUIManager.ui_manager.SetAnnouncementText("You lost!", 9999);
+
+            LevelResult lr = SpawnLevelResult();
+            if (game_mode == GameMode.Competitive)
+            {
+                Debug.Log("Competitive");
+
+                lr.competitive = true;
+            }
+            else
+            {
+                Debug.Log("Not competitive");
+                lr.coop_victory = false;
+                lr.coop_defeat = true;
+                lr.competitive = false;
+            }
+
+            ChangeScene(2f, "EndLevelScreen");//level_to_load_on_defeat);
         }
     }
     public void Victory(string text = "You beat the level!")
@@ -355,19 +374,57 @@ public class GameState : MonoBehaviour
             if (InGameUIManager.ui_manager.score >= prev_high_score)
             {
                 PlayerPrefs.SetInt(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " High Score", InGameUIManager.ui_manager.score);
-                InGameUIManager.ui_manager.SetAnnouncementText("New High Score: " + InGameUIManager.ui_manager.score, 9999);
+               // InGameUIManager.ui_manager.SetAnnouncementText("New High Score: " + InGameUIManager.ui_manager.score, 9999);
                 Debug.Log("New high score : " + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " " + InGameUIManager.ui_manager.score);
             }
             else
             {
-                InGameUIManager.ui_manager.SetAnnouncementText("Previous High Score: " + InGameUIManager.ui_manager.score, 9999);
+                //InGameUIManager.ui_manager.SetAnnouncementText("Previous High Score: " + InGameUIManager.ui_manager.score, 9999);
                 Debug.Log("No new high score: " + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " " + InGameUIManager.ui_manager.score);
             }
 
-            ChangeScene(2f, level_to_load_on_victory);
+            LevelResult lr = SpawnLevelResult();
+            if (game_mode == GameMode.Competitive)
+            {
+                lr.competitive = true;
+                lr.coop_victory = false;
+                lr.coop_defeat = false;
+
+                foreach (PlayerController p in Players)
+                {
+                    if (p.player_number == 1)
+                    {
+                        if (p.alive)
+                        {
+                            lr.competitive_blue_wins = true;
+                        }
+                    }
+                    else if (p.player_number == 2)
+                    {
+                        if (p.alive)
+                        {
+                            lr.competitive_pink_wins = true;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                lr.coop_victory = true;
+                lr.coop_defeat = false;
+            }
+
+            ChangeScene(2f, "EndLevelScreen");//level_to_load_on_victory);
         }
     }
 
+    public LevelResult SpawnLevelResult()
+    {
+        GameObject go = new GameObject();
+        go.transform.name = "LevelResult";
+        LevelResult lr = go.AddComponent<LevelResult>();
+        return lr;
+    }
 
     public void ChangeTimescale(float new_timescale)
     {

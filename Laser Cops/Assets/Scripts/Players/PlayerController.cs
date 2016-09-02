@@ -7,6 +7,7 @@ public class PlayerController : PlayerInput
     public _Colour player_colour;
 
     public bool input_enabled = true;   // If false, no player input is accepted
+    public bool alive = true;
 
     Rigidbody2D physics;
     float x_speed = 7f;
@@ -342,6 +343,7 @@ public class PlayerController : PlayerInput
     {
         Debug.Log("Player " + player_number + " died");
 
+        alive = false;
         Health = 0;
         InGameUIManager.ui_manager.UpdateHealth();
         SoundMixer.sound_manager.Play8bitExplosion();
@@ -576,7 +578,8 @@ public class PlayerController : PlayerInput
 
     public void HitDeathZone()
     {
-        // Have other player die too
+        this.Die();
+        // Have other player die too, only in coop
         GameState.game_state.PlayerHitDeathzone();
     }
 

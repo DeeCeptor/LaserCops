@@ -15,6 +15,8 @@ public class EndLevelScreen : MonoBehaviour
     public bool coop_victory = false;
     public bool coop_defeat = false;
     public bool competitive = false;
+    public bool competitive_blue_wins = false;
+    public bool competitive_pink_wins = false;
 
     public Color c1;
     public Color c2;
@@ -24,18 +26,32 @@ public class EndLevelScreen : MonoBehaviour
     void Awake ()
     {
         // Initial
-        player_1.velocity = new Vector2(15, 0);
+        player_1.velocity = new Vector2(20, 0);
         foreach (GameObject obj in p1_victory_objects)
         {
             obj.SetActive(true);
         }
-        player_2.velocity = new Vector2(15, 0);
+        player_2.velocity = new Vector2(20, 0);
         foreach (GameObject obj in p2_victory_objects)
         {
             obj.SetActive(true);
         }
 
-
+        // Search for level result
+        GameObject lr_obj = GameObject.Find("LevelResult");
+        if (lr_obj != null)
+        {
+            Debug.Log("Found level result");
+            LevelResult lr = lr_obj.GetComponent<LevelResult>();
+            coop_victory = lr.coop_victory;
+            coop_defeat = lr.coop_defeat;
+            competitive = lr.competitive;
+            competitive_blue_wins = lr.competitive_blue_wins;
+            competitive_pink_wins = lr.competitive_pink_wins;
+            Destroy(lr_obj);
+        }
+        else
+            Debug.Log("Couldn't find level result");
     }
     void Start () 
 	{
@@ -64,11 +80,35 @@ public class EndLevelScreen : MonoBehaviour
 
     public void VictoryP1()
     {
-
+        player_1.velocity = Vector2.zero;
+        foreach (GameObject obj in p1_victory_objects)
+        {
+            ParticleSystem ps = obj.GetComponent<ParticleSystem>();
+            if (!ps)
+            {
+                ps.Stop();
+            }
+            else
+            {
+                obj.SetActive(false);
+            }
+        }
     }
     public void VictoryP2()
     {
-
+        player_2.velocity = Vector2.zero;
+        foreach (GameObject obj in p2_victory_objects)
+        {
+            ParticleSystem ps = obj.GetComponent<ParticleSystem>();
+            if (!ps)
+            {
+                ps.Stop();
+            }
+            else
+            {
+                obj.SetActive(false);
+            }
+        }
     }
 
 
@@ -92,11 +132,39 @@ public class EndLevelScreen : MonoBehaviour
         }
         else if (competitive)
         {
+            Debug.Log("Competitive");
+            if (competitive_blue_wins)
+            {
+                VictoryP1();
+                Defeat(player_2.gameObject);
+                text.text = "Blue Wins";
 
+            }
+            else if (competitive_pink_wins)
+            {
+                VictoryP2();
+                Defeat(player_1.gameObject);
+                text.text = "Pink Wins";
+            }
         }
 
         yield return new WaitForSeconds(1f);
         text.gameObject.SetActive(true);
+    }
+
+
+    public void Retry()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(PlayerPrefs.GetString("LastLevelPlayed"));
+    }
+    public void ToMenu()
+    {
+        GameObject obj = GameObject.FindGameObjectWithTag("GameMode");
+        if (obj != null)
+        {
+            Debug.Log("Found game mode setting");
+            Mode mode = obj.GetComponent<Mode>();
+        }
     }
 
 

@@ -14,9 +14,31 @@ public class PlayerCursor : MonoBehaviour
 
 	void Start () 
 	{
-        hovering_over_level = starting_node;
-        this.transform.position = starting_node.transform.position;
-        destination_node = starting_node;
+        string last_level = PlayerPrefs.GetString("LastLevelPlayed");
+        // Search for the last level played and start the cursor there
+        if (!string.IsNullOrEmpty(last_level))
+        {
+            Debug.Log("Last level played: " + last_level);
+
+            foreach (LevelNode ln in LevelManager.level_manager.level_nodes)
+            {
+                if (ln.level_to_load == last_level)
+                {
+                    Debug.Log("Found last level");
+                    starting_node = ln;
+                    hovering_over_level = ln;
+                    this.transform.position = ln.transform.position;
+                    destination_node = ln;
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("Could not find last level");
+            hovering_over_level = starting_node;
+            this.transform.position = starting_node.transform.position;
+            destination_node = starting_node;
+        }
     }
 	
 
