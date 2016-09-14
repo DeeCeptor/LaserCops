@@ -204,8 +204,10 @@ MonoBehaviour:
   layersToIgnore:
     serializedVersion: 2
     m_Bits: 0
-  shootSound: {fileID: 8290968}
-  chargeSound: {fileID: 8238690}
+  silent: 0
+  bullet_colour: 0
+  alternateBulletColour: 0
+  randomPinkOrBlue: 0
   playerCloseDisable: 1
   disableDistance: 2
 --- !u!120 &12093276
@@ -316,6 +318,10 @@ Prefab:
       propertyPath: m_Volume
       value: 0.113
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3db74bdf1baac1a41a89178c10c5ab84, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 127514}

@@ -42,11 +42,13 @@ public class RayLaserScript : MonoBehaviour {
             {
                 bullet_colour = _Colour.Blue;
                 laserRenderer.SetColors(Color.cyan, Color.cyan);
+                laserRenderer.material = (Material)Resources.Load("Materials/StreakGlowCyan");
             }
             else
             {
                 bullet_colour = _Colour.Pink;
                 laserRenderer.SetColors(Color.magenta, Color.magenta);
+                laserRenderer.material = (Material)Resources.Load("Materials/StreakGlowMagenta");
             }
         }
         shotCounter = shotDelay + Time.time;
