@@ -84,7 +84,7 @@ public class EndLevelScreen : MonoBehaviour
         foreach (GameObject obj in p1_victory_objects)
         {
             ParticleSystem ps = obj.GetComponent<ParticleSystem>();
-            if (!ps)
+            if (ps)
             {
                 ps.enableEmission = false;
             }
@@ -100,7 +100,7 @@ public class EndLevelScreen : MonoBehaviour
         foreach (GameObject obj in p2_victory_objects)
         {
             ParticleSystem ps = obj.GetComponent<ParticleSystem>();
-            if (!ps)
+            if (ps)
             {
                 ps.enableEmission = false;
             }
