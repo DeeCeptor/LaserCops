@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour
     public LineRenderer line_2;
     [HideInInspector]
     public LevelNode[] level_nodes;
-    Mode game_mode;
+    //Mode game_mode;
     public Text high_score_text;
 
     public GameObject selected_level_ui;
@@ -35,7 +35,7 @@ public class LevelManager : MonoBehaviour
         level_manager = this;
 
         line = this.GetComponent<LineRenderer>();
-        game_mode = GameObject.FindGameObjectWithTag("GameMode").GetComponent<Mode>();
+        //game_mode = GameObject.FindGameObjectWithTag("GameMode").GetComponent<Mode>();
 
         foreach (Transform child in transform)
             levels.Add(child.gameObject);
@@ -96,7 +96,7 @@ public class LevelManager : MonoBehaviour
         selected_level_ui.SetActive(true);
         //selected_level_ui.transform.position = level.transform.position;
         level_text_name.text = level.level_name;
-        game_mode.SetLevelToLoad(level.level_to_load);
+        Mode.current_mode.SetLevelToLoad(level.level_to_load);
         level_settings.SetActive(true);
 
         GameObject myEventSystem = GameObject.Find("EventSystem");
@@ -122,5 +122,19 @@ public class LevelManager : MonoBehaviour
             node.DeselectLevel();
         }
         selected_level = false;
+    }
+
+
+
+    public void LoadSelectedLevel()
+    {
+        try
+        {
+            Mode.current_mode.Load_Level();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Could not find current game mode to load level with");
+        }
     }
 }

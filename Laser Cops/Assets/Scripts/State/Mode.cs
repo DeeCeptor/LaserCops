@@ -6,6 +6,7 @@ using System;
 
 public class Mode : MonoBehaviour
 {
+    public static Mode current_mode;
     public GameState.GameMode mode = GameState.GameMode.Cooperative;
     public GameState.Difficulty difficulty = GameState.Difficulty.Normal;   // Current difficulty, passed into the level
     public string level_to_load;
@@ -24,6 +25,7 @@ public class Mode : MonoBehaviour
             }
         }
 
+        current_mode = this;
         GameObject.DontDestroyOnLoad(this.gameObject);
     }
 

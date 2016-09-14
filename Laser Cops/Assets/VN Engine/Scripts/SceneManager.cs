@@ -78,7 +78,8 @@ public class SceneManager : MonoBehaviour
     // Hierarchy of button presses: SceneManager -> Current Conversation -> Current Node
     public void Button_Pressed()
     {
-        current_conversation.Button_Pressed();
+        if (current_conversation)
+            current_conversation.Button_Pressed();
     }
 
     float super_speed_delay = 0;

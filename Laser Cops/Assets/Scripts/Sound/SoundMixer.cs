@@ -6,7 +6,7 @@ public class SoundMixer : MonoBehaviour
 {
     public static SoundMixer sound_manager;
     
-    public static float music_volume_scale = 0f;
+    public static float music_volume_scale = 1.0f;
     public static float sound_effect_scale = 1.0f;
 
     // SOUND EFFECTS
