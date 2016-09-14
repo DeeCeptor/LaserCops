@@ -17,6 +17,9 @@ TagManager:
   - Grid
   - GameMode
   - BounceBomb
+  - ActorPosition
+  - ActorPositionRight
+  - Sparks
   layers:
   - Default
   - TransparentFX

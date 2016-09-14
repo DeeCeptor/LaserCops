@@ -35,6 +35,18 @@ public class SoundMixer : MonoBehaviour
 	}
 
 
+    public void MusicVolumeChanged(float new_value)
+    {
+        //music_volume_scale = new_value;
+        SoundManager.MusicVolume = new_value;
+    }
+    public void EffectsVolumeChanged(float new_value)
+    {
+        //sound_effect_scale = new_value;
+        SoundManager.SoundVolume = new_value;
+    }
+
+
     public void PlaySound(AudioSource sound, float volume_scale)
     {
         sound.PlayOneShotSoundManaged(sound.clip, volume_scale);

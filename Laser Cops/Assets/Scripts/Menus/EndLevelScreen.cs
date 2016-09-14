@@ -86,7 +86,7 @@ public class EndLevelScreen : MonoBehaviour
             ParticleSystem ps = obj.GetComponent<ParticleSystem>();
             if (!ps)
             {
-                ps.Stop();
+                ps.enableEmission = false;
             }
             else
             {
@@ -102,7 +102,7 @@ public class EndLevelScreen : MonoBehaviour
             ParticleSystem ps = obj.GetComponent<ParticleSystem>();
             if (!ps)
             {
-                ps.Stop();
+                ps.enableEmission = false;
             }
             else
             {

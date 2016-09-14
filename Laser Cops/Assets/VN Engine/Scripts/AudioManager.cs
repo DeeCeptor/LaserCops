@@ -121,9 +121,22 @@ public class AudioManager : MonoBehaviour
     {
         music_volume = new_volume;
         background_music_audio_source.volume = music_volume;
+
+        // New
+        SoundMixer.sound_manager.MusicVolumeChanged(new_volume);
     }
     public void Effects_Volume_Changed(float new_volume)
     {
         effects_volume = new_volume;
+
+
+        // New
+        SoundMixer.sound_manager.EffectsVolumeChanged(new_volume);
+
+        // Find all grinding sparks and update their volume
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Sparks"))
+        {
+            go.GetComponent<AudioSource>().volume = new_volume;
+        }
     }
 }
