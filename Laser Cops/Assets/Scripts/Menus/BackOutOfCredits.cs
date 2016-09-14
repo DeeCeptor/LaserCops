@@ -5,6 +5,7 @@ public class BackOutOfCredits : MonoBehaviour
 {
     public GameObject credits;
     public GameObject menu;
+    public GameObject logo;
 
 	void Start () 
 	{
@@ -18,6 +19,7 @@ public class BackOutOfCredits : MonoBehaviour
         {
             menu.SetActive(true);
             credits.SetActive(false);
+            logo.SetActive(true);
         }
 	}
 }
