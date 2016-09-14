@@ -15,4 +15,10 @@ public class Quit : MonoBehaviour
         
         UnityEngine.SceneManagement.SceneManager.LoadScene("SceneSelect");
     }
+
+
+    public void Resume()
+    {
+        GameState.game_state.Unpause();
+    }
 }
