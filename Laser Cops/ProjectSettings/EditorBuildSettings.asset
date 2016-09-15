@@ -27,3 +27,5 @@ EditorBuildSettings:
     path: Assets/Levels/Kevin/TakeItSlow.unity
   - enabled: 1
     path: Assets/Levels/Kevin/DiscoDan.unity
+  - enabled: 1
+    path: Assets/Levels/Kevin/getting into it.unity

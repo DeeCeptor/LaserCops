@@ -13,7 +13,7 @@ public class EndLevel : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag.Equals("MainCamera") && !activated)
+        if ((collider.gameObject.tag.Equals("Player")|| collider.gameObject.tag.Equals("Player")) && !activated)
         {
             activated = true;
             GameState.game_state.Victory();
@@ -23,7 +23,7 @@ public class EndLevel : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collider)
     {
-        if (collider.gameObject.tag.Equals("MainCamera") && !activated)
+        if ((collider.gameObject.tag.Equals("Player") || collider.gameObject.tag.Equals("Player")) && !activated)
         {
             activated = true;
             GameState.game_state.Victory();
