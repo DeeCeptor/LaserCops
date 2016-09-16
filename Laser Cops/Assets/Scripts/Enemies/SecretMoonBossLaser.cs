@@ -7,21 +7,27 @@ public class SecretMoonBossLaser : MonoBehaviour {
     //the direction in which the moon is moving
     public Vector2 moveDirection;
     public float speed = 2f;
+    public float range = 5f;
 
     //time in seconds between changing directions
     public float timeTillChange = 2f;
     public float changeCounter = 0f;
+    //when it goes out of it's bounds it will change back every 1 second
+    public float changeWhenOutOfRangeTime = 1f;
+    public float outOfRangeCounter = 0f;
 
-    //Screen bounds
-    public float yTopOfScreen = 0f;
-    public float yBottomOfScreen = 0f;
-    public float xRightOfScreen = 0f;
-    public float xLeftOfScreen = 0f;
+    //the bounds for the moon to stay in
+    float yTopOfScreen;
+    float yBottomOfScreen;
+    float xRightOfScreen;
+    float xLeftOfScreen;
 
-    // Use this for initialization
-    void Start () {
-        Vector3 minScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
-        Vector3 maxScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+    public void Start() {
+        changeCounter = Time.time + timeTillChange;
+        outOfRangeCounter = Time.time + changeWhenOutOfRangeTime;
+        
+        Vector3 minScreenBounds = new Vector3(transform.position.x- range, transform.position.y - range, 0);
+        Vector3 maxScreenBounds = new Vector3(transform.position.x + range, transform.position.y + range, 0);
 
         yTopOfScreen = maxScreenBounds.y;
         yBottomOfScreen = minScreenBounds.y;
@@ -71,8 +77,12 @@ public class SecretMoonBossLaser : MonoBehaviour {
         //if going offscreen reverse direction
         if (transform.position.y <= yBottomOfScreen || transform.position.y >= yTopOfScreen || transform.position.x >= xRightOfScreen || transform.position.x <= xLeftOfScreen)
         {
-            moveDirection = -moveDirection;
-            velocity = velocity * -1;
+            if (outOfRangeCounter < Time.time)
+            {
+                outOfRangeCounter = Time.time + changeWhenOutOfRangeTime;
+                moveDirection = -moveDirection;
+                velocity = velocity * -1;
+            }
         }
 
         //change direction if it is time
