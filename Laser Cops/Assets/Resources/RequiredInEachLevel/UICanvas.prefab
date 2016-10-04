@@ -3048,7 +3048,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &184720
 GameObject:
   m_ObjectHideFlags: 1
@@ -3237,7 +3237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &189426
 GameObject:
   m_ObjectHideFlags: 1
@@ -9769,8 +9769,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pause_menu: {fileID: 113724}
-  player_1_health: {fileID: 11407606}
-  player_2_health: {fileID: 11411468}
+  player_1_health: {fileID: 0}
+  player_1_health_starting_width: 0
+  player_2_health: {fileID: 0}
+  player_2_health_starting_width: 0
   score_text: {fileID: 11473122}
   score_string: 'Score: '
   score: 0
@@ -11517,7 +11519,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183358}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -14588,7 +14590,7 @@ RectTransform:
   m_Father: {fileID: 22464950}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.000015258789, y: -0.24999022}
   m_SizeDelta: {x: 0, y: -0.50001}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -15167,7 +15169,7 @@ RectTransform:
   m_Father: {fileID: 22443444}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.000015258789, y: -0.24999022}
   m_SizeDelta: {x: 0, y: -0.50001}
   m_Pivot: {x: 0.5, y: 0.5}

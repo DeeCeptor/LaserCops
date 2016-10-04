@@ -9,8 +9,10 @@ public class InGameUIManager : MonoBehaviour
 
     public GameObject pause_menu;
 
-    public Slider player_1_health;
-    public Slider player_2_health;
+    public Image player_1_health;
+    public float player_1_health_starting_width;
+    public Image player_2_health;
+    public float player_2_health_starting_width;
 
     public Text score_text;
     [HideInInspector]
@@ -42,8 +44,16 @@ public class InGameUIManager : MonoBehaviour
     void Awake ()
     {
         ui_manager = this;
+
+        time_text = GameObject.FindGameObjectWithTag("Timer").GetComponent<Text>();
+        score_text = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>();
+        player_1_health = GameObject.FindGameObjectWithTag("BlueHP").GetComponent<Image>();
+        player_1_health_starting_width = player_1_health.rectTransform.rect.width;
+        player_2_health = GameObject.FindGameObjectWithTag("PinkHP").GetComponent<Image>();
+        player_2_health_starting_width = player_2_health.rectTransform.rect.width;
+
     }
-	void Start ()
+    void Start ()
     {
         UpdateHealth();
         UpdateScore();
@@ -56,11 +66,13 @@ public class InGameUIManager : MonoBehaviour
         {
             if (player.player_number == 1)
             {
-                player_1_health.value = player.Health / player.Max_Health * 100;
+                player_1_health.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (player.Health / (player.Max_Health)) * player_1_health_starting_width);
+                //player_1_health.value = player.Health / (player.Max_Health * 100);
             }
             else if (player.player_number == 2)
             {
-                player_2_health.value = player.Health / player.Max_Health * 100;
+                player_2_health.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (player.Health / (player.Max_Health)) * player_2_health_starting_width);
+                //player_2_health.value = player.Health / (player.Max_Health * 100);
             }
         }
     }

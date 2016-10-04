@@ -120,7 +120,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_GlowResolution: 0
   m_ShowCutoutGlow: 0
-  m_ShowTransparentGlow: 1
+  m_ShowTransparentGlow: 0
   m_GlowType: 0
   m_GlowQuality: 1
   m_FullScreenGlowTint: {r: 1, g: 1, b: 1, a: 0}

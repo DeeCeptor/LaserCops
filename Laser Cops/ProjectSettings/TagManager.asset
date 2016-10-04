@@ -20,6 +20,10 @@ TagManager:
   - ActorPosition
   - ActorPositionRight
   - Sparks
+  - BlueHP
+  - PinkHP
+  - Score
+  - Timer
   layers:
   - Default
   - TransparentFX
