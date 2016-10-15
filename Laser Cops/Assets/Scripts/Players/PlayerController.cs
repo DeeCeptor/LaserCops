@@ -60,6 +60,26 @@ public class PlayerController : PlayerInput
     List<ParticleSystem> free_grinding_sparks = new List<ParticleSystem>();
     public GameObject grinding_sparks;
 
+    // UI effects
+    // UI dmg sparks
+    public ParticleSystem UI_dmg_sparks;
+    [HideInInspector]
+    public float cur_spark_dmg_time;
+    [HideInInspector]
+    public float spark_dmg_time = 0.5f;
+    // UI healing sparks
+    public ParticleSystem UI_healing_sparks;
+    [HideInInspector]
+    public float cur_spark_healing_time;
+    [HideInInspector]
+    public float spark_healing_time = 1.5f;
+    // UI healing transfer sparks
+    public ParticleSystem UI_transfer_sparks;
+    [HideInInspector]
+    public float cur_spark_transfer_time;
+    [HideInInspector]
+    public float spark_transfer_time = 1.0f;
+
 
     // Particles
     public List<ParticleSystem> moving_forward_particles = new List<ParticleSystem>();  // Boosters and stuff turn on when moving forward
@@ -89,6 +109,10 @@ public class PlayerController : PlayerInput
         GameState.game_state.Players.Add(this);
         InGameUIManager.ui_manager.UpdateHealth();
         health_bar_image.color = new Color(health_bar_image.color.r, health_bar_image.color.g, health_bar_image.color.b, 0f);
+
+        this.UI_dmg_sparks = GameObject.Find("HighwayGrid/PhysicalUICanvas/" + player_colour.ToString() + "HP/HP Effects/DmgSparks").GetComponent<ParticleSystem>();
+        this.UI_healing_sparks = GameObject.Find("HighwayGrid/PhysicalUICanvas/" + player_colour.ToString() + "HP/HP Effects/HealingSparks").GetComponent<ParticleSystem>();
+        this.UI_transfer_sparks = GameObject.Find("HighwayGrid/PhysicalUICanvas/" + player_colour.ToString() + "HP/Transfer Effects/HealingTransferSparks").GetComponent<ParticleSystem>();
     }
 
     void Update()
@@ -201,6 +225,25 @@ public class PlayerController : PlayerInput
 
             // Start fading health bar
             health_bar_image.color = new Color(health_bar_image.color.r, health_bar_image.color.g, health_bar_image.color.b, health_bar_image.color.a - Time.deltaTime * 1.0f);
+
+            // UI effects
+            cur_spark_dmg_time -= Time.deltaTime;
+            if (cur_spark_dmg_time < 0)
+                UI_dmg_sparks.enableEmission = false;
+            else
+                UI_dmg_sparks.enableEmission = true;
+
+            cur_spark_healing_time -= Time.deltaTime;
+            if (cur_spark_healing_time < 0)
+                UI_healing_sparks.enableEmission = false;
+            else
+                UI_healing_sparks.enableEmission = true;
+
+            cur_spark_transfer_time -= Time.deltaTime;
+            if (cur_spark_transfer_time < 0)
+                UI_transfer_sparks.enableEmission = false;
+            else
+                UI_transfer_sparks.enableEmission = true;
         }
     }
     void FixedUpdate()
@@ -291,12 +334,12 @@ public class PlayerController : PlayerInput
 
     public void AdjustHealth(float amount)
     {
+        // Health bar around the car
         Health = Mathf.Clamp(Health + amount, 0, Max_Health);
-
         health_bar_image.fillAmount = Health / Max_Health;
         health_bar_image.color = new Color(health_bar_image.color.r, health_bar_image.color.g, health_bar_image.color.b, 1f);
 
-        // Set health bar
+        // Set health bar at top of UI
         InGameUIManager.ui_manager.UpdateHealth();
     }
 
@@ -336,6 +379,9 @@ public class PlayerController : PlayerInput
             }
         }
 
+        // Turn on damage sparks on the UI health bar
+        cur_spark_dmg_time = spark_dmg_time;
+
         if (Health <= 0)
             Die();
     }
@@ -366,7 +412,6 @@ public class PlayerController : PlayerInput
         GameState.game_state.CheckGameOver();
 
         Destroy(this);
-        //Destroy(gameObject);
     }
     public void ClearGrindingSparks()
     {
@@ -555,8 +600,10 @@ public class PlayerController : PlayerInput
             {
                 // Transfer health if we have health to give
                 float health_transferred = Mathf.Min(Time.deltaTime * HP_transfer_rate, (this.Health - other_p.Health) / 2f);
-                other_p.AdjustHealth(health_transferred);
+                other_p.Heal(health_transferred);
                 this.AdjustHealth(-health_transferred);
+
+                cur_spark_transfer_time = spark_transfer_time;
 
                 if (health_transferred > 0.1f)
                 {
@@ -573,6 +620,13 @@ public class PlayerController : PlayerInput
                 }
             }
         }
+    }
+
+
+    public void Heal(float amount)
+    {
+        cur_spark_healing_time = spark_healing_time;
+        AdjustHealth(amount);
     }
 
 

@@ -1057,6 +1057,8 @@ MonoBehaviour:
   boosted_this_instant: 0
   disable_tether_held_down: 0
   player_colour: 3
+  input_enabled: 1
+  alive: 1
   primary_colour: {r: 0.039215688, g: 0.83921576, b: 1, a: 1}
   grid_ripple_force: 0
   grid_ripple_radius: 0
@@ -1070,6 +1072,15 @@ MonoBehaviour:
   default_rotation: 0
   desired_rotation: 0
   grinding_sparks: {fileID: 163914, guid: c0615df646395f3468b8b705517fffda, type: 2}
+  UI_dmg_sparks: {fileID: 0}
+  cur_spark_dmg_time: 0
+  spark_dmg_time: 0.05
+  UI_healing_sparks: {fileID: 0}
+  cur_spark_healing_time: 0
+  spark_healing_time: 0.05
+  UI_transfer_sparks: {fileID: 0}
+  cur_spark_transfer_time: 0
+  spark_transfer_time: 0.05
   moving_forward_particles:
   - {fileID: 19843160}
   - {fileID: 19882014}

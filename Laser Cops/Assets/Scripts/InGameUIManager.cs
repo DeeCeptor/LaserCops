@@ -64,15 +64,18 @@ public class InGameUIManager : MonoBehaviour
     {
         foreach (PlayerController player in GameState.game_state.Players)
         {
+            int number_of_ticks = ((int)((player.Health / player.Max_Health) / 0.04f));
+            float size = number_of_ticks * 0.04f;
+
             if (player.player_number == 1)
             {
-                player_1_health.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (player.Health / (player.Max_Health)) * player_1_health_starting_width);
-                //player_1_health.value = player.Health / (player.Max_Health * 100);
+                player_1_health.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, size * player_1_health_starting_width);
+                //player_1_health.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (player.Health / (player.Max_Health)) * player_1_health_starting_width);
             }
             else if (player.player_number == 2)
             {
-                player_2_health.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (player.Health / (player.Max_Health)) * player_2_health_starting_width);
-                //player_2_health.value = player.Health / (player.Max_Health * 100);
+                player_2_health.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, size * player_1_health_starting_width);
+                //player_2_health.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (player.Health / (player.Max_Health)) * player_2_health_starting_width);
             }
         }
     }
