@@ -68,6 +68,7 @@ GameObject:
   - 92: {fileID: 9277656}
   - 81: {fileID: 8188724}
   - 114: {fileID: 11433112}
+  - 114: {fileID: 11430218}
   m_Layer: 17
   m_Name: GlowingBackgroundCamera
   m_TagString: Untagged
@@ -398,6 +399,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parralax: 8
+--- !u!114 &11430218
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74fab822e2a72b4b9f3cad834bdaa2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11433112
 MonoBehaviour:
   m_ObjectHideFlags: 1

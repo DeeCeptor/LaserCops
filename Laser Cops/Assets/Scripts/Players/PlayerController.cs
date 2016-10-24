@@ -79,6 +79,9 @@ public class PlayerController : PlayerInput
     public float cur_spark_transfer_time;
     [HideInInspector]
     public float spark_transfer_time = 1.0f;
+    // Low HP warning
+    [HideInInspector]
+    public GameObject UI_low_hp_warning;
 
 
     // Particles
@@ -113,13 +116,15 @@ public class PlayerController : PlayerInput
         this.UI_dmg_sparks = GameObject.Find("HighwayGrid/PhysicalUICanvas/" + player_colour.ToString() + "HP/HP Effects/DmgSparks").GetComponent<ParticleSystem>();
         this.UI_healing_sparks = GameObject.Find("HighwayGrid/PhysicalUICanvas/" + player_colour.ToString() + "HP/HP Effects/HealingSparks").GetComponent<ParticleSystem>();
         this.UI_transfer_sparks = GameObject.Find("HighwayGrid/PhysicalUICanvas/" + player_colour.ToString() + "HP/Transfer Effects/HealingTransferSparks").GetComponent<ParticleSystem>();
+        this.UI_low_hp_warning = GameObject.Find("HighwayGrid/PhysicalUICanvas/" + player_colour.ToString() + "HP/Low HP Warning");
     }
 
     void Update()
     {
-        if (!GameState.game_state.paused && input_enabled)
+        if (!GameState.game_state.paused)
         {
-            UpdateInputs();
+            if (input_enabled)
+                UpdateInputs();
 
             Vector2 new_speed = new Vector2(this.direction.x * x_speed, this.direction.y * y_speed);
             grid_ripple_force = normal_grid_force;
@@ -338,6 +343,9 @@ public class PlayerController : PlayerInput
         Health = Mathf.Clamp(Health + amount, 0, Max_Health);
         health_bar_image.fillAmount = Health / Max_Health;
         health_bar_image.color = new Color(health_bar_image.color.r, health_bar_image.color.g, health_bar_image.color.b, 1f);
+
+        // If at low health, turn on the low HP warning
+        UI_low_hp_warning.SetActive(Health / Max_Health <= 0.25f);
 
         // Set health bar at top of UI
         InGameUIManager.ui_manager.UpdateHealth();

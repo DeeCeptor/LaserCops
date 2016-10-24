@@ -57,7 +57,7 @@ public class InGameUIManager : MonoBehaviour
     {
         UpdateHealth();
         UpdateScore();
-        SetAnnouncementText(new string[] { "3", "2", "1", "Go!" });
+        //SetAnnouncementText(new string[] { "3", "2", "1", "Go!" });
 	}
 
     public void UpdateHealth()

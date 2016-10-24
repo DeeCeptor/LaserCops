@@ -6,6 +6,10 @@ public class UIManager : MonoBehaviour
 {
 	public static UIManager ui_manager;
 
+    public GameObject Intro_UI;
+    public GameObject Level_Name;
+    public GameObject Mode;
+
 	public Text dialogue_text_panel;
 	public Text speaker_text_panel;
 	public GameObject choice_panel;

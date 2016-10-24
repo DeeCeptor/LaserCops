@@ -30,7 +30,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 118320}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -155,7 +155,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0c3e97975253db4c91691a589f16250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  desired_size: 10
+  play_intro_cutscene: 1
+  desired_size: 9
+  cam: {fileID: 0}
+  intro_culling_mask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!124 &12425280
 Behaviour:
   m_ObjectHideFlags: 1

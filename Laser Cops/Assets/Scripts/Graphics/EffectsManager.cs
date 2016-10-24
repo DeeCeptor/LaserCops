@@ -24,7 +24,10 @@ public class EffectsManager : MonoBehaviour
     void Awake ()
     {
         effects = this;
-        glow = Camera.main.GetComponent<MKGlow>();
+    }
+    void Start ()
+    {
+        glow = CameraManager.cam_manager.GetComponent<MKGlow>();
 
         normal_blur_iterations = glow.BlurIterations;
         normal_blur_offset = glow.BlurOffset;
@@ -36,10 +39,6 @@ public class EffectsManager : MonoBehaviour
         from_blur_samples = glow.Samples;
         from_blur_spread = glow.BlurSpread;
         from_glow_intensity = glow.GlowIntensity;
-    }
-    void Start ()
-    {
-        //FlashScreen();
     }
 
 
@@ -64,24 +63,21 @@ public class EffectsManager : MonoBehaviour
     }
     public IEnumerator FlashScreenBriefly(float time)
     {
-        float cur_blur_iterations = glow.BlurIterations;
         float cur_time = 0;
-        float wait_time = time / 10;
-        while (glow.BlurIterations < from_blur_iterations)
+        glow.GlowIntensity = 0;
+        while (glow.GlowIntensity < 1f)
         {
-            cur_time += wait_time;
-            glow.BlurIterations = (int) Mathf.Lerp(cur_blur_iterations, from_blur_iterations, cur_time / (time / 2));
-            yield return new WaitForSeconds(wait_time);
+            cur_time += Time.deltaTime;
+            glow.GlowIntensity = Mathf.Lerp(0, 1, cur_time / (time / 2));
+            yield return null;
         }
-        cur_blur_iterations = glow.BlurIterations;
         cur_time = 0;
-        while (glow.BlurIterations > normal_blur_iterations)
+        while (glow.GlowIntensity > 0f)
         {
-            cur_time += wait_time;
-            glow.BlurIterations = (int) Mathf.Lerp(cur_blur_iterations, normal_blur_iterations, cur_time / (time / 2));
-            yield return new WaitForSeconds(wait_time);
+            cur_time += Time.deltaTime;
+            glow.GlowIntensity = Mathf.Lerp(1, 0, cur_time / (time / 2));
+            yield return null;
         }
-        Debug.Log("Done");
     }
 
     // Creates a shower of sparks at the designated position
