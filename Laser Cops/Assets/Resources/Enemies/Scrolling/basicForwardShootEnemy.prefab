@@ -619,7 +619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624bac116c5c2ce478b1680f0372b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 2
+  shotDelay: 3
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
   active: 0

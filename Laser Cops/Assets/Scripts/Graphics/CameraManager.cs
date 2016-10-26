@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using MKGlowSystem;
+using UnityEngine.UI;
 
 public class CameraManager : MonoBehaviour
 {
@@ -49,15 +51,26 @@ public class CameraManager : MonoBehaviour
     // Played at the beginning of every leve
     IEnumerator Introduction_Cutscene()
     {
+        // Disable glow on the main camera
+        this.GetComponent<MKGlow>().enabled = false;
         cam.cullingMask = intro_culling_mask;
+        Vector3 original_speed = SkyboxCamera.skybox_camera.GetComponent<Rotate>().rotation_speed;
+        SkyboxCamera.skybox_camera.GetComponent<Rotate>().rotation_speed = new Vector3(10, 20, 0);
+        UIManager.ui_manager.Level_Name.GetComponentInChildren<Text>().text = GameState.game_state.current_level_name;
+        UIManager.ui_manager.Mode.GetComponent<Image>().sprite = GameState.game_state.GetModeSprite();
+
 
         yield return new WaitForSeconds(1.5f);
         UIManager.ui_manager.Level_Name.SetActive(true);
+        SoundMixer.sound_manager.PlayObstacleWarning();
 
         yield return new WaitForSeconds(2.5f);
         UIManager.ui_manager.Mode.SetActive(true);
+        SoundMixer.sound_manager.PlayNotification();
 
+        // Create bright transition glow
         yield return new WaitForSeconds(1f);
+        this.GetComponent<MKGlow>().enabled = true;
         EffectsManager.effects.glow.GlowType = MKGlowSystem.MKGlowType.Fullscreen;
         StartCoroutine(EffectsManager.effects.FlashScreenBriefly(1f));
         UIManager.ui_manager.Level_Name.AddComponent<FadeImage>();
@@ -72,7 +85,9 @@ public class CameraManager : MonoBehaviour
             p.boosted_this_instant = true;
         }
 
+        // Normal glow settings, transition is completely done
         yield return new WaitForSeconds(0.25f);
+        SkyboxCamera.skybox_camera.GetComponent<Rotate>().rotation_speed = original_speed;
         EffectsManager.effects.glow.GlowType = MKGlowSystem.MKGlowType.Selective;
         EffectsManager.effects.glow.GlowIntensity = EffectsManager.effects.normal_glow_intensity;
         UIManager.ui_manager.Intro_UI.SetActive(false);

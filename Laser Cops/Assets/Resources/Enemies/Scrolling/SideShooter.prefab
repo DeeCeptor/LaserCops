@@ -559,7 +559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624bac116c5c2ce478b1680f0372b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 2
+  shotDelay: 3
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
   active: 0
@@ -607,7 +607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624bac116c5c2ce478b1680f0372b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 2
+  shotDelay: 3
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
   active: 0
@@ -626,11 +626,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_VectorGrid: {fileID: 0}
+  m_ForceScale: 2
+  m_Radius: 1.5
   m_Directional: 0
   m_ForceDirection: {x: 0, y: 0, z: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_HasColor: 0
   activated: 0
+  ignore_graphics_settings: 0
 --- !u!114 &11437840
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -699,7 +702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624bac116c5c2ce478b1680f0372b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 2
+  shotDelay: 3
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
   active: 0

@@ -14,6 +14,7 @@ GameObject:
   - 81: {fileID: 8157200}
   - 45: {fileID: 4589078}
   - 114: {fileID: 11400200}
+  - 114: {fileID: 11420504}
   m_Layer: 17
   m_Name: SkyboxCamera
   m_TagString: Untagged
@@ -74,7 +75,7 @@ Skybox:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 199222}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 88ec9a13802800449aaf825aff3aadc7, type: 2}
+  m_CustomSkybox: {fileID: 2100000, guid: 19e2485c6f92d6944ad20466ac77b04c, type: 2}
 --- !u!81 &8157200
 AudioListener:
   m_ObjectHideFlags: 1
@@ -101,6 +102,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotation_speed: {x: 0, y: 4, z: 0}
+--- !u!114 &11420504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb0a1b5f2ce6bbd42b8ca89182b73b36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!124 &12444128
 Behaviour:
   m_ObjectHideFlags: 1
