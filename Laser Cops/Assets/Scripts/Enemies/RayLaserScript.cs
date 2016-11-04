@@ -52,7 +52,7 @@ public class RayLaserScript : MonoBehaviour {
             }
         }
         shotCounter = shotDelay + Time.time;
-        layersToIgnore = ~((1<<12)|(1<<13) | (1 << 15)|(1<<0)| (1 << 22) | (1 << 23) | (1 << 24)| (1 << 8));
+        layersToIgnore = ~((1<<12)|(1<<13) | (1 << 15)|(1<<0)| (1 << 22) | (1 << 23) | (1 << 24)| (1 << 26) | (1 << 8));
 	}
 	
 	void FixedUpdate () {
