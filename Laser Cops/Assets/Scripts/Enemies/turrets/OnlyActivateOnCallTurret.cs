@@ -11,7 +11,7 @@ public class OnlyActivateOnCallTurret : ForwardShotScript {
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (active)
+        if (active && !only_shoot_on_command)
         {
             if (shotCounter < Time.time)
             {

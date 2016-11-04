@@ -15,6 +15,8 @@ public class BossHealthScript : MonoBehaviour {
     public int TimeBonus = 600;
     public GameObject ChangeFormEffect;
 
+    public bool hurtByTether = false;
+
     //how much to multiply the damage for on easy and hard mode
     public float easyDamageMultiplyer = 2;
     public float hardDamageMultiplyer = 0.667f;
@@ -49,7 +51,11 @@ public class BossHealthScript : MonoBehaviour {
 		health -= damage;
         overallHealth -= damage;
         InGameUIManager.ui_manager.UpdateBottomHealthBar(overallHealth);
-	}
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
 
     //cuts sprite as a death effect
     public GameObject[] CutSprite()
@@ -210,7 +216,24 @@ public class BossHealthScript : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "BounceBomb")
+        if (collision.gameObject.layer == 12 && hurtByTether == true)
+        {
+            if (GameState.game_state.current_difficulty == GameState.Difficulty.Hard)
+            {
+                takeHit(Tether.tether.Damage * hardDamageMultiplyer);
+            }
+            else if (GameState.game_state.current_difficulty == GameState.Difficulty.Easy)
+            {
+                takeHit(Tether.tether.Damage * easyDamageMultiplyer);
+            }
+            else
+            {
+                takeHit(Tether.tether.Damage);
+            }
+            
+        }
+
+        if (collision.gameObject.tag == "BounceBomb")
         {
             if(!useImmunityTime)
             {
@@ -232,7 +255,7 @@ public class BossHealthScript : MonoBehaviour {
             }
             else
             {
-                if (immunityCounter < Time.time)
+                if (immunityCounter < Time.time && useImmunityTime)
                 {
                     immunityCounter = Time.time + immunityTime;
                     if (GameState.game_state.current_difficulty == GameState.Difficulty.Hard)
