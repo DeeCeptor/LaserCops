@@ -9,7 +9,7 @@ public class RandomTimingRayLaserScript : RayLaserScript {
 	// Use this for initialization
 	void Start () {
         shotCounter = Random.Range(minShotDelay,maxShotDelay) + Time.time;
-        layersToIgnore = ~((1 << 12) | (1 << 13) | (1 << 15) | (1 << 0) | (1 << 22) | (1 << 23) | (1 << 24) | (1 << 8));
+        layersToIgnore = ~((1 << 12) | (1 << 13) | (1 << 15) | (1 << 0) | (1 << 22) | (1 << 23) | (1 << 24) | (1 << 26) | (1 << 8));
     }
 	
 	// Update is called once per frame
