@@ -45,16 +45,17 @@ public class SceneManager : MonoBehaviour
 
 	public IEnumerator Start_Scene()
 	{
-		yield return new WaitForSeconds(0.2f);
-        try
+        if (starting_conversation != null)
         {
-            starting_conversation.Start_Conversation();
-        }
-        catch (Exception e)
-        {
-            string a = e.Message;
-            Debug.Log("No starting Conversation set. Please drag in a Conversation into the SceneManager's Starting Conversation field.\n");
-            //Debug.LogError("No starting Conversation set. Please drag in a Conversation into the SceneManager's Starting Conversation field.\n" + e.Message);
+            yield return new WaitForSeconds(0.2f);
+            try
+            {
+                starting_conversation.Start_Conversation();
+            }
+            catch (Exception e)
+            {
+                string a = e.Message;
+            }
         }
     }
 

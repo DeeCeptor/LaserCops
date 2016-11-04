@@ -29,8 +29,8 @@ public class PositionBoundaryOffscreen : MonoBehaviour
 
     public void AdjustPositionByScreen()
     {
-        Vector3 minScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
-        Vector3 maxScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+        Vector3 minScreenBounds = CameraManager.cam_manager.cam.ScreenToWorldPoint(new Vector3(0, 0, 0));
+        Vector3 maxScreenBounds = CameraManager.cam_manager.cam.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
 
         Vector2 new_position = Vector2.zero;
         switch (Side)

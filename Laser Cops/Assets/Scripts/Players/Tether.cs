@@ -259,7 +259,7 @@ public class Tether : MonoBehaviour
     {
         if (cur_tether_mode == TetherMode.None)
         {
-            Debug.Log("PRevious: " + prev_tether_mode);
+            Debug.Log("Previous: " + prev_tether_mode);
             //cur_tether_mode = prev_tether_mode;
             SetTetherMode(prev_tether_mode);
 

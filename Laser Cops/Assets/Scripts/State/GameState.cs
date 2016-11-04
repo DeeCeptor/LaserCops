@@ -9,7 +9,7 @@ public class GameState : MonoBehaviour
 
     public string level_to_load_on_victory = "SceneSelect";
     public string level_to_load_on_defeat = "SceneSelect";
-
+    public string current_level_name = "Gettin' Pushy";     // Set in each level. Is also passed in from the level select
     public int number_of_players = 2;
 
     public bool paused = false; // Paused by player
@@ -57,6 +57,14 @@ public class GameState : MonoBehaviour
     public static int intensive_velocity_iterations = 900;
     public static int intensive_position_iterations = 900;
 
+    public Sprite coop_icon;
+    public Sprite competitive_icon;
+    public Sprite chained_icon;
+    public Sprite one_hit_kill_icon;
+    public Sprite tether_on_icon;
+    public Sprite tether_off_icon;
+
+
     void Awake()
     {
         game_state = this;
@@ -98,6 +106,7 @@ public class GameState : MonoBehaviour
         {
             Debug.Log("Found game mode setting");
             Mode mode = obj.GetComponent<Mode>();
+            current_level_name = mode.level_to_load;
 
             current_difficulty = mode.difficulty;
             switch (mode.difficulty)
@@ -474,6 +483,28 @@ public class GameState : MonoBehaviour
         Debug.Log("Pausing");
         Time.timeScale = 0;
         InGameUIManager.ui_manager.pause_menu.SetActive(true);
+    }
+
+
+    public Sprite GetModeSprite()
+    {
+        switch (GameState.game_state.game_mode)
+        {
+            case GameState.GameMode.Cooperative:
+                return coop_icon;
+            case GameState.GameMode.Competitive:
+                return competitive_icon;
+            case GameState.GameMode.Chained:
+                return chained_icon;
+            case GameState.GameMode.OneHitKill:
+                return one_hit_kill_icon;
+            case GameState.GameMode.NoTether:
+                return tether_off_icon;
+            case GameState.GameMode.TetherOn:
+                return tether_on_icon;
+        }
+
+        return coop_icon;
     }
 
 

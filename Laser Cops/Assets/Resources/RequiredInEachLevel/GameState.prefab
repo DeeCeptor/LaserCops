@@ -2571,6 +2571,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level_to_load_on_victory: SceneSelect
   level_to_load_on_defeat: SceneSelect
+  current_level_name: Ocean Waves
   number_of_players: 2
   paused: 0
   game_over: 0
@@ -2594,6 +2595,12 @@ MonoBehaviour:
   tether_touching_obstacle: 0
   time_last_touched_obstacle: 0
   debug_invulnerability: 0
+  coop_icon: {fileID: 21300000, guid: 1ee1bd84faa2d7e40a96f34075bf41f4, type: 3}
+  competitive_icon: {fileID: 21300000, guid: a314acd21a459d84a9ed5884a3d81224, type: 3}
+  chained_icon: {fileID: 21300000, guid: 197b325021b9e784d987422a3726ab87, type: 3}
+  one_hit_kill_icon: {fileID: 21300000, guid: 5d150a8b488769345969649938041b5f, type: 3}
+  tether_on_icon: {fileID: 21300000, guid: a6b769a44747970458aa81ff26209181, type: 3}
+  tether_off_icon: {fileID: 21300000, guid: 1d58e8b88b048aa41ba1ce9cc84c8e69, type: 3}
 --- !u!114 &11430398
 MonoBehaviour:
   m_ObjectHideFlags: 1
