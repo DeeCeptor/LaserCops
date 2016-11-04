@@ -68,6 +68,8 @@ public class Tether : MonoBehaviour
     //public float size_of_rope_pieces = 0.2f;
     //public List<PlatformerCharacter2D> players_on_rope = new List<PlatformerCharacter2D>();
 
+    public Material tether_material;
+
 
     void Awake ()
     {
@@ -296,6 +298,8 @@ public class Tether : MonoBehaviour
             primary_colour = primary_destroy_colour;
             secondary_colour = secondary_destroy_colour;
             SetTetherLayer("DestructiveTether");
+            tether_material.SetColor("Glow_Color", Color.red);
+            tether_material.SetColor("Glow_Texture_Color", Color.red);
 
             // Spawn sparks to show the tether has changed modes
             for (int x = 0; x < tether_links.Count; x += 2)
@@ -312,6 +316,9 @@ public class Tether : MonoBehaviour
             primary_colour = primary_capture_colour;
             secondary_colour = secondary_capture_colour;
             SetTetherLayer("CaptureTether");
+            tether_material.SetColor("GlowColor", Color.green);
+            tether_material.SetColor("GlowTextureColor", Color.green);
+
 
             // Spawn sparks to show the tether has changed modes
             for (int x = 0; x < tether_links.Count; x += 2)

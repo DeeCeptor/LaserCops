@@ -533,7 +533,7 @@ MonoBehaviour:
   takes_grinding_damage: 0
   collisionDamage: 0.3
   pointValue: 20
-  health: 150
+  health: 120
   beingRammed: 0
   enemyEnemyCollsion: 0
   ramNavPos: 0

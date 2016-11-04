@@ -97,8 +97,8 @@ EllipsoidParticleEmitter:
   serializedVersion: 2
   m_Enabled: 1
   m_Emit: 0
-  minSize: 0.25
-  maxSize: 0.6
+  minSize: 0.2
+  maxSize: 0.4
   minEnergy: 99999
   maxEnergy: 99999
   minEmission: 100
@@ -125,7 +125,7 @@ ParticleRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 74f6b337fd35bf1488446ca90ace8bfb, type: 2}
+  - {fileID: 2100000, guid: 3d395c60a1f40e646b09a5cc748c5bee, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -191,11 +191,12 @@ MonoBehaviour:
   primary_colour: {r: 0, g: 0, b: 0, a: 0}
   secondary_colour: {r: 0, g: 0, b: 0, a: 0}
   primary_destroy_colour: {r: 1, g: 0, b: 0, a: 0.428}
-  secondary_destroy_colour: {r: 0.89705884, g: 0.48228282, b: 0.2572448, a: 0.422}
-  primary_capture_colour: {r: 0, g: 0, b: 1, a: 0.503}
-  secondary_capture_colour: {r: 1, g: 1, b: 1, a: 0.434}
+  secondary_destroy_colour: {r: 1, g: 0.7058823, b: 0.7058823, a: 0.509}
+  primary_capture_colour: {r: 0, g: 1, b: 0.08965516, a: 0.503}
+  secondary_capture_colour: {r: 0.7647059, g: 1, b: 0.7663286, a: 0.434}
   particle_emitter: {fileID: 1511032}
   rope_pieces_parent: {fileID: 435894}
+  anchor: {fileID: 0}
   emptyPrefab: {fileID: 113638, guid: f42585be319f52a43bb410d2d185ca5a, type: 2}
   beginning_anchor: {fileID: 0}
   end_anchor: {fileID: 0}
@@ -203,6 +204,7 @@ MonoBehaviour:
   end_rope_piece: {fileID: 0}
   direction: {x: 0, y: 0}
   number_of_segments: 40
+  tether_material: {fileID: 2100000, guid: 3d395c60a1f40e646b09a5cc748c5bee, type: 2}
 --- !u!120 &12047682
 LineRenderer:
   m_ObjectHideFlags: 1
