@@ -1,16 +1,23 @@
 using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
 public class ConversationManager : MonoBehaviour 
 {
-	// Nodes are the pieces of this conversation. We will run them in the order that the children of this gameobject is placed
-	private Node[] all_nodes;
-	private int cur_node = 0;   // Which node we are currently processing
-	private bool active = false;	// Set to true when this is current conversation
+    public bool destroy_when_finished = false;
+    public ConversationManager start_conversation_when_done;     // Automatically starts this conversation when finished
 
-    public bool destroy_when_finished = true;
+    // Nodes are the pieces of this conversation. We will run them in the order that the children of this gameobject is placed
+    private Node[] all_nodes;
+    [HideInInspector]
+    public int cur_node = 0;   // Which node we are currently processing
+    [HideInInspector]
+    public bool active = false;	// Set to true when this is current conversation
+    [HideInInspector]
+    public bool finished_conversation = false;
 
-	void Start () 
+
+    void Start () 
 	{
 		all_nodes = this.GetComponentsInChildren<Node>();
 	}
@@ -18,18 +25,24 @@ public class ConversationManager : MonoBehaviour
 
 	// Simply start the first node to get this conversation going
 	public void Start_Conversation()
-	{
-        if (UIManager.ui_manager.entire_UI_panel != null &&
-            !UIManager.ui_manager.entire_UI_panel.activeSelf)   // Show conversation panel when you click on stuff to examine
-            UIManager.ui_manager.entire_UI_panel.SetActive(true);
-
-		// Set this conversation as active in the scene manager
-		SceneManager.current_conversation = this;
+	{        
+        // Set this conversation as active in the scene manager
+        VNSceneManager.current_conversation = this;
 		
         cur_node = 0;
 		active = true;
 		Start_Node();	// Start the first conversation node
 	}
+
+
+    // Call to start a conversation part way through
+    public void Start_Conversation_Partway_Through(int node_to_start)
+    {
+        VNSceneManager.current_conversation = this;
+        cur_node = node_to_start;
+        active = true;
+        Start_Node();
+    }
 
 
 	// Move onto the next node.
@@ -46,11 +59,22 @@ public class ConversationManager : MonoBehaviour
 		}
 	}
 	// Runs the current node
-	void Start_Node()
+	public void Start_Node()
 	{
         if (cur_node <  all_nodes.Length)
 		    all_nodes[cur_node].Run_Node();
 	}
+    public void Go_Back_One_Node()
+    {
+        if (active && cur_node > 0)
+        {
+            UIManager.ui_manager.text_panel.text = "";
+            UIManager.ui_manager.speaker_panel.text = "";
+            all_nodes[cur_node].Stop_Node();
+            cur_node--;
+            Start_Node();
+        }
+    }
 
 
 	// Returns the current node in the conversation
@@ -60,20 +84,48 @@ public class ConversationManager : MonoBehaviour
 	}
 
 
+    // Starts at the given node, and starts Conversation at the beginning of the node is not found
+    public void Start_At_Node(Node node)
+    {
+        bool found_node = false;
+        int x = 0;
+        foreach (Node n in all_nodes)
+        {
+            if (n == node)
+            {
+                found_node = true;
+                break;
+            }
+            x++;
+        }
+
+        if (found_node)
+        {
+            this.Start_Conversation_Partway_Through(x);
+        }
+        else
+        {
+            Debug.LogError("Node " + node.name + " not found in Start_At_Node. Starting conversation at beginning", gameObject);
+            this.Start_Conversation();
+        }
+    }
+
+
 	// Destroys this game object.
 	// Be sure to have added a StartConversationNode or LoadSceneNode before the conversation is over,
 	// else nothing will happen!
 	public void Finish_Conversation()
 	{
         active = false;
+        finished_conversation = true;
+        cur_node = 0;
 
         if (destroy_when_finished)
             Destroy(this.gameObject);
-        else
-        {
-            cur_node = 0;
-        }
-	}
+
+        if (start_conversation_when_done)
+            start_conversation_when_done.Start_Conversation();
+    }
 
 
     // User clicked or hit enter. Proceed with conversation if possible

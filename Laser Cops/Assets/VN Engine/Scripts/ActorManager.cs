@@ -36,6 +36,11 @@ public class ActorManager : MonoBehaviour
         actor_manager = this;
         left = left_;
         right = right_;
+
+        actors_on_scene = new List<Actor>();
+        exiting_actors = new List<Actor>();
+        left_actors = new List<Actor>();
+        right_actors = new List<Actor>();
     }
     void Start()
     {
@@ -85,13 +90,24 @@ public class ActorManager : MonoBehaviour
     // It then sets the object as a child of the Actors object in the canvas
     public static Actor Instantiate_Actor(string actor_name, Actor_Positions destination)
     {
-        GameObject actor = Instantiate(Resources.Load("VN Engine/Actors/" + actor_name, typeof(GameObject))) as GameObject;
+        // Check to see if the actor is already on the scene
+        Actor a = ActorManager.Get_Actor(actor_name);
+        if (a != null)
+        {
+            Debug.Log("Actor " + actor_name + " already on scene");
+            return a;
+        }
+
+        // Proceed with creating a gameobject
+        GameObject actor = Instantiate(Resources.Load("Actors/" + actor_name, typeof(GameObject))) as GameObject;
         actor.transform.SetParent(GameObject.Find(VNProperties.canvas_name + "/Actors").transform, false);
         //actor.transform.localScale = Vector3.one;
 
         Actor actor_script = actor.GetComponent<Actor>();
         actors_on_scene.Add(actor_script);  // Add to list of actors
 
+        ActorManager.Add_Actor_To(actor_script, destination);
+        
         return actor_script;
     }
 

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class changeDialogueColour : MonoBehaviour {
@@ -27,9 +27,9 @@ public class changeDialogueColour : MonoBehaviour {
         waitTimer = Time.time + waitTime;
     }
 	
-	// Update is called once per frame
-	void Update () {
-
+	void Update ()
+    {
+        /*
 	if(waitTimer < Time.time & !changed)
         {
             switchBackDialogueColor = UIManager.ui_manager.dialogue_text_panel.color;
@@ -43,6 +43,6 @@ public class changeDialogueColour : MonoBehaviour {
         {
             UIManager.ui_manager.dialogue_text_panel.color = switchBackDialogueColor;
             UIManager.ui_manager.speaker_text_panel.color = switchBackSpeakerColor;
-        }
+        }*/
 	}
 }

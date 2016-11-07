@@ -117,10 +117,9 @@ public class InGameUIManager : MonoBehaviour
     public void ActivateBottomHealthBar(string boss_name, Color color, float max_health)
     {
         bottom_text_name.text = boss_name;
-        bottom_health_bar_background.color = color;
         bottom_health_bar.minValue = 0;
         bottom_health_bar.maxValue = max_health;
-
+        bottom_health_bar.value = max_health;
         bottom_bar.SetActive(true);
     }
     public void UpdateBottomHealthBar(float cur_health)

@@ -62,11 +62,31 @@ public class CameraManager : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
         UIManager.ui_manager.Level_Name.SetActive(true);
-        SoundMixer.sound_manager.PlayObstacleWarning();
+        SoundMixer.sound_manager.PlayLong8bitLazer();
 
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2f);
         UIManager.ui_manager.Mode.SetActive(true);
         SoundMixer.sound_manager.PlayNotification();
+
+        yield return new WaitForSeconds(0.5f);
+        // Set the colour of the difficulty
+        UIManager.ui_manager.Difficulty.SetActive(true);
+        Color c = Color.gray;
+        switch (GameState.game_state.current_difficulty)
+        {
+            case GameState.Difficulty.Easy:
+                c = new Color(102f/255f, 51f/255f, 0);
+                break;
+            case GameState.Difficulty.Normal:
+                c = Color.gray;
+                break;
+            case GameState.Difficulty.Hard:
+                c = Color.yellow;
+                break;
+        }
+        UIManager.ui_manager.Difficulty.GetComponentInChildren<Text>().color = c;
+        UIManager.ui_manager.Difficulty.GetComponentInChildren<Text>().text = GameState.game_state.current_difficulty.ToString();
+        SoundMixer.sound_manager.PlayTransferHealth();
 
         // Create bright transition glow
         yield return new WaitForSeconds(1f);
@@ -75,6 +95,7 @@ public class CameraManager : MonoBehaviour
         StartCoroutine(EffectsManager.effects.FlashScreenBriefly(1f));
         UIManager.ui_manager.Level_Name.AddComponent<FadeImage>();
         UIManager.ui_manager.Mode.AddComponent<FadeImage>();
+        UIManager.ui_manager.Difficulty.AddComponent<FadeImage>();
 
         yield return new WaitForSeconds(0.5f);
         cam.cullingMask = initial_culling_mask;

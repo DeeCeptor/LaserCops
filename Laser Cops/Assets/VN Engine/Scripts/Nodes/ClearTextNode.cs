@@ -6,8 +6,8 @@ public class ClearTextNode : Node
 {
     public override void Run_Node()
     {
-        UIManager.ui_manager.dialogue_text_panel.text = "";
-        UIManager.ui_manager.speaker_text_panel.text = "";
+        UIManager.ui_manager.text_panel.text = "";
+        UIManager.ui_manager.speaker_panel.text = "";
         Finish_Node();
     }
 

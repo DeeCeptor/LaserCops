@@ -1,15 +1,103 @@
 using UnityEngine;
 using System.Collections;
 using UnityEditor;
+using System.IO;
+using System;
 
 // Creates a new menu when you right click in the Hierarchy pane.
 // Allows the user to easily create dialogue elements
 public class VNEngineEditor : MonoBehaviour
 {
+    [MenuItem("VN Engine/Documentation")]
+    private static void OpenDocumentation()
+    {
+        Application.OpenURL(Application.dataPath + "/VN Engine/README.pdf");
+    }
+
+
+    // Imports a .txt file specified by the user.
+    [MenuItem("VN Engine/Import script (from .txt file)")]
+    private static void ImportTxtScriptFile()
+    {
+        string path = EditorUtility.OpenFilePanel("Select a script file to import", "", "txt");
+
+        if (string.IsNullOrEmpty(path))
+        {
+            return;
+        }
+        Debug.Log("Reading in .txt script file: " + path);
+
+        // Read the file
+        string line;
+        System.IO.StreamReader file = new System.IO.StreamReader(path);
+
+        // Create a child object to hold all elements created from this file
+        Transform import_parent = (new GameObject(Path.GetFileNameWithoutExtension(path))).transform;
+        ConversationManager cur_conversation = null;
+
+        // Read it line by line
+        while ((line = file.ReadLine()) != null)
+        {
+            // Continue if it's an empty line
+            if (String.IsNullOrEmpty(line))
+                continue;
+            string[] split_line = line.Split(new char[] { ':' } , 2);
+            
+            // Create a new conversation
+            if (line.StartsWith("Conversation", true, System.Globalization.CultureInfo.InvariantCulture))
+            {
+                GameObject go = new GameObject(split_line[1] + " Conversation");
+                go.transform.parent = import_parent;
+                ConversationManager new_conv = go.AddComponent<ConversationManager>();
+                if (cur_conversation != null)
+                {
+                    cur_conversation.start_conversation_when_done = new_conv;
+                }
+                cur_conversation = new_conv;
+            }
+            else if (line.StartsWith("EnterActor", true, System.Globalization.CultureInfo.InvariantCulture))
+            {
+                GameObject go = new GameObject("Enter " + split_line[1]);
+                go.transform.parent = cur_conversation.transform;
+                EnterActorNode node = go.AddComponent<EnterActorNode>();
+                node.actor_name = split_line[1];
+            }
+            else if (line.StartsWith("ExitActor", true, System.Globalization.CultureInfo.InvariantCulture))
+            {
+                GameObject go = new GameObject("Exit " + split_line[1]);
+                go.transform.parent = cur_conversation.transform;
+                ExitActorNode node = go.AddComponent<ExitActorNode>();
+                node.actor_name = split_line[1];
+            }
+            // ADD MORE HERE IF YOU WISH TO EXTEND THE IMPORTING FUNCTIONALITY
+            //
+            //
+            //
+            //
+            //
+
+            // Must be a line of dialogue
+            else if (split_line.Length == 2)
+            {
+                GameObject go = new GameObject(split_line[0]);
+                go.transform.parent = cur_conversation.transform;
+                DialogueNode node = go.AddComponent<DialogueNode>();
+                node.actor = split_line[0];
+                node.textbox_title = split_line[0];
+                node.text = split_line[1];
+            }
+        }
+        file.Close();
+        Debug.Log("Done importing script: " + path);
+    }
+
+
+
+
     [MenuItem("GameObject/VN Engine/Create DialogueCanvas", false, 0)]
     private static void CreateDialogueCanvas(MenuCommand menuCommand)
     {
-        GameObject go = Instantiate(Resources.Load("VN Engine/DialogueCanvas", typeof(GameObject))) as GameObject;     // Create new object
+        GameObject go = Instantiate(Resources.Load("DialogueCanvas", typeof(GameObject))) as GameObject;     // Create new object
         go.name = "DialogueCanvas";
         GameObjectUtility.SetParentAndAlign(go, menuCommand.context as GameObject); // Parent the new object
         Undo.RegisterCreatedObjectUndo(go, "Create " + go.name);    // Register the creation in the undo system
@@ -115,40 +203,6 @@ public class VNEngineEditor : MonoBehaviour
     }
 
 
-    [MenuItem("GameObject/VN Engine/Set Background", false, 0)]
-    private static void SetBackground(MenuCommand menuCommand)
-    {
-        GameObject go = new GameObject("Set Background");     // Create new object
-        GameObjectUtility.SetParentAndAlign(go, menuCommand.context as GameObject); // Parent the new object
-        Undo.RegisterCreatedObjectUndo(go, "Create " + go.name);    // Register the creation in the undo system
-        Selection.activeObject = go;
-
-        go.AddComponent<SetBackground>();
-    }
-
-
-    [MenuItem("GameObject/VN Engine/Fade in from Black", false, 0)]
-    private static void FadeInFromBlack(MenuCommand menuCommand)
-    {
-        GameObject go = Instantiate(Resources.Load("VN Engine/Conversation Pieces/Fade in from Black", typeof(GameObject))) as GameObject;     // Create new object
-        go.name = "Fade in from Black";
-        GameObjectUtility.SetParentAndAlign(go, menuCommand.context as GameObject); // Parent the new object
-        Undo.RegisterCreatedObjectUndo(go, "Create " + go.name);    // Register the creation in the undo system
-        Selection.activeObject = go;
-    }
-
-
-    [MenuItem("GameObject/VN Engine/Fade out to Black", false, 0)]
-    private static void FadeToBlack(MenuCommand menuCommand)
-    {
-        GameObject go = Instantiate(Resources.Load("VN Engine/Conversation Pieces/Fade out to Black", typeof(GameObject))) as GameObject;     // Create new object
-        go.name = "Fade out to Black";
-        GameObjectUtility.SetParentAndAlign(go, menuCommand.context as GameObject); // Parent the new object
-        Undo.RegisterCreatedObjectUndo(go, "Create " + go.name);    // Register the creation in the undo system
-        Selection.activeObject = go;
-    }
-
-
     [MenuItem("GameObject/VN Engine/Show Choices", false, 0)]
     private static void ShowChoicesNode(MenuCommand menuCommand)
     {
@@ -161,15 +215,89 @@ public class VNEngineEditor : MonoBehaviour
     }
 
 
-    [MenuItem("GameObject/VN Engine/Clear Text", false, 0)]
-    private static void ClearTextNode(MenuCommand menuCommand)
+    [MenuItem("GameObject/VN Engine/If Then", false, 0)]
+    private static void IfNode(MenuCommand menuCommand)
     {
-        GameObject go = new GameObject("Clear Text");     // Create new object
+        GameObject go = new GameObject("If");     // Create new object
         GameObjectUtility.SetParentAndAlign(go, menuCommand.context as GameObject); // Parent the new object
         Undo.RegisterCreatedObjectUndo(go, "Create " + go.name);    // Register the creation in the undo system
         Selection.activeObject = go;
 
-        go.AddComponent<ClearTextNode>();
+        go.AddComponent<IfNode>();
+    }
+
+
+    [MenuItem("GameObject/VN Engine/Set Background", false, 0)]
+    private static void SetBackground(MenuCommand menuCommand)
+    {
+        GameObject go = new GameObject("Set Background");     // Create new object
+        GameObjectUtility.SetParentAndAlign(go, menuCommand.context as GameObject); // Parent the new object
+        Undo.RegisterCreatedObjectUndo(go, "Create " + go.name);    // Register the creation in the undo system
+        Selection.activeObject = go;
+
+        go.AddComponent<SetBackground>();
+    }
+
+
+
+    [MenuItem("GameObject/VN Engine/Alter Stats", false, 0)]
+    private static void AlterStatsNode(MenuCommand menuCommand)
+    {
+        GameObject go = new GameObject("Alter Stats");     // Create new object
+        GameObjectUtility.SetParentAndAlign(go, menuCommand.context as GameObject); // Parent the new object
+        Undo.RegisterCreatedObjectUndo(go, "Create " + go.name);    // Register the creation in the undo system
+        Selection.activeObject = go;
+
+        go.AddComponent<AlterStatNode>();
+    }
+
+
+
+    [MenuItem("GameObject/VN Engine/Item", false, 0)]
+    private static void ItemNode(MenuCommand menuCommand)
+    {
+        GameObject go = new GameObject("Item");     // Create new object
+        GameObjectUtility.SetParentAndAlign(go, menuCommand.context as GameObject); // Parent the new object
+        Undo.RegisterCreatedObjectUndo(go, "Create " + go.name);    // Register the creation in the undo system
+        Selection.activeObject = go;
+
+        go.AddComponent<ItemNode>();
+    }
+
+
+
+    [MenuItem("GameObject/VN Engine/Hide or Show UI", false, 0)]
+    private static void HideShowUI(MenuCommand menuCommand)
+    {
+        GameObject go = new GameObject("Hide/Show UI");     // Create new object
+        GameObjectUtility.SetParentAndAlign(go, menuCommand.context as GameObject); // Parent the new object
+        Undo.RegisterCreatedObjectUndo(go, "Create " + go.name);    // Register the creation in the undo system
+        Selection.activeObject = go;
+
+        go.AddComponent<HideShowUINode>();
+    }
+
+
+
+    [MenuItem("GameObject/VN Engine/Fade in from Black", false, 0)]
+    private static void FadeInFromBlack(MenuCommand menuCommand)
+    {
+        GameObject go = Instantiate(Resources.Load("Conversation Pieces/Fade in from Black", typeof(GameObject))) as GameObject;     // Create new object
+        go.name = "Fade in from Black";
+        GameObjectUtility.SetParentAndAlign(go, menuCommand.context as GameObject); // Parent the new object
+        Undo.RegisterCreatedObjectUndo(go, "Create " + go.name);    // Register the creation in the undo system
+        Selection.activeObject = go;
+    }
+
+
+    [MenuItem("GameObject/VN Engine/Fade out to Black", false, 0)]
+    private static void FadeToBlack(MenuCommand menuCommand)
+    {
+        GameObject go = Instantiate(Resources.Load("Conversation Pieces/Fade out to Black", typeof(GameObject))) as GameObject;     // Create new object
+        go.name = "Fade out to Black";
+        GameObjectUtility.SetParentAndAlign(go, menuCommand.context as GameObject); // Parent the new object
+        Undo.RegisterCreatedObjectUndo(go, "Create " + go.name);    // Register the creation in the undo system
+        Selection.activeObject = go;
     }
 
 
@@ -296,6 +424,21 @@ public class VNEngineEditor : MonoBehaviour
         go.GetComponent<SetMusicNode>().fadeOutTime = 5.0f;
     }
 
+
+
+    [MenuItem("GameObject/VN Engine/Perform Actions", false, 0)]
+    private static void PerformActionsNode(MenuCommand menuCommand)
+    {
+        GameObject go = new GameObject("Perform Actions");     // Create new object
+        GameObjectUtility.SetParentAndAlign(go, menuCommand.context as GameObject); // Parent the new object
+        Undo.RegisterCreatedObjectUndo(go, "Create " + go.name);    // Register the creation in the undo system
+        Selection.activeObject = go;
+
+        go.AddComponent<PerformActionsNode>();
+    }
+
+
+
     [MenuItem("GameObject/VN Engine/Load Scene", false, 0)]
     private static void LoadSceneNode(MenuCommand menuCommand)
     {
@@ -305,5 +448,17 @@ public class VNEngineEditor : MonoBehaviour
         Selection.activeObject = go;
 
         go.AddComponent<LoadSceneNode>();
+    }
+
+
+    [MenuItem("GameObject/VN Engine/Clear Text", false, 0)]
+    private static void ClearTextNode(MenuCommand menuCommand)
+    {
+        GameObject go = new GameObject("Clear Text");     // Create new object
+        GameObjectUtility.SetParentAndAlign(go, menuCommand.context as GameObject); // Parent the new object
+        Undo.RegisterCreatedObjectUndo(go, "Create " + go.name);    // Register the creation in the undo system
+        Selection.activeObject = go;
+
+        go.AddComponent<ClearTextNode>();
     }
 }

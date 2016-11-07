@@ -3,81 +3,136 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using System;
 using System.Collections;
+using System.Collections.Generic;
+
+
+// Should we use stats to decide what this choice button does?
+public enum Choice_Stat_Requirement { No_Requirement, Float_Stat_Requirement, Bool_Stat_Requirement, Object_Is_Null };
+
+// If the stat requirement is not met, should we hide the button, or just disable it?
+public enum Requirement_Not_Met_Action { Hide_Choice, Disable_Button };
+
+public enum Float_Stat_Comparator {  Greater_than, Less_than };
 
 
 // Displays the choices outlined. Does not continue to the next node.
 // Each choice leads to a prescribed conversation.
 public class ChoiceNode : Node 
 {
-	public string button_1_text;
-	public Button.ButtonClickedEvent Button_1_Events;
-	public string button_2_text;
-	public Button.ButtonClickedEvent Button_2_Events;
-	public string button_3_text;
-	public Button.ButtonClickedEvent Button_3_Events;
-	public string button_4_text;
-	public Button.ButtonClickedEvent Button_4_Events;
+    // DO NOT CHANGE: is the maximum number of choices. Dictated by the number of ChoiceButtons listed in the UIManager. You shouldn't ever need more than 20 buttons.
+    public static int max_number_of_buttons = 20;
 
-	
-	public override void Run_Node()
+    [HideInInspector]
+    public string Name_Of_Choice;   // Text that appears at the top of the choices menu. Ex: I'm at a crossroads. Which way should I go?
+    [HideInInspector]
+    public int Number_Of_Choices = 6;
+
+    // Arrays of values used for the buttons. Makes the code able to loop through requirements
+    [HideInInspector]
+    public string[] Button_Text = new string[max_number_of_buttons];
+    [HideInInspector]
+    public Choice_Stat_Requirement[] Requirement_Type = new Choice_Stat_Requirement[max_number_of_buttons];
+    [HideInInspector]
+    public Requirement_Not_Met_Action[] Requirement_Not_Met_Actions = new Requirement_Not_Met_Action[max_number_of_buttons];
+    [HideInInspector]
+    public string[] Disabled_Text = new string[max_number_of_buttons];
+    [HideInInspector]
+    public Float_Stat_Comparator[] Float_Stat_Is = new Float_Stat_Comparator[max_number_of_buttons];
+    [HideInInspector]
+    public string[] Stat_Name = new string[max_number_of_buttons];
+    [HideInInspector]
+    public float[] Float_Compare_Value = new float[max_number_of_buttons];
+    [HideInInspector]
+    public bool[] Bool_Compare_Value = new bool[max_number_of_buttons];
+    [HideInInspector]
+    public GameObject[] Check_Null_Object = new GameObject[max_number_of_buttons];
+
+    // The events associated with the buttons
+    public Button.ButtonClickedEvent[] Button_Events = new Button.ButtonClickedEvent[max_number_of_buttons];
+
+
+    public override void Run_Node()
 	{
-		// Display the choices on the UI
-		UIManager.ui_manager.choice_panel.SetActive(true);
-
-		// Make buttons that have events visible, set their text,
-		// add call to Finis_Node() on the OnClick() listener and hook up the choices buttons to the events on this node
-		if (Button_1_Events.GetPersistentEventCount() > 0)
-		{
-			UIManager.ui_manager.choice_1_button.gameObject.SetActive(true);    // Make visible
-            UIManager.ui_manager.choice_1_button.GetComponentInChildren<Text>().text = button_1_text;	// Set button text
-			Button_1_Events.AddListener(Clear_Choices); // Add call to finish this node and hide UI to event listener
-            UIManager.ui_manager.choice_1_button.onClick = Button_1_Events;	// Set events
-		}
-        else
-        {
-            UIManager.ui_manager.choice_1_button.gameObject.SetActive(false);
-        }
-
-
-        if (Button_2_Events.GetPersistentEventCount() > 0)
-		{
-            UIManager.ui_manager.choice_2_button.gameObject.SetActive(true);
-            UIManager.ui_manager.choice_2_button.GetComponentInChildren<Text>().text = button_2_text;
-			Button_2_Events.AddListener(Clear_Choices);
-            UIManager.ui_manager.choice_2_button.onClick = Button_2_Events;
-		}
-        else
-        {
-            UIManager.ui_manager.choice_2_button.gameObject.SetActive(false);
-        }
-
-
-        if (Button_3_Events.GetPersistentEventCount() > 0)
-		{
-            UIManager.ui_manager.choice_3_button.gameObject.SetActive(true);
-            UIManager.ui_manager.choice_3_button.GetComponentInChildren<Text>().text = button_3_text;
-			Button_3_Events.AddListener(Clear_Choices);
-            UIManager.ui_manager.choice_3_button.onClick = Button_3_Events;
-		}
-        else
-        {
-            UIManager.ui_manager.choice_3_button.gameObject.SetActive(false);
-        }
-
-
-        if (Button_4_Events.GetPersistentEventCount() > 0)
-		{
-            UIManager.ui_manager.choice_4_button.gameObject.SetActive(true);
-            UIManager.ui_manager.choice_4_button.GetComponentInChildren<Text>().text = button_4_text;
-			Button_4_Events.AddListener(Clear_Choices);
-            UIManager.ui_manager.choice_4_button.onClick = Button_4_Events;
-		}
-        else
-        {
-            UIManager.ui_manager.choice_4_button.gameObject.SetActive(false);
-        }
+        StartCoroutine(Running());
 	}
-	
+	public IEnumerator Running()
+    {
+        // Wait a frame so we can evaluate if objects we check for requirements have been destroyed
+        yield return 0;
+
+        // Display the choices on the UI
+        UIManager.ui_manager.choice_panel.SetActive(true);
+        UIManager.ui_manager.choice_text_banner.text = Name_Of_Choice;
+
+        // Loop through each button
+        // Make buttons that have events visible, set their text,
+        // add call to Finish_Node() on the OnClick() listener and hook up the choices buttons to the events on this node
+        for (int x = 0; x < Number_Of_Choices; x++)
+        {
+            if (Button_Events[x].GetPersistentEventCount() > 0)
+            {
+                UIManager.ui_manager.choice_buttons[x].gameObject.SetActive(true);    // Make visible
+                UIManager.ui_manager.choice_buttons[x].interactable = true;
+                bool requirement_met = true;
+                UIManager.ui_manager.choice_buttons[x].GetComponentInChildren<Text>().text = Button_Text[x];   // Set button text
+
+                // Check stat requirements
+                switch (Requirement_Type[x])
+                {
+                    case Choice_Stat_Requirement.No_Requirement:
+                        break;
+
+
+                    case Choice_Stat_Requirement.Float_Stat_Requirement:
+                        requirement_met = StatsManager.Compare_Float_Stat(Stat_Name[x], Float_Stat_Is[x], Float_Compare_Value[x]);
+                        break;
+
+
+                    case Choice_Stat_Requirement.Bool_Stat_Requirement:
+                        requirement_met = StatsManager.Compare_Bool_Stat_To(Stat_Name[x], Bool_Compare_Value[x]);
+                        break;
+
+
+                    case Choice_Stat_Requirement.Object_Is_Null:
+                        // Check if object exists
+                        // If the object doesn't exist, and the box is checked
+                        // OR  the object exists and the box is not checked
+                        requirement_met = Check_Null_Object[x] && !Bool_Compare_Value[x];
+                        break;
+                }
+
+                // Stat requirements have been met. Display the choice
+                if (requirement_met)
+                {
+                    Button_Events[x].AddListener(Clear_Choices); // Add call to finish this node and hide UI to event listener
+                    UIManager.ui_manager.choice_buttons[x].onClick = Button_Events[x]; // Set events
+                }
+                else
+                {
+                    switch (Requirement_Not_Met_Actions[x])
+                    {
+                        case Requirement_Not_Met_Action.Disable_Button:
+                            UIManager.ui_manager.choice_buttons[x].interactable = false;
+                            UIManager.ui_manager.choice_buttons[x].GetComponentInChildren<Text>().text = Disabled_Text[x];   // Set button text
+                            break;
+                        case Requirement_Not_Met_Action.Hide_Choice:
+                            UIManager.ui_manager.choice_buttons[x].gameObject.SetActive(false);    // Make inivisible
+                            break;
+                    }
+                }
+            }
+            else
+            {
+                UIManager.ui_manager.choice_buttons[x].gameObject.SetActive(false);
+            }
+        }
+
+        // Disable all other buttons
+        for (int x = Number_Of_Choices; x < max_number_of_buttons; x++)
+        {
+            UIManager.ui_manager.choice_buttons[x].gameObject.SetActive(false);
+        }
+    }
 
 	public override void Button_Pressed()
 	{
@@ -87,20 +142,16 @@ public class ChoiceNode : Node
 
 	public void Clear_Choices()
 	{
-		if (SceneManager.current_conversation.Get_Current_Node().GetType() != this.GetType())	// Don't clear the choices if the next node is a Choice node
+		if (VNSceneManager.current_conversation.Get_Current_Node().GetType() != this.GetType())	// Don't clear the choices if the next node is a Choice node
         {
-			// Remove event listeners from buttons
-            UIManager.ui_manager.choice_1_button.onClick.RemoveAllListeners();
-            UIManager.ui_manager.choice_2_button.onClick.RemoveAllListeners();
-            UIManager.ui_manager.choice_3_button.onClick.RemoveAllListeners();
-            UIManager.ui_manager.choice_4_button.onClick.RemoveAllListeners();
-
-			// Set all choice buttons to inactive
-			UIManager.ui_manager.choice_1_button.gameObject.SetActive(false);
-			UIManager.ui_manager.choice_2_button.gameObject.SetActive(false);
-			UIManager.ui_manager.choice_3_button.gameObject.SetActive(false);
-			UIManager.ui_manager.choice_4_button.gameObject.SetActive(false);
-
+            // Loop through every button
+            for (int x = 0; x < ChoiceNode.max_number_of_buttons; x++)
+            {
+                // Remove event listeners from buttons
+                UIManager.ui_manager.choice_buttons[x].onClick.RemoveAllListeners();
+                // Set all choice buttons to inactive
+                UIManager.ui_manager.choice_buttons[x].gameObject.SetActive(false);
+            }
 
 			// Hide choice UI
 			UIManager.ui_manager.choice_panel.SetActive(false);
