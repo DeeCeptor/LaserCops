@@ -69,7 +69,8 @@ public class VNSceneManager : MonoBehaviour
     void Start () 
 	{
         // Hide UI initially?
-        UIManager.ui_manager.entire_UI_panel.SetActive(!hide_UI_at_start);
+        if (UIManager.ui_manager.entire_UI_panel)
+            UIManager.ui_manager.entire_UI_panel.SetActive(!hide_UI_at_start);
 
         
         // Load text scrolling speed
