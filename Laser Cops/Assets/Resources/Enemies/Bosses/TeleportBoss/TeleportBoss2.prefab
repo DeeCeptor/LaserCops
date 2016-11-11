@@ -333,7 +333,7 @@ MonoBehaviour:
   only_shoot_on_command: 0
   playerCloseDisable: 1
   disableDistance: 2
-  shotColour: 3
+  shotColour: 2
   TimeBetweenSwitches: 4
   SwitchTimer: 0
 --- !u!114 &11407282
@@ -379,7 +379,7 @@ MonoBehaviour:
   only_shoot_on_command: 0
   playerCloseDisable: 1
   disableDistance: 2
-  shotColour: 3
+  shotColour: 2
   TimeBetweenSwitches: 4
   SwitchTimer: 0
 --- !u!114 &11419192
@@ -510,7 +510,7 @@ MonoBehaviour:
   only_shoot_on_command: 0
   playerCloseDisable: 1
   disableDistance: 2
-  shotColour: 3
+  shotColour: 2
   TimeBetweenSwitches: 4
   SwitchTimer: 0
 --- !u!114 &11484244
@@ -531,7 +531,7 @@ MonoBehaviour:
   only_shoot_on_command: 0
   playerCloseDisable: 1
   disableDistance: 2
-  shotColour: 3
+  shotColour: 2
   TimeBetweenSwitches: 4
   SwitchTimer: 0
 --- !u!212 &21213234
@@ -822,6 +822,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: health
       value: 700
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shotColour
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

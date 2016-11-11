@@ -344,11 +344,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c511b6cead39dac4ab376e567ffb5f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 500
+  health: 700
   formChangeConversation: {fileID: 0}
   nextStage: {fileID: 0}
   stages: 3
-  overallHealth: 500
+  overallHealth: 700
   bossName: Jumpy Pete
   pointValue: 2000
   TimeBonus: 600
@@ -551,7 +551,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: overallHealth
-      value: 500
+      value: 700
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: health
+      value: 700
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
