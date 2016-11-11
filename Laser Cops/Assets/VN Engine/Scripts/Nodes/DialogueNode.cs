@@ -1,22 +1,27 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
+public enum Dialogue_Source { Text_From_Editor, Localized_Text_From_CSV };
+
+// Dialogue node displays text/plays audio as if an actor is speaking.
+// Actors must be put on the scene using an Enter actor Node
+// The UI panel is automatically made visible when this node is run
+// If there is an an AudioSource attached to this, that AudioSource will be played, and stopped when the node is finished (or audio finishes and Auto is selected)
 public class DialogueNode : Node
-{	
-	public string actor;	// Name of actor to use for talking
+{
+    public string actor;	// Name of actor to use for talking
 	public string textbox_title;    // Name to be placed at top of textbox. Ex: 'Bob'
     private AudioSource voice_clip;   // Sound to play alongside the text. Ex: Voice saying the words in the text area
-	[TextArea(3,10)]
-	public string text;
-    private string processed_text;
-
-    public float how_long_to_wait = 0f;     // How many seconds to wait before moving onto the next dialogue
-    public bool turn_off_UI_when_done = false;      // Set to true to hide dialogue UI when this node finishes
-
-    public bool darken_all_other_characters = false;     // Darkens all other actors on the scene
+    public Dialogue_Source dialogue_from = Dialogue_Source.Text_From_Editor;    // Is the dialogue text coming from you (the user) typing into the editor, or a CSV containing multiple languages?
+    public string localized_key;    // Used to read from the Localized_Dialogue_CSV in the VNSceneManager
+    public string text;
+    public AudioClip talking_beeps;     // A very short audio clip played every time a single character of text is printed to the text panel. Supposed to kind of sound like talking (like in Undertale)
+    public bool darken_all_other_characters = true;     // Darkens all other actors on the scene
     public bool bring_speaker_to_front = true;      // Changes the ordering so this actor will be in front of others
 	public bool clear_text_after = false;
-
+    public bool log_text = true;
 
     [HideInInspector]
 	public bool done_printing = false;
@@ -25,15 +30,28 @@ public class DialogueNode : Node
     [HideInInspector]
     public bool done_voice_clip = false; // Set to true when the voice clip accompanying this dialogue is done playing
     private bool running = false;   // Set true when Run_Node is called
-    
+
+    private Stack<string> formatting_tag_stack = new Stack<string>();
+
+
 	public override void Run_Node()
 	{
+        if (UIManager.ui_manager.entire_UI_panel != null &&
+            !UIManager.ui_manager.entire_UI_panel.activeSelf)
+            UIManager.ui_manager.entire_UI_panel.SetActive(true);   // Ensure dialogue panel is visible
+
         running = true;
 
-        UIManager.ui_manager.dialogue_text_panel.text = "";
-		UIManager.ui_manager.speaker_text_panel.text = textbox_title;
-		StartCoroutine(Animate_Text(text, VNProperties.delay_per_character));
-        processed_text = ProcessEntireDialogue(text);
+        UIManager.ui_manager.text_panel.text = "";
+		UIManager.ui_manager.speaker_panel.text = textbox_title;
+
+        // If using text from a CSV, grab it now
+        if (dialogue_from == Dialogue_Source.Localized_Text_From_CSV)
+        {
+            GetLocalizedText();
+        }
+
+        StartCoroutine(Animate_Text(text));
 
         // If the actor field is filled in and the actor is present on the scene
         Actor speaker = ActorManager.Get_Actor(actor);
@@ -55,7 +73,6 @@ public class DialogueNode : Node
         if (voice_clip != null && voice_clip.clip != null)
         {
             // Play audio if there is any
-            //AudioManager.audio_manager.Play_Voice_Clip(voice_clip);
             voice_clip.volume = AudioManager.audio_manager.voice_volume;
             voice_clip.Play();
         }
@@ -76,130 +93,181 @@ public class DialogueNode : Node
 			// instead of waiting it all to appear. User must click again to finish this dialogue piece.
 			done_printing = true;
 			StopAllCoroutines();
-			UIManager.ui_manager.dialogue_text_panel.text = processed_text;
-		}
-	}
+			UIManager.ui_manager.text_panel.text = text;
+            Canvas.ForceUpdateCanvases();
+        }
+    }
 	
 	public override void Finish_Node()
 	{
         if (voice_clip != null)
             voice_clip.Stop();
-        /*
-        if(AudioListener.volume == 0)
-        {
-            voice_clip.Stop();
-        }*/
 
 		StopAllCoroutines();
 
 		if (clear_text_after)
 		{
-			UIManager.ui_manager.speaker_text_panel.text = "";
-			UIManager.ui_manager.dialogue_text_panel.text = "";
+			UIManager.ui_manager.speaker_panel.text = "";
+			UIManager.ui_manager.text_panel.text = "";
 		}
 
-		// Record what was said in the log so players can go back and read anything they missed
-		SceneManager.scene_manager.Add_To_Log(textbox_title, processed_text + "\n");
+        if (log_text)
+        {
+            // Record what was said in the log so players can go back and read anything they missed
+            VNSceneManager.scene_manager.Add_To_Log(textbox_title, text);
+        }
         done_printing = false;
         done_voice_clip = false;
         running = false;
         base.Finish_Node();
-
-        if (turn_off_UI_when_done)
-        {
-            UIManager.ui_manager.entire_UI_panel.SetActive(false);
-        }
-    }
+	}
 
 
 	// Prints the text to the UI manager's dialogue text one character at a time.
 	// It waits time_between_characters seconds before adding on the next character.
-	public IEnumerator Animate_Text(string strComplete, float time_between_characters) 
+	public IEnumerator Animate_Text(string strComplete) 
 	{
-		int i = 0;
-        bool italics = false;
-		while(i < strComplete.Length)
-		{
-            if (!UIManager.ui_manager.entire_UI_panel.activeInHierarchy)
+        string finalized_text = "";
+
+        // Loop through each 'word', printing 1 character at a time
+        // Words are separated by spaces
+        string[] words = strComplete.Split(' ');
+        // This technique is done to ensure words begin printing on the lowest line (instead of printing on an upper line, not fitting and then moving down)
+        for (int z = 0; z < words.Length; z++)
+        {
+            string cur_word = words[z];
+
+
+            // NEWLINE CHECK
+            // Check if this word will become too big and needs to be put on a new line
+            int line_count = UIManager.ui_manager.text_panel.cachedTextGenerator.lineCount;
+            // Remove any formatting tags, as they don't count for line length
+            string non_formatted_word = Regex.Replace(cur_word, "<.*?>", string.Empty) + Get_All_Current_Formatting_Tags();
+            if (!string.IsNullOrEmpty(finalized_text))
             {
-                done_printing = true;
+                finalized_text += " ";
+                UIManager.ui_manager.text_panel.text = finalized_text + non_formatted_word;
             }
+            else
+                UIManager.ui_manager.text_panel.text = non_formatted_word;
 
-            bool ignore = false;
-            char next_char = (char) strComplete[i++];   // Next character to be printed
+            Canvas.ForceUpdateCanvases();
+            int check_line_count = UIManager.ui_manager.text_panel.cachedTextGenerator.lineCount;
 
-            // Check for italics
-            switch (next_char)
+            if (check_line_count > line_count && line_count > 0)
             {
-                case '`':
-                    ignore = true; //make sure this character isn't printed by ignoring it
-                    italics = !italics; //toggle italic styling
-                    break;
+                finalized_text += "\n";
             }
+            UIManager.ui_manager.text_panel.text = finalized_text;
+            // END NEWLINE CHECK
 
-            if (ignore)
-                continue;
-            if (!italics)    // Regular text
-                UIManager.ui_manager.dialogue_text_panel.text += next_char;
-            else if (italics)    // Italics text
-                UIManager.ui_manager.dialogue_text_panel.text += "<i>" + next_char + "</i>";
 
-            if (SceneManager.text_scroll_speed != 0)
-			    yield return new WaitForSeconds(SceneManager.text_scroll_speed);
-		}
+
+            // Loop through each character
+            for (int i = 0; i < cur_word.Length; i++)
+            {
+                if (!UIManager.ui_manager.entire_UI_panel.activeInHierarchy)
+                {
+                    done_printing = true;
+                }
+
+
+                // FORMATTING TAGS https://docs.unity3d.com/Manual/StyledText.html
+                // Remove any rich text formatting from this word. Ex: <b></b>, <i></i>
+                // Check if the word has a <
+                // Run this loop for every < > bracket in our current word
+                // Formatting tags CANNOT have spaces
+                int start_formatting_index = i;// cur_word.IndexOf("<", i);
+                if (cur_word[i] == '<')
+                {
+                    bool ending_tag = false;
+                    // Is ending tag </
+                    if (start_formatting_index < cur_word.Length && cur_word[start_formatting_index + 1] == '/')
+                    {
+                        ending_tag = true;
+                    }
+
+                    int end_formatting_index = cur_word.IndexOf(">", start_formatting_index);
+
+                    // Grab our formatting tag
+                    string formatting_tag = cur_word.Substring(start_formatting_index, end_formatting_index - start_formatting_index + 1);
+                    if (ending_tag)
+                    {
+                        // Ending tag, Remove the top of our formatting tag stack
+                        finalized_text += formatting_tag_stack.Pop();
+                    }
+                    else
+                    {
+                        // If beginning tag, add it to our formatting tag stack
+                        finalized_text += formatting_tag;
+                        // This will need to be updated if new formatting tags are created
+                        if (formatting_tag.Contains("b>"))
+                        {
+                            formatting_tag_stack.Push("</b>");
+                        }
+                        else if (formatting_tag.Contains("i>"))
+                        {
+                            formatting_tag_stack.Push("</i>");
+                        }
+                        else if (formatting_tag.Contains("color"))
+                        {
+                            formatting_tag_stack.Push("</color>");
+                        }
+                        else if (formatting_tag.Contains("size"))
+                        {
+                            formatting_tag_stack.Push("</size>");
+                        }
+                    }
+
+                    // Remove the formatting tag from our word
+                    cur_word = cur_word.Remove(start_formatting_index, end_formatting_index - start_formatting_index + 1);
+                    i--;
+                }
+                // END FORMATTING TAGS
+                else
+                {
+                    // Simply add the current letter if it isn't a formatting tag
+                    finalized_text += cur_word[i];
+
+                    // Play a talking beep if one has been assigned
+                    AudioManager.audio_manager.Play_Talking_Beep(talking_beeps);
+                }
+
+                UIManager.ui_manager.text_panel.text = finalized_text + Get_All_Current_Formatting_Tags();
+
+                if (VNSceneManager.text_scroll_speed != 0)
+                    yield return new WaitForSeconds(VNSceneManager.text_scroll_speed);
+            }
+        }
 
 		done_printing = true;
-
-        if (how_long_to_wait != 0)
-        {
-            StartCoroutine(WaitFor(how_long_to_wait));
-        }
 	}
-    public IEnumerator WaitFor(float time)
+    private string Get_All_Current_Formatting_Tags()
     {
-        yield return new WaitForSeconds(time);
-        Finish_Node();
-    }
-
-
-    string ProcessEntireDialogue(string dialogue)
-    {
-        string processed_dialogue = "";
-        int i = 0;
-        bool italics = false;
-        while (i < dialogue.Length)
+        string tags = "";
+        foreach (string s in formatting_tag_stack)
         {
-            if (!UIManager.ui_manager.entire_UI_panel.activeInHierarchy)
-            {
-                done_printing = true;
-            }
-
-            bool ignore = false;
-            char next_char = (char)dialogue[i++];   // Next character to be printed
-
-            // Check for italics
-            switch (next_char)
-            {
-                case '`':
-                    ignore = true; //make sure this character isn't printed by ignoring it
-                    italics = !italics; //toggle italic styling
-                    break;
-            }
-
-            if (ignore)
-                continue;
-            if (!italics)    // Regular text
-                processed_dialogue += next_char;
-            else if (italics)    // Italics text
-                processed_dialogue += "<i>" + next_char + "</i>";
+            tags += s;
         }
-        return processed_dialogue;
+        return tags;
     }
 
 
-	void Start ()
+    void Start()
     {
-        voice_clip = gameObject.GetComponent<AudioSource>();//.clip;
+        voice_clip = gameObject.GetComponent<AudioSource>();
+    }
+    public void GetLocalizedText()
+    {
+        if (string.IsNullOrEmpty(localized_key))
+        {
+            Debug.LogError("Localized key is null. Please enter a key", this.gameObject);
+            return;
+        }
+
+        text = VNSceneManager.scene_manager.Get_Localized_Dialogue_Entry(this.localized_key);
+        if (string.IsNullOrEmpty(text))
+            Debug.LogError("Retrieved localized dialogue is null or empty. Please ensure you have entered a row with the key matching: " + this.localized_key, this.gameObject);
     }
 	
 
@@ -214,4 +282,23 @@ public class DialogueNode : Node
             //!AudioManager.audio_manager.voice_audio_source.isPlaying;
         }
 	}
+
+
+    public void CopyValuesIntoThisDialogue(DialogueNode n)
+    {
+        if (this.text != n.text)
+            this.text = n.text;
+        if (this.text != n.text)
+            this.actor = n.actor;
+        if (this.text != n.text)
+            this.textbox_title = n.textbox_title;
+        if (this.text != n.text)
+            this.bring_speaker_to_front = n.bring_speaker_to_front;
+        if (this.text != n.text)
+            this.darken_all_other_characters = n.darken_all_other_characters;
+        if (this.text != n.text)
+            this.log_text = n.log_text;
+        if (this.text != n.text)
+            this.clear_text_after = n.clear_text_after;
+    }
 }

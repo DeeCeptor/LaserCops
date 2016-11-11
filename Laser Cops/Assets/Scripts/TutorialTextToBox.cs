@@ -42,7 +42,7 @@ public class TutorialTextToBox : MonoBehaviour
 
     public void Activate()
     {
-        SceneManager.scene_manager.Start_Conversation(conversation_to_start.gameObject);
+        VNSceneManager.scene_manager.Start_Conversation(conversation_to_start.gameObject);
         active = true;
         Destroy(this.gameObject);
     }

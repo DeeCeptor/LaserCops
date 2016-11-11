@@ -56,7 +56,6 @@ public class ExitActorNode : Node
 
     public override void Finish_Node()
     {
-        Debug.Log("Finished exit all node");
         base.Finish_Node();
     }
 }

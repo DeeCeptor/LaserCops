@@ -39,6 +39,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7598fdb9cbb025c4293438a58006c68f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cur_node: 0
+  active: 0
   destroy_when_finished: 1
 --- !u!1001 &100100000
 Prefab:

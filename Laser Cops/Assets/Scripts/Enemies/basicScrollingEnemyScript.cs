@@ -443,11 +443,14 @@ public class basicScrollingEnemyScript : MonoBehaviour
     public void Activate()
     {
         active = true;
-        
+
         // Turn on trails
-        foreach (ManualTrail trail in objects_to_activate_when_active)
+        if (objects_to_activate_when_active != null)
         {
-            trail.gameObject.SetActive(true);
+            foreach (ManualTrail trail in objects_to_activate_when_active)
+            {
+                trail.gameObject.SetActive(true);
+            }
         }
     }
 

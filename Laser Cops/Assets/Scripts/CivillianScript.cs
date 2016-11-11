@@ -19,9 +19,13 @@ public class CivillianScript : MonoBehaviour {
 	//direction the enemy will travel towards
 	public direction travelDirection = direction.left;
 
-	// Use this for initialization
-	void Start () {
-	
+    public bool switch_tether_text = true;  // If true, use the switch tether help text
+    MeshRenderer switch_tether_mesh;
+
+	void Start ()
+    {
+        if (switch_tether_text)
+            switch_tether_mesh = this.GetComponentInChildren<MeshRenderer>();
 	}
 
 	void FixedUpdate()
@@ -33,6 +37,11 @@ public class CivillianScript : MonoBehaviour {
 		}
 		else
 		{
+            if (Tether.tether == null)
+                Debug.Log("tether");
+            if (switch_tether_text)
+                switch_tether_mesh.enabled = (Tether.tether.cur_tether_mode != Tether.TetherMode.Capture);
+
 			CheckDeath();
 			moveActive();
 		}

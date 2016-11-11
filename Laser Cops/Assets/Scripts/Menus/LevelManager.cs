@@ -112,9 +112,7 @@ public class LevelManager : MonoBehaviour
         ExecuteEvents.Execute(coop_mode.gameObject, pointer, ExecuteEvents.pointerClickHandler);
     }
     public void DeselectLevels()
-    {
-        GameObject myEventSystem = GameObject.Find("EventSystem");
-        
+    {        
         selected_level_ui.SetActive(false);
         level_settings.SetActive(false);
         foreach (LevelNode node in level_nodes)
@@ -134,7 +132,7 @@ public class LevelManager : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.LogError("Could not find current game mode to load level with");
+            Debug.LogError("Could not find current game mode to load level with " + e.Message);
         }
     }
 }

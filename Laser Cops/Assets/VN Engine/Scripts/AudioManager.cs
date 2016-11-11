@@ -1,14 +1,13 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager audio_manager;
     public AudioSource background_music_audio_source;    // Music that plays in background. Only one track of music will ever be playing at once
     public AudioSource voice_audio_source;    // Audio source playing the talking of the voice actors
-
-    public AudioSource beep;
-    public AudioSource notification;
 
     bool muted = false;     // If muted, NO audio will play
     public GameObject sound_effect_prefab;  // Must be an object with an audiosource, and necessary for PlaySoundEffect nodes
@@ -23,6 +22,13 @@ public class AudioManager : MonoBehaviour
     [HideInInspector]
     public float effects_volume = 1;
 
+    public Slider Master_Volume_Slider;
+    public Slider Music_Volume_Slider;
+    public Slider Voice_Volume_Slider;
+    public Slider Effects_Volume_Slider;
+
+    public List<AudioSource> talking_beeps_list;
+
 
     void Awake ()
     {
@@ -30,24 +36,23 @@ public class AudioManager : MonoBehaviour
     }
 	void Start ()
     {
-	
-	}
+        // Load player preferences
+        Master_Volume_Changed(PlayerPrefs.GetFloat("MasterVolume", 1));
+        Voice_Volume_Changed(PlayerPrefs.GetFloat("VoiceVolume", 1));
+        Music_Volume_Changed(PlayerPrefs.GetFloat("MusicVolume", 1));
+        Effects_Volume_Changed(PlayerPrefs.GetFloat("EffectsVolume", 1));
 
+        // Set sliders
+        if (Master_Volume_Slider)
+            Master_Volume_Slider.value = master_volume;
+        if (Music_Volume_Slider)
+            Music_Volume_Slider.value = music_volume;
+        if (Voice_Volume_Slider)
+            Voice_Volume_Slider.value = voice_volume;
+        if (Effects_Volume_Slider)
+            Effects_Volume_Slider.value = effects_volume;
+    }
 
-    public void PlayBeep()
-    {
-        Time.timeScale = 1.0f;
-        AudioSource.PlayClipAtPoint(beep.clip, Vector3.zero);
-        //beep.PlayOneShot(beep.clip);
-        //beep.PlayClipAtPoint(beep.clip, Camera.main.transform.position, 1.0f);
-        Time.timeScale = 0f;
-    }
-    public void PlayNotification()
-    {
-        Time.timeScale = 1.0f;
-        notification.Play();
-        Time.timeScale = 0f;
-    }
 
     // Fades out the current background music over seconds_it_takes_to_fade_out
     public IEnumerator Fade_Out_Music(float seconds_it_takes_to_fade_out)
@@ -67,7 +72,6 @@ public class AudioManager : MonoBehaviour
     public void Set_Music(AudioClip new_music)
     {
         background_music_audio_source.clip = new_music;
-        background_music_audio_source.volume = 1;
         background_music_audio_source.loop = true;
         background_music_audio_source.Play();
     }
@@ -104,6 +108,27 @@ public class AudioManager : MonoBehaviour
     }
 
 
+    // Called every time a character is printed to the screen, plays 1 instance of the given sound
+    public void Play_Talking_Beep(AudioClip beep)
+    {
+        bool found_free_audiosource = false;
+        foreach (AudioSource aud in talking_beeps_list)
+        {
+            // Check if the audiosource is playing
+            if (!aud.isPlaying)
+            {
+                // AudioSource is not playing, make it play the beep
+                aud.clip = beep;
+                aud.Play();
+                found_free_audiosource = true;
+                break;
+            }
+        }
+        if (!found_free_audiosource)
+            Debug.Log("Could not find silent AudioSource for Play_Talking_Beep to use. Please add more AudioSources to the talking_beeps_list in AudioManager", this.gameObject);
+    }
+
+
     // Volume options managed by the sliders in the pause menu
     public void Master_Volume_Changed(float new_volume)
     {
@@ -111,32 +136,46 @@ public class AudioManager : MonoBehaviour
 
         // Change the audio listener's volume
         AudioListener.volume = master_volume;
+
+        SavePlayerPreference("MasterVolume", new_volume);
     }
     public void Voice_Volume_Changed(float new_volume)
     {
         voice_volume = new_volume;
-        voice_audio_source.volume = voice_volume;
+        voice_audio_source.volume = new_volume;
+
+        // Change the talking beeps volume, as they count as voice volume
+        foreach (AudioSource aud in talking_beeps_list)
+        {
+            aud.volume = voice_volume; 
+        }
+
+        SavePlayerPreference("VoiceVolume", new_volume);
     }
     public void Music_Volume_Changed(float new_volume)
     {
         music_volume = new_volume;
-        background_music_audio_source.volume = music_volume;
+        background_music_audio_source.volume = new_volume;
 
-        // New
-        SoundMixer.sound_manager.MusicVolumeChanged(new_volume);
+        SavePlayerPreference("MusicVolume", new_volume);
     }
     public void Effects_Volume_Changed(float new_volume)
     {
         effects_volume = new_volume;
 
+        SavePlayerPreference("EffectsVolume", new_volume);
+    }
 
-        // New
-        SoundMixer.sound_manager.EffectsVolumeChanged(new_volume);
 
-        // Find all grinding sparks and update their volume
-        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Sparks"))
-        {
-            go.GetComponent<AudioSource>().volume = new_volume;
-        }
+    // Player preferences live in Windows registries and persist between plays
+    public void SavePlayerPreference(string key, bool value)
+    {
+        PlayerPrefs.SetInt(key, System.Convert.ToInt32(value));
+        PlayerPrefs.Save();
+    }
+    public void SavePlayerPreference(string key, float value)
+    {
+        PlayerPrefs.SetFloat(key, value);
+        PlayerPrefs.Save();
     }
 }

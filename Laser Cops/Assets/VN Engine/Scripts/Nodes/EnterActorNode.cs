@@ -42,7 +42,7 @@ public class EnterActorNode : Node
 		{
             // Have this actor fade in
 			actor_script.Fade_In(fade_in_time);
-            StartCoroutine(Wait(fade_in_time + 1f));
+            StartCoroutine(Wait(fade_in_time + 1.5f));
 		}
         else
 		    Finish_Node();

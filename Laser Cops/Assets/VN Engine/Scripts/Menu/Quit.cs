@@ -3,22 +3,22 @@ using System.Collections;
 
 public class Quit : MonoBehaviour
 {
-    public void Quit_Application()
+    public void Resume()
     {
-        Application.Quit(); 
+        GameState.game_state.Unpause();
     }
 
 
     public void To_Level_Select()
     {
-        Time.timeScale = 1;
-        
+        Time.timeScale = 1f;
         UnityEngine.SceneManagement.SceneManager.LoadScene("SceneSelect");
+
     }
 
 
-    public void Resume()
+    public void Quit_Application()
     {
-        GameState.game_state.Unpause();
+        Application.Quit(); 
     }
 }

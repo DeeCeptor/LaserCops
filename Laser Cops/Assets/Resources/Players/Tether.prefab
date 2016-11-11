@@ -43,7 +43,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 413106}
   - 114: {fileID: 11448868}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Tether
   m_TagString: TetherManager
   m_Icon: {fileID: 0}

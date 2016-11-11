@@ -3,7 +3,8 @@ using System.Collections;
 
 public class BossHealthScript : MonoBehaviour {
     public float health = 20f;
-    public GameObject formChangeConversation;
+    public ConversationManager formChangeConversation;
+    public ConversationManager death_conversation;
     //if this field is empty the boss will die when out of health. otherwise the boss will change form when it runs out of health
     public GameObject nextStage;
 	//number of stages the boss will have
@@ -31,12 +32,23 @@ public class BossHealthScript : MonoBehaviour {
     void Start ()
     {
         immunityCounter = Time.time + immunityTime;
-        if(!InGameUIManager.ui_manager.bottom_bar.activeInHierarchy)
+
+        // Delay showing of health bar
+        StartCoroutine(ShowHealth());
+    }
+	
+
+    IEnumerator ShowHealth()
+    {
+        yield return new WaitForSeconds(7f);
+
+        if (!InGameUIManager.ui_manager.bottom_bar.activeInHierarchy)
         {
             InGameUIManager.ui_manager.ActivateBottomHealthBar(bossName, Color.red, overallHealth);
         }
     }
-	
+
+
 	// Update is called once per frame
 	void FixedUpdate ()
     {
@@ -293,7 +305,7 @@ public class BossHealthScript : MonoBehaviour {
         Destroy(gameObject);
         if(nextStage!=null)
         {
-            DeathConversation(formChangeConversation);
+            PlayConversation(formChangeConversation);
             if(ChangeFormEffect!= null)
             {
                 Instantiate(ChangeFormEffect, transform.position, transform.rotation);
@@ -302,21 +314,18 @@ public class BossHealthScript : MonoBehaviour {
         }
         else
         {
-            DeathConversation(formChangeConversation);
+            PlayConversation(formChangeConversation);
             Explode();
             GameState.game_state.Victory();
         }
     }
 
     //adds dialogue to the screen for changing forms or death
-    public void DeathConversation(GameObject conversation)
+    public void PlayConversation(ConversationManager conversation)
     {
-        if (conversation!=null && !UIManager.ui_manager.entire_UI_panel.gameObject.activeInHierarchy)
+        if (conversation != null)
         {
-            SceneManager.current_conversation = conversation.GetComponent<ConversationManager>();
-            conversation.GetComponent<ConversationManager>().Start_Conversation();
-            conversation.transform.parent = UIManager.ui_manager.entire_UI_panel.transform;
-            UIManager.ui_manager.entire_UI_panel.gameObject.SetActive(true);
+            conversation.Start_Conversation();
         }
     }
 }

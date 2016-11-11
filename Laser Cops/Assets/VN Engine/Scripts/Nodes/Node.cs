@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 // Base class of Nodes, which make up all conversations
@@ -25,4 +25,11 @@ public class Node : MonoBehaviour
 	{
 
 	}
+
+
+    // Stops the node in its tracks
+    public virtual void Stop_Node()
+    {
+        this.StopAllCoroutines();
+    }
 }

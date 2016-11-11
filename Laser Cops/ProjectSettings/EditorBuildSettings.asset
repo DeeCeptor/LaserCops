@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Menus/EndLevelScreen.unity
   - enabled: 1
-    path: Assets/Levels/Kevin/Tutorial.unity
+    path: Assets/Levels/Kevin/Nice and Easy.unity
   - enabled: 1
     path: Assets/Levels/Kevin/BulletPurgatory.unity
   - enabled: 1
@@ -28,4 +28,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Kevin/DiscoDan.unity
   - enabled: 1
-    path: Assets/Levels/Kevin/Getting Into It.unity
+    path: Assets/Levels/Kevin/Easing into It.unity

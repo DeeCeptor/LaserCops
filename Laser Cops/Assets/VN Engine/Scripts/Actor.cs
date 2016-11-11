@@ -158,7 +158,7 @@ public class Actor : MonoBehaviour
 		float value = 0;
 		while (this.GetComponent<Image>().color != Color.gray)
 		{
-			value += brigthness_change;
+            value += brigthness_change;
 			this.GetComponent<Image>().color = Color.Lerp(Color.white, Color.black, value);
 			yield return new WaitForSeconds(0.03f);
 		}
@@ -176,7 +176,7 @@ public class Actor : MonoBehaviour
 		float value = 0;
 		while (this.GetComponent<Image>().color != Color.white)
 		{
-			value += brigthness_change;
+            value += brigthness_change;
 			this.GetComponent<Image>().color = Color.Lerp(Color.gray, Color.white, value);
 			yield return new WaitForSeconds(0.03f);
 		}
@@ -187,7 +187,6 @@ public class Actor : MonoBehaviour
 	// Instantly places the actor at the designated position
 	public void Place_At_Position(Actor_Positions destination)
 	{
-        Debug.Log("Placing actor at position");
 		position = destination;
 
         ActorManager.Add_Actor_To(this, destination);
