@@ -28,6 +28,9 @@ public class BossHealthScript : MonoBehaviour {
     public float immunityTime = 0.1f;
     private float immunityCounter = 0f;
 
+    //make a mzimum number of times the tether can hit it in a frame
+    public bool hit = false;
+
     // Use this for initialization
     void Start ()
     {
@@ -52,6 +55,7 @@ public class BossHealthScript : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate ()
     {
+        hit = false;
 	    if(health <= 0)
         {
             Die();
@@ -228,7 +232,7 @@ public class BossHealthScript : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 12 && hurtByTether == true)
+        if (collision.gameObject.layer == 12 && hurtByTether == true && hit == false)
         {
             if (GameState.game_state.current_difficulty == GameState.Difficulty.Hard)
             {
@@ -242,6 +246,7 @@ public class BossHealthScript : MonoBehaviour {
             {
                 takeHit(Tether.tether.Damage);
             }
+            hit = true;
             
         }
 
@@ -263,7 +268,6 @@ public class BossHealthScript : MonoBehaviour {
                 }
 
                 TakeHitGraphics(collision);
-                collision.gameObject.GetComponent<bounceBomb>().Respawn();
             }
             else
             {
@@ -284,10 +288,9 @@ public class BossHealthScript : MonoBehaviour {
                     }
 
                     TakeHitGraphics(collision);
-                    collision.gameObject.GetComponent<bounceBomb>().Respawn();
                 }
             }
-
+            Destroy(collision.gameObject);
         }
     }
 
