@@ -72,9 +72,6 @@ public class GameState : MonoBehaviour
         SetGameMode();
         SetSettings();
 
-        EffectsManager.effects.ViolentExplosion(new Vector3(9999,9999,9999));
-        EffectsManager.effects.GridExplosion(new Vector3(9999, 9999, 9999), 2f, 8f, Color.red);
-
         if (number_of_players > 2)
         {
             // Spawn player 3
@@ -96,7 +93,8 @@ public class GameState : MonoBehaviour
     }
     void Start()
     {
-
+        GameObject obj_ = (GameObject)Instantiate(Resources.Load("Enemies/Scrolling/MostBasicEnemy") as GameObject, new Vector3(1, 0, 0), Quaternion.identity);
+        obj_.GetComponent<basicScrollingEnemyScript>().Die();
     }
 
 
