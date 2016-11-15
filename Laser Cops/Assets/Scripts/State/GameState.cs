@@ -372,6 +372,9 @@ public class GameState : MonoBehaviour
             Debug.Log(text + " on " + this.game_mode + " " + this.current_difficulty);
             game_over = true;
 
+            // Slow down time
+            ChangeTimescale(0.5f);
+
             // Score fact that we beat level, on this mode
             PlayerPrefs.SetInt(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name, 1);      // Beat level on anything
             PlayerPrefs.SetInt(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " " + this.current_difficulty, 1);  // Beat level on difficulty

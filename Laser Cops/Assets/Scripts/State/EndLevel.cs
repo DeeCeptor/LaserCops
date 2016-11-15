@@ -15,9 +15,7 @@ public class EndLevel : MonoBehaviour
     {
         if ((collider.gameObject.tag.Equals("Player")|| collider.gameObject.tag.Equals("Player")) && !activated)
         {
-            activated = true;
-            GameState.game_state.Victory();
-            //Destroy(this.gameObject);
+            Crossed_Finish_Line(collider.gameObject);
         }
     }
 
@@ -25,10 +23,26 @@ public class EndLevel : MonoBehaviour
     {
         if ((collider.gameObject.tag.Equals("Player") || collider.gameObject.tag.Equals("Player")) && !activated)
         {
-            activated = true;
-            GameState.game_state.Victory();
+            Crossed_Finish_Line(collider.gameObject);
         }
     }
+
+
+    public void Crossed_Finish_Line (GameObject victorious_player)
+    {
+        // Spawn party effects for the player!
+        EffectsManager.effects.Fireworks(victorious_player.transform.position, "Red").transform.parent = victorious_player.transform;
+        EffectsManager.effects.Fireworks(victorious_player.transform.position, "Green").transform.parent = victorious_player.transform;
+        EffectsManager.effects.Fireworks(victorious_player.transform.position, "Blue").transform.parent = victorious_player.transform;
+        
+        // Cut up the finish line
+        EffectsManager.effects.CutSprite(this.GetComponentInChildren<SpriteRenderer>().gameObject);
+        Destroy(this.GetComponentInChildren<SpriteRenderer>());
+
+        activated = true;
+        GameState.game_state.Victory();
+    }
+
 
     void Update ()
     {

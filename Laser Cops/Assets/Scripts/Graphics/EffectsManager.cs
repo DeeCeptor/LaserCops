@@ -114,6 +114,12 @@ public class EffectsManager : MonoBehaviour
         Destroy((GameObject)GameObject.Instantiate(Resources.Load("Graphics/Tether Damage Sparks") as GameObject,
             position, Quaternion.identity), 4.0f);
     }
+    public GameObject Fireworks(Vector2 position, string color) // Colors are: Red  Green   Blue
+    {
+        GameObject obj = (GameObject)GameObject.Instantiate(Resources.Load("Graphics/Fireworks " + color) as GameObject, position, Quaternion.identity);
+        Destroy(obj, 4.0f);
+        return obj;
+    }
 
     public void SameColorHit(Vector2 position,_Colour bulletColor)
     {
