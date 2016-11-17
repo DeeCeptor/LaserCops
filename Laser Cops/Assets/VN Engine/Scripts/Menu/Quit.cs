@@ -17,6 +17,13 @@ public class Quit : MonoBehaviour
     }
 
 
+    public void Clear_Preferences()
+    {
+        PlayerPrefs.DeleteAll();
+        Debug.Log("Preferences cleared");
+    }
+
+
     public void Quit_Application()
     {
         Application.Quit(); 

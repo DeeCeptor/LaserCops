@@ -36,7 +36,7 @@ public class PlayableLevelNode : LevelNode
     {
         // Load saved stats
         beat_level = System.Convert.ToBoolean(PlayerPrefs.GetInt(level_to_load, 0));
-        if (!beat_level && !required_to_beat)
+        if (!beat_level && required_to_beat)
             next_node = this;
 
         best_score = PlayerPrefs.GetInt(level_to_load + " High Score", 0);
