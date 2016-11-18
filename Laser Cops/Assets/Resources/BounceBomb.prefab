@@ -93,7 +93,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 158134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.7, z: 1}
+  m_LocalPosition: {x: 0, y: 0.08, z: 1}
   m_LocalScale: {x: 0.24999997, y: 0.24999997, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -119,7 +119,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 156692}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.9287453, y: -7.058754, z: 0}
+  m_LocalPosition: {x: -5.8323746, y: -17.812344, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -317,11 +317,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageToBoss: 10
-  damageToPlayers: 15
+  damageToPlayers: 30
   timeTillDetonation: 20
   timeTillDetonationEasy: 30
   timeTillDetonationHard: 15
   countDownTimer: 0
+  explosionRadius: 5
   countDownTimerText: {fileID: 10234908}
   xLeftOfScreen: 0
   inactive: 0
@@ -2180,7 +2181,7 @@ SpriteRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 702151cd4cdfbdc47bd79579f103aaed, type: 2}
+  - {fileID: 2100000, guid: dfda01643a28ee84dab2f00468ca5be2, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -2196,8 +2197,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9c69ae504c70e974a8dc515a58f1a5d0, type: 3}
-  m_Color: {r: 0.19999993, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: a35ad954860e31945a7bd069cb2c1b2c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!1001 &100100000

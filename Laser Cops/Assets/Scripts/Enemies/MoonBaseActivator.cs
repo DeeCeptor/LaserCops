@@ -5,7 +5,6 @@ public class MoonBaseActivator : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Debug.Log("hi");
         GameObject.Find("MoonBase").GetComponent<SecretMoonBossLaser>().Activate();
 	}
 	

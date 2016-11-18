@@ -56,39 +56,42 @@ public class RayLaserScript : MonoBehaviour {
 	}
 	
 	void FixedUpdate () {
-	    if(shotCounter < Time.time)
+        if (active)
         {
-            if (!silent)
+            if (shotCounter < Time.time)
             {
-                SoundMixer.sound_manager.PlayChargeUp();
-            }
-            laserRenderer.SetWidth(0.5f, 0.5f);
-            shooting = true;
-            TimeSinceShotCounter = 0;
-            laserRenderer.enabled = true;
-            shotCounter = Time.time + shotDelay;
-        }
-
-        if(shooting)
-        {
-            
-            Shoot();
-            if (TimeSinceShotCounter > shotDuration)
-            {
-                SoundMixer.sound_manager.StopBigLazerSound();
-                shooting = false;
-                laserRenderer.enabled = false;
-                if(alternateBulletColour)
+                if (!silent)
                 {
-                    if(bullet_colour == _Colour.Pink)
+                    SoundMixer.sound_manager.PlayChargeUp();
+                }
+                laserRenderer.SetWidth(0.5f, 0.5f);
+                shooting = true;
+                TimeSinceShotCounter = 0;
+                laserRenderer.enabled = true;
+                shotCounter = Time.time + shotDelay;
+            }
+
+            if (shooting)
+            {
+
+                Shoot();
+                if (TimeSinceShotCounter > shotDuration)
+                {
+                    SoundMixer.sound_manager.StopBigLazerSound();
+                    shooting = false;
+                    laserRenderer.enabled = false;
+                    if (alternateBulletColour)
                     {
-                        bullet_colour = _Colour.Blue;
-                        laserRenderer.SetColors(Color.cyan, Color.cyan);
-                    }
-                    else
-                    {
-                        bullet_colour = _Colour.Pink;
-                        laserRenderer.SetColors(Color.magenta, Color.magenta);
+                        if (bullet_colour == _Colour.Pink)
+                        {
+                            bullet_colour = _Colour.Blue;
+                            laserRenderer.SetColors(Color.cyan, Color.cyan);
+                        }
+                        else
+                        {
+                            bullet_colour = _Colour.Pink;
+                            laserRenderer.SetColors(Color.magenta, Color.magenta);
+                        }
                     }
                 }
             }

@@ -6,11 +6,11 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: BounceBombGlow
+  m_Name: bombGlow
   m_Shader: {fileID: 4800000, guid: 74db66f016826774ebe09e275eecdf0d, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: 3000
+  m_ShaderKeywords: _EMISSION
+  m_LightmapFlags: 1
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -48,7 +48,7 @@ Material:
     - first:
         name: _MKGlowTex
       second:
-        m_Texture: {fileID: 2800000, guid: 9c69ae504c70e974a8dc515a58f1a5d0, type: 3}
+        m_Texture: {fileID: 2800000, guid: a35ad954860e31945a7bd069cb2c1b2c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -92,14 +92,20 @@ Material:
         name: _DstBlend
       second: 0
     - first:
+        name: _GlossMapScale
+      second: 1
+    - first:
         name: _Glossiness
       second: 0.5
+    - first:
+        name: _GlossyReflections
+      second: 1
     - first:
         name: _MKGlowOffSet
       second: 0
     - first:
         name: _MKGlowPower
-      second: 2.5
+      second: 0.169
     - first:
         name: _MKGlowTexStrength
       second: 1
@@ -116,6 +122,12 @@ Material:
         name: _Parallax
       second: 0.02
     - first:
+        name: _SmoothnessTextureChannel
+      second: 0
+    - first:
+        name: _SpecularHighlights
+      second: 1
+    - first:
         name: _SrcBlend
       second: 1
     - first:
@@ -127,13 +139,13 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.862069, g: 1, b: 0, a: 1}
+      second: {r: 0, g: 0, b: 0, a: 1}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
     - first:
         name: _MKGlowColor
-      second: {r: 0.90344834, g: 1, b: 0, a: 1}
+      second: {r: 0.9862069, g: 1, b: 0, a: 1}
     - first:
         name: _MKGlowTexColor
-      second: {r: 0.9862069, g: 1, b: 0, a: 1}
+      second: {r: 0.53676474, g: 0.53676474, b: 0.53676474, a: 1}

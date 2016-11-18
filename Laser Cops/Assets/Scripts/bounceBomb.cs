@@ -4,11 +4,12 @@ using System.Collections;
 public class bounceBomb : MonoBehaviour {
 
     public float damageToBoss = 10f;
-    public float damageToPlayers = 15f;
+    public float damageToPlayers = 30f;
     public float timeTillDetonation = 20f;
     public float timeTillDetonationEasy = 30f;
     public float timeTillDetonationHard = 15f;
     public float countDownTimer;
+    public float explosionRadius = 5f;
     public TextMesh countDownTimerText;
     //the x Co-ordinate of the left of screen set at the start
     public float xLeftOfScreen;
@@ -51,12 +52,7 @@ public class bounceBomb : MonoBehaviour {
 
         if(collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerController>().TakeHit(damageToPlayers, true);
-            EffectsManager.effects.ViolentExplosion(collision.contacts[0].point);
-            EffectsManager.effects.TetherGrindSparks(collision.contacts[0].point);
-            EffectsManager.effects.BurstLargeFireball(collision.contacts[0].point);
-            SoundMixer.sound_manager.PlayGettingHitExplosion();
-            Destroy(gameObject);
+            gameObject.layer = 25;
         }
     }
 
@@ -75,6 +71,13 @@ public class bounceBomb : MonoBehaviour {
 
     public void Detonate()
     {
+        for(int i = 0; i < GameState.game_state.Players.Count;i++)
+        {
+            if((GameState.game_state.Players[i].transform.position - transform.position).magnitude < explosionRadius)
+            {
+                GameState.game_state.Players[i].TakeHit(damageToPlayers,true);
+            }
+        }
         EffectsManager.effects.ViolentExplosion(transform.position);
         EffectsManager.effects.TetherGrindSparks(transform.position);
         EffectsManager.effects.BurstLargeFireball(transform.position);
