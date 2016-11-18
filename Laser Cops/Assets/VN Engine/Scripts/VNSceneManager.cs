@@ -133,7 +133,8 @@ public class VNSceneManager : MonoBehaviour
     /// </summary>
     public void Button_Pressed()
     {
-        current_conversation.Button_Pressed();
+        if (current_conversation != null)
+            current_conversation.Button_Pressed();
     }
 
 

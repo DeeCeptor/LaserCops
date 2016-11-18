@@ -8,10 +8,17 @@ public class PlayerCursor : MonoBehaviour
     public LevelNode hovering_over_level;
     public LevelNode destination_node;
 
+    public static PlayerCursor cursor;
+
     float min_y_difference = 1f;
     float min_x_difference = 1f;
     float move_speed = 4f;
 
+
+    void Awake()
+    {
+        cursor = this;
+    }
 	void Start () 
 	{
         string last_level = PlayerPrefs.GetString("LastLevelPlayed");

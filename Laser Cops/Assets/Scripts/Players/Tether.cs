@@ -268,12 +268,20 @@ public class Tether : MonoBehaviour
             HingeJoint2D jo = tether_links[0].GetComponents<HingeJoint2D>()[1];
             jo.autoConfigureConnectedAnchor = false;
 
-            tether_links_parent.SetActive(true);
-            /*
+            // Calculate how the tether shoould appear between them
+            int pos = 0;
             foreach (GameObject obj in tether_links)
             {
-                obj.SetActive(true);
-            }*/
+
+                Vector3 dir = beginning_anchor.transform.position - end_anchor.transform.position;
+                //GameObject segment = ((GameObject)Instantiate(emptyPrefab,
+                //        new Vector3(beginning_anchor.transform.position.x, beginning_anchor.transform.position.y, 0) - ((dir / (float)number_of_segments) * i), Quaternion.identity));
+
+                obj.transform.position = new Vector3(beginning_anchor.transform.position.x, beginning_anchor.transform.position.y, 0) - ((dir / (float)number_of_segments) * pos);
+                pos++;
+            }
+
+            tether_links_parent.SetActive(true);
         }
     }
     public void SwitchTether()
