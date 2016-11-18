@@ -182,7 +182,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162716}
   m_LocalRotation: {x: 0, y: 0, z: -0.70710593, w: 0.70710766}
-  m_LocalPosition: {x: 30.324875, y: 34.689186, z: 0}
+  m_LocalPosition: {x: -15.2044735, y: 33.998802, z: 0}
   m_LocalScale: {x: 3.255809, y: 3.255809, z: 1.6279047}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -439,8 +439,8 @@ MonoBehaviour:
   textbox_title: Disco Dan
   dialogue_from: 0
   localized_key: 
-  text: You're a tough one. Disco moon ACTIVATE!
-  talking_beeps: {fileID: 0}
+  text: Damn you're pretty quick on your feet
+  talking_beeps: {fileID: 8300000, guid: f23e41a53f339964bb4cee2c4be19144, type: 3}
   darken_all_other_characters: 0
   bring_speaker_to_front: 1
   clear_text_after: 1
@@ -459,12 +459,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c511b6cead39dac4ab376e567ffb5f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  health: 10
   formChangeConversation: {fileID: 11462648}
   death_conversation: {fileID: 0}
-  nextStage: {fileID: 1000012179053112, guid: 188f85d552247154d914edf2d80fd475, type: 2}
+  nextStage: {fileID: 1000013004215792, guid: 3e9713757e929e24bb81b46d36921257, type: 2}
   stages: 3
-  overallHealth: 40
+  overallHealth: 50
   bossName: Disco Dan
   pointValue: 2000
   TimeBonus: 600
@@ -9579,6 +9579,7 @@ GameObject:
   - 4: {fileID: 4000013815009782}
   - 212: {fileID: 212000010609348082}
   - 114: {fileID: 114000012824167136}
+  - 114: {fileID: 114000010993327066}
   m_Layer: 0
   m_Name: trackingTurret (3)
   m_TagString: Untagged
@@ -9596,6 +9597,7 @@ GameObject:
   - 4: {fileID: 4000010500198480}
   - 212: {fileID: 212000013330763192}
   - 114: {fileID: 114000012279144562}
+  - 114: {fileID: 114000014156701586}
   m_Layer: 0
   m_Name: trackingTurret (2)
   m_TagString: Untagged
@@ -9658,7 +9660,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011717619388}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: -0.095463924, y: 0.2073604, z: 0}
+  m_LocalPosition: {x: -0.00036702212, y: 0.369946, z: 0}
   m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.61428654}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_Children: []
@@ -9690,6 +9692,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 423966}
   m_RootOrder: 8
+--- !u!114 &114000010993327066
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010982532090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5856db298e3415342a1bfbb970eab11f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  remove_on_difficulty_higher_than: 0
+  difficulty: 2
+  cell_size: 1
 --- !u!114 &114000011150858974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9706,7 +9722,7 @@ MonoBehaviour:
   shotDelay: 8
   shotCounter: 0
   bullet: {fileID: 195788, guid: 238c3f2305376064395dc97f36581df4, type: 2}
-  active: 0
+  active: 1
   bulletColour: 0
   CarColour: 0
   playerCloseDisable: 1
@@ -9723,7 +9739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   remove_on_difficulty_higher_than: 0
-  difficulty: 2
+  difficulty: 0
   cell_size: 1
 --- !u!114 &114000012279144562
 MonoBehaviour:
@@ -9741,7 +9757,7 @@ MonoBehaviour:
   shotDelay: 15
   shotCounter: 0
   bullet: {fileID: 195788, guid: 238c3f2305376064395dc97f36581df4, type: 2}
-  active: 0
+  active: 1
   bulletColour: 0
   CarColour: 0
   playerCloseDisable: 1
@@ -9783,11 +9799,25 @@ MonoBehaviour:
   shotDelay: 15
   shotCounter: 0
   bullet: {fileID: 195788, guid: 238c3f2305376064395dc97f36581df4, type: 2}
-  active: 0
+  active: 1
   bulletColour: 0
   CarColour: 0
   playerCloseDisable: 1
   disableDistance: 2
+--- !u!114 &114000014156701586
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011050592524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5856db298e3415342a1bfbb970eab11f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  remove_on_difficulty_higher_than: 0
+  difficulty: 2
+  cell_size: 1
 --- !u!212 &212000010406293178
 SpriteRenderer:
   m_ObjectHideFlags: 1

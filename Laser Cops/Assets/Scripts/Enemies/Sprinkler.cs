@@ -18,12 +18,6 @@ public class Sprinkler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        if(!active)
-        {
-            CheckActive();
-        }
-        if (active)
-        {
             if (Clockwise)
             {
                 transform.Rotate(0, 0, rotationSpeed);
@@ -38,15 +32,5 @@ public class Sprinkler : MonoBehaviour {
                 Clockwise = !Clockwise;
                 rotationCounter = Time.time + rotationDuration;
             }
-        }
-    }
-
-    public void CheckActive()
-    {
-        if (GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main))
-        {
-            active = true;
-            rotationCounter = Time.time + rotationCounter;
-        }
     }
 }

@@ -20,7 +20,7 @@ public class ActivateTurretsOnTime : MonoBehaviour {
                 turrets[i].active = true;
             }
             ForwardShotScript[] moreTurrets = transform.GetComponentsInChildren<ForwardShotScript>();
-            for (int i = 0; i < turrets.Length; i++)
+            for (int i = 0; i < moreTurrets.Length; i++)
             {
                 moreTurrets[i].active = true;
             }
