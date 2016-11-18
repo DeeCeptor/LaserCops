@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System;
 
 public class PlayerController : PlayerInput
 {
@@ -34,7 +35,7 @@ public class PlayerController : PlayerInput
     public float Max_Health = 100f;
     public float Health;
     float HP_transfer_rate = 15f;
-    public float Grinding_Damage = 0.3f;    // How much damage we do by grinding against enemies
+    public float Grinding_Damage = 0.6f;    // How much damage we do by grinding against enemies
     public Image health_bar_image;
 
     // Boost
@@ -45,7 +46,7 @@ public class PlayerController : PlayerInput
     float boost_speed_modifier = 3f;
     [HideInInspector]
     public bool currently_boosting = false;
-    public float boosting_damage = 1.0f;
+    public float boosting_damage = 4.0f;
 
     // Car
     public GameObject car_sprite;   // Sprite we'll be rotating using animation
@@ -100,6 +101,7 @@ public class PlayerController : PlayerInput
         physics = this.GetComponent<Rigidbody2D>();
         default_rotation = transform.rotation.eulerAngles.z;
         desired_rotation = default_rotation;
+        Debug.Log(boosting_damage);
     }
     void Start()
     {
@@ -177,11 +179,13 @@ public class PlayerController : PlayerInput
             {
                 if (GameState.game_state.going_sideways)
                 {
+                    //Debug.Log("A");
                     physics.velocity = new Vector2(physics.velocity.x, new_speed.y);
+                    //physics.AddForce(new Vector2(new_speed.x * 0.25f, new_speed.y * 0.5f), ForceMode2D.Force);
                 }
                 else
                 {
-                    physics.velocity = new Vector2(new_speed.x, physics.velocity.y);
+                    //physics.velocity = new Vector2(new_speed.x, physics.velocity.y);
                 }
             }
             else
@@ -357,6 +361,9 @@ public class PlayerController : PlayerInput
             damage = 0;
 
         float prev_health = Health;
+
+        if (currently_boosting)
+            damage = damage / 2f;
 
         AdjustHealth(-damage);
 

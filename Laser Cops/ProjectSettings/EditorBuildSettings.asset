@@ -29,3 +29,5 @@ EditorBuildSettings:
     path: Assets/Levels/Kevin/DiscoDan.unity
   - enabled: 1
     path: Assets/Levels/Kevin/Easing into It.unity
+  - enabled: 1
+    path: Assets/Levels/Kevin/MrPresident.unity

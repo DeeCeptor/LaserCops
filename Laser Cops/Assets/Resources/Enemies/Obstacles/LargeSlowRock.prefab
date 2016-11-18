@@ -11,7 +11,7 @@ GameObject:
   - 50: {fileID: 5082222}
   - 114: {fileID: 11425164}
   - 114: {fileID: 11489262}
-  - 58: {fileID: 58000014087748612}
+  - 61: {fileID: 61000013193450084}
   m_Layer: 27
   m_Name: LargeSlowRock
   m_TagString: Obstacle
@@ -56,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 123584}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.5, y: -4, z: 10}
+  m_LocalPosition: {x: 21.5, y: -6, z: 10}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -170,8 +170,8 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 123584}
   m_IsPrefabParent: 1
---- !u!58 &58000014087748612
-CircleCollider2D:
+--- !u!61 &61000013193450084
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -183,4 +183,4 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.55
+  m_Size: {x: 1, y: 1}

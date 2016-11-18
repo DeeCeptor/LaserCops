@@ -19,6 +19,7 @@ public class TetherClamping : MonoBehaviour
 
     void Update ()
     {
+        /*
         if (!GameState.game_state.chained_to_center && GameState.game_state.PlayerObjects.Length <= 2)
         {
             if (player_1.transform.position.y < player_2.transform.position.y)
@@ -33,7 +34,7 @@ public class TetherClamping : MonoBehaviour
                     transform.position.x,//Mathf.Clamp(this.transform.position.x, player_1.transform.position.x, player_2.transform.position.x), 
                     Mathf.Clamp(this.transform.position.y, player_2.transform.position.y, player_1.transform.position.y));
             }
-        }
+        }*/
 	}
 
 
@@ -45,11 +46,23 @@ public class TetherClamping : MonoBehaviour
     }
 
 
+    public void AbsorbBullet(GameObject bullet)
+    {
+        GameState.game_state.Heal_All_Players(3f);
+        InGameUIManager.ui_manager.ChangeScore(2, this.transform.position);
+        Destroy(bullet);
+    }
+
+
     void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
         {
             TouchedObstacle();
+        }
+        else if (Tether.tether.cur_tether_mode == Tether.TetherMode.Capture && coll.gameObject.layer == LayerMask.NameToLayer("Bullet"))
+        {
+            AbsorbBullet(coll.gameObject);
         }
     }
     void OnCollisionStay2D(Collision2D coll)

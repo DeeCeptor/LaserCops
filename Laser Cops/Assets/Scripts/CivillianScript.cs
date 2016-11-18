@@ -141,13 +141,7 @@ public class CivillianScript : MonoBehaviour {
         EffectsManager.effects.PlayersHealed();
         SoundMixer.sound_manager.PlayNotification();
 
-        GameObject[] playerObjects = GameState.game_state.PlayerObjects;
-        for (int i = 0; i < playerObjects.Length; i++)
-        {
-            PlayerController playerScript = playerObjects[i].GetComponent<PlayerController>();
-            playerScript.TakeHit(-healthToGainBack);
-        }
+        GameState.game_state.Heal_All_Players(healthToGainBack);
         Destroy(gameObject);
-
     }
 }

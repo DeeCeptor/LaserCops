@@ -597,7 +597,7 @@ MonoBehaviour:
   active: 0
   die_in_one_hit: 0
   takes_grinding_damage: 0
-  collisionDamage: 0.3
+  collisionDamage: 0.1
   pointValue: 20
   health: 1
   beingRammed: 0
