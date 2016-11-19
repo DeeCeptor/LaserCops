@@ -47,7 +47,6 @@ public class BulletScript : MonoBehaviour
             {
                 collision.gameObject.GetComponent<PlayerController>().TakeHit(damage, true);
                 EffectsManager.effects.BulletHitPlayer(collision.contacts[0].point);
-                
             }
 
             // Spawn small sparks and explosion
