@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class SideToSide : basicScrollingEnemyScript {
+public class SideToSide : basicScrollingEnemyScript
+{
     public float sideSpeed = 2f;
 
     //switch direction this often
@@ -27,16 +28,16 @@ public class SideToSide : basicScrollingEnemyScript {
         {
             moveInactive();
         }
-
         else if (active)
         {
             CheckDeath();
             moveActive();
 
-            if (switchCounter < Time.time)
+            switchCounter -= Time.deltaTime;
+            if (switchCounter <= 0)
             {
                 pos = !pos;
-                switchCounter = Time.time + switchTime;
+                switchCounter = switchTime;
             }
 
             if (upDown)

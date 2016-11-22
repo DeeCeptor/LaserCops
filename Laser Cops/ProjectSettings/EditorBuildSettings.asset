@@ -18,16 +18,20 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Kevin/BulletPurgatory.unity
   - enabled: 1
-    path: Assets/Levels/Michael/Gettin' Pushy.unity
+    path: Assets/Levels/Finished/Gettin' Pushy.unity
   - enabled: 1
-    path: Assets/Levels/Michael/Think Fast.unity
+    path: Assets/Levels/Finished/Think Fast.unity
   - enabled: 1
-    path: Assets/Levels/Michael/Ocean Waves.unity
+    path: Assets/Levels/Finished/Ocean Waves.unity
   - enabled: 1
     path: Assets/Levels/Kevin/TakeItSlow.unity
+  - enabled: 1
+    path: Assets/Levels/Kevin/DiscoBall.unity
   - enabled: 1
     path: Assets/Levels/Kevin/DiscoDan.unity
   - enabled: 1
     path: Assets/Levels/Kevin/Easing into It.unity
+  - enabled: 1
+    path: Assets/Levels/Finished/Rainbow Road.unity
   - enabled: 1
     path: Assets/Levels/Kevin/MrPresident.unity

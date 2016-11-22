@@ -101,7 +101,6 @@ public class PlayerController : PlayerInput
         physics = this.GetComponent<Rigidbody2D>();
         default_rotation = transform.rotation.eulerAngles.z;
         desired_rotation = default_rotation;
-        Debug.Log(boosting_damage);
     }
     void Start()
     {

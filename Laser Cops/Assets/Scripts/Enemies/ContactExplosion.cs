@@ -14,18 +14,17 @@ public class ContactExplosion : MonoBehaviour
     public void OnCollisionEnter2D(Collision2D col)
     {
         if (!activated) 
-            StartCoroutine(Countdown());
+            StartCoroutine(Countdown(col.gameObject));
     }
 
 
-    public IEnumerator Countdown()
+    public IEnumerator Countdown(GameObject col)
     {
         // Show explosion radius
         danger_radius.transform.localScale = new Vector3(radius, radius, 1);
         danger_radius.SetActive(true);
 
-
-        if (explosion_delay_time != 0)
+        if (explosion_delay_time != 0 && (col.gameObject.layer != LayerMask.NameToLayer("Obstacles")))
             yield return new WaitForSeconds(explosion_delay_time);
 
         SoundMixer.sound_manager.Play8bitExplosion();
