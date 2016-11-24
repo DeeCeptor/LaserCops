@@ -37,8 +37,6 @@ public class CivillianScript : MonoBehaviour {
 		}
 		else
 		{
-            if (Tether.tether == null)
-                Debug.Log("tether");
             if (switch_tether_text)
                 switch_tether_mesh.enabled = (Tether.tether.cur_tether_mode != Tether.TetherMode.Capture);
 
@@ -141,7 +139,11 @@ public class CivillianScript : MonoBehaviour {
         EffectsManager.effects.PlayersHealed();
         SoundMixer.sound_manager.PlayNotification();
 
-        GameState.game_state.Heal_All_Players(healthToGainBack);
+        if (GameState.game_state.current_difficulty == GameState.Difficulty.Easy)
+            GameState.game_state.Heal_All_Players(100f);
+        else
+            GameState.game_state.Heal_All_Players(healthToGainBack);
+
         Destroy(gameObject);
     }
 }

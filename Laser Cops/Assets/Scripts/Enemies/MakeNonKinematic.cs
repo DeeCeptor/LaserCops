@@ -17,7 +17,10 @@ public class MakeNonKinematic : MonoBehaviour
         if (script.active)
         {
             this.GetComponent<Rigidbody2D>().isKinematic = false;
-            other_obj.isKinematic = false;
+
+            if (other_obj != null)
+                other_obj.isKinematic = false;
+
             Destroy(this);
         }
     }

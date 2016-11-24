@@ -59,8 +59,6 @@ public class basicScrollingEnemyScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        tether_lightning_cooldown -= Time.deltaTime;
-
         if (!active)
         {
             moveInactive();
@@ -71,6 +69,11 @@ public class basicScrollingEnemyScript : MonoBehaviour
             moveActive();
             
         }
+    }
+
+    void Update()
+    {
+        tether_lightning_cooldown -= Time.deltaTime;
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -118,6 +121,8 @@ public class basicScrollingEnemyScript : MonoBehaviour
                 Die();
             else
                 TakeHit(Tether.tether.Damage);
+
+            return;
         }
         else if (collision.gameObject.tag == "Player")
         {
@@ -130,10 +135,14 @@ public class basicScrollingEnemyScript : MonoBehaviour
                 // Hurt this enemy cause it's grinding against the player
                 this.TakeHit(collision.gameObject.GetComponent<PlayerController>().Grinding_Damage);
             }
+
+            return;
         }
         else if (collision.gameObject.tag == "VIP")
         {
             collision.gameObject.GetComponent<VIPScript>().TakeHit(collisionDamage);
+
+            return;
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("RamBoundary"))

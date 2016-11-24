@@ -227,7 +227,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106488}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 10, y: -3, z: 1}
+  m_LocalPosition: {x: 66, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -635,7 +635,7 @@ MonoBehaviour:
   pointsForSave: 100
   pointPenaltyForKill: 200
   pointPenaltyForAbandon: 0
-  healthToGainBack: 15
+  healthToGainBack: 35
   saveLayer: 13
   destroyLayer: 12
   speed: 4

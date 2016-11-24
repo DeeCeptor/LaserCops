@@ -367,7 +367,7 @@ Transform:
   m_GameObject: {fileID: 140466}
   m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
   m_LocalPosition: {x: -0.015, y: -1.062, z: -1}
-  m_LocalScale: {x: 0.45407477, y: 1, z: 0.45407477}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.45407477}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
   m_Children:
   - {fileID: 4000012234945574}
@@ -453,7 +453,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183762}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 20, y: 6, z: 1}
+  m_LocalPosition: {x: 22, y: -7, z: 1}
   m_LocalScale: {x: 1.2, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1119,7 +1119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624bac116c5c2ce478b1680f0372b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 0.16
+  shotDelay: 3
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
   randomly_choose_coloured_bullet: 1
