@@ -182,7 +182,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162716}
   m_LocalRotation: {x: 0, y: 0, z: -0.70710593, w: 0.70710766}
-  m_LocalPosition: {x: 2.810135, y: -39.815178, z: 0}
+  m_LocalPosition: {x: -2.641741, y: -36.48084, z: 0}
   m_LocalScale: {x: 3.255809, y: 3.255809, z: 1.6279047}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -441,7 +441,7 @@ MonoBehaviour:
   textbox_title: Disco Dan
   dialogue_from: 0
   localized_key: 
-  text: Damn you're pretty quick on your feet
+  text: <color=red>Damn you're pretty quick on your feet</color>
   talking_beeps: {fileID: 8300000, guid: f23e41a53f339964bb4cee2c4be19144, type: 3}
   darken_all_other_characters: 0
   bring_speaker_to_front: 1
@@ -9694,7 +9694,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011050592524}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 2.2067726, y: 0.9797405, z: 0}
+  m_LocalPosition: {x: 2.0023189, y: 0.8113883, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0.61428654}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_Children: []
@@ -9707,7 +9707,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011717619388}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: 0.05676775, y: 0.365459, z: 0}
+  m_LocalPosition: {x: -0.14768595, y: 0.19710682, z: 0}
   m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.61428654}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_Children: []
@@ -9746,7 +9746,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010982532090}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: -2.093234, y: 0.97975075, z: 0}
+  m_LocalPosition: {x: -2.2976878, y: 0.8113985, z: 0}
   m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.61428654}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_Children: []
