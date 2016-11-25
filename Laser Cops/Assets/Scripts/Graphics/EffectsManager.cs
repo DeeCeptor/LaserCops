@@ -197,18 +197,29 @@ public class EffectsManager : MonoBehaviour
         Texture2D[] corpses = new Texture2D[2];
         Texture2D tex;
         GameObject[] corpse_objects = new GameObject[2];
+        
+        SpriteRenderer originalRenderer = obj.GetComponent<SpriteRenderer>();
 
         //instantiate the new sprites for cutting
         for (int i = 0; i < 2; i++)
         {
             GameObject corpseSpawned = (GameObject)Instantiate(Resources.Load("enemies/EmptyCorpse"), obj.transform.position, obj.transform.rotation);
             corpse_objects[i] = corpseSpawned;
-            corpseSpawned.transform.localScale = transform.localScale;
 
-            tex = obj.GetComponent<SpriteRenderer>().sprite.texture;
+            corpseSpawned.transform.localScale = obj.transform.localScale;
+            SpriteRenderer newRenderer = corpseSpawned.GetComponent<SpriteRenderer>();
+
+            tex = originalRenderer.sprite.texture;
             corpses[i] = new Texture2D(tex.width, tex.height, TextureFormat.ARGB32, false);
-            corpseSpawned.GetComponent<SpriteRenderer>().sprite = Sprite.Create(corpses[i], corpseSprite.rect, new Vector2(0.5f, 0.5f));
-            corpseSpawned.GetComponent<SpriteRenderer>().color = obj.GetComponent<SpriteRenderer>().color;
+            newRenderer.sprite = Sprite.Create(corpses[i], corpseSprite.rect, new Vector2(0.5f, 0.5f));
+            newRenderer.color = originalRenderer.color;
+
+
+            float SpriteSizeRatio = originalRenderer.bounds.size.x / newRenderer.bounds.size.x;
+            corpseSpawned.transform.localScale = corpseSpawned.transform.localScale * SpriteSizeRatio;
+            Debug.Log(originalRenderer.bounds);
+            Debug.Log(newRenderer.bounds);
+
         }
 
         //get a random point along a circles edge from the transforms position then get an opposite point 

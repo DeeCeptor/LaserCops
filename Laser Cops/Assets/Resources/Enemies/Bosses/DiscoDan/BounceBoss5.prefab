@@ -557,7 +557,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012179053112}
   m_LocalRotation: {x: 0, y: 0, z: -0.70710593, w: 0.70710766}
-  m_LocalPosition: {x: -4.273499, y: -31.36922, z: 0}
+  m_LocalPosition: {x: -44.378242, y: -72.90204, z: 0}
   m_LocalScale: {x: 3.2558093, y: 3.2558122, z: 1.6279047}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -604,7 +604,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013053846718}
   m_LocalRotation: {x: -0, y: -0, z: 0.9999993, w: 0.0012531875}
-  m_LocalPosition: {x: -2.877691, y: 1.005439, z: 0}
+  m_LocalPosition: {x: -2.7341998, y: 0.7304671, z: 0}
   m_LocalScale: {x: 0.6142893, y: 0.61428875, z: 0.6142866}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 89.86101}
   m_Children: []
@@ -656,7 +656,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012140921678}
   m_LocalRotation: {x: -0, y: -0, z: 0.9999993, w: 0.0012531875}
-  m_LocalPosition: {x: -0.72768784, y: 1.0054342, z: 0}
+  m_LocalPosition: {x: -0.5841966, y: 0.730462, z: 0}
   m_LocalScale: {x: 0.6142893, y: 0.61428875, z: 0.6142866}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 89.86101}
   m_Children: []
@@ -682,7 +682,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012581972976}
   m_LocalRotation: {x: -0, y: -0, z: 0.9999993, w: 0.0012531875}
-  m_LocalPosition: {x: 0.50088537, y: 1.0054313, z: 0}
+  m_LocalPosition: {x: 0.6443766, y: 0.7304591, z: 0}
   m_LocalScale: {x: 0.6142904, y: 0.6142899, z: 0.6142866}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 89.86101}
   m_Children: []
@@ -708,7 +708,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010413539894}
   m_LocalRotation: {x: -0, y: -0, z: 0.9999993, w: 0.0012531875}
-  m_LocalPosition: {x: -1.9562612, y: 1.0054369, z: 0}
+  m_LocalPosition: {x: -1.8127699, y: 0.730465, z: 0}
   m_LocalScale: {x: 0.61428815, y: 0.6142876, z: 0.6142866}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 89.86101}
   m_Children: []
@@ -734,7 +734,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012650830696}
   m_LocalRotation: {x: -0, y: -0, z: 0.9999993, w: 0.0012531875}
-  m_LocalPosition: {x: 1.4223151, y: 1.005429, z: 0}
+  m_LocalPosition: {x: 1.5658065, y: 0.73045695, z: 0}
   m_LocalScale: {x: 0.6142916, y: 0.6142911, z: 0.6142866}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 89.86101}
   m_Children: []
@@ -786,7 +786,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013510491326}
   m_LocalRotation: {x: -0, y: -0, z: 0.9999993, w: 0.0012531875}
-  m_LocalPosition: {x: 2.6508884, y: 1.0054259, z: 0}
+  m_LocalPosition: {x: 2.7943797, y: 0.73045385, z: 0}
   m_LocalScale: {x: 0.6142928, y: 0.61429226, z: 0.6142866}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 89.86101}
   m_Children: []
@@ -799,7 +799,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011650265928}
   m_LocalRotation: {x: -0, y: -0, z: 0.9999993, w: 0.0012531875}
-  m_LocalPosition: {x: 3.5723183, y: 1.0054238, z: 0}
+  m_LocalPosition: {x: 3.7158096, y: 0.7304518, z: 0}
   m_LocalScale: {x: 0.61429393, y: 0.6142934, z: 0.6142866}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 89.86101}
   m_Children: []
@@ -1022,7 +1022,7 @@ MonoBehaviour:
   textbox_title: Disco Dan
   dialogue_from: 0
   localized_key: 
-  text: Lazer moon activate!
+  text: <color=red>Lazer moon activate!</color>
   talking_beeps: {fileID: 8300000, guid: f23e41a53f339964bb4cee2c4be19144, type: 3}
   darken_all_other_characters: 0
   bring_speaker_to_front: 1

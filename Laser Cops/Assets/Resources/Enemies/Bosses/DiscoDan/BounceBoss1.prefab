@@ -570,6 +570,7 @@ MonoBehaviour:
   collisionAvoidCounter: 0
   desired_velocity: {x: 0, y: 0}
   travelDirection: 1
+  navigate_around_enemies: 1
   timeTillStop: 12.2
   stopCounter: 0
   rotateWhenStopped: 0
@@ -10084,7 +10085,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerToTrack: {fileID: 0}
   players: []
-  shotDelay: 20
+  shotDelay: 25
   shotCounter: 0
   bullet: {fileID: 156692, guid: ad1319160b7c7384b8fad183ced0d14c, type: 2}
   active: 0
