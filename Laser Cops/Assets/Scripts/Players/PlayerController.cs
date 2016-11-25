@@ -521,18 +521,16 @@ public class PlayerController : PlayerInput
             TransferHealth(coll.gameObject);
         }
 
-
-            // SPARKS
-            // Update the position of the grinding
-            if (in_use_grinding_sparks.ContainsKey(coll.gameObject))// && in_use_grinding_sparks[coll.gameObject] != null)
-            {
-                ParticleSystem p = in_use_grinding_sparks[coll.gameObject];
-                p.gameObject.transform.position = coll.contacts[0].point;
-                p.GetComponent<TurnOffSparks>().StartSparks();
-            }
-            //else
-              //  in_use_grinding_sparks.Remove(coll.gameObject);
-        
+        // SPARKS
+        // Update the position of the grinding
+        if (in_use_grinding_sparks.ContainsKey(coll.gameObject))// && in_use_grinding_sparks[coll.gameObject] != null)
+        {
+            ParticleSystem p = in_use_grinding_sparks[coll.gameObject];
+            p.gameObject.transform.position = coll.contacts[0].point;
+            p.GetComponent<TurnOffSparks>().StartSparks();
+        }
+        //else
+            //  in_use_grinding_sparks.Remove(coll.gameObject);
     }
     // Stop grinding against the object we were pushing against
     void OnCollisionExit2D(Collision2D coll)

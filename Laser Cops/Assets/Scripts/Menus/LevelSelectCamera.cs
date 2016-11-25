@@ -24,7 +24,7 @@ public class LevelSelectCamera : MonoBehaviour
 	    if (LevelManager.level_manager.level_settings.activeSelf)
         {
             Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, zoomed_size, speed * Time.deltaTime);
-            this.transform.position = Vector2.Lerp(this.transform.position, LevelManager.level_manager.selected_level_ui.transform.position, speed * Time.deltaTime);
+            this.transform.position = Vector2.Lerp(this.transform.position, (Vector2)LevelManager.level_manager.selected_level_ui.transform.position + new Vector2(0, -0.5f), speed * Time.deltaTime);
         }
         // Zooming out
         else

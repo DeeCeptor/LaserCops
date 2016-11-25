@@ -93,7 +93,7 @@ public class GameState : MonoBehaviour
     }
     void Start()
     {
-        GameObject obj_ = (GameObject)Instantiate(Resources.Load("Enemies/Scrolling/MostBasicEnemy") as GameObject, new Vector3(1, 0, 0), Quaternion.identity);
+        GameObject obj_ = (GameObject)Instantiate(Resources.Load("Enemies/Vehicles/MostBasicEnemy") as GameObject, new Vector3(1, 0, 0), Quaternion.identity);
         obj_.GetComponent<basicScrollingEnemyScript>().Die();
     }
 
