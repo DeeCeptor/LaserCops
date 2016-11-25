@@ -10,11 +10,21 @@ public class RandomMovingScrollingEnemyScript : basicScrollingEnemyScript {
     public float yBottomOfScreen = 0f;
     public float xRightOfScreen = 0f;
     public float xLeftOfScreen = 0f;
+
+    GameObject highway;
+    BoxCollider2D box;
     // Use this for initialization
     void Start () {
-        
-        Vector3 minScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
-        Vector3 maxScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+
+        box = this.GetComponent<BoxCollider2D>();
+        highway = GameObject.FindGameObjectWithTag("Grid");
+        MeshRenderer mesh = highway.GetComponent<MeshRenderer>();
+
+        float screenRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width,0,0 )).x - box.bounds.extents.x;
+        float screenLeft = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x + box.bounds.extents.x;
+
+        Vector3 minScreenBounds = new Vector3(screenLeft, mesh.bounds.min.y + box.bounds.extents.y, 0);
+        Vector3 maxScreenBounds = new Vector3(screenRight, mesh.bounds.max.y - box.bounds.extents.y, 0);
 
         yTopOfScreen = maxScreenBounds.y;
         yBottomOfScreen = minScreenBounds.y;

@@ -328,6 +328,7 @@ public class BossHealthScript : MonoBehaviour {
     {
         if (conversation != null)
         {
+            conversation.transform.SetParent(null);
             conversation.Start_Conversation();
         }
     }

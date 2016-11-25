@@ -24,6 +24,7 @@ TagManager:
   - PinkHP
   - Score
   - Timer
+  - Laser
   layers:
   - Default
   - TransparentFX
@@ -53,7 +54,7 @@ TagManager:
   - BounceBomb
   - Grid
   - Slow Obstacles
-  - 
+  - Laser
   - 
   - 
   - 
