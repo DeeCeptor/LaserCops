@@ -322,7 +322,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -14.358818, y: -0.024307251, z: -4.46875}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 456266}
   - {fileID: 409786}
@@ -740,7 +740,7 @@ MonoBehaviour:
   active: 0
   die_in_one_hit: 0
   takes_grinding_damage: 0
-  collisionDamage: 0.3
+  collisionDamage: 0.1
   pointValue: 20
   health: 1
   beingRammed: 0

@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class SideToSide : basicScrollingEnemyScript {
+public class SideToSide : basicScrollingEnemyScript
+{
     public float sideSpeed = 2f;
 
     //switch direction this often
@@ -13,28 +14,30 @@ public class SideToSide : basicScrollingEnemyScript {
 
     //indicates whether it will be moving in the positive or negativ direction
     public bool pos = true;
-	// Use this for initialization
-	void Start () {
+
+
+    void Start ()
+    {
         switchCounter = Time.time + switchTime/2;
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+
+
+    void FixedUpdate ()
+    {
         if (!active)
         {
             moveInactive();
         }
-
         else if (active)
         {
             CheckDeath();
             moveActive();
 
-            if (switchCounter < Time.time)
+            switchCounter -= Time.deltaTime;
+            if (switchCounter <= 0)
             {
                 pos = !pos;
-                switchCounter = Time.time + switchTime;
-
+                switchCounter = switchTime;
             }
 
             if (upDown)

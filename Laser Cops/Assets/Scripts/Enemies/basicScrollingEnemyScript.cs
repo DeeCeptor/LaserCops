@@ -38,6 +38,8 @@ public class basicScrollingEnemyScript : MonoBehaviour
 
     protected float tether_lightning_cooldown;
 
+    public bool navigate_around_enemies = true;
+
     ManualTrail[] objects_to_activate_when_active;
 
     // Use this for initialization
@@ -57,8 +59,6 @@ public class basicScrollingEnemyScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        tether_lightning_cooldown -= Time.deltaTime;
-
         if (!active)
         {
             moveInactive();
@@ -69,6 +69,11 @@ public class basicScrollingEnemyScript : MonoBehaviour
             moveActive();
             
         }
+    }
+
+    void Update()
+    {
+        tether_lightning_cooldown -= Time.deltaTime;
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -116,6 +121,8 @@ public class basicScrollingEnemyScript : MonoBehaviour
                 Die();
             else
                 TakeHit(Tether.tether.Damage);
+
+            return;
         }
         else if (collision.gameObject.tag == "Player")
         {
@@ -128,10 +135,14 @@ public class basicScrollingEnemyScript : MonoBehaviour
                 // Hurt this enemy cause it's grinding against the player
                 this.TakeHit(collision.gameObject.GetComponent<PlayerController>().Grinding_Damage);
             }
+
+            return;
         }
         else if (collision.gameObject.tag == "VIP")
         {
             collision.gameObject.GetComponent<VIPScript>().TakeHit(collisionDamage);
+
+            return;
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("RamBoundary"))
@@ -241,154 +252,21 @@ public class basicScrollingEnemyScript : MonoBehaviour
     //move perpendicularly to get away from the collision
     public void navigateAround()
     {
-        Vector2 velocity = GetComponent<Rigidbody2D>().velocity;
-        if (ramNavPos)
-        {
-            velocity = velocity + (new Vector2(-velocity.y, velocity.x).normalized);
-        }
-        else
-        {
-            velocity = velocity + (new Vector2(-velocity.y, velocity.x).normalized * -1);
-        }
-        GetComponent<Rigidbody2D>().velocity = velocity;
-    }
-
-    public GameObject[] CutSprite()
-    {
-        Sprite corpseSprite = gameObject.GetComponent<SpriteRenderer>().sprite;
-        Texture2D[] corpses = new Texture2D[2];
-        Texture2D tex;
-        GameObject[] corpse_objects = new GameObject[2];
-
-        //instantiate the new sprites for cutting
-        for (int i = 0; i < 2; i++)
-        {
-            GameObject corpseSpawned = (GameObject)Instantiate(Resources.Load("enemies/EmptyCorpse"), transform.position, transform.rotation);
-            corpse_objects[i] = corpseSpawned;
-            corpseSpawned.transform.localScale = transform.localScale;
-
-            tex = gameObject.GetComponent<SpriteRenderer>().sprite.texture;
-            corpses[i] = new Texture2D(tex.width, tex.height, TextureFormat.ARGB32, false);
-            corpseSpawned.GetComponent<SpriteRenderer>().sprite = Sprite.Create(corpses[i], corpseSprite.rect, new Vector2(0.5f, 0.5f));
-            corpseSpawned.GetComponent<SpriteRenderer>().color = gameObject.GetComponent<SpriteRenderer>().color;
-        }
-
-        //get a random point along a circles edge from the transforms position then get an opposite point 
-        Vector2 rand = Random.insideUnitCircle;
-        Vector2 point1 = transform.position + (Vector3)rand;
-        Vector2 point2 = transform.position - (Vector3)rand;
-
-        Vector2[] pixelLocations = new Vector2[corpses[0].GetPixels32().Length];
-        float width = corpses[0].width;
-
-        //random varience to make it look like it was sheared
-        //maximum varience
-        float xVariance = Random.Range(3f, 5f);
-        //current varience
-        float xToVary = xVariance;
-        //whether x will iterate up or down 
-        bool xUp = false;
-        float yVariance = Random.Range(3f, 5f);
-        float yToVary = yVariance;
-        bool yUp = false;
-        //counter for when to change x
-        int currentIterations = 0;
-
-        int iterationsNeeded = (int)width;
-        //set worldspace locations for the pixels
-        for (int i = 0; i < pixelLocations.Length; i++)
-        {
-            pixelLocations[i] = new Vector2((transform.position.x - width / 2f) + (1f * (i % (int)width)) + xToVary, (transform.position.y - width / 2f) + (1f * (i / (int)width)) + yToVary);
-            //scripts underneath are to make it jagged
-            if (yUp)
+        if (navigate_around_enemies)
+        {  
+            Vector2 velocity = GetComponent<Rigidbody2D>().velocity;
+            if (ramNavPos)
             {
-                if (yToVary >= yVariance)
-                {
-                    yUp = false;
-                    yToVary = yToVary - 1;
-                }
-                else
-                {
-                    yToVary = yToVary + 1;
-                }
+                velocity = velocity + (new Vector2(-velocity.y, velocity.x).normalized);
             }
             else
             {
-                if (yToVary <= -yVariance)
-                {
-                    yUp = true;
-                    yToVary = yToVary + 1;
-                }
-                else
-                {
-                    yToVary = yToVary - 1;
-                }
+                velocity = velocity + (new Vector2(-velocity.y, velocity.x).normalized * -1);
             }
-
-            if (currentIterations > iterationsNeeded)
-            {
-                currentIterations = 0;
-                if (xUp)
-                {
-                    if (xToVary >= xVariance)
-                    {
-                        xUp = false;
-                        xToVary = xToVary - 1;
-                    }
-                    else
-                    {
-                        xToVary = xToVary + 1;
-                    }
-                }
-                else
-                {
-                    if (xToVary <= -xVariance)
-                    {
-                        xUp = true;
-                        xToVary = xToVary + 1;
-                    }
-                    else
-                    {
-                        xToVary = xToVary - 1;
-                    }
-                }
-            }
-            currentIterations = currentIterations + 1;
+            GetComponent<Rigidbody2D>().velocity = velocity;
         }
-        
-        //array of pixel arrays
-        Color32[][] vertices = new Color32[2][];
-
-        for (int i = 0; i < 2; i++)
-        {
-            vertices[i] = corpseSprite.texture.GetPixels32();
-        }
-
-        for (int i = 0; i < pixelLocations.Length; i++)
-        {
-            //see which side the point will be on
-            if((pixelLocations[i] - point1).magnitude < (pixelLocations[i] - point2).magnitude)
-            {
-                //set pixel to clear for the side it's not on
-                vertices[1][i] = Color.clear;
-
-            }
-            else
-            {
-                vertices[0][i] = Color.clear;
-            }
-        }
-
-        for (int i = 0; i < 2; i++)
-        {
-
-            corpses[i].SetPixels32(vertices[i]);
-            corpses[i].Apply(true);
-
-        }
-
-        return corpse_objects;
     }
+
 
     public void Die()
     {
@@ -398,12 +276,11 @@ public class basicScrollingEnemyScript : MonoBehaviour
         InGameUIManager.ui_manager.ChangeScore(pointValue, this.transform.position);
         EffectsManager.effects.GridExplosion(this.transform.position, 2f, 8f, Color.red);
 
-        GameObject[] corpses = CutSprite();
-        corpses[0].GetComponent<EnemyDying>().JustDied(1);
-        corpses[1].GetComponent<EnemyDying>().JustDied(-1);
+        GameObject[] corpses = EffectsManager.effects.CutSprite(this.gameObject);
 
         Destroy(gameObject);
     }
+
 
 	//to be used whenthe enemy dies offscreen
 	public void DieOffScreen()
@@ -440,7 +317,7 @@ public class basicScrollingEnemyScript : MonoBehaviour
     }
 
     //put any behaviour that must be done when the enemy enters the screen here
-    public void Activate()
+    public virtual void Activate()
     {
         active = true;
 

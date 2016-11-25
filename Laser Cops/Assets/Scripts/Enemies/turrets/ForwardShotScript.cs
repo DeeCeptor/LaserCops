@@ -1,11 +1,15 @@
 using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
-public class ForwardShotScript : MonoBehaviour {
+public class ForwardShotScript : MonoBehaviour
+{
     //will shoot forward at regular intervals
-    public float shotDelay = 0.5f;
+    public float shotDelay = 0.8f;
     public float shotCounter;
     public GameObject bullet;
+    public bool randomly_choose_coloured_bullet = false;
+    public List<GameObject> coloured_bullets;
+    [HideInInspector]
     public bool active = false;
     public bool only_shoot_on_command = false;  // Will only fire when shoot() is called
 
@@ -14,22 +18,31 @@ public class ForwardShotScript : MonoBehaviour {
     //how close the player must be to disable the shot
     public float disableDistance = 2f;
 
-        
+    float shot_timer = 0;
 
-    void Start () {
-	
+    public bool randomly_determine_colour = false;
+    
+
+    void Start ()
+    {
+	    if (randomly_choose_coloured_bullet && coloured_bullets.Count > 0)
+        {
+            int range = Mathf.Min(coloured_bullets.Count, GameState.game_state.number_of_players);
+            bullet = coloured_bullets[Random.Range(0, range)];
+        }
 	}
 
-    // Update is called once per frame
+
     void FixedUpdate()
     {
         if (!only_shoot_on_command)
         {
             if (active)
             {
-                if (shotCounter < Time.time)
+                shot_timer -= Time.fixedDeltaTime * Time.timeScale;
+                if (shot_timer <= 0)
                 {
-                    shotCounter = Time.time + shotDelay;
+                    shot_timer = shotDelay;
                     shoot();
                 }
             }
@@ -39,6 +52,7 @@ public class ForwardShotScript : MonoBehaviour {
             }
         }
     }
+
 
     public void checkActive()
     {
@@ -59,10 +73,7 @@ public class ForwardShotScript : MonoBehaviour {
     {
         if (!playerCloseDisable)
         {
-            GameObject bulletSpawned = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
-            BulletScript bulletStats = bulletSpawned.GetComponent<BulletScript>();
-            bulletStats.target = transform.position + transform.up;
-            SoundMixer.sound_manager.PlayLazerShot();
+            CreateBullet();
         }
 
         else
@@ -75,13 +86,19 @@ public class ForwardShotScript : MonoBehaviour {
                     fire = false;
                 }
             }
-            if(fire)
+            if (fire)
             {
-                GameObject bulletSpawned = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
-                BulletScript bulletStats = bulletSpawned.GetComponent<BulletScript>();
-                bulletStats.target = transform.position + transform.up;
-                    SoundMixer.sound_manager.PlayLazerShot();
+                CreateBullet();
             }
         }
+    }
+
+
+    public void CreateBullet()
+    {
+        GameObject bulletSpawned = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
+        BulletScript bulletStats = bulletSpawned.GetComponent<BulletScript>();
+        bulletStats.target = transform.position + transform.up;
+        SoundMixer.sound_manager.PlayLazerShot();
     }
 }

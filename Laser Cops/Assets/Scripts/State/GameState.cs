@@ -236,6 +236,16 @@ public class GameState : MonoBehaviour
     }
 
 
+    public void Heal_All_Players(float amount)
+    {
+        GameObject[] playerObjects = GameState.game_state.PlayerObjects;
+        for (int i = 0; i < playerObjects.Length; i++)
+        {
+            PlayerController playerScript = playerObjects[i].GetComponent<PlayerController>();
+            playerScript.Heal(amount);
+        }
+    }
+
 
     void Update()
     {

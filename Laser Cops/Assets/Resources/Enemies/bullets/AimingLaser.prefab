@@ -154,8 +154,8 @@ TrailRenderer:
   m_SortingLayerID: 1874583701
   m_SortingOrder: 0
   m_Time: 0.5
-  m_StartWidth: 0.03
-  m_EndWidth: 0.03
+  m_StartWidth: 0.06
+  m_EndWidth: 0.06
   m_Colors:
     m_Color[0]:
       serializedVersion: 2

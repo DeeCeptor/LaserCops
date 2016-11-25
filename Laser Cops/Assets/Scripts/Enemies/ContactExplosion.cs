@@ -3,23 +3,28 @@ using System.Collections;
 
 public class ContactExplosion : MonoBehaviour 
 {
-    public float radius = 4f;
+    public float radius = 6f;
     public bool flat_dmg = true;
     public float dmg = 30;
-    public float explosion_delay_time = 0;
+    public float explosion_delay_time = 1.5f;
+    public GameObject danger_radius;
 
     bool activated = false;
 
     public void OnCollisionEnter2D(Collision2D col)
     {
         if (!activated) 
-            StartCoroutine(Explode());
+            StartCoroutine(Countdown(col.gameObject));
     }
 
 
-    public IEnumerator Explode()
+    public IEnumerator Countdown(GameObject col)
     {
-        if (explosion_delay_time != 0)
+        // Show explosion radius
+        danger_radius.transform.localScale = new Vector3(radius, radius, 1);
+        danger_radius.SetActive(true);
+
+        if (explosion_delay_time != 0 && (col.gameObject.layer != LayerMask.NameToLayer("Obstacles")))
             yield return new WaitForSeconds(explosion_delay_time);
 
         SoundMixer.sound_manager.Play8bitExplosion();
@@ -50,5 +55,11 @@ public class ContactExplosion : MonoBehaviour
         Destroy(this.gameObject);
 
         yield return null;
+    }
+
+
+    public void Explode()
+    {
+
     }
 }
