@@ -12323,9 +12323,9 @@ RectTransform:
   - {fileID: 488288}
   m_Father: {fileID: 22486306}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0.04250002, y: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -0.034, y: 0}
   m_SizeDelta: {x: 0.08500004, y: 0.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22496960
@@ -12363,9 +12363,9 @@ RectTransform:
   - {fileID: 450938}
   m_Father: {fileID: 22496960}
   m_RootOrder: 2
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.04250014, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 0.034, y: 0}
   m_SizeDelta: {x: 0.08500004, y: 0.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &100100000
@@ -12441,7 +12441,7 @@ GameObject:
   - 114: {fileID: 114000010247058152}
   m_Layer: 5
   m_Name: 2HP
-  m_TagString: PinkHP
+  m_TagString: 2HP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12458,7 +12458,7 @@ GameObject:
   - 114: {fileID: 114000014006139940}
   m_Layer: 5
   m_Name: 1HP
-  m_TagString: BlueHP
+  m_TagString: 1HP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
