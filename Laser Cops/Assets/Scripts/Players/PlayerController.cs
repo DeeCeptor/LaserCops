@@ -114,10 +114,12 @@ public class PlayerController : PlayerInput
         InGameUIManager.ui_manager.UpdateHealth();
         health_bar_image.color = new Color(health_bar_image.color.r, health_bar_image.color.g, health_bar_image.color.b, 0f);
 
-        this.UI_dmg_sparks = GameObject.Find("HighwayGrid/PhysicalUICanvas/" + player_colour.ToString() + "HP/HP Effects/DmgSparks").GetComponent<ParticleSystem>();
-        this.UI_healing_sparks = GameObject.Find("HighwayGrid/PhysicalUICanvas/" + player_colour.ToString() + "HP/HP Effects/HealingSparks").GetComponent<ParticleSystem>();
-        this.UI_transfer_sparks = GameObject.Find("HighwayGrid/PhysicalUICanvas/" + player_colour.ToString() + "HP/Transfer Effects/HealingTransferSparks").GetComponent<ParticleSystem>();
-        this.UI_low_hp_warning = GameObject.Find("HighwayGrid/PhysicalUICanvas/" + player_colour.ToString() + "HP/Low HP Warning");
+        GameObject hp = GameObject.FindGameObjectWithTag(player_number + "HP");
+        this.UI_dmg_sparks = hp.transform.Find("HP Effects/DmgSparks").GetComponent<ParticleSystem>();
+        this.UI_healing_sparks = hp.transform.FindChild("HP Effects/HealingSparks").GetComponent<ParticleSystem>();
+        this.UI_transfer_sparks = hp.transform.FindChild("Transfer Effects/HealingTransferSparks").GetComponent<ParticleSystem>();
+        this.UI_low_hp_warning = hp.transform.FindChild("Low HP Warning").gameObject;
+
 
         // Get player inputs
         if (GameState.game_state.player_inputs != null)
@@ -149,7 +151,7 @@ public class PlayerController : PlayerInput
                     inputs_to_check.Add("Controller 4 Left");
                     break;
             }
-            Debug.Log("Assining default inputs");
+            Debug.Log("Assigned default inputs");
         }
     }
 
@@ -449,7 +451,7 @@ public class PlayerController : PlayerInput
         EffectsManager.effects.ViolentExplosion(this.transform.position);
         EffectsManager.effects.GridExplosion(this.transform.position, 2f, 9f, primary_colour);
 
-        GameState.game_state.ChangeTimescale(0.3f);
+        //GameState.game_state.ChangeTimescale(0.3f);
 
         this.gameObject.layer = LayerMask.NameToLayer("Dead Player");
         this.gameObject.tag = "Obstacle";
@@ -660,7 +662,7 @@ public class PlayerController : PlayerInput
                     {
                         if (Tether.tether!=null)
                         {
-                            TetherLightning.tether_lightning.RegularBolt(this.transform.position, other_player.transform.position, 0.5f, Color.green, 5);
+                            TetherLightning.tether_lightning.RegularBolt(this.transform.position, other_player.transform.position, 0.6f, Color.green, 5);
                             last_health_transfer_lightning = Time.time;
                         }
                     }

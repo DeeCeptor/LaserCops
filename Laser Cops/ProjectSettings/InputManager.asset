@@ -246,6 +246,22 @@ InputManager:
     axis: 0
     joyNum: 2
   - serializedVersion: 3
+    m_Name: Controller 2 Right X Steering
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 3
+    joyNum: 2
+  - serializedVersion: 3
     m_Name: Controller 3 Left X Steering
     descriptiveName: 
     descriptiveNegativeName: 
@@ -277,6 +293,38 @@ InputManager:
     type: 2
     axis: 3
     joyNum: 3
+  - serializedVersion: 3
+    m_Name: Controller 4 Left X Steering
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 0
+    joyNum: 4
+  - serializedVersion: 3
+    m_Name: Controller 4 Right X Steering
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 3
+    joyNum: 4
   - serializedVersion: 3
     m_Name: Player 4 X Steering
     descriptiveName: 
@@ -404,7 +452,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 4
-    joyNum: 1
+    joyNum: 2
   - serializedVersion: 3
     m_Name: Controller 3 Left Y Steering
     descriptiveName: 
@@ -422,7 +470,7 @@ InputManager:
     axis: 1
     joyNum: 3
   - serializedVersion: 3
-    m_Name: Controller 4 Right Y Steering
+    m_Name: Controller 3 Right Y Steering
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -437,6 +485,22 @@ InputManager:
     type: 2
     axis: 4
     joyNum: 3
+  - serializedVersion: 3
+    m_Name: Controller 4 Right Y Steering
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 0
+    invert: 1
+    type: 2
+    axis: 4
+    joyNum: 4
   - serializedVersion: 3
     m_Name: Controller 4 Left Y Steering
     descriptiveName: 
@@ -620,7 +684,7 @@ InputManager:
     negativeButton: 
     positiveButton: joystick 2 button 0
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: joystick 2 button 8
     gravity: 1000
     dead: 0.001
     sensitivity: 1000

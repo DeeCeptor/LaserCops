@@ -22,6 +22,39 @@ public class PlayerJoin : MonoBehaviour
     {
         player_join = this;
     }
+    void Start ()
+    {
+        SetPlayerSettingsBasedOnPreviousPlay();
+    }
+
+
+    public void SetPlayerSettingsBasedOnPreviousPlay()
+    {
+        if (InputSettings.input_settings.inputs == null)
+            return;
+
+        number_of_players = InputSettings.input_settings.inputs.Count;
+
+        // Turn on icons based on how many players there were
+        int x = 0;
+        foreach (List<string> l in InputSettings.input_settings.inputs)
+        {
+            // Players 1 and 2
+            if (x < 2)
+            {
+                if (l.Count > 1)
+                    player_icons[x].SetActive(true);
+            }
+            // Players 3 and 4
+            else
+            {
+                if (l.Count > 0)
+                    player_icons[x].SetActive(true);
+            }
+            x++;
+        }
+        Debug.Log("Set player input based on previous information");
+    }
 
 
     void Update ()

@@ -49,6 +49,7 @@ public class Mode : MonoBehaviour
     {
         // Get the input settings of each player
         player_inputs = PlayerJoin.player_join.Finalize_Input();
+        InputSettings.input_settings.inputs = player_inputs;
 
         Debug.Log("Loading level " + level_to_load);
         PlayerPrefs.SetString("LastLevelPlayed", level_to_load);

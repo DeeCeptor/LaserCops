@@ -81,8 +81,29 @@ public class GameState : MonoBehaviour
     }
     void Start()
     {
-        GameObject obj_ = (GameObject)Instantiate(Resources.Load("Enemies/Vehicles/MostBasicEnemy") as GameObject, new Vector3(1, 0, 0), Quaternion.identity);
-        obj_.GetComponent<basicScrollingEnemyScript>().Die();
+        //GameObject obj_ = (GameObject)Instantiate(Resources.Load("Enemies/Vehicles/MostBasicEnemy") as GameObject, new Vector3(1, 0, 0), Quaternion.identity);
+        //obj_.GetComponent<basicScrollingEnemyScript>().Die();
+        if (number_of_players > 2)
+            CameraManager.cam_manager.desired_size++;
+
+        // Arrange position of players
+        switch (number_of_players)
+        {
+            case 2:
+
+                break;
+            case 3:
+                PlayerObjects[0].transform.position = new Vector3(0, 3, 0);
+                PlayerObjects[1].transform.position = new Vector3(0, 0, 0);
+                PlayerObjects[2].transform.position = new Vector3(0, -3, 0);
+                break;
+            case 4:
+                PlayerObjects[0].transform.position = new Vector3(0, 3, 0);
+                PlayerObjects[1].transform.position = new Vector3(0, 1, 0);
+                PlayerObjects[2].transform.position = new Vector3(0, -1, 0);
+                PlayerObjects[3].transform.position = new Vector3(0, -3, 0);
+                break;
+        }
     }
 
 
@@ -135,22 +156,7 @@ public class GameState : MonoBehaviour
 
             }
 
-
-            // Instantiate more players
             number_of_players = mode.player_inputs.Count;
-            if (number_of_players > 2)
-            {
-                // Spawn player 3
-                GameObject p = Instantiate(Resources.Load("Players/Player 3") as GameObject);
-                p.transform.position = new Vector2(0, -1.5f);
-            }
-            if (number_of_players > 3)
-            {
-                // Spawn player 4
-                GameObject p = Instantiate(Resources.Load("Players/Player 4") as GameObject);
-                p.transform.position = new Vector2(0, 1.5f);
-            }
-
             // Assign player inputs
             player_inputs = mode.player_inputs;
 
@@ -161,6 +167,20 @@ public class GameState : MonoBehaviour
             // Didn't find a selected game mode, just used cooperative
             Debug.Log("Couldn't find game mode");
             Cooperative();
+        }
+
+        // Instantiate more players
+        if (number_of_players > 2)
+        {
+            // Spawn player 3
+            GameObject p = Instantiate(Resources.Load("Players/Player 3") as GameObject);
+            p.transform.position = new Vector2(0, -1.5f);
+        }
+        if (number_of_players > 3)
+        {
+            // Spawn player 4
+            GameObject p = Instantiate(Resources.Load("Players/Player 4") as GameObject);
+            p.transform.position = new Vector2(0, 1.5f);
         }
     }
     public void Cooperative()
@@ -351,7 +371,7 @@ public class GameState : MonoBehaviour
                     }
                     break;
                 default:
-                    if (Players.Count <= 1)
+                    if (Players.Count < number_of_players)
                     {
                         GameOver();
                     }
