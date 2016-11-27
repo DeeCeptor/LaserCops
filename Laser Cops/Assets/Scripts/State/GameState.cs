@@ -11,6 +11,7 @@ public class GameState : MonoBehaviour
     public string level_to_load_on_defeat = "SceneSelect";
     public string current_level_name = "Gettin' Pushy";     // Set in each level. Is also passed in from the level select
     public int number_of_players = 2;
+    public List<List<string>> player_inputs;
 
     public bool paused = false; // Paused by player
     public bool game_over = false;  // Lost the game
@@ -72,19 +73,6 @@ public class GameState : MonoBehaviour
         SetGameMode();
         SetSettings();
 
-        if (number_of_players > 2)
-        {
-            // Spawn player 3
-            GameObject obj = Instantiate(Resources.Load("Players/Player 3") as GameObject);
-            obj.transform.position = new Vector2(0, 1);
-        }
-        if (number_of_players > 3)
-        {
-            // Spawn player 4
-            GameObject obj = Instantiate(Resources.Load("Players/Player 4") as GameObject);
-            obj.transform.position = new Vector2(0, -1);
-        }
-
         PlayerObjects = GameObject.FindGameObjectsWithTag("Player");
         if (VIP)
         {
@@ -108,6 +96,8 @@ public class GameState : MonoBehaviour
             Mode mode = obj.GetComponent<Mode>();
             current_level_name = mode.level_to_load;
 
+
+
             current_difficulty = mode.difficulty;
             switch (mode.difficulty)
             {
@@ -116,8 +106,8 @@ public class GameState : MonoBehaviour
                     Enemy_Health_Modifier = 1.0f;
                     break;
                 case Difficulty.Hard:
-                    Player_Health_Modifier = 0.7f;
-                    Enemy_Health_Modifier = 1.4f;
+                    Player_Health_Modifier = 0.8f;
+                    Enemy_Health_Modifier = 1.2f;
                     break;
             }
 
@@ -144,6 +134,26 @@ public class GameState : MonoBehaviour
                     break;
 
             }
+
+
+            // Instantiate more players
+            number_of_players = mode.player_inputs.Count;
+            if (number_of_players > 2)
+            {
+                // Spawn player 3
+                GameObject p = Instantiate(Resources.Load("Players/Player 3") as GameObject);
+                p.transform.position = new Vector2(0, -1.5f);
+            }
+            if (number_of_players > 3)
+            {
+                // Spawn player 4
+                GameObject p = Instantiate(Resources.Load("Players/Player 4") as GameObject);
+                p.transform.position = new Vector2(0, 1.5f);
+            }
+
+            // Assign player inputs
+            player_inputs = mode.player_inputs;
+
             Destroy(obj);
         }
         else

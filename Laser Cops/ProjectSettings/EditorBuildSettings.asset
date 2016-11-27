@@ -14,28 +14,32 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Menus/EndLevelScreen.unity
   - enabled: 1
-    path: Assets/Levels/Kevin/Nice and Easy.unity
+    path: Assets/Levels/Finished/Nice and Easy.unity
   - enabled: 1
-    path: Assets/Levels/Kevin/BulletPurgatory.unity
+    path: Assets/Levels/Finished/BulletPurgatory.unity
   - enabled: 1
     path: Assets/Levels/Finished/Gettin' Pushy.unity
+  - enabled: 1
+    path: Assets/Levels/Finished/BulletHeaven.unity
   - enabled: 1
     path: Assets/Levels/Finished/Think Fast.unity
   - enabled: 1
     path: Assets/Levels/Finished/Ocean Waves.unity
   - enabled: 1
-    path: Assets/Levels/Kevin/TakeItSlow.unity
+    path: Assets/Levels/Finished/TakeItSlow.unity
   - enabled: 1
     path: Assets/Levels/Kevin/DiscoBall.unity
   - enabled: 1
-    path: Assets/Levels/Kevin/DiscoDan.unity
+    path: Assets/Levels/Finished/DiscoDan.unity
   - enabled: 1
-    path: Assets/Levels/Kevin/Easing into It.unity
+    path: Assets/Levels/Finished/TimeToSplit.unity
+  - enabled: 1
+    path: Assets/Levels/Finished/Easing into It.unity
   - enabled: 1
     path: Assets/Levels/Finished/Rainbow Road.unity
   - enabled: 1
-    path: Assets/Levels/Kevin/MrPresident.unity
+    path: Assets/Levels/Finished/MrPresident.unity
   - enabled: 1
-    path: Assets/Levels/Kevin/BounceMrPresident.unity
+    path: Assets/Levels/Finished/BounceMrPresident.unity
   - enabled: 1
     path: Assets/Levels/Finished/Keep on Truckin'.unity

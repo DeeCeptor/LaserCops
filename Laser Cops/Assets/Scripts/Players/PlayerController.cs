@@ -118,6 +118,39 @@ public class PlayerController : PlayerInput
         this.UI_healing_sparks = GameObject.Find("HighwayGrid/PhysicalUICanvas/" + player_colour.ToString() + "HP/HP Effects/HealingSparks").GetComponent<ParticleSystem>();
         this.UI_transfer_sparks = GameObject.Find("HighwayGrid/PhysicalUICanvas/" + player_colour.ToString() + "HP/Transfer Effects/HealingTransferSparks").GetComponent<ParticleSystem>();
         this.UI_low_hp_warning = GameObject.Find("HighwayGrid/PhysicalUICanvas/" + player_colour.ToString() + "HP/Low HP Warning");
+
+        // Get player inputs
+        if (GameState.game_state.player_inputs != null)
+        {
+            this.inputs_to_check = GameState.game_state.player_inputs[player_number - 1];
+        }
+        else
+        {
+            inputs_to_check = new List<string>();
+
+            // Assign default controls
+            switch (player_number)
+            {
+                case 1:
+                    inputs_to_check.Add("Keyboard Left");
+                    inputs_to_check.Add("Controller 1 Left");
+                    break;
+                case 2:
+                    inputs_to_check.Add("Keyboard Right");
+                    inputs_to_check.Add("Controller 1 Right");
+                    break;
+                case 3:
+                    inputs_to_check.Add("Controller 2 Left");
+                    inputs_to_check.Add("Controller 3 Left");
+                    break;
+                case 4:
+                    inputs_to_check.Add("Controller 2 Right");
+                    inputs_to_check.Add("Controller 3 Right");
+                    inputs_to_check.Add("Controller 4 Left");
+                    break;
+            }
+            Debug.Log("Assining default inputs");
+        }
     }
 
     void Update()

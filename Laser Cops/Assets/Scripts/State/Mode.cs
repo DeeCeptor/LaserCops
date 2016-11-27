@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System.Collections;
+using System.Collections.Generic;
 using System;
 
 public class Mode : MonoBehaviour
@@ -12,6 +12,8 @@ public class Mode : MonoBehaviour
     public string level_to_load;
     public Toggle object_to_select_after_clicking;
     public GameObject settings_menu;
+
+    public List<List<string>> player_inputs;
 
     void Awake()
     {
@@ -41,16 +43,13 @@ public class Mode : MonoBehaviour
     public void SetLevelToLoad(string level_name)
     {
         level_to_load = level_name;
-        /*
-        if (!object_to_select_after_clicking)
-        {
-            settings_menu.SetActive(true);
-            object_to_select_after_clicking.Select();
-        }*/
     }
 
     public void Load_Level()
     {
+        // Get the input settings of each player
+        player_inputs = PlayerJoin.player_join.Finalize_Input();
+
         Debug.Log("Loading level " + level_to_load);
         PlayerPrefs.SetString("LastLevelPlayed", level_to_load);
         UnityEngine.SceneManagement.SceneManager.LoadScene(level_to_load);
