@@ -78,13 +78,19 @@ public class GameState : MonoBehaviour
         {
             VIPObject = GameObject.FindGameObjectWithTag("VIP");
         }
+
+        // Set camera to be slightly more zoomed out when there are more players 
+        if (number_of_players > 2)
+        {
+            CameraManager.cam_manager.cam.orthographicSize++;
+            CameraManager.cam_manager.desired_size++;
+        }
     }
     void Start()
     {
         //GameObject obj_ = (GameObject)Instantiate(Resources.Load("Enemies/Vehicles/MostBasicEnemy") as GameObject, new Vector3(1, 0, 0), Quaternion.identity);
         //obj_.GetComponent<basicScrollingEnemyScript>().Die();
-        if (number_of_players > 2)
-            CameraManager.cam_manager.desired_size++;
+
 
         // Arrange position of players
         switch (number_of_players)
@@ -386,6 +392,7 @@ public class GameState : MonoBehaviour
             Debug.Log("You lose!");
             game_over = true;
             //InGameUIManager.ui_manager.SetAnnouncementText("You lost!", 9999);
+            ChangeTimescale(0.5f);
 
             LevelResult lr = SpawnLevelResult();
             if (game_mode == GameMode.Competitive)
@@ -548,6 +555,15 @@ public class GameState : MonoBehaviour
         }
 
         return coop_icon;
+    }
+
+
+    public void Toggle_Player_Input(bool enabled)
+    {
+        foreach (PlayerController p in Players)
+        {
+            p.input_enabled = enabled;
+        }
     }
 
 

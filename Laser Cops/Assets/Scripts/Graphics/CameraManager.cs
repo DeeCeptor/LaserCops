@@ -59,6 +59,8 @@ public class CameraManager : MonoBehaviour
         UIManager.ui_manager.Level_Name.GetComponentInChildren<Text>().text = GameState.game_state.current_level_name;
         UIManager.ui_manager.Mode.GetComponent<Image>().sprite = GameState.game_state.GetModeSprite();
 
+        // Disable input
+        GameState.game_state.Toggle_Player_Input(false);
 
         yield return new WaitForSeconds(1.5f);
         UIManager.ui_manager.Level_Name.SetActive(true);
@@ -112,11 +114,9 @@ public class CameraManager : MonoBehaviour
         EffectsManager.effects.glow.GlowType = MKGlowSystem.MKGlowType.Selective;
         EffectsManager.effects.glow.GlowIntensity = EffectsManager.effects.normal_glow_intensity;
         UIManager.ui_manager.Intro_UI.SetActive(false);
+
         // Enable player input
-        foreach (PlayerController p in GameState.game_state.Players)
-        {
-            p.input_enabled = true;
-        }
+        GameState.game_state.Toggle_Player_Input(true);
 
         yield return null;
     }
