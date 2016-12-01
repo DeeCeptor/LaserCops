@@ -134,7 +134,11 @@ public class EffectsManager : MonoBehaviour
                 position, Quaternion.identity), 4.0f);
         }
     }
-
+    public void BulletReflected(Vector2 position)
+    {
+        Destroy((GameObject)GameObject.Instantiate(Resources.Load("Graphics/Bullet Reflected") as GameObject,
+            position, Quaternion.identity), 3.0f);
+    }
 
     public void PlayersHealed()
     {

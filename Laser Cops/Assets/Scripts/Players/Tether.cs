@@ -110,13 +110,11 @@ public class Tether : MonoBehaviour
         {
             beginning_anchor = GameState.game_state.PlayerObjects[0].gameObject;
             end_anchor = GameState.game_state.PlayerObjects[1].gameObject;
-            Debug.Log("2");
         }
         else if (GameState.game_state.PlayerObjects.Length == 3)
         {
             beginning_anchor = GameState.game_state.PlayerObjects[0].gameObject;
             end_anchor = GameState.game_state.PlayerObjects[2].gameObject;
-            Debug.Log("3");
         }
         else if (GameState.game_state.PlayerObjects.Length == 4)
         {

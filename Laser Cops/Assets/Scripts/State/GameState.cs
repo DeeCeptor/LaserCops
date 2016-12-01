@@ -65,6 +65,8 @@ public class GameState : MonoBehaviour
     public Sprite tether_on_icon;
     public Sprite tether_off_icon;
 
+    // Use
+    public Material default_sprite_material;
 
     void Awake()
     {

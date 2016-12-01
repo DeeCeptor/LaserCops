@@ -52,6 +52,28 @@ public class TetherClamping : MonoBehaviour
         InGameUIManager.ui_manager.ChangeScore(2, this.transform.position);
         Destroy(bullet);
     }
+    // Reverse direction of bullet
+    public void ReflectBullet(GameObject bullet)
+    {
+        // Invert direction
+        //bullet.GetComponent<Rigidbody2D>().velocity = bullet.GetComponent<Rigidbody2D>().velocity * -4f;
+        //bullet.GetComponent<BulletScript>().dir *= -1;
+        bullet.GetComponent<BulletScript>().speed *= -4;
+
+        // Set new layer
+        bullet.gameObject.layer = LayerMask.NameToLayer("ReboundingBullet");
+
+        // Set damage
+        bullet.GetComponent<BulletScript>().damage *= 3;
+        bullet.GetComponent<BulletScript>().reflected_bullet = true;
+
+        // Change looks and sprite
+        bullet.GetComponent<SpriteRenderer>().color = Color.green;
+        bullet.GetComponent<Rigidbody2D>().angularVelocity = 0;
+        bullet.GetComponent<SpriteRenderer>().material = GameState.game_state.default_sprite_material;
+
+        EffectsManager.effects.BulletReflected(this.transform.position);
+    }
 
 
     void OnCollisionEnter2D(Collision2D coll)
@@ -62,7 +84,8 @@ public class TetherClamping : MonoBehaviour
         }
         else if (Tether.tether.cur_tether_mode == Tether.TetherMode.Capture && coll.gameObject.layer == LayerMask.NameToLayer("Bullet"))
         {
-            AbsorbBullet(coll.gameObject);
+            ReflectBullet(coll.gameObject);
+            //AbsorbBullet(coll.gameObject);
         }
     }
     void OnCollisionStay2D(Collision2D coll)

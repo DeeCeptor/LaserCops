@@ -10,8 +10,7 @@ public class Mode : MonoBehaviour
     public GameState.GameMode mode = GameState.GameMode.Cooperative;
     public GameState.Difficulty difficulty = GameState.Difficulty.Normal;   // Current difficulty, passed into the level
     public string level_to_load;
-    public Toggle object_to_select_after_clicking;
-    public GameObject settings_menu;
+    public Text mode_description;
 
     public List<List<string>> player_inputs;
 
@@ -35,6 +34,28 @@ public class Mode : MonoBehaviour
     {
         mode = (GameState.GameMode) Enum.Parse(typeof(GameState.GameMode), input_mode, true);
         Debug.Log("Setting mode " + mode.ToString());
+
+        switch (input_mode)
+        {
+            case "Cooperative":
+                mode_description.text = "Work together with your friends to complete the level";
+                break;
+            case "Competitive":
+                mode_description.text = "Be the last cop standing to claim victory!";
+                break;
+            case "NoTether":
+                mode_description.text = "Cutbacks have caused your Lazer Tether to stop working";
+                break;
+            case "TetherOn":
+                mode_description.text = "Due to cutbacks, the 'turn Lazer Tether off' button no longer works";
+                break;
+            case "Chained":
+                mode_description.text = "For some reason your Lazer Tether is anchored to the center of the highway";
+                break;
+            case "OneHitKill":
+                mode_description.text = "Take one hit, and you die. Same for goes the enemies, though";
+                break;
+        }
     }
     public void SetDifficulty(string input_mode)
     {

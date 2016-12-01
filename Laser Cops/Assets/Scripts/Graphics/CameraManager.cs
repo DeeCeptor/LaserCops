@@ -105,7 +105,7 @@ public class CameraManager : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         foreach (PlayerController p in GameState.game_state.Players)
         {
-            p.boosted_this_instant = true;
+            //p.boosted_this_instant = true;
         }
 
         // Normal glow settings, transition is completely done
