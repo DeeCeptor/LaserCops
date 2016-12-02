@@ -12,7 +12,11 @@ public class ShootLaserShootingBullets : ForwardShotScript {
 
     // Use this for initialization
     void Start () {
-	
+        shotCounter = Time.time + shotDelay;
+        if (top)
+        {
+            shotCounter = shotCounter + (0.5f * shotDelay);
+        }
 	}
 	
 	// Update is called once per frame

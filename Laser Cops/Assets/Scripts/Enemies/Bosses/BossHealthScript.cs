@@ -17,6 +17,7 @@ public class BossHealthScript : MonoBehaviour {
     public GameObject ChangeFormEffect;
 
     public bool hurtByTether = false;
+    public bool hurtByReboundBullets = false;
 
     //how much to multiply the damage for on easy and hard mode
     public float easyDamageMultiplyer = 2;

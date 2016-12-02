@@ -67,6 +67,7 @@ public class ForwardShotScript : MonoBehaviour
     {
         active = true;
         shotCounter = Time.time + shotDelay;
+        shot_timer = shotDelay;
     }
 
     public void shoot()
