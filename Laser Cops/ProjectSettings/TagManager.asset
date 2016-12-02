@@ -28,6 +28,8 @@ TagManager:
   - Input Settings
   - 3HP
   - 4HP
+  - BlueHP
+  - PinkHP
   layers:
   - Default
   - TransparentFX
@@ -58,7 +60,7 @@ TagManager:
   - Grid
   - Slow Obstacles
   - Laser
-  - 
+  - EnemyBossTether
   - 
   - 
   m_SortingLayers:

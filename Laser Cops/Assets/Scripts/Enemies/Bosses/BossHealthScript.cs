@@ -317,7 +317,10 @@ public class BossHealthScript : MonoBehaviour {
         }
         else
         {
-            PlayConversation(death_conversation);
+            if (death_conversation != null)
+            {
+                PlayConversation(death_conversation);
+            }
             Explode();
             GameState.game_state.Victory();
         }

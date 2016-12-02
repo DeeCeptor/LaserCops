@@ -62,6 +62,9 @@ public class BulletScript : MonoBehaviour
             Die();
         }
 
+<<<<<<< HEAD
+		else
+=======
 
         if (reflected_bullet && collision.gameObject.CompareTag("Enemy"))
         {
@@ -76,8 +79,10 @@ public class BulletScript : MonoBehaviour
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("CaptureTether"))
         {
+
         }
         else if (!collision.gameObject.CompareTag("Enemy"))
+>>>>>>> 84809c2ffdb546c7ba897f8e6f3a96a70868f741
 		{
 			Die();
 		}
