@@ -30,7 +30,8 @@ public class PlayableLevelNode : LevelNode
 
 
     public GameObject beaten_grouping;
-    string[] difficulties = { "Hard", "Normal", "Easy", "Unbeaten" }; 
+    string[] difficulties = { "Hard", "Normal", "Easy", "Unbeaten" };
+
 
     void Start()
     {
@@ -158,7 +159,7 @@ public class PlayableLevelNode : LevelNode
     {
         base.LevelIsSelected();
         LevelManager.level_manager.high_score_text.text = "High Score: " + best_score;
-
+        LevelManager.level_manager.hint_text.text = hint;
         LevelManager.level_manager.coop_mode.SetActive(coop);
 
         LevelManager.level_manager.competitive_mode.SetActive(competitive && beat_level);

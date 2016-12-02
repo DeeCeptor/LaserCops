@@ -6,8 +6,10 @@ public class DrawLines : MonoBehaviour
 {
     List<GameObject> levels = new List<GameObject>();
     public LineRenderer line_2;
+    public GameObject Check_If_Active;
+    public GameObject Add_If_Active;
 
-    void Awake ()
+    void Start ()
     {
         LineRenderer line = this.GetComponent<LineRenderer>();
         //game_mode = GameObject.FindGameObjectWithTag("GameMode").GetComponent<Mode>();
@@ -16,6 +18,8 @@ public class DrawLines : MonoBehaviour
         {
             levels.Add(child.gameObject);
         }
+        if (Check_If_Active != null && Check_If_Active.activeSelf && Add_If_Active != null)
+            levels.Add(Add_If_Active);
 
         line.SetVertexCount((levels.Count * 2) - 1);
         line_2.SetVertexCount((levels.Count * 2) - 1);
@@ -38,11 +42,4 @@ public class DrawLines : MonoBehaviour
         Array.Reverse(positions);
         line_2.SetPositions(positions);
     }
-
-
-
-    void Start ()
-    {
-	
-	}
 }

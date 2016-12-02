@@ -14,6 +14,9 @@ public class LevelNode : MonoBehaviour
     public bool is_cutscene = false;
     public bool required_to_beat = true;
 
+    [TextArea]
+    public string hint;
+
     // Loaded stats
     public bool beat_level = false;
     public int best_score = 0;

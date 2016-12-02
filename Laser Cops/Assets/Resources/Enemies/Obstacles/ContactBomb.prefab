@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 411754}
   - 198: {fileID: 19837390}
   - 199: {fileID: 19987276}
-  m_Layer: 9
+  m_Layer: 27
   m_Name: Lasting Grinding Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ GameObject:
   - 212: {fileID: 21273496}
   - 50: {fileID: 5001992}
   - 58: {fileID: 5802252}
-  m_Layer: 9
+  m_Layer: 27
   m_Name: ContactBomb
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141554}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 48.5, y: -7, z: 5.1289062}
+  m_LocalPosition: {x: 15.979908, y: -8.033631, z: 5.1289062}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -108,9 +108,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 229cceffa76aa2a4ebd9a4118e33efc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 5
+  radius: 4
   flat_dmg: 1
-  dmg: 30
+  dmg: 20
   explosion_delay_time: 1.5
   danger_radius: {fileID: 1000014133275578}
 --- !u!114 &11437566
@@ -1997,7 +1997,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013667361016}
   - 212: {fileID: 212000011691611928}
-  m_Layer: 9
+  m_Layer: 27
   m_Name: Danger Radius
   m_TagString: Untagged
   m_Icon: {fileID: 0}

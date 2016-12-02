@@ -84,8 +84,8 @@ public class GameState : MonoBehaviour
         // Set camera to be slightly more zoomed out when there are more players 
         if (number_of_players > 2)
         {
-            CameraManager.cam_manager.cam.orthographicSize++;
-            CameraManager.cam_manager.desired_size++;
+            CameraManager.cam_manager.desired_size *= 1.2f;
+            CameraManager.cam_manager.cam.orthographicSize = CameraManager.cam_manager.desired_size;
         }
     }
     void Start()
@@ -333,12 +333,14 @@ public class GameState : MonoBehaviour
             {
                 increased_speed = true;
                 debug_invulnerability = true;
-                Time.timeScale = 5f;
+                ChangeTimescale(5f);
+                //Time.timeScale = 5f;
             }
             else if (Time.timeScale > 1)
             {
                 increased_speed = false;
-                Time.timeScale = 1;
+                ChangeTimescale(1f);
+                //Time.timeScale = 1;
             }
         }
     }
