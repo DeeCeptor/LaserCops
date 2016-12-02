@@ -12,12 +12,15 @@ public class BonnieAndClydeBehaviour : MonoBehaviour {
     public float idealDistanceToPlayer = 3f;
     //some behaviours will do nothing after a target has been assigned
     public bool targetAssigned = false;
+    public bool boosting = false;
 
     public Transform playerToTrack;
     public GameObject[] players;
 
     public float behaviourChangeRate = 4f;
     public float behaviourChangeCounter = 0f;
+    //time to add at the start of the level to make sure they don't jump the player
+    public float inactiveTime = 4f;
 
     public TetherBossBehaviour currentBehaviour = TetherBossBehaviour.TargetRandomPlayer;
 
@@ -34,7 +37,7 @@ public class BonnieAndClydeBehaviour : MonoBehaviour {
     // Use this for initialization
     void Start () {
         Health = GetComponentInParent<BossHealthScript>();
-        behaviourChangeCounter = behaviourChangeRate + Time.time;
+        behaviourChangeCounter = behaviourChangeRate + Time.time + inactiveTime;
 
         players = GameState.game_state.PlayerObjects;
         int randInt = Random.Range(0, players.Length);
@@ -70,9 +73,12 @@ public class BonnieAndClydeBehaviour : MonoBehaviour {
     //the available list of behaviours is different with each stage of the boss
     public void ChangeBehaviours()
     {
+        boosting = false;
+        clydeScript.boosting = false;
+        bonnieScript.boosting = false;
         if(currentStage == 1)
         {
-            currentBehaviour = (TetherBossBehaviour)Random.Range(0,2);
+            currentBehaviour = (TetherBossBehaviour)Random.Range(0,4);
         }
         else if (currentStage == 2)
         {
@@ -112,19 +118,33 @@ public class BonnieAndClydeBehaviour : MonoBehaviour {
 
     public void Escape()
     {
-        Vector3 ClydeTarget = playerToTrack.position + new Vector3(idealDistanceToPlayer, idealDistanceToPlayer, 0);
-        Vector3 BonnieTarget = playerToTrack.position - new Vector3(idealDistanceToPlayer, idealDistanceToPlayer, 0);
+        Vector3 ClydeTarget = playerToTrack.position;
+        Vector3 BonnieTarget = playerToTrack.position;
         clydeScript.travelDirection = -(ClydeTarget - clydeScript.transform.position);
         bonnieScript.travelDirection = -(BonnieTarget - bonnieScript.transform.position);
     }
 
     public void Circle()
     {
-
+        Vector3 direction = playerToTrack.position;
+        clydeScript.travelDirection = (Quaternion.Euler(0,0, -45) * ((direction - clydeScript.transform.position).normalized));
+        bonnieScript.travelDirection = (Quaternion.Euler(0,0, 45) * ((direction- bonnieScript.transform.position).normalized));
     }
 
     public void Charge()
     {
+        if (targetAssigned == false)
+        {
+            boosting = true;
+            clydeScript.boosting = true;
+            bonnieScript.boosting = true;
+            Vector3 ClydeTarget = playerToTrack.position + new Vector3(idealDistanceToPlayer, idealDistanceToPlayer, 0);
+            Vector3 BonnieTarget = playerToTrack.position - new Vector3(idealDistanceToPlayer, idealDistanceToPlayer, 0);
+            clydeScript.travelDirection = ClydeTarget - clydeScript.transform.position;
+            bonnieScript.travelDirection = BonnieTarget - bonnieScript.transform.position;
+            behaviourChangeCounter = behaviourChangeCounter - 1;
+            targetAssigned = true;
+        }
 
     }
 }

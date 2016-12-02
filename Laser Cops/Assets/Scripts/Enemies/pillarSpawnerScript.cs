@@ -39,6 +39,7 @@ public class pillarSpawnerScript : ForwardShotScript
         {
             GameObject bulletSpawned = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
             bulletSpawned.transform.position = bulletSpawned.transform.position - (transform.up * laserLength);
+            bulletSpawned.transform.Rotate(0, 0, -90);
         }
 
         else
@@ -55,6 +56,7 @@ public class pillarSpawnerScript : ForwardShotScript
             {
                 GameObject bulletSpawned = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
                 bulletSpawned.transform.position = bulletSpawned.transform.position - (transform.up * laserLength);
+                bulletSpawned.transform.Rotate(0,0,-90);
             }
         }
     }

@@ -221,8 +221,6 @@ public class EffectsManager : MonoBehaviour
 
             float SpriteSizeRatio = originalRenderer.bounds.size.x / newRenderer.bounds.size.x;
             corpseSpawned.transform.localScale = corpseSpawned.transform.localScale * SpriteSizeRatio;
-            Debug.Log(originalRenderer.bounds);
-            Debug.Log(newRenderer.bounds);
 
         }
 

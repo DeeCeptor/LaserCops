@@ -62,6 +62,17 @@ public class BulletScript : MonoBehaviour
             Die();
         }
 
+        else if (reflected_bullet && collision.gameObject.CompareTag("Boss"))
+        {
+            BossHealthScript bs = collision.gameObject.GetComponent<BossHealthScript>();
+            if (bs.hurtByReboundBullets)
+            {
+                bs.takeHit(damage);
+            }
+
+            Die();
+        }
+
 
         if (reflected_bullet && collision.gameObject.CompareTag("Enemy"))
         {
