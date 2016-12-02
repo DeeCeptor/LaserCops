@@ -114,10 +114,45 @@ public class PlayerController : PlayerInput
         InGameUIManager.ui_manager.UpdateHealth();
         health_bar_image.color = new Color(health_bar_image.color.r, health_bar_image.color.g, health_bar_image.color.b, 0f);
 
-        this.UI_dmg_sparks = GameObject.Find("HighwayGrid/PhysicalUICanvas/" + player_colour.ToString() + "HP/HP Effects/DmgSparks").GetComponent<ParticleSystem>();
-        this.UI_healing_sparks = GameObject.Find("HighwayGrid/PhysicalUICanvas/" + player_colour.ToString() + "HP/HP Effects/HealingSparks").GetComponent<ParticleSystem>();
-        this.UI_transfer_sparks = GameObject.Find("HighwayGrid/PhysicalUICanvas/" + player_colour.ToString() + "HP/Transfer Effects/HealingTransferSparks").GetComponent<ParticleSystem>();
-        this.UI_low_hp_warning = GameObject.Find("HighwayGrid/PhysicalUICanvas/" + player_colour.ToString() + "HP/Low HP Warning");
+        GameObject hp = GameObject.FindGameObjectWithTag(player_number + "HP");
+        this.UI_dmg_sparks = hp.transform.Find("HP Effects/DmgSparks").GetComponent<ParticleSystem>();
+        this.UI_healing_sparks = hp.transform.FindChild("HP Effects/HealingSparks").GetComponent<ParticleSystem>();
+        this.UI_transfer_sparks = hp.transform.FindChild("Transfer Effects/HealingTransferSparks").GetComponent<ParticleSystem>();
+        this.UI_low_hp_warning = hp.transform.FindChild("Low HP Warning").gameObject;
+
+
+        // Get player inputs
+        if (GameState.game_state.player_inputs != null)
+        {
+            this.inputs_to_check = GameState.game_state.player_inputs[player_number - 1];
+        }
+        else
+        {
+            inputs_to_check = new List<string>();
+
+            // Assign default controls
+            switch (player_number)
+            {
+                case 1:
+                    inputs_to_check.Add("Keyboard Left");
+                    inputs_to_check.Add("Controller 1 Left");
+                    break;
+                case 2:
+                    inputs_to_check.Add("Keyboard Right");
+                    inputs_to_check.Add("Controller 1 Right");
+                    break;
+                case 3:
+                    inputs_to_check.Add("Controller 2 Left");
+                    inputs_to_check.Add("Controller 3 Left");
+                    break;
+                case 4:
+                    inputs_to_check.Add("Controller 2 Right");
+                    inputs_to_check.Add("Controller 3 Right");
+                    inputs_to_check.Add("Controller 4 Left");
+                    break;
+            }
+            Debug.Log("Assigned default inputs");
+        }
     }
 
     void Update()
@@ -416,7 +451,7 @@ public class PlayerController : PlayerInput
         EffectsManager.effects.ViolentExplosion(this.transform.position);
         EffectsManager.effects.GridExplosion(this.transform.position, 2f, 9f, primary_colour);
 
-        GameState.game_state.ChangeTimescale(0.3f);
+        //GameState.game_state.ChangeTimescale(0.3f);
 
         this.gameObject.layer = LayerMask.NameToLayer("Dead Player");
         this.gameObject.tag = "Obstacle";
@@ -521,18 +556,16 @@ public class PlayerController : PlayerInput
             TransferHealth(coll.gameObject);
         }
 
-
-            // SPARKS
-            // Update the position of the grinding
-            if (in_use_grinding_sparks.ContainsKey(coll.gameObject))// && in_use_grinding_sparks[coll.gameObject] != null)
-            {
-                ParticleSystem p = in_use_grinding_sparks[coll.gameObject];
-                p.gameObject.transform.position = coll.contacts[0].point;
-                p.GetComponent<TurnOffSparks>().StartSparks();
-            }
-            //else
-              //  in_use_grinding_sparks.Remove(coll.gameObject);
-        
+        // SPARKS
+        // Update the position of the grinding
+        if (in_use_grinding_sparks.ContainsKey(coll.gameObject))// && in_use_grinding_sparks[coll.gameObject] != null)
+        {
+            ParticleSystem p = in_use_grinding_sparks[coll.gameObject];
+            p.gameObject.transform.position = coll.contacts[0].point;
+            p.GetComponent<TurnOffSparks>().StartSparks();
+        }
+        //else
+            //  in_use_grinding_sparks.Remove(coll.gameObject);
     }
     // Stop grinding against the object we were pushing against
     void OnCollisionExit2D(Collision2D coll)
@@ -629,7 +662,7 @@ public class PlayerController : PlayerInput
                     {
                         if (Tether.tether!=null)
                         {
-                            TetherLightning.tether_lightning.RegularBolt(this.transform.position, other_player.transform.position, 0.5f, Color.green, 5);
+                            TetherLightning.tether_lightning.RegularBolt(this.transform.position, other_player.transform.position, 0.6f, Color.green, 5);
                             last_health_transfer_lightning = Time.time;
                         }
                     }

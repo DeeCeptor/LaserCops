@@ -163,7 +163,6 @@ public class basicScrollingEnemyScript : MonoBehaviour
                 Die();
             }
         }
-
         else if(collision.gameObject.tag == "Enemy")
         {
             if(!enemyEnemyCollsion && collision.gameObject.GetComponent<basicScrollingEnemyScript>()!=null)

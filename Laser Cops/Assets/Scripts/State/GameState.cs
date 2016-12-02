@@ -11,6 +11,7 @@ public class GameState : MonoBehaviour
     public string level_to_load_on_defeat = "SceneSelect";
     public string current_level_name = "Gettin' Pushy";     // Set in each level. Is also passed in from the level select
     public int number_of_players = 2;
+    public List<List<string>> player_inputs;
 
     public bool paused = false; // Paused by player
     public bool game_over = false;  // Lost the game
@@ -64,6 +65,8 @@ public class GameState : MonoBehaviour
     public Sprite tether_on_icon;
     public Sprite tether_off_icon;
 
+    // Use
+    public Material default_sprite_material;
 
     void Awake()
     {
@@ -72,29 +75,43 @@ public class GameState : MonoBehaviour
         SetGameMode();
         SetSettings();
 
-        if (number_of_players > 2)
-        {
-            // Spawn player 3
-            GameObject obj = Instantiate(Resources.Load("Players/Player 3") as GameObject);
-            obj.transform.position = new Vector2(0, 1);
-        }
-        if (number_of_players > 3)
-        {
-            // Spawn player 4
-            GameObject obj = Instantiate(Resources.Load("Players/Player 4") as GameObject);
-            obj.transform.position = new Vector2(0, -1);
-        }
-
         PlayerObjects = GameObject.FindGameObjectsWithTag("Player");
         if (VIP)
         {
             VIPObject = GameObject.FindGameObjectWithTag("VIP");
         }
+
+        // Set camera to be slightly more zoomed out when there are more players 
+        if (number_of_players > 2)
+        {
+            CameraManager.cam_manager.cam.orthographicSize++;
+            CameraManager.cam_manager.desired_size++;
+        }
     }
     void Start()
     {
-        GameObject obj_ = (GameObject)Instantiate(Resources.Load("Enemies/Scrolling/MostBasicEnemy") as GameObject, new Vector3(1, 0, 0), Quaternion.identity);
-        obj_.GetComponent<basicScrollingEnemyScript>().Die();
+        //GameObject obj_ = (GameObject)Instantiate(Resources.Load("Enemies/Vehicles/MostBasicEnemy") as GameObject, new Vector3(1, 0, 0), Quaternion.identity);
+        //obj_.GetComponent<basicScrollingEnemyScript>().Die();
+
+
+        // Arrange position of players
+        switch (number_of_players)
+        {
+            case 2:
+
+                break;
+            case 3:
+                PlayerObjects[0].transform.position = new Vector3(0, 3, 0);
+                PlayerObjects[1].transform.position = new Vector3(0, 0, 0);
+                PlayerObjects[2].transform.position = new Vector3(0, -3, 0);
+                break;
+            case 4:
+                PlayerObjects[0].transform.position = new Vector3(0, 3, 0);
+                PlayerObjects[1].transform.position = new Vector3(0, 1, 0);
+                PlayerObjects[2].transform.position = new Vector3(0, -1, 0);
+                PlayerObjects[3].transform.position = new Vector3(0, -3, 0);
+                break;
+        }
     }
 
 
@@ -108,6 +125,8 @@ public class GameState : MonoBehaviour
             Mode mode = obj.GetComponent<Mode>();
             current_level_name = mode.level_to_load;
 
+
+
             current_difficulty = mode.difficulty;
             switch (mode.difficulty)
             {
@@ -116,8 +135,8 @@ public class GameState : MonoBehaviour
                     Enemy_Health_Modifier = 1.0f;
                     break;
                 case Difficulty.Hard:
-                    Player_Health_Modifier = 0.7f;
-                    Enemy_Health_Modifier = 1.4f;
+                    Player_Health_Modifier = 0.8f;
+                    Enemy_Health_Modifier = 1.2f;
                     break;
             }
 
@@ -144,6 +163,11 @@ public class GameState : MonoBehaviour
                     break;
 
             }
+
+            number_of_players = mode.player_inputs.Count;
+            // Assign player inputs
+            player_inputs = mode.player_inputs;
+
             Destroy(obj);
         }
         else
@@ -151,6 +175,20 @@ public class GameState : MonoBehaviour
             // Didn't find a selected game mode, just used cooperative
             Debug.Log("Couldn't find game mode");
             Cooperative();
+        }
+
+        // Instantiate more players
+        if (number_of_players > 2)
+        {
+            // Spawn player 3
+            GameObject p = Instantiate(Resources.Load("Players/Player 3") as GameObject);
+            p.transform.position = new Vector2(0, -1.5f);
+        }
+        if (number_of_players > 3)
+        {
+            // Spawn player 4
+            GameObject p = Instantiate(Resources.Load("Players/Player 4") as GameObject);
+            p.transform.position = new Vector2(0, 1.5f);
         }
     }
     public void Cooperative()
@@ -341,7 +379,7 @@ public class GameState : MonoBehaviour
                     }
                     break;
                 default:
-                    if (Players.Count <= 1)
+                    if (Players.Count < number_of_players)
                     {
                         GameOver();
                     }
@@ -356,6 +394,7 @@ public class GameState : MonoBehaviour
             Debug.Log("You lose!");
             game_over = true;
             //InGameUIManager.ui_manager.SetAnnouncementText("You lost!", 9999);
+            ChangeTimescale(0.5f);
 
             LevelResult lr = SpawnLevelResult();
             if (game_mode == GameMode.Competitive)
@@ -518,6 +557,15 @@ public class GameState : MonoBehaviour
         }
 
         return coop_icon;
+    }
+
+
+    public void Toggle_Player_Input(bool enabled)
+    {
+        foreach (PlayerController p in Players)
+        {
+            p.input_enabled = enabled;
+        }
     }
 
 

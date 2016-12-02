@@ -20,11 +20,14 @@ TagManager:
   - ActorPosition
   - ActorPositionRight
   - Sparks
-  - BlueHP
-  - PinkHP
+  - 1HP
+  - 2HP
   - Score
   - Timer
   - Laser
+  - Input Settings
+  - 3HP
+  - 4HP
   layers:
   - Default
   - TransparentFX

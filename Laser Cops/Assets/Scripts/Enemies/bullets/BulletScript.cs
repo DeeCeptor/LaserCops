@@ -10,6 +10,7 @@ public class BulletScript : MonoBehaviour
     public Vector2 dir;
 	public float damage = 15f;
 
+    public bool reflected_bullet = false;   // It will hit enemies
     public _Colour bullet_colour = _Colour.Red;
 
     void Start ()
@@ -17,6 +18,7 @@ public class BulletScript : MonoBehaviour
         dir = target - transform.position;
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
+        GetComponent<Rigidbody2D>().velocity = dir.normalized * speed;
     }
 
 
@@ -60,7 +62,23 @@ public class BulletScript : MonoBehaviour
             Die();
         }
 
-		else
+
+        if (reflected_bullet && collision.gameObject.CompareTag("Enemy"))
+        {
+            // Deal damage to the reflect enemy
+            basicScrollingEnemyScript sc = collision.gameObject.GetComponent<basicScrollingEnemyScript>();
+            if (sc != null)
+            {
+                sc.TakeHit(damage);
+                EffectsManager.effects.BulletHitPlayer(collision.contacts[0].point);
+                Die();
+            }
+        }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("CaptureTether"))
+        {
+
+        }
+        else if (!collision.gameObject.CompareTag("Enemy"))
 		{
 			Die();
 		}

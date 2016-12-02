@@ -106,10 +106,20 @@ public class Tether : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         // Set the anchors between the 2 players
-        if (GameState.game_state.PlayerObjects.Length == 2 || true)
+        if (GameState.game_state.PlayerObjects.Length == 2)
         {
             beginning_anchor = GameState.game_state.PlayerObjects[0].gameObject;
             end_anchor = GameState.game_state.PlayerObjects[1].gameObject;
+        }
+        else if (GameState.game_state.PlayerObjects.Length == 3)
+        {
+            beginning_anchor = GameState.game_state.PlayerObjects[0].gameObject;
+            end_anchor = GameState.game_state.PlayerObjects[2].gameObject;
+        }
+        else if (GameState.game_state.PlayerObjects.Length == 4)
+        {
+            beginning_anchor = GameState.game_state.PlayerObjects[0].gameObject;
+            end_anchor = GameState.game_state.PlayerObjects[3].gameObject;
         }
 
         if (!GameState.game_state.no_tether)
@@ -131,25 +141,25 @@ public class Tether : MonoBehaviour
             if (GameState.game_state.PlayerObjects.Length == 3)
             {
                 // Make player 3 attached to the middle
-                GameObject p3 = GameState.game_state.PlayerObjects[2].gameObject;
+                GameObject p2 = GameState.game_state.PlayerObjects[1].gameObject;
                 HingeJoint2D jo = middle_link.AddComponent<HingeJoint2D>();
                 jo.autoConfigureConnectedAnchor = false;
-                jo.connectedBody = p3.GetComponent<Rigidbody2D>();
+                jo.connectedBody = p2.GetComponent<Rigidbody2D>();
                 jo.connectedAnchor = Vector2.zero;
             }
             else if (GameState.game_state.PlayerObjects.Length == 4)
             {
                 // Attach players spaced evenly down the line
-                GameObject p3 = GameState.game_state.PlayerObjects[2].gameObject;
+                GameObject p2 = GameState.game_state.PlayerObjects[1].gameObject;
                 HingeJoint2D jo = tether_links[(int) (tether_links.Count * 0.333f)].AddComponent<HingeJoint2D>();
                 jo.autoConfigureConnectedAnchor = false;
-                jo.connectedBody = p3.GetComponent<Rigidbody2D>();
+                jo.connectedBody = p2.GetComponent<Rigidbody2D>();
                 jo.connectedAnchor = Vector2.zero;
 
-                GameObject p4 = GameState.game_state.PlayerObjects[3].gameObject;
+                GameObject p3 = GameState.game_state.PlayerObjects[2].gameObject;
                 jo = tether_links[(int)(tether_links.Count * 0.666f)].AddComponent<HingeJoint2D>();
                 jo.autoConfigureConnectedAnchor = false;
-                jo.connectedBody = p4.GetComponent<Rigidbody2D>();
+                jo.connectedBody = p3.GetComponent<Rigidbody2D>();
                 jo.connectedAnchor = Vector2.zero;
             }
 

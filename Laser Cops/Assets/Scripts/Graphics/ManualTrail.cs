@@ -5,8 +5,9 @@ using System.Collections;
 public class ManualTrail : MonoBehaviour
 {
     public int trailResolution;     // Number of points on the line
+    public bool ignore_settings = false;
     LineRenderer lineRenderer;
-
+    
     Vector3[] lineSegmentPositions;
     Vector3[] lineSegmentVelocities;
     public float startWidth = 1f;
@@ -72,6 +73,7 @@ public class ManualTrail : MonoBehaviour
             }
         }
     }
+
 
     // Update is called once per frame
     void Update()

@@ -13,6 +13,10 @@ public class InGameUIManager : MonoBehaviour
     public float player_1_health_starting_width;
     public Image player_2_health;
     public float player_2_health_starting_width;
+    public Image player_3_health;
+    public float player_3_health_starting_width;
+    public Image player_4_health;
+    public float player_4_health_starting_width;
 
     public Text score_text;
     [HideInInspector]
@@ -47,18 +51,30 @@ public class InGameUIManager : MonoBehaviour
 
         time_text = GameObject.FindGameObjectWithTag("Timer").GetComponent<Text>();
         score_text = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>();
-        player_1_health = GameObject.FindGameObjectWithTag("BlueHP").GetComponent<Image>();
+        player_1_health = GameObject.FindGameObjectWithTag("1HP").GetComponent<Image>();
         player_1_health_starting_width = player_1_health.rectTransform.rect.width;
-        player_2_health = GameObject.FindGameObjectWithTag("PinkHP").GetComponent<Image>();
+        player_2_health = GameObject.FindGameObjectWithTag("2HP").GetComponent<Image>();
         player_2_health_starting_width = player_2_health.rectTransform.rect.width;
-
+        player_3_health = GameObject.FindGameObjectWithTag("3HP").GetComponent<Image>();
+        player_3_health_starting_width = player_3_health.rectTransform.rect.width;
+        player_4_health = GameObject.FindGameObjectWithTag("4HP").GetComponent<Image>();
+        player_4_health_starting_width = player_4_health.rectTransform.rect.width;
     }
     void Start ()
     {
         UpdateHealth();
         UpdateScore();
+
+        if (GameState.game_state.number_of_players < 4)
+        {
+            player_4_health.gameObject.SetActive(false);
+        }
+        if (GameState.game_state.number_of_players < 3)
+        {
+            player_3_health.gameObject.SetActive(false);
+        }
         //SetAnnouncementText(new string[] { "3", "2", "1", "Go!" });
-	}
+    }
 
     public void UpdateHealth()
     {
@@ -74,7 +90,17 @@ public class InGameUIManager : MonoBehaviour
             }
             else if (player.player_number == 2)
             {
-                player_2_health.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, size * player_1_health_starting_width);
+                player_2_health.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, size * player_2_health_starting_width);
+                //player_2_health.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (player.Health / (player.Max_Health)) * player_2_health_starting_width);
+            }
+            else if (player.player_number == 3)
+            {
+                player_3_health.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, size * player_3_health_starting_width);
+                //player_2_health.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (player.Health / (player.Max_Health)) * player_2_health_starting_width);
+            }
+            else if (player.player_number == 4)
+            {
+                player_4_health.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, size * player_4_health_starting_width);
                 //player_2_health.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (player.Health / (player.Max_Health)) * player_2_health_starting_width);
             }
         }

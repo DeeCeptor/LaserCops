@@ -19,7 +19,7 @@ public class SlowlyMove : MonoBehaviour
         }
         else
         {
-
+            this.GetComponent<Rigidbody2D>().velocity = new Vector2(speed, 0);
         }
 	}
 }
