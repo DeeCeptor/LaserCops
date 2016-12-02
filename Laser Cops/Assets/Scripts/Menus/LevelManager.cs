@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour
     public LevelNode[] level_nodes;
     //Mode game_mode;
     public Text high_score_text;
+    public Text hint_text;
 
     public GameObject selected_level_ui;
     public Text level_text_name;

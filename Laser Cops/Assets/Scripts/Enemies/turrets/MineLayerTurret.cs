@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 //this script is for a turret that will shoot a mine at a player if they are in a horizontal line with the player. should be used for turrets on guys travelling up or down mostly
 public class MineLayerTurret : ForwardShotScript {
@@ -15,13 +15,15 @@ public class MineLayerTurret : ForwardShotScript {
     public float allowedDistance = 1f;
     public bool playerInLine = false;
     public bool shooting = false;
-	// Use this for initialization
-	void Start () {
+
+    void Start ()
+    {
         players = GameState.game_state.PlayerObjects;
     }
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+
+
+    void FixedUpdate ()
+    {
         if (active)
         {
             for (int i = 0; i < players.Length; i++)

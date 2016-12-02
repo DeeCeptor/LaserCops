@@ -12,7 +12,7 @@ public class PlayerCursor : MonoBehaviour
 
     float min_y_difference = 1f;
     float min_x_difference = 1f;
-    float move_speed = 4f;
+    float move_speed = 6f;
 
 
     void Awake()
