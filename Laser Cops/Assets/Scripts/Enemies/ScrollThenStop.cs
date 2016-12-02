@@ -102,5 +102,6 @@ public class ScrollThenStop : basicScrollingEnemyScript
     {
         active = true;
         stopCounter = Time.time + timeTillStop;
+        base.Activate();
     }
 }

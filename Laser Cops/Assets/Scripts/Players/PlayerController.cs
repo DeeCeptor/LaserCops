@@ -431,7 +431,7 @@ public class PlayerController : PlayerInput
         // Turn on damage sparks on the UI health bar
         cur_spark_dmg_time = spark_dmg_time;
 
-        if (Health <= 0)
+        if (Health <= 0 && !GameState.game_state.game_over)
             Die();
     }
     public void Die()

@@ -9,11 +9,6 @@ public class scrollThenChase : ScrollThenStop
     //direction to move in once chasing player used internally but may be used by scripts that inherit this script
     public Vector2 dir;
 
-    void Start ()
-    {
-        
-	}
-
 
     void FixedUpdate ()
     {

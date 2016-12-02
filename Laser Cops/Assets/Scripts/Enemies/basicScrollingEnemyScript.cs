@@ -42,21 +42,20 @@ public class basicScrollingEnemyScript : MonoBehaviour
 
     ManualTrail[] objects_to_activate_when_active;
 
-    // Use this for initialization
+
     void Start()
     {
         initiate();
 
         // Turn off trails
-
-        objects_to_activate_when_active = this.GetComponentsInChildren<ManualTrail>();
+        objects_to_activate_when_active = this.GetComponentsInChildren<ManualTrail>(true);
         foreach (ManualTrail trail in objects_to_activate_when_active)
         {
             trail.gameObject.SetActive(false);
         }
     }
 
-    // Update is called once per frame
+
     void FixedUpdate()
     {
         if (!active)
@@ -321,9 +320,10 @@ public class basicScrollingEnemyScript : MonoBehaviour
         active = true;
 
         // Turn on trails
-        if (objects_to_activate_when_active != null)
+        ManualTrail[] tr = this.GetComponentsInChildren<ManualTrail>(true);
+        if (tr != null)
         {
-            foreach (ManualTrail trail in objects_to_activate_when_active)
+            foreach (ManualTrail trail in tr)
             {
                 trail.gameObject.SetActive(true);
             }

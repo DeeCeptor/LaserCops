@@ -4,10 +4,12 @@ using System.Collections;
 // http://answers.unity3d.com/questions/1032656/trail-renderer-on-a-non-moving-object.html
 public class ManualTrail : MonoBehaviour
 {
+    [HideInInspector]
+    public bool activated = true;
+
     public int trailResolution;     // Number of points on the line
     public bool ignore_settings = false;
     LineRenderer lineRenderer;
-    
     Vector3[] lineSegmentPositions;
     Vector3[] lineSegmentVelocities;
     public float startWidth = 1f;
@@ -72,7 +74,13 @@ public class ManualTrail : MonoBehaviour
                 lineSegmentPositions[i] = transform.position + (facingDirection * (offset * i));
             }
         }
+
+        if (this.transform.root.tag == "Enemy")
+        {
+            this.gameObject.SetActive(false);
+        }
     }
+
 
 
     // Update is called once per frame
