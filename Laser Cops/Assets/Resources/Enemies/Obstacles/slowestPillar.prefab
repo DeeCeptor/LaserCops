@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 477210}
   - 212: {fileID: 21260428}
   - 114: {fileID: 11466092}
-  m_Layer: 9
+  m_Layer: 27
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ GameObject:
   - 50: {fileID: 5008926}
   - 114: {fileID: 11466368}
   - 114: {fileID: 11418358}
-  m_Layer: 9
+  m_Layer: 27
   m_Name: slowestPillar
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

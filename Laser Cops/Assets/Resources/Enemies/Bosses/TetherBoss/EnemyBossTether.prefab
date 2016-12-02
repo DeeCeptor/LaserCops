@@ -1,0 +1,307 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1000014281605316}
+  m_IsPrefabParent: 1
+--- !u!1 &1000010706266828
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000013296042848}
+  - 120: {fileID: 120000013479977022}
+  - 15: {fileID: 15000014028896152}
+  - 26: {fileID: 26000013026511658}
+  m_Layer: 0
+  m_Name: Tether Links Parent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1000010977950788
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000013267552836}
+  - 114: {fileID: 114000012422272256}
+  m_Layer: 0
+  m_Name: LightningPoolHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1000014281605316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000011089433376}
+  - 114: {fileID: 114000012366125388}
+  - 114: {fileID: 114000011960965898}
+  m_Layer: 12
+  m_Name: EnemyBossTether
+  m_TagString: TetherManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4000011089433376
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014281605316}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 27.75, y: 2.59, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 4000013296042848}
+  - {fileID: 4000013267552836}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &4000013267552836
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010977950788}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000011089433376}
+  m_RootOrder: 1
+--- !u!4 &4000013296042848
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010706266828}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000011089433376}
+  m_RootOrder: 0
+--- !u!15 &15000014028896152
+EllipsoidParticleEmitter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010706266828}
+  serializedVersion: 2
+  m_Enabled: 1
+  m_Emit: 0
+  minSize: 0.2
+  maxSize: 0.4
+  minEnergy: 99999
+  maxEnergy: 99999
+  minEmission: 100
+  maxEmission: 100
+  worldVelocity: {x: 0, y: 0, z: 0}
+  localVelocity: {x: 0, y: 0, z: 0}
+  rndVelocity: {x: 0, y: 0, z: 0}
+  emitterVelocityScale: 0.05
+  tangentVelocity: {x: 0, y: 0, z: 0}
+  angularVelocity: 0
+  rndAngularVelocity: 0
+  rndRotation: 0
+  Simulate in Worldspace?: 1
+  m_OneShot: 1
+  m_Ellipsoid: {x: 1, y: 1, z: 0}
+  m_MinEmitterRange: 0
+--- !u!26 &26000013026511658
+ParticleRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010706266828}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 3d395c60a1f40e646b09a5cc748c5bee, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedWireframeHidden: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 711191555
+  m_SortingOrder: -1
+  serializedVersion: 2
+  m_CameraVelocityScale: 0
+  m_StretchParticles: 0
+  m_LengthScale: 2
+  m_VelocityScale: 0
+  m_MaxParticleSize: 0.25
+  UV Animation:
+    x Tile: 1
+    y Tile: 1
+    cycles: 1
+--- !u!114 &114000011960965898
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014281605316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e9ebf17c63161f4e83a72fc7a49815b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 0.5
+  standard_colour: {r: 0, g: 0, b: 0, a: 0}
+  pulsating_colour: {r: 0, g: 0, b: 0, a: 0}
+  left_width: 0.1
+  right_width: 0.1
+  tether_links_parent: {fileID: 0}
+  tether_links: []
+  middle_link: {fileID: 0}
+  zigs: 300
+  speed: 1
+  scale: 1.5
+  primary_colour: {r: 0, g: 0, b: 0, a: 0}
+  secondary_colour: {r: 0, g: 0, b: 0, a: 0}
+  primary_destroy_colour: {r: 1, g: 0, b: 0, a: 1}
+  secondary_destroy_colour: {r: 1, g: 1, b: 1, a: 1}
+  primary_capture_colour: {r: 0, g: 0, b: 1, a: 1}
+  secondary_capture_colour: {r: 1, g: 1, b: 1, a: 1}
+  particle_emitter: {fileID: 0}
+  rope_pieces_parent: {fileID: 0}
+  anchor: {fileID: 0}
+  emptyPrefab: {fileID: 0}
+  beginning_anchor: {fileID: 0}
+  end_anchor: {fileID: 0}
+  beginning_rope_piece: {fileID: 0}
+  end_rope_piece: {fileID: 0}
+  direction: {x: 0, y: 0}
+  number_of_segments: 40
+  tether_material: {fileID: 0}
+--- !u!114 &114000012366125388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014281605316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9745a9d7e7127ce46b489dcf5e4c4f1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 0.5
+  standard_colour: {r: 1, g: 0, b: 0, a: 0}
+  pulsating_colour: {r: 1, g: 0.43448272, b: 0, a: 0}
+  left_width: 0.06
+  right_width: 0.06
+  cur_tether_mode: 1
+  prev_tether_mode: 1
+  tether_links_parent: {fileID: 1000010706266828}
+  tether_links: []
+  middle_link: {fileID: 0}
+  zigs: 500
+  speed: 2
+  scale: 1.5
+  primary_colour: {r: 0, g: 0, b: 0, a: 0}
+  secondary_colour: {r: 0, g: 0, b: 0, a: 0}
+  primary_destroy_colour: {r: 1, g: 0, b: 0, a: 0.428}
+  secondary_destroy_colour: {r: 1, g: 0.7058823, b: 0.7058823, a: 0.509}
+  primary_capture_colour: {r: 0, g: 1, b: 0.08965516, a: 0.503}
+  secondary_capture_colour: {r: 0.7647059, g: 1, b: 0.7663286, a: 0.434}
+  particle_emitter: {fileID: 15000014028896152}
+  rope_pieces_parent: {fileID: 4000013296042848}
+  anchor: {fileID: 0}
+  emptyPrefab: {fileID: 1000013060801740, guid: 67423b4bf0e18cf4c89c3f6cc8853c23,
+    type: 2}
+  beginning_anchor: {fileID: 0}
+  end_anchor: {fileID: 0}
+  beginning_rope_piece: {fileID: 0}
+  end_rope_piece: {fileID: 0}
+  direction: {x: 0, y: 0}
+  number_of_segments: 40
+  tether_material: {fileID: 2100000, guid: 3d395c60a1f40e646b09a5cc748c5bee, type: 2}
+--- !u!114 &114000012422272256
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010977950788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda425f5f1ec297459a61b1920234376, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoltPrefab: {fileID: 100000, guid: 0ae0df1b393c3164b9edd778ca3ecbc6, type: 2}
+  BranchPrefab: {fileID: 100000, guid: ef6595f73463c8141b49dee38f071f51, type: 2}
+--- !u!120 &120000013479977022
+LineRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010706266828}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedWireframeHidden: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 711191555
+  m_SortingOrder: 0
+  m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  m_Parameters:
+    startWidth: 0.1
+    endWidth: 0.1
+    m_StartColor:
+      serializedVersion: 2
+      rgba: 4284313967
+    m_EndColor:
+      serializedVersion: 2
+      rgba: 4284313967
+  m_UseWorldSpace: 1

@@ -47,18 +47,20 @@ public class BulletScript : MonoBehaviour
             {
                 collision.gameObject.GetComponent<PlayerController>().TakeHit(damage, true);
                 EffectsManager.effects.BulletHitPlayer(collision.contacts[0].point);
+                Die();
             }
 
             // Spawn small sparks and explosion
             
 		}
 
-		if (collision.gameObject.tag == "VIP")
+		else if (collision.gameObject.tag == "VIP")
 		{
 			collision.gameObject.GetComponent<VIPScript>().TakeHit( damage);
-		}
+            Die();
+        }
 
-		if (!collision.gameObject.CompareTag("Enemy"))
+		else
 		{
 			Die();
 		}
