@@ -8,6 +8,7 @@ public class ExpandToOriginalScale : MonoBehaviour
     public bool x_scale;
     float original_x;
     public float expand_time = 0.5f;
+    public bool fade_sprite_after = false;
 
 	void Start () 
 	{
@@ -28,9 +29,15 @@ public class ExpandToOriginalScale : MonoBehaviour
 	{
         if (y_scale && this.transform.localScale.y != original_y)
         {
-            this.transform.localScale = new Vector3(this.transform.localScale.x, 
-                Mathf.Min(this.transform.localScale.y + Time.deltaTime * expand_time * original_y, original_y), 
+            this.transform.localScale = new Vector3(this.transform.localScale.x,
+                Mathf.Min(this.transform.localScale.y + Time.deltaTime * expand_time * original_y, original_y),
                 this.transform.localScale.z);
+        }
+        else if (fade_sprite_after)
+        {
+            Color c = this.GetComponent<SpriteRenderer>().color;
+            c.a -= Time.deltaTime;
+            this.GetComponent<SpriteRenderer>().color = c;
         }
         if (x_scale && this.transform.localScale.x != original_x)
         {

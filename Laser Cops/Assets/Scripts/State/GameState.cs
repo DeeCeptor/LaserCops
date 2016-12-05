@@ -84,7 +84,7 @@ public class GameState : MonoBehaviour
         // Set camera to be slightly more zoomed out when there are more players 
         if (number_of_players > 2)
         {
-            CameraManager.cam_manager.desired_size *= 1.2f;
+            CameraManager.cam_manager.desired_size *= 1.1f;
             CameraManager.cam_manager.cam.orthographicSize = CameraManager.cam_manager.desired_size;
         }
     }
@@ -93,27 +93,38 @@ public class GameState : MonoBehaviour
         //GameObject obj_ = (GameObject)Instantiate(Resources.Load("Enemies/Vehicles/MostBasicEnemy") as GameObject, new Vector3(1, 0, 0), Quaternion.identity);
         //obj_.GetComponent<basicScrollingEnemyScript>().Die();
 
-
+        int x_pos = -4;
         // Arrange position of players
         switch (number_of_players)
         {
             case 2:
-
+                Get_Player(1).transform.position = new Vector3(x_pos, 2, 0);
+                Get_Player(2).transform.position = new Vector3(x_pos, -2, 0);
                 break;
             case 3:
-                PlayerObjects[0].transform.position = new Vector3(0, 3, 0);
-                PlayerObjects[1].transform.position = new Vector3(0, 0, 0);
-                PlayerObjects[2].transform.position = new Vector3(0, -3, 0);
+                Get_Player(1).transform.position = new Vector3(x_pos, 3, 0);
+                Get_Player(2).transform.position = new Vector3(x_pos, 0, 0);
+                Get_Player(3).transform.position = new Vector3(x_pos, -3, 0);
                 break;
             case 4:
-                PlayerObjects[0].transform.position = new Vector3(0, 3, 0);
-                PlayerObjects[1].transform.position = new Vector3(0, 1, 0);
-                PlayerObjects[2].transform.position = new Vector3(0, -1, 0);
-                PlayerObjects[3].transform.position = new Vector3(0, -3, 0);
+                Get_Player(1).transform.position = new Vector3(x_pos, 3, 0);
+                Get_Player(2).transform.position = new Vector3(x_pos, 1, 0);
+                Get_Player(3).transform.position = new Vector3(x_pos, -1, 0);
+                Get_Player(4).transform.position = new Vector3(x_pos, -3, 0);
                 break;
         }
     }
 
+    public GameObject Get_Player(int number)
+    {
+        foreach (GameObject obj in PlayerObjects)
+        {
+            if (obj.GetComponent<PlayerController>().player_number == number)
+                return obj;
+        }
+        Debug.Log("Couldn't find player: " + number, this.gameObject);
+        return null;
+    }
 
     public void SetGameMode()
     {

@@ -39,11 +39,8 @@ public class CameraManager : MonoBehaviour
             StartCoroutine(Introduction_Cutscene());
         else
         {
-            // If not playing cutscene, allow input
-            foreach (PlayerController p in GameState.game_state.Players)
-            {
-                p.input_enabled = true;
-            }
+            Debug.Log("No starting cutscene, enabling input");
+            GameState.game_state.Toggle_Player_Input(true);
         }
     }
 
@@ -60,6 +57,7 @@ public class CameraManager : MonoBehaviour
         UIManager.ui_manager.Mode.GetComponent<Image>().sprite = GameState.game_state.GetModeSprite();
 
         // Disable input
+        yield return 0;
         GameState.game_state.Toggle_Player_Input(false);
 
         yield return new WaitForSeconds(1.5f);

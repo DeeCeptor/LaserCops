@@ -5,7 +5,7 @@ using System.Collections;
 public class FadeImage : MonoBehaviour
 {
     private float alpha = 1;
-    private float fadingOverTime = 0.5f;
+    public  float fadingOverTime = 0.5f;
     private Color curColor;
     private Image im;
 

@@ -21,15 +21,17 @@ public class basicArenaEnemy : MonoBehaviour {
     public Vector2 dir;
 
     public float collisionDamage = 1f;
-	// Use this for initialization
-	void Start () {
+
+    void Start ()
+    {
         players = GameState.game_state.PlayerObjects;
         int randInt = Random.Range(0,players.Length);
         playerToTrack = players[randInt].transform;
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+
+
+    void FixedUpdate ()
+    {
         if (active == false)
         {
             

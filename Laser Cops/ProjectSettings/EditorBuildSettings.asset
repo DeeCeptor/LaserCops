@@ -28,15 +28,17 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Finished/TakeItSlow.unity
   - enabled: 1
-    path: Assets/Levels/Kevin/DiscoBall.unity
-  - enabled: 1
     path: Assets/Levels/Finished/DiscoDan.unity
   - enabled: 1
     path: Assets/Levels/Finished/TimeToSplit.unity
   - enabled: 1
+    path: Assets/Levels/Finished/Traffic Jam.unity
+  - enabled: 1
     path: Assets/Levels/Finished/Easing into It.unity
   - enabled: 1
     path: Assets/Levels/Finished/Rainbow Road.unity
+  - enabled: 1
+    path: Assets/Levels/Finished/DiscoBall.unity
   - enabled: 1
     path: Assets/Levels/Finished/MrPresident.unity
   - enabled: 1

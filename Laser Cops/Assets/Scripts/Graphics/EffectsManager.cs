@@ -114,6 +114,12 @@ public class EffectsManager : MonoBehaviour
         Destroy((GameObject)GameObject.Instantiate(Resources.Load("Graphics/Tether Damage Sparks") as GameObject,
             position, Quaternion.identity), 4.0f);
     }
+    public void ExpandingCircle(Vector2 position, Color c)
+    {
+        GameObject obj = (GameObject)GameObject.Instantiate(Resources.Load("Graphics/Expanding Circle") as GameObject, position, Quaternion.identity);
+        obj.GetComponent<SpriteRenderer>().color = c;
+        Destroy(obj, 3f);
+    }
     public GameObject Fireworks(Vector2 position, string color) // Colors are: Red  Green   Blue
     {
         GameObject obj = (GameObject)GameObject.Instantiate(Resources.Load("Graphics/Fireworks " + color) as GameObject, position, Quaternion.identity);

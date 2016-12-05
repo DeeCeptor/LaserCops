@@ -161,6 +161,8 @@ public class PlayerController : PlayerInput
         {
             if (input_enabled)
                 UpdateInputs();
+            else
+                Disabled_Input();
 
             Vector2 new_speed = new Vector2(this.direction.x * x_speed, this.direction.y * y_speed);
             grid_ripple_force = normal_grid_force;

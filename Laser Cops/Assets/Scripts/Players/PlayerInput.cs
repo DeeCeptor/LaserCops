@@ -104,4 +104,14 @@ public class PlayerInput : MonoBehaviour
             disable_tether_held_down = false;
         */
     }
+
+
+    public void Disabled_Input()
+    {
+        direction = Vector2.zero;
+        disable_tether_held_down = false;
+        boosted_this_instant = false;
+        tether_switched = false;
+        tether_held_down = false;
+    }
 }

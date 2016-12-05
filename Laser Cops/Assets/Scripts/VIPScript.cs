@@ -7,15 +7,20 @@ public class VIPScript : MonoBehaviour {
 	public int destructiveTetherLayer = 12;
 	//damage taken from the destructive tether
 	public float friendlyFireDamage = 0.2f;
-	// Use this for initialization
-	void Start () {
+
+
+    void Start ()
+    {
         InGameUIManager.ui_manager.ActivateBottomHealthBar("VIP", Color.green, health);
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+    float graphics_timer;
+
+    void Update ()
+    {
+        graphics_timer -= Time.deltaTime;
 	}
+
 
     public void CutSprite()
     {
@@ -133,7 +138,6 @@ public class VIPScript : MonoBehaviour {
             {
                 //set pixel to clear for the side it's not on
                 vertices[1][i] = Color.clear;
-
             }
             else
             {
@@ -146,11 +150,9 @@ public class VIPScript : MonoBehaviour {
 
             corpses[i].SetPixels32(vertices[i]);
             corpses[i].Apply(true);
-
         }
-
-
     }
+
 
     void OnCollisionStay2D(Collision2D collision)
 	{
@@ -164,9 +166,17 @@ public class VIPScript : MonoBehaviour {
 	{
 		health -= damage;
         InGameUIManager.ui_manager.UpdateBottomHealthBar(health);
+
+        if (graphics_timer < 0)
+        {
+            EffectsManager.effects.BulletHitPlayer(this.transform.position);
+            SoundMixer.sound_manager.PlayGettingHitExplosion();
+            graphics_timer = 0.5f;
+            EffectsManager.effects.ExpandingCircle(this.transform.position, Color.red);
+        }
+
         if (health <= 0)
 		{
-            
             Die();
 		}
 	}
