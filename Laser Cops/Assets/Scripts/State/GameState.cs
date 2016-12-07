@@ -15,6 +15,8 @@ public class GameState : MonoBehaviour
     public int number_of_players = 2;
     public List<List<string>> player_inputs;
 
+    public bool overriding_no_tether = false;   // Set this to true if you never want the players to have a tether, regardless of mode
+
     public bool paused = false; // Paused by player
     public bool game_over = false;  // Lost the game
     public float elapsed_game_time = 0f;
@@ -177,7 +179,6 @@ public class GameState : MonoBehaviour
                 case GameMode.Chained:
                     Chained();
                     break;
-
             }
 
             number_of_players = mode.player_inputs.Count;
@@ -189,8 +190,28 @@ public class GameState : MonoBehaviour
         else
         {
             // Didn't find a selected game mode, just used cooperative
-            Debug.Log("Couldn't find game mode");
-            Cooperative();
+            Debug.Log("Couldn't find game mode, going with what the current GameState is set to");
+            switch (game_mode)
+            {
+                case GameMode.Cooperative:
+                    Cooperative();
+                    break;
+                case GameMode.Competitive:
+                    Competitive();
+                    break;
+                case GameMode.NoTether:
+                    NoTether();
+                    break;
+                case GameMode.TetherOn:
+                    TetherOn();
+                    break;
+                case GameMode.OneHitKill:
+                    OneHitKill();
+                    break;
+                case GameMode.Chained:
+                    Chained();
+                    break;
+            }
         }
 
         // Instantiate more players
@@ -206,6 +227,9 @@ public class GameState : MonoBehaviour
             GameObject p = Instantiate(Resources.Load("Players/Player 4") as GameObject);
             p.transform.position = new Vector2(0, 1.5f);
         }
+
+        if (overriding_no_tether)
+            no_tether = true;
     }
     public void Cooperative()
     {
@@ -471,7 +495,6 @@ public class GameState : MonoBehaviour
         }
 
         End_Cutscene(text_to_display);
-        CameraManager.cam_manager.ChangeZoom(5f, 3f);
         if (player_crossing_finish_line != null)
             CameraManager.cam_manager.target_of_zoom = player_crossing_finish_line.transform;
 
@@ -482,6 +505,7 @@ public class GameState : MonoBehaviour
     // Play end cutscene (black and white, zoom in camera
     public void End_Cutscene(string text)
     {
+        CameraManager.cam_manager.ChangeZoom(5f, 1.5f);
         GlowingBackgroundCamera.background_cam.GoGrayscale();
         InGameUIManager.ui_manager.end_of_level_text.SetActive(true);
         InGameUIManager.ui_manager.end_of_level_text.GetComponentInChildren<Text>().text = text;
@@ -525,10 +549,10 @@ public class GameState : MonoBehaviour
     }
     public IEnumerator loadMenu(float delay, string scene_to_load)
     {
-        yield return new WaitForSeconds(delay - 0.1f);
-        CameraManager.cam_manager.GetComponent<CameraFilterPack_TV_ARCADE_2>().Contrast = 10f;
-        CameraFilterPack_TV_ARCADE_2.ChangeValue4 = 10f;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(delay);
+        //CameraManager.cam_manager.GetComponent<CameraFilterPack_TV_ARCADE_2>().Contrast = 10f;
+        //CameraFilterPack_TV_ARCADE_2.ChangeValue4 = 10f;
+        //yield return new WaitForSeconds(0.1f);
         ChangeTimescale(1f);
         UnityEngine.SceneManagement.SceneManager.LoadScene(scene_to_load);
         yield return null;
@@ -608,13 +632,12 @@ public class GameState : MonoBehaviour
             blur_timer -= Time.unscaledDeltaTime;
             if (blur_timer < 0)
             {
-                CameraManager.cam_manager.GetComponent<MKGlow>().BlurIterations = Mathf.Min(CameraManager.cam_manager.GetComponent<MKGlow>().BlurIterations + 1, 8);
+                CameraManager.cam_manager.GetComponent<MKGlow>().BlurIterations = Mathf.Min(CameraManager.cam_manager.GetComponent<MKGlow>().BlurIterations + 1, 7);
                 blur_timer = 0.6f;
             }
 
             // Slow down the game
             this.ChangeTimescale(Mathf.Max(Time.timeScale - Time.unscaledDeltaTime * slowdown_factor, 0.1f));
-            Debug.Log(Time.timeScale);
         }
 
         if (Input.GetButtonDown("Pause") && !game_over)

@@ -83,9 +83,12 @@ public class ManualTrail : MonoBehaviour
 
 
 
-    // Update is called once per frame
+
     void Update()
     {
+        if (!ignore_settings && GraphicalSettings.graphical_settings != null && !GraphicalSettings.graphical_settings.Show_Trails)
+            Destroy(this);
+
         facingDirection = GetDirection();
 
         for (int i = 0; i < lineSegmentPositions.Length; i++)

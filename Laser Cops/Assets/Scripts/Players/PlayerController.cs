@@ -35,7 +35,7 @@ public class PlayerController : PlayerInput
     public float Max_Health = 100f;
     public float Health;
     float HP_transfer_rate = 15f;
-    public float Grinding_Damage = 0.6f;    // How much damage we do by grinding against enemies
+    public float Grinding_Damage = 1f;    // How much damage we do by grinding against enemies
     public Image health_bar_image;
 
     // Boost

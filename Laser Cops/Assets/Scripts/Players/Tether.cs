@@ -242,6 +242,9 @@ public class Tether : MonoBehaviour
     // Called when the player is holding down the button
     public void TetherHeldDown()
     {
+        if (tether_links_parent == null)
+            return;
+
         num_players_holding_down_tether_button++;
 
         // If both players are holding down the tether, disable it
@@ -309,6 +312,9 @@ public class Tether : MonoBehaviour
     }
     public void SetTetherMode(TetherMode mode)
     {
+        if (tether_links_parent == null)
+            return;
+
         prev_tether_mode = cur_tether_mode;
 
         if (mode == TetherMode.Destroy || mode == TetherMode.None)

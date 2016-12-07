@@ -30,6 +30,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Finished/DiscoDan.unity
   - enabled: 1
+    path: Assets/Levels/Finished/Life is a Highway.unity
+  - enabled: 1
     path: Assets/Levels/Finished/TimeToSplit.unity
   - enabled: 1
     path: Assets/Levels/Finished/Traffic Jam.unity
@@ -44,4 +46,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Finished/BounceMrPresident.unity
   - enabled: 1
+    path: Assets/Levels/Finished/Good 'Ole Chase.unity
+  - enabled: 1
     path: Assets/Levels/Finished/Keep on Truckin'.unity
+  - enabled: 1
+    path: Assets/Levels/Finished/The Gauntlet.unity

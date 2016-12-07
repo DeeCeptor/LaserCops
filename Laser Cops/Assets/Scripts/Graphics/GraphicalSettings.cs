@@ -54,11 +54,22 @@ public class GraphicalSettings : MonoBehaviour
         }
     }
     private bool show_enemy_wakes = true;
+    public bool Show_Trails
+    {
+        get { return show_trails; }
+        set
+        {
+            show_trails = value;
+            SaveGraphicalSetting("Show_Trails", value);
+        }
+    }
+    private bool show_trails = true;
+
 
     public Toggle Show_Wakes_Toggle;
     public Toggle Show_Player_Wakes_Toggle;
     public Toggle Show_Enemy_Wakes_Toggle;
-
+    public Toggle Show_Trails_Toggle;
 
     void Awake()
     {
@@ -79,6 +90,9 @@ public class GraphicalSettings : MonoBehaviour
 
         Show_Enemy_Wakes = System.Convert.ToBoolean(PlayerPrefs.GetInt("Show_Enemy_Wakes", 1));
         Show_Enemy_Wakes_Toggle.isOn = Show_Enemy_Wakes;
+
+        Show_Trails = System.Convert.ToBoolean(PlayerPrefs.GetInt("Show_Trails", 1));
+        Show_Trails_Toggle.isOn = Show_Trails;
     }
     public void SaveGraphicalSetting(string key, bool value)
     {
