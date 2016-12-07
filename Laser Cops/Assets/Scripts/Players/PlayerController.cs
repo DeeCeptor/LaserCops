@@ -460,7 +460,7 @@ public class PlayerController : PlayerInput
         this.gameObject.AddComponent<PlayerDying>();
 
         GameState.game_state.Players.Remove(this);
-        GameState.game_state.CheckGameOver();
+        GameState.game_state.CheckGameOver(this);
 
         Destroy(this);
     }

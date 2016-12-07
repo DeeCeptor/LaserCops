@@ -9,4 +9,10 @@ public class GlowingBackgroundCamera : MonoBehaviour
 	{
         background_cam = this;
 	}
+
+
+    public void GoGrayscale()
+    {
+        this.gameObject.AddComponent<CameraFilterPack_Color_GrayScale>();
+    }
 }

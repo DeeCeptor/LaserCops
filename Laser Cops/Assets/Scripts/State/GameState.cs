@@ -1,7 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using MKGlowSystem;
 
 public class GameState : MonoBehaviour
 {
@@ -65,7 +67,10 @@ public class GameState : MonoBehaviour
     public Sprite tether_on_icon;
     public Sprite tether_off_icon;
 
-    // Use
+    float delay_between_level_switching = 1.72f;
+    float slowdown_factor = 0.4f;
+
+    // Use when bullets are reflected
     public Material default_sprite_material;
 
     void Awake()
@@ -98,19 +103,19 @@ public class GameState : MonoBehaviour
         switch (number_of_players)
         {
             case 2:
-                Get_Player(1).transform.position = new Vector3(x_pos, 2, 0);
-                Get_Player(2).transform.position = new Vector3(x_pos, -2, 0);
+                Get_Player(1).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, 2, 0);
+                Get_Player(2).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, -2, 0);
                 break;
             case 3:
-                Get_Player(1).transform.position = new Vector3(x_pos, 3, 0);
-                Get_Player(2).transform.position = new Vector3(x_pos, 0, 0);
-                Get_Player(3).transform.position = new Vector3(x_pos, -3, 0);
+                Get_Player(1).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, 3, 0);
+                Get_Player(2).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, 0, 0);
+                Get_Player(3).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, -3, 0);
                 break;
             case 4:
-                Get_Player(1).transform.position = new Vector3(x_pos, 3, 0);
-                Get_Player(2).transform.position = new Vector3(x_pos, 1, 0);
-                Get_Player(3).transform.position = new Vector3(x_pos, -1, 0);
-                Get_Player(4).transform.position = new Vector3(x_pos, -3, 0);
+                Get_Player(1).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, 3, 0);
+                Get_Player(2).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, 1, 0);
+                Get_Player(3).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, -1, 0);
+                Get_Player(4).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, -3, 0);
                 break;
         }
     }
@@ -296,67 +301,6 @@ public class GameState : MonoBehaviour
     }
 
 
-    void Update()
-    {
-        
-        if (Input.GetButtonDown("Pause") && !game_over)
-        {
-            if (Time.timeScale == 0)
-            {
-                // Currently paused, unpause game
-                Unpause();
-            }
-            else
-            {
-                // Currently unpaused, pause game
-                Pause();
-            }
-        }
-
-        // Not paused and not game over
-        if (Time.timeScale != 0 && !game_over)
-        {
-            // Timer is running if we're not paused
-            elapsed_game_time += Time.deltaTime;
-        }
-
-        // Is the tether touching an obstacle?
-        if (tether_touching_obstacle &&
-            time_last_touched_obstacle + turn_off_tether_touching_obstacle_time < Time.time)
-        {
-            tether_touching_obstacle = false;
-            ResetVelocityPositionIterations();
-        }
-
-        if(VIP && VIPObject == null)
-        {
-            GameOver();
-        }
-
-        if (debugging)
-        {
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                debug_invulnerability = !debug_invulnerability;
-            }
-
-            if (Input.GetKey(KeyCode.BackQuote))
-            {
-                increased_speed = true;
-                debug_invulnerability = true;
-                ChangeTimescale(5f);
-                //Time.timeScale = 5f;
-            }
-            else if (Time.timeScale > 1)
-            {
-                increased_speed = false;
-                ChangeTimescale(1f);
-                //Time.timeScale = 1;
-            }
-        }
-    }
-
-
     public string getFormattedTime(float in_time)
     {
         int minutes = (int)((in_time) / 60.0f);
@@ -379,7 +323,7 @@ public class GameState : MonoBehaviour
 
 
     // Checks if this is a game over
-    public void CheckGameOver()
+    public void CheckGameOver(PlayerController player_who_just_died = null)
     {
         if (!game_over)
         {
@@ -394,102 +338,153 @@ public class GameState : MonoBehaviour
                 default:
                     if (Players.Count < number_of_players)
                     {
-                        GameOver();
+                        GameOver(player_who_just_died);
                     }
                     break;
             }
         }
     }
-    public void GameOver()
+    public void GameOver(PlayerController player_who_just_died = null)
     {
-        if (!game_over)
+        if (game_over)
+            return;
+
+        Debug.Log("You lose!");
+        game_over = true;
+        //ChangeTimescale(0.5f);
+
+        //LevelResult lr = SpawnLevelResult();
+        string text;
+        if (game_mode == GameMode.Competitive)
         {
-            Debug.Log("You lose!");
-            game_over = true;
-            //InGameUIManager.ui_manager.SetAnnouncementText("You lost!", 9999);
-            ChangeTimescale(0.5f);
-
-            LevelResult lr = SpawnLevelResult();
-            if (game_mode == GameMode.Competitive)
-            {
-                Debug.Log("Competitive");
-
-                lr.competitive = true;
-            }
-            else
-            {
-                Debug.Log("Not competitive");
-                lr.coop_victory = false;
-                lr.coop_defeat = true;
-                lr.competitive = false;
-            }
-
-            ChangeScene(2f, "EndLevelScreen");//level_to_load_on_defeat);
+            Debug.Log("Competitive");
+            text = "Competitive Defeat";
+            //lr.competitive = true;
         }
-    }
-    public void Victory(string text = "You beat the level!")
-    {
-        if (!game_over)
+        else
         {
-            Debug.Log(text + " on " + this.game_mode + " " + this.current_difficulty);
-            game_over = true;
+            Debug.Log("Not competitive");
+            text = "Coop Defeat";
+            //lr.coop_victory = false;
+            //lr.coop_defeat = true;
+            //lr.competitive = false;
+        }
 
-            // Slow down time
-            ChangeTimescale(0.5f);
+        if (player_who_just_died != null)
+            CameraManager.cam_manager.target_of_zoom = player_who_just_died.transform;
 
-            // Score fact that we beat level, on this mode
-            PlayerPrefs.SetInt(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name, 1);      // Beat level on anything
-            PlayerPrefs.SetInt(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " " + this.current_difficulty, 1);  // Beat level on difficulty
-            PlayerPrefs.SetInt(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " " + this.game_mode, 1);   // Beat level on mode
-            PlayerPrefs.SetInt(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " " + this.game_mode + " " + this.current_difficulty, 1);   // Beat level on mode at difficulty
+        End_Cutscene(text);
 
-            // Record score
-            int prev_high_score = PlayerPrefs.GetInt(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " High Score", 0);
-            if (InGameUIManager.ui_manager.score >= prev_high_score)
+        ChangeScene(delay_between_level_switching, level_to_load_on_defeat);
+    }
+    public void Victory(string text = "You beat the level!", GameObject player_crossing_finish_line = null)
+    {
+        if (game_over)
+            return;
+
+        Debug.Log(text + " on " + this.game_mode + " " + this.current_difficulty);
+        game_over = true;
+
+        // Slow down time
+        //ChangeTimescale(0.5f);
+
+        // Score fact that we beat level, on this mode
+        PlayerPrefs.SetInt(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name, 1);      // Beat level on anything
+        PlayerPrefs.SetInt(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " " + this.current_difficulty, 1);  // Beat level on difficulty
+        PlayerPrefs.SetInt(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " " + this.game_mode, 1);   // Beat level on mode
+        PlayerPrefs.SetInt(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " " + this.game_mode + " " + this.current_difficulty, 1);   // Beat level on mode at difficulty
+
+        // Record score
+        int prev_high_score = PlayerPrefs.GetInt(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " High Score", 0);
+        if (InGameUIManager.ui_manager.score >= prev_high_score)
+        {
+            PlayerPrefs.SetInt(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " High Score", InGameUIManager.ui_manager.score);
+            // InGameUIManager.ui_manager.SetAnnouncementText("New High Score: " + InGameUIManager.ui_manager.score, 9999);
+            Debug.Log("New high score : " + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " " + InGameUIManager.ui_manager.score);
+        }
+        else
+        {
+            //InGameUIManager.ui_manager.SetAnnouncementText("Previous High Score: " + InGameUIManager.ui_manager.score, 9999);
+            Debug.Log("No new high score: " + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " " + InGameUIManager.ui_manager.score);
+        }
+
+        //LevelResult lr = SpawnLevelResult();
+        string text_to_display = "";
+        if (game_mode == GameMode.Competitive)
+        {
+            /*
+            lr.competitive = true;
+            lr.coop_victory = false;
+            lr.coop_defeat = false;
+            */
+            if (player_crossing_finish_line != null)
             {
-                PlayerPrefs.SetInt(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " High Score", InGameUIManager.ui_manager.score);
-               // InGameUIManager.ui_manager.SetAnnouncementText("New High Score: " + InGameUIManager.ui_manager.score, 9999);
-                Debug.Log("New high score : " + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " " + InGameUIManager.ui_manager.score);
+                // Competitive, a player crossed the line (there's more than 1 alive), this crossing player wins
+                PlayerController p = player_crossing_finish_line.GetComponent<PlayerController>();
+                text_to_display = "Player " + p.player_number + " wins!";
+                CameraManager.cam_manager.target_of_zoom = p.transform;
             }
             else
             {
-                //InGameUIManager.ui_manager.SetAnnouncementText("Previous High Score: " + InGameUIManager.ui_manager.score, 9999);
-                Debug.Log("No new high score: " + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " " + InGameUIManager.ui_manager.score);
-            }
-
-            LevelResult lr = SpawnLevelResult();
-            if (game_mode == GameMode.Competitive)
-            {
-                lr.competitive = true;
-                lr.coop_victory = false;
-                lr.coop_defeat = false;
-
                 foreach (PlayerController p in Players)
                 {
                     if (p.player_number == 1)
                     {
                         if (p.alive)
                         {
-                            lr.competitive_blue_wins = true;
+                            text_to_display = "Player " + p.player_number + " wins!";
+                            CameraManager.cam_manager.target_of_zoom = p.transform;
                         }
                     }
                     else if (p.player_number == 2)
                     {
                         if (p.alive)
                         {
-                            lr.competitive_pink_wins = true;
+                            text_to_display = "Player " + p.player_number + " wins!";
+                            CameraManager.cam_manager.target_of_zoom = p.transform;
+                        }
+                    }
+                    else if (p.player_number == 3)
+                    {
+                        if (p.alive)
+                        {
+                            text_to_display = "Player " + p.player_number + " wins!";
+                            CameraManager.cam_manager.target_of_zoom = p.transform;
+                        }
+                    }
+                    else if (p.player_number == 4)
+                    {
+                        if (p.alive)
+                        {
+                            text_to_display = "Player " + p.player_number + " wins!";
+                            CameraManager.cam_manager.target_of_zoom = p.transform;
                         }
                     }
                 }
             }
-            else
-            {
-                lr.coop_victory = true;
-                lr.coop_defeat = false;
-            }
-
-            ChangeScene(2f, "EndLevelScreen");//level_to_load_on_victory);
         }
+        else
+        {
+            //lr.coop_victory = true;
+            //lr.coop_defeat = false;
+            text_to_display = "Coop victory!";
+        }
+
+        End_Cutscene(text_to_display);
+        CameraManager.cam_manager.ChangeZoom(5f, 3f);
+        if (player_crossing_finish_line != null)
+            CameraManager.cam_manager.target_of_zoom = player_crossing_finish_line.transform;
+
+        ChangeScene(delay_between_level_switching, level_to_load_on_victory);
+    }
+
+
+    // Play end cutscene (black and white, zoom in camera
+    public void End_Cutscene(string text)
+    {
+        GlowingBackgroundCamera.background_cam.GoGrayscale();
+        InGameUIManager.ui_manager.end_of_level_text.SetActive(true);
+        InGameUIManager.ui_manager.end_of_level_text.GetComponentInChildren<Text>().text = text;
     }
 
     public LevelResult SpawnLevelResult()
@@ -530,7 +525,10 @@ public class GameState : MonoBehaviour
     }
     public IEnumerator loadMenu(float delay, string scene_to_load)
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(delay - 0.1f);
+        CameraManager.cam_manager.GetComponent<CameraFilterPack_TV_ARCADE_2>().Contrast = 10f;
+        CameraFilterPack_TV_ARCADE_2.ChangeValue4 = 10f;
+        yield return new WaitForSeconds(0.1f);
         ChangeTimescale(1f);
         UnityEngine.SceneManagement.SceneManager.LoadScene(scene_to_load);
         yield return null;
@@ -545,9 +543,12 @@ public class GameState : MonoBehaviour
     }
     public void Pause()
     {
-        Debug.Log("Pausing");
-        Time.timeScale = 0;
-        InGameUIManager.ui_manager.pause_menu.SetActive(true);
+        if (!game_over)
+        {
+            Debug.Log("Pausing");
+            Time.timeScale = 0;
+            InGameUIManager.ui_manager.pause_menu.SetActive(true);
+        }
     }
 
 
@@ -594,6 +595,81 @@ public class GameState : MonoBehaviour
                 GUI.Label(new Rect(0, 10, 300, 100), Time.timeScale + "X");
                 GUI.Label(new Rect(0, 20, 300, 100), "Length:" + Tether.tether.tether_links.Count);
                 GUI.Label(new Rect(0, 30, 300, 100), "Score for new link:" + InGameUIManager.ui_manager.score_for_a_link);
+            }
+        }
+    }
+
+
+    float blur_timer;
+    void Update()
+    {
+        if (game_over)
+        {
+            blur_timer -= Time.unscaledDeltaTime;
+            if (blur_timer < 0)
+            {
+                CameraManager.cam_manager.GetComponent<MKGlow>().BlurIterations = Mathf.Min(CameraManager.cam_manager.GetComponent<MKGlow>().BlurIterations + 1, 8);
+                blur_timer = 0.6f;
+            }
+
+            // Slow down the game
+            this.ChangeTimescale(Mathf.Max(Time.timeScale - Time.unscaledDeltaTime * slowdown_factor, 0.1f));
+            Debug.Log(Time.timeScale);
+        }
+
+        if (Input.GetButtonDown("Pause") && !game_over)
+        {
+            if (Time.timeScale == 0)
+            {
+                // Currently paused, unpause game
+                Unpause();
+            }
+            else
+            {
+                // Currently unpaused, pause game
+                Pause();
+            }
+        }
+
+        // Not paused and not game over
+        if (Time.timeScale != 0 && !game_over)
+        {
+            // Timer is running if we're not paused
+            elapsed_game_time += Time.deltaTime;
+        }
+
+        // Is the tether touching an obstacle?
+        if (tether_touching_obstacle &&
+            time_last_touched_obstacle + turn_off_tether_touching_obstacle_time < Time.time)
+        {
+            tether_touching_obstacle = false;
+            ResetVelocityPositionIterations();
+        }
+
+        if (VIP && VIPObject == null)
+        {
+            GameOver();
+        }
+
+        if (debugging)
+        {
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                debug_invulnerability = !debug_invulnerability;
+            }
+
+            if (Input.GetKey(KeyCode.BackQuote))
+            {
+                increased_speed = true;
+                debug_invulnerability = true;
+                ChangeTimescale(5f);
+                //Time.timeScale = 5f;
+            }
+            else if (Time.timeScale > 1)
+            {
+                increased_speed = false;
+                ChangeTimescale(1f);
+                //Time.timeScale = 1;
             }
         }
     }

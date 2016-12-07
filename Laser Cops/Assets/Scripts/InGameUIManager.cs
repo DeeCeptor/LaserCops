@@ -45,6 +45,8 @@ public class InGameUIManager : MonoBehaviour
     float cur_announcement_cooldown;
     float announcement_cooldown = 1f;
 
+    public GameObject end_of_level_text;
+
     void Awake ()
     {
         ui_manager = this;

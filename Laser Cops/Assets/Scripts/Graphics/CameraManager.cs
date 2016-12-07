@@ -17,6 +17,7 @@ public class CameraManager : MonoBehaviour
     public LayerMask intro_culling_mask;
     int initial_culling_mask;   // Saves default value to restore later
 
+    public Transform target_of_zoom;
 
     void Awake ()
     {
@@ -43,6 +44,9 @@ public class CameraManager : MonoBehaviour
             GameState.game_state.Toggle_Player_Input(true);
         }
     }
+
+
+
 
 
     // Played at the beginning of every leve
@@ -129,7 +133,7 @@ public class CameraManager : MonoBehaviour
 
     void Update ()
     {
-	    if (this.cam.orthographicSize != desired_size)
+        if (this.cam.orthographicSize != desired_size)
         {
             if (this.cam.orthographicSize < desired_size)
             {
@@ -140,5 +144,10 @@ public class CameraManager : MonoBehaviour
                 this.cam.orthographicSize = Mathf.Max(desired_size, this.cam.orthographicSize - Time.deltaTime * zoom_speed);
             }
         }
-	}
+
+        if (target_of_zoom != null && this.transform.position != target_of_zoom.transform.position)
+        {
+            this.transform.position = Vector2.Lerp(this.transform.position, target_of_zoom.transform.position, Time.unscaledDeltaTime * 0.3f);
+        }
+    }
 }

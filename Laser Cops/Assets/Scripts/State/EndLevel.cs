@@ -40,7 +40,7 @@ public class EndLevel : MonoBehaviour
         Destroy(this.GetComponentInChildren<SpriteRenderer>());
 
         activated = true;
-        GameState.game_state.Victory();
+        GameState.game_state.Victory("", victorious_player);
     }
 
 
