@@ -5,7 +5,7 @@ public class ObstacleScrollScript : MonoBehaviour {
     public float speed = 2f;
     public bool active = false;
 	public float damage = 0.5f;
-    public float dieDelay = 1f;
+    public float dieDelay = 0.1f;
     public float dieCounter;
     public bool dying = false;
 

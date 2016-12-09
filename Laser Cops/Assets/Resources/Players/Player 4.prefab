@@ -1005,7 +1005,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44742c205ea6fa2468ebc5a2a767a28c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activated: 1
   trailResolution: 40
+  ignore_settings: 0
   startWidth: 0.2
   endWidth: 0
   startColor: {r: 0.9803922, g: 0, b: 0.7607844, a: 1}
@@ -1083,7 +1085,7 @@ MonoBehaviour:
   Grinding_Damage: 0.3
   health_bar_image: {fileID: 11405594}
   currently_boosting: 0
-  boosting_damage: 1
+  boosting_damage: 3
   car_sprite: {fileID: 129112}
   default_rotation: 0
   desired_rotation: 0
@@ -1126,7 +1128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44742c205ea6fa2468ebc5a2a767a28c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activated: 1
   trailResolution: 40
+  ignore_settings: 0
   startWidth: 0.2
   endWidth: 0
   startColor: {r: 0.9803922, g: 0, b: 0.7607844, a: 1}
@@ -1145,7 +1149,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44742c205ea6fa2468ebc5a2a767a28c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activated: 1
   trailResolution: 40
+  ignore_settings: 0
   startWidth: 0.2
   endWidth: 0
   startColor: {r: 0.9803922, g: 0, b: 0.7607844, a: 1}
@@ -1185,7 +1191,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44742c205ea6fa2468ebc5a2a767a28c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activated: 1
   trailResolution: 40
+  ignore_settings: 0
   startWidth: 0.2
   endWidth: 0
   startColor: {r: 0.9803922, g: 0, b: 0.7607844, a: 1}

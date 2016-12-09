@@ -147,7 +147,7 @@ public class CameraManager : MonoBehaviour
 
         if (target_of_zoom != null && this.transform.position != target_of_zoom.transform.position)
         {
-            this.transform.position = Vector2.Lerp(this.transform.position, target_of_zoom.transform.position, Time.unscaledDeltaTime * 0.3f);
+            this.transform.position = Vector2.Lerp(this.transform.position, target_of_zoom.transform.position, Time.unscaledDeltaTime * 0.65f);
         }
     }
 }

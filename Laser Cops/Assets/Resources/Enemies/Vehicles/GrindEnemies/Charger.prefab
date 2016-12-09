@@ -138,12 +138,12 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 495596}
+  - 114: {fileID: 11430056}
+  - 114: {fileID: 11477482}
   - 212: {fileID: 21239214}
   - 50: {fileID: 5011236}
   - 61: {fileID: 6143168}
   - 114: {fileID: 11492324}
-  - 114: {fileID: 11477482}
-  - 114: {fileID: 11430056}
   - 114: {fileID: 11438350}
   m_Layer: 8
   m_Name: Charger
@@ -363,7 +363,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162956}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 13.628792, y: 0.1, z: 1}
+  m_LocalPosition: {x: -1, y: 48, z: 1}
   m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -480,7 +480,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44742c205ea6fa2468ebc5a2a767a28c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activated: 1
   trailResolution: 10
+  ignore_settings: 0
   startWidth: 0.2
   endWidth: 0
   startColor: {r: 1, g: 0, b: 0, a: 1}
@@ -499,7 +501,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44742c205ea6fa2468ebc5a2a767a28c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activated: 1
   trailResolution: 10
+  ignore_settings: 0
   startWidth: 0.2
   endWidth: 0
   startColor: {r: 1, g: 0, b: 0, a: 1}
@@ -518,7 +522,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44742c205ea6fa2468ebc5a2a767a28c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activated: 1
   trailResolution: 10
+  ignore_settings: 0
   startWidth: 0.2
   endWidth: 0
   startColor: {r: 1, g: 0, b: 0, a: 1}
@@ -543,7 +549,7 @@ MonoBehaviour:
   takes_grinding_damage: 0
   collisionDamage: 0.3
   pointValue: 20
-  health: 100
+  health: 40
   beingRammed: 0
   enemyEnemyCollsion: 0
   ramNavPos: 0
@@ -551,6 +557,7 @@ MonoBehaviour:
   collisionAvoidCounter: 0
   desired_velocity: {x: 0, y: 0}
   travelDirection: 1
+  navigate_around_enemies: 1
   timeTillStop: 1
   stopCounter: 0
   rotateWhenStopped: 1
@@ -624,7 +631,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44742c205ea6fa2468ebc5a2a767a28c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activated: 1
   trailResolution: 10
+  ignore_settings: 0
   startWidth: 0.2
   endWidth: 0
   startColor: {r: 1, g: 0, b: 0, a: 1}

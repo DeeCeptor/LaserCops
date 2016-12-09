@@ -27,11 +27,19 @@ public class ContactExplosion : MonoBehaviour
         if (explosion_delay_time != 0 && (col.gameObject.layer != LayerMask.NameToLayer("Obstacles")))
             yield return new WaitForSeconds(explosion_delay_time);
 
+        Explode();
+      
+        yield return null;
+    }
+
+
+    public void Explode()
+    {
         SoundMixer.sound_manager.Play8bitExplosion();
         EffectsManager.effects.FireballNoGravity(this.transform.position);
         EffectsManager.effects.GridExplosion(this.transform.position, 2f, 8f, Color.red);
 
-        for(int x = 0; x < GameState.game_state.Players.Count; x++)
+        for (int x = 0; x < GameState.game_state.Players.Count; x++)
         {
             float distance = Vector2.Distance(this.transform.position, GameState.game_state.Players[x].transform.position);
             if (distance <= radius)
@@ -53,13 +61,5 @@ public class ContactExplosion : MonoBehaviour
         EffectsManager.effects.CutSprite(this.gameObject);
 
         Destroy(this.gameObject);
-
-        yield return null;
-    }
-
-
-    public void Explode()
-    {
-
     }
 }

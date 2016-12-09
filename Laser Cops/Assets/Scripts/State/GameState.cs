@@ -316,6 +316,9 @@ public class GameState : MonoBehaviour
 
     public void Heal_All_Players(float amount)
     {
+        if (current_difficulty == Difficulty.Easy)
+            amount *= 1.5f;
+
         GameObject[] playerObjects = GameState.game_state.PlayerObjects;
         for (int i = 0; i < playerObjects.Length; i++)
         {

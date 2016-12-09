@@ -139,11 +139,8 @@ public class CivillianScript : MonoBehaviour {
         EffectsManager.effects.PlayersHealed();
         SoundMixer.sound_manager.PlayNotification();
 
-        if (GameState.game_state.current_difficulty == GameState.Difficulty.Easy)
-            GameState.game_state.Heal_All_Players(100f);
-        else
-            GameState.game_state.Heal_All_Players(healthToGainBack);
-
+        GameState.game_state.Heal_All_Players(healthToGainBack);
+            
         Destroy(gameObject);
     }
 }

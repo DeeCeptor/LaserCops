@@ -1100,7 +1100,7 @@ MonoBehaviour:
   Grinding_Damage: 1
   health_bar_image: {fileID: 11444648}
   currently_boosting: 0
-  boosting_damage: 2
+  boosting_damage: 3
   car_sprite: {fileID: 106154}
   default_rotation: 0
   desired_rotation: 0

@@ -13,7 +13,6 @@ GameObject:
   - 114: {fileID: 11404272}
   - 61: {fileID: 6138234}
   - 114: {fileID: 11482054}
-  - 114: {fileID: 11468472}
   - 114: {fileID: 11418820}
   m_Layer: 8
   m_Name: Flanker (3)
@@ -35,7 +34,6 @@ GameObject:
   - 114: {fileID: 11405000}
   - 61: {fileID: 6197134}
   - 114: {fileID: 11459916}
-  - 114: {fileID: 11460616}
   - 114: {fileID: 11400898}
   m_Layer: 8
   m_Name: Flanker (2)
@@ -57,7 +55,6 @@ GameObject:
   - 114: {fileID: 11451992}
   - 61: {fileID: 6170436}
   - 114: {fileID: 11499500}
-  - 114: {fileID: 11479774}
   - 114: {fileID: 11444858}
   m_Layer: 8
   m_Name: Flanker
@@ -113,7 +110,6 @@ GameObject:
   - 114: {fileID: 11420668}
   - 61: {fileID: 6168198}
   - 114: {fileID: 11453860}
-  - 114: {fileID: 11460022}
   - 114: {fileID: 11408038}
   m_Layer: 8
   m_Name: Flanker (1)
@@ -135,7 +131,6 @@ GameObject:
   - 114: {fileID: 11432974}
   - 61: {fileID: 6158822}
   - 114: {fileID: 11486890}
-  - 114: {fileID: 11468892}
   - 114: {fileID: 11475346}
   m_Layer: 8
   m_Name: Flanker (4)
@@ -246,7 +241,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197892}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0000088, y: 74.99999, z: -1}
+  m_LocalPosition: {x: -1.0000088, y: 74.99999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -883,34 +878,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebdd88aff913cba4fa2552f0c66f35dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11460022
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 134602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5856db298e3415342a1bfbb970eab11f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  remove_on_difficulty_higher_than: 0
-  difficulty: 0
-  cell_size: 1
---- !u!114 &11460616
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 116482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5856db298e3415342a1bfbb970eab11f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  remove_on_difficulty_higher_than: 0
-  difficulty: 0
-  cell_size: 1
 --- !u!114 &11461468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -932,34 +899,6 @@ MonoBehaviour:
   offset: 1
   localDirectionToUse: 1
   lagTime: 0.05
---- !u!114 &11468472
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 113442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5856db298e3415342a1bfbb970eab11f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  remove_on_difficulty_higher_than: 0
-  difficulty: 0
-  cell_size: 1
---- !u!114 &11468892
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 147916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5856db298e3415342a1bfbb970eab11f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  remove_on_difficulty_higher_than: 0
-  difficulty: 0
-  cell_size: 1
 --- !u!114 &11475346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -980,20 +919,6 @@ MonoBehaviour:
   m_HasColor: 1
   activated: 0
   ignore_graphics_settings: 0
---- !u!114 &11479774
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 116660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5856db298e3415342a1bfbb970eab11f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  remove_on_difficulty_higher_than: 0
-  difficulty: 0
-  cell_size: 1
 --- !u!114 &11481510
 MonoBehaviour:
   m_ObjectHideFlags: 1
