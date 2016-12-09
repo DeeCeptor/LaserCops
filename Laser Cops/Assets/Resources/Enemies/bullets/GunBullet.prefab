@@ -376,13 +376,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624bac116c5c2ce478b1680f0372b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 2
+  shotDelay: 4
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
+  randomly_choose_coloured_bullet: 0
+  coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
-  playerCloseDisable: 1
+  playerCloseDisable: 0
   disableDistance: 2
+  randomly_determine_colour: 0
 --- !u!114 &11421552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -394,13 +397,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624bac116c5c2ce478b1680f0372b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 2
+  shotDelay: 4
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
+  randomly_choose_coloured_bullet: 0
+  coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
-  playerCloseDisable: 1
+  playerCloseDisable: 0
   disableDistance: 2
+  randomly_determine_colour: 0
 --- !u!114 &11436508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -412,13 +418,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624bac116c5c2ce478b1680f0372b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 2
+  shotDelay: 4
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
+  randomly_choose_coloured_bullet: 0
+  coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
-  playerCloseDisable: 1
+  playerCloseDisable: 0
   disableDistance: 2
+  randomly_determine_colour: 0
 --- !u!114 &11451100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -430,13 +439,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624bac116c5c2ce478b1680f0372b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 2
+  shotDelay: 4
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
+  randomly_choose_coloured_bullet: 0
+  coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
-  playerCloseDisable: 1
+  playerCloseDisable: 0
   disableDistance: 2
+  randomly_determine_colour: 0
 --- !u!114 &11462056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -461,13 +473,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624bac116c5c2ce478b1680f0372b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 2
+  shotDelay: 4
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
+  randomly_choose_coloured_bullet: 0
+  coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
-  playerCloseDisable: 1
+  playerCloseDisable: 0
   disableDistance: 2
+  randomly_determine_colour: 0
 --- !u!114 &11473368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -479,13 +494,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624bac116c5c2ce478b1680f0372b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 2
+  shotDelay: 4
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
+  randomly_choose_coloured_bullet: 0
+  coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
-  playerCloseDisable: 1
+  playerCloseDisable: 0
   disableDistance: 2
+  randomly_determine_colour: 0
 --- !u!114 &11487078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -497,13 +515,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624bac116c5c2ce478b1680f0372b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 2
+  shotDelay: 4
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
+  randomly_choose_coloured_bullet: 0
+  coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
-  playerCloseDisable: 1
+  playerCloseDisable: 0
   disableDistance: 2
+  randomly_determine_colour: 0
 --- !u!114 &11488070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -519,6 +540,7 @@ MonoBehaviour:
   speed: 2
   dir: {x: 0, y: 0}
   damage: 40
+  reflected_bullet: 0
   bullet_colour: 0
 --- !u!114 &11490582
 MonoBehaviour:
@@ -531,13 +553,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624bac116c5c2ce478b1680f0372b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 2
+  shotDelay: 4
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
+  randomly_choose_coloured_bullet: 0
+  coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
-  playerCloseDisable: 1
+  playerCloseDisable: 0
   disableDistance: 2
+  randomly_determine_colour: 0
 --- !u!198 &19829314
 ParticleSystem:
   m_ObjectHideFlags: 1

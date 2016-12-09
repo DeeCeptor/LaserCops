@@ -930,7 +930,7 @@ MonoBehaviour:
   behaviourChangeRate: 4
   behaviourChangeCounter: 0
   inactiveTime: 4
-  currentBehaviour: 0
+  currentBehaviour: 1
   Health: {fileID: 114000013524998636}
   secondStageHealthThreshold: 5000
   thirdStageHealthThreshold: 4000
@@ -1116,6 +1116,7 @@ MonoBehaviour:
   TimeBonus: 10000
   ChangeFormEffect: {fileID: 0}
   hurtByTether: 1
+  hurtByReboundBullets: 0
   easyDamageMultiplyer: 2
   hardDamageMultiplyer: 0.667
   useImmunityTime: 0

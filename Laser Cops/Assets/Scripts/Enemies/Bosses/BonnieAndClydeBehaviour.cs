@@ -3,7 +3,7 @@ using System.Collections;
 
 public enum TetherBossBehaviour
 {
-    TargetRandomPlayer = 0, Escape = 1, Circle = 2, Charge = 3
+    TargetRandomPlayer = 1, Escape = 0, Circle = 2, Charge = 3
 };
 //note that this script should be attached to the parent of the bonny and clyde bosses since they need to move as a team
 public class BonnieAndClydeBehaviour : MonoBehaviour {
@@ -30,7 +30,7 @@ public class BonnieAndClydeBehaviour : MonoBehaviour {
     public float fourthStageHealthThreshold = 3000f;
     public float fifthStageHealthThreshold = 2000f;
     public float sixthStageHealthThreshold = 1000f;
-    public float currentStage = 1f;
+    public int currentStage = 1;
 
     public TetherBossCar clydeScript;
     public TetherBossCar bonnieScript;
@@ -82,7 +82,7 @@ public class BonnieAndClydeBehaviour : MonoBehaviour {
         }
         else if (currentStage == 2)
         {
-
+            currentBehaviour = (TetherBossBehaviour)Random.Range(1, 4);
         }
         else if (currentStage == 3)
         {
