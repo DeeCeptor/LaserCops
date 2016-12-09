@@ -222,6 +222,30 @@ public class EnemyBossTetherScript : MonoBehaviour
             Destroy(this.gameObject);
     }
 
+    public void DisableTether()
+    {
+            tether_links_parent.SetActive(false);
+    }
+
+    public void EnableTether()
+    {
+
+            HingeJoint2D jo = tether_links[0].GetComponents<HingeJoint2D>()[1];
+            jo.autoConfigureConnectedAnchor = false;
+
+            // Calculate how the tether shoould appear between them
+            int pos = 0;
+            foreach (GameObject obj in tether_links)
+            {
+
+                Vector3 dir = beginning_anchor.transform.position - end_anchor.transform.position;
+                obj.transform.position = new Vector3(beginning_anchor.transform.position.x, beginning_anchor.transform.position.y, 0) - ((dir / (float)number_of_segments) * pos);
+                pos++;
+            }
+
+            tether_links_parent.SetActive(true);
+    }
+
     void LateUpdate()
     {
         if (tether_links.Count > 0)

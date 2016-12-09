@@ -14,6 +14,15 @@ public class BonnieAndClydeBehaviour : MonoBehaviour {
     public bool targetAssigned = false;
     public bool boosting = false;
 
+    public float easySpeed = 2f;
+    public float hardSpeed = 4f;
+
+    public EnemyBossTetherScript tether;
+    public GameObject EnemySpawner;
+
+    public float escapeBoostCountdown = 2f;
+    public float escapeBoostTimer = 0f;
+
     public Transform playerToTrack;
     public GameObject[] players;
 
@@ -25,23 +34,34 @@ public class BonnieAndClydeBehaviour : MonoBehaviour {
     public TetherBossBehaviour currentBehaviour = TetherBossBehaviour.TargetRandomPlayer;
 
     public BossHealthScript Health;
-    public float secondStageHealthThreshold = 5000f;
-    public float thirdStageHealthThreshold = 4000f;
-    public float fourthStageHealthThreshold = 3000f;
-    public float fifthStageHealthThreshold = 2000f;
-    public float sixthStageHealthThreshold = 1000f;
+    public float healthThreshold;
+    public float healthBetweenStages = 1000f;
     public int currentStage = 1;
+    public ConversationManager formChangeConversation1;
+    public ConversationManager formChangeConversation2;
+    public ConversationManager formChangeConversation3;
+    public ConversationManager formChangeConversation4;
+    public ConversationManager formChangeConversation5;
 
     public TetherBossCar clydeScript;
     public TetherBossCar bonnieScript;
+
     // Use this for initialization
     void Start () {
         Health = GetComponentInParent<BossHealthScript>();
+        healthThreshold = Health.overallHealth - healthBetweenStages;
+
         behaviourChangeCounter = behaviourChangeRate + Time.time + inactiveTime;
 
         players = GameState.game_state.PlayerObjects;
         int randInt = Random.Range(0, players.Length);
         playerToTrack = players[randInt].transform;
+
+        for(int i = 0; i < GameState.game_state.number_of_players; i++)
+        {
+            players[i].AddComponent<TetherBossBoostWatcher>();
+        }
+        
     }
 	
 	// Update is called once per frame
@@ -68,6 +88,12 @@ public class BonnieAndClydeBehaviour : MonoBehaviour {
         {
             Charge();
         }
+
+        if (Health.overallHealth < healthThreshold)
+        {
+            ChangeForms();
+            healthThreshold = healthThreshold - healthBetweenStages;
+        }
     }
 
     //the available list of behaviours is different with each stage of the boss
@@ -78,7 +104,7 @@ public class BonnieAndClydeBehaviour : MonoBehaviour {
         bonnieScript.boosting = false;
         if(currentStage == 1)
         {
-            currentBehaviour = (TetherBossBehaviour)Random.Range(0,4);
+            currentBehaviour = (TetherBossBehaviour)Random.Range(1,4);
         }
         else if (currentStage == 2)
         {
@@ -86,7 +112,7 @@ public class BonnieAndClydeBehaviour : MonoBehaviour {
         }
         else if (currentStage == 3)
         {
-
+            currentBehaviour = (TetherBossBehaviour)Random.Range(0, 1);
         }
         else if (currentStage == 4)
         {
@@ -118,10 +144,14 @@ public class BonnieAndClydeBehaviour : MonoBehaviour {
 
     public void Escape()
     {
-        Vector3 ClydeTarget = playerToTrack.position;
-        Vector3 BonnieTarget = playerToTrack.position;
-        clydeScript.travelDirection = -(ClydeTarget - clydeScript.transform.position);
-        bonnieScript.travelDirection = -(BonnieTarget - bonnieScript.transform.position);
+        if (targetAssigned == false)
+        {
+            Vector3 ClydeTarget = playerToTrack.position;
+            Vector3 BonnieTarget = playerToTrack.position;
+            clydeScript.travelDirection = -(ClydeTarget - clydeScript.transform.position);
+            bonnieScript.travelDirection = -(BonnieTarget - bonnieScript.transform.position);
+            targetAssigned = true;
+        }
     }
 
     public void Circle()
@@ -146,5 +176,48 @@ public class BonnieAndClydeBehaviour : MonoBehaviour {
             targetAssigned = true;
         }
 
+    }
+
+    public void PlayConversation(ConversationManager conversation)
+    {
+
+        if (conversation != null)
+        {
+            conversation.transform.SetParent(null);
+            conversation.Start_Conversation();
+        }
+    }
+
+    public void ChangeForms()
+    {
+        if (currentStage == 1)
+        {
+            PlayConversation(formChangeConversation1);
+        }
+        else if (currentStage == 2)
+        {
+            tether.DisableTether();
+            EnemySpawner.SetActive(true);
+            PlayConversation(formChangeConversation2);
+        }
+        else if (currentStage == 3)
+        {
+            //reactivate the tether
+            
+            tether.EnableTether();
+            EnemySpawner.SetActive(false);
+            PlayConversation(formChangeConversation3);
+        }
+        else if (currentStage == 4)
+        {
+            
+            PlayConversation(formChangeConversation4);
+        }
+        else if (currentStage == 5)
+        {
+            PlayConversation(formChangeConversation5);
+        }
+
+        currentStage = currentStage + 1;
     }
 }

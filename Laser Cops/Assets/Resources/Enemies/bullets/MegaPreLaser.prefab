@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee48148cf0b6c194d85ab041bb2b4504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 137002, guid: 19a5e0e1ce700a84abdfbec334b60cf1, type: 2}
+  objectToSpawn: {fileID: 143634, guid: df942d68270d950478d6832b78c93d93, type: 2}
   secondsTillSpawn: 2
 --- !u!114 &11449866
 MonoBehaviour:

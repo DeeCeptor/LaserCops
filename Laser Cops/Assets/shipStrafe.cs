@@ -13,6 +13,13 @@ public class shipStrafe : MonoBehaviour {
     public float stopDelay;
     public float stopTimer;
     public float stayStoppedDelay = 10f;
+
+    public ConversationManager formChangeConversation1;
+    public ConversationManager formChangeConversation2;
+    public ConversationManager formChangeConversation3;
+    public ConversationManager formChangeConversation4;
+    public ConversationManager formChangeConversation5;
+    public ConversationManager death_conversation;
     //the parent of turrets which are currently active
     public Transform turretParent;
     public int currentStage = 1;
@@ -115,6 +122,7 @@ public class shipStrafe : MonoBehaviour {
     {
         if (currentStage == 1)
         {
+            PlayConversation(formChangeConversation1);
             currentStage = 2;
             turretParent.gameObject.SetActive(false);
             turretParent = transform.FindChild("Stage2Turrets");
@@ -123,6 +131,7 @@ public class shipStrafe : MonoBehaviour {
         }
         else if (currentStage == 2)
         {
+            PlayConversation(formChangeConversation2);
             currentStage = 3;
             turretParent.gameObject.SetActive(false);
             turretParent = transform.FindChild("Stage3Turrets");
@@ -130,6 +139,7 @@ public class shipStrafe : MonoBehaviour {
         }
         else if (currentStage == 3)
         {
+            PlayConversation(formChangeConversation3);
             currentStage = 4;
             turretParent.gameObject.SetActive(false);
             turretParent = transform.FindChild("Stage4Turrets");
@@ -137,6 +147,7 @@ public class shipStrafe : MonoBehaviour {
         }
         else if (currentStage == 4)
         {
+            PlayConversation(formChangeConversation4);
             currentStage = 5;
             turretParent.gameObject.SetActive(false);
             turretParent = transform.FindChild("Stage5Turrets");
@@ -144,9 +155,10 @@ public class shipStrafe : MonoBehaviour {
         }
         else if (currentStage == 5)
         {
+            PlayConversation(formChangeConversation5);
             currentStage = 6;
             speed = speed / 2;
-            changeDirectionCounter = changeDirectionCounter * 2;
+            changeDirectionCounter = ((changeDirectionCounter-Time.time) * 2) + Time.time;
             changeDirectionTime = changeDirectionTime * 2;
             turretParent.gameObject.SetActive(false);
             turretParent = transform.FindChild("Stage6Turrets");
@@ -313,9 +325,19 @@ public class shipStrafe : MonoBehaviour {
             moveActive();
     }
 
-    public void Die()
+    public void PlayConversation(ConversationManager conversation)
     {
 
+        if (conversation != null)
+        {
+            conversation.transform.SetParent(null);
+            conversation.Start_Conversation();
+        }
+    }
+
+    public void Die()
+    {
+        PlayConversation(death_conversation);
     }
 
 }

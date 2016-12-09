@@ -7,7 +7,7 @@ public class TrackShotScrolling : MonoBehaviour{
     public Transform playerToTrack;
     public GameObject[] players;
     public float shotDelay = 0.5f;
-    public float shotCounter;
+    public float shotCounter = 0f;
     public GameObject bullet;
     public bool active = false;
     public _Colour bulletColour = _Colour.Red;
@@ -90,7 +90,8 @@ public class TrackShotScrolling : MonoBehaviour{
     public void Activate()
     {
         active = true;
-        shotCounter = Time.time + shotDelay;
+        shotCounter = Time.time + shotDelay - shotCounter;
+        Debug.Log(shotCounter);
     }
     
     public void shoot()

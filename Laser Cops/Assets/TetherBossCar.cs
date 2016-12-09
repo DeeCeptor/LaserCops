@@ -10,13 +10,39 @@ public class TetherBossCar : MonoBehaviour {
     public float speed = 1f;
     public bool stopped = false;
     public bool boosting = false;
-	// Use this for initialization
-	void Start () {
+
+
+
+    public float yTopOfScreen = 0f;
+    public float yBottomOfScreen = 0f;
+    public float xRightOfScreen = 0f;
+    public float xLeftOfScreen = 0f;
+
+    GameObject highway;
+    BoxCollider2D box;
+    // Use this for initialization
+    void Start () {
         BonnyAndClydeHealth = GetComponentInParent<BossHealthScript>();
 
         //start by traveling left
         travelDirection = new Vector2(-1,0);
-	}
+
+        //get the bound bonnie and clyde need to stay in
+        box = this.GetComponent<BoxCollider2D>();
+        highway = GameObject.FindGameObjectWithTag("Grid");
+        MeshRenderer mesh = highway.GetComponent<MeshRenderer>();
+
+        float screenRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x - box.bounds.extents.x;
+        float screenLeft = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x + box.bounds.extents.x;
+
+        Vector3 minScreenBounds = new Vector3(screenLeft, mesh.bounds.min.y + box.bounds.extents.y, 0);
+        Vector3 maxScreenBounds = new Vector3(screenRight, mesh.bounds.max.y - box.bounds.extents.y, 0);
+
+        yTopOfScreen = maxScreenBounds.y;
+        yBottomOfScreen = minScreenBounds.y;
+        xRightOfScreen = maxScreenBounds.x;
+        xLeftOfScreen = minScreenBounds.x;
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
@@ -31,6 +57,25 @@ public class TetherBossCar : MonoBehaviour {
         else
         {
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        }
+
+        if (transform.position.x <= xLeftOfScreen&&travelDirection.x<0)
+        {
+            travelDirection.x = -travelDirection.x;
+        }
+
+        else if (transform.position.x >= xRightOfScreen && travelDirection.x > 0)
+        {
+            travelDirection.x = -travelDirection.x;
+        }
+
+        if (transform.position.y <= yBottomOfScreen && travelDirection.y < 0)
+        {
+            travelDirection.y = -travelDirection.y;
+        }
+        else if (transform.position.y >= yTopOfScreen && travelDirection.y > 0)
+        {
+            travelDirection.y = -travelDirection.y;
         }
     }
 

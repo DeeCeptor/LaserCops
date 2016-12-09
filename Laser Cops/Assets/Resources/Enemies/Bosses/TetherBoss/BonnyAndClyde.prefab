@@ -923,21 +923,29 @@ MonoBehaviour:
   idealDistanceToPlayer: 3
   targetAssigned: 0
   boosting: 0
+  easySpeed: 2
+  hardSpeed: 4
+  tether: {fileID: 114000011922690012}
+  EnemySpawner: {fileID: 0}
+  escapeBoostCountdown: 2
+  escapeBoostTimer: 0
   playerToTrack: {fileID: 0}
   players:
   - {fileID: 0}
   - {fileID: 0}
   behaviourChangeRate: 4
   behaviourChangeCounter: 0
-  inactiveTime: 4
+  inactiveTime: 8
   currentBehaviour: 1
   Health: {fileID: 114000013524998636}
-  secondStageHealthThreshold: 5000
-  thirdStageHealthThreshold: 4000
-  fourthStageHealthThreshold: 3000
-  fifthStageHealthThreshold: 2000
-  sixthStageHealthThreshold: 1000
+  healthThreshold: 0
+  healthBetweenStages: 1000
   currentStage: 1
+  formChangeConversation1: {fileID: 0}
+  formChangeConversation2: {fileID: 0}
+  formChangeConversation3: {fileID: 0}
+  formChangeConversation4: {fileID: 0}
+  formChangeConversation5: {fileID: 0}
   clydeScript: {fileID: 114000012879568246}
   bonnieScript: {fileID: 114000013489124262}
 --- !u!114 &114000011922690012
@@ -1053,9 +1061,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   travelDirection: {x: -1, y: 0}
   BonnyAndClydeHealth: {fileID: 114000013524998636}
-  speed: 2
+  speed: 3
   stopped: 0
   boosting: 0
+  yTopOfScreen: 0
+  yBottomOfScreen: 0
+  xRightOfScreen: 0
+  xLeftOfScreen: 0
 --- !u!114 &114000013024957704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1091,9 +1103,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   travelDirection: {x: -1, y: 0}
   BonnyAndClydeHealth: {fileID: 114000013524998636}
-  speed: 2
+  speed: 3
   stopped: 0
   boosting: 0
+  yTopOfScreen: 0
+  yBottomOfScreen: 0
+  xRightOfScreen: 0
+  xLeftOfScreen: 0
 --- !u!114 &114000013524998636
 MonoBehaviour:
   m_ObjectHideFlags: 1
