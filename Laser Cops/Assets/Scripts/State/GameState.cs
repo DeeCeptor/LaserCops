@@ -398,7 +398,10 @@ public class GameState : MonoBehaviour
         }
 
         if (player_who_just_died != null)
+        {
             CameraManager.cam_manager.target_of_zoom = player_who_just_died.transform;
+            VectorGrid.grid.m_GridWidth = 140;
+        }
 
         End_Cutscene(text);
 
@@ -499,7 +502,10 @@ public class GameState : MonoBehaviour
 
         End_Cutscene(text_to_display);
         if (player_crossing_finish_line != null)
+        {
             CameraManager.cam_manager.target_of_zoom = player_crossing_finish_line.transform;
+            VectorGrid.grid.m_GridWidth = 140;
+        }
 
         ChangeScene(delay_between_level_switching, level_to_load_on_victory);
     }
