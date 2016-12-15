@@ -2004,7 +2004,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ccd2150177f51814792ca6db048795f5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.791
+  m_Volume: 0.318
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2598,8 +2598,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level_to_load_on_victory: SceneSelect
   level_to_load_on_defeat: SceneSelect
-  current_level_name: Easing into It
+  current_level_name: Fast & Loose
   number_of_players: 2
+  overriding_no_tether: 0
   paused: 0
   game_over: 0
   elapsed_game_time: 0

@@ -105,7 +105,7 @@ public class SoundMixer : MonoBehaviour
     }
     public void PlayGrinding()
     {
-        PlaySound(Sounds[8], 1f * sound_effect_scale);
+        PlaySound(Sounds[8], 0.2f * sound_effect_scale);
     }
     public void PlaySyncopatedLazer()
     {

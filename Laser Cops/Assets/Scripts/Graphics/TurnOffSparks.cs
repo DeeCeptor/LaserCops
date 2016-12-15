@@ -44,6 +44,7 @@ public class TurnOffSparks : MonoBehaviour
     void Update()
     {
         time_remaining -= Time.deltaTime;
+        _audio.volume = AudioManager.audio_manager.effects_volume * 0.4f;
 
         if (time_remaining <= 0)
         {

@@ -156,13 +156,13 @@ public class AudioManager : MonoBehaviour
     {
         music_volume = new_volume;
         background_music_audio_source.volume = new_volume;
-
+        SoundMixer.sound_manager.MusicVolumeChanged(new_volume);
         SavePlayerPreference("MusicVolume", new_volume);
     }
     public void Effects_Volume_Changed(float new_volume)
     {
         effects_volume = new_volume;
-
+        SoundMixer.sound_manager.EffectsVolumeChanged(new_volume);
         SavePlayerPreference("EffectsVolume", new_volume);
     }
 
