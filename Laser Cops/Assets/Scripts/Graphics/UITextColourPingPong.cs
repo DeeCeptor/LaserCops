@@ -15,6 +15,6 @@ public class UITextColourPingPong : MonoBehaviour
 
 	void Update () 
 	{
-        t.color = Color.Lerp(colour_1, colour2, Mathf.PingPong(Time.time, speed));
+        t.color = Color.Lerp(colour_1, colour2, Mathf.PingPong(Time.unscaledTime, speed));
     }
 }

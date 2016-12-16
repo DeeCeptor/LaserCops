@@ -482,7 +482,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44742c205ea6fa2468ebc5a2a767a28c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activated: 1
   trailResolution: 10
+  ignore_settings: 0
   startWidth: 0.2
   endWidth: 0
   startColor: {r: 1, g: 0, b: 0, a: 1}
@@ -507,7 +509,7 @@ MonoBehaviour:
   takes_grinding_damage: 0
   collisionDamage: 0.1
   pointValue: 10
-  health: 100
+  health: 90
   beingRammed: 0
   enemyEnemyCollsion: 0
   ramNavPos: 0
@@ -527,7 +529,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44742c205ea6fa2468ebc5a2a767a28c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activated: 1
   trailResolution: 10
+  ignore_settings: 0
   startWidth: 0.2
   endWidth: 0
   startColor: {r: 1, g: 0, b: 0, a: 1}
@@ -557,7 +561,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44742c205ea6fa2468ebc5a2a767a28c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activated: 1
   trailResolution: 10
+  ignore_settings: 0
   startWidth: 0.2
   endWidth: 0
   startColor: {r: 1, g: 0, b: 0, a: 1}
@@ -598,7 +604,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44742c205ea6fa2468ebc5a2a767a28c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activated: 1
   trailResolution: 10
+  ignore_settings: 0
   startWidth: 0.2
   endWidth: 0
   startColor: {r: 1, g: 0, b: 0, a: 1}
