@@ -16,4 +16,42 @@ public class EnemyLink : MonoBehaviour
     public List<GameObject> all_segments;
 
     public EnemyBossTetherScript rope;
+
+    public float collisionDamage = 1.0f;
+    public float hardCollisionDamage = 1.0f;
+    public float easyCollisionDamage = 1.0f;
+
+    void Start()
+    {
+        if (GameState.game_state.current_difficulty == GameState.Difficulty.Hard)
+        {
+            collisionDamage = hardCollisionDamage;
+        }
+
+        else if (GameState.game_state.current_difficulty == GameState.Difficulty.Easy)
+        {
+            collisionDamage = easyCollisionDamage;
+        }
+
+    }
+
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        ResolveCollision(collision);
+    }
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        ResolveCollision(collision);
+    }
+
+    void ResolveCollision(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            // Hurt the player
+            collision.gameObject.GetComponent<PlayerController>().TakeHit(collisionDamage);
+        }
+    }
 }

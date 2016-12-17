@@ -5,7 +5,7 @@ using System.Collections;
 //most of this was copied from our default tether if there is an error something unfortunate was probably left in
 public class EnemyBossTetherScript : MonoBehaviour
 {
-    public static EnemyBossTetherScript tether;
+    public static EnemyBossTetherScript EnemyTether;
 
     public float Damage = 0.5f;   // Damage done by the tether to enemies
 
@@ -67,7 +67,7 @@ public class EnemyBossTetherScript : MonoBehaviour
 
     void Awake()
     {
-        tether = this;
+        EnemyTether = this;
         //line = tether_links_parent.GetComponent<LineRenderer>();
     }
     void Start()

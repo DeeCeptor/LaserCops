@@ -24,7 +24,6 @@ GameObject:
   - 233: {fileID: 233000012795991982}
   - 114: {fileID: 114000010696939878}
   - 61: {fileID: 61000012605849362}
-  - 114: {fileID: 114000012305286508}
   - 114: {fileID: 114000013956045386}
   m_Layer: 29
   m_Name: EnemyBossTetherRopePiece
@@ -102,18 +101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8405e644fc1dc7b41b166fedfbb51225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114000012305286508
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013060801740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffff1e98ef3178748b89f351f3571440, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collisionDamage: 0.02
 --- !u!114 &114000013956045386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -133,6 +120,9 @@ MonoBehaviour:
   bottom_most: {fileID: 0}
   all_segments: []
   rope: {fileID: 0}
+  collisionDamage: 0.02
+  hardCollisionDamage: 0.04
+  easyCollisionDamage: 0.015
 --- !u!233 &233000012795991982
 HingeJoint2D:
   m_ObjectHideFlags: 1

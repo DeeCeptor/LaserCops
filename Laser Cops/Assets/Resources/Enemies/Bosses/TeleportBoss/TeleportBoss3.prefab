@@ -216,10 +216,13 @@ MonoBehaviour:
   shotDelay: 2
   shotCounter: 0
   bullet: {fileID: 120478, guid: b0de785363611694fb2b365840c214d2, type: 2}
+  randomly_choose_coloured_bullet: 0
+  coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
   playerCloseDisable: 1
   disableDistance: 2
+  randomly_determine_colour: 0
 --- !u!114 &11424554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -234,10 +237,13 @@ MonoBehaviour:
   shotDelay: 2
   shotCounter: 0
   bullet: {fileID: 150712, guid: 6f9153ddf0aea2f4785b0aad8478dc36, type: 2}
+  randomly_choose_coloured_bullet: 0
+  coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
   playerCloseDisable: 1
   disableDistance: 2
+  randomly_determine_colour: 0
 --- !u!114 &11452366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -252,10 +258,13 @@ MonoBehaviour:
   shotDelay: 2
   shotCounter: 0
   bullet: {fileID: 120478, guid: b0de785363611694fb2b365840c214d2, type: 2}
+  randomly_choose_coloured_bullet: 0
+  coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
   playerCloseDisable: 1
   disableDistance: 2
+  randomly_determine_colour: 0
 --- !u!114 &11463288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -270,10 +279,13 @@ MonoBehaviour:
   shotDelay: 2
   shotCounter: 0
   bullet: {fileID: 150712, guid: 6f9153ddf0aea2f4785b0aad8478dc36, type: 2}
+  randomly_choose_coloured_bullet: 0
+  coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
   playerCloseDisable: 1
   disableDistance: 2
+  randomly_determine_colour: 0
 --- !u!114 &11466232
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -335,10 +347,13 @@ MonoBehaviour:
   shotDelay: 2
   shotCounter: 0
   bullet: {fileID: 120478, guid: b0de785363611694fb2b365840c214d2, type: 2}
+  randomly_choose_coloured_bullet: 0
+  coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
   playerCloseDisable: 1
   disableDistance: 2
+  randomly_determine_colour: 0
 --- !u!114 &11484100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -355,12 +370,13 @@ MonoBehaviour:
   death_conversation: {fileID: 0}
   nextStage: {fileID: 0}
   stages: 3
-  overallHealth: 250
-  bossName: Jumpy Pete
+  overallHealth: 1000
+  bossName: Jumpin Jack
   pointValue: 2000
   TimeBonus: 600
   ChangeFormEffect: {fileID: 0}
   hurtByTether: 1
+  hurtByReboundBullets: 0
   easyDamageMultiplyer: 2
   hardDamageMultiplyer: 0.667
   useImmunityTime: 0

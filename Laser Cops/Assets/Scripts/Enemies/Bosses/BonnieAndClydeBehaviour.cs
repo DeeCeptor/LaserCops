@@ -20,6 +20,9 @@ public class BonnieAndClydeBehaviour : MonoBehaviour {
     public EnemyBossTetherScript tether;
     public GameObject EnemySpawner;
 
+    public GameObject ClydeTurret;
+    public GameObject BonnieTurret;
+
     public float escapeBoostCountdown = 2f;
     public float escapeBoostTimer = 0f;
 
@@ -104,11 +107,11 @@ public class BonnieAndClydeBehaviour : MonoBehaviour {
         bonnieScript.boosting = false;
         if(currentStage == 1)
         {
-            currentBehaviour = (TetherBossBehaviour)Random.Range(1,4);
+            currentBehaviour = (TetherBossBehaviour)Random.Range(1,3);
         }
         else if (currentStage == 2)
         {
-            currentBehaviour = (TetherBossBehaviour)Random.Range(1, 4);
+            currentBehaviour = (TetherBossBehaviour)Random.Range(0, 4);
         }
         else if (currentStage == 3)
         {
@@ -116,15 +119,15 @@ public class BonnieAndClydeBehaviour : MonoBehaviour {
         }
         else if (currentStage == 4)
         {
-
+            currentBehaviour = (TetherBossBehaviour)Random.Range(2, 4);
         }
         else if (currentStage == 5)
         {
-
+            currentBehaviour = (TetherBossBehaviour)Random.Range(0, 1);
         }
         else if (currentStage == 6)
         {
-
+            currentBehaviour = (TetherBossBehaviour)Random.Range(3, 4);
         }
         //the individual cars do not have their targets yet so
         targetAssigned = false;
@@ -136,10 +139,14 @@ public class BonnieAndClydeBehaviour : MonoBehaviour {
 
     public void TargetRandomPlayer()
     {
-            Vector3 ClydeTarget = playerToTrack.position + new Vector3(idealDistanceToPlayer,idealDistanceToPlayer,0);
-            Vector3 BonnieTarget = playerToTrack.position - new Vector3(idealDistanceToPlayer, idealDistanceToPlayer,0);
+        if (targetAssigned == false)
+        {
+            Vector3 ClydeTarget = playerToTrack.position + new Vector3(idealDistanceToPlayer, idealDistanceToPlayer, 0);
+            Vector3 BonnieTarget = playerToTrack.position - new Vector3(idealDistanceToPlayer, idealDistanceToPlayer, 0);
             clydeScript.travelDirection = ClydeTarget - clydeScript.transform.position;
             bonnieScript.travelDirection = BonnieTarget - bonnieScript.transform.position;
+            targetAssigned = true;
+        }
     }
 
     public void Escape()
@@ -210,11 +217,14 @@ public class BonnieAndClydeBehaviour : MonoBehaviour {
         }
         else if (currentStage == 4)
         {
-            
+            ClydeTurret.SetActive(true);
+            BonnieTurret.SetActive(true);
             PlayConversation(formChangeConversation4);
         }
         else if (currentStage == 5)
         {
+            ClydeTurret.SetActive(false);
+            BonnieTurret.SetActive(false);
             PlayConversation(formChangeConversation5);
         }
 

@@ -97,7 +97,7 @@ public class TetherBossCar : MonoBehaviour {
             {
                 BonnyAndClydeHealth.takeHit(Tether.tether.Damage);
             }
-
+            BonnyAndClydeHealth.hit = true;
         }
     }
 

@@ -317,10 +317,13 @@ MonoBehaviour:
   shotDelay: 0.5
   shotCounter: 0
   bullet: {fileID: 113810, guid: b298aaf484eb7bf4e91b81ffe02aa790, type: 2}
+  randomly_choose_coloured_bullet: 0
+  coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
   playerCloseDisable: 1
   disableDistance: 2
+  randomly_determine_colour: 0
   shotColour: 3
   TimeBetweenSwitches: 4
   SwitchTimer: 0
@@ -338,10 +341,13 @@ MonoBehaviour:
   shotDelay: 0.5
   shotCounter: 0
   bullet: {fileID: 117580, guid: ca784a9dd210d8641a320a9c2d0f8164, type: 2}
+  randomly_choose_coloured_bullet: 0
+  coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
   playerCloseDisable: 1
   disableDistance: 2
+  randomly_determine_colour: 0
   shotColour: 2
   TimeBetweenSwitches: 4
   SwitchTimer: 0
@@ -361,12 +367,13 @@ MonoBehaviour:
   death_conversation: {fileID: 0}
   nextStage: {fileID: 182082, guid: bdfb0c07540c2614a8c172336d320b0a, type: 2}
   stages: 3
-  overallHealth: 500
-  bossName: Jumpy Pete
+  overallHealth: 1250
+  bossName: Jumpin Jack
   pointValue: 2000
   TimeBonus: 600
   ChangeFormEffect: {fileID: 0}
   hurtByTether: 1
+  hurtByReboundBullets: 0
   easyDamageMultiplyer: 2
   hardDamageMultiplyer: 0.667
   useImmunityTime: 0
@@ -386,10 +393,13 @@ MonoBehaviour:
   shotDelay: 0.5
   shotCounter: 0
   bullet: {fileID: 117580, guid: ca784a9dd210d8641a320a9c2d0f8164, type: 2}
+  randomly_choose_coloured_bullet: 0
+  coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
   playerCloseDisable: 1
   disableDistance: 2
+  randomly_determine_colour: 0
   shotColour: 2
   TimeBetweenSwitches: 4
   SwitchTimer: 0
@@ -420,10 +430,13 @@ MonoBehaviour:
   shotDelay: 0.5
   shotCounter: 0
   bullet: {fileID: 113810, guid: b298aaf484eb7bf4e91b81ffe02aa790, type: 2}
+  randomly_choose_coloured_bullet: 0
+  coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
   playerCloseDisable: 1
   disableDistance: 2
+  randomly_determine_colour: 0
   shotColour: 3
   TimeBetweenSwitches: 4
   SwitchTimer: 0
@@ -441,10 +454,13 @@ MonoBehaviour:
   shotDelay: 0.5
   shotCounter: 0
   bullet: {fileID: 113810, guid: b298aaf484eb7bf4e91b81ffe02aa790, type: 2}
+  randomly_choose_coloured_bullet: 0
+  coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
   playerCloseDisable: 1
   disableDistance: 2
+  randomly_determine_colour: 0
   shotColour: 3
   TimeBetweenSwitches: 4
   SwitchTimer: 0
@@ -462,10 +478,13 @@ MonoBehaviour:
   shotDelay: 0.5
   shotCounter: 0
   bullet: {fileID: 113810, guid: b298aaf484eb7bf4e91b81ffe02aa790, type: 2}
+  randomly_choose_coloured_bullet: 0
+  coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
   playerCloseDisable: 1
   disableDistance: 2
+  randomly_determine_colour: 0
   shotColour: 3
   TimeBetweenSwitches: 4
   SwitchTimer: 0
@@ -517,10 +536,13 @@ MonoBehaviour:
   shotDelay: 0.5
   shotCounter: 0
   bullet: {fileID: 117580, guid: ca784a9dd210d8641a320a9c2d0f8164, type: 2}
+  randomly_choose_coloured_bullet: 0
+  coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
   playerCloseDisable: 1
   disableDistance: 2
+  randomly_determine_colour: 0
   shotColour: 2
   TimeBetweenSwitches: 4
   SwitchTimer: 0
@@ -538,10 +560,13 @@ MonoBehaviour:
   shotDelay: 0.5
   shotCounter: 0
   bullet: {fileID: 117580, guid: ca784a9dd210d8641a320a9c2d0f8164, type: 2}
+  randomly_choose_coloured_bullet: 0
+  coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
   playerCloseDisable: 1
   disableDistance: 2
+  randomly_determine_colour: 0
   shotColour: 2
   TimeBetweenSwitches: 4
   SwitchTimer: 0
