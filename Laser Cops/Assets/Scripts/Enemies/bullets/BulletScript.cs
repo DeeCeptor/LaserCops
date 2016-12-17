@@ -68,6 +68,7 @@ public class BulletScript : MonoBehaviour
             if (bs.hurtByReboundBullets)
             {
                 bs.takeHit(damage);
+                bs.TakeHitGraphics(collision);
             }
 
             Die();

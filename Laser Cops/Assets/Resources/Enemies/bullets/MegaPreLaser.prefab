@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToSpawn: {fileID: 143634, guid: df942d68270d950478d6832b78c93d93, type: 2}
-  secondsTillSpawn: 2
+  secondsTillSpawn: 4
 --- !u!114 &11449866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6753f33a9ec346e499f6e2240d3749d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsTillDeath: 3
+  secondsTillDeath: 4
 --- !u!212 &21297476
 SpriteRenderer:
   m_ObjectHideFlags: 1

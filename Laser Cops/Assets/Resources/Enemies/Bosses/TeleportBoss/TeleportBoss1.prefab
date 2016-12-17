@@ -63,7 +63,7 @@ GameObject:
   - 114: {fileID: 11468498}
   - 114: {fileID: 11456390}
   - 58: {fileID: 5818304}
-  - 114: {fileID: 11446476}
+  - 50: {fileID: 50000012043698020}
   m_Layer: 8
   m_Name: TeleportBoss1
   m_TagString: Boss
@@ -163,8 +163,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138890}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 41.6882, y: -4.5253296, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 39.40551, y: 0.6273701, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 473516}
@@ -306,14 +306,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb213225a95e514d9ebda34f0051c80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 0.5
+  shotDelay: 0.35
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
   randomly_choose_coloured_bullet: 0
   coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
-  playerCloseDisable: 1
+  playerCloseDisable: 0
   disableDistance: 2
   randomly_determine_colour: 0
 --- !u!114 &11434092
@@ -327,14 +327,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb213225a95e514d9ebda34f0051c80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 0.5
+  shotDelay: 0.35
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
   randomly_choose_coloured_bullet: 0
   coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
-  playerCloseDisable: 1
+  playerCloseDisable: 0
   disableDistance: 2
   randomly_determine_colour: 0
 --- !u!114 &11434742
@@ -348,29 +348,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb213225a95e514d9ebda34f0051c80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 0.5
+  shotDelay: 0.35
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
   randomly_choose_coloured_bullet: 0
   coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
-  playerCloseDisable: 1
+  playerCloseDisable: 0
   disableDistance: 2
   randomly_determine_colour: 0
---- !u!114 &11446476
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 804a2fd2c9c001744a9f087d299f849a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  randomOffset: 0
-  rotationSpeed: {x: 0, y: 0, z: 1}
 --- !u!114 &11450492
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -382,14 +369,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb213225a95e514d9ebda34f0051c80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 0.5
+  shotDelay: 0.35
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
   randomly_choose_coloured_bullet: 0
   coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
-  playerCloseDisable: 1
+  playerCloseDisable: 0
   disableDistance: 2
   randomly_determine_colour: 0
 --- !u!114 &11453718
@@ -403,14 +390,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb213225a95e514d9ebda34f0051c80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 0.5
+  shotDelay: 0.35
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
   randomly_choose_coloured_bullet: 0
   coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
-  playerCloseDisable: 1
+  playerCloseDisable: 0
   disableDistance: 2
   randomly_determine_colour: 0
 --- !u!114 &11456390
@@ -458,14 +445,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb213225a95e514d9ebda34f0051c80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 0.5
+  shotDelay: 0.35
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
   randomly_choose_coloured_bullet: 0
   coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
-  playerCloseDisable: 1
+  playerCloseDisable: 0
   disableDistance: 2
   randomly_determine_colour: 0
 --- !u!114 &11468498
@@ -479,13 +466,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c511b6cead39dac4ab376e567ffb5f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 250
+  health: 125
   formChangeConversation: {fileID: 0}
   death_conversation: {fileID: 0}
   nextStage: {fileID: 124560, guid: 1f9dfe79834eeac4d959bb4fc388e78c, type: 2}
   stages: 3
-  overallHealth: 1500
-  bossName: Jumpin Jack
+  overallHealth: 750
+  bossName: Jumping Jack
   pointValue: 2000
   TimeBonus: 600
   ChangeFormEffect: {fileID: 0}
@@ -507,14 +494,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb213225a95e514d9ebda34f0051c80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 0.5
+  shotDelay: 0.35
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
   randomly_choose_coloured_bullet: 0
   coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
-  playerCloseDisable: 1
+  playerCloseDisable: 0
   disableDistance: 2
   randomly_determine_colour: 0
 --- !u!114 &11497714
@@ -528,14 +515,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb213225a95e514d9ebda34f0051c80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 0.5
+  shotDelay: 0.35
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
   randomly_choose_coloured_bullet: 0
   coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
-  playerCloseDisable: 1
+  playerCloseDisable: 0
   disableDistance: 2
   randomly_determine_colour: 0
 --- !u!212 &21211842
@@ -858,3 +845,20 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 138890}
   m_IsPrefabParent: 1
+--- !u!50 &50000012043698020
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138890}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0

@@ -142,7 +142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1000010491308978
 GameObject:
   m_ObjectHideFlags: 0
@@ -2085,7 +2085,7 @@ MonoBehaviour:
   currentBehaviour: 1
   Health: {fileID: 114000013524998636}
   healthThreshold: 0
-  healthBetweenStages: 250
+  healthBetweenStages: 200
   currentStage: 1
   formChangeConversation1: {fileID: 114000014155478908}
   formChangeConversation2: {fileID: 114000012559593358}
@@ -2131,7 +2131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 0.5
   standard_colour: {r: 0.9485294, g: 0, b: 0, a: 0}
-  pulsating_colour: {r: 1, g: 0.3897059, b: 0.3897059, a: 0}
+  pulsating_colour: {r: 1, g: 0.51724136, b: 0, a: 0}
   left_width: 0.6
   right_width: 0.6
   tether_links_parent: {fileID: 1000014127778760}
@@ -2180,8 +2180,8 @@ MonoBehaviour:
   zigs: 500
   speed: 1
   scale: 1.5
-  primary_colour: {r: 1, g: 0, b: 0, a: 0}
-  secondary_colour: {r: 1, g: 0, b: 0, a: 0}
+  primary_colour: {r: 1, g: 0, b: 0, a: 0.378}
+  secondary_colour: {r: 1, g: 0.7058824, b: 0.7058824, a: 0.50980395}
   primary_destroy_colour: {r: 1, g: 0, b: 0, a: 0.559}
   secondary_destroy_colour: {r: 1, g: 0.4044118, b: 0.4044118, a: 1}
   primary_capture_colour: {r: 0, g: 0, b: 1, a: 1}
@@ -2414,12 +2414,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c511b6cead39dac4ab376e567ffb5f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1500
+  health: 1200
   formChangeConversation: {fileID: 0}
   death_conversation: {fileID: 114000011383012212}
   nextStage: {fileID: 0}
   stages: 6
-  overallHealth: 1500
+  overallHealth: 1200
   bossName: Bonnie and Clyde
   pointValue: 10000
   TimeBonus: 10000

@@ -16,6 +16,8 @@ public class BossHealthScript : MonoBehaviour {
     public int TimeBonus = 600;
     public GameObject ChangeFormEffect;
 
+    protected float tether_lightning_cooldown;
+
     public bool hurtByTether = false;
     public bool hurtByReboundBullets = false;
 
@@ -52,9 +54,13 @@ public class BossHealthScript : MonoBehaviour {
         }
     }
 
+    void Update()
+    {
+        tether_lightning_cooldown -= Time.deltaTime;
+    }
 
-	// Update is called once per frame
-	void FixedUpdate ()
+    // Update is called once per frame
+    void FixedUpdate ()
     {
         hit = false;
 	    if(health <= 0)
@@ -324,6 +330,18 @@ public class BossHealthScript : MonoBehaviour {
             }
             Explode();
             GameState.game_state.Victory();
+        }
+    }
+
+    public void HitByTetherGraphics(Collision2D collision)
+    {
+        SoundMixer.sound_manager.PlaySyncopatedLazer();
+
+        if (tether_lightning_cooldown <= 0)
+        {
+            tether_lightning_cooldown = 0.1f;
+            //EffectsManager.effects.TetherDamageSparks(collision.contacts[0].point);
+            TetherLightning.tether_lightning.BranchLightning(Tether.tether.GetRandomLink().transform.position, this.transform.position);
         }
     }
 

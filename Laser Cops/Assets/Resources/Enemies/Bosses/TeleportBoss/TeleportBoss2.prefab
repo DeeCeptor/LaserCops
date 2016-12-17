@@ -362,12 +362,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c511b6cead39dac4ab376e567ffb5f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 250
+  health: 125
   formChangeConversation: {fileID: 0}
   death_conversation: {fileID: 0}
   nextStage: {fileID: 182082, guid: bdfb0c07540c2614a8c172336d320b0a, type: 2}
   stages: 3
-  overallHealth: 1250
+  overallHealth: 625
   bossName: Jumpin Jack
   pointValue: 2000
   TimeBonus: 600

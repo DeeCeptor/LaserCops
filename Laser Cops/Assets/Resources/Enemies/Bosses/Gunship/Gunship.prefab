@@ -114,7 +114,7 @@ Transform:
   m_GameObject: {fileID: 197532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 55.29, y: -16.01, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.54, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000011560042964}
@@ -177,7 +177,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147666}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.91588, y: 0.128973, z: -0.375}
+  m_LocalPosition: {x: 22.66692, y: 0.128973, z: -0.375}
   m_LocalScale: {x: 0.49999988, y: 0.49999988, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -1785,7 +1785,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013883228078}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.91588, y: 0.128973, z: -0.375}
+  m_LocalPosition: {x: 22.017569, y: 0.128973, z: -0.375}
   m_LocalScale: {x: 0.49999988, y: 0.49999988, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -2806,7 +2806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6078f28a2648c97429431d70f87b8b57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 5
+  shotDelay: 8
   shotCounter: 0
   bullet: {fileID: 172840, guid: 2d979ade5b97620428903ee710afac1b, type: 2}
   randomly_choose_coloured_bullet: 0
@@ -2844,10 +2844,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerToTrack: {fileID: 0}
   players: []
-  shotDelay: 12
+  shotDelay: 8
   shotCounter: 8
   bullet: {fileID: 150712, guid: 6f9153ddf0aea2f4785b0aad8478dc36, type: 2}
-  active: 1
+  active: 0
   bulletColour: 0
   CarColour: 0
   playerCloseDisable: 0
@@ -2884,7 +2884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624bac116c5c2ce478b1680f0372b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 1
+  shotDelay: 1.2
   shotCounter: 0.5
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
   randomly_choose_coloured_bullet: 0
@@ -3152,7 +3152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624bac116c5c2ce478b1680f0372b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 1
+  shotDelay: 0.8
   shotCounter: 0.5
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
   randomly_choose_coloured_bullet: 0
@@ -3212,10 +3212,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerToTrack: {fileID: 0}
   players: []
-  shotDelay: 12
+  shotDelay: 8
   shotCounter: 4
   bullet: {fileID: 150712, guid: 6f9153ddf0aea2f4785b0aad8478dc36, type: 2}
-  active: 1
+  active: 0
   bulletColour: 0
   CarColour: 0
   playerCloseDisable: 0
@@ -3233,10 +3233,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerToTrack: {fileID: 0}
   players: []
-  shotDelay: 12
+  shotDelay: 8
   shotCounter: 0
   bullet: {fileID: 150712, guid: 6f9153ddf0aea2f4785b0aad8478dc36, type: 2}
-  active: 1
+  active: 0
   bulletColour: 0
   CarColour: 0
   playerCloseDisable: 0
@@ -3290,7 +3290,7 @@ MonoBehaviour:
   changeDirectionTime: 14
   stopDelay: 0
   stopTimer: 0
-  stayStoppedDelay: 10
+  stayStoppedDelay: 15
   formChangeConversation1: {fileID: 114000012031596336}
   formChangeConversation2: {fileID: 114000013065228208}
   formChangeConversation3: {fileID: 114000011999442758}
@@ -3448,7 +3448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624bac116c5c2ce478b1680f0372b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 1
+  shotDelay: 0.7
   shotCounter: 0.5
   bullet: {fileID: 120478, guid: b0de785363611694fb2b365840c214d2, type: 2}
   randomly_choose_coloured_bullet: 0
@@ -3556,7 +3556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624bac116c5c2ce478b1680f0372b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 1
+  shotDelay: 1.1
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
   randomly_choose_coloured_bullet: 0
@@ -3808,7 +3808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624bac116c5c2ce478b1680f0372b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 1
+  shotDelay: 0.9
   shotCounter: 0.5
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
   randomly_choose_coloured_bullet: 0
