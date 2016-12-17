@@ -137,7 +137,7 @@ public class CivillianScript : MonoBehaviour {
         InGameUIManager.ui_manager.ChangeScore(pointsForSave, this.transform.position);
         EffectsManager.effects.spawnMovingText(new Vector3(this.transform.position.x, this.transform.position.y + 3, this.transform.position.z), "Saved!");
         EffectsManager.effects.PlayersHealed();
-        SoundMixer.sound_manager.PlayNotification();
+        SoundMixer.sound_manager.PlayCollectSound();
 
         GameState.game_state.Heal_All_Players(healthToGainBack);
             

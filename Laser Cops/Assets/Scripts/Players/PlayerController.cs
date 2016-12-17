@@ -211,7 +211,7 @@ public class PlayerController : PlayerInput
 
 
             // Can only steer properly when we're not caught on an obstacle
-            if (GameState.game_state.tether_touching_obstacle)
+            if (GameState.game_state.limit_player_control_from_obstacles)
             {
                 if (GameState.game_state.going_sideways)
                 {
@@ -590,14 +590,15 @@ public class PlayerController : PlayerInput
     {
         // Check to see if we die
         if (coll.gameObject.layer == LayerMask.NameToLayer("Death Zone") 
-            && (GameState.game_state.tether_touching_obstacle || touching_forward_obstacle))
+            && ((GameState.game_state.tether_touching_obstacle || touching_forward_obstacle))
+            )
         {
             HitDeathZone();
             return;
         }
         else
         {
-            if (coll.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
+            if (coll.gameObject.layer == LayerMask.NameToLayer("Obstacles") || coll.gameObject.layer == LayerMask.NameToLayer("Slow Obstacles"))
             {
                 cur_touching_forward_obstacle = touching_forward_obstacle_cooldown;
                 touching_forward_obstacle = true;
@@ -606,7 +607,7 @@ public class PlayerController : PlayerInput
     }
     void OnTriggerStay2D(Collider2D coll)
     {
-        if (coll.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
+        if (coll.gameObject.layer == LayerMask.NameToLayer("Obstacles") || coll.gameObject.layer == LayerMask.NameToLayer("Slow Obstacles"))
         {
             cur_touching_forward_obstacle = touching_forward_obstacle_cooldown;
             touching_forward_obstacle = true;

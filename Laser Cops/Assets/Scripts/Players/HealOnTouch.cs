@@ -19,7 +19,7 @@ public class HealOnTouch : MonoBehaviour
             || coll.gameObject.layer == LayerMask.NameToLayer("CaptureTether"))
         {
             GameState.game_state.Heal_All_Players(healing_amount);
-            SoundMixer.sound_manager.PlayNotification();
+            SoundMixer.sound_manager.PlayCollectSound();
             EffectsManager.effects.BulletReflected(this.transform.position);
             EffectsManager.effects.PlayersHealed();
             Destroy(this.gameObject);

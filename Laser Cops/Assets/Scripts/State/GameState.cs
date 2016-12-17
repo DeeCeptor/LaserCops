@@ -49,6 +49,8 @@ public class GameState : MonoBehaviour
     public bool tether_touching_obstacle = false;
     [HideInInspector]
     public float time_last_touched_obstacle;
+    [HideInInspector]
+    public bool limit_player_control_from_obstacles = false;
     float turn_off_tether_touching_obstacle_time = 0.3f;
 
     public bool debug_invulnerability = false;
@@ -400,7 +402,8 @@ public class GameState : MonoBehaviour
         if (player_who_just_died != null)
         {
             CameraManager.cam_manager.target_of_zoom = player_who_just_died.transform;
-            VectorGrid.grid.m_GridWidth = 140;
+            //VectorGrid.grid.m_GridWidth = 140;
+            //VectorGrid.grid.transform.localScale = new Vector3(2, 2, 1);
         }
 
         End_Cutscene(text);
@@ -633,6 +636,7 @@ public class GameState : MonoBehaviour
     }
 
 
+
     float blur_timer;
     void Update()
     {
@@ -675,6 +679,7 @@ public class GameState : MonoBehaviour
             time_last_touched_obstacle + turn_off_tether_touching_obstacle_time < Time.time)
         {
             tether_touching_obstacle = false;
+            limit_player_control_from_obstacles = false;
             ResetVelocityPositionIterations();
         }
 

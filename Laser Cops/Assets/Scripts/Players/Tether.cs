@@ -10,9 +10,6 @@ public class Tether : MonoBehaviour
 
     LineRenderer line;
 
-    public Color standard_colour;
-    public Color pulsating_colour;
-
     public float left_width = 0.1f;
     public float right_width = 0.1f;
 

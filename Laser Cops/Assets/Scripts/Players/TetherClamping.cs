@@ -44,6 +44,10 @@ public class TetherClamping : MonoBehaviour
         GameState.game_state.time_last_touched_obstacle = Time.time;
         GameState.game_state.SetVelocityPositionIterations(GameState.intensive_velocity_iterations, GameState.intensive_position_iterations);
     }
+    public void LimitPlayerMovement()
+    {
+        GameState.game_state.limit_player_control_from_obstacles = true;
+    }
 
 
     public void AbsorbBullet(GameObject bullet)
@@ -72,6 +76,8 @@ public class TetherClamping : MonoBehaviour
         bullet.GetComponent<Rigidbody2D>().angularVelocity = 0;
         bullet.GetComponent<SpriteRenderer>().material = GameState.game_state.default_sprite_material;
 
+        SoundMixer.sound_manager.PlayShortSpark();
+
         EffectsManager.effects.BulletReflected(this.transform.position);
     }
 
@@ -79,6 +85,11 @@ public class TetherClamping : MonoBehaviour
     void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
+        {
+            TouchedObstacle();
+            LimitPlayerMovement();
+        }
+        else if (coll.gameObject.layer == LayerMask.NameToLayer("Slow Obstacles"))
         {
             TouchedObstacle();
         }
@@ -93,13 +104,15 @@ public class TetherClamping : MonoBehaviour
         if (coll.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
         {
             TouchedObstacle();
+            LimitPlayerMovement();
+        }
+        else if (coll.gameObject.layer == LayerMask.NameToLayer("Slow Obstacles"))
+        {
+            TouchedObstacle();
         }
     }
     void OnCollisionExit2D(Collision2D coll)
     {
-        if (coll.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
-        {
-            //GameState.game_state.tether_touching_obstacle = false;
-        }
+
     }
 }

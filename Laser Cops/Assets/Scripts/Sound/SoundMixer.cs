@@ -139,6 +139,10 @@ public class SoundMixer : MonoBehaviour
     {
         StopSound(Sounds[15]);
     }
+    public void PlayCollectSound()
+    {
+        PlaySound(Sounds[16], 2 * sound_effect_scale);
+    }
 
     // MUSIC
     public void Play2ndBallad()
