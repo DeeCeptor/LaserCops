@@ -159,7 +159,7 @@ public class VNSceneManager : MonoBehaviour
         super_speed_delay -= Time.deltaTime * Time.timeScale;
 
         // Check for user input
-
+        /*
         // If the user is holding down any of the below buttons, make it go SUPER FAST
         if (Input.GetKeyDown(KeyCode.Return)    // Enter
             || Input.GetKeyDown(KeyCode.KeypadEnter)    // Keypad enter
@@ -169,7 +169,7 @@ public class VNSceneManager : MonoBehaviour
         {
             super_speed_delay = fast_forward_delay;
             this.Button_Pressed();
-        }
+        }*/
     }
 
     // Sends a button press every fast_forward_delay seconds

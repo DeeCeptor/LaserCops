@@ -22,6 +22,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Finished/BulletHeaven.unity
   - enabled: 1
+    path: Assets/Levels/Finished/BonnieAndClyde.unity
+  - enabled: 1
+    path: Assets/Levels/Finished/bulletLimbo.unity
+  - enabled: 1
+    path: Assets/Levels/Finished/Fast & Loose.unity
+  - enabled: 1
+    path: Assets/Levels/Finished/Let it Rain.unity
+  - enabled: 1
+    path: Assets/Levels/Finished/Light Show.unity
+  - enabled: 1
+    path: Assets/Levels/Finished/spynet.unity
+  - enabled: 1
     path: Assets/Levels/Finished/Think Fast.unity
   - enabled: 1
     path: Assets/Levels/Finished/Ocean Waves.unity
@@ -39,8 +51,6 @@ EditorBuildSettings:
     path: Assets/Levels/Finished/BulletHell.unity
   - enabled: 1
     path: Assets/Levels/Finished/GunshipGunther.unity
-  - enabled: 1
-    path: Assets/Levels/Finished/LIghtShow.unity
   - enabled: 1
     path: Assets/Levels/Finished/Look out Below!.unity
   - enabled: 1

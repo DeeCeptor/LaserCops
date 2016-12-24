@@ -230,9 +230,9 @@ public class BossHealthScript : MonoBehaviour {
         }
         EffectsManager.effects.GridExplosion(this.transform.position, 2f, 8f, Color.red);
 
-        GameObject[] corpses = CutSprite();
-        corpses[0].GetComponent<EnemyDying>().JustDied(1);
-        corpses[1].GetComponent<EnemyDying>().JustDied(-1);
+        //GameObject[] corpses = CutSprite();
+        //corpses[0].GetComponent<EnemyDying>().JustDied(1);
+        //corpses[1].GetComponent<EnemyDying>().JustDied(-1);
 
         Destroy(gameObject);
     }
