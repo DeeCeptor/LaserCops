@@ -154,22 +154,22 @@ public class EffectsManager : MonoBehaviour
     {
         foreach (PlayerController p in GameState.game_state.Players)
         {
-            TetherLightning.tether_lightning.BurstLightning(p.transform.position, p.transform.position, 20, Color.green);
+            TetherLightning.tether_lightning.BurstLightning(p.transform.position, p.transform.position + new Vector3(0, 2), 20, Color.green);
         }
         yield return new WaitForSeconds(0.2f);
         foreach (PlayerController p in GameState.game_state.Players)
         {
-            TetherLightning.tether_lightning.BurstLightning(p.transform.position, p.transform.position, 20, Color.green);
+            TetherLightning.tether_lightning.BurstLightning(p.transform.position, p.transform.position + new Vector3(0, -2), 20, Color.green);
         }
         yield return new WaitForSeconds(0.3f);
         foreach (PlayerController p in GameState.game_state.Players)
         {
-            TetherLightning.tether_lightning.BurstLightning(p.transform.position, p.transform.position, 20, Color.green);
+            TetherLightning.tether_lightning.BurstLightning(p.transform.position, p.transform.position + new Vector3(0, 2), 20, Color.green);
         }
         yield return new WaitForSeconds(0.3f);
         foreach (PlayerController p in GameState.game_state.Players)
         {
-            TetherLightning.tether_lightning.BurstLightning(p.transform.position, p.transform.position, 20, Color.green);
+            TetherLightning.tether_lightning.BurstLightning(p.transform.position, p.transform.position + new Vector3(0, -2), 20, Color.green);
         }
     }
 

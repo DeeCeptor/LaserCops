@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 //note that the parent object has a script which will control bonny and clyde this script is to be attached to the cars themselves

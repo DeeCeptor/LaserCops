@@ -3,8 +3,8 @@ using System.Collections;
 
 public class TurnOffSparks : MonoBehaviour
 {
-    public float time_remaining = 0.9f;
-    public float start_time_remaining = 0.5f;
+    public float time_remaining = 0.4f;
+    public float start_time_remaining = 0.4f;
     ParticleSystem p;
     AudioSource _audio;
 

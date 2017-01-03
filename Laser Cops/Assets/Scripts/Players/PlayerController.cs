@@ -269,7 +269,7 @@ public class PlayerController : PlayerInput
             //    Mathf.Lerp(transform.eulerAngles.z, desired_rotation, 0.01f));
 
             // Start fading health bar
-            health_bar_image.color = new Color(health_bar_image.color.r, health_bar_image.color.g, health_bar_image.color.b, health_bar_image.color.a - Time.deltaTime * 1.0f);
+            health_bar_image.color = new Color(health_bar_image.color.r, health_bar_image.color.g, health_bar_image.color.b, health_bar_image.color.a - Time.unscaledDeltaTime * 1.0f);
 
             // UI effects
             cur_spark_dmg_time -= Time.deltaTime;
@@ -401,7 +401,8 @@ public class PlayerController : PlayerInput
         if (currently_boosting)
             damage = damage / 2f;
 
-        AdjustHealth(-damage);
+        if (damage != 0 && !GameState.game_state.game_over)
+            AdjustHealth(-damage);
 
         if (getting_hit_explosion_noise)
         {

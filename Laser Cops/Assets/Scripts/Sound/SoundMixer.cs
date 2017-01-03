@@ -141,7 +141,7 @@ public class SoundMixer : MonoBehaviour
     }
     public void PlayCollectSound()
     {
-        PlaySound(Sounds[16], 2 * sound_effect_scale);
+        PlaySound(Sounds[16], 1.5f * sound_effect_scale);
     }
 
     // MUSIC

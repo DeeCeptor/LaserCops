@@ -1265,7 +1265,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a9c43c03dbc156d489d34c4aa69348ec, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.12
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2599,7 +2599,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level_to_load_on_victory: SceneSelect
   level_to_load_on_defeat: SceneSelect
-  current_level_name: Fast & Loose
+  current_level_name: Bullet Puragatory
   number_of_players: 2
   overriding_no_tether: 0
   paused: 0
