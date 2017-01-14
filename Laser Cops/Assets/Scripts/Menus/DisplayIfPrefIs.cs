@@ -7,7 +7,7 @@ public class DisplayIfPrefIs : MonoBehaviour
     public string bool_player_pref;
     public bool is_ = false;
 
-	void Start ()
+	void Awake ()
     {
         bool beat_level = System.Convert.ToBoolean(PlayerPrefs.GetInt(bool_player_pref, 0));
 

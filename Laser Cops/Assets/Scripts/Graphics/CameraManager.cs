@@ -21,6 +21,11 @@ public class CameraManager : MonoBehaviour
 
     void Awake ()
     {
+        public_Awake();
+    }
+    // Added to avoid error of gamestate calling needing this class too early
+    public void public_Awake()
+    {
         cam = this.GetComponent<Camera>();
         cam_manager = this;
         cam.orthographicSize = desired_size;

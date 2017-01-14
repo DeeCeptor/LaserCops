@@ -90,6 +90,11 @@ public class GameState : MonoBehaviour
             VIPObject = GameObject.FindGameObjectWithTag("VIP");
         }
 
+        if (CameraManager.cam_manager == null)
+        {
+            Camera.main.GetComponent<CameraManager>().public_Awake();
+        }
+
         // Set camera to be slightly more zoomed out when there are more players 
         if (number_of_players > 2)
         {

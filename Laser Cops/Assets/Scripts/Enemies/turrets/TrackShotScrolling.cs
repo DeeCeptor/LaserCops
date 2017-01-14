@@ -91,7 +91,6 @@ public class TrackShotScrolling : MonoBehaviour{
     {
         active = true;
         shotCounter = Time.time + shotDelay - shotCounter;
-        Debug.Log(shotCounter);
     }
     
     public void shoot()
