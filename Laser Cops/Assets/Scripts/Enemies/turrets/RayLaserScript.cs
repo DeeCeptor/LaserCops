@@ -2,7 +2,8 @@ using UnityEngine;
 using System.Collections;
 
 //this class shoots a laser using a raycast and a line renderer that will shoot from the object until it hits a collider or reaches max laser length, damages player on contact
-public class RayLaserScript : MonoBehaviour {
+public class RayLaserScript : MonoBehaviour
+{
     //how long between shots
     public float shotDelay = 5f;
     //how long the shot lasts
@@ -35,27 +36,36 @@ public class RayLaserScript : MonoBehaviour {
     //how close the player must be to disable the shot
     public float disableDistance = 2f;
 
-    void Start () {
-        if(randomPinkOrBlue)
+    Material cyan_glow;
+    Material pink_glow;
+    Material red_glow;
+
+    void Start ()
+    {
+        pink_glow = (Material)Resources.Load("Materials/StreakGlowPink");
+        cyan_glow = (Material)Resources.Load("Materials/StreakGlowCyan");
+        red_glow = (Material)Resources.Load("Materials/StreakGlowRed");
+
+        if (randomPinkOrBlue)
         {
             if(Random.Range(0,2) > 0)
             {
                 bullet_colour = _Colour.Blue;
                 laserRenderer.SetColors(Color.cyan, Color.cyan);
-                laserRenderer.material = (Material)Resources.Load("Materials/StreakGlowCyan");
             }
             else
             {
                 bullet_colour = _Colour.Pink;
                 laserRenderer.SetColors(Color.magenta, Color.magenta);
-                laserRenderer.material = (Material)Resources.Load("Materials/StreakGlowMagenta");
             }
         }
         shotCounter = shotDelay + Time.time;
         layersToIgnore = ~((1<<12)|(1<<13) | (1 << 15)|(1<<0)| (1 << 22) | (1 << 23) | (1 << 24)| (1 << 26) | (1 << 8));
 	}
 	
-	void FixedUpdate () {
+
+	void FixedUpdate ()
+    {
         if (active)
         {
             if (shotCounter < Time.time)
@@ -69,11 +79,23 @@ public class RayLaserScript : MonoBehaviour {
                 TimeSinceShotCounter = 0;
                 laserRenderer.enabled = true;
                 shotCounter = Time.time + shotDelay;
+
+                switch (bullet_colour)
+                {
+                    case _Colour.Red:
+                        laserRenderer.material = red_glow;
+                        break;
+                    case _Colour.Blue:
+                        laserRenderer.material = cyan_glow;
+                        break;
+                    case _Colour.Pink:
+                        laserRenderer.material = pink_glow;
+                        break;
+                }
             }
 
             if (shooting)
             {
-
                 Shoot();
                 if (TimeSinceShotCounter > shotDuration)
                 {
@@ -98,9 +120,9 @@ public class RayLaserScript : MonoBehaviour {
         }
 	}
 
+
     public void Shoot()
     {
-        
         //see if there is an obstacle in the way
         hit = Physics2D.Raycast(transform.position, transform.up,float.PositiveInfinity,layersToIgnore);
         //if there is an obstacle then 
@@ -136,7 +158,6 @@ public class RayLaserScript : MonoBehaviour {
                 }
             } 
         }
-
 
         TimeSinceShotCounter += 1;
     }

@@ -1,11 +1,14 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class rotateAndClose : basicArenaEnemy {
+public class rotateAndClose : basicArenaEnemy
+{
     public bool rotateClockwise = false;
     public float rotationSpeed = 2f;
-	// Use this for initialization
-	void Start () {
+
+
+    void Start ()
+    {
         int rand = Random.Range(0, 1);
         if (rand == 0)
         {
@@ -17,12 +20,12 @@ public class rotateAndClose : basicArenaEnemy {
             rotateClockwise = false;
         }
     }
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+
+
+    void FixedUpdate ()
+    {
         if (active == false)
         {
-            
             CheckActive();
             moveInactive();
         }
@@ -33,6 +36,7 @@ public class rotateAndClose : basicArenaEnemy {
             CheckDeath();
         }
     }
+
 
     public void RotateAround()
     {

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class basicArenaEnemy : MonoBehaviour {
+public class basicArenaEnemy : MonoBehaviour
+{
     public float speed = 3f;
     public Transform playerToTrack;
     public GameObject[] players;
@@ -34,7 +35,6 @@ public class basicArenaEnemy : MonoBehaviour {
     {
         if (active == false)
         {
-            
             CheckActive();
             moveInactive();
         }
@@ -46,6 +46,7 @@ public class basicArenaEnemy : MonoBehaviour {
         }
     }
 
+
     public void Follow()
     {
         if (playerToTrack == null)
@@ -56,6 +57,7 @@ public class basicArenaEnemy : MonoBehaviour {
         dir = playerToTrack.position - transform.position;
         GetComponent<Rigidbody2D>().velocity = dir.normalized * speed;
     }
+
 
     public void SelectTarget()
     {
@@ -109,10 +111,16 @@ public class basicArenaEnemy : MonoBehaviour {
 
     public void Die()
 	{
-		EffectsManager.effects.ViolentExplosion(this.transform.position);
-		Destroy(gameObject);
-        InGameUIManager.ui_manager.ChangeScore(pointValue);
-	}
+        SoundMixer.sound_manager.Play8bitExplosion();
+        EffectsManager.effects.ViolentExplosion(this.transform.position);
+        //TetherLightning.tether_lightning.BurstLightning((Vector2)this.transform.position + new Vector2(Random.Range(-1, 1), Random.Range(-1, 1)), (Vector2) this.transform.position, 5);
+        InGameUIManager.ui_manager.ChangeScore(pointValue, this.transform.position);
+        EffectsManager.effects.GridExplosion(this.transform.position, 2f, 8f, Color.red);
+
+        GameObject[] corpses = EffectsManager.effects.CutSprite(this.gameObject);
+
+        Destroy(gameObject);
+    }
 
     public void moveInactive()
     {
