@@ -28,6 +28,7 @@ public class PlayableLevelNode : LevelNode
     [HideInInspector]
     public string one_hit_kill_diff;
 
+    public GameObject set_this_level_as_previous;
 
     public GameObject beaten_grouping;
     string[] difficulties = { "Hard", "Normal", "Easy", "Unbeaten" };
@@ -39,6 +40,9 @@ public class PlayableLevelNode : LevelNode
         beat_level = System.Convert.ToBoolean(PlayerPrefs.GetInt(level_to_load, 0));
         if (!beat_level && required_to_beat)
             next_node = this;
+
+        if (beat_level && set_this_level_as_previous != null)
+            set_this_level_as_previous.GetComponent<PlayableLevelNode>().previous_node = this;
 
         best_score = PlayerPrefs.GetInt(level_to_load + " High Score", 0);
 
