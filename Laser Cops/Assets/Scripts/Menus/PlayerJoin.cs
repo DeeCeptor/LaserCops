@@ -210,7 +210,6 @@ public class PlayerJoin : MonoBehaviour
             {
                 Debug.Log(s);
             }
-            Debug.Log("");
             player++;
         }
 
