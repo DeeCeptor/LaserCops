@@ -35,9 +35,11 @@ public class InGameUIManager : MonoBehaviour
     private string time_string = "";//"Time: ";
 
     public Slider bottom_health_bar;
-    public Image bottom_health_bar_background;
+    public Image bottom_health_bar_color;
     public Text bottom_text_name;
     public GameObject bottom_bar;
+    float target_of_bottom_bar;
+    float cur_bottom_bar;
 
     public Text announcement_text;
     [HideInInspector]
@@ -46,6 +48,7 @@ public class InGameUIManager : MonoBehaviour
     float announcement_cooldown = 1f;
 
     public GameObject end_of_level_text;
+
 
     void Awake ()
     {
@@ -145,14 +148,20 @@ public class InGameUIManager : MonoBehaviour
     public void ActivateBottomHealthBar(string boss_name, Color color, float max_health)
     {
         bottom_text_name.text = boss_name;
+        bottom_text_name.GetComponent<Outline>().effectColor = new Color(color.r, color.g, color.b, 0.5f);
         bottom_health_bar.minValue = 0;
         bottom_health_bar.maxValue = max_health;
-        bottom_health_bar.value = max_health;
+        target_of_bottom_bar = max_health;
+        bottom_health_bar.value = 0;
+        bottom_health_bar_color.color = color;
         bottom_bar.SetActive(true);
+
+        Debug.Log("Activating bottom bar max hp: " + max_health);
     }
     public void UpdateBottomHealthBar(float cur_health)
     {
-        bottom_health_bar.value = cur_health;
+        target_of_bottom_bar = cur_health;
+        Debug.Log("Bottom health: " + cur_health + " bar value: " + bottom_health_bar.value);
     }
 
 
@@ -223,6 +232,24 @@ public class InGameUIManager : MonoBehaviour
         multiplier_slider.value -= Time.deltaTime / 10;
         if (multiplier_slider.value <= 0)
             lowerMultiplierLevel();
+
+        // Smoothing boss HP
+        if (bottom_bar.activeSelf)
+        {
+            //bottom_health_bar.value = (int) (( Mathf.Lerp(bottom_health_bar.value, target_of_bottom_bar, Time.deltaTime * 0.5f) / bottom_health_bar.maxValue) * 40);
+            cur_bottom_bar = Mathf.MoveTowards(cur_bottom_bar, target_of_bottom_bar, Time.deltaTime * bottom_health_bar.maxValue / 5f);
+            int number_of_ticks = (int) (cur_bottom_bar / (float) bottom_health_bar.maxValue / 0.025f) + 1;
+            bottom_health_bar.value = (float) number_of_ticks / 40f * bottom_health_bar.maxValue;
+            Debug.Log(number_of_ticks + "  " + bottom_health_bar.value + " target: " + target_of_bottom_bar);
+            /*
+            bottom_health_bar.value = 
+                (
+                    (
+                        (Mathf.MoveTowards(bottom_health_bar.value, target_of_bottom_bar, Time.deltaTime * bottom_health_bar.maxValue / 5f)
+                        / bottom_health_bar.maxValue / 0.025f)
+                    )  * 0.025f)
+                * bottom_health_bar.maxValue;*/
+        }
     }
 
 

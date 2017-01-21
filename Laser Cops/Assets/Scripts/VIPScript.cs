@@ -11,6 +11,11 @@ public class VIPScript : MonoBehaviour {
 
     void Start ()
     {
+        Invoke("ShowBottomBar", 6f);
+    }
+
+    public void ShowBottomBar()
+    {
         InGameUIManager.ui_manager.ActivateBottomHealthBar("VIP", Color.green, health);
     }
 
