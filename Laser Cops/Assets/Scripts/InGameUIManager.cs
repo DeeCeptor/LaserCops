@@ -40,6 +40,7 @@ public class InGameUIManager : MonoBehaviour
     public GameObject bottom_bar;
     float target_of_bottom_bar;
     float cur_bottom_bar;
+    public BossHealthBarAnimation boss_hp_anim;
 
     public Text announcement_text;
     [HideInInspector]
@@ -160,8 +161,18 @@ public class InGameUIManager : MonoBehaviour
     }
     public void UpdateBottomHealthBar(float cur_health)
     {
+        if (cur_health < target_of_bottom_bar)
+        {
+            // Losing HP
+            boss_hp_anim.StartPulsing(Color.red);
+        }
+        else
+        {
+            // Gaining HP
+            boss_hp_anim.StartPulsing(Color.green);
+        }
+
         target_of_bottom_bar = cur_health;
-        Debug.Log("Bottom health: " + cur_health + " bar value: " + bottom_health_bar.value);
     }
 
 
@@ -240,7 +251,6 @@ public class InGameUIManager : MonoBehaviour
             cur_bottom_bar = Mathf.MoveTowards(cur_bottom_bar, target_of_bottom_bar, Time.deltaTime * bottom_health_bar.maxValue / 5f);
             int number_of_ticks = (int) (cur_bottom_bar / (float) bottom_health_bar.maxValue / 0.025f) + 1;
             bottom_health_bar.value = (float) number_of_ticks / 40f * bottom_health_bar.maxValue;
-            Debug.Log(number_of_ticks + "  " + bottom_health_bar.value + " target: " + target_of_bottom_bar);
             /*
             bottom_health_bar.value = 
                 (
