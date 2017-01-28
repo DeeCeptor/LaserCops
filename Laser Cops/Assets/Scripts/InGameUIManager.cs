@@ -123,7 +123,14 @@ public class InGameUIManager : MonoBehaviour
         score = Mathf.Max(0, score);    // Score can't go below 0
 
         if (position != Vector3.zero)
-            EffectsManager.effects.spawnMovingText(position, "+" + amount);
+        {
+            if (amount > 0)
+                EffectsManager.effects.spawnMovingText(position, "+" + amount);
+            else if (amount < 0)
+                EffectsManager.effects.spawnMovingText(position, "-" + amount);
+            else
+                EffectsManager.effects.spawnMovingText(position, "" + amount);
+        }
 
         multiplier_slider.value += ((float)amount) / (multiplier * 100);
         if (multiplier_slider.value >= 1)

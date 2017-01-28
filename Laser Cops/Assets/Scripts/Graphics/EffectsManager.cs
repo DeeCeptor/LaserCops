@@ -344,8 +344,15 @@ public class EffectsManager : MonoBehaviour
 
         }
 
+        // Get original color
+        Color c = obj.GetComponent<SpriteRenderer>().color;
+
         corpse_objects[0].GetComponent<EnemyDying>().JustDied(1);
+        corpse_objects[0].GetComponent<SpriteRenderer>().color = c;
+
         corpse_objects[1].GetComponent<EnemyDying>().JustDied(-1);
+        corpse_objects[1].GetComponent<SpriteRenderer>().color = c;
+
         return corpse_objects;
     }
 

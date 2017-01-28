@@ -1,10 +1,11 @@
 using UnityEngine;
 using System.Collections;
 
-public class CivillianScript : MonoBehaviour {
+public class CivillianScript : MonoBehaviour
+{
 	public int pointsForSave = 100;
 	//they are subtracted from the score and should be positive
-	public int pointPenaltyForKill = 200;
+	int pointPenaltyForKill = -200;
 	public int pointPenaltyForAbandon = 0;
     public float healthToGainBack = 15f;
 	//layer for the save ad destroy tether
@@ -93,11 +94,13 @@ public class CivillianScript : MonoBehaviour {
 		}
 	}
 
+
 	//put any behaviour that must be done when the enemy enters the screen here
 	public void Activate()
 	{
 		active = true;
 	}
+
 
 	//after activating the enemy should die if it leaves the screen
 	public void CheckDeath()
@@ -108,14 +111,21 @@ public class CivillianScript : MonoBehaviour {
 		}
 	}
 
+
 	public void Die()
 	{
-		Destroy(gameObject);
-        InGameUIManager.ui_manager.ChangeScore(-pointPenaltyForAbandon, this.transform.position);
-	}
-	
-	// Update is called once per frame
-	public void OnCollisionEnter2D(Collision2D collision)
+        InGameUIManager.ui_manager.ChangeScore(pointPenaltyForKill, this.transform.position);
+        SoundMixer.sound_manager.Play8bitExplosion();
+        EffectsManager.effects.ViolentExplosion(this.transform.position);
+        EffectsManager.effects.GridExplosion(this.transform.position, 2f, 8f, Color.red);
+
+        GameObject[] corpses = EffectsManager.effects.CutSprite(this.gameObject);
+
+        Destroy(gameObject);
+    }
+
+
+    public void OnCollisionEnter2D(Collision2D collision)
 	{
 		if(collision.gameObject.layer == saveLayer)
 		{
@@ -124,10 +134,7 @@ public class CivillianScript : MonoBehaviour {
 
 		if(collision.gameObject.layer == destroyLayer)
 		{
-            EffectsManager.effects.spawnMovingText(new Vector3(this.transform.position.x, this.transform.position.y + 3, this.transform.position.z), "Killed Civilian!");
-            EffectsManager.effects.ViolentExplosion(this.transform.position);
-            InGameUIManager.ui_manager.ChangeScore(-pointPenaltyForKill, this.transform.position);
-            Destroy(gameObject);
+            Die();
 		}
 	}
 
