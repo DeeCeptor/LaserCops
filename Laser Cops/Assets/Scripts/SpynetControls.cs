@@ -29,6 +29,7 @@ public class SpynetControls : MonoBehaviour
     public float healthThreshold = 0;
     public float healthBetweenStages = 50f;
 
+    public GameObject death_sprite;
 
 
     void Start ()
@@ -143,4 +144,14 @@ public class SpynetControls : MonoBehaviour
         }
     }
 
+
+    public void Boss_Dying()
+    {
+        StartCoroutine(Dying());
+    }
+    IEnumerator Dying()
+    {
+        yield return new WaitForSeconds(1f);
+        GameObject s = (GameObject)Instantiate(death_sprite, this.transform.position, transform.rotation);
+    }
 }
