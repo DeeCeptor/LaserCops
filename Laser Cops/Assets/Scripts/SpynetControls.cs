@@ -13,6 +13,8 @@ public class SpynetControls : MonoBehaviour {
     public float spawnTimer = 0f;
     //wait slightly longer for the first spawn
     public float startOfGameDelay = 4f;
+    // keeping track of which random layout was used last
+    public int previousAttack;
 
     //form change conversations
     public ConversationManager formChangeConversation1;
@@ -88,30 +90,35 @@ public class SpynetControls : MonoBehaviour {
 
     public void SpawnAsteroid()
     {
-        if(currentForm == 1)
+        while (layoutNumber == previousAttack)
         {
-            layoutNumber = Random.Range(0,4);
+            if (currentForm == 1)
+            {
+                layoutNumber = Random.Range(0, 4);
+            }
+            if (currentForm == 2)
+            {
+                layoutNumber = Random.Range(2, 6);
+            }
+            if (currentForm == 3)
+            {
+                layoutNumber = Random.Range(4, 8);
+            }
+            if (currentForm == 4)
+            {
+                layoutNumber = Random.Range(6, 10);
+            }
+            if (currentForm == 5)
+            {
+                layoutNumber = Random.Range(8, 12);
+            }
+            if (currentForm == 6)
+            {
+                layoutNumber = Random.Range(10, 14);
+            }
         }
-        if (currentForm == 2)
-        {
-            layoutNumber = Random.Range(2, 6);
-        }
-        if (currentForm == 3)
-        {
-            layoutNumber = Random.Range(4, 8);
-        }
-        if (currentForm == 4)
-        {
-            layoutNumber = Random.Range(6, 10);
-        }
-        if (currentForm == 5)
-        {
-            layoutNumber = Random.Range(8, 12);
-        }
-        if (currentForm == 6)
-        {
-            layoutNumber = Random.Range(10, 14);
-        }
+
+        previousAttack = layoutNumber;
         AsteroidMaterializerOnCall[] spawners = Layouts[layoutNumber].GetComponentsInChildren<AsteroidMaterializerOnCall>();
         for(int i = 0; i < spawners.Length;i++)
         {

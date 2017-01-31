@@ -8,11 +8,13 @@ public class shipStrafe : MonoBehaviour {
     public direction currentTravelDirection = direction.left;
     public BossHealthScript Health;
     public bool stopped = false;
-    public float changeDirectionCounter = 0f;
-    public float changeDirectionTime = 10f;
-    public float stopDelay;
+    public float stopDelay = 12f;
     public float stopTimer;
     public float stayStoppedDelay = 10f;
+    
+    public float XLeftOfScreen;
+    public float XRightOfScreen;
+    public bool goingLeft = true;
 
     public ConversationManager formChangeConversation1;
     public ConversationManager formChangeConversation2;
@@ -24,21 +26,33 @@ public class shipStrafe : MonoBehaviour {
     public Transform turretParent;
     public int currentStage = 1;
 
+    GameObject highway;
+    PolygonCollider2D box;
+
     //at what health level to switch stages
     public float healthThreshold;
     public float healthBetweenStages = 500f;
-    //whether it has gone offscreen since changing forms
-    public bool goneOffScreen = false;
 
     public Vector2 desired_velocity = Vector2.zero;
     // Use this for initialization
     void Start () {
-        changeDirectionCounter = Time.time + changeDirectionTime;
-        stopDelay = 1.5f * changeDirectionTime;
         stopTimer = Time.time + stopDelay;
         turretParent = transform.FindChild("Stage1Turrets");
         healthThreshold = Health.overallHealth - healthBetweenStages;
-	}
+        
+        box = this.GetComponent<PolygonCollider2D>();
+        highway = GameObject.FindGameObjectWithTag("Grid");
+        MeshRenderer mesh = highway.GetComponent<MeshRenderer>();
+
+        float screenRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x - box.bounds.extents.x;
+        float screenLeft = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x + box.bounds.extents.x;
+
+        Vector3 minScreenBounds = new Vector3(screenLeft, mesh.bounds.min.y + box.bounds.extents.y, 0);
+        Vector3 maxScreenBounds = new Vector3(screenRight, mesh.bounds.max.y - box.bounds.extents.y, 0);
+
+        XRightOfScreen = maxScreenBounds.x;
+        XLeftOfScreen = minScreenBounds.x;
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
@@ -92,6 +106,7 @@ public class shipStrafe : MonoBehaviour {
         {
             currentTravelDirection = direction.left;
         }
+        goingLeft = !goingLeft;
     }
 
     public void moveActive()
@@ -115,6 +130,21 @@ public class shipStrafe : MonoBehaviour {
         {
             desired_velocity = new Vector2(0, -speed);
             GetComponent<Rigidbody2D>().velocity = desired_velocity;
+        }
+
+        if (goingLeft)
+        {
+            if(transform.position.x < XLeftOfScreen)
+            {
+                ChangeDirections();
+            }
+        }
+        else
+        {
+            if (transform.position.x > XRightOfScreen)
+            {
+                ChangeDirections();
+            }
         }
     }
 
@@ -158,8 +188,6 @@ public class shipStrafe : MonoBehaviour {
             PlayConversation(formChangeConversation5);
             currentStage = 6;
             speed = speed / 2;
-            changeDirectionCounter = ((changeDirectionCounter-Time.time) * 2) + Time.time;
-            changeDirectionTime = changeDirectionTime * 2;
             turretParent.gameObject.SetActive(false);
             turretParent = transform.FindChild("Stage6Turrets");
             turretParent.gameObject.SetActive(true);
@@ -174,15 +202,9 @@ public class shipStrafe : MonoBehaviour {
     {
         if (!stopped)
         {
-            if (changeDirectionCounter < Time.time)
-            {
-                changeDirectionCounter = changeDirectionTime + Time.time;
-                ChangeDirections();
-            }
             moveActive();
             if (stopTimer < Time.time)
             {
-                stopDelay = 2f * changeDirectionTime;
                 stopTimer = Time.time + stayStoppedDelay;
                 stopped = true;
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -192,7 +214,6 @@ public class shipStrafe : MonoBehaviour {
         {
             if (stopTimer < Time.time)
             {
-                changeDirectionCounter = (changeDirectionTime * 0.5f) + Time.time;
                 stopped = false;
                 stopTimer = Time.time + stopDelay;
             }
@@ -203,15 +224,9 @@ public class shipStrafe : MonoBehaviour {
     {
         if (!stopped)
         {
-            if (changeDirectionCounter < Time.time)
-            {
-                changeDirectionCounter = changeDirectionTime + Time.time;
-                ChangeDirections();
-            }
             moveActive();
             if (stopTimer < Time.time)
             {
-                stopDelay = 2f * changeDirectionTime;
                 stopTimer = Time.time + stayStoppedDelay;
                 stopped = true;
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -221,7 +236,6 @@ public class shipStrafe : MonoBehaviour {
         {
             if (stopTimer < Time.time)
             {
-                changeDirectionCounter = (changeDirectionTime * 0.5f) + Time.time;
                 stopped = false;
                 stopTimer = Time.time + stopDelay;
             }
@@ -232,15 +246,9 @@ public class shipStrafe : MonoBehaviour {
     {
         if (!stopped)
         {
-            if (changeDirectionCounter < Time.time)
-            {
-                changeDirectionCounter = changeDirectionTime + Time.time;
-                ChangeDirections();
-            }
             moveActive();
             if (stopTimer < Time.time)
             {
-                stopDelay = 2f * changeDirectionTime;
                 stopTimer = Time.time + stayStoppedDelay;
                 stopped = true;
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -250,7 +258,6 @@ public class shipStrafe : MonoBehaviour {
         {
             if (stopTimer < Time.time)
             {
-                changeDirectionCounter = (changeDirectionTime * 0.5f) + Time.time;
                 stopped = false;
                 stopTimer = Time.time + stopDelay;
             }
@@ -261,15 +268,9 @@ public class shipStrafe : MonoBehaviour {
     {
         if (!stopped)
         {
-            if (changeDirectionCounter < Time.time)
-            {
-                changeDirectionCounter = changeDirectionTime + Time.time;
-                ChangeDirections();
-            }
             moveActive();
             if (stopTimer < Time.time)
             {
-                stopDelay = 2f * changeDirectionTime;
                 stopTimer = Time.time + stayStoppedDelay;
                 stopped = true;
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -279,7 +280,6 @@ public class shipStrafe : MonoBehaviour {
         {
             if (stopTimer < Time.time)
             {
-                changeDirectionCounter = (changeDirectionTime * 0.5f) + Time.time;
                 stopped = false;
                 stopTimer = Time.time + stopDelay;
             }
@@ -290,15 +290,9 @@ public class shipStrafe : MonoBehaviour {
     {
         if (!stopped)
         {
-            if (changeDirectionCounter < Time.time)
-            {
-                changeDirectionCounter = changeDirectionTime + Time.time;
-                ChangeDirections();
-            }
             moveActive();
             if (stopTimer < Time.time)
             {
-                stopDelay = 2f * changeDirectionTime;
                 stopTimer = Time.time + stayStoppedDelay;
                 stopped = true;
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -308,7 +302,6 @@ public class shipStrafe : MonoBehaviour {
         {
             if (stopTimer < Time.time)
             {
-                changeDirectionCounter = (changeDirectionTime * 0.5f) + Time.time;
                 stopped = false;
                 stopTimer = Time.time + stopDelay;
             }
@@ -317,11 +310,6 @@ public class shipStrafe : MonoBehaviour {
 
     public void Stage6Update()
     {
-            if (changeDirectionCounter < Time.time)
-            {
-                changeDirectionCounter = changeDirectionTime + Time.time;
-                ChangeDirections();
-            }
             moveActive();
     }
 

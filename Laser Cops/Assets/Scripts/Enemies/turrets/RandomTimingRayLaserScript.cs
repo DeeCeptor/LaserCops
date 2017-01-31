@@ -27,6 +27,8 @@ public class RandomTimingRayLaserScript : RayLaserScript {
         {
             if (TimeSinceShotCounter > shotDuration)
             {
+                SoundMixer.sound_manager.StopBigLazerSound();
+                soundStarted = false;
                 shooting = false;
                 laserRenderer.enabled = false;
             }
