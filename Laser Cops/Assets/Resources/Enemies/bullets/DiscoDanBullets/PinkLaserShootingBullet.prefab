@@ -16,14 +16,14 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000011745943978}
-  - 212: {fileID: 212000010920867470}
-  - 50: {fileID: 50000010878600682}
-  - 58: {fileID: 58000011438054716}
-  - 114: {fileID: 114000012851754934}
-  - 114: {fileID: 114000011837171778}
+  - component: {fileID: 4000011745943978}
+  - component: {fileID: 212000010920867470}
+  - component: {fileID: 50000010878600682}
+  - component: {fileID: 58000011438054716}
+  - component: {fileID: 114000012851754934}
+  - component: {fileID: 114000011837171778}
   m_Layer: 15
   m_Name: PinkLaserShootingBullet
   m_TagString: Enemy
@@ -36,12 +36,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000013493467892}
-  - 212: {fileID: 212000013145283216}
-  - 114: {fileID: 114000012281453814}
-  - 120: {fileID: 120000012675744432}
+  - component: {fileID: 4000013493467892}
+  - component: {fileID: 212000013145283216}
+  - component: {fileID: 114000012281453814}
+  - component: {fileID: 120000012675744432}
   m_Layer: 15
   m_Name: RayLaserTurret
   m_TagString: Untagged
@@ -58,11 +58,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.55, y: -12.62, z: 0}
   m_LocalScale: {x: 14.260314, y: 13.560034, z: 5.092969}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000013493467892}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4000013493467892
 Transform:
   m_ObjectHideFlags: 1
@@ -72,23 +72,26 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: -0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000011745943978}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50000010878600682
 Rigidbody2D:
-  serializedVersion: 2
+  serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012917001490}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
-  m_IsKinematic: 0
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -130,6 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4247fa3d03519eb4cb5f58d0ff4e0135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundStarted: 0
   shotDelay: 1
   shotDuration: 240
   immuneFrames: 0
@@ -161,7 +165,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   follow_gravity: 1
-  speed: 0.5
+  dont_multiply_by_gravity: 0
+  speed: 2
 --- !u!120 &120000012675744432
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -176,7 +181,9 @@ LineRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 3db74bdf1baac1a41a89178c10c5ab84, type: 2}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -184,7 +191,7 @@ LineRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -195,14 +202,74 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
   m_Parameters:
-    startWidth: 1
-    endWidth: 1
-    m_StartColor:
+    serializedVersion: 2
+    widthMultiplier: 1
+    widthCurve:
       serializedVersion: 2
-      rgba: 4291690751
-    m_EndColor:
-      serializedVersion: 2
-      rgba: 4293067007
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    colorGradient:
+      key0:
+        serializedVersion: 2
+        rgba: 4291690751
+      key1:
+        serializedVersion: 2
+        rgba: 4293067007
+      key2:
+        serializedVersion: 2
+        rgba: 0
+      key3:
+        serializedVersion: 2
+        rgba: 0
+      key4:
+        serializedVersion: 2
+        rgba: 0
+      key5:
+        serializedVersion: 2
+        rgba: 0
+      key6:
+        serializedVersion: 2
+        rgba: 0
+      key7:
+        serializedVersion: 2
+        rgba: 0
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    numCornerVertices: 0
+    numCapVertices: 0
+    alignment: 0
+    textureMode: 0
   m_UseWorldSpace: 1
 --- !u!212 &212000010920867470
 SpriteRenderer:
@@ -218,7 +285,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 0
   m_Materials:
   - {fileID: 2100000, guid: 1fdd4ee338bb2344cb5e218b3c4e9b21, type: 2}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -226,7 +295,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 1
+  m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -251,7 +320,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -259,7 +330,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 1
+  m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
