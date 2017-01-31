@@ -299,6 +299,13 @@ MonoBehaviour:
   pointValue: 2000
   TimeBonus: 4000
   ChangeFormEffect: {fileID: 0}
+  explodeOnDeath: 1
+  explosionCountdownTimer: 0
+  timeBetweenExplosions: 0.2
+  deathExplosionVarianceX: 5
+  deathExplosionVarianceY: 10
+  deathDelay: 4
+  dying: 0
   hurtByTether: 0
   hurtByReboundBullets: 1
   easyDamageMultiplyer: 2

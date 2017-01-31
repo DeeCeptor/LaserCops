@@ -326,6 +326,8 @@ public class shipStrafe : MonoBehaviour {
     public void Die()
     {
         PlayConversation(death_conversation);
+        turretParent.gameObject.SetActive(false);
+        speed = 0;
     }
 
 }

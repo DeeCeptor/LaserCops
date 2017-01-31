@@ -417,6 +417,7 @@ GameObject:
   - component: {fileID: 4000013634640546}
   - component: {fileID: 114000013524998636}
   - component: {fileID: 114000011508635122}
+  - component: {fileID: 212440118590564946}
   m_Layer: 0
   m_Name: BonnyAndClyde
   m_TagString: Untagged
@@ -2129,7 +2130,7 @@ MonoBehaviour:
   currentBehaviour: 1
   Health: {fileID: 114000013524998636}
   healthThreshold: 0
-  healthBetweenStages: 130
+  healthBetweenStages: 100
   currentStage: 1
   formChangeConversation1: {fileID: 114000014155478908}
   formChangeConversation2: {fileID: 114000012559593358}
@@ -2458,16 +2459,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c511b6cead39dac4ab376e567ffb5f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 780
+  health: 600
   formChangeConversation: {fileID: 0}
   death_conversation: {fileID: 114000011383012212}
   nextStage: {fileID: 0}
   stages: 6
-  overallHealth: 780
+  overallHealth: 600
   bossName: Bonnie and Clyde
   pointValue: 10000
   TimeBonus: 10000
   ChangeFormEffect: {fileID: 0}
+  explodeOnDeath: 0
+  explosionCountdownTimer: 0
+  timeBetweenExplosions: 0.2
+  deathExplosionVarianceX: 5
+  deathExplosionVarianceY: 10
+  deathDelay: 4
+  dying: 0
   hurtByTether: 1
   hurtByReboundBullets: 1
   easyDamageMultiplyer: 2
@@ -3127,5 +3135,40 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0ed936fb077a86646bf6b4c7ed61f778, type: 3}
   m_Color: {r: 0.9034482, g: 1, b: 0, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+--- !u!212 &212440118590564946
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012848810916}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
