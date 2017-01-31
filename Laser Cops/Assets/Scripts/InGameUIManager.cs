@@ -254,18 +254,15 @@ public class InGameUIManager : MonoBehaviour
         // Smoothing boss HP
         if (bottom_bar.activeSelf)
         {
-            //bottom_health_bar.value = (int) (( Mathf.Lerp(bottom_health_bar.value, target_of_bottom_bar, Time.deltaTime * 0.5f) / bottom_health_bar.maxValue) * 40);
             cur_bottom_bar = Mathf.MoveTowards(cur_bottom_bar, target_of_bottom_bar, Time.deltaTime * bottom_health_bar.maxValue / 5f);
+
+            if (cur_bottom_bar < target_of_bottom_bar)
+                boss_hp_anim.StartPulsing(Color.green);
+            else if (cur_bottom_bar > target_of_bottom_bar)
+                boss_hp_anim.StartPulsing(Color.red);
+
             int number_of_ticks = (int) (cur_bottom_bar / (float) bottom_health_bar.maxValue / 0.025f) + 1;
             bottom_health_bar.value = (float) number_of_ticks / 40f * bottom_health_bar.maxValue;
-            /*
-            bottom_health_bar.value = 
-                (
-                    (
-                        (Mathf.MoveTowards(bottom_health_bar.value, target_of_bottom_bar, Time.deltaTime * bottom_health_bar.maxValue / 5f)
-                        / bottom_health_bar.maxValue / 0.025f)
-                    )  * 0.025f)
-                * bottom_health_bar.maxValue;*/
         }
     }
 
@@ -275,6 +272,7 @@ public class InGameUIManager : MonoBehaviour
         // Update the time
         time_text.text = time_string + GameState.game_state.getFormattedTime(GameState.game_state.elapsed_game_time);
         UpdateScore();
+
         // Update announcement text
         cur_announcement_cooldown -= Time.deltaTime;
         if (cur_announcement_cooldown <= 0)
