@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class AsteroidMaterializerOnCall : MonoBehaviour {
@@ -6,18 +6,20 @@ public class AsteroidMaterializerOnCall : MonoBehaviour {
     public GameObject asteroid;
     GameObject newSpawn;
 
-	// Use this for initialization
-	void Start () {
+    public bool only_spawn_on_hard = false;
+
+    void Start () {
 	
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+
+    void Update () {
 	
 	}
 
     public void MaterializeAsteroid()
     {
-        newSpawn = (GameObject)Instantiate(asteroid,transform.position,transform.rotation);
+        if ((only_spawn_on_hard && GameState.game_state.current_difficulty == GameState.Difficulty.Hard) || !only_spawn_on_hard)
+            newSpawn = (GameObject)Instantiate(asteroid,transform.position,transform.rotation);
     }
 }

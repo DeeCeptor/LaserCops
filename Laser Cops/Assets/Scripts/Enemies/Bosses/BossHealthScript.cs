@@ -17,6 +17,7 @@ public class BossHealthScript : MonoBehaviour {
     public GameObject ChangeFormEffect;
 
     public bool explodeOnDeath = false;
+    public bool explode_scene = false;
     public float explosionCountdownTimer = 0f;
     public float timeBetweenExplosions = 0.2f;
 
@@ -43,12 +44,12 @@ public class BossHealthScript : MonoBehaviour {
     //make a mzimum number of times the tether can hit it in a frame
     public bool hit = false;
 
-    // Use this for initialization
+
     void Start ()
     {
         immunityCounter = Time.time + immunityTime;
 
-        // Delay showing of health bar
+
         StartCoroutine(ShowHealth());
     }
 	
@@ -59,16 +60,18 @@ public class BossHealthScript : MonoBehaviour {
 
         if (!InGameUIManager.ui_manager.bottom_bar.activeInHierarchy)
         {
+            SoundMixer.sound_manager.PlayChargeUp();
             InGameUIManager.ui_manager.ActivateBottomHealthBar(bossName, Color.red, overallHealth);
         }
     }
+
 
     void Update()
     {
         tether_lightning_cooldown -= Time.deltaTime;
     }
 
-    // Update is called once per frame
+
     void FixedUpdate ()
     {
         hit = false;
@@ -214,6 +217,11 @@ public class BossHealthScript : MonoBehaviour {
             }
             deathDelay = Time.time + deathDelay;
             dying = true;
+
+            SendMessage("Boss_Dying");
+
+            if (explode_scene)
+                StartCoroutine(Explode_Scene());
         }
     }
 
@@ -248,5 +256,29 @@ public class BossHealthScript : MonoBehaviour {
             EffectsManager.effects.BurstLargeFireball((Vector2)transform.position + Rando);
             explosionCountdownTimer = Time.time + timeBetweenExplosions;
         }
+    }
+
+    IEnumerator Explode_Scene()
+    {
+        float time_left = 5f;
+
+        while (time_left > 0)
+        {
+            time_left -= Time.deltaTime;
+            RandomOnScreenExplosion();
+            yield return new WaitForSeconds(0.4f);
+        }
+
+        yield return 0;
+    }
+
+
+    public void RandomOnScreenExplosion()
+    {
+        Vector2 Rando = new Vector2(Random.Range(-13 + Camera.main.transform.position.x, 13 + Camera.main.transform.position.x), 
+                                    Random.Range(-8 + Camera.main.transform.position.y, 8 + Camera.main.transform.position.y));
+        Debug.Log("Exploding scene " + Rando);
+        SoundMixer.sound_manager.Play8bitExplosion();
+        EffectsManager.effects.BurstLargeFireball(Rando);
     }
 }

@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class SpynetControls : MonoBehaviour {
-
+public class SpynetControls : MonoBehaviour
+{
     //the asteroid layout that is going to be spawned
     //each form will have a different selection of layouts to randomly choose one. more difficult layouts have a higher number
     public int layoutNumber;
@@ -28,13 +28,19 @@ public class SpynetControls : MonoBehaviour {
     public BossHealthScript Health;
     public float healthThreshold = 0;
     public float healthBetweenStages = 50f;
-    // Use this for initialization
-    void Start () {
+
+    public GameObject death_sprite;
+
+
+    void Start ()
+    {
         spawnTimer = spawnDelay + startOfGameDelay + Time.time;
         healthThreshold = Health.overallHealth - healthBetweenStages;
     }
 	
-	void FixedUpdate () {
+
+	void FixedUpdate ()
+    {
 	    if(spawnTimer < Time.time)
         {
             SpawnAsteroid();
@@ -48,13 +54,16 @@ public class SpynetControls : MonoBehaviour {
         }
     }
 
+
     public void changeForms()
     {
         if (currentForm == 1)
         {
+            if (GameState.game_state.current_difficulty > GameState.Difficulty.Easy)
+                spawnDelay = 6.5f;
+
             PlayConversation(formChangeConversation1);
             currentForm = 2;
-
         }
         else if (currentForm == 2)
         {
@@ -63,20 +72,28 @@ public class SpynetControls : MonoBehaviour {
         }
         else if (currentForm == 3)
         {
+            if (GameState.game_state.current_difficulty > GameState.Difficulty.Easy)
+                spawnDelay = 6f;
+
             PlayConversation(formChangeConversation3);
             currentForm = 4;
         }
         else if (currentForm == 4)
         {
+            spawnDelay = 6f;
             PlayConversation(formChangeConversation4);
             currentForm = 5;
         }
         else if (currentForm == 5)
         {
+            if (GameState.game_state.current_difficulty > GameState.Difficulty.Easy)
+                spawnDelay = 5.3f;
+
             PlayConversation(formChangeConversation5);
             currentForm = 6;
         }
     }
+
 
     public void PlayConversation(ConversationManager conversation)
     {
@@ -87,6 +104,7 @@ public class SpynetControls : MonoBehaviour {
             conversation.Start_Conversation();
         }
     }
+
 
     public void SpawnAsteroid()
     {
@@ -126,4 +144,14 @@ public class SpynetControls : MonoBehaviour {
         }
     }
 
+
+    public void Boss_Dying()
+    {
+        StartCoroutine(Dying());
+    }
+    IEnumerator Dying()
+    {
+        yield return new WaitForSeconds(1f);
+        GameObject s = (GameObject)Instantiate(death_sprite, this.transform.position, transform.rotation);
+    }
 }
