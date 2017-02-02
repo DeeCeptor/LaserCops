@@ -260,7 +260,7 @@ public class BossHealthScript : MonoBehaviour {
 
     IEnumerator Explode_Scene()
     {
-        float time_left = 5f;
+        float time_left = 10f;
 
         while (time_left > 0)
         {

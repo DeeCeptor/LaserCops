@@ -486,7 +486,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124948}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
-  m_LocalPosition: {x: -0.6840487, y: 0.3325532, z: 0}
+  m_LocalPosition: {x: -0.68429714, y: 0.32577664, z: 0}
   m_LocalScale: {x: 0.5, y: 0.33, z: 0.6142866}
   m_Children: []
   m_Father: {fileID: 475504}
@@ -499,7 +499,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119012}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
-  m_LocalPosition: {x: 1.8345279, y: 0.33254722, z: 0}
+  m_LocalPosition: {x: 1.8342793, y: 0.32577065, z: 0}
   m_LocalScale: {x: 0.5, y: 0.33, z: 0.6142866}
   m_Children: []
   m_Father: {fileID: 475504}
@@ -512,7 +512,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114252}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
-  m_LocalPosition: {x: -1.9433357, y: 0.33255628, z: 0}
+  m_LocalPosition: {x: -1.9435842, y: 0.3257797, z: 0}
   m_LocalScale: {x: 0.5, y: 0.33, z: 0.6142866}
   m_Children: []
   m_Father: {fileID: 475504}
@@ -538,7 +538,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 194934}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
-  m_LocalPosition: {x: 2.8480992, y: 0.33254486, z: 0}
+  m_LocalPosition: {x: 2.847851, y: 0.3257683, z: 0}
   m_LocalScale: {x: 0.5, y: 0.33, z: 0.6142866}
   m_Children: []
   m_Father: {fileID: 475504}
@@ -564,7 +564,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 133986}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0.0000011622906}
-  m_LocalPosition: {x: -1.4519069, y: 0.33255512, z: 0}
+  m_LocalPosition: {x: -1.4828694, y: 0.23363557, z: 0}
   m_LocalScale: {x: 0.30714327, y: 0.307143, z: 0.6142866}
   m_Children: []
   m_Father: {fileID: 475504}
@@ -577,7 +577,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128694}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
-  m_LocalPosition: {x: 3.7695293, y: 0.3325425, z: 0}
+  m_LocalPosition: {x: 3.769281, y: 0.32576594, z: 0}
   m_LocalScale: {x: 0.5, y: 0.33, z: 0.6142866}
   m_Children: []
   m_Father: {fileID: 475504}
@@ -606,7 +606,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141418}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
-  m_LocalPosition: {x: 2.3259566, y: 0.33254603, z: 0}
+  m_LocalPosition: {x: 2.3257082, y: 0.32576945, z: 0}
   m_LocalScale: {x: 0.5, y: 0.33, z: 0.6142866}
   m_Children: []
   m_Father: {fileID: 475504}
@@ -619,7 +619,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188122}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
-  m_LocalPosition: {x: -1.0833336, y: 0.33255416, z: 0}
+  m_LocalPosition: {x: -1.0835832, y: 0.3257776, z: 0}
   m_LocalScale: {x: 0.5, y: 0.33, z: 0.6142866}
   m_Children: []
   m_Father: {fileID: 475504}
@@ -645,7 +645,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 173558}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0.0000011622906}
-  m_LocalPosition: {x: 3.462386, y: 0.3325434, z: 0}
+  m_LocalPosition: {x: 3.4314234, y: 0.23362386, z: 0}
   m_LocalScale: {x: 0.30714327, y: 0.307143, z: 0.6142866}
   m_Children: []
   m_Father: {fileID: 475504}
@@ -658,7 +658,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117272}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
-  m_LocalPosition: {x: 1.3123828, y: 0.33254853, z: 0}
+  m_LocalPosition: {x: 1.3121343, y: 0.32577196, z: 0}
   m_LocalScale: {x: 0.5, y: 0.33, z: 0.6142866}
   m_Children: []
   m_Father: {fileID: 475504}
@@ -671,7 +671,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132830}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
-  m_LocalPosition: {x: 3.3088143, y: 0.3325437, z: 0}
+  m_LocalPosition: {x: 3.3085659, y: 0.32576713, z: 0}
   m_LocalScale: {x: 0.5, y: 0.33, z: 0.6142866}
   m_Children: []
   m_Father: {fileID: 475504}
@@ -684,7 +684,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 153698}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
-  m_LocalPosition: {x: -0.22333375, y: 0.3325521, z: 0}
+  m_LocalPosition: {x: -0.22358218, y: 0.32577553, z: 0}
   m_LocalScale: {x: 0.5, y: 0.33, z: 0.6142866}
   m_Children: []
   m_Father: {fileID: 475504}
@@ -697,7 +697,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 175510}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
-  m_LocalPosition: {x: 0.360239, y: 0.33255076, z: 0}
+  m_LocalPosition: {x: 0.35999057, y: 0.3257742, z: 0}
   m_LocalScale: {x: 0.5, y: 0.33, z: 0.6142866}
   m_Children: []
   m_Father: {fileID: 475504}
@@ -710,7 +710,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 166018}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
-  m_LocalPosition: {x: -2.8954794, y: 0.33255863, z: 0}
+  m_LocalPosition: {x: -2.8957279, y: 0.32578206, z: 0}
   m_LocalScale: {x: 0.5, y: 0.33, z: 0.6142866}
   m_Children: []
   m_Father: {fileID: 475504}
@@ -723,7 +723,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183292}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
-  m_LocalPosition: {x: -3.4176245, y: 0.3325598, z: 0}
+  m_LocalPosition: {x: -3.4178717, y: 0.32578322, z: 0}
   m_LocalScale: {x: 0.5, y: 0.33, z: 0.6142866}
   m_Children: []
   m_Father: {fileID: 475504}
@@ -749,7 +749,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164792}
   m_LocalRotation: {x: 0, y: 0, z: -0.70710593, w: 0.70710766}
-  m_LocalPosition: {x: -54.082726, y: -84.727135, z: 0}
+  m_LocalPosition: {x: 10.239338, y: -66.82794, z: 0}
   m_LocalScale: {x: 3.2558093, y: 3.2558122, z: 1.6279047}
   m_Children:
   - {fileID: 424256}
@@ -813,7 +813,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102948}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
-  m_LocalPosition: {x: -1.5133346, y: 0.33255526, z: 0}
+  m_LocalPosition: {x: -1.5135832, y: 0.3257787, z: 0}
   m_LocalScale: {x: 0.5, y: 0.33, z: 0.6142866}
   m_Children: []
   m_Father: {fileID: 475504}
@@ -826,7 +826,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 135364}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
-  m_LocalPosition: {x: -2.4040506, y: 0.33255732, z: 0}
+  m_LocalPosition: {x: -2.4042993, y: 0.32578075, z: 0}
   m_LocalScale: {x: 0.5, y: 0.33, z: 0.6142866}
   m_Children: []
   m_Father: {fileID: 475504}
@@ -839,7 +839,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117900}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
-  m_LocalPosition: {x: 0.8516678, y: 0.33254954, z: 0}
+  m_LocalPosition: {x: 0.8514193, y: 0.32577297, z: 0}
   m_LocalScale: {x: 0.5, y: 0.33, z: 0.6142866}
   m_Children: []
   m_Father: {fileID: 475504}
@@ -1055,6 +1055,9 @@ MonoBehaviour:
   randomPinkOrBlue: 0
   playerCloseDisable: 1
   disableDistance: 2
+  cyan_glow: {fileID: 0}
+  pink_glow: {fileID: 0}
+  red_glow: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11401290
@@ -1099,6 +1102,9 @@ MonoBehaviour:
   randomPinkOrBlue: 0
   playerCloseDisable: 1
   disableDistance: 2
+  cyan_glow: {fileID: 0}
+  pink_glow: {fileID: 0}
+  red_glow: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11405798
@@ -1132,6 +1138,9 @@ MonoBehaviour:
   randomPinkOrBlue: 0
   playerCloseDisable: 1
   disableDistance: 2
+  cyan_glow: {fileID: 0}
+  pink_glow: {fileID: 0}
+  red_glow: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11409626
@@ -1193,6 +1202,9 @@ MonoBehaviour:
   randomPinkOrBlue: 0
   playerCloseDisable: 1
   disableDistance: 2
+  cyan_glow: {fileID: 0}
+  pink_glow: {fileID: 0}
+  red_glow: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11413828
@@ -1247,6 +1259,9 @@ MonoBehaviour:
   randomPinkOrBlue: 0
   playerCloseDisable: 1
   disableDistance: 2
+  cyan_glow: {fileID: 0}
+  pink_glow: {fileID: 0}
+  red_glow: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11419510
@@ -1294,6 +1309,9 @@ MonoBehaviour:
   randomPinkOrBlue: 0
   playerCloseDisable: 1
   disableDistance: 2
+  cyan_glow: {fileID: 0}
+  pink_glow: {fileID: 0}
+  red_glow: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11421946
@@ -1327,6 +1345,9 @@ MonoBehaviour:
   randomPinkOrBlue: 0
   playerCloseDisable: 1
   disableDistance: 2
+  cyan_glow: {fileID: 0}
+  pink_glow: {fileID: 0}
+  red_glow: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11424480
@@ -1374,6 +1395,9 @@ MonoBehaviour:
   randomPinkOrBlue: 0
   playerCloseDisable: 1
   disableDistance: 2
+  cyan_glow: {fileID: 0}
+  pink_glow: {fileID: 0}
+  red_glow: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11426840
@@ -1407,6 +1431,9 @@ MonoBehaviour:
   randomPinkOrBlue: 0
   playerCloseDisable: 1
   disableDistance: 2
+  cyan_glow: {fileID: 0}
+  pink_glow: {fileID: 0}
+  red_glow: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11428426
@@ -1468,6 +1495,9 @@ MonoBehaviour:
   randomPinkOrBlue: 0
   playerCloseDisable: 1
   disableDistance: 2
+  cyan_glow: {fileID: 0}
+  pink_glow: {fileID: 0}
+  red_glow: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11440612
@@ -1515,6 +1545,9 @@ MonoBehaviour:
   randomPinkOrBlue: 0
   playerCloseDisable: 1
   disableDistance: 2
+  cyan_glow: {fileID: 0}
+  pink_glow: {fileID: 0}
+  red_glow: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11444442
@@ -1660,6 +1693,7 @@ MonoBehaviour:
   TimeBonus: 600
   ChangeFormEffect: {fileID: 130986, guid: f5ec84674eee54643b2fb499b1e908e9, type: 2}
   explodeOnDeath: 1
+  explode_scene: 0
   explosionCountdownTimer: 0.2
   timeBetweenExplosions: 0.2
   deathDelay: 4
@@ -1744,6 +1778,9 @@ MonoBehaviour:
   randomPinkOrBlue: 0
   playerCloseDisable: 1
   disableDistance: 2
+  cyan_glow: {fileID: 0}
+  pink_glow: {fileID: 0}
+  red_glow: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11482514
@@ -1777,6 +1814,9 @@ MonoBehaviour:
   randomPinkOrBlue: 0
   playerCloseDisable: 1
   disableDistance: 2
+  cyan_glow: {fileID: 0}
+  pink_glow: {fileID: 0}
+  red_glow: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11482570
@@ -1824,6 +1864,9 @@ MonoBehaviour:
   randomPinkOrBlue: 0
   playerCloseDisable: 1
   disableDistance: 2
+  cyan_glow: {fileID: 0}
+  pink_glow: {fileID: 0}
+  red_glow: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11485996
@@ -1889,6 +1932,9 @@ MonoBehaviour:
   randomPinkOrBlue: 0
   playerCloseDisable: 1
   disableDistance: 2
+  cyan_glow: {fileID: 0}
+  pink_glow: {fileID: 0}
+  red_glow: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11494344
@@ -1906,7 +1952,7 @@ MonoBehaviour:
   textbox_title: Disco Dan
   dialogue_from: 0
   localized_key: 
-  text: <color=red>No! how could my sweet beats be defeated!
+  text: <color=red>No! How could my sweet beats be defeated!
   talking_beeps: {fileID: 0}
   darken_all_other_characters: 0
   bring_speaker_to_front: 1
@@ -1960,6 +2006,9 @@ MonoBehaviour:
   randomPinkOrBlue: 0
   playerCloseDisable: 1
   disableDistance: 2
+  cyan_glow: {fileID: 0}
+  pink_glow: {fileID: 0}
+  red_glow: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!120 &12005316
@@ -3634,7 +3683,7 @@ ParticleSystem:
   m_GameObject: {fileID: 166740}
   serializedVersion: 5
   lengthInSec: 5
-  simulationSpeed: 1
+  speed: 1
   looping: 1
   prewarm: 1
   playOnAwake: 1
@@ -6271,7 +6320,7 @@ ParticleSystem:
   m_GameObject: {fileID: 111018}
   serializedVersion: 5
   lengthInSec: 5
-  simulationSpeed: 1
+  speed: 1
   looping: 1
   prewarm: 1
   playOnAwake: 1
@@ -8908,7 +8957,7 @@ ParticleSystem:
   m_GameObject: {fileID: 137416}
   serializedVersion: 5
   lengthInSec: 5
-  simulationSpeed: 1
+  speed: 1
   looping: 1
   prewarm: 1
   playOnAwake: 1
@@ -11545,7 +11594,7 @@ ParticleSystem:
   m_GameObject: {fileID: 182836}
   serializedVersion: 5
   lengthInSec: 5
-  simulationSpeed: 1
+  speed: 1
   looping: 1
   prewarm: 1
   playOnAwake: 1
@@ -14182,7 +14231,7 @@ ParticleSystem:
   m_GameObject: {fileID: 131420}
   serializedVersion: 5
   lengthInSec: 5
-  simulationSpeed: 1
+  speed: 1
   looping: 1
   prewarm: 1
   playOnAwake: 1

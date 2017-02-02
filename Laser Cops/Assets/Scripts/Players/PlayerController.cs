@@ -25,8 +25,8 @@ public class PlayerController : PlayerInput
     public Color primary_colour;
     public float normal_grid_force = 1f;
     public float normal_grid_radius = 1.5f;
-    float boost_grid_force = 3f;
-    float boost_grid_radius = 2f;
+    public float boost_grid_force = 3f;
+    public float boost_grid_radius = 2f;
 
     [HideInInspector]
     public float grid_ripple_force = 0;

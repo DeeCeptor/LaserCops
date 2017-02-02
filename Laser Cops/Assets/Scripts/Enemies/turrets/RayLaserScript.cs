@@ -38,9 +38,12 @@ public class RayLaserScript : MonoBehaviour
     //how close the player must be to disable the shot
     public float disableDistance = 2f;
 
-    Material cyan_glow;
-    Material pink_glow;
-    Material red_glow;
+    [HideInInspector]
+    public Material cyan_glow;
+    [HideInInspector]
+    public Material pink_glow;
+    [HideInInspector]
+    public Material red_glow;
 
     void Start ()
     {
@@ -99,6 +102,7 @@ public class RayLaserScript : MonoBehaviour
             if (shooting)
             {
                 Shoot();
+
                 if (TimeSinceShotCounter > shotDuration)
                 {
                     SoundMixer.sound_manager.StopBigLazerSound();
@@ -128,6 +132,7 @@ public class RayLaserScript : MonoBehaviour
     {
         //see if there is an obstacle in the way
         hit = Physics2D.Raycast(transform.position, transform.up,float.PositiveInfinity,layersToIgnore);
+
         //if there is an obstacle then 
         if (hit.collider != null)
         {

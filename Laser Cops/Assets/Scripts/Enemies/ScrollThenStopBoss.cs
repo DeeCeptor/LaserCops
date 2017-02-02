@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class ScrollThenStopBoss : basicScrollingEnemyScript
@@ -11,7 +11,8 @@ public class ScrollThenStopBoss : basicScrollingEnemyScript
     public bool goAgain = true;
     public float timeTillGoAgain = 5f;
     public bool stopped = false;
-    // Use this for initialization
+
+
     void Start()
     {
         initiate();
@@ -27,7 +28,8 @@ public class ScrollThenStopBoss : basicScrollingEnemyScript
     {
 
     }
-    // Update is called once per frame
+
+
     void FixedUpdate()
     {
         if (!active)

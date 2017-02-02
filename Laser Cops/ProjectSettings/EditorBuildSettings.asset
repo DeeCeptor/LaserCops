@@ -53,10 +53,10 @@ EditorBuildSettings:
     path: Assets/Levels/Finished/GunshipGunther.unity
   - enabled: 1
     path: Assets/Levels/Finished/Look out Below!.unity
+  - enabled: 0
+    path: Assets/Levels/Finished/ObstacleRammingLevel.unity
   - enabled: 1
     path: Assets/Levels/Finished/MineField.unity
-  - enabled: 1
-    path: Assets/Levels/Finished/ObstacleRammingLevel.unity
   - enabled: 1
     path: Assets/Levels/Finished/Rock Slide.unity
   - enabled: 1
@@ -68,13 +68,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Finished/Rainbow Road.unity
   - enabled: 1
-    path: Assets/Levels/Finished/DiscoBall.unity
-  - enabled: 1
     path: Assets/Levels/Finished/MrPresident.unity
   - enabled: 1
     path: Assets/Levels/Finished/BounceMrPresident.unity
   - enabled: 1
     path: Assets/Levels/Finished/Good 'Ole Chase.unity
+  - enabled: 1
+    path: Assets/Levels/Finished/Discotheque.unity
   - enabled: 1
     path: Assets/Levels/Finished/Keep on Truckin'.unity
   - enabled: 1
