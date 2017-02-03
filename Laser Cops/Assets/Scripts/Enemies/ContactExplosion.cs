@@ -13,13 +13,27 @@ public class ContactExplosion : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D col)
     {
-        if (!activated) 
+        if (!activated)
+        {
+            activated = true;
             StartCoroutine(Countdown(col.gameObject));
+        }
     }
 
 
     public IEnumerator Countdown(GameObject col)
     {
+        // Modify radius by difficulty
+        if (GameState.game_state.current_difficulty == GameState.Difficulty.Normal)
+        {
+            radius += 0.5f;
+        }
+        else if (GameState.game_state.current_difficulty == GameState.Difficulty.Hard)
+        {
+            radius += 1;
+        }
+
+
         // Show explosion radius
         danger_radius.transform.localScale = new Vector3(radius, radius, 1);
         danger_radius.SetActive(true);

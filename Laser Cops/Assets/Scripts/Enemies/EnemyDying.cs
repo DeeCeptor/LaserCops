@@ -5,7 +5,7 @@ public class EnemyDying : MonoBehaviour
 {
     Rigidbody2D physics;
     float time_left = 10f;
-    float rotation_speed = 300f;
+    public float rotation_speed = 300f;
     float direction;
     float force_min = 50f;
     float force_max = 300f;

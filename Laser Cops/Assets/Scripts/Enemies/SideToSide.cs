@@ -18,8 +18,9 @@ public class SideToSide : basicScrollingEnemyScript
 
     void Start ()
     {
-        switchCounter = Time.time + switchTime/2;
-	}
+        //switchCounter = Time.time + switchTime/2;
+        switchCounter = switchTime / 2;
+    }
 
 
     void FixedUpdate ()
@@ -33,7 +34,7 @@ public class SideToSide : basicScrollingEnemyScript
             CheckDeath();
             moveActive();
 
-            switchCounter -= Time.deltaTime;
+            switchCounter -= Time.fixedDeltaTime;
             if (switchCounter <= 0)
             {
                 pos = !pos;

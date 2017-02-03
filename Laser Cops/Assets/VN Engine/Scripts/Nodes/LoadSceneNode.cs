@@ -11,6 +11,7 @@ public class LoadSceneNode : Node
 	{
 		// Simply loads the specified scene
 		Debug.Log("Switching level: " + level_to_load);
+        Time.timeScale = 1;
 		UnityEngine.SceneManagement.SceneManager.LoadScene(level_to_load);
 	}
 	

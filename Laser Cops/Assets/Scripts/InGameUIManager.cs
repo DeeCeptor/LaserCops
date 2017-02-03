@@ -126,8 +126,6 @@ public class InGameUIManager : MonoBehaviour
         {
             if (amount > 0)
                 EffectsManager.effects.spawnMovingText(position, "+" + amount);
-            else if (amount < 0)
-                EffectsManager.effects.spawnMovingText(position, "-" + amount);
             else
                 EffectsManager.effects.spawnMovingText(position, "" + amount);
         }

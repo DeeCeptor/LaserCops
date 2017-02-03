@@ -75,81 +75,81 @@ public class EndLevel : MonoBehaviour
             corpseSpawned.transform.localScale = corpseSpawned.transform.localScale * SpriteSizeRatio;
         }
 
-            Vector2[] pixelLocations = new Vector2[corpses[0].GetPixels32().Length];
-            float width = corpses[0].width;
+        Vector2[] pixelLocations = new Vector2[corpses[0].GetPixels32().Length];
+        float width = corpses[0].width;
 
-            float xVariance = Random.Range(0.1f, 0.3f);
-            //current varience
-            float xToVary = xVariance;
-            //whether x will iterate up or down 
-            bool xUp = false;
-            float yVariance = Random.Range(0.1f, 0.3f);
-            float yToVary = yVariance;
-            bool yUp = false;
-            //counter for when to change x
-            int currentIterations = 0;
+        float xVariance = Random.Range(0.1f, 0.3f);
+        //current varience
+        float xToVary = xVariance;
+        //whether x will iterate up or down 
+        bool xUp = false;
+        float yVariance = Random.Range(0.1f, 0.3f);
+        float yToVary = yVariance;
+        bool yUp = false;
+        //counter for when to change x
+        int currentIterations = 0;
 
-            int iterationsNeeded = (int)width;
+        int iterationsNeeded = (int)width;
 
-            for (int i = 0; i < pixelLocations.Length; i++)
+        for (int i = 0; i < pixelLocations.Length; i++)
+        {
+            pixelLocations[i] = new Vector2((transform.position.x - width / 2f) + (pixelRatio * (i % (int)width)) + xToVary, (transform.position.y - width / 2f) + (pixelRatio * (i / (int)width)) + yToVary);
+            //scripts underneath are to make it jagged
+            if (yUp)
             {
-                pixelLocations[i] = new Vector2((transform.position.x - width / 2f) + (pixelRatio * (i % (int)width)) + xToVary, (transform.position.y - width / 2f) + (pixelRatio * (i / (int)width)) + yToVary);
-                //scripts underneath are to make it jagged
-                if (yUp)
+                if (yToVary >= yVariance)
                 {
-                    if (yToVary >= yVariance)
+                    yUp = false;
+                    yToVary = yToVary - 1;
+                }
+                else
+                {
+                    yToVary = yToVary + 1;
+                }
+            }
+            else
+            {
+                if (yToVary <= -yVariance)
+                {
+                    yUp = true;
+                    yToVary = yToVary + 1;
+                }
+                else
+                {
+                    yToVary = yToVary - 1;
+                }
+            }
+
+            if (currentIterations > iterationsNeeded)
+            {
+                currentIterations = 0;
+                if (xUp)
+                {
+                    if (xToVary >= xVariance)
                     {
-                        yUp = false;
-                        yToVary = yToVary - 1;
+                        xUp = false;
+                        xToVary = xToVary - 1;
                     }
                     else
                     {
-                        yToVary = yToVary + 1;
+                        xToVary = xToVary + 1;
                     }
                 }
                 else
                 {
-                    if (yToVary <= -yVariance)
+                    if (xToVary <= -xVariance)
                     {
-                        yUp = true;
-                        yToVary = yToVary + 1;
+                        xUp = true;
+                        xToVary = xToVary + 1;
                     }
                     else
                     {
-                        yToVary = yToVary - 1;
+                        xToVary = xToVary - 1;
                     }
                 }
-
-                if (currentIterations > iterationsNeeded)
-                {
-                    currentIterations = 0;
-                    if (xUp)
-                    {
-                        if (xToVary >= xVariance)
-                        {
-                            xUp = false;
-                            xToVary = xToVary - 1;
-                        }
-                        else
-                        {
-                            xToVary = xToVary + 1;
-                        }
-                    }
-                    else
-                    {
-                        if (xToVary <= -xVariance)
-                        {
-                            xUp = true;
-                            xToVary = xToVary + 1;
-                        }
-                        else
-                        {
-                            xToVary = xToVary - 1;
-                        }
-                    }
-                }
-                currentIterations = currentIterations + 1;
             }
+            currentIterations = currentIterations + 1;
+        }
 
         Color32[][] vertices = new Color32[2][];
 
@@ -183,9 +183,11 @@ public class EndLevel : MonoBehaviour
 
         Color c = GetComponentInChildren<SpriteRenderer>().color;
 
+        corpse_objects[0].GetComponent<EnemyDying>().rotation_speed = 50f;
         corpse_objects[0].GetComponent<EnemyDying>().JustDied(1);
         corpse_objects[0].GetComponentInChildren<SpriteRenderer>().color = c;
 
+        corpse_objects[1].GetComponent<EnemyDying>().rotation_speed = 50f;
         corpse_objects[1].GetComponent<EnemyDying>().JustDied(-1);
         corpse_objects[1].GetComponentInChildren<SpriteRenderer>().color = c;
     }

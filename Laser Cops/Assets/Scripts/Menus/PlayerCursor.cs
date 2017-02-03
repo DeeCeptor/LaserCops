@@ -21,6 +21,7 @@ public class PlayerCursor : MonoBehaviour
     }
 	void Start () 
 	{
+        bool found_last_level = false;
         string last_level = PlayerPrefs.GetString("LastLevelPlayed");
         // Search for the last level played and start the cursor there
         if (!string.IsNullOrEmpty(last_level))
@@ -36,10 +37,12 @@ public class PlayerCursor : MonoBehaviour
                     hovering_over_level = ln;
                     this.transform.position = ln.transform.position;
                     destination_node = ln;
+                    found_last_level = true;
                 }
             }
         }
-        else
+
+        if(!found_last_level)
         {
             Debug.Log("Could not find last level");
             hovering_over_level = starting_node;
