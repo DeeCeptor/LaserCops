@@ -17,6 +17,9 @@ public class PlayerJoin : MonoBehaviour
     public List<GameObject> player_icons;
     public List<GameObject> controller_icons;
 
+    public BossHealthBarAnimation connect_more_controllers_circle;
+    public GameObject connect_more_controllers;
+
 
     void Awake ()
     {
@@ -86,7 +89,14 @@ public class PlayerJoin : MonoBehaviour
                 num_controllers++;
         }
 
-        int unallocated_players = number_of_players;
+        if (num_controllers <= 0 && number_of_players > 2)
+        {
+            // Show warning telling to connect more controllers
+            connect_more_controllers.SetActive(true);
+            connect_more_controllers_circle.StartPulsing(Color.red);
+        }
+        else
+            connect_more_controllers.SetActive(false);
 
         for (int x = 4; x > 0; x--)
         {
@@ -131,7 +141,7 @@ public class PlayerJoin : MonoBehaviour
         }
 
 
-        players_joined_text.text = "Players joined:  " + number_of_players + "  controllers connected: " + num_controllers;
+        players_joined_text.text = "Players Joined:  " + number_of_players + "  controllers connected: " + num_controllers;
     }
 
 
@@ -151,11 +161,13 @@ public class PlayerJoin : MonoBehaviour
         int cont_2 = 0;
         int cont_3 = 0;
         int cont_4 = 0;
+
         // Check which controller (if any) does what
         foreach (GameObject p in player_icons)
         {
             if (p.activeSelf)
             {
+                Debug.Log(p.name);
                 // Determine what column they're in
                 float x = p.transform.localPosition.x;
                 if (x == 20f)

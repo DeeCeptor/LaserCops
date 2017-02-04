@@ -70,6 +70,17 @@ public class Mode : MonoBehaviour
     {
         // Get the input settings of each player
         player_inputs = PlayerJoin.player_join.Finalize_Input();
+
+        // Remove any players that have no inputs
+        for (int x = 0; x < player_inputs.Count; x++)
+        {
+            if (player_inputs[x].Count <= 0)
+            {
+                player_inputs.RemoveAt(x);
+                x--;
+            }
+        }
+
         InputSettings.input_settings.inputs = player_inputs;
 
         Debug.Log("Loading level " + level_to_load);

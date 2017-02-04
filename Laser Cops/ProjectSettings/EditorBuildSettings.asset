@@ -32,8 +32,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Finished/Light Show.unity
   - enabled: 1
-    path: Assets/Levels/Finished/spynet.unity
-  - enabled: 1
     path: Assets/Levels/Finished/Think Fast.unity
   - enabled: 1
     path: Assets/Levels/Finished/Ocean Waves.unity
@@ -43,8 +41,6 @@ EditorBuildSettings:
     path: Assets/Levels/Finished/DiscoDan.unity
   - enabled: 1
     path: Assets/Levels/Finished/Life is a Highway.unity
-  - enabled: 1
-    path: Assets/Levels/Finished/TimeToSplit.unity
   - enabled: 1
     path: Assets/Levels/Finished/Traffic Jam.unity
   - enabled: 1
@@ -72,7 +68,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Finished/BounceMrPresident.unity
   - enabled: 1
+    path: Assets/Levels/Finished/Time to Split.unity
+  - enabled: 1
     path: Assets/Levels/Finished/Good 'Ole Chase.unity
+  - enabled: 1
+    path: Assets/Levels/Finished/Spy Net.unity
   - enabled: 1
     path: Assets/Levels/Finished/Discotheque.unity
   - enabled: 1
