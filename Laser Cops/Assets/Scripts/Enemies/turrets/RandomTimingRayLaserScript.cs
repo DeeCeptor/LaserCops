@@ -20,11 +20,15 @@ public class RandomTimingRayLaserScript : RayLaserScript
     void FixedUpdate () {
         if (shotCounter < Time.time)
         {
+            if (!silent)
+            {
+                SoundMixer.sound_manager.PlayChargeUp();
+            }
             laserRenderer.SetWidth(0.5f, 0.5f);
             shooting = true;
             TimeSinceShotCounter = 0;
             laserRenderer.enabled = true;
-            shotCounter = Time.time + shotDelay;
+            shotCounter = Random.Range(minShotDelay, maxShotDelay) + Time.time;
 
             switch (bullet_colour)
             {
@@ -50,7 +54,7 @@ public class RandomTimingRayLaserScript : RayLaserScript
                 laserRenderer.enabled = false;
             }
             Shoot();
-            shotCounter = Random.Range(minShotDelay, maxShotDelay) + Time.time;
+            
         }
     }
 }

@@ -150,8 +150,9 @@ public class RayLaserScript : MonoBehaviour
         {
             if (!silent && soundStarted == false)
             {
-                SoundMixer.sound_manager.PlayBigLazerSound();
                 SoundMixer.sound_manager.StopChargeUp();
+                SoundMixer.sound_manager.PlayBigLazerSound();
+                
                 soundStarted = true;
             }
             laserRenderer.SetWidth(2,1);

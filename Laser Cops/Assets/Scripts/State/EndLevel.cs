@@ -55,7 +55,7 @@ public class EndLevel : MonoBehaviour
 
         SpriteRenderer originalRenderer = GetComponentInChildren<SpriteRenderer>();
 
-        float pixelRatio = (Camera.main.orthographicSize * 2) / Camera.main.pixelHeight;
+        float pixelRatio = (Camera.main.orthographicSize) / Camera.main.pixelHeight;
 
         //instantiate the new sprites for cutting
         for (int i = 0; i < 2; i++)

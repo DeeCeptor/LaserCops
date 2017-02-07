@@ -79,3 +79,5 @@ EditorBuildSettings:
     path: Assets/Levels/Finished/Keep on Truckin'.unity
   - enabled: 1
     path: Assets/Levels/Finished/The Gauntlet.unity
+  - enabled: 1
+    path: Assets/Levels/Finished/It's a TRAP!.unity
