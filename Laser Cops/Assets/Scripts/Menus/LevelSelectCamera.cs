@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class LevelSelectCamera : MonoBehaviour 
 {
@@ -10,6 +11,9 @@ public class LevelSelectCamera : MonoBehaviour
 
     float speed = 5;
 
+    public List<Material> skyboxes;
+    public Skybox cur_skybox;
+    public SpriteRenderer fading_blocker;
 
 	void Start () 
 	{
@@ -40,7 +44,7 @@ public class LevelSelectCamera : MonoBehaviour
             float closest_distance = 9999;
             GameObject closest_position = null;
 
-            foreach(GameObject pos in camera_positions)
+            foreach (GameObject pos in camera_positions)
             {
                 float dist = Vector2.Distance(pos.transform.position, PlayerCursor.cursor.transform.position);
                 if (dist < closest_distance)
@@ -50,9 +54,39 @@ public class LevelSelectCamera : MonoBehaviour
                 }
             }
 
-            // Set new position
-            if (closest_position != null)
+            // Change to new position
+            if (closest_position.transform.position != cur_pos)
+            {
+                Debug.Log("Moving to new zone");
                 cur_pos = closest_position.transform.position;
+
+                // Start fading out skybox routine
+                // Set new skybox
+                StartCoroutine(fade_new_skybox(0.3f, skyboxes[camera_positions.IndexOf(closest_position)]));
+            }
+        }
+    }
+
+
+    public IEnumerator fade_new_skybox(float time, Material new_skybox)
+    {
+        while (fading_blocker.color.a < 1)
+        {
+            Color c = fading_blocker.color;
+            c.a += Time.deltaTime * (1f / time);
+            fading_blocker.color = c;
+            yield return 0;
+        }
+
+        // Assign new skybox now that we've completely blocked out that camera
+        cur_skybox.material = new_skybox;
+
+        while (fading_blocker.color.a > 0)
+        {
+            Color c = fading_blocker.color;
+            c.a -= Time.deltaTime * (1f / time);
+            fading_blocker.color = c;
+            yield return 0;
         }
     }
 }
