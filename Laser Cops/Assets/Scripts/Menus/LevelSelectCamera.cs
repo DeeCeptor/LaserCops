@@ -10,6 +10,7 @@ public class LevelSelectCamera : MonoBehaviour
     float zoomed_size = 3f;
 
     float speed = 5;
+    bool first = true;
 
     public List<Material> skyboxes;
     public Skybox cur_skybox;
@@ -55,10 +56,11 @@ public class LevelSelectCamera : MonoBehaviour
             }
 
             // Change to new position
-            if (closest_position.transform.position != cur_pos)
+            if (closest_position.transform.position != cur_pos || first)
             {
                 Debug.Log("Moving to new zone");
                 cur_pos = closest_position.transform.position;
+                first = false;
 
                 // Start fading out skybox routine
                 // Set new skybox

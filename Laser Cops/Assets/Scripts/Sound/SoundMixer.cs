@@ -81,13 +81,10 @@ public class SoundMixer : MonoBehaviour
             string s = Music_Info[index];
             if (FadeTextInAndOut.music_info != null)
             {
-                Debug.Log("A");
                 FadeTextInAndOut.music_info.GetComponent<Text>().text = s;
                 FadeTextInAndOut.music_info.Start_Fading_In_Then_Out();
                 FadeTextInAndOut.music_info.gameObject.SetActive(true);
             }
-            else
-                Debug.Log("B");
         }
 
         music.PlayLoopingMusicManaged(1.0f * music_volume_scale, 1.0f, true);
