@@ -74,6 +74,8 @@ public class GameState : MonoBehaviour
     float delay_between_level_switching = 1.72f;
     float slowdown_factor = 0.4f;
 
+    float prev_effects_volume;
+
     // Use when bullets are reflected
     public Material default_sprite_material;
 
@@ -562,16 +564,31 @@ public class GameState : MonoBehaviour
     public void ChangeScene(float delay, string scene_to_load)
     {
         //Time.timeScale = 1;
+        StartCoroutine(Fade_Out_Effects_Volume(1f));
         StartCoroutine(loadMenu(delay, scene_to_load));
+    }
+    public IEnumerator Fade_Out_Effects_Volume(float time)
+    {
+        prev_effects_volume = AudioManager.audio_manager.effects_volume;
+        float total_vol_decrease = 0;
+        while (time > 0)
+        {
+            Debug.Log(time);
+            total_vol_decrease += Time.deltaTime;
+            //SoundMixer.sound_manager.EffectsVolumeChanged(AudioManager.audio_manager.effects_volume - total_vol_decrease);
+            AudioManager.audio_manager.Effects_Volume_Changed(AudioManager.audio_manager.effects_volume - Time.deltaTime);
+            time -= Time.deltaTime;
+            yield return 0;
+        }
     }
     public IEnumerator loadMenu(float delay, string scene_to_load)
     {
         yield return new WaitForSeconds(delay);
-        //CameraManager.cam_manager.GetComponent<CameraFilterPack_TV_ARCADE_2>().Contrast = 10f;
-        //CameraFilterPack_TV_ARCADE_2.ChangeValue4 = 10f;
-        //yield return new WaitForSeconds(0.1f);
+
         ChangeTimescale(1f);
+        AudioManager.audio_manager.Effects_Volume_Changed(prev_effects_volume);
         UnityEngine.SceneManagement.SceneManager.LoadScene(scene_to_load);
+
         yield return null;
     }
 

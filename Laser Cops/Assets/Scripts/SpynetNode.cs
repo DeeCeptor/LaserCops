@@ -1,17 +1,19 @@
 using UnityEngine;
 using System.Collections;
 
-public class SpynetNode : basicScrollingEnemyScript {
+public class SpynetNode : basicScrollingEnemyScript
+{
 
     //when this object dies it is supposed to deal damage to a boss
     public float damageToBoss = 10f;
-	// Use this for initialization
-	void Start () {
+
+    void Start ()
+    {
         initiate();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+
+    void Update () {
         if (!active)
         {
             moveInactive();
@@ -23,6 +25,7 @@ public class SpynetNode : basicScrollingEnemyScript {
 
         }
     }
+
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -51,12 +54,16 @@ public class SpynetNode : basicScrollingEnemyScript {
 
             return;
         }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("RamBoundary"))
+        {
+            // Hurt the enemy
+            TakeHit(collision.gameObject.GetComponent<HurtPlayerOnTouch>().collisionDamage * 5);
+        }
     }
+
 
     public void CheckDeathSpy()
     {
-        
-
         if (health <= 0)
         {
             BossHealthScript bossHealth = GameObject.Find("SpyNet").GetComponent<BossHealthScript>();
