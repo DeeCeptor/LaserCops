@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using DigitalRuby.SoundManagerNamespace;
+using UnityEngine.UI;
 
 public class SoundMixer : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class SoundMixer : MonoBehaviour
 
     // MUSIC
     public List<AudioSource> Music = new List<AudioSource>();
+    public List<string> Music_Info = new List<string>();        // Track name & Author, displayed when a song starts playing
     public AudioSource cur_music;   // Track currently playing
     public AudioSource starting_music;
 
@@ -58,6 +60,36 @@ public class SoundMixer : MonoBehaviour
     public void PlayMusic(AudioSource music)
     {
         cur_music = music;
+
+        int index = 0;
+        bool found_track = false;
+
+        // Find our associated music (hopefully is added to the music list
+        foreach (AudioSource a in Music)
+        {
+            if (a == music)
+            {
+                found_track = true;
+                break;
+            }
+            index++;
+        }
+
+        if (found_track)
+        {
+            // Display the track name & artist
+            string s = Music_Info[index];
+            if (FadeTextInAndOut.music_info != null)
+            {
+                Debug.Log("A");
+                FadeTextInAndOut.music_info.GetComponent<Text>().text = s;
+                FadeTextInAndOut.music_info.Start_Fading_In_Then_Out();
+                FadeTextInAndOut.music_info.gameObject.SetActive(true);
+            }
+            else
+                Debug.Log("B");
+        }
+
         music.PlayLoopingMusicManaged(1.0f * music_volume_scale, 1.0f, true);
     }
     public void StopMusic()
