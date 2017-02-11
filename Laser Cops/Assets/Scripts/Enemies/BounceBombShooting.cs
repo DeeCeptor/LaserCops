@@ -8,7 +8,7 @@ public class BounceBombShooting : TrackShotScrolling
         players = GameState.game_state.PlayerObjects;
         int randInt = Random.Range(0, players.Length);
         playerToTrack = players[randInt].transform;
-        shotCounter = shotCounter + shotDelay;
+        shotCounter = Time.time + shotDelay;
     }
 
     void FixedUpdate()
