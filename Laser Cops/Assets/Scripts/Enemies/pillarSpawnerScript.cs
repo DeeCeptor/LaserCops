@@ -34,30 +34,8 @@ public class pillarSpawnerScript : ForwardShotScript
 
     public new void shoot()
     {
-
-        if (!playerCloseDisable)
-        {
             GameObject bulletSpawned = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
             bulletSpawned.transform.position = bulletSpawned.transform.position - (transform.up * laserLength);
             bulletSpawned.transform.Rotate(0, 0, -90);
-        }
-
-        else
-        {
-            bool fire = true;
-            for (int i = 0; i < GameState.game_state.Players.Count; i++)
-            {
-                if ((GameState.game_state.Players[i].transform.position - transform.position).magnitude < disableDistance)
-                {
-                    fire = false;
-                }
-            }
-            if (fire)
-            {
-                GameObject bulletSpawned = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
-                bulletSpawned.transform.position = bulletSpawned.transform.position - (transform.up * laserLength);
-                bulletSpawned.transform.Rotate(0,0,-90);
-            }
-        }
     }
 }

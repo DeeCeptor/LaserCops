@@ -3,6 +3,14 @@ using System.Collections;
 
 public class BounceBombShooting : TrackShotScrolling
  {
+    void Start()
+    {
+        players = GameState.game_state.PlayerObjects;
+        int randInt = Random.Range(0, players.Length);
+        playerToTrack = players[randInt].transform;
+        shotCounter = shotCounter + shotDelay;
+    }
+
     void FixedUpdate()
     {
         if (active)
@@ -47,8 +55,7 @@ public class BounceBombShooting : TrackShotScrolling
 
     new public void shoot()
     {
-        if (!playerCloseDisable)
-        {
+        
             GameObject bulletSpawned = (GameObject)Instantiate(bullet, transform.position, new Quaternion(0, 0, 0, 0));
             bulletSpawned.GetComponent<Rigidbody2D>().velocity = (playerToTrack.position - transform.position).normalized*5;
             if (bulletColour == _Colour.Red)
@@ -69,41 +76,7 @@ public class BounceBombShooting : TrackShotScrolling
             }
 
             SoundMixer.sound_manager.PlayLazerShot();
-        }
 
-        else
-        {
-            bool fire = true;
-            for (int i = 0; i < GameState.game_state.Players.Count; i++)
-            {
-                if ((GameState.game_state.Players[i].transform.position - transform.position).magnitude < disableDistance)
-                {
-                    fire = false;
-                }
-            }
-
-            if (fire)
-            {
-                GameObject bulletSpawned = (GameObject)Instantiate(bullet, transform.position,new Quaternion(0,0, 0, 0));
-                bulletSpawned.GetComponent<Rigidbody2D>().velocity = (playerToTrack.position - transform.position).normalized*5;
-                if (bulletColour == _Colour.Red)
-                {
-                    bulletSpawned.GetComponent<SpriteRenderer>().color = Color.red;
-                }
-                else if (bulletColour == _Colour.Pink)
-                {
-                    bulletSpawned.GetComponent<SpriteRenderer>().color = Color.magenta;
-                }
-                if (bulletColour == _Colour.Blue)
-                {
-                    bulletSpawned.GetComponent<SpriteRenderer>().color = Color.cyan;
-                }
-                if (bulletColour == _Colour.Yellow)
-                {
-                    bulletSpawned.GetComponent<SpriteRenderer>().color = Color.yellow;
-                }
-                SoundMixer.sound_manager.PlayLazerShot();
-            }
-        }
+        
     }
 }

@@ -51,7 +51,15 @@ public class LaserBullet : BulletScript
                 sparkCounter = sparkCooldown + Time.time;
             }
 
-            collision.gameObject.GetComponent<PlayerController>().TakeHit(damage, true);
+            if (collision.gameObject.GetComponent<PlayerController>().player_colour == bullet_colour)
+            {
+                //could do effect here but it might occur too many times and lead to a slowdown
+            }
+            else
+            {
+                collision.gameObject.GetComponent<PlayerController>().TakeHit(damage, true);
+            }
+                
         }
 
         if (collision.gameObject.tag == "VIP")

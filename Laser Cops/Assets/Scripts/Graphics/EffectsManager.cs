@@ -27,6 +27,12 @@ public class EffectsManager : MonoBehaviour
     }
     void Start ()
     {
+        //do the fireballs so that it won't lag
+        Fireworks(transform.position,"red");
+        FireballNoGravity(transform.position);
+        BurstLargeFireball(transform.position);
+        ViolentExplosion(transform.position);
+
         glow = CameraManager.cam_manager.GetComponent<MKGlow>();
 
         normal_blur_iterations = glow.BlurIterations;

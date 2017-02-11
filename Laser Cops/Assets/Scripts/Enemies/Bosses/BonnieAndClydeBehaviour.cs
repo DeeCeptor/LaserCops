@@ -69,33 +69,36 @@ public class BonnieAndClydeBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-	    if(behaviourChangeCounter < Time.time)
+        if (!Health.dying)
         {
-            behaviourChangeCounter = Time.time + behaviourChangeRate;
-            ChangeBehaviours();
-        }
+            if (behaviourChangeCounter < Time.time)
+            {
+                behaviourChangeCounter = Time.time + behaviourChangeRate;
+                ChangeBehaviours();
+            }
 
-        if(currentBehaviour == TetherBossBehaviour.TargetRandomPlayer)
-        {
-            TargetRandomPlayer();
-        }
-        else if (currentBehaviour == TetherBossBehaviour.Escape)
-        {
-            Escape();
-        }
-        else if (currentBehaviour == TetherBossBehaviour.Circle)
-        {
-            Circle();
-        }
-        else if (currentBehaviour == TetherBossBehaviour.Charge)
-        {
-            Charge();
-        }
+            if (currentBehaviour == TetherBossBehaviour.TargetRandomPlayer)
+            {
+                TargetRandomPlayer();
+            }
+            else if (currentBehaviour == TetherBossBehaviour.Escape)
+            {
+                Escape();
+            }
+            else if (currentBehaviour == TetherBossBehaviour.Circle)
+            {
+                Circle();
+            }
+            else if (currentBehaviour == TetherBossBehaviour.Charge)
+            {
+                Charge();
+            }
 
-        if (Health.overallHealth < healthThreshold)
-        {
-            ChangeForms();
-            healthThreshold = healthThreshold - healthBetweenStages;
+            if (Health.overallHealth < healthThreshold)
+            {
+                ChangeForms();
+                healthThreshold = healthThreshold - healthBetweenStages;
+            }
         }
     }
 

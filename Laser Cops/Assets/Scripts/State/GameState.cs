@@ -573,7 +573,6 @@ public class GameState : MonoBehaviour
         float total_vol_decrease = 0;
         while (time > 0)
         {
-            Debug.Log(time);
             total_vol_decrease += Time.deltaTime;
             //SoundMixer.sound_manager.EffectsVolumeChanged(AudioManager.audio_manager.effects_volume - total_vol_decrease);
             AudioManager.audio_manager.Effects_Volume_Changed(AudioManager.audio_manager.effects_volume - Time.deltaTime);

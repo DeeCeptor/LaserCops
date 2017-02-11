@@ -127,22 +127,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1000010416600596
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4000011993354708}
-  - component: {fileID: 114000012184931658}
-  m_Layer: 0
-  m_Name: LightningPoolHolder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1000010491308978
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,7 +710,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4000011621574476}
-  - {fileID: 4000011993354708}
   m_Father: {fileID: 4000013634640546}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -897,19 +880,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000013589532616}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4000011993354708
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010416600596}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4000010750283130}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4000012238349306
 Transform:
@@ -2130,7 +2100,7 @@ MonoBehaviour:
   currentBehaviour: 1
   Health: {fileID: 114000013524998636}
   healthThreshold: 0
-  healthBetweenStages: 100
+  healthBetweenStages: 150
   currentStage: 1
   formChangeConversation1: {fileID: 114000014155478908}
   formChangeConversation2: {fileID: 114000012559593358}
@@ -2255,21 +2225,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Make_UI_Visible: 0
---- !u!114 &114000012184931658
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010416600596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edd0a1d1fb96d7e479f48537a982bdc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BoltPrefab: {fileID: 100000, guid: 0ae0df1b393c3164b9edd778ca3ecbc6, type: 2}
-  BranchPrefab: {fileID: 100000, guid: ef6595f73463c8141b49dee38f071f51, type: 2}
-  bonnie: {fileID: 1000011855562884}
-  clyde: {fileID: 1000014228229204}
 --- !u!114 &114000012308965002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2459,21 +2414,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c511b6cead39dac4ab376e567ffb5f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 600
+  health: 900
   formChangeConversation: {fileID: 0}
   death_conversation: {fileID: 114000011383012212}
   nextStage: {fileID: 0}
   stages: 6
-  overallHealth: 600
+  overallHealth: 900
   bossName: Bonnie and Clyde
   pointValue: 10000
   TimeBonus: 10000
   ChangeFormEffect: {fileID: 0}
   explodeOnDeath: 0
+  explode_scene: 0
   explosionCountdownTimer: 0
   timeBetweenExplosions: 0.2
-  deathExplosionVarianceX: 5
-  deathExplosionVarianceY: 10
   deathDelay: 4
   dying: 0
   hurtByTether: 1
@@ -2550,8 +2504,6 @@ MonoBehaviour:
   active: 0
   bulletColour: 3
   CarColour: 0
-  playerCloseDisable: 1
-  disableDistance: 2
 --- !u!114 &114000014148889766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2571,8 +2523,6 @@ MonoBehaviour:
   active: 0
   bulletColour: 2
   CarColour: 0
-  playerCloseDisable: 1
-  disableDistance: 2
 --- !u!114 &114000014155478908
 MonoBehaviour:
   m_ObjectHideFlags: 1

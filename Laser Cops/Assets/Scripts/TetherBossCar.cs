@@ -43,11 +43,6 @@ public class TetherBossCar : MonoBehaviour {
         xRightOfScreen = maxScreenBounds.x;
         xLeftOfScreen = minScreenBounds.x;
     }
-
-    void Update()
-    {
-        tether_lightning_cooldown -= Time.deltaTime;
-    }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
@@ -82,9 +77,23 @@ public class TetherBossCar : MonoBehaviour {
         {
             travelDirection.y = -travelDirection.y;
         }
+
+        if(BonnyAndClydeHealth.health <=0)
+        {
+            Die();
+        }
     }
 
-    
+    public void Die()
+    {
+        SoundMixer.sound_manager.Play8bitExplosion();
+        EffectsManager.effects.ViolentExplosion(this.transform.position);
+        EffectsManager.effects.GridExplosion(this.transform.position, 2f, 8f, Color.red);
+
+        GameObject[] corpses = EffectsManager.effects.CutSprite(this.gameObject);
+
+        Destroy(gameObject);
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {

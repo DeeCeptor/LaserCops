@@ -13,11 +13,6 @@ public class ForwardShotScript : MonoBehaviour
     public bool active = false;
     public bool only_shoot_on_command = false;  // Will only fire when shoot() is called
 
-    //true if you want it to disable itself when the player is close
-    public bool playerCloseDisable = true;
-    //how close the player must be to disable the shot
-    public float disableDistance = 2f;
-
     float shot_timer = 0;
 
     public bool randomly_determine_colour = false;
@@ -66,32 +61,11 @@ public class ForwardShotScript : MonoBehaviour
     public void Activate()
     {
         active = true;
-        shotCounter = Time.time + shotDelay;
-        shot_timer = shotDelay;
     }
 
     public void shoot()
     {
-        if (!playerCloseDisable)
-        {
             CreateBullet();
-        }
-
-        else
-        {
-            bool fire = true;
-			for(int i = 0; i < GameState.game_state.Players.Count; i++)
-            {
-				if ((GameState.game_state.Players[i].transform.position -transform.position).magnitude < disableDistance)
-                {
-                    fire = false;
-                }
-            }
-            if (fire)
-            {
-                CreateBullet();
-            }
-        }
     }
 
 

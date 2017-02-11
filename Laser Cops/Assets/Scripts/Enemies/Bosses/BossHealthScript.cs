@@ -199,29 +199,31 @@ public class BossHealthScript : MonoBehaviour {
     //Changes forms or dies depending on whether this is the final form
     public void Die()
     {
-        if(nextStage!=null)
+        if (!dying)
         {
-            Destroy(gameObject);
-            PlayConversation(formChangeConversation);
-            if(ChangeFormEffect!= null)
+            if (nextStage != null)
             {
-                Instantiate(ChangeFormEffect, transform.position, transform.rotation);
+                Destroy(gameObject);
+                PlayConversation(formChangeConversation);
+                if (ChangeFormEffect != null)
+                {
+                    Instantiate(ChangeFormEffect, transform.position, transform.rotation);
+                }
+                Instantiate(nextStage, transform.position, transform.rotation);
             }
-            Instantiate(nextStage,transform.position,transform.rotation);
-        }
-        else
-        {
-            if (death_conversation != null)
+            else
             {
-                PlayConversation(death_conversation);
+                if (death_conversation != null)
+                {
+                    PlayConversation(death_conversation);
+                }
+                deathDelay = Time.time + deathDelay;
+                dying = true;
+
+                SendMessage("Boss_Dying");
+                if (explode_scene)
+                    StartCoroutine(Explode_Scene());
             }
-            deathDelay = Time.time + deathDelay;
-            dying = true;
-
-            SendMessage("Boss_Dying");
-
-            if (explode_scene)
-                StartCoroutine(Explode_Scene());
         }
     }
 

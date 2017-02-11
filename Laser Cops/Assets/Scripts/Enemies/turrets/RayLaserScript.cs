@@ -15,7 +15,7 @@ public class RayLaserScript : MonoBehaviour
     //counter for immunitytime and shot duration
     public int TimeSinceShotCounter = 0;
     //counter for how long between shots
-    public float shotCounter;
+    public float shotCounter = 0f;
     public LineRenderer laserRenderer;
     public bool active = false;
     private RaycastHit2D hit;
@@ -64,7 +64,6 @@ public class RayLaserScript : MonoBehaviour
                 laserRenderer.SetColors(Color.magenta, Color.magenta);
             }
         }
-        shotCounter = shotDelay + Time.time;
         layersToIgnore = ~((1<<12)|(1<<13) | (1 << 15)|(1<<0)| (1 << 22) | (1 << 23) | (1 << 24)| (1 << 26) | (1 << 8));
 	}
 	
