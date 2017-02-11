@@ -55,8 +55,6 @@ public class EndLevel : MonoBehaviour
 
         SpriteRenderer originalRenderer = GetComponentInChildren<SpriteRenderer>();
 
-        float pixelRatio = (Camera.main.orthographicSize) / Camera.main.pixelHeight;
-
         //instantiate the new sprites for cutting
         for (int i = 0; i < 2; i++)
         {
@@ -75,80 +73,16 @@ public class EndLevel : MonoBehaviour
             corpseSpawned.transform.localScale = corpseSpawned.transform.localScale * SpriteSizeRatio;
         }
 
+        float pixelRatio = 1 / originalRenderer.sprite.pixelsPerUnit;
+        Debug.Log(pixelRatio);
+
         Vector2[] pixelLocations = new Vector2[corpses[0].GetPixels32().Length];
         float width = corpses[0].width;
-
-        float xVariance = Random.Range(0.1f, 0.3f);
-        //current varience
-        float xToVary = xVariance;
-        //whether x will iterate up or down 
-        bool xUp = false;
-        float yVariance = Random.Range(0.1f, 0.3f);
-        float yToVary = yVariance;
-        bool yUp = false;
-        //counter for when to change x
-        int currentIterations = 0;
-
-        int iterationsNeeded = (int)width;
-
+        float height = corpses[0].height;
         for (int i = 0; i < pixelLocations.Length; i++)
         {
-            pixelLocations[i] = new Vector2((transform.position.x - width / 2f) + (pixelRatio * (i % (int)width)) + xToVary, (transform.position.y - width / 2f) + (pixelRatio * (i / (int)width)) + yToVary);
+            pixelLocations[i] = new Vector2((transform.position.x - (width*pixelRatio) / 2f) + (pixelRatio * (i % (int)width)), (transform.position.y - (height * pixelRatio) / 2f) + (pixelRatio * (i / (int)width)));
             //scripts underneath are to make it jagged
-            if (yUp)
-            {
-                if (yToVary >= yVariance)
-                {
-                    yUp = false;
-                    yToVary = yToVary - 1;
-                }
-                else
-                {
-                    yToVary = yToVary + 1;
-                }
-            }
-            else
-            {
-                if (yToVary <= -yVariance)
-                {
-                    yUp = true;
-                    yToVary = yToVary + 1;
-                }
-                else
-                {
-                    yToVary = yToVary - 1;
-                }
-            }
-
-            if (currentIterations > iterationsNeeded)
-            {
-                currentIterations = 0;
-                if (xUp)
-                {
-                    if (xToVary >= xVariance)
-                    {
-                        xUp = false;
-                        xToVary = xToVary - 1;
-                    }
-                    else
-                    {
-                        xToVary = xToVary + 1;
-                    }
-                }
-                else
-                {
-                    if (xToVary <= -xVariance)
-                    {
-                        xUp = true;
-                        xToVary = xToVary + 1;
-                    }
-                    else
-                    {
-                        xToVary = xToVary - 1;
-                    }
-                }
-            }
-            currentIterations = currentIterations + 1;
         }
 
         Color32[][] vertices = new Color32[2][];
@@ -157,6 +91,10 @@ public class EndLevel : MonoBehaviour
         {
             vertices[i] = corpseSprite.texture.GetPixels32();
         }
+        Debug.Log(pixelLocations[5]);
+        Debug.Log(pixelLocations[6]);
+        Debug.Log(pixelLocations[17]);
+        Debug.Log(pixelLocations.Length);
 
         for (int i = 0; i < pixelLocations.Length; i++)
         {
@@ -172,6 +110,7 @@ public class EndLevel : MonoBehaviour
                 vertices[0][i] = Color.clear;
             }
         }
+        Debug.Log(playerPos);
 
         for (int i = 0; i < 2; i++)
         {
