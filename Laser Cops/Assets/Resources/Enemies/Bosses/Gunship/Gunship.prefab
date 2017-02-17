@@ -113,7 +113,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 39.2, y: -12.982294, z: 0}
+  m_LocalPosition: {x: 67.2, y: -9.135338, z: 0}
   m_LocalScale: {x: 1.54, y: 1, z: 1}
   m_Children:
   - {fileID: 4000011560042964}
@@ -177,7 +177,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147666}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.72536, y: 0.10126686, z: -0.375}
+  m_LocalPosition: {x: 22.725363, y: 0.2543106, z: -0.375}
   m_LocalScale: {x: 0.49999988, y: 0.49999988, z: 1}
   m_Children: []
   m_Father: {fileID: 4000011560042964}
@@ -300,10 +300,9 @@ MonoBehaviour:
   TimeBonus: 4000
   ChangeFormEffect: {fileID: 0}
   explodeOnDeath: 1
+  explode_scene: 0
   explosionCountdownTimer: 0
   timeBetweenExplosions: 0.2
-  deathExplosionVarianceX: 5
-  deathExplosionVarianceY: 10
   deathDelay: 4
   dying: 0
   hurtByTether: 0
@@ -331,8 +330,6 @@ MonoBehaviour:
   coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
-  playerCloseDisable: 0
-  disableDistance: 2
   randomly_determine_colour: 0
   laserLength: 60
 --- !u!114 &11426270
@@ -354,8 +351,6 @@ MonoBehaviour:
   active: 0
   bulletColour: 3
   CarColour: 0
-  playerCloseDisable: 0
-  disableDistance: 2
 --- !u!114 &11443374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -375,8 +370,6 @@ MonoBehaviour:
   active: 0
   bulletColour: 3
   CarColour: 0
-  playerCloseDisable: 0
-  disableDistance: 2
 --- !u!114 &11462150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -396,8 +389,6 @@ MonoBehaviour:
   active: 0
   bulletColour: 0
   CarColour: 0
-  playerCloseDisable: 0
-  disableDistance: 2
 --- !u!114 &11475330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -417,8 +408,6 @@ MonoBehaviour:
   active: 0
   bulletColour: 0
   CarColour: 0
-  playerCloseDisable: 0
-  disableDistance: 2
 --- !u!212 &21207966
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1807,7 +1796,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013883228078}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.07601, y: 0.10126686, z: -0.375}
+  m_LocalPosition: {x: 21.426662, y: 0.2543106, z: -0.375}
   m_LocalScale: {x: 0.49999988, y: 0.49999988, z: 1}
   m_Children: []
   m_Father: {fileID: 4000011560042964}
@@ -2820,8 +2809,6 @@ MonoBehaviour:
   active: 0
   bulletColour: 0
   CarColour: 0
-  playerCloseDisable: 0
-  disableDistance: 2
 --- !u!114 &114000010085989330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2841,8 +2828,6 @@ MonoBehaviour:
   active: 0
   bulletColour: 0
   CarColour: 0
-  playerCloseDisable: 0
-  disableDistance: 2
 --- !u!114 &114000010106166654
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2870,15 +2855,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6078f28a2648c97429431d70f87b8b57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 8
+  shotDelay: 9
   shotCounter: 0
   bullet: {fileID: 172840, guid: 2d979ade5b97620428903ee710afac1b, type: 2}
   randomly_choose_coloured_bullet: 0
   coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
-  playerCloseDisable: 1
-  disableDistance: 2
   randomly_determine_colour: 0
   laserLength: 60
 --- !u!114 &114000010248042544
@@ -2914,8 +2897,6 @@ MonoBehaviour:
   active: 0
   bulletColour: 0
   CarColour: 0
-  playerCloseDisable: 0
-  disableDistance: 2
 --- !u!114 &114000010363889920
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2935,8 +2916,6 @@ MonoBehaviour:
   active: 0
   bulletColour: 2
   CarColour: 0
-  playerCloseDisable: 0
-  disableDistance: 2
 --- !u!114 &114000010369206176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2955,8 +2934,6 @@ MonoBehaviour:
   coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
-  playerCloseDisable: 0
-  disableDistance: 2
   randomly_determine_colour: 0
 --- !u!114 &114000010376361086
 MonoBehaviour:
@@ -3003,8 +2980,6 @@ MonoBehaviour:
   active: 0
   bulletColour: 0
   CarColour: 0
-  playerCloseDisable: 0
-  disableDistance: 2
 --- !u!114 &114000010484321966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3080,8 +3055,6 @@ MonoBehaviour:
   active: 0
   bulletColour: 3
   CarColour: 0
-  playerCloseDisable: 0
-  disableDistance: 2
 --- !u!114 &114000010748713822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3101,8 +3074,6 @@ MonoBehaviour:
   active: 0
   bulletColour: 0
   CarColour: 0
-  playerCloseDisable: 0
-  disableDistance: 2
 --- !u!114 &114000010787832562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3122,8 +3093,6 @@ MonoBehaviour:
   active: 0
   bulletColour: 0
   CarColour: 0
-  playerCloseDisable: 0
-  disableDistance: 2
 --- !u!114 &114000010852896632
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3156,8 +3125,6 @@ MonoBehaviour:
   coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
-  playerCloseDisable: 0
-  disableDistance: 2
   randomly_determine_colour: 0
   laserLength: 60
 --- !u!114 &114000011101938958
@@ -3203,8 +3170,6 @@ MonoBehaviour:
   active: 0
   bulletColour: 2
   CarColour: 0
-  playerCloseDisable: 0
-  disableDistance: 2
 --- !u!114 &114000011276331538
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3223,8 +3188,6 @@ MonoBehaviour:
   coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
-  playerCloseDisable: 0
-  disableDistance: 2
   randomly_determine_colour: 0
 --- !u!114 &114000011377941712
 MonoBehaviour:
@@ -3245,8 +3208,6 @@ MonoBehaviour:
   active: 0
   bulletColour: 3
   CarColour: 0
-  playerCloseDisable: 0
-  disableDistance: 2
 --- !u!114 &114000011408446926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3282,8 +3243,6 @@ MonoBehaviour:
   active: 0
   bulletColour: 0
   CarColour: 0
-  playerCloseDisable: 0
-  disableDistance: 2
 --- !u!114 &114000011490438428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3303,8 +3262,6 @@ MonoBehaviour:
   active: 0
   bulletColour: 0
   CarColour: 0
-  playerCloseDisable: 0
-  disableDistance: 2
 --- !u!114 &114000011557571538
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3386,8 +3343,6 @@ MonoBehaviour:
   active: 0
   bulletColour: 0
   CarColour: 0
-  playerCloseDisable: 0
-  disableDistance: 2
 --- !u!114 &114000011826597996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3407,8 +3362,6 @@ MonoBehaviour:
   active: 0
   bulletColour: 0
   CarColour: 0
-  playerCloseDisable: 0
-  disableDistance: 2
 --- !u!114 &114000011862605434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3424,7 +3377,7 @@ MonoBehaviour:
   textbox_title: Gunship Gunther
   dialogue_from: 0
   localized_key: 
-  text: <color=red>stop hitting those back!</color>
+  text: <color=red>Stop hitting those back!</color>
   talking_beeps: {fileID: 8300000, guid: f23e41a53f339964bb4cee2c4be19144, type: 3}
   darken_all_other_characters: 0
   bring_speaker_to_front: 1
@@ -3448,7 +3401,7 @@ MonoBehaviour:
   textbox_title: Gunship Gunther
   dialogue_from: 0
   localized_key: 
-  text: <color=red>NOOOO how did my guns fail me</color>
+  text: <color=red>NOOOO how did my guns fail me?</color>
   talking_beeps: {fileID: 8300000, guid: f23e41a53f339964bb4cee2c4be19144, type: 3}
   darken_all_other_characters: 0
   bring_speaker_to_front: 1
@@ -3519,8 +3472,6 @@ MonoBehaviour:
   coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
-  playerCloseDisable: 0
-  disableDistance: 2
   randomly_determine_colour: 0
 --- !u!114 &114000012642026502
 MonoBehaviour:
@@ -3541,8 +3492,6 @@ MonoBehaviour:
   active: 0
   bulletColour: 0
   CarColour: 0
-  playerCloseDisable: 0
-  disableDistance: 2
 --- !u!114 &114000012688340888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3627,8 +3576,6 @@ MonoBehaviour:
   coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
-  playerCloseDisable: 0
-  disableDistance: 2
   randomly_determine_colour: 0
 --- !u!114 &114000013030880848
 MonoBehaviour:
@@ -3695,8 +3642,6 @@ MonoBehaviour:
   active: 0
   bulletColour: 0
   CarColour: 0
-  playerCloseDisable: 0
-  disableDistance: 2
 --- !u!114 &114000013466476574
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3716,8 +3661,6 @@ MonoBehaviour:
   active: 0
   bulletColour: 2
   CarColour: 0
-  playerCloseDisable: 0
-  disableDistance: 2
 --- !u!114 &114000013490310300
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3777,8 +3720,6 @@ MonoBehaviour:
   active: 0
   bulletColour: 0
   CarColour: 0
-  playerCloseDisable: 0
-  disableDistance: 2
 --- !u!114 &114000013706380726
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3822,8 +3763,6 @@ MonoBehaviour:
   active: 0
   bulletColour: 3
   CarColour: 0
-  playerCloseDisable: 0
-  disableDistance: 2
 --- !u!114 &114000013843868404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3843,8 +3782,6 @@ MonoBehaviour:
   active: 0
   bulletColour: 0
   CarColour: 0
-  playerCloseDisable: 0
-  disableDistance: 2
 --- !u!114 &114000013859122820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3879,8 +3816,6 @@ MonoBehaviour:
   coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
-  playerCloseDisable: 0
-  disableDistance: 2
   randomly_determine_colour: 0
 --- !u!114 &114000014222424742
 MonoBehaviour:
@@ -3900,8 +3835,6 @@ MonoBehaviour:
   coloured_bullets: []
   active: 0
   only_shoot_on_command: 0
-  playerCloseDisable: 0
-  disableDistance: 2
   randomly_determine_colour: 0
 --- !u!114 &114000014288272028
 MonoBehaviour:

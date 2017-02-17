@@ -575,7 +575,7 @@ public class GameState : MonoBehaviour
         {
             total_vol_decrease += Time.deltaTime;
             //SoundMixer.sound_manager.EffectsVolumeChanged(AudioManager.audio_manager.effects_volume - total_vol_decrease);
-            AudioManager.audio_manager.Effects_Volume_Changed(AudioManager.audio_manager.effects_volume - Time.deltaTime);
+            AudioManager.audio_manager.Effects_Volume_Changed_No_Saving(AudioManager.audio_manager.effects_volume - Time.deltaTime);
             time -= Time.deltaTime;
             yield return 0;
         }
@@ -585,7 +585,7 @@ public class GameState : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         ChangeTimescale(1f);
-        AudioManager.audio_manager.Effects_Volume_Changed(prev_effects_volume);
+        AudioManager.audio_manager.Effects_Volume_Changed_No_Saving(prev_effects_volume);
         UnityEngine.SceneManagement.SceneManager.LoadScene(scene_to_load);
 
         yield return null;
