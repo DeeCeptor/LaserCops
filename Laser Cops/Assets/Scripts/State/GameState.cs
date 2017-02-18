@@ -79,6 +79,9 @@ public class GameState : MonoBehaviour
     // Use when bullets are reflected
     public Material default_sprite_material;
 
+    // OPTIONAL:  If not empty, players will be positioned based on the positions of these objects. Goes in player order: P1,P2,P3,P4
+    public List<GameObject> starting_positions = new List<GameObject>();   
+
     void Awake()
     {
         game_state = this;
@@ -110,24 +113,51 @@ public class GameState : MonoBehaviour
         //obj_.GetComponent<basicScrollingEnemyScript>().Die();
 
         int x_pos = -4;
+
         // Arrange position of players
-        switch (number_of_players)
+        if (starting_positions == null || starting_positions.Count < number_of_players)
         {
-            case 2:
-                Get_Player(1).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, 2, 0);
-                Get_Player(2).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, -2, 0);
-                break;
-            case 3:
-                Get_Player(1).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, 3, 0);
-                Get_Player(2).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, 0, 0);
-                Get_Player(3).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, -3, 0);
-                break;
-            case 4:
-                Get_Player(1).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, 3, 0);
-                Get_Player(2).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, 1, 0);
-                Get_Player(3).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, -1, 0);
-                Get_Player(4).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, -3, 0);
-                break;
+            switch (number_of_players)
+            {
+                case 2:
+                    Get_Player(1).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, 2, 0);
+                    Get_Player(2).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, -2, 0);
+                    break;
+                case 3:
+                    Get_Player(1).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, 3, 0);
+                    Get_Player(2).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, 0, 0);
+                    Get_Player(3).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, -3, 0);
+                    break;
+                case 4:
+                    Get_Player(1).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, 3, 0);
+                    Get_Player(2).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, 1, 0);
+                    Get_Player(3).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, -1, 0);
+                    Get_Player(4).transform.position = VectorGrid.grid.transform.position + new Vector3(x_pos, -3, 0);
+                    break;
+            }
+        }
+        // Use starting positions
+        else if (starting_positions != null && starting_positions.Count >= number_of_players && number_of_players > 3)
+        {
+            Debug.Log("Using preset starting positions");
+            switch (number_of_players)
+            {
+                case 2:
+                    Get_Player(1).transform.position = starting_positions[0].transform.position;
+                    Get_Player(2).transform.position = starting_positions[1].transform.position;
+                    break;
+                case 3:
+                    Get_Player(1).transform.position = starting_positions[0].transform.position;
+                    Get_Player(2).transform.position = starting_positions[1].transform.position;
+                    Get_Player(3).transform.position = starting_positions[2].transform.position;
+                    break;
+                case 4:
+                    Get_Player(1).transform.position = starting_positions[0].transform.position;
+                    Get_Player(2).transform.position = starting_positions[1].transform.position;
+                    Get_Player(3).transform.position = starting_positions[2].transform.position;
+                    Get_Player(4).transform.position = starting_positions[3].transform.position;
+                    break;
+            }
         }
     }
 

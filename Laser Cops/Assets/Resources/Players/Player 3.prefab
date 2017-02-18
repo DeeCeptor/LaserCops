@@ -674,6 +674,7 @@ Transform:
   - {fileID: 488276}
   - {fileID: 473498}
   - {fileID: 22422522}
+  - {fileID: 4099395747272556}
   m_Father: {fileID: 464884}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1057,6 +1058,7 @@ MonoBehaviour:
   cur_spark_transfer_time: 0
   spark_transfer_time: 1
   UI_low_hp_warning: {fileID: 0}
+  low_hp_red_circle: {fileID: 114934419809637646}
   moving_forward_particles:
   - {fileID: 19851354}
   - {fileID: 19855024}
@@ -25372,7 +25374,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 0
+  randomSeed: -1726955712
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -33604,7 +33606,7 @@ ParticleSystemRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -34076,3 +34078,85 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 154726}
   m_IsPrefabParent: 1
+--- !u!1 &1123219041093886
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4099395747272556}
+  - component: {fileID: 212207093643819858}
+  - component: {fileID: 114934419809637646}
+  m_Layer: 0
+  m_Name: Expanding Circle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4099395747272556
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1123219041093886}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071066, w: -0.70710695}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 14.999998, y: 14.999998, z: 1}
+  m_Children: []
+  m_Father: {fileID: 470164}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114934419809637646
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1123219041093886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b37805521541cc6409c8de1f7a155e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  y_scale: 1
+  x_scale: 1
+  expand_time: 3
+  fade_sprite_after: 1
+  currently_expanding: 0
+  start_expanding: 1
+--- !u!212 &212207093643819858
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1123219041093886}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -1242189137
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: b7fbda5a1d051d74d88472dfab8d608e, type: 3}
+  m_Color: {r: 1, g: 0, b: 0, a: 0}
+  m_FlipX: 0
+  m_FlipY: 0
