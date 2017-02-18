@@ -2100,7 +2100,7 @@ MonoBehaviour:
   currentBehaviour: 1
   Health: {fileID: 114000013524998636}
   healthThreshold: 0
-  healthBetweenStages: 150
+  healthBetweenStages: 250
   currentStage: 1
   formChangeConversation1: {fileID: 114000014155478908}
   formChangeConversation2: {fileID: 114000012559593358}
@@ -2330,7 +2330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   travelDirection: {x: -1, y: 0}
   BonnyAndClydeHealth: {fileID: 114000013524998636}
-  speed: 3
+  speed: 4
   stopped: 0
   boosting: 0
   yTopOfScreen: 0
@@ -2396,7 +2396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   travelDirection: {x: -1, y: 0}
   BonnyAndClydeHealth: {fileID: 114000013524998636}
-  speed: 3
+  speed: 4
   stopped: 0
   boosting: 0
   yTopOfScreen: 0
@@ -2414,12 +2414,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c511b6cead39dac4ab376e567ffb5f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 900
+  health: 1500
   formChangeConversation: {fileID: 0}
   death_conversation: {fileID: 114000011383012212}
   nextStage: {fileID: 0}
   stages: 6
-  overallHealth: 900
+  overallHealth: 1500
   bossName: Bonnie and Clyde
   pointValue: 10000
   TimeBonus: 10000
@@ -3011,7 +3011,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 874025413
+  m_SortingLayerID: 1444785843
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 97e10fe3ddda3b64aabea000cfdaf9bf, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
@@ -3046,7 +3046,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 874025413
+  m_SortingLayerID: 1444785843
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 97e10fe3ddda3b64aabea000cfdaf9bf, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
@@ -3118,7 +3118,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: a35ad954860e31945a7bd069cb2c1b2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

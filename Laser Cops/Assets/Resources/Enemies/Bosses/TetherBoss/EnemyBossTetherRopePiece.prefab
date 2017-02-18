@@ -16,15 +16,15 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000013107941894}
-  - 50: {fileID: 50000011305278744}
-  - 58: {fileID: 58000013094389878}
-  - 233: {fileID: 233000012795991982}
-  - 114: {fileID: 114000010696939878}
-  - 61: {fileID: 61000012605849362}
-  - 114: {fileID: 114000013956045386}
+  - component: {fileID: 4000013107941894}
+  - component: {fileID: 50000011305278744}
+  - component: {fileID: 58000013094389878}
+  - component: {fileID: 233000012795991982}
+  - component: {fileID: 114000010696939878}
+  - component: {fileID: 61000012605849362}
+  - component: {fileID: 114000013956045386}
   m_Layer: 29
   m_Name: EnemyBossTetherRopePiece
   m_TagString: Tether
@@ -41,23 +41,26 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 22.466646, y: -7.120433, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50000011305278744
 Rigidbody2D:
-  serializedVersion: 2
+  serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013060801740}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_IsKinematic: 0
+  m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -120,9 +123,9 @@ MonoBehaviour:
   bottom_most: {fileID: 0}
   all_segments: []
   rope: {fileID: 0}
-  collisionDamage: 0.02
-  hardCollisionDamage: 0.04
-  easyCollisionDamage: 0.015
+  collisionDamage: 0.04
+  hardCollisionDamage: 0.08
+  easyCollisionDamage: 0.02
 --- !u!233 &233000012795991982
 HingeJoint2D:
   m_ObjectHideFlags: 1

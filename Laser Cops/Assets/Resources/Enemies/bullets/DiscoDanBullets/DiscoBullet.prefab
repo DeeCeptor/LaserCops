@@ -268,6 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4247fa3d03519eb4cb5f58d0ff4e0135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundStarted: 0
   shotDelay: 6
   shotDuration: 180
   immuneFrames: 60
@@ -285,8 +286,12 @@ MonoBehaviour:
   bullet_colour: 2
   alternateBulletColour: 0
   randomPinkOrBlue: 0
-  playerCloseDisable: 1
+  playerCloseDisable: 0
   disableDistance: 2
+  DelayBeforeFire: 1
+  cyan_glow: {fileID: 0}
+  pink_glow: {fileID: 0}
+  red_glow: {fileID: 0}
 --- !u!114 &11425634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -298,6 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4247fa3d03519eb4cb5f58d0ff4e0135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundStarted: 0
   shotDelay: 6
   shotDuration: 180
   immuneFrames: 60
@@ -315,8 +321,12 @@ MonoBehaviour:
   bullet_colour: 3
   alternateBulletColour: 0
   randomPinkOrBlue: 0
-  playerCloseDisable: 1
+  playerCloseDisable: 0
   disableDistance: 2
+  DelayBeforeFire: 1
+  cyan_glow: {fileID: 0}
+  pink_glow: {fileID: 0}
+  red_glow: {fileID: 0}
 --- !u!114 &11432086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -328,6 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4247fa3d03519eb4cb5f58d0ff4e0135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundStarted: 0
   shotDelay: 6
   shotDuration: 180
   immuneFrames: 60
@@ -345,8 +356,12 @@ MonoBehaviour:
   bullet_colour: 3
   alternateBulletColour: 0
   randomPinkOrBlue: 0
-  playerCloseDisable: 1
+  playerCloseDisable: 0
   disableDistance: 2
+  DelayBeforeFire: 1
+  cyan_glow: {fileID: 0}
+  pink_glow: {fileID: 0}
+  red_glow: {fileID: 0}
 --- !u!114 &11439360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -371,6 +386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4247fa3d03519eb4cb5f58d0ff4e0135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundStarted: 0
   shotDelay: 6
   shotDuration: 180
   immuneFrames: 60
@@ -388,8 +404,12 @@ MonoBehaviour:
   bullet_colour: 2
   alternateBulletColour: 0
   randomPinkOrBlue: 0
-  playerCloseDisable: 1
+  playerCloseDisable: 0
   disableDistance: 2
+  DelayBeforeFire: 1
+  cyan_glow: {fileID: 0}
+  pink_glow: {fileID: 0}
+  red_glow: {fileID: 0}
 --- !u!114 &11469942
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -401,6 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4247fa3d03519eb4cb5f58d0ff4e0135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundStarted: 0
   shotDelay: 6
   shotDuration: 180
   immuneFrames: 60
@@ -418,8 +439,12 @@ MonoBehaviour:
   bullet_colour: 2
   alternateBulletColour: 0
   randomPinkOrBlue: 0
-  playerCloseDisable: 1
+  playerCloseDisable: 0
   disableDistance: 2
+  DelayBeforeFire: 1
+  cyan_glow: {fileID: 0}
+  pink_glow: {fileID: 0}
+  red_glow: {fileID: 0}
 --- !u!114 &11472808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -448,6 +473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4247fa3d03519eb4cb5f58d0ff4e0135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundStarted: 0
   shotDelay: 6
   shotDuration: 180
   immuneFrames: 60
@@ -465,8 +491,12 @@ MonoBehaviour:
   bullet_colour: 3
   alternateBulletColour: 0
   randomPinkOrBlue: 0
-  playerCloseDisable: 1
+  playerCloseDisable: 0
   disableDistance: 2
+  DelayBeforeFire: 1
+  cyan_glow: {fileID: 0}
+  pink_glow: {fileID: 0}
+  red_glow: {fileID: 0}
 --- !u!120 &12001048
 LineRenderer:
   m_ObjectHideFlags: 1

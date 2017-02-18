@@ -37,6 +37,7 @@ public class RayLaserScript : MonoBehaviour
     public bool playerCloseDisable = true;
     //how close the player must be to disable the shot
     public float disableDistance = 2f;
+    public bool DelayBeforeFire = false;
 
     [HideInInspector]
     public Material cyan_glow;
@@ -65,6 +66,10 @@ public class RayLaserScript : MonoBehaviour
             }
         }
         layersToIgnore = ~((1<<12)|(1<<13) | (1 << 15)|(1<<0)| (1 << 22) | (1 << 23) | (1 << 24)| (1 << 26) | (1 << 8));
+        if(DelayBeforeFire)
+        {
+            shotCounter = Time.time + shotDelay;
+        }
 	}
 	
 

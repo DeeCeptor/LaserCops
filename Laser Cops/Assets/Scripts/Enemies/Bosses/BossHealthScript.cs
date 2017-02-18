@@ -130,14 +130,19 @@ public class BossHealthScript : MonoBehaviour {
         {
             if (GameState.game_state.current_difficulty == GameState.Difficulty.Hard)
             {
+                EffectsManager.effects.TetherGrindSparks(collision.contacts[0].point);
                 takeHit(Tether.tether.Damage * hardDamageMultiplyer);
             }
             else if (GameState.game_state.current_difficulty == GameState.Difficulty.Easy)
             {
+
+                EffectsManager.effects.TetherGrindSparks(collision.contacts[0].point);
                 takeHit(Tether.tether.Damage * easyDamageMultiplyer);
             }
             else
             {
+
+                EffectsManager.effects.TetherGrindSparks(collision.contacts[0].point);
                 takeHit(Tether.tether.Damage);
             }
             hit = true;
@@ -146,7 +151,8 @@ public class BossHealthScript : MonoBehaviour {
 
         if (collision.gameObject.tag == "BounceBomb")
         {
-            if(!useImmunityTime)
+            EffectsManager.effects.BurstLargeFireball(collision.contacts[0].point);
+            if (!useImmunityTime)
             {
                 if(GameState.game_state.current_difficulty == GameState.Difficulty.Hard)
                 {
@@ -190,9 +196,8 @@ public class BossHealthScript : MonoBehaviour {
 
     public void TakeHitGraphics(Collision2D collision)
     {
+
         EffectsManager.effects.ViolentExplosion(collision.contacts[0].point);
-        EffectsManager.effects.TetherGrindSparks(collision.contacts[0].point);
-        EffectsManager.effects.BurstLargeFireball(collision.contacts[0].point);
         SoundMixer.sound_manager.PlayGettingHitExplosion();
     }
 

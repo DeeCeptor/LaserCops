@@ -30,6 +30,7 @@ TagManager:
   - 4HP
   - BlueHP
   - PinkHP
+  - UpObstacle
   layers:
   - Default
   - TransparentFX

@@ -585,13 +585,22 @@ public class PlayerController : PlayerInput
             Debug.Log("No key: " + coll.gameObject.name);
         }
     }
-
-
+    
     void OnTriggerEnter2D(Collider2D coll)
     {
         // Check to see if we die
         if (coll.gameObject.layer == LayerMask.NameToLayer("Death Zone") 
             && ((GameState.game_state.tether_touching_obstacle || touching_forward_obstacle))
+            && !coll.gameObject.name.Equals("UPDeathzone")
+            )
+        {
+            HitDeathZone();
+            return;
+        }
+        //specifically for spynet
+        else if (coll.gameObject.layer == LayerMask.NameToLayer("Death Zone")
+            && ((GameState.game_state.tether_touching_obstacle_up))
+            && coll.gameObject.name.Equals("UPDeathzone")
             )
         {
             HitDeathZone();
@@ -599,7 +608,7 @@ public class PlayerController : PlayerInput
         }
         else
         {
-            if (coll.gameObject.layer == LayerMask.NameToLayer("Obstacles") || coll.gameObject.layer == LayerMask.NameToLayer("Slow Obstacles"))
+            if ((coll.gameObject.layer == LayerMask.NameToLayer("Obstacles") || coll.gameObject.layer == LayerMask.NameToLayer("Slow Obstacles")) && !coll.gameObject.tag.Equals("UpObstacle"))
             {
                 cur_touching_forward_obstacle = touching_forward_obstacle_cooldown;
                 touching_forward_obstacle = true;
@@ -608,7 +617,7 @@ public class PlayerController : PlayerInput
     }
     void OnTriggerStay2D(Collider2D coll)
     {
-        if (coll.gameObject.layer == LayerMask.NameToLayer("Obstacles") || coll.gameObject.layer == LayerMask.NameToLayer("Slow Obstacles"))
+        if ((coll.gameObject.layer == LayerMask.NameToLayer("Obstacles") || coll.gameObject.layer == LayerMask.NameToLayer("Slow Obstacles")) && !coll.gameObject.tag.Equals("UpObstacle"))
         {
             cur_touching_forward_obstacle = touching_forward_obstacle_cooldown;
             touching_forward_obstacle = true;
@@ -616,7 +625,17 @@ public class PlayerController : PlayerInput
 
         // Check to see if we die
         if (coll.gameObject.layer == LayerMask.NameToLayer("Death Zone")
-            && (GameState.game_state.tether_touching_obstacle || touching_forward_obstacle))
+            && (GameState.game_state.tether_touching_obstacle || touching_forward_obstacle)
+            && !coll.gameObject.name.Equals("UPDeathzone"))
+        {
+            Debug.Log(touching_forward_obstacle);
+            HitDeathZone();
+            return;
+        }
+        else if (coll.gameObject.layer == LayerMask.NameToLayer("Death Zone")
+            && ((GameState.game_state.tether_touching_obstacle_up))
+            && coll.gameObject.name.Equals("UPDeathzone")
+            )
         {
             HitDeathZone();
             return;
