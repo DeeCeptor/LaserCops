@@ -65,7 +65,7 @@ public class ForwardShotScript : MonoBehaviour
 
     public void shoot()
     {
-            CreateBullet();
+        CreateBullet();
     }
 
 

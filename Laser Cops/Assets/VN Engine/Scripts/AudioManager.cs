@@ -165,6 +165,11 @@ public class AudioManager : MonoBehaviour
         SoundMixer.sound_manager.EffectsVolumeChanged(new_volume);
         SavePlayerPreference("EffectsVolume", new_volume);
     }
+    public void Effects_Volume_Changed_No_Saving(float new_volume)
+    {
+        effects_volume = new_volume;
+        SoundMixer.sound_manager.EffectsVolumeChanged(new_volume);
+    }
 
 
     // Player preferences live in Windows registries and persist between plays

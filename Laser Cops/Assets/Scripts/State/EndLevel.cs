@@ -91,11 +91,12 @@ public class EndLevel : MonoBehaviour
         {
             vertices[i] = corpseSprite.texture.GetPixels32();
         }
+        /*
         Debug.Log(pixelLocations[5]);
         Debug.Log(pixelLocations[6]);
         Debug.Log(pixelLocations[17]);
         Debug.Log(pixelLocations.Length);
-
+        */
         for (int i = 0; i < pixelLocations.Length; i++)
         {
             //see which side the point will be on
@@ -110,7 +111,7 @@ public class EndLevel : MonoBehaviour
                 vertices[0][i] = Color.clear;
             }
         }
-        Debug.Log(playerPos);
+        //Debug.Log(playerPos);
 
         for (int i = 0; i < 2; i++)
         {

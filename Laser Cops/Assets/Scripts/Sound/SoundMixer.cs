@@ -87,7 +87,7 @@ public class SoundMixer : MonoBehaviour
             }
         }
 
-        music.PlayLoopingMusicManaged(1.0f * music_volume_scale, 1.0f, true);
+        music.PlayLoopingMusicManaged(1.0f * music_volume_scale, 1.0f, false);
     }
     public void StopMusic()
     {

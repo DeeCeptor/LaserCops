@@ -37,6 +37,7 @@ public class basicScrollingEnemyScript : MonoBehaviour
     public direction travelDirection = direction.left;
 
     protected float tether_lightning_cooldown;
+    float tether_lightning_delay = 0.2f;
 
     public bool navigate_around_enemies = true;
 
@@ -189,7 +190,7 @@ public class basicScrollingEnemyScript : MonoBehaviour
 
         if (tether_lightning_cooldown <= 0)
         {
-            tether_lightning_cooldown = 0.1f;
+            tether_lightning_cooldown = tether_lightning_delay;
             //EffectsManager.effects.TetherDamageSparks(collision.contacts[0].point);
             TetherLightning.tether_lightning.BranchLightning(Tether.tether.GetRandomLink().transform.position, this.transform.position);
         }

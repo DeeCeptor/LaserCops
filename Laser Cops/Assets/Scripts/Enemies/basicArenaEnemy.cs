@@ -22,6 +22,8 @@ public class basicArenaEnemy : MonoBehaviour
     public Vector2 dir;
 
     public float collisionDamage = 1f;
+    protected float tether_lightning_cooldown = 0;
+    protected float tether_lightning_delay = 0.3f;
 
     void Start ()
     {
@@ -30,6 +32,11 @@ public class basicArenaEnemy : MonoBehaviour
         playerToTrack = players[randInt].transform;
 	}
 
+
+    void Update()
+    {
+        tether_lightning_cooldown -= Time.deltaTime;
+    }
 
     void FixedUpdate ()
     {
@@ -89,8 +96,10 @@ public class basicArenaEnemy : MonoBehaviour
     }
     void ResolveCollision(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Tether"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("DestructiveTether"))
         {
+            HitByTetherGraphics(collision);
+
             if (die_in_one_hit)
                 Die();
             else
@@ -162,4 +171,17 @@ public class basicArenaEnemy : MonoBehaviour
 	{
 		Destroy(gameObject);
 	}
+
+
+    public void HitByTetherGraphics(Collision2D collision)
+    {
+        SoundMixer.sound_manager.PlaySyncopatedLazer();
+
+        if (tether_lightning_cooldown <= 0)
+        {
+            tether_lightning_cooldown = tether_lightning_delay;
+            //EffectsManager.effects.TetherDamageSparks(collision.contacts[0].point);
+            TetherLightning.tether_lightning.BranchLightning(Tether.tether.GetRandomLink().transform.position, this.transform.position);
+        }
+    }
 }
