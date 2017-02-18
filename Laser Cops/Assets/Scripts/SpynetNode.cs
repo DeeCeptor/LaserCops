@@ -40,6 +40,15 @@ public class SpynetNode : basicScrollingEnemyScript
 
             return;
         }
+
+        else if (collision.gameObject.CompareTag("Player"))
+        {
+            HitByTetherGraphics(collision);
+                TakeHit(Tether.tether.Damage);
+            collision.gameObject.GetComponent<PlayerController>().TakeHit(collisionDamage);
+
+            return;
+        }
     }
     void OnCollisionStay2D(Collision2D collision)
     {
@@ -54,6 +63,17 @@ public class SpynetNode : basicScrollingEnemyScript
 
             return;
         }
+
+
+        else if (collision.gameObject.CompareTag("Player"))
+        {
+            HitByTetherGraphics(collision);
+            TakeHit(Tether.tether.Damage);
+            collision.gameObject.GetComponent<PlayerController>().TakeHit(collisionDamage);
+
+            return;
+        }
+
         else if (collision.gameObject.layer == LayerMask.NameToLayer("RamBoundary"))
         {
             // Hurt the enemy

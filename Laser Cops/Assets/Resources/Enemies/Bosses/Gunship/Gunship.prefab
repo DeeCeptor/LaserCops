@@ -97,8 +97,8 @@ GameObject:
   - component: {fileID: 21255854}
   - component: {fileID: 5098964}
   - component: {fileID: 11401020}
-  - component: {fileID: 6012936}
   - component: {fileID: 114000011705063572}
+  - component: {fileID: 60358721982123060}
   m_Layer: 8
   m_Name: Gunship
   m_TagString: Boss
@@ -112,9 +112,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197532}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 67.2, y: -9.135338, z: 0}
-  m_LocalScale: {x: 1.54, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4000011560042964}
   - {fileID: 4000010212775650}
@@ -130,7 +130,7 @@ Transform:
   - {fileID: 4000013763386078}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!4 &463774
 Transform:
   m_ObjectHideFlags: 1
@@ -177,7 +177,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147666}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.725363, y: 0.2543106, z: -0.375}
+  m_LocalPosition: {x: 23.405878, y: -0.016365051, z: -0.375}
   m_LocalScale: {x: 0.49999988, y: 0.49999988, z: 1}
   m_Children: []
   m_Father: {fileID: 4000011560042964}
@@ -216,68 +216,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!60 &6012936
-PolygonCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 197532}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  m_Points:
-    m_Paths:
-    - - {x: 3.6999998, y: -1.2099999}
-      - {x: 3.6999998, y: -0.45}
-      - {x: 3.6799998, y: -0.42999998}
-      - {x: 3.22, y: -0.42999998}
-      - {x: 3.6999998, y: 0.45}
-      - {x: 3.6999998, y: 1.2099999}
-      - {x: 3.6799998, y: 1.23}
-      - {x: 3.22, y: 1.23}
-      - {x: 3.23, y: 2.07}
-      - {x: 2.6499999, y: 2.6499999}
-      - {x: -0.11, y: 2.6499999}
-      - {x: -0.11, y: 2.6599998}
-      - {x: -0.21, y: 2.6599998}
-      - {x: -0.72999996, y: 2.29}
-      - {x: -0.69, y: 2.24}
-      - {x: -0.14, y: 1.93}
-      - {x: 1.01, y: 1.93}
-      - {x: 1.25, y: 1.6899999}
-      - {x: 1.04, y: 1.5899999}
-      - {x: 1.02, y: 1.5699999}
-      - {x: 1.02, y: 0.96}
-      - {x: 1.23, y: 0.78}
-      - {x: 0.85999995, y: 0.56}
-      - {x: -1.05, y: 0.55}
-      - {x: -1.0699999, y: 0.58}
-      - {x: -2.02, y: 0.02}
-      - {x: -2.02, y: -0.03}
-      - {x: -1.78, y: -0.16}
-      - {x: -1.1899999, y: -0.5}
-      - {x: -1.06, y: -0.57}
-      - {x: 0.85999995, y: -0.55}
-      - {x: 1.02, y: -0.65999997}
-      - {x: 1.25, y: -0.78}
-      - {x: 1.25, y: -0.94}
-      - {x: 1.04, y: -0.94}
-      - {x: 1.02, y: -0.96}
-      - {x: 1, y: -1.5799999}
-      - {x: 1.22, y: -1.6899999}
-      - {x: 1.01, y: -1.93}
-      - {x: -0.14999999, y: -1.92}
-      - {x: -0.7, y: -2.25}
-      - {x: -0.71999997, y: -2.3}
-      - {x: -0.24, y: -2.6299999}
-      - {x: -0.16, y: -2.6599998}
-      - {x: -0.11, y: -2.6599998}
-      - {x: -0.11, y: -2.6499999}
-      - {x: 2.6499999, y: -2.6499999}
-      - {x: 3.23, y: -2.07}
 --- !u!114 &11401020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -289,12 +227,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c511b6cead39dac4ab376e567ffb5f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1800
+  health: 2400
   formChangeConversation: {fileID: 0}
   death_conversation: {fileID: 0}
   nextStage: {fileID: 0}
   stages: 6
-  overallHealth: 1800
+  overallHealth: 2400
   bossName: Gunship Gunther
   pointValue: 2000
   TimeBonus: 4000
@@ -544,7 +482,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 874025413
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c2a4534635dc4964aba1e42d8bbd3236, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 146312577c234624bbb79ada38ab9a10, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1796,7 +1734,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013883228078}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.426662, y: 0.2543106, z: -0.375}
+  m_LocalPosition: {x: 21.405878, y: 0.98363495, z: -0.375}
   m_LocalScale: {x: 0.49999988, y: 0.49999988, z: 1}
   m_Children: []
   m_Father: {fileID: 4000011560042964}
@@ -2230,6 +2168,45 @@ Transform:
   m_Father: {fileID: 4000013353154020}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &60358721982123060
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197532}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: 4.9937396, y: -1.657311}
+      - {x: 5.429874, y: -1.3302101}
+      - {x: 5.582521, y: -0.8286555}
+      - {x: 5.582521, y: 1.0685294}
+      - {x: 5.12458, y: 1.657311}
+      - {x: 3.92521, y: 1.8535714}
+      - {x: 3.0747478, y: 2.1806722}
+      - {x: 2.7912605, y: 2.5513866}
+      - {x: 2.6604202, y: 2.595}
+      - {x: -4.1214705, y: 2.595}
+      - {x: -4.3613443, y: 2.4205463}
+      - {x: -4.4921846, y: 2.1806722}
+      - {x: -4.4921846, y: 1.7663445}
+      - {x: -5.495294, y: 1.7663445}
+      - {x: -5.582521, y: 1.7009244}
+      - {x: -5.582521, y: -1.7009244}
+      - {x: -5.5607142, y: -1.7445378}
+      - {x: -5.495294, y: -1.7663445}
+      - {x: -4.4921846, y: -2.0498319}
+      - {x: -4.470378, y: -2.2460923}
+      - {x: -4.2523108, y: -2.595}
+      - {x: 2.7040336, y: -2.595}
+      - {x: 2.7694538, y: -2.5513866}
+      - {x: 3.0747478, y: -2.1806722}
+      - {x: 3.9034033, y: -1.809958}
 --- !u!82 &82000010355443564
 AudioSource:
   m_ObjectHideFlags: 1
@@ -3322,7 +3299,7 @@ MonoBehaviour:
   turretParent: {fileID: 0}
   currentStage: 1
   healthThreshold: 0
-  healthBetweenStages: 300
+  healthBetweenStages: 400
   desired_velocity: {x: 0, y: 0}
 --- !u!114 &114000011717918124
 MonoBehaviour:

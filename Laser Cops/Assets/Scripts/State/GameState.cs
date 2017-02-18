@@ -44,10 +44,10 @@ public class GameState : MonoBehaviour
     public GameObject[] PlayerObjects;
     public bool VIP = false;
     public GameObject VIPObject;
-
-    [HideInInspector]
+    
     public bool tether_touching_obstacle = false;
-    [HideInInspector]
+    //specifically for the spynet boss battle
+    public bool tether_touching_obstacle_up = false;
     public float time_last_touched_obstacle;
     [HideInInspector]
     public bool limit_player_control_from_obstacles = false;
@@ -730,6 +730,7 @@ public class GameState : MonoBehaviour
             time_last_touched_obstacle + turn_off_tether_touching_obstacle_time < Time.time)
         {
             tether_touching_obstacle = false;
+            tether_touching_obstacle_up = false;
             limit_player_control_from_obstacles = false;
             ResetVelocityPositionIterations();
         }

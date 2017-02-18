@@ -44,6 +44,13 @@ public class TetherClamping : MonoBehaviour
         GameState.game_state.time_last_touched_obstacle = Time.time;
         GameState.game_state.SetVelocityPositionIterations(GameState.intensive_velocity_iterations, GameState.intensive_position_iterations);
     }
+    //specificallyForSpyNet
+    public void TouchedObstacleUP()
+    {
+        GameState.game_state.tether_touching_obstacle_up = true;
+        GameState.game_state.time_last_touched_obstacle = Time.time;
+        GameState.game_state.SetVelocityPositionIterations(GameState.intensive_velocity_iterations, GameState.intensive_position_iterations);
+    }
     public void LimitPlayerMovement()
     {
         GameState.game_state.limit_player_control_from_obstacles = true;
@@ -84,10 +91,14 @@ public class TetherClamping : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
+        if (coll.gameObject.layer == LayerMask.NameToLayer("Obstacles") && !coll.gameObject.tag.Equals("UpObstacle"))
         {
             TouchedObstacle();
             LimitPlayerMovement();
+        }
+        else if (coll.gameObject.layer == LayerMask.NameToLayer("Obstacles") && coll.gameObject.tag.Equals("UpObstacle"))
+        {
+            TouchedObstacleUP();
         }
         else if (coll.gameObject.layer == LayerMask.NameToLayer("Slow Obstacles"))
         {
@@ -101,10 +112,14 @@ public class TetherClamping : MonoBehaviour
     }
     void OnCollisionStay2D(Collision2D coll)
     {
-        if (coll.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
+        if (coll.gameObject.layer == LayerMask.NameToLayer("Obstacles") && !coll.gameObject.tag.Equals("UpObstacle"))
         {
             TouchedObstacle();
             LimitPlayerMovement();
+        }
+        else if (coll.gameObject.layer == LayerMask.NameToLayer("Obstacles") && coll.gameObject.tag.Equals("UpObstacle"))
+        {
+            TouchedObstacleUP();
         }
         else if (coll.gameObject.layer == LayerMask.NameToLayer("Slow Obstacles"))
         {
