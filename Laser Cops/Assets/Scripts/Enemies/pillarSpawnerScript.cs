@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 //this script was copied from the laser spawn script so some variable names may be confusing 
@@ -6,16 +6,19 @@ using System.Collections;
 public class pillarSpawnerScript : ForwardShotScript
 {
     public float laserLength = 60f;
-    // Use this for initialization
+    public float initial_delay = 0f;
+
+
     void Start()
     {
 
     }
 
-    // Update is called once per frame
+
     void FixedUpdate()
     {
-        if (!only_shoot_on_command)
+        initial_delay -= Time.deltaTime;
+        if (initial_delay <= 0 && !only_shoot_on_command)
         {
             if (active)
             {
