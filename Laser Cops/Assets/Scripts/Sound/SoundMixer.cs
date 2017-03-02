@@ -19,6 +19,8 @@ public class SoundMixer : MonoBehaviour
     public AudioSource cur_music;   // Track currently playing
     public AudioSource starting_music;
 
+    public bool starting_music_persists = false;
+
     void Awake ()
     {
         sound_manager = this;
@@ -87,7 +89,7 @@ public class SoundMixer : MonoBehaviour
             }
         }
 
-        music.PlayLoopingMusicManaged(1.0f * music_volume_scale, 1.0f, false);
+        music.PlayLoopingMusicManaged(1.0f * music_volume_scale, 1.0f, starting_music_persists);
     }
     public void StopMusic()
     {

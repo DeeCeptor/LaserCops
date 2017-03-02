@@ -13,13 +13,19 @@ public class BackOutOfCredits : MonoBehaviour
 	}
 	
 
+    public void Turn_Off_Credits()
+    {
+        menu.SetActive(true);
+        credits.SetActive(false);
+        logo.SetActive(true);
+    }
+
+
 	void Update () 
 	{
 	    if (Input.anyKeyDown)
         {
-            menu.SetActive(true);
-            credits.SetActive(false);
-            logo.SetActive(true);
+            Turn_Off_Credits();
         }
 	}
 }

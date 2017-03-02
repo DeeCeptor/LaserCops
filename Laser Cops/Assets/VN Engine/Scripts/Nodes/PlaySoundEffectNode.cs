@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -18,7 +18,7 @@ public class PlaySoundEffectNode : Node
 
     public override void Finish_Node()
     {
-        StopAllCoroutines();
+        //StopAllCoroutines();
 
         base.Finish_Node();
     }

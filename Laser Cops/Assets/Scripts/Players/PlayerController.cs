@@ -83,7 +83,7 @@ public class PlayerController : PlayerInput
     // Low HP warning
     [HideInInspector]
     public GameObject UI_low_hp_warning;
-
+    public ExpandToOriginalScale low_hp_red_circle;
 
     // Particles
     public List<ParticleSystem> moving_forward_particles = new List<ParticleSystem>();  // Boosters and stuff turn on when moving forward
@@ -395,6 +395,8 @@ public class PlayerController : PlayerInput
     {
         if (GameState.game_state.debug_invulnerability)
             damage = 0;
+
+        low_hp_red_circle.StartExpanding();
 
         float prev_health = Health;
 
