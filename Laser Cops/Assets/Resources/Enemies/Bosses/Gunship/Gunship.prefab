@@ -170,12 +170,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c511b6cead39dac4ab376e567ffb5f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2400
+  health: 3000
   formChangeConversation: {fileID: 0}
   death_conversation: {fileID: 0}
   nextStage: {fileID: 0}
   stages: 6
-  overallHealth: 2400
+  overallHealth: 3000
   bossName: Gunship Gunther
   pointValue: 2000
   TimeBonus: 4000
@@ -2964,7 +2964,7 @@ MonoBehaviour:
   currentStage: 1
   shield: {fileID: 1979234534607890, guid: 2d14513583e94d04f97b58d12edfa8bd, type: 2}
   healthThreshold: 0
-  healthBetweenStages: 400
+  healthBetweenStages: 500
   desired_velocity: {x: 0, y: 0}
 --- !u!114 &114000011717918124
 MonoBehaviour:

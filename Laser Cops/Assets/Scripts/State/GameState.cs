@@ -76,6 +76,8 @@ public class GameState : MonoBehaviour
 
     float prev_effects_volume;
 
+    public bool sparksOff = false;
+
     // Use when bullets are reflected
     public Material default_sprite_material;
 
