@@ -14,70 +14,68 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Menus/EndLevelScreen.unity
   - enabled: 1
-    path: Assets/Levels/Finished/Nice and Easy.unity
+    path: Assets/Levels/Finished/Zone 1/Nice and Easy.unity
   - enabled: 1
-    path: Assets/Levels/Finished/BulletPurgatory.unity
+    path: Assets/Levels/Finished/Zone 1/Gettin' Pushy.unity
   - enabled: 1
-    path: Assets/Levels/Finished/Gettin' Pushy.unity
+    path: Assets/Levels/Finished/Zone 4/BonnieAndClyde.unity
   - enabled: 1
-    path: Assets/Levels/Finished/BulletHeaven.unity
+    path: Assets/Levels/Finished/Zone 4/Fast & Loose.unity
   - enabled: 1
-    path: Assets/Levels/Finished/BonnieAndClyde.unity
+    path: Assets/Levels/Finished/Zone 2/Minefield.unity
   - enabled: 1
-    path: Assets/Levels/Finished/bulletLimbo.unity
+    path: Assets/Levels/Finished/Zone 3/Let it Rain.unity
   - enabled: 1
-    path: Assets/Levels/Finished/Fast & Loose.unity
+    path: Assets/Levels/Finished/Zone 4/Light Show.unity
   - enabled: 1
-    path: Assets/Levels/Finished/Let it Rain.unity
+    path: Assets/Levels/Finished/Zone 1/Think Fast.unity
   - enabled: 1
-    path: Assets/Levels/Finished/Light Show.unity
+    path: Assets/Levels/Finished/Zone 1/Ocean Waves.unity
   - enabled: 1
-    path: Assets/Levels/Finished/Think Fast.unity
+    path: Assets/Levels/Finished/Zone 3/TakeItSlow.unity
   - enabled: 1
-    path: Assets/Levels/Finished/Ocean Waves.unity
+    path: Assets/Levels/Finished/Zone 1/DiscoDan.unity
   - enabled: 1
-    path: Assets/Levels/Finished/TakeItSlow.unity
+    path: Assets/Levels/Finished/Zone 4/Life is a Highway.unity
   - enabled: 1
-    path: Assets/Levels/Finished/DiscoDan.unity
+    path: Assets/Levels/Finished/Zone 3/Traffic Jam.unity
   - enabled: 1
-    path: Assets/Levels/Finished/Life is a Highway.unity
+    path: Assets/Levels/Finished/Zone 3/Bullet Purgatory.unity
   - enabled: 1
-    path: Assets/Levels/Finished/Traffic Jam.unity
+    path: Assets/Levels/Finished/Zone 2/Bullet Limbo.unity
   - enabled: 1
-    path: Assets/Levels/Finished/BulletHell.unity
+    path: Assets/Levels/Finished/Zone 3/GunshipGunther.unity
   - enabled: 1
-    path: Assets/Levels/Finished/GunshipGunther.unity
+    path: Assets/Levels/Finished/Zone 4/Bullet Hell.unity
   - enabled: 1
-    path: Assets/Levels/Finished/Look out Below!.unity
-  - enabled: 0
-    path: Assets/Levels/Finished/ObstacleRammingLevel.unity
+    path: Assets/Levels/Finished/Zone 1/Bullet Heaven.unity
   - enabled: 1
-    path: Assets/Levels/Finished/MineField.unity
+    path: Assets/Levels/Finished/Zone 3/Look out Below!.unity
   - enabled: 1
-    path: Assets/Levels/Finished/Rock Slide.unity
+    path: Assets/Levels/Finished/Zone 1/Rock Slide.unity
   - enabled: 1
-    path: Assets/Levels/Finished/Shipping Lane.unity
+    path: Assets/Levels/Finished/Zone 3/Shipping Lane.unity
   - enabled: 1
-    path: Assets/Levels/Finished/Used Car Sale.unity
+    path: Assets/Levels/Finished/Zone 2/Used Car Sale.unity
   - enabled: 1
-    path: Assets/Levels/Finished/Easing into It.unity
+    path: Assets/Levels/Finished/Zone 1/Easing into It.unity
   - enabled: 1
-    path: Assets/Levels/Finished/Rainbow Road.unity
+    path: Assets/Levels/Finished/Zone 2/Rainbow Road.unity
   - enabled: 1
-    path: Assets/Levels/Finished/MrPresident.unity
+    path: Assets/Levels/Finished/Zone 2/MrPresident.unity
   - enabled: 1
-    path: Assets/Levels/Finished/BounceMrPresident.unity
+    path: Assets/Levels/Finished/Zone 3/BounceMrPresident.unity
   - enabled: 1
-    path: Assets/Levels/Finished/Time to Split.unity
+    path: Assets/Levels/Finished/Zone 2/Time to Split.unity
   - enabled: 1
-    path: Assets/Levels/Finished/Good 'Ole Chase.unity
+    path: Assets/Levels/Finished/Zone 4/Good 'Ole Chase.unity
   - enabled: 1
-    path: Assets/Levels/Finished/Spy Net.unity
+    path: Assets/Levels/Finished/Zone 2/Spy Net.unity
   - enabled: 1
-    path: Assets/Levels/Finished/Discotheque.unity
+    path: Assets/Levels/Finished/Zone 1/Discotheque.unity
   - enabled: 1
-    path: Assets/Levels/Finished/Keep on Truckin'.unity
+    path: Assets/Levels/Finished/Zone 2/Keep on Truckin'.unity
   - enabled: 1
-    path: Assets/Levels/Finished/The Gauntlet.unity
+    path: Assets/Levels/Finished/Zone 4/The Gauntlet.unity
   - enabled: 1
-    path: Assets/Levels/Finished/It's a TRAP!.unity
+    path: Assets/Levels/Finished/Zone 4/It's a TRAP!.unity
