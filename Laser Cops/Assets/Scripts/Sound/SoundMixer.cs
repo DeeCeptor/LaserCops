@@ -15,11 +15,12 @@ public class SoundMixer : MonoBehaviour
 
     // MUSIC
     public List<AudioSource> Music = new List<AudioSource>();
-    public List<string> Music_Info = new List<string>();        // Track name & Author, displayed when a song starts playing
     public AudioSource cur_music;   // Track currently playing
     public AudioSource starting_music;
 
     public bool starting_music_persists = false;
+
+    float music_volume_modifier = 0.7f;
 
     void Awake ()
     {
@@ -63,33 +64,15 @@ public class SoundMixer : MonoBehaviour
     {
         cur_music = music;
 
-        int index = 0;
-        bool found_track = false;
-
-        // Find our associated music (hopefully is added to the music list
-        foreach (AudioSource a in Music)
+        // Display the track name & artist
+        if (FadeTextInAndOut.music_info != null)
         {
-            if (a == music)
-            {
-                found_track = true;
-                break;
-            }
-            index++;
+            FadeTextInAndOut.music_info.GetComponent<Text>().text = "♪ " + music.clip.name;
+            FadeTextInAndOut.music_info.Start_Fading_In_Then_Out();
+            FadeTextInAndOut.music_info.gameObject.SetActive(true);
         }
 
-        if (found_track)
-        {
-            // Display the track name & artist
-            string s = Music_Info[index];
-            if (FadeTextInAndOut.music_info != null)
-            {
-                FadeTextInAndOut.music_info.GetComponent<Text>().text = s;
-                FadeTextInAndOut.music_info.Start_Fading_In_Then_Out();
-                FadeTextInAndOut.music_info.gameObject.SetActive(true);
-            }
-        }
-
-        music.PlayLoopingMusicManaged(1.0f * music_volume_scale, 1.0f, starting_music_persists);
+        music.PlayLoopingMusicManaged(music_volume_modifier * music_volume_scale, 1.0f, starting_music_persists);
     }
     public void StopMusic()
     {
@@ -176,6 +159,7 @@ public class SoundMixer : MonoBehaviour
     }
 
     // MUSIC
+    /*
     public void Play2ndBallad()
     {
         PlayMusic(Music[0]);
@@ -209,5 +193,5 @@ public class SoundMixer : MonoBehaviour
     public void PlayLZMainTheme()
     {
         PlayMusic(Music[7]);
-    }
+    }*/
 }
