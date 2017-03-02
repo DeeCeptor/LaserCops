@@ -46,11 +46,15 @@ public class RayLaserScript : MonoBehaviour
     [HideInInspector]
     public Material red_glow;
 
+    public SpriteRenderer renderer;
+
     void Start ()
     {
         pink_glow = (Material)Resources.Load("Materials/StreakGlowPink");
         cyan_glow = (Material)Resources.Load("Materials/StreakGlowCyan");
         red_glow = (Material)Resources.Load("Materials/StreakGlowRed");
+
+        renderer = GetComponent<SpriteRenderer>();
 
         if (randomPinkOrBlue)
         {
@@ -103,6 +107,11 @@ public class RayLaserScript : MonoBehaviour
                 }
             }
 
+            else if(!active)
+            {
+                CheckActive();
+            }
+
             if (shooting)
             {
                 Shoot();
@@ -130,6 +139,16 @@ public class RayLaserScript : MonoBehaviour
             }
         }
 	}
+
+    public void CheckActive()
+    {
+        if (renderer.isVisible)
+        {
+            active = true;
+        }
+
+    }
+
 
 
     public void Shoot()

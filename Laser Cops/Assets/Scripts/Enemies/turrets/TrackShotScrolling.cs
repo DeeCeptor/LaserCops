@@ -17,9 +17,15 @@ public class TrackShotScrolling : MonoBehaviour{
 
     // Use this for initialization
     void Start () {
+        
         players = GameState.game_state.PlayerObjects;
         int randInt = Random.Range(0, players.Length);
         playerToTrack = players[randInt].transform;
+        while(bulletColour == playerToTrack.GetComponent<PlayerController>().player_colour)
+        {
+            randInt = Random.Range(0, players.Length);
+            playerToTrack = players[randInt].transform;
+        }
     }
 	
 	// Update is called once per frame
@@ -35,7 +41,6 @@ public class TrackShotScrolling : MonoBehaviour{
                 {
                     shoot();
                     int randInt = Random.Range(0, players.Length);
-                    playerToTrack = players[randInt].transform;
                 }
 
                 else
@@ -45,14 +50,7 @@ public class TrackShotScrolling : MonoBehaviour{
                     {
                         int randInt = Random.Range(0, players.Length);
                         playerToTrack = players[randInt].transform;
-                        if(playerToTrack.gameObject.name == "Player 1")
-                        {
-                            bulletColour = _Colour.Pink;
-                        }
-                        else
-                        {
-                            bulletColour = _Colour.Blue;
-                        }
+                        
                         shoot();
                     }
                 }

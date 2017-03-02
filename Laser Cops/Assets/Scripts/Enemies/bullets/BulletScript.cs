@@ -75,7 +75,7 @@ public class BulletScript : MonoBehaviour
         }
 
 
-        if (reflected_bullet && collision.gameObject.CompareTag("Enemy"))
+        else if (reflected_bullet && collision.gameObject.CompareTag("Enemy"))
         {
             // Deal damage to the reflect enemy
             basicScrollingEnemyScript sc = collision.gameObject.GetComponent<basicScrollingEnemyScript>();
@@ -89,7 +89,7 @@ public class BulletScript : MonoBehaviour
         else if (collision.gameObject.layer == LayerMask.NameToLayer("CaptureTether"))
         {
         }
-        else if (!collision.gameObject.CompareTag("Enemy"))
+        else
 		{
 			Die();
 		}

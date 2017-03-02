@@ -148,7 +148,21 @@ public class SpynetControls : MonoBehaviour
     public void Boss_Dying()
     {
         StartCoroutine(Dying());
+        GameObject[] asteroids = GameObject.FindGameObjectsWithTag("Obstacle");
+
+        for(int i = 0; i < asteroids.Length;i++)
+        {
+            Destroy(asteroids[i]);
+        }
+
+        asteroids = GameObject.FindGameObjectsWithTag("UpObstacle");
+
+        for (int i = 0; i < asteroids.Length; i++)
+        {
+            Destroy(asteroids[i]);
+        }
     }
+
     IEnumerator Dying()
     {
         yield return new WaitForSeconds(1f);

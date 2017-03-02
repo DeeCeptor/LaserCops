@@ -26,6 +26,8 @@ public class shipStrafe : MonoBehaviour {
     public Transform turretParent;
     public int currentStage = 1;
 
+    public GameObject shield;
+
     GameObject highway;
     PolygonCollider2D box;
 
@@ -83,6 +85,7 @@ public class shipStrafe : MonoBehaviour {
 
         if (Health.overallHealth < healthThreshold)
         {
+            GameObject shieldSpawned = Instantiate(shield,transform.position,transform.rotation,transform);
             changeForms();
             healthThreshold = healthThreshold - healthBetweenStages;
         }

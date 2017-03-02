@@ -49,8 +49,15 @@ public class BonnieAndClydeBehaviour : MonoBehaviour {
     public TetherBossCar clydeScript;
     public TetherBossCar bonnieScript;
 
+    //only spawn thelma and Louise if there are more than 2 players
+    public TetherBossCar thelma;
+    public TetherBossCar louise;
+    public Vector3 thelmaStartLocation;
+    public Vector3 louiseStartLocation;
+
     // Use this for initialization
     void Start () {
+        
         Health = GetComponentInParent<BossHealthScript>();
         healthThreshold = Health.overallHealth - healthBetweenStages;
 
@@ -60,11 +67,23 @@ public class BonnieAndClydeBehaviour : MonoBehaviour {
         int randInt = Random.Range(0, players.Length);
         playerToTrack = players[randInt].transform;
 
+
         for(int i = 0; i < GameState.game_state.number_of_players; i++)
         {
             players[i].AddComponent<TetherBossBoostWatcher>();
         }
         
+        if(players.Length >2)
+        {
+            if(players.Length == 3)
+            {
+
+            }
+            else if(players.Length == 4)
+            {
+
+            }
+        }
     }
 	
 	// Update is called once per frame
