@@ -25,6 +25,7 @@ public class BossHealthScript : MonoBehaviour {
     public float deathDelay = 4f;
     //flag when hp reaches 0
     public bool dying = false;
+    public GameObject objectToCut;
 
     protected float tether_lightning_cooldown;
 
@@ -47,6 +48,10 @@ public class BossHealthScript : MonoBehaviour {
 
     void Start ()
     {
+        if(gameObject.GetComponent<SpriteRenderer>())
+        {
+            objectToCut = gameObject;
+        }
         immunityCounter = Time.time + immunityTime;
 
 
@@ -115,7 +120,8 @@ public class BossHealthScript : MonoBehaviour {
             InGameUIManager.ui_manager.ChangeScore(TimeBonus - (int)Time.timeSinceLevelLoad, this.transform.position);
         }
         EffectsManager.effects.GridExplosion(this.transform.position, 2f, 8f, Color.red);
-        EffectsManager.effects.CutSprite(this.gameObject);
+
+        EffectsManager.effects.CutSprite(objectToCut);
 
         //GameObject[] corpses = CutSprite();
         //corpses[0].GetComponent<EnemyDying>().JustDied(1);
