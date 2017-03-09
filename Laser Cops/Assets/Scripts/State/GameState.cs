@@ -19,6 +19,7 @@ public class GameState : MonoBehaviour
 
     public bool paused = false; // Paused by player
     public bool game_over = false;  // Lost the game
+    public bool players_invuln = false;
     public float elapsed_game_time = 0f;
     public bool going_sideways;
 
@@ -87,6 +88,7 @@ public class GameState : MonoBehaviour
     void Awake()
     {
         game_state = this;
+        game_over = false;
 
         SetGameMode();
         SetSettings();
@@ -387,6 +389,13 @@ public class GameState : MonoBehaviour
                 Players[x].Die();
             }
         }
+    }
+
+
+    public void Boss_Died()
+    {
+        Debug.Log("Boss has died");
+        players_invuln = true;
     }
 
 

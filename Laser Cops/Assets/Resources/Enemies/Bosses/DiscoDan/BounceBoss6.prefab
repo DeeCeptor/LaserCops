@@ -805,6 +805,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11401290
@@ -853,6 +854,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11405798
@@ -890,6 +892,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11409626
@@ -955,6 +958,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11413828
@@ -1011,6 +1015,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11419510
@@ -1062,6 +1067,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11421946
@@ -1099,6 +1105,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11424480
@@ -1150,6 +1157,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11426840
@@ -1187,6 +1195,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11428426
@@ -1252,6 +1261,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11440612
@@ -1303,6 +1313,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11444442
@@ -1536,6 +1547,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11482514
@@ -1573,6 +1585,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11482570
@@ -1624,6 +1637,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11485996
@@ -1693,6 +1707,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!114 &11494344
@@ -1768,6 +1783,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
   maxShotDelay: 8
   minShotDelay: 4
 --- !u!120 &12005316
@@ -7536,7 +7552,7 @@ SpriteRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 13994c9f14b462e4d85311567a472746, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

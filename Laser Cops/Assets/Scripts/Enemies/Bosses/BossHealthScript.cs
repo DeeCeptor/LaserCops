@@ -230,6 +230,7 @@ public class BossHealthScript : MonoBehaviour {
                 }
                 deathDelay = Time.time + deathDelay;
                 dying = true;
+                GameState.game_state.Boss_Died();
 
                 SendMessage("Boss_Dying");
                 if (explode_scene)

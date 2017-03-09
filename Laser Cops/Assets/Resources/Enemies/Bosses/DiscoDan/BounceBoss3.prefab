@@ -1462,6 +1462,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
   maxShotDelay: 9
   minShotDelay: 9
 --- !u!114 &114000010505924534
@@ -1499,6 +1500,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
   maxShotDelay: 9
   minShotDelay: 9
 --- !u!114 &114000010593883840
@@ -1571,6 +1573,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
   maxShotDelay: 9
   minShotDelay: 9
 --- !u!114 &114000011052620148
@@ -1622,6 +1625,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
   maxShotDelay: 9
   minShotDelay: 9
 --- !u!114 &114000011130379738
@@ -1659,6 +1663,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
   maxShotDelay: 9
   minShotDelay: 9
 --- !u!114 &114000011281594124
@@ -1736,6 +1741,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
   maxShotDelay: 9
   minShotDelay: 9
 --- !u!114 &114000012229000654
@@ -1836,6 +1842,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
   maxShotDelay: 9
   minShotDelay: 9
 --- !u!114 &114000012904698988
@@ -1866,7 +1873,7 @@ MonoBehaviour:
   textbox_title: Disco Dan
   dialogue_from: 0
   localized_key: 
-  text: <color=red>Can you handle THIS groove</color>
+  text: <color=red>Can you handle THIS groove?</color>
   talking_beeps: {fileID: 0}
   darken_all_other_characters: 0
   bring_speaker_to_front: 1
@@ -1910,6 +1917,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
   maxShotDelay: 9
   minShotDelay: 9
 --- !u!114 &114000013479033450
@@ -1975,6 +1983,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114139492076760796
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2010,6 +2019,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114171809107353752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2045,6 +2055,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114188542342802922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2080,6 +2091,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114221031156062706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2115,6 +2127,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114298588294596586
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2150,6 +2163,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114312929560621168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2185,6 +2199,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114338713357641144
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2220,6 +2235,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114513489907636304
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2267,6 +2283,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114547837838684708
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2302,6 +2319,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114584673450861510
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2337,6 +2355,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114662413314771260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2372,6 +2391,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114739214875229838
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2407,6 +2427,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114767011004349478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2442,6 +2463,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114800444319281930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2489,6 +2511,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114908424623718782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2524,6 +2547,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!120 &120000010566674248
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -8630,7 +8654,7 @@ SpriteRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 13994c9f14b462e4d85311567a472746, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

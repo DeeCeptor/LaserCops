@@ -48,7 +48,7 @@ Material:
     - first:
         name: _MKGlowTex
       second:
-        m_Texture: {fileID: 2800000, guid: 2fd8d20f96333a74e99cc487314d6dfe, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7f2ee8db10e4a44409f3136f3b396fe1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -99,7 +99,7 @@ Material:
       second: 0
     - first:
         name: _MKGlowPower
-      second: 0.05
+      second: 0.4
     - first:
         name: _MKGlowTexStrength
       second: 0.75
