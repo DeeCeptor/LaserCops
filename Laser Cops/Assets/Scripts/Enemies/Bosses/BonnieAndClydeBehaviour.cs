@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 using System.Collections;
 
 public enum TetherBossBehaviour
@@ -26,6 +27,9 @@ public class BonnieAndClydeBehaviour : MonoBehaviour {
     public float escapeBoostCountdown = 2f;
     public float escapeBoostTimer = 0f;
 
+    public float boosterCooldown = 0.7f;
+    public float boosterCounter = 0f;
+
     public Transform playerToTrack;
     public GameObject[] players;
 
@@ -33,6 +37,8 @@ public class BonnieAndClydeBehaviour : MonoBehaviour {
     public float behaviourChangeCounter = 0f;
     //time to add at the start of the level to make sure they don't jump the player
     public float inactiveTime = 4f;
+
+    public List<ParticleSystem> booster_particles = new List<ParticleSystem>();
 
     public TetherBossBehaviour currentBehaviour = TetherBossBehaviour.TargetRandomPlayer;
 
@@ -88,6 +94,19 @@ public class BonnieAndClydeBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+        if(boosting)
+        {
+            if (boosterCounter < Time.time)
+            {
+                foreach (ParticleSystem p in booster_particles)
+                {
+                    p.Play();
+                }
+                SoundMixer.sound_manager.PlayCarRev();
+                boosterCounter = Time.time + boosterCooldown;
+            }
+        }
+
         if (!Health.dying)
         {
             if (behaviourChangeCounter < Time.time)

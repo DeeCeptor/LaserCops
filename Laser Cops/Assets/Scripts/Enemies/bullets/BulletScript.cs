@@ -67,11 +67,14 @@ public class BulletScript : MonoBehaviour
 
         else if (reflected_bullet && collision.gameObject.CompareTag("Boss"))
         {
-            BossHealthScript bs = collision.gameObject.GetComponent<BossHealthScript>();
-            if (bs.hurtByReboundBullets)
+            if (collision.gameObject.GetComponent<BossHealthScript>())
             {
-                bs.takeHit(damage);
-                bs.TakeHitGraphics(collision);
+                BossHealthScript bs = collision.gameObject.GetComponent<BossHealthScript>();
+                if (bs.hurtByReboundBullets)
+                {
+                    bs.takeHit(damage);
+                    bs.TakeHitGraphics(collision);
+                }
             }
 
             Die();
@@ -115,6 +118,10 @@ public class BulletScript : MonoBehaviour
                     EffectsManager.effects.SameColorHit(this.transform.position, bullet_colour);
                     break;
             }
+        }
+        else
+        {
+            Die();
         }
     }
 
