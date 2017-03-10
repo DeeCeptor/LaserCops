@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class BounceBombShooting : TrackShotScrolling
@@ -70,13 +70,7 @@ public class BounceBombShooting : TrackShotScrolling
             {
                 bulletSpawned.GetComponent<SpriteRenderer>().color = Color.cyan;
             }
-            if (bulletColour == _Colour.Yellow)
-            {
-                bulletSpawned.GetComponent<SpriteRenderer>().color = Color.yellow;
-            }
 
             SoundMixer.sound_manager.PlayLazerShot();
-
-        
     }
 }

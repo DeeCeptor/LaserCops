@@ -8,8 +8,6 @@ public class Tether : MonoBehaviour
 
     public float Damage = 0.5f;   // Damage done by the tether to enemies
 
-    LineRenderer line;
-
     public float left_width = 0.1f;
     public float right_width = 0.1f;
 
@@ -477,7 +475,6 @@ public class Tether : MonoBehaviour
             c.a = Random.value;
             particles[i].color = c;
             //particles[i].color = Color.white;
-
 
             /*line.SetVertexCount(tether_links.Count);
             for (int i = 0; i < tether_links.Count; i++)

@@ -103,10 +103,6 @@ public class TrackShotScrolling : MonoBehaviour{
             {
                 bulletSpawned.GetComponent<SpriteRenderer>().color = Color.cyan;
             }
-            if (bulletColour == _Colour.Yellow)
-            {
-                bulletSpawned.GetComponent<SpriteRenderer>().color = Color.yellow;
-            }
 
             SoundMixer.sound_manager.PlayLazerShot();
     }

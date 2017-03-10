@@ -40,11 +40,11 @@ public class CivillianScript : MonoBehaviour
 		}
 		else
 		{
-            if (switch_tether_text)
-                switch_tether_mesh.enabled = (Tether.tether.cur_tether_mode != Tether.TetherMode.Capture);
-
             if (!shrinking)
             {
+                if (switch_tether_text)
+                    switch_tether_mesh.enabled = (Tether.tether.cur_tether_mode != Tether.TetherMode.Capture);
+
                 CheckDeath();
                 moveActive();
             }
@@ -149,6 +149,7 @@ public class CivillianScript : MonoBehaviour
         if (shrinking)
             return;
 
+        switch_tether_text = false;
         shrinking = true;
         InGameUIManager.ui_manager.ChangeScore(pointsForSave, this.transform.position);
         EffectsManager.effects.spawnMovingText(new Vector3(this.transform.position.x, this.transform.position.y + 3, this.transform.position.z), "Saved!");

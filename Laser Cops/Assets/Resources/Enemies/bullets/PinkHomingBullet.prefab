@@ -198,10 +198,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {x: 0, y: 0, z: 0}
   speed: 2
+  originalSpeed: 3
   dir: {x: 0, y: 0}
   damage: 10
   reflected_bullet: 0
-  bullet_colour: 2
+  bullet_colour: 1
   trackingPower: 3
 --- !u!114 &114000013135744698
 MonoBehaviour:

@@ -1092,7 +1092,7 @@ MonoBehaviour:
   tether_released_this_instant: 0
   boosted_this_instant: 0
   disable_tether_held_down: 0
-  player_colour: 3
+  player_colour: 2
   input_enabled: 1
   alive: 1
   primary_colour: {r: 0.039215688, g: 0.83921576, b: 1, a: 1}

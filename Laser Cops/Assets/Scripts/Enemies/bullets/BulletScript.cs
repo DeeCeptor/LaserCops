@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public enum _Colour { Red, Yellow, Pink, Blue };
+public enum _Colour { Red, Pink, Blue };
 
 public class BulletScript : MonoBehaviour
 {
@@ -46,6 +46,7 @@ public class BulletScript : MonoBehaviour
             {
                 Die();
                 EffectsManager.effects.SameColorHit(collision.contacts[0].point, bullet_colour);
+                SoundMixer.sound_manager.PlayShortSpark();
             }
             else
             {
@@ -96,7 +97,24 @@ public class BulletScript : MonoBehaviour
             speed = originalSpeed;
             reflected_bullet = !reflected_bullet;
             gameObject.layer = LayerMask.NameToLayer("Bullet");
-            GetComponent<SpriteRenderer>().color = Color.red;
+            SoundMixer.sound_manager.PlayShortSpark();
+
+            // Find out which colour of bullet we were before
+            switch (bullet_colour)
+            {
+                case _Colour.Red:
+                    GetComponent<SpriteRenderer>().color = Color.red;
+                    EffectsManager.effects.PlayerBulletReflected(this.transform.position);
+                    break;
+                case _Colour.Pink:
+                    GetComponent<SpriteRenderer>().color = Color.magenta;
+                    EffectsManager.effects.SameColorHit(this.transform.position, bullet_colour);
+                    break;
+                case _Colour.Blue:
+                    GetComponent<SpriteRenderer>().color = Color.cyan;
+                    EffectsManager.effects.SameColorHit(this.transform.position, bullet_colour);
+                    break;
+            }
         }
     }
 
