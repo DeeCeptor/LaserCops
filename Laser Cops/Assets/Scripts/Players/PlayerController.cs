@@ -157,6 +157,7 @@ public class PlayerController : PlayerInput
         }
     }
 
+
     void Update()
     {
         if (!GameState.game_state.paused)
@@ -395,9 +396,6 @@ public class PlayerController : PlayerInput
 
     public void TakeHit(float damage, bool getting_hit_explosion_noise = false)
     {
-        if (GameState.game_state.debug_invulnerability)
-            damage = 0;
-
         low_hp_red_circle.StartExpanding();
 
         float prev_health = Health;
@@ -405,7 +403,7 @@ public class PlayerController : PlayerInput
         if (currently_boosting)
             damage = damage / 2f;
 
-        if (damage != 0 && !GameState.game_state.game_over)
+        if (damage != 0 && !GameState.game_state.game_over && !GameState.game_state.players_invuln && !GameState.game_state.debug_invulnerability)
             AdjustHealth(-damage);
 
         if (getting_hit_explosion_noise)
@@ -489,30 +487,18 @@ public class PlayerController : PlayerInput
     }
 
 
+    /*
     void StayOnScreen()
     {
-        /*
-        Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
-        Vector3 end_pos = this.transform.position;  // Where we will end up at the end of the frame
-
-        if (screenPos.x < Screen.width)
-            end_pos.x = screenPos.x;
-        else if (screenPos.x > Screen.width)
-            end_pos.x = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.width, 0)).x;
-
-        // Adjust our actual position
-        if (end_pos != this.transform.position)
-            this.transform.position = end_pos;
-        */
-
         Vector3 minScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
         Vector3 maxScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
 
         transform.position = new Vector3(
             Mathf.Clamp(transform.position.x, minScreenBounds.x + screen_margins.x, maxScreenBounds.x - screen_margins.y),
             Mathf.Clamp(transform.position.y, minScreenBounds.y + screen_margins.x, maxScreenBounds.y - screen_margins.y),
-            transform.position.z);
-    }
+            transform.position.z); 
+    }*/
+
 
     // Shower of sparks on a collision!
     void OnCollisionEnter2D(Collision2D coll)

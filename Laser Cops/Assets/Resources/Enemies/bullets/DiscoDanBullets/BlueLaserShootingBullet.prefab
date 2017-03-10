@@ -84,7 +84,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010461706996}
   m_BodyType: 0
-  m_Simulated: 1
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -153,6 +153,11 @@ MonoBehaviour:
   randomPinkOrBlue: 0
   playerCloseDisable: 0
   disableDistance: 2
+  DelayBeforeFire: 0
+  cyan_glow: {fileID: 0}
+  pink_glow: {fileID: 0}
+  red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114000011400732720
 MonoBehaviour:
   m_ObjectHideFlags: 1

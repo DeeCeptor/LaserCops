@@ -19,7 +19,7 @@ public class OrbitAround : MonoBehaviour
     {
         if (randomize_attributes)
         {
-            radius = Random.Range(0.2f, 0.6f);
+            radius = Random.Range(0.1f, 0.9f);
             radiusSpeed = Random.Range(0.1f, 0.6f);
             rotationSpeed = Random.Range(20, 80);
         }

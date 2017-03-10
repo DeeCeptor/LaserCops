@@ -1079,6 +1079,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114000010199037464
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1114,6 +1115,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114000010370435644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1193,6 +1195,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114000010668578140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1228,6 +1231,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114000010707989760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1350,6 +1354,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114000011619721272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1404,6 +1409,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114000011918499362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1455,6 +1461,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114000012090787894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1506,6 +1513,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114000012284431984
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1589,6 +1597,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114000013030774450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1705,6 +1714,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114000013965773970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1740,6 +1750,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114464721776913124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6203,7 +6214,7 @@ SpriteRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 13994c9f14b462e4d85311567a472746, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
