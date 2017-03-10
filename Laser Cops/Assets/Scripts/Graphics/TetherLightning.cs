@@ -123,7 +123,7 @@ public class TetherLightning : MonoBehaviour
             Vector2 boltEnd = (Vector2)(rot * diff) + from;
 
             // Create a (pooled) bolt from pos1 to boltEnd
-            CreatePooledBolt(from, boltEnd, color, 1f, sorting_order);
+            CreatePooledBolt(from, boltEnd, color, 2f, sorting_order);
         }
     }
 

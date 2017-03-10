@@ -15,6 +15,7 @@ public class OrbitAround : MonoBehaviour
 
     public bool randomize_attributes = false;
 
+
     void Start()
     {
         if (randomize_attributes)
@@ -30,6 +31,7 @@ public class OrbitAround : MonoBehaviour
         transform.position = (transform.position - center_pos).normalized * radius + center_pos;
         //radius = 2.0f;
     }
+
 
     void Update()
     {

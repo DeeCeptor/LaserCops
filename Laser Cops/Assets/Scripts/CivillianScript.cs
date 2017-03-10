@@ -4,11 +4,11 @@ using System.Collections;
 public class CivillianScript : MonoBehaviour
 {
 	public int pointsForSave = 100;
-	//they are subtracted from the score and should be positive
+	// They are subtracted from the score and should be positive
 	int pointPenaltyForKill = -200;
 	public int pointPenaltyForAbandon = 0;
     public float healthToGainBack = 15f;
-	//layer for the save ad destroy tether
+	// Layer for the save and destroy tether
 	public int saveLayer = 13;
 	public int destroyLayer = 12;
 
@@ -16,6 +16,8 @@ public class CivillianScript : MonoBehaviour
 	public bool active = false;
 
 	private float inactiveSpeed = 1f;
+
+    public bool shrinking = false;
 
 	//direction the enemy will travel towards
 	public direction travelDirection = direction.left;
@@ -41,8 +43,11 @@ public class CivillianScript : MonoBehaviour
             if (switch_tether_text)
                 switch_tether_mesh.enabled = (Tether.tether.cur_tether_mode != Tether.TetherMode.Capture);
 
-			CheckDeath();
-			moveActive();
+            if (!shrinking)
+            {
+                CheckDeath();
+                moveActive();
+            }
 		}
 	}
 
@@ -141,13 +146,45 @@ public class CivillianScript : MonoBehaviour
 
     public void Saved()
     {
+        if (shrinking)
+            return;
+
+        shrinking = true;
         InGameUIManager.ui_manager.ChangeScore(pointsForSave, this.transform.position);
         EffectsManager.effects.spawnMovingText(new Vector3(this.transform.position.x, this.transform.position.y + 3, this.transform.position.z), "Saved!");
         EffectsManager.effects.PlayersHealed();
         SoundMixer.sound_manager.PlayCollectSound();
+        TetherLightning.tether_lightning.BurstLightning(this.transform.position, this.transform.position + new Vector3(0, 2), 20, Color.green);
 
         GameState.game_state.Heal_All_Players(healthToGainBack);
-            
+
+        StartCoroutine(Shrinking_Animation());
+    }
+
+    float fly_away_speed = 15f;
+    IEnumerator Shrinking_Animation()
+    {
+        float time_remaining = 8f;
+        // Disable the collider, so it can warp away
+        this.GetComponent<BoxCollider2D>().enabled = false;
+        this.GetComponent<Rigidbody2D>().freezeRotation = true;
+        foreach (TrailRenderer rend in this.GetComponentsInChildren<TrailRenderer>(true))
+            rend.gameObject.SetActive(true);
+
+        while (time_remaining >= 0)
+        {
+            this.transform.position -= new Vector3(Time.deltaTime * fly_away_speed, 0, 0);
+            time_remaining -= Time.deltaTime;
+            yield return 0;
+        }
+        /*
+        while (this.transform.localScale.x >= 0)
+        {
+            this.transform.localScale -= new Vector3(Time.deltaTime, Time.deltaTime, 0);
+            yield return 0;
+        }*/
+
         Destroy(gameObject);
+        yield return null;
     }
 }
