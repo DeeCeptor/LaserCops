@@ -10,6 +10,8 @@ public class PlayerController : PlayerInput
     public bool input_enabled = true;   // If false, no player input is accepted
     public bool alive = true;
 
+    public bool sparks = true;
+
     Rigidbody2D physics;
     float x_speed = 7f;
     float y_speed = 7f;
@@ -57,6 +59,7 @@ public class PlayerController : PlayerInput
     float sideways_turning_speed = 50.0f;
 
     // SPARKS (we reuse the same spark gameobjects when grinding)
+
     Dictionary<GameObject, ParticleSystem> in_use_grinding_sparks = new Dictionary<GameObject, ParticleSystem>();
     List<ParticleSystem> free_grinding_sparks = new List<ParticleSystem>();
     public GameObject grinding_sparks;
@@ -151,7 +154,6 @@ public class PlayerController : PlayerInput
                     inputs_to_check.Add("Controller 4 Left");
                     break;
             }
-            Debug.Log("Assigned default inputs");
         }
     }
 
@@ -439,9 +441,9 @@ public class PlayerController : PlayerInput
         if (Health <= 0 && !GameState.game_state.game_over)
             Die();
     }
+
     public void Die()
     {
-        Debug.Log("Player " + player_number + " died");
 
         alive = false;
         Health = 0;
@@ -523,30 +525,34 @@ public class PlayerController : PlayerInput
             TransferHealth(coll.gameObject);
         }
 
-        // SPARKS
-        // Show sparks on the side of the car it was hit on
-        CollisionAt(coll.contacts[0].point);
-
-        ParticleSystem sparks;
-        // New collision, grab a grinding sparks if we've used one before
-        if (free_grinding_sparks.Count > 0)
+        if (sparks)
         {
-            sparks = free_grinding_sparks[0];
-            free_grinding_sparks.RemoveAt(0);
-            sparks.GetComponent<TurnOffSparks>().StartSparks();
-        }
-        else
-        {
-            // Need to spawn a new grinding sparks
-            sparks = ((GameObject)GameObject.Instantiate(grinding_sparks)).GetComponent<ParticleSystem>();
-        }
 
-        // Set its position and add it to the dictionary
-        sparks.gameObject.transform.position = coll.contacts[0].point;
+            // SPARKS
+            // Show sparks on the side of the car it was hit on
+            CollisionAt(coll.contacts[0].point);
 
-        if (!in_use_grinding_sparks.ContainsKey(coll.gameObject))
-        {
-            in_use_grinding_sparks.Add(coll.gameObject, sparks);
+            ParticleSystem sparks;
+            // New collision, grab a grinding sparks if we've used one before
+            if (free_grinding_sparks.Count > 0)
+            {
+                sparks = free_grinding_sparks[0];
+                free_grinding_sparks.RemoveAt(0);
+                sparks.GetComponent<TurnOffSparks>().StartSparks();
+            }
+            else
+            {
+                // Need to spawn a new grinding sparks
+                sparks = ((GameObject)GameObject.Instantiate(grinding_sparks)).GetComponent<ParticleSystem>();
+            }
+
+            // Set its position and add it to the dictionary
+            sparks.gameObject.transform.position = coll.contacts[0].point;
+
+            if (!in_use_grinding_sparks.ContainsKey(coll.gameObject))
+            {
+                in_use_grinding_sparks.Add(coll.gameObject, sparks);
+            }
         }
             //sparks.GetComponent<TurnOffSparks>().time_remaining = sparks.GetComponent<TurnOffSparks>().start_time_remaining;
     }
@@ -561,13 +567,16 @@ public class PlayerController : PlayerInput
             TransferHealth(coll.gameObject);
         }
 
-        // SPARKS
-        // Update the position of the grinding
-        if (in_use_grinding_sparks.ContainsKey(coll.gameObject))// && in_use_grinding_sparks[coll.gameObject] != null)
+        if (sparks)
         {
-            ParticleSystem p = in_use_grinding_sparks[coll.gameObject];
-            p.gameObject.transform.position = coll.contacts[0].point;
-            p.GetComponent<TurnOffSparks>().StartSparks();
+            // SPARKS
+            // Update the position of the grinding
+            if (in_use_grinding_sparks.ContainsKey(coll.gameObject))// && in_use_grinding_sparks[coll.gameObject] != null)
+            {
+                ParticleSystem p = in_use_grinding_sparks[coll.gameObject];
+                p.gameObject.transform.position = coll.contacts[0].point;
+                p.GetComponent<TurnOffSparks>().StartSparks();
+            }
         }
         //else
             //  in_use_grinding_sparks.Remove(coll.gameObject);
@@ -575,16 +584,18 @@ public class PlayerController : PlayerInput
     // Stop grinding against the object we were pushing against
     void OnCollisionExit2D(Collision2D coll)
     {
-        if (in_use_grinding_sparks.ContainsKey(coll.gameObject))// && !coll.gameObject)
+        if (sparks)
         {
-            ParticleSystem sparks = in_use_grinding_sparks[coll.gameObject];
-            sparks.GetComponent<TurnOffSparks>().StopSparks();
-            in_use_grinding_sparks.Remove(coll.gameObject);
-            free_grinding_sparks.Add(sparks);
+            if (in_use_grinding_sparks.ContainsKey(coll.gameObject))// && !coll.gameObject)
+            {
+                ParticleSystem sparks = in_use_grinding_sparks[coll.gameObject];
+                sparks.GetComponent<TurnOffSparks>().StopSparks();
+                in_use_grinding_sparks.Remove(coll.gameObject);
+                free_grinding_sparks.Add(sparks);
+            }
         }
         else
         {
-            Debug.Log("No key: " + coll.gameObject.name);
         }
     }
     
@@ -630,7 +641,6 @@ public class PlayerController : PlayerInput
             && (GameState.game_state.tether_touching_obstacle || touching_forward_obstacle)
             && !coll.gameObject.name.Equals("UPDeathzone"))
         {
-            Debug.Log(touching_forward_obstacle);
             HitDeathZone();
             return;
         }
