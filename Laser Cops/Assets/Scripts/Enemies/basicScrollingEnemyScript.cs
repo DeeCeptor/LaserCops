@@ -124,6 +124,7 @@ public class basicScrollingEnemyScript : MonoBehaviour
 
             return;
         }
+
         else if (collision.gameObject.tag == "Player")
         {
             // Hurt the player

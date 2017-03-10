@@ -66,11 +66,14 @@ public class BulletScript : MonoBehaviour
 
         else if (reflected_bullet && collision.gameObject.CompareTag("Boss"))
         {
-            BossHealthScript bs = collision.gameObject.GetComponent<BossHealthScript>();
-            if (bs.hurtByReboundBullets)
+            if (collision.gameObject.GetComponent<BossHealthScript>())
             {
-                bs.takeHit(damage);
-                bs.TakeHitGraphics(collision);
+                BossHealthScript bs = collision.gameObject.GetComponent<BossHealthScript>();
+                if (bs.hurtByReboundBullets)
+                {
+                    bs.takeHit(damage);
+                    bs.TakeHitGraphics(collision);
+                }
             }
 
             Die();
@@ -97,6 +100,10 @@ public class BulletScript : MonoBehaviour
             reflected_bullet = !reflected_bullet;
             gameObject.layer = LayerMask.NameToLayer("Bullet");
             GetComponent<SpriteRenderer>().color = Color.red;
+        }
+        else
+        {
+            Die();
         }
     }
 

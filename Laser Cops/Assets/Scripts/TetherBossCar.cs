@@ -84,6 +84,11 @@ public class TetherBossCar : MonoBehaviour {
         }
     }
 
+    void Update()
+    {
+        tether_lightning_cooldown -= Time.deltaTime;
+    }
+
     public void Die()
     {
         SoundMixer.sound_manager.Play8bitExplosion();
