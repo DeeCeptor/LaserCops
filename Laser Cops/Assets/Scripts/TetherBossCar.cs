@@ -116,13 +116,35 @@ public class TetherBossCar : MonoBehaviour {
         }
     }
 
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 12 && BonnyAndClydeHealth.hurtByTether == true && BonnyAndClydeHealth.hit == false)
+        {
+            if (GameState.game_state.current_difficulty == GameState.Difficulty.Hard)
+            {
+                BonnyAndClydeHealth.takeHit(Tether.tether.Damage * BonnyAndClydeHealth.hardDamageMultiplyer);
+            }
+            else if (GameState.game_state.current_difficulty == GameState.Difficulty.Easy)
+            {
+                BonnyAndClydeHealth.takeHit(Tether.tether.Damage * BonnyAndClydeHealth.easyDamageMultiplyer);
+            }
+            else
+            {
+                BonnyAndClydeHealth.takeHit(Tether.tether.Damage);
+            }
+            HitByTetherGraphics(collision);
+            BonnyAndClydeHealth.hit = true;
+        }
+    }
+
     public void HitByTetherGraphics(Collision2D collision)
     {
+        Debug.Log("graphics");
         SoundMixer.sound_manager.PlaySyncopatedLazer();
 
         if (tether_lightning_cooldown <= 0)
         {
-            tether_lightning_cooldown = 0.1f;
+            tether_lightning_cooldown = 0.2f;
             //EffectsManager.effects.TetherDamageSparks(collision.contacts[0].point);
             TetherLightning.tether_lightning.BranchLightning(Tether.tether.GetRandomLink().transform.position, this.transform.position);
         }

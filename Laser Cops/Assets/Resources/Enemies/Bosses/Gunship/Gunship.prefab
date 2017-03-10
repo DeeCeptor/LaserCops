@@ -191,8 +191,8 @@ MonoBehaviour:
   hurtByReboundBullets: 1
   easyDamageMultiplyer: 2
   hardDamageMultiplyer: 0.667
-  useImmunityTime: 0
-  immunityTime: 0.1
+  useImmunityTime: 1
+  immunityTime: 0.3
   hit: 0
 --- !u!114 &11413130
 MonoBehaviour:

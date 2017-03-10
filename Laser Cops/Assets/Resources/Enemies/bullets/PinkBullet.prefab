@@ -54,7 +54,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &6194794
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -186,6 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {x: 0, y: 0, z: 0}
   speed: 3
+  originalSpeed: 3
   dir: {x: 0, y: 0}
   damage: 10
   reflected_bullet: 0
@@ -198,7 +199,7 @@ ParticleSystem:
   m_GameObject: {fileID: 117580}
   serializedVersion: 5
   lengthInSec: 5
-  speed: 1
+  simulationSpeed: 1
   looping: 1
   prewarm: 0
   playOnAwake: 1

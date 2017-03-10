@@ -7,6 +7,7 @@ public class BulletScript : MonoBehaviour
 {
     public Vector3 target;
     public float speed = 3f;
+    public float originalSpeed = 3f;
     public Vector2 dir;
 	public float damage = 15f;
 
@@ -15,6 +16,7 @@ public class BulletScript : MonoBehaviour
 
     void Start ()
     {
+        originalSpeed = speed;
         dir = target - transform.position;
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
@@ -89,10 +91,13 @@ public class BulletScript : MonoBehaviour
         else if (collision.gameObject.layer == LayerMask.NameToLayer("CaptureTether"))
         {
         }
-        else
+        else if(collision.gameObject.layer == LayerMask.NameToLayer("EnemyBossTether") && reflected_bullet)
 		{
-			Die();
-		}
+            speed = originalSpeed;
+            reflected_bullet = !reflected_bullet;
+            gameObject.layer = LayerMask.NameToLayer("Bullet");
+            GetComponent<SpriteRenderer>().color = Color.red;
+        }
     }
 
     public void Die()

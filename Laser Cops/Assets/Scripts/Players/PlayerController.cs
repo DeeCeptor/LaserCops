@@ -10,8 +10,6 @@ public class PlayerController : PlayerInput
     public bool input_enabled = true;   // If false, no player input is accepted
     public bool alive = true;
 
-    public bool sparks = true;
-
     Rigidbody2D physics;
     float x_speed = 7f;
     float y_speed = 7f;
@@ -503,7 +501,7 @@ public class PlayerController : PlayerInput
     // Shower of sparks on a collision!
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.layer == LayerMask.NameToLayer("Bullet"))
+        if (coll.gameObject.layer == LayerMask.NameToLayer("Bullet") || coll.gameObject.layer == LayerMask.NameToLayer("EnemyBossTether"))
             return;
 
         if (coll.gameObject.tag == "Player")// && coll.gameObject.GetComponent<PlayerController>().Health < this.Health)
@@ -511,8 +509,6 @@ public class PlayerController : PlayerInput
             TransferHealth(coll.gameObject);
         }
 
-        if (sparks)
-        {
 
             // SPARKS
             // Show sparks on the side of the car it was hit on
@@ -539,7 +535,6 @@ public class PlayerController : PlayerInput
             {
                 in_use_grinding_sparks.Add(coll.gameObject, sparks);
             }
-        }
             //sparks.GetComponent<TurnOffSparks>().time_remaining = sparks.GetComponent<TurnOffSparks>().start_time_remaining;
     }
     // Show grinding sparks when touching another object
@@ -552,9 +547,7 @@ public class PlayerController : PlayerInput
         {
             TransferHealth(coll.gameObject);
         }
-
-        if (sparks)
-        {
+        
             // SPARKS
             // Update the position of the grinding
             if (in_use_grinding_sparks.ContainsKey(coll.gameObject))// && in_use_grinding_sparks[coll.gameObject] != null)
@@ -563,23 +556,19 @@ public class PlayerController : PlayerInput
                 p.gameObject.transform.position = coll.contacts[0].point;
                 p.GetComponent<TurnOffSparks>().StartSparks();
             }
-        }
         //else
             //  in_use_grinding_sparks.Remove(coll.gameObject);
     }
     // Stop grinding against the object we were pushing against
     void OnCollisionExit2D(Collision2D coll)
     {
-        if (sparks)
-        {
-            if (in_use_grinding_sparks.ContainsKey(coll.gameObject))// && !coll.gameObject)
+        if (in_use_grinding_sparks.ContainsKey(coll.gameObject))// && !coll.gameObject)
             {
                 ParticleSystem sparks = in_use_grinding_sparks[coll.gameObject];
                 sparks.GetComponent<TurnOffSparks>().StopSparks();
                 in_use_grinding_sparks.Remove(coll.gameObject);
                 free_grinding_sparks.Add(sparks);
             }
-        }
         else
         {
         }
