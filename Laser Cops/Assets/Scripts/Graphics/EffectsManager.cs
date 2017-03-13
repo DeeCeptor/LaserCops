@@ -28,7 +28,7 @@ public class EffectsManager : MonoBehaviour
     void Start ()
     {
         //do the fireballs so that it won't lag
-        Fireworks(transform.position,"red");
+        //Fireworks(transform.position,"red");
         FireballNoGravity(transform.position);
         BurstLargeFireball(transform.position);
         ViolentExplosion(transform.position);

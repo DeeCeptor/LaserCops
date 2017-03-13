@@ -8,9 +8,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 424342}
+  - component: {fileID: 11416896}
   - component: {fileID: 21277502}
   - component: {fileID: 5058916}
-  - component: {fileID: 11416896}
   - component: {fileID: 6176040}
   - component: {fileID: 9626160}
   - component: {fileID: 19848356}

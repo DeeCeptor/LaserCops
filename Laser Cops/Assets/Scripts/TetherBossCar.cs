@@ -1,5 +1,5 @@
 using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 //note that the parent object has a script which will control bonny and clyde this script is to be attached to the cars themselves
 
@@ -20,8 +20,18 @@ public class TetherBossCar : MonoBehaviour {
 
     GameObject highway;
     BoxCollider2D box;
-    // Use this for initialization
-    void Start () {
+    Rigidbody2D rigidbody;
+
+    public List<ParticleSystem> moving_forward_particles = new List<ParticleSystem>();
+    public List<ParticleSystem> moving_backwards_particles = new List<ParticleSystem>();
+
+
+    void Awake ()
+    {
+        rigidbody = this.GetComponent<Rigidbody2D>();
+    }
+    void Start ()
+    {
         BonnyAndClydeHealth = GetComponentInParent<BossHealthScript>();
 
         //start by traveling left
@@ -43,20 +53,21 @@ public class TetherBossCar : MonoBehaviour {
         xRightOfScreen = maxScreenBounds.x;
         xLeftOfScreen = minScreenBounds.x;
     }
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+
+
+    void FixedUpdate ()
+    {
         if (!boosting && !stopped)
         {
-            GetComponent<Rigidbody2D>().velocity = travelDirection.normalized * speed;
+            rigidbody.velocity = travelDirection.normalized * speed;
         }
         else if (boosting && !stopped)
         {
-            GetComponent<Rigidbody2D>().velocity = travelDirection.normalized * 2* speed;
+            rigidbody.velocity = travelDirection.normalized * 2* speed;
         }
         else
         {
-            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            rigidbody.velocity = Vector2.zero;
         }
 
         if (transform.position.x <= xLeftOfScreen&&travelDirection.x<0)
@@ -82,12 +93,54 @@ public class TetherBossCar : MonoBehaviour {
         {
             Die();
         }
+
+        if (travelDirection.x > 0)
+        {
+            MovingForwardGraphics();
+        }
+        else if (travelDirection.x < 0)
+        {
+            MovingBackwardsGraphics();
+        }
     }
+
+
+    public void MovingForwardGraphics()
+    {
+        // Turn on forward thruster
+        foreach (ParticleSystem ps in moving_forward_particles)
+        {
+            if (!ps.isPlaying)
+                ps.Play();
+        }
+        foreach (ParticleSystem ps in moving_backwards_particles)
+        {
+            if (ps.isPlaying)
+                ps.Stop();
+        }
+    }
+    public void MovingBackwardsGraphics()
+    {
+        foreach (ParticleSystem ps in moving_forward_particles)
+        {
+            if (ps.isPlaying)
+                ps.Stop();
+        }
+        // Turn on braking
+        foreach (ParticleSystem ps in moving_backwards_particles)
+        {
+            if (!ps.isPlaying)
+                ps.Play();
+        }
+    }
+
+
 
     void Update()
     {
         tether_lightning_cooldown -= Time.deltaTime;
     }
+
 
     public void Die()
     {
@@ -99,6 +152,7 @@ public class TetherBossCar : MonoBehaviour {
 
         Destroy(gameObject);
     }
+
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -121,6 +175,7 @@ public class TetherBossCar : MonoBehaviour {
         }
     }
 
+
     void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.layer == 12 && BonnyAndClydeHealth.hurtByTether == true && BonnyAndClydeHealth.hit == false)
@@ -142,9 +197,9 @@ public class TetherBossCar : MonoBehaviour {
         }
     }
 
+
     public void HitByTetherGraphics(Collision2D collision)
     {
-        Debug.Log("graphics");
         SoundMixer.sound_manager.PlaySyncopatedLazer();
 
         if (tether_lightning_cooldown <= 0)

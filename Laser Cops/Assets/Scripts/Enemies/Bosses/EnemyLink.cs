@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -52,6 +52,13 @@ public class EnemyLink : MonoBehaviour
         {
             // Hurt the player
             collision.gameObject.GetComponent<PlayerController>().TakeHit(collisionDamage);
+
+            if (BonnieAndClydeBehaviour.player_lightning_cur_cooldown <= 0f)
+            {
+                // Spawn red lightning
+                TetherLightning.tether_lightning.BranchLightning(EnemyBossTetherScript.EnemyTether.GetRandomLink().transform.position, collision.transform.position);
+                BonnieAndClydeBehaviour.player_lightning_cur_cooldown = BonnieAndClydeBehaviour.player_lightning_cooldown;
+            }
         }
     }
 }

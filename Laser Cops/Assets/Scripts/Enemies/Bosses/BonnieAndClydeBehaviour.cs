@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -91,10 +91,15 @@ public class BonnieAndClydeBehaviour : MonoBehaviour {
             }
         }
     }
-	
-	// Update is called once per frame
-	void FixedUpdate () {
-        if(boosting)
+
+
+    public static float player_lightning_cur_cooldown = 0f;
+    public static float player_lightning_cooldown = 0.3f;
+    void FixedUpdate ()
+    {
+        player_lightning_cur_cooldown -= Time.deltaTime;
+
+        if (boosting)
         {
             if (boosterCounter < Time.time)
             {
