@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 11422486}
   - component: {fileID: 12045230}
   m_Layer: 17
-  m_Name: RayLaserTurret (2)
+  m_Name: Blue Ray Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ GameObject:
   - component: {fileID: 11425634}
   - component: {fileID: 12020994}
   m_Layer: 17
-  m_Name: RayLaserTurret (1)
+  m_Name: Pink Ray Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 11432086}
   - component: {fileID: 12036872}
   m_Layer: 17
-  m_Name: RayLaserTurret (3)
+  m_Name: Pink Ray Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 11462642}
   - component: {fileID: 12018726}
   m_Layer: 17
-  m_Name: RayLaserTurret (5)
+  m_Name: Pink Ray Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 11482318}
   - component: {fileID: 12001048}
   m_Layer: 17
-  m_Name: RayLaserTurret (4)
+  m_Name: Blue Ray Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 11469942}
   - component: {fileID: 12078746}
   m_Layer: 17
-  m_Name: RayLaserTurret
+  m_Name: Blue Ray Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -292,6 +292,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &11425634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -318,7 +319,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   silent: 0
-  bullet_colour: 3
+  bullet_colour: 1
   alternateBulletColour: 0
   randomPinkOrBlue: 0
   playerCloseDisable: 0
@@ -327,6 +328,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &11432086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -353,7 +355,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   silent: 0
-  bullet_colour: 3
+  bullet_colour: 1
   alternateBulletColour: 0
   randomPinkOrBlue: 0
   playerCloseDisable: 0
@@ -362,6 +364,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &11439360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -401,7 +404,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   silent: 0
-  bullet_colour: 2
+  bullet_colour: 1
   alternateBulletColour: 0
   randomPinkOrBlue: 0
   playerCloseDisable: 0
@@ -410,6 +413,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &11469942
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -445,6 +449,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &11472808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -458,6 +463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {x: 0, y: 0, z: 0}
   speed: 3
+  originalSpeed: 3
   dir: {x: 0, y: 0}
   damage: 0
   reflected_bullet: 0
@@ -488,7 +494,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   silent: 0
-  bullet_colour: 3
+  bullet_colour: 2
   alternateBulletColour: 0
   randomPinkOrBlue: 0
   playerCloseDisable: 0
@@ -497,6 +503,7 @@ MonoBehaviour:
   cyan_glow: {fileID: 0}
   pink_glow: {fileID: 0}
   red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!120 &12001048
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -510,7 +517,7 @@ LineRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3db74bdf1baac1a41a89178c10c5ab84, type: 2}
+  - {fileID: 2100000, guid: 578170812ebcf4f498dbb34c2a5e42af, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -555,10 +562,10 @@ LineRenderer:
     colorGradient:
       key0:
         serializedVersion: 2
-        rgba: 4292869888
+        rgba: 4294967040
       key1:
         serializedVersion: 2
-        rgba: 4293590784
+        rgba: 4294961664
       key2:
         serializedVersion: 2
         rgba: 0
@@ -614,7 +621,7 @@ LineRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3db74bdf1baac1a41a89178c10c5ab84, type: 2}
+  - {fileID: 2100000, guid: a405276e48f7cd940abd8ac5c4bf35e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -659,10 +666,10 @@ LineRenderer:
     colorGradient:
       key0:
         serializedVersion: 2
-        rgba: 4293067007
+        rgba: 4294443263
       key1:
         serializedVersion: 2
-        rgba: 4294902011
+        rgba: 4290969855
       key2:
         serializedVersion: 2
         rgba: 0
@@ -718,7 +725,7 @@ LineRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3db74bdf1baac1a41a89178c10c5ab84, type: 2}
+  - {fileID: 2100000, guid: a405276e48f7cd940abd8ac5c4bf35e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -763,10 +770,10 @@ LineRenderer:
     colorGradient:
       key0:
         serializedVersion: 2
-        rgba: 4294956288
+        rgba: 4294443263
       key1:
         serializedVersion: 2
-        rgba: 4294958848
+        rgba: 4290969855
       key2:
         serializedVersion: 2
         rgba: 0
@@ -822,7 +829,7 @@ LineRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3db74bdf1baac1a41a89178c10c5ab84, type: 2}
+  - {fileID: 2100000, guid: a405276e48f7cd940abd8ac5c4bf35e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -867,10 +874,10 @@ LineRenderer:
     colorGradient:
       key0:
         serializedVersion: 2
-        rgba: 4294956288
+        rgba: 4294443263
       key1:
         serializedVersion: 2
-        rgba: 4294958848
+        rgba: 4290969855
       key2:
         serializedVersion: 2
         rgba: 0
@@ -926,7 +933,7 @@ LineRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3db74bdf1baac1a41a89178c10c5ab84, type: 2}
+  - {fileID: 2100000, guid: 578170812ebcf4f498dbb34c2a5e42af, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -971,10 +978,10 @@ LineRenderer:
     colorGradient:
       key0:
         serializedVersion: 2
-        rgba: 4293067007
+        rgba: 4294967040
       key1:
         serializedVersion: 2
-        rgba: 4293067007
+        rgba: 4294961664
       key2:
         serializedVersion: 2
         rgba: 0
@@ -1030,7 +1037,7 @@ LineRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3db74bdf1baac1a41a89178c10c5ab84, type: 2}
+  - {fileID: 2100000, guid: 578170812ebcf4f498dbb34c2a5e42af, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1075,10 +1082,10 @@ LineRenderer:
     colorGradient:
       key0:
         serializedVersion: 2
-        rgba: 4293067007
+        rgba: 4294967040
       key1:
         serializedVersion: 2
-        rgba: 4293067007
+        rgba: 4294961664
       key2:
         serializedVersion: 2
         rgba: 0

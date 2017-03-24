@@ -796,7 +796,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   silent: 1
-  bullet_colour: 3
+  bullet_colour: 2
   alternateBulletColour: 0
   randomPinkOrBlue: 0
   playerCloseDisable: 1
@@ -845,7 +845,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   silent: 1
-  bullet_colour: 3
+  bullet_colour: 2
   alternateBulletColour: 0
   randomPinkOrBlue: 0
   playerCloseDisable: 1
@@ -883,7 +883,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   silent: 1
-  bullet_colour: 3
+  bullet_colour: 2
   alternateBulletColour: 0
   randomPinkOrBlue: 0
   playerCloseDisable: 1
@@ -949,7 +949,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   silent: 1
-  bullet_colour: 3
+  bullet_colour: 2
   alternateBulletColour: 0
   randomPinkOrBlue: 0
   playerCloseDisable: 1
@@ -1006,7 +1006,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   silent: 1
-  bullet_colour: 2
+  bullet_colour: 1
   alternateBulletColour: 0
   randomPinkOrBlue: 0
   playerCloseDisable: 1
@@ -1058,7 +1058,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   silent: 1
-  bullet_colour: 2
+  bullet_colour: 1
   alternateBulletColour: 0
   randomPinkOrBlue: 0
   playerCloseDisable: 1
@@ -1096,7 +1096,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   silent: 1
-  bullet_colour: 3
+  bullet_colour: 2
   alternateBulletColour: 0
   randomPinkOrBlue: 0
   playerCloseDisable: 1
@@ -1148,7 +1148,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   silent: 1
-  bullet_colour: 2
+  bullet_colour: 1
   alternateBulletColour: 0
   randomPinkOrBlue: 0
   playerCloseDisable: 1
@@ -1186,7 +1186,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   silent: 1
-  bullet_colour: 3
+  bullet_colour: 2
   alternateBulletColour: 0
   randomPinkOrBlue: 0
   playerCloseDisable: 1
@@ -1252,7 +1252,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   silent: 1
-  bullet_colour: 2
+  bullet_colour: 1
   alternateBulletColour: 0
   randomPinkOrBlue: 0
   playerCloseDisable: 1
@@ -1304,7 +1304,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   silent: 1
-  bullet_colour: 3
+  bullet_colour: 2
   alternateBulletColour: 0
   randomPinkOrBlue: 0
   playerCloseDisable: 1
@@ -1538,7 +1538,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   silent: 1
-  bullet_colour: 2
+  bullet_colour: 1
   alternateBulletColour: 0
   randomPinkOrBlue: 0
   playerCloseDisable: 1
@@ -1576,7 +1576,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   silent: 1
-  bullet_colour: 2
+  bullet_colour: 1
   alternateBulletColour: 0
   randomPinkOrBlue: 0
   playerCloseDisable: 1
@@ -1628,7 +1628,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   silent: 1
-  bullet_colour: 3
+  bullet_colour: 2
   alternateBulletColour: 0
   randomPinkOrBlue: 0
   playerCloseDisable: 1
@@ -1698,7 +1698,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   silent: 1
-  bullet_colour: 2
+  bullet_colour: 1
   alternateBulletColour: 0
   randomPinkOrBlue: 0
   playerCloseDisable: 1
@@ -1774,7 +1774,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   silent: 1
-  bullet_colour: 2
+  bullet_colour: 1
   alternateBulletColour: 0
   randomPinkOrBlue: 0
   playerCloseDisable: 1
@@ -1799,7 +1799,7 @@ LineRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3db74bdf1baac1a41a89178c10c5ab84, type: 2}
+  - {fileID: 2100000, guid: 578170812ebcf4f498dbb34c2a5e42af, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1903,7 +1903,7 @@ LineRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3db74bdf1baac1a41a89178c10c5ab84, type: 2}
+  - {fileID: 2100000, guid: 578170812ebcf4f498dbb34c2a5e42af, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2007,7 +2007,7 @@ LineRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3db74bdf1baac1a41a89178c10c5ab84, type: 2}
+  - {fileID: 2100000, guid: a405276e48f7cd940abd8ac5c4bf35e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2111,7 +2111,7 @@ LineRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3db74bdf1baac1a41a89178c10c5ab84, type: 2}
+  - {fileID: 2100000, guid: a405276e48f7cd940abd8ac5c4bf35e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2215,7 +2215,7 @@ LineRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3db74bdf1baac1a41a89178c10c5ab84, type: 2}
+  - {fileID: 2100000, guid: a405276e48f7cd940abd8ac5c4bf35e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2319,7 +2319,7 @@ LineRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3db74bdf1baac1a41a89178c10c5ab84, type: 2}
+  - {fileID: 2100000, guid: 578170812ebcf4f498dbb34c2a5e42af, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2423,7 +2423,7 @@ LineRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3db74bdf1baac1a41a89178c10c5ab84, type: 2}
+  - {fileID: 2100000, guid: 578170812ebcf4f498dbb34c2a5e42af, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2527,7 +2527,7 @@ LineRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3db74bdf1baac1a41a89178c10c5ab84, type: 2}
+  - {fileID: 2100000, guid: 578170812ebcf4f498dbb34c2a5e42af, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2631,7 +2631,7 @@ LineRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3db74bdf1baac1a41a89178c10c5ab84, type: 2}
+  - {fileID: 2100000, guid: a405276e48f7cd940abd8ac5c4bf35e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2735,7 +2735,7 @@ LineRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3db74bdf1baac1a41a89178c10c5ab84, type: 2}
+  - {fileID: 2100000, guid: a405276e48f7cd940abd8ac5c4bf35e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2839,7 +2839,7 @@ LineRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3db74bdf1baac1a41a89178c10c5ab84, type: 2}
+  - {fileID: 2100000, guid: a405276e48f7cd940abd8ac5c4bf35e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2943,7 +2943,7 @@ LineRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3db74bdf1baac1a41a89178c10c5ab84, type: 2}
+  - {fileID: 2100000, guid: 578170812ebcf4f498dbb34c2a5e42af, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3047,7 +3047,7 @@ LineRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3db74bdf1baac1a41a89178c10c5ab84, type: 2}
+  - {fileID: 2100000, guid: a405276e48f7cd940abd8ac5c4bf35e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3151,7 +3151,7 @@ LineRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3db74bdf1baac1a41a89178c10c5ab84, type: 2}
+  - {fileID: 2100000, guid: a405276e48f7cd940abd8ac5c4bf35e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3255,7 +3255,7 @@ LineRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3db74bdf1baac1a41a89178c10c5ab84, type: 2}
+  - {fileID: 2100000, guid: 578170812ebcf4f498dbb34c2a5e42af, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3359,7 +3359,7 @@ LineRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3db74bdf1baac1a41a89178c10c5ab84, type: 2}
+  - {fileID: 2100000, guid: 578170812ebcf4f498dbb34c2a5e42af, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

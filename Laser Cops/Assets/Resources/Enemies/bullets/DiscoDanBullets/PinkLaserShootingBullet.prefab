@@ -148,11 +148,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   silent: 0
-  bullet_colour: 2
+  bullet_colour: 1
   alternateBulletColour: 0
   randomPinkOrBlue: 0
   playerCloseDisable: 0
   disableDistance: 2
+  DelayBeforeFire: 0
+  cyan_glow: {fileID: 0}
+  pink_glow: {fileID: 0}
+  red_glow: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &114000012851754934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -180,7 +185,7 @@ LineRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3db74bdf1baac1a41a89178c10c5ab84, type: 2}
+  - {fileID: 2100000, guid: a405276e48f7cd940abd8ac5c4bf35e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
