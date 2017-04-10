@@ -72,12 +72,7 @@ public class BonnieAndClydeBehaviour : MonoBehaviour {
         players = GameState.game_state.PlayerObjects;
         int randInt = Random.Range(0, players.Length);
         playerToTrack = players[randInt].transform;
-
-
-        for(int i = 0; i < GameState.game_state.number_of_players; i++)
-        {
-            players[i].AddComponent<TetherBossBoostWatcher>();
-        }
+        
         
         if(players.Length >2)
         {

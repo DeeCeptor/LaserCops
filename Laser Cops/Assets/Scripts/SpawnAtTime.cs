@@ -17,6 +17,7 @@ public class SpawnAtTime : MonoBehaviour {
         if (spawnCounter < Time.time)
         {
             GameObject objectSpawned = (GameObject)Instantiate(objectToSpawn,transform.position,transform.rotation);
+
             objectSpawned.transform.SetParent(transform.parent);
             spawnCounter = float.PositiveInfinity;
         }
