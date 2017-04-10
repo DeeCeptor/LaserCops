@@ -351,7 +351,8 @@ public class Tether : MonoBehaviour
         }
         Debug.Log("Setting tether " + cur_tether_mode);
 
-        SoundMixer.sound_manager.PlayShortSpark();
+        if (tether_links_parent != null)
+            SoundMixer.sound_manager.PlayShortSpark();
     }
 
 

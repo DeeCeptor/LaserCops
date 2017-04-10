@@ -74,7 +74,6 @@ public class EndLevel : MonoBehaviour
         }
 
         float pixelRatio = 1 / originalRenderer.sprite.pixelsPerUnit;
-        Debug.Log(pixelRatio);
 
         Vector2[] pixelLocations = new Vector2[corpses[0].GetPixels32().Length];
         float width = corpses[0].width;
