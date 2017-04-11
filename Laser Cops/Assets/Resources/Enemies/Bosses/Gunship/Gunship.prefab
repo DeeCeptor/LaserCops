@@ -227,7 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerToTrack: {fileID: 0}
   players: []
-  shotDelay: 3.2
+  shotDelay: 4.6
   shotCounter: 0
   bullet: {fileID: 1000010209914436, guid: c07dccca30f5802438c724dc6c179982, type: 2}
   active: 0
@@ -246,7 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerToTrack: {fileID: 0}
   players: []
-  shotDelay: 2.7
+  shotDelay: 4.3
   shotCounter: 0
   bullet: {fileID: 1000010209914436, guid: c07dccca30f5802438c724dc6c179982, type: 2}
   active: 0
@@ -851,7 +851,6 @@ GameObject:
   - component: {fileID: 4000013542565076}
   - component: {fileID: 212000012167161140}
   - component: {fileID: 114000010107473102}
-  - component: {fileID: 82000012926561062}
   m_Layer: 0
   m_Name: LaserTurret
   m_TagString: Untagged
@@ -2187,86 +2186,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!82 &82000012926561062
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012289838610}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d6aabc9948814d84bbd8889a6782250b, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.435
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!82 &82000013645263792
 AudioSource:
   m_ObjectHideFlags: 1
@@ -2520,7 +2439,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerToTrack: {fileID: 0}
   players: []
-  shotDelay: 2.5
+  shotDelay: 3.5
   shotCounter: 0
   bullet: {fileID: 1000010209914436, guid: c07dccca30f5802438c724dc6c179982, type: 2}
   active: 0
@@ -2539,7 +2458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerToTrack: {fileID: 0}
   players: []
-  shotDelay: 2.4
+  shotDelay: 4
   shotCounter: 0
   bullet: {fileID: 1000010209914436, guid: c07dccca30f5802438c724dc6c179982, type: 2}
   active: 0
@@ -2672,7 +2591,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerToTrack: {fileID: 0}
   players: []
-  shotDelay: 2.5
+  shotDelay: 4
   shotCounter: 0
   bullet: {fileID: 1000010209914436, guid: c07dccca30f5802438c724dc6c179982, type: 2}
   active: 0
@@ -2766,7 +2685,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerToTrack: {fileID: 0}
   players: []
-  shotDelay: 2.4
+  shotDelay: 3.4
   shotCounter: 0
   bullet: {fileID: 1000010209914436, guid: c07dccca30f5802438c724dc6c179982, type: 2}
   active: 0
@@ -2998,7 +2917,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerToTrack: {fileID: 0}
   players: []
-  shotDelay: 2.8
+  shotDelay: 4.2
   shotCounter: 0
   bullet: {fileID: 1000010209914436, guid: c07dccca30f5802438c724dc6c179982, type: 2}
   active: 0
@@ -3107,7 +3026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624bac116c5c2ce478b1680f0372b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelay: 0.7
+  shotDelay: 3
   shotCounter: 0.5
   bullet: {fileID: 120478, guid: b0de785363611694fb2b365840c214d2, type: 2}
   randomly_choose_coloured_bullet: 0
@@ -3128,7 +3047,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerToTrack: {fileID: 0}
   players: []
-  shotDelay: 2.5
+  shotDelay: 3.2
   shotCounter: 0
   bullet: {fileID: 1000010209914436, guid: c07dccca30f5802438c724dc6c179982, type: 2}
   active: 0
@@ -3337,7 +3256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerToTrack: {fileID: 0}
   players: []
-  shotDelay: 3
+  shotDelay: 3.9
   shotCounter: 0
   bullet: {fileID: 1000010209914436, guid: c07dccca30f5802438c724dc6c179982, type: 2}
   active: 0
@@ -3380,7 +3299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerToTrack: {fileID: 0}
   players: []
-  shotDelay: 2.9
+  shotDelay: 4.5
   shotCounter: 0
   bullet: {fileID: 183598, guid: 3789ab3ed261dc745a5496d669d521fe, type: 2}
   active: 0
@@ -3483,7 +3402,7 @@ MonoBehaviour:
   shotCounter: 0
   bullet: {fileID: 113810, guid: b298aaf484eb7bf4e91b81ffe02aa790, type: 2}
   active: 0
-  bulletColour: 3
+  bulletColour: 2
   CarColour: 0
   changeColourCounter: 0
   changeColourTimer: 5
