@@ -163,6 +163,14 @@ public class GameState : MonoBehaviour
                     break;
             }
         }
+
+        // Zoom out highwaygrid if there are more than 2 players
+        if (number_of_players > 2)
+        {
+            Vector3 scale = VectorGrid.grid.transform.localScale;
+            scale.x *= 1.1f;
+            VectorGrid.grid.transform.localScale = scale;
+        }
     }
 
     public GameObject Get_Player(int number)

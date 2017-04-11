@@ -72,6 +72,7 @@ public class SoundMixer : MonoBehaviour
             FadeTextInAndOut.music_info.gameObject.SetActive(true);
         }
 
+        SoundManager.StopAllLoopingSounds();
         music.PlayLoopingMusicManaged(music_volume_modifier * music_volume_scale, 1.0f, starting_music_persists);
     }
     public void StopMusic()
