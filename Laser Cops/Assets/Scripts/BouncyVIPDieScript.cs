@@ -3,12 +3,11 @@ using System.Collections;
 
 public class BouncyVIPDieScript : MonoBehaviour
 {
-
-
     void Start()
     {
 
     }
+
 
     void OnTriggerEnter2D(Collider2D collider)
     {

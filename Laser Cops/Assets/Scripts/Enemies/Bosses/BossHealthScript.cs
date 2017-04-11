@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class BossHealthScript : MonoBehaviour {
+public class BossHealthScript : MonoBehaviour
+{
     public float health = 20f;
     public ConversationManager formChangeConversation;
     public ConversationManager death_conversation;

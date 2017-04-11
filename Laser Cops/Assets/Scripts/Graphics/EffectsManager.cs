@@ -28,7 +28,7 @@ public class EffectsManager : MonoBehaviour
     void Start ()
     {
         //do the fireballs so that it won't lag
-        Fireworks(transform.position,"red");
+        //Fireworks(transform.position,"red");
         FireballNoGravity(transform.position);
         BurstLargeFireball(transform.position);
         ViolentExplosion(transform.position);
@@ -149,6 +149,11 @@ public class EffectsManager : MonoBehaviour
     public void BulletReflected(Vector2 position)
     {
         Destroy((GameObject)GameObject.Instantiate(Resources.Load("Graphics/Bullet Reflected") as GameObject,
+            position, Quaternion.identity), 3.0f);
+    }
+    public void PlayerBulletReflected(Vector2 position)
+    {
+        Destroy((GameObject)GameObject.Instantiate(Resources.Load("Graphics/Player Bullet Reflected") as GameObject,
             position, Quaternion.identity), 3.0f);
     }
 

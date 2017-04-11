@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,9 +21,9 @@ public class guntherMachineGunTurret : TrackShotScrolling {
 
         changeColourCounter = Time.time + changeColourTimer;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+
+    void Update () {
 		if(changeColourCounter < Time.time)
         {
             if(bulletColour == _Colour.Blue)

@@ -11,14 +11,12 @@ public class Move : MonoBehaviour
 
     void Awake ()
     {
-        Debug.Log("awake");
         starting_pos = this.transform.position;
 	}
 
 
     void OnEnable()
     {
-        Debug.Log("OnEnable");
         this.transform.position = starting_pos;
     }
 

@@ -37,7 +37,7 @@ public class basicScrollingEnemyScript : MonoBehaviour
     public direction travelDirection = direction.left;
 
     protected float tether_lightning_cooldown;
-    float tether_lightning_delay = 0.2f;
+    float tether_lightning_delay = 0.4f;
 
     public bool navigate_around_enemies = true;
 

@@ -8,9 +8,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 424342}
+  - component: {fileID: 11416896}
   - component: {fileID: 21277502}
   - component: {fileID: 5058916}
-  - component: {fileID: 11416896}
   - component: {fileID: 6176040}
   - component: {fileID: 9626160}
   - component: {fileID: 19848356}
@@ -190,7 +190,7 @@ MonoBehaviour:
   dir: {x: 0, y: 0}
   damage: 10
   reflected_bullet: 0
-  bullet_colour: 3
+  bullet_colour: 2
 --- !u!198 &19848356
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -199,7 +199,7 @@ ParticleSystem:
   m_GameObject: {fileID: 113810}
   serializedVersion: 5
   lengthInSec: 5
-  simulationSpeed: 1
+  speed: 1
   looping: 1
   prewarm: 0
   playOnAwake: 1

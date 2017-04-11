@@ -32,14 +32,18 @@ public class ExpandToOriginalScale : MonoBehaviour
             original_y = this.transform.localScale.y;
             this.transform.localScale = new Vector3(this.transform.localScale.x, 0, this.transform.localScale.z);
             currently_expanding = true;
-            ResetColor();
+
+            if (fade_sprite_after)
+                ResetColor();
         }
         if (x_scale)
         {
             original_x = this.transform.localScale.x;
             this.transform.localScale = new Vector3(0, this.transform.localScale.y, this.transform.localScale.z);
             currently_expanding = true;
-            ResetColor();
+
+            if (fade_sprite_after)
+                ResetColor();
         }
     }
     void ResetColor()

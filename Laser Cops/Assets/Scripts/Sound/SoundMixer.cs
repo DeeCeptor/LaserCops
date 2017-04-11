@@ -80,6 +80,24 @@ public class SoundMixer : MonoBehaviour
     }
 
 
+    public void VictoryFanfare()
+    {
+        GameObject obj = (GameObject) GameObject.Instantiate(Resources.Load("Success sound") as GameObject);
+        SoundManager.StopAllLoopingSounds();
+        obj.GetComponent<AudioSource>().PlayOneShotMusicManaged(obj.GetComponent<AudioSource>().clip);
+    }
+    public void DefeatFanfare()
+    {
+        GameObject obj = (GameObject)GameObject.Instantiate(Resources.Load("Defeat sound") as GameObject);
+        SoundManager.StopAllLoopingSounds();
+        obj.GetComponent<AudioSource>().PlayOneShotMusicManaged(obj.GetComponent<AudioSource>().clip);
+    }
+    public void StopAllSound()
+    {
+        SoundManager.StopAll();
+    }
+
+
     // SOUND EFFECTS
     public void PlayLazerShot()
     {
@@ -135,7 +153,7 @@ public class SoundMixer : MonoBehaviour
     }
     public void PlayObstacleWarning()
     {
-        PlaySound(Sounds[12], 0.5f * sound_effect_scale);
+        PlaySound(Sounds[12], 0.4f * sound_effect_scale);
     }
     public void PlayGettingHitExplosion()
     {

@@ -428,9 +428,9 @@ public class GameState : MonoBehaviour
 
         Debug.Log("You lose!");
         game_over = true;
-        //ChangeTimescale(0.5f);
 
-        //LevelResult lr = SpawnLevelResult();
+        SoundMixer.sound_manager.DefeatFanfare();
+
         string text;
         if (game_mode == GameMode.Competitive)
         {
@@ -465,6 +465,8 @@ public class GameState : MonoBehaviour
 
         Debug.Log(text + " on " + this.game_mode + " " + this.current_difficulty);
         game_over = true;
+
+        SoundMixer.sound_manager.VictoryFanfare();
 
         // Slow down time
         //ChangeTimescale(0.5f);
@@ -627,6 +629,7 @@ public class GameState : MonoBehaviour
 
         ChangeTimescale(1f);
         AudioManager.audio_manager.Effects_Volume_Changed_No_Saving(prev_effects_volume);
+        SoundMixer.sound_manager.StopAllSound();
         UnityEngine.SceneManagement.SceneManager.LoadScene(scene_to_load);
 
         yield return null;
