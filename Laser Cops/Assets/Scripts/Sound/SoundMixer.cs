@@ -73,7 +73,7 @@ public class SoundMixer : MonoBehaviour
         }
 
         SoundManager.StopAllLoopingSounds();
-        music.PlayLoopingMusicManaged(music_volume_modifier * music_volume_scale, 1.0f, starting_music_persists);
+        music.PlayLoopingMusicManaged(music_volume_modifier * music_volume_scale, 1.0f, false);
     }
     public void StopMusic()
     {

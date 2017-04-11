@@ -30,7 +30,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Finished/Zone 1/Ocean Waves.unity
   - enabled: 1
-    path: Assets/Levels/Finished/Zone 3/TakeItSlow.unity
+    path: Assets/Levels/Finished/Zone 3/Take It Slow.unity
+  - enabled: 1
+    path: Assets/Levels/Finished/Zone 3/Gunship Gunther.unity
   - enabled: 1
     path: Assets/Levels/Finished/Zone 1/DiscoDan.unity
   - enabled: 1
@@ -41,8 +43,6 @@ EditorBuildSettings:
     path: Assets/Levels/Finished/Zone 3/Bullet Purgatory.unity
   - enabled: 1
     path: Assets/Levels/Finished/Zone 2/Bullet Limbo.unity
-  - enabled: 1
-    path: Assets/Levels/Finished/Zone 3/GunshipGunther.unity
   - enabled: 1
     path: Assets/Levels/Finished/Zone 4/Bullet Hell.unity
   - enabled: 1
