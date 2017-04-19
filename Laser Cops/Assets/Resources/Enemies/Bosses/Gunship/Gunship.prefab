@@ -177,7 +177,7 @@ MonoBehaviour:
   stages: 6
   overallHealth: 3000
   bossName: Gunship Gunther
-  pointValue: 2000
+  pointValue: 3000
   TimeBonus: 4000
   ChangeFormEffect: {fileID: 0}
   explodeOnDeath: 1
