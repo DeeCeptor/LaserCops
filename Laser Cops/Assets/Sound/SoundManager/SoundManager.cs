@@ -1,4 +1,4 @@
-﻿/*
+/*
 Simple Sound Manager (c) 2016 Digital Ruby, LLC
 http://www.digitalruby.com
 
@@ -347,7 +347,7 @@ namespace DigitalRuby.SoundManagerNamespace
             }
             for (int i = musicOneShot.Count - 1; i >= 0; i--)
             {
-                if (!musicOneShot[i].isPlaying)
+                if (musicOneShot[i] == null || !musicOneShot[i].isPlaying)  // Modified this line to fix error
                 {
                     musicOneShot.RemoveAt(i);
                 }
