@@ -1,14 +1,17 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class LaserFireScript : ForwardShotScript {
+public class LaserFireScript : ForwardShotScript
+{
     public float laserLength = 60f;
-	// Use this for initialization
-	void Start () {
+
+
+    void Start ()
+    {
 	
 	}
 
-    // Update is called once per frame
+
     void FixedUpdate()
     {
         if (!only_shoot_on_command)

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +9,7 @@ public class damagePlayerWhenEnteringScreen : MonoBehaviour {
 		
 	}
 
-    void OnTriggerEnter2D(Collision collider)
+    void OnTriggerEnter2D(Collider2D collider)
     {
 
     }
