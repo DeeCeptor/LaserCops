@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using System.Collections;
 
 public class DrawLines : MonoBehaviour
 {
@@ -11,12 +12,23 @@ public class DrawLines : MonoBehaviour
 
     void Start ()
     {
+        StartCoroutine(Setup());
+    }
+
+    IEnumerator Setup()
+    {
+        yield return 5;
+
         LineRenderer line = this.GetComponent<LineRenderer>();
         //game_mode = GameObject.FindGameObjectWithTag("GameMode").GetComponent<Mode>();
 
         foreach (Transform child in transform)
         {
             levels.Add(child.gameObject);
+
+            PlayableLevelNode n = child.GetComponent<PlayableLevelNode>();
+            if (n.required_to_beat && !n.beat_level)
+                break;
         }
         if (Check_If_Active != null && Check_If_Active.activeSelf && Add_If_Active != null)
             levels.Add(Add_If_Active);
