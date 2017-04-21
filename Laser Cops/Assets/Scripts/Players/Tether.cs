@@ -40,7 +40,7 @@ public class Tether : MonoBehaviour
 
     private Particle[] particles;
     //List<GameObject> links;
-
+    public ParticleRenderer particle_renderer;
     public ParticleEmitter particle_emitter;
 
 
@@ -64,11 +64,13 @@ public class Tether : MonoBehaviour
     //public List<PlatformerCharacter2D> players_on_rope = new List<PlatformerCharacter2D>();
 
     public Material tether_material;
+    public Material green_tether_material;
 
 
     void Awake ()
     {
         tether = this;
+        particle_renderer = this.GetComponentInChildren<ParticleRenderer>();
         //line = tether_links_parent.GetComponent<LineRenderer>();
     }
 	void Start ()
@@ -317,8 +319,9 @@ public class Tether : MonoBehaviour
             primary_colour = primary_destroy_colour;
             secondary_colour = secondary_destroy_colour;
             SetTetherLayer("DestructiveTether");
-            tether_material.SetColor("Glow_Color", Color.red);
-            tether_material.SetColor("Glow_Texture_Color", Color.red);
+            //tether_material.SetColor("GlowColor", primary_destroy_colour);
+            //tether_material.SetColor("GlowTextureColor", primary_destroy_colour);
+            particle_renderer.material = tether_material;
 
             // Spawn sparks to show the tether has changed modes
             for (int x = 0; x < tether_links.Count; x += 2)
@@ -335,9 +338,9 @@ public class Tether : MonoBehaviour
             primary_colour = primary_capture_colour;
             secondary_colour = secondary_capture_colour;
             SetTetherLayer("CaptureTether");
-            tether_material.SetColor("GlowColor", Color.green);
-            tether_material.SetColor("GlowTextureColor", Color.green);
-
+            //tether_material.SetColor("GlowColor", primary_capture_colour);
+            //tether_material.SetColor("GlowTextureColor", primary_capture_colour);
+            particle_renderer.material = green_tether_material;
 
             // Spawn sparks to show the tether has changed modes
             for (int x = 0; x < tether_links.Count; x += 2)

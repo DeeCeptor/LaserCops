@@ -55,7 +55,7 @@ public class GameState : MonoBehaviour
     float turn_off_tether_touching_obstacle_time = 0.3f;
 
     public bool debug_invulnerability = false;
-    bool debugging = true;
+    bool debugging = false;
     bool show_debugging_text = false;
     bool increased_speed = false;
     float normal_physics_delta_time;
@@ -89,6 +89,9 @@ public class GameState : MonoBehaviour
     {
         game_state = this;
         game_over = false;
+
+        if (Application.isEditor)
+            debugging = true;
 
         SetGameMode();
         SetSettings();

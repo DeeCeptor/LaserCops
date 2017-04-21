@@ -5,8 +5,8 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Menus/SplashScreen.unity
+  - enabled: 1
+    path: Assets/FM Splash Screen/SplashScreen.unity
   - enabled: 1
     path: Assets/Menus/MainMenu.unity
   - enabled: 1
@@ -25,8 +25,6 @@ EditorBuildSettings:
     path: Assets/Levels/Finished/Zone 4/Bonnie & Clyde.unity
   - enabled: 1
     path: Assets/Levels/Finished/Zone 4/Light Show.unity
-  - enabled: 0
-    path: Assets/Levels/Finished/Zone 1/Think Fast.unity
   - enabled: 1
     path: Assets/Levels/Finished/Zone 1/Ocean Waves.unity
   - enabled: 1
@@ -65,8 +63,6 @@ EditorBuildSettings:
     path: Assets/Levels/Finished/Zone 3/BounceMrPresident.unity
   - enabled: 1
     path: Assets/Levels/Finished/Zone 2/Time to Split.unity
-  - enabled: 0
-    path: Assets/Levels/Finished/Zone 4/Good 'Ole Chase.unity
   - enabled: 1
     path: Assets/Levels/Finished/Zone 2/Spy Net.unity
   - enabled: 1
