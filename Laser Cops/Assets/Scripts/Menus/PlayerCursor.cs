@@ -7,6 +7,7 @@ public class PlayerCursor : MonoBehaviour
     public LevelNode starting_node;
     public LevelNode hovering_over_level;
     public LevelNode destination_node;
+    public GameObject options;
 
     public static PlayerCursor cursor;
 
@@ -64,6 +65,9 @@ public class PlayerCursor : MonoBehaviour
 
 	void Update () 
 	{
+        if (options.activeSelf)
+            return;
+
         // Check if we're close enough to the destination
         if (Vector3.Distance(this.transform.position, destination_node.transform.position) < 0.1)// this.transform.position == destination_node.transform.position)// && !LevelManager.level_manager.level_settings.activeSelf)
         {
@@ -146,6 +150,9 @@ public class PlayerCursor : MonoBehaviour
             else
             {
                 destination_node.HoverOverLevel();
+
+                if (options.activeSelf)
+                    return;
 
                 if (Input.GetButtonDown("Submit"))
                 {

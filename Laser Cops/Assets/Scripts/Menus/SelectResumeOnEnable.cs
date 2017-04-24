@@ -21,9 +21,9 @@ public class SelectResumeOnEnable : MonoBehaviour
 
     void Update()
     {
-        if (EventSystem.current.currentSelectedGameObject == null)
+        if (EventSystem.current.currentSelectedGameObject == null || !EventSystem.current.currentSelectedGameObject.activeInHierarchy)
         {
-            Debug.Log("Reselecting first input");
+            Debug.Log("Reselecting first input", this.gameObject);
             EventSystem.current.SetSelectedGameObject(this.gameObject);
         }
     }
