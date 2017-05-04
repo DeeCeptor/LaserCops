@@ -186,8 +186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {x: 0, y: 0, z: 0}
-  speed: 2
-  originalSpeed: 3
+  speed: 3
+  originalSpeed: 4
   dir: {x: 0, y: 0}
   damage: 10
   reflected_bullet: 0
@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6753f33a9ec346e499f6e2240d3749d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsTillDeath: 8
+  secondsTillDeath: 10
   fade: 1
   fading: 0
   fadeTime: 2
