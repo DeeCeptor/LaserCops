@@ -31,7 +31,7 @@ public class EnemyDying : MonoBehaviour
         // Add force in that direction
         physics.AddForce(new Vector2(Random.Range(force_min, force_max), direction * Random.Range(0, force_max)));
 
-        this.gameObject.AddComponent<PolygonCollider2D>();
+        //this.gameObject.AddComponent<PolygonCollider2D>();
     }
 
 

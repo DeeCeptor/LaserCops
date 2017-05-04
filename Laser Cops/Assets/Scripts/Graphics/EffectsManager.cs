@@ -220,13 +220,15 @@ public class EffectsManager : MonoBehaviour
         Texture2D[] corpses = new Texture2D[2];
         Texture2D tex;
         GameObject[] corpse_objects = new GameObject[2];
-        
+
+        Vector3 objPosition = obj.transform.position;
+
         SpriteRenderer originalRenderer = obj.GetComponent<SpriteRenderer>();
 
         //instantiate the new sprites for cutting
         for (int i = 0; i < 2; i++)
         {
-            GameObject corpseSpawned = (GameObject)Instantiate(Resources.Load("enemies/EmptyCorpse"), obj.transform.position, obj.transform.rotation);
+            GameObject corpseSpawned = (GameObject)Instantiate(Resources.Load("enemies/EmptyCorpse"), objPosition, obj.transform.rotation);
             corpse_objects[i] = corpseSpawned;
 
             corpseSpawned.transform.localScale = obj.transform.localScale;
@@ -245,8 +247,8 @@ public class EffectsManager : MonoBehaviour
 
         //get a random point along a circles edge from the transforms position then get an opposite point 
         Vector2 rand = Random.insideUnitCircle;
-        Vector2 point1 = transform.position + (Vector3)rand;
-        Vector2 point2 = transform.position - (Vector3)rand;
+        Vector2 point1 = objPosition + (Vector3)rand;
+        Vector2 point2 = objPosition - (Vector3)rand;
 
         Vector2[] pixelLocations = new Vector2[corpses[0].GetPixels32().Length];
         float width = corpses[0].width;
@@ -268,7 +270,7 @@ public class EffectsManager : MonoBehaviour
         //set worldspace locations for the pixels
         for (int i = 0; i < pixelLocations.Length; i++)
         {
-            pixelLocations[i] = new Vector2((transform.position.x - width / 2f) + (1f * (i % (int)width)) + xToVary, (transform.position.y - width / 2f) + (1f * (i / (int)width)) + yToVary);
+            pixelLocations[i] = new Vector2((objPosition.x - width / 2f) + (1f * (i % (int)width)) + xToVary, (objPosition.y - width / 2f) + (1f * (i / (int)width)) + yToVary);
             //scripts underneath are to make it jagged
             if (yUp)
             {
@@ -334,19 +336,42 @@ public class EffectsManager : MonoBehaviour
             vertices[i] = corpseSprite.texture.GetPixels32();
         }
 
+        Color32 clear = Color.clear;
+
+        //determines whether the first or second corpse sprite will have it's pixel set to clear
+        bool first = false;
+
+        //change this number to change how many pixels use the same evaluation for which point they're closer to
+        int iterationsPerEvaluation = 10;
+        int counter = 0;
+
         for (int i = 0; i < pixelLocations.Length; i++)
         {
+            if(counter >= iterationsPerEvaluation)
+            {
+                counter = 0;
+                if ((pixelLocations[i] - point1).magnitude < (pixelLocations[i] - point2).magnitude)
+                {
+                    first = true;
+                }
+                else
+                {
+                    first = false;
+                }
+            }
             //see which side the point will be on
-            if ((pixelLocations[i] - point1).magnitude < (pixelLocations[i] - point2).magnitude)
+            if (first)
             {
                 //set pixel to clear for the side it's not on
-                vertices[1][i] = Color.clear;
+                vertices[1][i] = clear;
 
             }
             else
             {
-                vertices[0][i] = Color.clear;
+                vertices[0][i] = clear;
             }
+
+            counter = counter + 1;
         }
 
         for (int i = 0; i < 2; i++)
