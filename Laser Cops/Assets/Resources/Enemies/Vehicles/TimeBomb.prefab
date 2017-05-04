@@ -16,15 +16,15 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000014176375674}
-  - 212: {fileID: 212000014255669232}
-  - 114: {fileID: 114000013048496130}
-  - 114: {fileID: 114000011707221052}
-  - 50: {fileID: 50000014185562798}
-  - 58: {fileID: 58000013622085428}
-  - 114: {fileID: 114000013143888672}
+  - component: {fileID: 4000014176375674}
+  - component: {fileID: 212000014255669232}
+  - component: {fileID: 114000013048496130}
+  - component: {fileID: 114000011707221052}
+  - component: {fileID: 50000014185562798}
+  - component: {fileID: 58000013622085428}
+  - component: {fileID: 114000013143888672}
   m_Layer: 8
   m_Name: TimeBomb
   m_TagString: Enemy
@@ -37,11 +37,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000013959368914}
-  - 23: {fileID: 23000011903954244}
-  - 102: {fileID: 102000013234725876}
+  - component: {fileID: 4000013959368914}
+  - component: {fileID: 23000011903954244}
+  - component: {fileID: 102000013234725876}
   m_Layer: 8
   m_Name: New Text
   m_TagString: Untagged
@@ -58,10 +58,10 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -2.44}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000014176375674}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4000014176375674
 Transform:
   m_ObjectHideFlags: 1
@@ -71,11 +71,11 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 109, y: -1, z: -0.03125}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000013959368914}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23000011903954244
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -90,7 +90,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: cd83228738a14c64aa0decdd916ee718, type: 3}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -98,7 +100,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -107,17 +109,20 @@ MeshRenderer:
   m_SortingOrder: 0
 --- !u!50 &50000014185562798
 Rigidbody2D:
-  serializedVersion: 2
+  serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010793393602}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 1
   m_AngularDrag: 1
   m_GravityScale: 0
-  m_IsKinematic: 0
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -168,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f414e7b0af26740a979f39feeb5b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeTillDetonation: 10
+  TimeTillDetonation: 6
   DetonationCounter: 0
   countdownTimer: {fileID: 102000013234725876}
   active: 0
@@ -228,7 +233,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -236,7 +243,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 1
+  m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89

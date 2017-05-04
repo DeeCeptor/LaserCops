@@ -28,6 +28,8 @@ public class PlayableLevelNode : LevelNode
     [HideInInspector]
     public string one_hit_kill_diff;
 
+    public bool beat_any_mode_on_hard = false;
+
     public GameObject set_this_level_as_previous;
 
     public GameObject beaten_grouping;
@@ -65,6 +67,9 @@ public class PlayableLevelNode : LevelNode
             obj.transform.SetParent(beaten_grouping.transform);
             obj.transform.localScale = Vector3.one;
             coop_diff = difficulties[beat_diffi];
+
+            if (beat_diffi <= 0)
+                beat_any_mode_on_hard = true;
         }
         if (competitive && beat_level)
         {
@@ -83,6 +88,9 @@ public class PlayableLevelNode : LevelNode
             obj.transform.SetParent(beaten_grouping.transform);
             obj.transform.localScale = Vector3.one;
             competitive_diff = difficulties[beat_diffi];
+
+            if (beat_diffi <= 0)
+                beat_any_mode_on_hard = true;
         }
         if (chained && beat_level)
         {
@@ -101,6 +109,9 @@ public class PlayableLevelNode : LevelNode
             obj.transform.SetParent(beaten_grouping.transform);
             obj.transform.localScale = Vector3.one;
             chained_diff = difficulties[beat_diffi];
+
+            if (beat_diffi <= 0)
+                beat_any_mode_on_hard = true;
         }
         if (no_tether && beat_level)
         {
@@ -119,6 +130,9 @@ public class PlayableLevelNode : LevelNode
             obj.transform.SetParent(beaten_grouping.transform);
             obj.transform.localScale = Vector3.one;
             no_tether_diff = difficulties[beat_diffi];
+
+            if (beat_diffi <= 0)
+                beat_any_mode_on_hard = true;
         }
         if (tether_on && beat_level)
         {
@@ -137,6 +151,9 @@ public class PlayableLevelNode : LevelNode
             obj.transform.SetParent(beaten_grouping.transform);
             obj.transform.localScale = Vector3.one;
             tether_on_diff = difficulties[beat_diffi];
+
+            if (beat_diffi <= 0)
+                beat_any_mode_on_hard = true;
         }
         if (one_hit_kill && beat_level)
         {
@@ -155,6 +172,9 @@ public class PlayableLevelNode : LevelNode
             obj.transform.SetParent(beaten_grouping.transform);
             obj.transform.localScale = Vector3.one;
             one_hit_kill_diff = difficulties[beat_diffi];
+
+            if (beat_diffi <= 0)
+                beat_any_mode_on_hard = true;
         }
     }
 

@@ -4,6 +4,8 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using MKGlowSystem;
+using System;
+using Steamworks;
 
 public class GameState : MonoBehaviour
 {
@@ -479,6 +481,9 @@ public class GameState : MonoBehaviour
 
         SoundMixer.sound_manager.VictoryFanfare();
 
+        // Check for achievements
+        VictoryCheckAchievements();
+
         // Slow down time
         //ChangeTimescale(0.5f);
 
@@ -572,6 +577,78 @@ public class GameState : MonoBehaviour
         }
 
         ChangeScene(delay_between_level_switching, level_to_load_on_victory);
+    }
+    public void VictoryCheckAchievements()
+    {
+        // Check the game mode
+        switch (game_mode)
+        {
+            case GameMode.Competitive:
+                GetAchievement("Sweet Victory");
+                break;
+            case GameMode.Chained:
+                GetAchievement("Ball & Chain");
+
+                if (current_difficulty == Difficulty.Hard)
+                    GetAchievement("Impossible");
+                break;
+            case GameMode.OneHitKill:
+                GetAchievement("Master");
+                break;
+        }
+
+        if (current_difficulty == Difficulty.Hard)
+            GetAchievement("Likes a Challenge");
+
+        if (number_of_players >= 4)
+            GetAchievement("More the Merrier");
+
+        // Check for specific levels
+        switch (current_level_name)
+        {
+            case "Easing into It":
+                GetAchievement("Easing into It");
+                break;
+            case "Disco Dan":
+                GetAchievement("Disco Dan");
+                break;
+            case "Spynet":
+                GetAchievement("Spy Net");
+                break;
+            case "Gunship Gunther":
+                GetAchievement("Gunship Gunther");
+                break;
+            case "Bonnie & Clyde":
+                GetAchievement("Bonnie & Clyde");
+                GetAchievement("Earned Your Badge");
+                break;
+        }
+    }
+    public void GetAchievement(string name)
+    {
+        if (SteamManager.Initialized)
+        {
+            try
+            {
+                bool successful = SteamUserStats.SetAchievement(name);
+                if (successful)
+                    Debug.Log("Got achievement: " + name);
+                else
+                    Debug.LogError("Did not get achievement: " + name);
+
+                successful = SteamUserStats.StoreStats();
+                if (successful)
+                    Debug.Log("Stored stats after achievement: " + name);
+                else
+                    Debug.LogError("Did not store stats achievement: " + name);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e.Message, this);
+            }
+        }
+        else
+            Debug.Log("SteamManager not initialized or achievement_name is empty");
     }
 
 
