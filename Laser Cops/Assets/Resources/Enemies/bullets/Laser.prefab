@@ -190,7 +190,7 @@ MonoBehaviour:
   speed: 0
   originalSpeed: 3
   dir: {x: 0, y: 0}
-  damage: 0.6
+  damage: 0.4
   reflected_bullet: 0
   bullet_colour: 0
   sparkCooldown: 1
