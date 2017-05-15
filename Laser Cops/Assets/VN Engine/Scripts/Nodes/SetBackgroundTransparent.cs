@@ -102,7 +102,6 @@ public class SetBackgroundTransparent : Node
 
 		img.sprite = sprite;
 		img.color = new Color(img.color.r, img.color.g, img.color.b, 0);
-        Debug.Log("Fading in");
 		float value = 0;
 		while (img.color.a < 1)	// Don't stop until it's completely opaque
 		{

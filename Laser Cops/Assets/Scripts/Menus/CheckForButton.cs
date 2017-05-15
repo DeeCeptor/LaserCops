@@ -10,6 +10,7 @@ public class CheckForButton : MonoBehaviour
     public bool check_start_button = true;
     public bool check_A_button = true;
     public bool check_B_button = false;
+    public bool destroy_after_press = false;
 
     public Button.ButtonClickedEvent Actions;
 
@@ -22,6 +23,9 @@ public class CheckForButton : MonoBehaviour
             || (check_A_button && InputManager.ActiveDevice.Action2.WasPressed))
         {
             Actions.Invoke();
+
+            if (destroy_after_press)
+                Destroy(this.gameObject);
         }
     }
 }

@@ -23,6 +23,9 @@ public class PlayerJoin : MonoBehaviour
     public BossHealthBarAnimation connect_more_controllers_circle;
     public GameObject connect_more_controllers;
 
+    public AudioSource Select;
+    public AudioSource Press;
+
 
     void Awake ()
     {
@@ -71,20 +74,25 @@ public class PlayerJoin : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 number_of_players = 2;
+
+                Select.Play();
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
                 number_of_players = 3;
+                Select.Play();
             }
             else if (Input.GetKeyDown(KeyCode.Alpha4))
             {
                 number_of_players = 4;
+                Select.Play();
             }
             else if (InputManager.ActiveDevice.RightBumper.WasPressed || InputManager.ActiveDevice.LeftBumper.WasPressed)
             {
                 number_of_players++;
                 if (number_of_players > 4)
                     number_of_players = 2;
+                Select.Play();
             }
         }
         else
@@ -148,8 +156,15 @@ public class PlayerJoin : MonoBehaviour
             }
         }
 
+        // Count how many active player icons we have
+        int active_icons = 0;
+        foreach (GameObject go in player_icons)
+        {
+            if (go.activeSelf)
+                active_icons++;
+        }
 
-        players_joined_text.text = "Players Joined:  " + Mathf.Min(number_of_players, 2);
+        players_joined_text.text = "Players Joined:  " + Mathf.Max(active_icons, 2);
     }
 
 

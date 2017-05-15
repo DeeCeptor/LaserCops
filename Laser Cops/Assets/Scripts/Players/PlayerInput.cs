@@ -62,12 +62,10 @@ public class PlayerInput : MonoBehaviour
         if (Time.timeScale == 0)
             return;
 
-        // If player 1 or 2, use keyboard as well
-
-        // No controller detected
+        // No controller detected, use keyboard
         if (controller == null)
         {
-            Disabled_Input();
+            KeyboardControls();
             return;
         }
 
@@ -119,6 +117,34 @@ public class PlayerInput : MonoBehaviour
         else
             disable_tether_held_down = false;
         */
+    }
+
+
+    public void KeyboardControls()
+    {
+        if (GameState.game_state.going_sideways)
+        {
+            direction.x = GetAxisUsingInputList("X Steering");
+            direction.y = GetAxisUsingInputList("Y Steering");
+        }
+        else
+        {
+            direction.x = GetAxisUsingInputList("Y Steering");
+            direction.y = GetAxisUsingInputList("X Steering");
+        }
+        boosted_this_instant = GetButtonUsingInputList("Boost");
+
+
+        tether_switched = Input.GetButtonDown("Switch Tether " + player_number);
+        tether_held_down = Input.GetButton("Switch Tether " + player_number);
+        tether_released_this_instant = Input.GetButtonUp("Switch Tether " + player_number);
+
+        if (Input.GetButton("Disable Tether") || Input.GetAxisRaw("Disable Tether") != 0)
+        {
+            disable_tether_held_down = true;
+        }
+        else
+            disable_tether_held_down = false;
     }
 
 

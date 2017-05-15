@@ -138,9 +138,8 @@ public class PlayerController : PlayerInput
             {
                 case 1:
                     inputs_to_check.Add("Keyboard Left");
-                    inputs_to_check.Add("Controller 1 Left");
 
-                    if (InputManager.Devices.Count >= 1)
+                    if (InputManager.Devices != null && InputManager.Devices.Count >= 1)
                     {
                         controller = InputManager.Devices[0];
                         left_side_of_controller = true;
@@ -148,30 +147,26 @@ public class PlayerController : PlayerInput
                     break;
                 case 2:
                     inputs_to_check.Add("Keyboard Right");
-                    inputs_to_check.Add("Controller 1 Right");
 
-                    if (InputManager.Devices.Count >= 1)
+                    if (InputManager.Devices != null && InputManager.Devices.Count >= 1)
                     {
                         controller = InputManager.Devices[0];
                         left_side_of_controller = false;
                     }
                     break;
                 case 3:
-                    inputs_to_check.Add("Controller 2 Left");
-                    inputs_to_check.Add("Controller 3 Left");
+                    inputs_to_check.Add("Keyboard Left");
 
-                    if (InputManager.Devices.Count >= 2)
+                    if (InputManager.Devices != null && InputManager.Devices.Count >= 2)
                     {
                         controller = InputManager.Devices[1];
                         left_side_of_controller = true;
                     }
                     break;
                 case 4:
-                    inputs_to_check.Add("Controller 2 Right");
-                    inputs_to_check.Add("Controller 3 Right");
-                    inputs_to_check.Add("Controller 4 Left");
+                    inputs_to_check.Add("Keyboard Right");
 
-                    if (InputManager.Devices.Count >= 2)
+                    if (InputManager.Devices != null && InputManager.Devices.Count >= 2)
                     {
                         controller = InputManager.Devices[1];
                         left_side_of_controller = false;

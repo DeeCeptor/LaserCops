@@ -8,6 +8,7 @@ public class ConnectedControllers : MonoBehaviour
     bool detecting_controllers = true;
     public static List<InputDevice> devices = new List<InputDevice>();
 
+    public AudioSource Select;
 
     void Start () 
 	{
@@ -42,7 +43,10 @@ public class ConnectedControllers : MonoBehaviour
     public void AddPlayerController(InputDevice device)
     {
         if (!devices.Contains(device))
+        {
             devices.Add(device);
+            Select.Play();
+        }
     }
     public void ClearPlayerControls()
     {
