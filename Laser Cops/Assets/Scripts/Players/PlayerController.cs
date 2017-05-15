@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using System;
+using InControl;
 
 public class PlayerController : PlayerInput
 {
@@ -123,15 +124,63 @@ public class PlayerController : PlayerInput
 
 
         // Get player inputs
-        if (GameState.game_state.player_inputs != null)
+        if (ControlsManager.Player_Controls.ContainsKey(player_number))
         {
-            this.inputs_to_check = GameState.game_state.player_inputs[player_number - 1];
+            controller = ControlsManager.Player_Controls[player_number].device;
+            left_side_of_controller = ControlsManager.Player_Controls[player_number].left_or_right_side;
         }
         else
         {
+            // Couldn't find any inputs, just make some default ones
             inputs_to_check = new List<string>();
 
+            switch (player_number)
+            {
+                case 1:
+                    inputs_to_check.Add("Keyboard Left");
+                    inputs_to_check.Add("Controller 1 Left");
+
+                    if (InputManager.Devices.Count >= 1)
+                    {
+                        controller = InputManager.Devices[0];
+                        left_side_of_controller = true;
+                    }
+                    break;
+                case 2:
+                    inputs_to_check.Add("Keyboard Right");
+                    inputs_to_check.Add("Controller 1 Right");
+
+                    if (InputManager.Devices.Count >= 1)
+                    {
+                        controller = InputManager.Devices[0];
+                        left_side_of_controller = false;
+                    }
+                    break;
+                case 3:
+                    inputs_to_check.Add("Controller 2 Left");
+                    inputs_to_check.Add("Controller 3 Left");
+
+                    if (InputManager.Devices.Count >= 2)
+                    {
+                        controller = InputManager.Devices[1];
+                        left_side_of_controller = true;
+                    }
+                    break;
+                case 4:
+                    inputs_to_check.Add("Controller 2 Right");
+                    inputs_to_check.Add("Controller 3 Right");
+                    inputs_to_check.Add("Controller 4 Left");
+
+                    if (InputManager.Devices.Count >= 2)
+                    {
+                        controller = InputManager.Devices[1];
+                        left_side_of_controller = false;
+                    }
+                    break;
+            }
             // Assign default controls
+            // OLD
+            /*
             switch (player_number)
             {
                 case 1:
@@ -152,6 +201,7 @@ public class PlayerController : PlayerInput
                     inputs_to_check.Add("Controller 4 Left");
                     break;
             }
+            */
         }
     }
 

@@ -250,7 +250,8 @@ public class Tether : MonoBehaviour
     }
     public void TetherReleased()
     {
-        EnableTether();
+        //num_players_holding_down_tether_button--;
+        //EnableTether();
     }
     public void DisableTether()
     {
@@ -421,6 +422,9 @@ public class Tether : MonoBehaviour
     {
         if (tether_links.Count > 0)
         {
+            if (num_players_holding_down_tether_button <= 0)
+                EnableTether();
+
             num_players_holding_down_tether_button = 0;
             cur_tether_switching_cooldown -= Time.deltaTime;
             // Pulsates between the 2 colours, end from end

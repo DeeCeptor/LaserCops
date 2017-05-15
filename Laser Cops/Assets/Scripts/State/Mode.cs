@@ -69,9 +69,10 @@ public class Mode : MonoBehaviour
     public void Load_Level()
     {
         // Get the input settings of each player
-        player_inputs = PlayerJoin.player_join.Finalize_Input();
+        //player_inputs = PlayerJoin.player_join.Finalize_Input();
 
         // Remove any players that have no inputs
+        /*
         for (int x = 0; x < player_inputs.Count; x++)
         {
             if (player_inputs[x].Count <= 0)
@@ -82,6 +83,7 @@ public class Mode : MonoBehaviour
         }
 
         InputSettings.input_settings.inputs = player_inputs;
+        */
 
         Debug.Log("Loading level " + level_to_load);
         PlayerPrefs.SetString("LastLevelPlayed", level_to_load);

@@ -23,14 +23,16 @@ public class SetBackgroundTransparent : Node
 		}
 		else
 		{
+            StopAllCoroutines();
+
             if (fade_out && fade_in)
                 StartCoroutine(Fade_Out_Then_In_Coroutine(2.0f));
             else if (fade_in)
             {
-                StartCoroutine(Fade_In_Coroutine(2.0f));
+                StartCoroutine(Fade_In_Coroutine(1.0f));
             }
             else if (fade_out)
-                StartCoroutine(Fade_Out_Coroutine(2.0f));
+                StartCoroutine(Fade_Out_Coroutine(1.0f));
 		}
 
         if (!wait_for_all_fading)
@@ -78,13 +80,13 @@ public class SetBackgroundTransparent : Node
 		
 		// Go from transparent to opaque (solid)
 		value = 0;
-		while (img.color.a != 1)
+		while (img.color.a <= 1)
 		{
 			value += over_time / 100f;
 			Color tmpColor = img.color;
 			tmpColor.a = Mathf.Lerp(0, 1, value);
 			img.color = tmpColor;
-			yield return new WaitForSeconds(over_time / 100);
+            yield return new WaitForSeconds(over_time / 100);
 		}
 		
         if (wait_for_all_fading)
@@ -100,20 +102,22 @@ public class SetBackgroundTransparent : Node
 
 		img.sprite = sprite;
 		img.color = new Color(img.color.r, img.color.g, img.color.b, 0);
-		
+        Debug.Log("Fading in");
 		float value = 0;
-		while (img.color.a != 1)	// Don't stop until it's completely opaque
+		while (img.color.a < 1)	// Don't stop until it's completely opaque
 		{
-			value += over_time / 100f;
+			value += Time.deltaTime / over_time;
 			Color tmpColor = img.color;
 			tmpColor.a = Mathf.Lerp(0, 1, value);
 			img.color = tmpColor;
-			yield return new WaitForSeconds(over_time / 100);
+            //Debug.Log("Fading in " + value + " " + tmpColor.a);
+            yield return null;
 		}
 
         if (wait_for_all_fading)
             Finish_Node();
-		yield break;
+
+        yield break;
 	}
 	
 	
@@ -123,16 +127,18 @@ public class SetBackgroundTransparent : Node
 		// Set it to completely transparent
 		Image img = getImage();
 		img.color = new Color(img.color.r, img.color.g, img.color.b, 255);
+        Debug.Log("Fading out");
 
-		float value = 0;
-		while (img.color.a != 0)	// Fade the image to completely transparent
+        float value = 0;
+		while (img.color.a > 0)	// Fade the image to completely transparent
 		{
-			value += over_time / 100f;
+			value += Time.deltaTime / over_time;
 			Color tmpColor = img.color;
 			tmpColor.a = Mathf.Lerp(1, 0, value);
 			img.color = tmpColor;
-			yield return new WaitForSeconds(over_time / 100);
-		}
+            //Debug.Log("Fading out " + value + " " + tmpColor.a);
+            yield return null;
+        }
 
         if (wait_for_all_fading)
             Finish_Node();
@@ -145,12 +151,22 @@ public class SetBackgroundTransparent : Node
 	{
 		
 	}
-	
-	
-	public override void Finish_Node()
+
+
+    public override void Stop_Node()
+    {
+        base.Stop_Node();
+        Debug.Log("Stopping fading");
+        this.StopCoroutine("Fade_Out_Then_In_Coroutine");
+        this.StopCoroutine("Fade_In_Coroutine");
+        this.StopCoroutine("Fade_Out_Coroutine");
+    }
+
+
+    public override void Finish_Node()
 	{
-		//StopAllCoroutines();
-		
+        //StopAllCoroutines();
+        Debug.Log("Finishing node");
 		base.Finish_Node();
 	}
 }

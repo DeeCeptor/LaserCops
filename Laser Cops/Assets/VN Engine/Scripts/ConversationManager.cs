@@ -25,7 +25,10 @@ public class ConversationManager : MonoBehaviour
 
 	// Simply start the first node to get this conversation going
 	public void Start_Conversation()
-	{        
+	{
+        if (VNSceneManager.current_conversation != null)
+            VNSceneManager.current_conversation.ResetConversation();
+
         // Set this conversation as active in the scene manager
         VNSceneManager.current_conversation = this;
 		
@@ -111,14 +114,21 @@ public class ConversationManager : MonoBehaviour
     }
 
 
-	// Destroys this game object.
-	// Be sure to have added a StartConversationNode or LoadSceneNode before the conversation is over,
-	// else nothing will happen!
-	public void Finish_Conversation()
-	{
+    public void ResetConversation()
+    {
         active = false;
-        finished_conversation = true;
         cur_node = 0;
+        this.StopAllCoroutines();
+    }
+
+
+    // Destroys this game object.
+    // Be sure to have added a StartConversationNode or LoadSceneNode before the conversation is over,
+    // else nothing will happen!
+    public void Finish_Conversation()
+	{
+        ResetConversation();
+        finished_conversation = true;
 
         if (destroy_when_finished)
             Destroy(this.gameObject);

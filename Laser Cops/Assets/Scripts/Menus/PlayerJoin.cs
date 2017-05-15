@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using InControl;
 
 public class PlayerJoin : MonoBehaviour
 {
     public static PlayerJoin player_join;
+
+    public bool controller_setup_screen = true;
 
     public int number_of_players = 2;
     public Text players_joined_text;
@@ -27,10 +30,10 @@ public class PlayerJoin : MonoBehaviour
     }
     void Start ()
     {
-        SetPlayerSettingsBasedOnPreviousPlay();
+        //SetPlayerSettingsBasedOnPreviousPlay();
     }
 
-
+    /*
     public void SetPlayerSettingsBasedOnPreviousPlay()
     {
         if (InputSettings.input_settings.inputs == null)
@@ -58,38 +61,43 @@ public class PlayerJoin : MonoBehaviour
         }
         Debug.Log("Set player input based on previous information");
     }
+    */
 
 
     void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (controller_setup_screen)
         {
-            number_of_players = 2;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            number_of_players = 3;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            number_of_players = 4;
-        }
-        else if (Input.GetButtonDown("Switch Tether 1"))
-        {
-            number_of_players++;
-            if (number_of_players > 4)
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
                 number_of_players = 2;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                number_of_players = 3;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                number_of_players = 4;
+            }
+            else if (InputManager.ActiveDevice.RightBumper.WasPressed || InputManager.ActiveDevice.LeftBumper.WasPressed)
+            {
+                number_of_players++;
+                if (number_of_players > 4)
+                    number_of_players = 2;
+            }
         }
+        else
+            number_of_players = ControlsManager.Player_Controls.Count;
 
 
-        num_controllers = 0;
-        foreach (string s in Input.GetJoystickNames())
-        {
-            if (!string.IsNullOrEmpty(s))
-                num_controllers++;
-        }
+        if (controller_setup_screen)
+            num_controllers = ConnectedControllers.devices.Count;
+        else
+            num_controllers = ControlsManager.GetNumberUniqueControllers();
 
-        if (num_controllers <= 0 && number_of_players > 2)
+
+        if (controller_setup_screen && num_controllers <= 0 && number_of_players > 2)
         {
             // Show warning telling to connect more controllers
             connect_more_controllers.SetActive(true);
@@ -141,10 +149,74 @@ public class PlayerJoin : MonoBehaviour
         }
 
 
-        players_joined_text.text = "Players Joined:  " + number_of_players + "  controllers connected: " + num_controllers;
+        players_joined_text.text = "Players Joined:  " + Mathf.Min(number_of_players, 2);
     }
 
 
+
+    public void SetControls()
+    {
+        int cont_1 = 0;
+        int cont_2 = 0;
+        int cont_3 = 0;
+        int cont_4 = 0;
+
+        // Check which controller (if any) does what
+        foreach (GameObject p in player_icons)
+        {
+            if (p.activeSelf)
+            {
+                Debug.Log(p.name);
+                // Determine what column they're in
+                float x = p.transform.localPosition.x;
+                if (x == 30f)
+                {
+                    if (cont_1 == 0)
+                        ControlsManager.AddControls(new PlayerControlsProfile(Get_Player_Number_From_Name(p.name), ConnectedControllers.devices[0], true));
+                    else
+                        ControlsManager.AddControls(new PlayerControlsProfile(Get_Player_Number_From_Name(p.name), ConnectedControllers.devices[0], false));
+
+                    cont_1++;
+                }
+                else if (x == 110f)
+                {
+                    if (cont_2 == 0)
+                        ControlsManager.AddControls(new PlayerControlsProfile(Get_Player_Number_From_Name(p.name), ConnectedControllers.devices[1], true));
+                    else
+                        ControlsManager.AddControls(new PlayerControlsProfile(Get_Player_Number_From_Name(p.name), ConnectedControllers.devices[1], false));
+
+                    cont_2++;
+                }
+                else if (x == 190f)
+                {
+                    if (cont_3 == 0)
+                        ControlsManager.AddControls(new PlayerControlsProfile(Get_Player_Number_From_Name(p.name), ConnectedControllers.devices[2], true));
+                    else
+                        ControlsManager.AddControls(new PlayerControlsProfile(Get_Player_Number_From_Name(p.name), ConnectedControllers.devices[2], false));
+
+                    cont_3++;
+                }
+                else if (x == 270f)
+                {
+                    if (cont_4 == 0)
+                        ControlsManager.AddControls(new PlayerControlsProfile(Get_Player_Number_From_Name(p.name), ConnectedControllers.devices[3], true));
+                    else
+                        ControlsManager.AddControls(new PlayerControlsProfile(Get_Player_Number_From_Name(p.name), ConnectedControllers.devices[3], false));
+
+                    cont_4++;
+                }
+                else
+                {
+                    Debug.Log(p.name + " is not in any column " + x);
+                }
+            }
+        }
+
+        ControlsManager.Print_Out_Current_Controls();
+    }
+
+
+    /*
     public List<List<string>> Finalize_Input()
     {
         List<List<string>> player_inputs = new List<List<string>>();
@@ -170,7 +242,7 @@ public class PlayerJoin : MonoBehaviour
                 Debug.Log(p.name);
                 // Determine what column they're in
                 float x = p.transform.localPosition.x;
-                if (x == 20f)
+                if (x == 30f)
                 {
                     if (cont_1 == 0)
                         player_inputs[Get_Player_Number_From_Name(p.name)].Add("Controller 1 Left");
@@ -179,7 +251,7 @@ public class PlayerJoin : MonoBehaviour
 
                     cont_1++;
                 }
-                else if (x == 60f)
+                else if (x == 110f)
                 {
                     if (cont_2 == 0)
                         player_inputs[Get_Player_Number_From_Name(p.name)].Add("Controller 2 Left");
@@ -188,7 +260,7 @@ public class PlayerJoin : MonoBehaviour
 
                     cont_2++;
                 }
-                else if (x == 100f)
+                else if (x == 190f)
                 {
                     if (cont_3 == 0)
                         player_inputs[Get_Player_Number_From_Name(p.name)].Add("Controller 3 Left");
@@ -197,7 +269,7 @@ public class PlayerJoin : MonoBehaviour
 
                     cont_3++;
                 }
-                else if (x == 140f)
+                else if (x == 270f)
                 {
                     if (cont_4 == 0)
                         player_inputs[Get_Player_Number_From_Name(p.name)].Add("Controller 4 Left");
@@ -227,18 +299,19 @@ public class PlayerJoin : MonoBehaviour
 
         return player_inputs;
     }
+    */
 
     
     public int Get_Player_Number_From_Name(string name)
     {
         if (name.Contains("P1"))
-            return 0;
-        else if (name.Contains("P2"))
             return 1;
-        else if (name.Contains("P3"))
+        else if (name.Contains("P2"))
             return 2;
-        else if (name.Contains("P4"))
+        else if (name.Contains("P3"))
             return 3;
+        else if (name.Contains("P4"))
+            return 4;
 
         Debug.Log("Couldn't find player number from " + name);
         return 1;

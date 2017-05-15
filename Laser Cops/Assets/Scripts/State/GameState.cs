@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using MKGlowSystem;
 using System;
 using Steamworks;
+using InControl;
 
 public class GameState : MonoBehaviour
 {
@@ -237,7 +238,7 @@ public class GameState : MonoBehaviour
                     break;
             }
 
-            number_of_players = mode.player_inputs.Count;
+            number_of_players = ControlsManager.Player_Controls.Count;//mode.player_inputs.Count;
             // Assign player inputs
             player_inputs = mode.player_inputs;
 
@@ -806,7 +807,7 @@ public class GameState : MonoBehaviour
             this.ChangeTimescale(Mathf.Max(Time.timeScale - Time.unscaledDeltaTime * slowdown_factor, 0.1f));
         }
 
-        if ((Input.GetButtonDown("Pause") || (Time.timeScale == 0 && Input.GetButtonDown("Cancel"))) && !game_over)
+        if ((Input.GetButtonDown("Pause") || (InputManager.ActiveDevice !=  null && InputManager.ActiveDevice.CommandWasPressed) || (Time.timeScale == 0 && Input.GetButtonDown("Cancel"))) && !game_over)
         {
             if (Time.timeScale == 0)
             {

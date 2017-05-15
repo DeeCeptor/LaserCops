@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
+using InControl;
 
 public class PlayerCursor : MonoBehaviour 
 {
@@ -71,13 +72,25 @@ public class PlayerCursor : MonoBehaviour
         // Check if we're close enough to the destination
         if (Vector3.Distance(this.transform.position, destination_node.transform.position) < 0.1)// this.transform.position == destination_node.transform.position)// && !LevelManager.level_manager.level_settings.activeSelf)
         {
+            float horizontal = 0;
+            if (Mathf.Abs(Input.GetAxis("Horizontal")) >= Mathf.Abs(InputManager.ActiveDevice.LeftStickX.Value))
+                horizontal = Input.GetAxis("Horizontal");
+            else
+                horizontal = InputManager.ActiveDevice.LeftStickX.Value;
+
+            float vertical = 0;
+            if (Mathf.Abs(Input.GetAxis("Vertical")) >= Mathf.Abs(InputManager.ActiveDevice.LeftStickY.Value))
+                vertical = Input.GetAxis("Vertical");
+            else
+                vertical = InputManager.ActiveDevice.LeftStickY.Value;
+
             // Accept input if close enough
-            if ((Mathf.Abs(Input.GetAxis("Vertical")) > 0.1f || Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1f) && !LevelManager.level_manager.selected_level)
+            if ((Mathf.Abs(vertical) > 0.1f || Mathf.Abs(horizontal) > 0.1f) && !LevelManager.level_manager.selected_level)
             {
-                if (Mathf.Abs(Input.GetAxis("Vertical")) > Mathf.Abs((Input.GetAxis("Horizontal"))))
+                if (Mathf.Abs(vertical) > Mathf.Abs(horizontal))
                 {
                     // Vertical
-                    if (Input.GetAxis("Vertical") > 0)
+                    if (vertical > 0)
                     {
                         // Vertical up
                         if (destination_node.next_node.transform.position.y >= destination_node.previous_node.transform.position.y 
@@ -93,7 +106,7 @@ public class PlayerCursor : MonoBehaviour
                             SetNewDestination(destination_node.previous_node);
                         }
                     }
-                    else if (Input.GetAxis("Vertical") < 0)
+                    else if (vertical < 0)
                     {
                         // Vertical down
                         if (destination_node.next_node.transform.position.y <= destination_node.previous_node.transform.position.y 
@@ -113,7 +126,7 @@ public class PlayerCursor : MonoBehaviour
                 else
                 {
                     // Horizontal
-                    if (Input.GetAxis("Horizontal") > 0)
+                    if (horizontal > 0)
                     {
                         // Horziontal right
                         if (destination_node.next_node.transform.position.x >= destination_node.previous_node.transform.position.x 
@@ -129,7 +142,7 @@ public class PlayerCursor : MonoBehaviour
                             SetNewDestination(destination_node.previous_node);
                         }
                     }
-                    else if (Input.GetAxis("Horizontal") < 0)
+                    else if (horizontal < 0)
                     {
                         // Horziontal left
                         if (destination_node.next_node.transform.position.x <= destination_node.previous_node.transform.position.x 
@@ -154,11 +167,11 @@ public class PlayerCursor : MonoBehaviour
                 if (options.activeSelf)
                     return;
 
-                if (Input.GetButtonDown("Submit"))
+                if (Input.GetButtonDown("Submit") || InputManager.ActiveDevice.Action1.WasPressed)
                 {
                     destination_node.Button_Clicked();
                 }
-                if (Input.GetButtonDown("Cancel"))
+                if (Input.GetButtonDown("Cancel") || InputManager.ActiveDevice.Action2.WasPressed)
                 {
                     if (LevelManager.level_manager.selected_level)
                     {

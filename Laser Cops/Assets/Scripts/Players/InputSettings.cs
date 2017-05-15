@@ -1,11 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
+using InControl;
 
 public class InputSettings : MonoBehaviour
 {
     public static InputSettings input_settings;
 
     public List<List<string>> inputs;
+
+
 
     void Awake ()
     {

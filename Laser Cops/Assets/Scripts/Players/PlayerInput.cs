@@ -1,10 +1,16 @@
 using UnityEngine;
 using System.Collections.Generic;
+using InControl;
 
 // Base object that takes all necessary player input
 public class PlayerInput : MonoBehaviour
 {
     public List<string> inputs_to_check;
+
+    // InControl device setup
+    public InputDevice controller;
+    public bool left_side_of_controller = true;
+
     public int player_number;   // 1 = left car, 2 = right car, 3, 4
     public Vector2 direction = new Vector2();
     public bool tether_switched = false;
@@ -52,6 +58,43 @@ public class PlayerInput : MonoBehaviour
 
     public void UpdateInputs()
     {
+        // Don't get input if paused
+        if (Time.timeScale == 0)
+            return;
+
+        // If player 1 or 2, use keyboard as well
+
+        // No controller detected
+        if (controller == null)
+        {
+            Disabled_Input();
+            return;
+        }
+
+        string side_to_use = "Left";
+        if (!left_side_of_controller)
+            side_to_use = "Right";
+
+        if (GameState.game_state.going_sideways)
+        {
+            direction.x = controller.GetControlByName(side_to_use + "StickX").Value;
+            direction.y = controller.GetControlByName(side_to_use + "StickY").Value;
+        }
+        else
+        {
+            direction.x = controller.GetControlByName(side_to_use + "StickY").Value;
+            direction.y = controller.GetControlByName(side_to_use + "StickX").Value;
+        }
+
+        if (left_side_of_controller)
+            boosted_this_instant = controller.GetControlByName(side_to_use + "StickButton").Value == 1 ? true : false;
+        else
+            boosted_this_instant = controller.Action1.WasPressed ? true : controller.GetControlByName(side_to_use + "StickButton").Value == 1 ? true : false;
+
+        tether_switched = controller.GetControlByName(side_to_use + "Bumper").WasPressed;
+
+        disable_tether_held_down = controller.GetControlByName(side_to_use + "Trigger").Value != 0;
+        /*
         if (GameState.game_state.going_sideways)
         {
             direction.x = GetAxisUsingInputList("X Steering");
@@ -68,33 +111,6 @@ public class PlayerInput : MonoBehaviour
         tether_switched = Input.GetButtonDown("Switch Tether " + player_number);
         tether_held_down = Input.GetButton("Switch Tether " + player_number);
         tether_released_this_instant = Input.GetButtonUp("Switch Tether " + player_number);
-
-        if (Input.GetButton("Disable Tether") || Input.GetAxisRaw("Disable Tether") != 0)
-        {
-            disable_tether_held_down = true;
-        }
-        else
-            disable_tether_held_down = false;
-
-
-
-        /* OLD
-        if (GameState.game_state.going_sideways)
-        {
-            direction.x = Input.GetAxis("Player " + player_number + " X Steering");
-            direction.y = Input.GetAxis("Player " + player_number + " Y Steering");
-        }
-        else
-        {
-            direction.x = Input.GetAxis("Player " + player_number + " Y Steering");
-            direction.y = Input.GetAxis("Player " + player_number + " X Steering");
-        }
-
-        tether_switched = Input.GetButtonDown("Switch Tether " + player_number);
-        tether_held_down = Input.GetButton("Switch Tether " + player_number);
-        tether_released_this_instant = Input.GetButtonUp("Switch Tether " + player_number);
-
-        boosted_this_instant = Input.GetButtonDown("Player " + player_number + " Boost");
 
         if (Input.GetButton("Disable Tether") || Input.GetAxisRaw("Disable Tether") != 0)
         {
