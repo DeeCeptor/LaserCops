@@ -127,7 +127,24 @@ public class PlayerController : PlayerInput
         if (ControlsManager.Player_Controls.ContainsKey(player_number))
         {
             controller = ControlsManager.Player_Controls[player_number].device;
-            left_side_of_controller = ControlsManager.Player_Controls[player_number].left_or_right_side;
+
+            if (controller != null)
+                left_side_of_controller = ControlsManager.Player_Controls[player_number].left_or_right_side;
+            else
+            {
+                // Controller is null, must be keyboard
+                inputs_to_check = new List<string>();
+
+                switch (player_number)
+                {
+                    case 1:
+                        inputs_to_check.Add("Keyboard Left");
+                        break;
+                    case 2:
+                        inputs_to_check.Add("Keyboard Right");
+                        break;
+                }
+            }
         }
         else
         {

@@ -179,7 +179,7 @@ public class PlayerCursor : MonoBehaviour
                     }
                     else
                     {
-                        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+                        UnityEngine.SceneManagement.SceneManager.LoadScene("SetControllers");
                     }
                 }
             }

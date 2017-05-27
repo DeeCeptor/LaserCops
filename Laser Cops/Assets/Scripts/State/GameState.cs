@@ -239,8 +239,6 @@ public class GameState : MonoBehaviour
             }
 
             number_of_players = ControlsManager.Player_Controls.Count;//mode.player_inputs.Count;
-            // Assign player inputs
-            player_inputs = mode.player_inputs;
 
             Destroy(obj);
         }

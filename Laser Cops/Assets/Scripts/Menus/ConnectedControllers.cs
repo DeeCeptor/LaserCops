@@ -87,7 +87,7 @@ public static class ControlsManager
 
         foreach (PlayerControlsProfile i in Player_Controls.Values)
         {
-            if (!unique_controllers.Contains(i.device))
+            if (i.device != null && !unique_controllers.Contains(i.device))
                 unique_controllers.Add(i.device);
         }
         return unique_controllers.Count;
@@ -122,11 +122,15 @@ public class PlayerControlsProfile
     public int player_number = 0;
     public InputDevice device;
     public bool left_or_right_side = true;
+    public bool uses_keyboard = false;
+    public bool uses_wads = false;  // Left or right side of keyboard
 
-    public PlayerControlsProfile(int player_num, InputDevice in_device, bool left_controller)
+    public PlayerControlsProfile(int player_num, InputDevice in_device, bool left_controller, bool keyboard, bool wads)
     {
         player_number = player_num;
         device = in_device;
         left_or_right_side = left_controller;
+        uses_keyboard = keyboard;
+        uses_wads = wads;
     }
 }

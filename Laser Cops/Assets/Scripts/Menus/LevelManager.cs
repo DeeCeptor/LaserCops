@@ -69,7 +69,7 @@ public class LevelManager : MonoBehaviour
         myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(object_to_select);
 
         // Play sound
-        SoundMixer.sound_manager.PlayNotification();
+        //SoundMixer.sound_manager.PlayNotification();
         selected_level = true;
 
         // Set to coop game mode

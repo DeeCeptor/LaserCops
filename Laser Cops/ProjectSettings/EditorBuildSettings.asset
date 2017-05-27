@@ -40,8 +40,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Finished/Zone 3/Gunship Gunther.unity
   - enabled: 1
-    path: Assets/Levels/Finished/Zone 1/DiscoDan.unity
-  - enabled: 1
     path: Assets/Levels/Finished/Zone 4/Life is a Highway.unity
   - enabled: 1
     path: Assets/Levels/Finished/Zone 3/Traffic Jam.unity
@@ -51,6 +49,8 @@ EditorBuildSettings:
     path: Assets/Levels/Finished/Zone 2/Bullet Limbo.unity
   - enabled: 1
     path: Assets/Levels/Finished/Zone 4/Bullet Hell.unity
+  - enabled: 1
+    path: Assets/Levels/Finished/Zone 1/Disco Dan.unity
   - enabled: 1
     path: Assets/Levels/Finished/Zone 1/Bullet Heaven.unity
   - enabled: 1

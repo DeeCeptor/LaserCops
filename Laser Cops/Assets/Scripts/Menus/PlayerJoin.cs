@@ -157,11 +157,13 @@ public class PlayerJoin : MonoBehaviour
         }
 
         // Count how many active player icons we have
-        int active_icons = 0;
+        int active_icons = 2;
         foreach (GameObject go in player_icons)
         {
-            if (go.activeSelf)
+            if (go.activeSelf && (go.name.Contains("3") || go.name.Contains("4")))
+            {
                 active_icons++;
+            }
         }
 
         players_joined_text.text = "Players Joined:  " + Mathf.Max(active_icons, 2);
@@ -187,36 +189,36 @@ public class PlayerJoin : MonoBehaviour
                 if (x == 30f)
                 {
                     if (cont_1 == 0)
-                        ControlsManager.AddControls(new PlayerControlsProfile(Get_Player_Number_From_Name(p.name), ConnectedControllers.devices[0], true));
+                        ControlsManager.AddControls(new PlayerControlsProfile(Get_Player_Number_From_Name(p.name), ConnectedControllers.devices[0], true, false, false));
                     else
-                        ControlsManager.AddControls(new PlayerControlsProfile(Get_Player_Number_From_Name(p.name), ConnectedControllers.devices[0], false));
+                        ControlsManager.AddControls(new PlayerControlsProfile(Get_Player_Number_From_Name(p.name), ConnectedControllers.devices[0], false, false, false));
 
                     cont_1++;
                 }
                 else if (x == 110f)
                 {
                     if (cont_2 == 0)
-                        ControlsManager.AddControls(new PlayerControlsProfile(Get_Player_Number_From_Name(p.name), ConnectedControllers.devices[1], true));
+                        ControlsManager.AddControls(new PlayerControlsProfile(Get_Player_Number_From_Name(p.name), ConnectedControllers.devices[1], true, false, false));
                     else
-                        ControlsManager.AddControls(new PlayerControlsProfile(Get_Player_Number_From_Name(p.name), ConnectedControllers.devices[1], false));
+                        ControlsManager.AddControls(new PlayerControlsProfile(Get_Player_Number_From_Name(p.name), ConnectedControllers.devices[1], false, false, false));
 
                     cont_2++;
                 }
                 else if (x == 190f)
                 {
                     if (cont_3 == 0)
-                        ControlsManager.AddControls(new PlayerControlsProfile(Get_Player_Number_From_Name(p.name), ConnectedControllers.devices[2], true));
+                        ControlsManager.AddControls(new PlayerControlsProfile(Get_Player_Number_From_Name(p.name), ConnectedControllers.devices[2], true, false, false));
                     else
-                        ControlsManager.AddControls(new PlayerControlsProfile(Get_Player_Number_From_Name(p.name), ConnectedControllers.devices[2], false));
+                        ControlsManager.AddControls(new PlayerControlsProfile(Get_Player_Number_From_Name(p.name), ConnectedControllers.devices[2], false, false, false));
 
                     cont_3++;
                 }
                 else if (x == 270f)
                 {
                     if (cont_4 == 0)
-                        ControlsManager.AddControls(new PlayerControlsProfile(Get_Player_Number_From_Name(p.name), ConnectedControllers.devices[3], true));
+                        ControlsManager.AddControls(new PlayerControlsProfile(Get_Player_Number_From_Name(p.name), ConnectedControllers.devices[3], true, false, false));
                     else
-                        ControlsManager.AddControls(new PlayerControlsProfile(Get_Player_Number_From_Name(p.name), ConnectedControllers.devices[3], false));
+                        ControlsManager.AddControls(new PlayerControlsProfile(Get_Player_Number_From_Name(p.name), ConnectedControllers.devices[3], false, false, false));
 
                     cont_4++;
                 }
@@ -225,6 +227,16 @@ public class PlayerJoin : MonoBehaviour
                     Debug.Log(p.name + " is not in any column " + x);
                 }
             }
+        }
+
+        // Check if P1 and P2 aren't already assigned, otherwise they must be the keyboard
+        if (ControlsManager.GetControls(1) == null)
+        {
+            ControlsManager.AddControls(new PlayerControlsProfile(1, null, false, true, true));
+        }
+        if (ControlsManager.GetControls(2) == null)
+        {
+            ControlsManager.AddControls(new PlayerControlsProfile(2, null, false, true, false));
         }
 
         ControlsManager.Print_Out_Current_Controls();
