@@ -156,7 +156,12 @@ public class PlayerController : PlayerInput
                 case 1:
                     inputs_to_check.Add("Keyboard Left");
 
-                    if (InputManager.Devices != null && InputManager.Devices.Count >= 1)
+                    if (InputManager.Devices != null && InputManager.Devices.Count >= 2)
+                    {
+                        controller = InputManager.Devices[0];
+                        left_side_of_controller = true;
+                    }
+                    else if (InputManager.Devices != null && InputManager.Devices.Count >= 1 && GameState.game_state.number_of_players < 3)
                     {
                         controller = InputManager.Devices[0];
                         left_side_of_controller = true;
@@ -165,7 +170,12 @@ public class PlayerController : PlayerInput
                 case 2:
                     inputs_to_check.Add("Keyboard Right");
 
-                    if (InputManager.Devices != null && InputManager.Devices.Count >= 1)
+                    if (InputManager.Devices != null && InputManager.Devices.Count >= 2)
+                    {
+                        controller = InputManager.Devices[0];
+                        left_side_of_controller = false;
+                    }
+                    else if (InputManager.Devices != null && InputManager.Devices.Count >= 1 && GameState.game_state.number_of_players < 3)
                     {
                         controller = InputManager.Devices[0];
                         left_side_of_controller = false;
@@ -179,6 +189,11 @@ public class PlayerController : PlayerInput
                         controller = InputManager.Devices[1];
                         left_side_of_controller = true;
                     }
+                    else if (InputManager.Devices != null && InputManager.Devices.Count >= 1)
+                    {
+                        controller = InputManager.Devices[0];
+                        left_side_of_controller = true;
+                    }
                     break;
                 case 4:
                     inputs_to_check.Add("Keyboard Right");
@@ -186,6 +201,11 @@ public class PlayerController : PlayerInput
                     if (InputManager.Devices != null && InputManager.Devices.Count >= 2)
                     {
                         controller = InputManager.Devices[1];
+                        left_side_of_controller = false;
+                    }
+                    else if (InputManager.Devices != null && InputManager.Devices.Count >= 1)
+                    {
+                        controller = InputManager.Devices[0];
                         left_side_of_controller = false;
                     }
                     break;
