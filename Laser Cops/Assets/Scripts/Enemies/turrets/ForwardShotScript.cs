@@ -16,10 +16,14 @@ public class ForwardShotScript : MonoBehaviour
     float shot_timer = 0;
 
     public bool randomly_determine_colour = false;
-    
+
+    //number of frames between checking if active
+    public int framesBetweenChecks = 10;
+    public int frameCounter = 10;
 
     void Start ()
     {
+        frameCounter = framesBetweenChecks;
 	    if (randomly_choose_coloured_bullet && coloured_bullets.Count > 0)
         {
             int range = Mathf.Min(coloured_bullets.Count, GameState.game_state.number_of_players);
@@ -43,7 +47,12 @@ public class ForwardShotScript : MonoBehaviour
             }
             else
             {
-                checkActive();
+                frameCounter = frameCounter - 1;
+                if (frameCounter <= 0)
+                {
+                    checkActive();
+                    frameCounter = framesBetweenChecks;
+                }
             }
         }
     }

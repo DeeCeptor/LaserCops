@@ -342,7 +342,7 @@ public class EffectsManager : MonoBehaviour
         bool first = false;
 
         //change this number to change how many pixels use the same evaluation for which point they're closer to
-        int iterationsPerEvaluation = 10;
+        int iterationsPerEvaluation = 16;
         int counter = 0;
 
         for (int i = 0; i < pixelLocations.Length; i++)

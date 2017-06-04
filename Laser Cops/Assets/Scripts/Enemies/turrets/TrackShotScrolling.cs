@@ -15,9 +15,14 @@ public class TrackShotScrolling : MonoBehaviour{
     //this boolean indicates whether the shots are useless against a certain car this is important since it needs to shoot at the car it's bullets are effective against
     public bool CarColour = false;
 
+    //number of frames between checking if active
+    public int framesBetweenChecks = 10;
+    public int frameCounter = 10;
+
     // Use this for initialization
     void Start () {
-        
+
+        frameCounter = framesBetweenChecks;
         players = GameState.game_state.PlayerObjects;
         int randInt = Random.Range(0, players.Length);
         playerToTrack = players[randInt].transform;
@@ -58,7 +63,12 @@ public class TrackShotScrolling : MonoBehaviour{
         }
         else
         {
-            checkActive();
+            frameCounter = frameCounter - 1;
+            if (frameCounter <= 0)
+            {
+                checkActive();
+                frameCounter = framesBetweenChecks;
+            }
         }
     }
 

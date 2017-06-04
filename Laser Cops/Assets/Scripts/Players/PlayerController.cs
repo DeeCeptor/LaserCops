@@ -29,6 +29,9 @@ public class PlayerController : PlayerInput
     public float boost_grid_force = 3f;
     public float boost_grid_radius = 2f;
 
+    float wake_cooldown = 0.1f;
+    float wake_counter = 0;
+
     [HideInInspector]
     public float grid_ripple_force = 0;
     public float grid_ripple_radius = 0;
@@ -381,7 +384,13 @@ public class PlayerController : PlayerInput
         physics.MoveRotation(Mathf.Lerp(transform.eulerAngles.z, desired_rotation, rotation_changing_speed));
 
         // Ripple the grid behind the car
-        EffectsManager.effects.GridWake((Vector2)transform.position, grid_ripple_force, grid_ripple_radius, primary_colour, false);
+
+        if(wake_counter <= Time.time)
+        {
+            EffectsManager.effects.GridWake((Vector2)transform.position, grid_ripple_force, grid_ripple_radius, primary_colour, false);
+            wake_counter = wake_cooldown + Time.time;
+        }
+        
     }
 
 

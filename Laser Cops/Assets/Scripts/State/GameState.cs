@@ -86,7 +86,10 @@ public class GameState : MonoBehaviour
     public Material default_sprite_material;
 
     // OPTIONAL:  If not empty, players will be positioned based on the positions of these objects. Goes in player order: P1,P2,P3,P4
-    public List<GameObject> starting_positions = new List<GameObject>();   
+    public List<GameObject> starting_positions = new List<GameObject>();
+
+    //wheter there are any obstacles in the level this is important for setting the physics iteration
+    public bool obstacle_level = true;
 
     void Awake()
     {

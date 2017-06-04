@@ -34,7 +34,12 @@ public class initiateOnTimeTurret : ForwardShotScript {
         }
         else
         {
-            checkActive();
+            frameCounter = frameCounter - 1;
+            if (frameCounter <= 0)
+            {
+                checkActive();
+                frameCounter = framesBetweenChecks;
+            }
         }
     }
 

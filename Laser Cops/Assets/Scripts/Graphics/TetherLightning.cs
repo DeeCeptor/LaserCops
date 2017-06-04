@@ -16,7 +16,7 @@ public class TetherLightning : MonoBehaviour
     //For pooling
     List<GameObject> activeBoltsObj;
     List<GameObject> inactiveBoltsObj;
-    int maxBolts = 50;  // used to be 100
+    int maxBolts = 25;  // used to be 100
 
     float scaleText;
     Vector2 positionText;
