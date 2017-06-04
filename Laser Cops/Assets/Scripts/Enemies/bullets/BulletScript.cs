@@ -27,12 +27,21 @@ public class BulletScript : MonoBehaviour
     void FixedUpdate ()
     {
         GetComponent<Rigidbody2D>().velocity = dir.normalized * speed;
-        CheckDeath();
+        //CheckDeath();
     }
 
     public void CheckDeath()
     {
+        //should have been replaced by the OnTriggerExitDeath and should not be called
         if(!GetComponent<SpriteRenderer>().isVisible)
+        {
+            Die();
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "MainCamera")
         {
             Die();
         }
