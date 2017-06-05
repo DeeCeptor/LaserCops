@@ -120,24 +120,28 @@ public class PlayerJoin : MonoBehaviour
             if (num_controllers >= x)
             {
                 // Show controller
-                controller_icons[x - 1].SetActive(true);
+                if (!controller_icons[x - 1].activeSelf)
+                    controller_icons[x - 1].SetActive(true);
             }
             else
             {
                 // Hide controller
-                controller_icons[x - 1].SetActive(false);
+                if (controller_icons[x - 1].activeSelf)
+                    controller_icons[x - 1].SetActive(false);
             }
 
             // Show/hide player
             if (number_of_players >= x)
             {
                 // Show player
-                player_icons[x - 1].SetActive(true);
+                if (!player_icons[x - 1].activeSelf)
+                    player_icons[x - 1].SetActive(true);
             }
             else
             {
                 // Hide player
-                player_icons[x - 1].SetActive(false);
+                if (player_icons[x - 1].activeSelf)
+                    player_icons[x - 1].SetActive(false);
             }
         }
 
@@ -152,7 +156,8 @@ public class PlayerJoin : MonoBehaviour
             int remove = Mathf.Abs(number_of_players - num_controllers * 2);
             for (int x = 0; x < remove; x++)
             {
-                player_icons[x].SetActive(false);
+                if (player_icons[x].activeSelf)
+                    player_icons[x].SetActive(false);
             }
         }
 

@@ -169,10 +169,18 @@ public class PlayerCursor : MonoBehaviour
 
                 if (Input.GetButtonDown("Submit") || InputManager.ActiveDevice.Action1.WasPressed)
                 {
+                    if (InputManager.ActiveDevice.Action1.WasPressed)
+                        Debug.Log("Submit Action1 " + Time.time);
+                    if (Input.GetButtonDown("Submit"))
+                        Debug.Log("Submit " + Time.time);
                     destination_node.Button_Clicked();
                 }
                 if (Input.GetButtonDown("Cancel") || InputManager.ActiveDevice.Action2.WasPressed)
                 {
+                    if (InputManager.ActiveDevice.Action2.WasPressed)
+                        Debug.Log("Cancel Action2 " + Time.time);
+                    if (Input.GetButtonDown("Cancel"))
+                        Debug.Log("Cancel " + Time.time);
                     if (LevelManager.level_manager.selected_level)
                     {
                         LevelManager.level_manager.DeselectLevels();

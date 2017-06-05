@@ -20,10 +20,19 @@ public class CheckForButton : MonoBehaviour
         if (Input.GetButtonDown(Button_To_Check) 
             || (check_start_button && InputManager.ActiveDevice.CommandWasPressed)
             || (check_A_button && InputManager.ActiveDevice.Action1.WasPressed)
-            || (check_A_button && InputManager.ActiveDevice.Action2.WasPressed))
+            || (check_B_button && InputManager.ActiveDevice.Action2.WasPressed))
         {
             Actions.Invoke();
-
+            /*
+            if (check_A_button && InputManager.ActiveDevice.Action1.WasPressed)
+                Debug.Log("A Action1");
+            if (Input.GetButtonDown(Button_To_Check))
+                Debug.Log("Submit");
+            if (check_B_button && InputManager.ActiveDevice.Action2.WasPressed)
+                Debug.Log("B Action2");
+            if (check_start_button && InputManager.ActiveDevice.CommandWasPressed)
+                Debug.Log("Start");
+            */
             if (destroy_after_press)
                 Destroy(this.gameObject);
         }
