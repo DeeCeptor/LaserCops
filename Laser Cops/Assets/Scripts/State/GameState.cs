@@ -370,7 +370,15 @@ public class GameState : MonoBehaviour
         else
             going_sideways = false;
     }
+    
+    // set the number of physics iterations for the level
+    public void setIterations()
+    {
+        if (!obstacle_level)
+        {
 
+        }
+    }
 
     public void Heal_All_Players(float amount)
     {

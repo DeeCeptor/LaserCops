@@ -96,9 +96,9 @@ MonoBehaviour:
   bottom_most: {fileID: 0}
   all_segments: []
   rope: {fileID: 0}
-  collisionDamage: 0.04
-  hardCollisionDamage: 0.08
-  easyCollisionDamage: 0.02
+  collisionDamage: 0.06
+  hardCollisionDamage: 0.12
+  easyCollisionDamage: 0.03
 --- !u!233 &233000012795991982
 HingeJoint2D:
   m_ObjectHideFlags: 1

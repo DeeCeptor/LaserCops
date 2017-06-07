@@ -440,11 +440,10 @@ public class Tether : MonoBehaviour
         }
     }
 
-
     public void UpdateTetherGraphics()
     {
-        if (noise == null)
-            noise = new Perlin();
+        //if (noise == null)
+           // noise = new Perlin();
 
         float timex = Time.time * speed * 0.1365143f;
         float timey = Time.time * speed * 1.21688f;
@@ -467,11 +466,11 @@ public class Tether : MonoBehaviour
                 links[(int) (((float) links.Count) * ((float) i / (float) particles.Length))].transform.position, 
                 oneOverZigs * (float)i);*/
             //Vector3 position = Vector3.Lerp(transform.position, target.position, oneOverZigs * (float)i);
-            Vector2 offset = new Vector3(noise.Noise(timex + position.x, timex + position.y, 0),
-                                        noise.Noise(timey + position.x, timey + position.y, 0),
-                                        0);
+            //Vector2 offset = new Vector3(noise.Noise(timex + position.x, timex + position.y, 0),
+            //                            noise.Noise(timey + position.x, timey + position.y, 0),
+            //                            0);
             //position += (offset * scale * ((float)i * oneOverZigs));
-            position += (offset * scale * ((float)20 * oneOverZigs));
+            //position += (offset * scale * ((float)20 * oneOverZigs));
 
             particles[i].velocity = (Vector2)particles[i].velocity;
             particles[i].position = position;
