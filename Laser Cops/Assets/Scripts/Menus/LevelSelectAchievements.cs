@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class LevelSelectAchievements : MonoBehaviour 
 {
+    // Used for Easy Does It achievement
+    public List<LevelNode> tutorial_levels = new List<LevelNode>();
+
 
 	void Start () 
 	{
@@ -16,6 +19,19 @@ public class LevelSelectAchievements : MonoBehaviour
     IEnumerator CheckForAchievements()
     {
         yield return new WaitForSeconds(1f);
+
+        // Check for Easy does it (first 2 levels)
+        bool beat_tutorial_levels = true;
+        foreach (LevelNode node in tutorial_levels)
+        {
+            if (!node.beat_level)
+            {
+                beat_tutorial_levels = false;
+                break;
+            }
+        }
+        if (beat_tutorial_levels)
+            GetAchievement("Easy Does It");
 
         // Loop through each level, check if they were completed on hard mode
         bool all_on_hard = true;

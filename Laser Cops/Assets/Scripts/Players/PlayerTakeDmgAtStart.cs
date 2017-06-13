@@ -18,7 +18,7 @@ public class PlayerTakeDmgAtStart : MonoBehaviour
 	void Update () 
 	{
         counter -= Time.deltaTime;
-        if (counter <= 0f)
+        if (counter <= 0f && GameState.game_state.game_mode != GameState.GameMode.OneHitKill)
         {
             this.GetComponent<PlayerController>().TakeHit(dmg, false);
             Debug.Log("Dmg player by: " + dmg);

@@ -272,7 +272,6 @@ public class Tether : MonoBehaviour
     {
         if (cur_tether_mode == TetherMode.None)
         {
-            Debug.Log("Previous: " + prev_tether_mode);
             //cur_tether_mode = prev_tether_mode;
             SetTetherMode(prev_tether_mode);
 
@@ -299,7 +298,6 @@ public class Tether : MonoBehaviour
     {
         if (cur_tether_mode != TetherMode.None && cur_tether_switching_cooldown <= 0)
         {
-            Debug.Log("Switching");
             cur_tether_switching_cooldown = tether_switching_cooldown;
 
             if (cur_tether_mode == TetherMode.Destroy)
@@ -353,7 +351,6 @@ public class Tether : MonoBehaviour
             }
             cur_tether_mode = TetherMode.Capture;
         }
-        Debug.Log("Setting tether " + cur_tether_mode);
 
         if (tether_links_parent != null)
             SoundMixer.sound_manager.PlayShortSpark();

@@ -91,6 +91,7 @@ public class GameState : MonoBehaviour
     //wheter there are any obstacles in the level this is important for setting the physics iteration
     public bool obstacle_level = true;
 
+
     void Awake()
     {
         game_state = this;
@@ -241,7 +242,7 @@ public class GameState : MonoBehaviour
                     break;
             }
 
-            number_of_players = ControlsManager.Player_Controls.Count;//mode.player_inputs.Count;
+            number_of_players = Mathf.Max(2, ControlsManager.Player_Controls.Count);//mode.player_inputs.Count;
 
             Destroy(obj);
         }
@@ -598,12 +599,11 @@ public class GameState : MonoBehaviour
                 break;
             case GameMode.Chained:
                 GetAchievement("Ball & Chain");
-
-                if (current_difficulty == Difficulty.Hard)
-                    GetAchievement("Impossible");
                 break;
             case GameMode.OneHitKill:
                 GetAchievement("Master");
+                if (current_difficulty == Difficulty.Hard)
+                    GetAchievement("Impossible");
                 break;
         }
 
@@ -622,7 +622,7 @@ public class GameState : MonoBehaviour
             case "Disco Dan":
                 GetAchievement("Disco Dan");
                 break;
-            case "Spynet":
+            case "Spy Net":
                 GetAchievement("Spy Net");
                 break;
             case "Gunship Gunther":
