@@ -29,7 +29,7 @@ public class PlayerController : PlayerInput
     public float boost_grid_force = 3f;
     public float boost_grid_radius = 2f;
 
-    float wake_cooldown = 0.1f;
+    float wake_cooldown = 0.03f;
     float wake_counter = 0;
 
     [HideInInspector]
