@@ -173,6 +173,7 @@ public class TetherBossCar : MonoBehaviour {
             HitByTetherGraphics(collision);
             BonnyAndClydeHealth.hit = true;
         }
+
     }
 
 

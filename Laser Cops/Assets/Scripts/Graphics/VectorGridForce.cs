@@ -14,7 +14,7 @@ public class VectorGridForce : MonoBehaviour
     public bool activated = false;
     BoxCollider2D box;
     float counter = 0;
-    float wake_cooldown = 0.08f;
+    float wake_cooldown = 0.03f;
     public bool ignore_graphics_settings = false;
 
     void Start ()

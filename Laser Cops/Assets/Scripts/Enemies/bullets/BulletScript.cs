@@ -86,6 +86,13 @@ public class BulletScript : MonoBehaviour
                 }
             }
 
+            else if(collision.gameObject.GetComponent<TetherBossCar>())
+            {
+                BossHealthScript bs = collision.gameObject.transform.parent.GetComponent<BossHealthScript>();
+                bs.takeHit(damage);
+                bs.TakeHitGraphics(collision);
+            }
+
             Die();
         }
 
@@ -128,6 +135,7 @@ public class BulletScript : MonoBehaviour
                     break;
             }
         }
+
         else
         {
             Die();
