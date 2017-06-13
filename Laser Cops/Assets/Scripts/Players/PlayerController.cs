@@ -153,7 +153,7 @@ public class PlayerController : PlayerInput
         {
             // Couldn't find any inputs, just make some default ones
             inputs_to_check = new List<string>();
-
+            Debug.Log("No inputs found");
             switch (player_number)
             {
                 case 1:
@@ -213,30 +213,6 @@ public class PlayerController : PlayerInput
                     }
                     break;
             }
-            // Assign default controls
-            // OLD
-            /*
-            switch (player_number)
-            {
-                case 1:
-                    inputs_to_check.Add("Keyboard Left");
-                    inputs_to_check.Add("Controller 1 Left");
-                    break;
-                case 2:
-                    inputs_to_check.Add("Keyboard Right");
-                    inputs_to_check.Add("Controller 1 Right");
-                    break;
-                case 3:
-                    inputs_to_check.Add("Controller 2 Left");
-                    inputs_to_check.Add("Controller 3 Left");
-                    break;
-                case 4:
-                    inputs_to_check.Add("Controller 2 Right");
-                    inputs_to_check.Add("Controller 3 Right");
-                    inputs_to_check.Add("Controller 4 Left");
-                    break;
-            }
-            */
         }
     }
 
@@ -531,7 +507,6 @@ public class PlayerController : PlayerInput
 
     public void Die()
     {
-
         alive = false;
         Health = 0;
         InGameUIManager.ui_manager.UpdateHealth();
@@ -544,8 +519,6 @@ public class PlayerController : PlayerInput
 
         EffectsManager.effects.ViolentExplosion(this.transform.position);
         EffectsManager.effects.GridExplosion(this.transform.position, 2f, 9f, primary_colour);
-
-        //GameState.game_state.ChangeTimescale(0.3f);
 
         this.gameObject.layer = LayerMask.NameToLayer("Dead Player");
         this.gameObject.tag = "Obstacle";

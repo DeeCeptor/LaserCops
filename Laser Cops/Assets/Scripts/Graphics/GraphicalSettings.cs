@@ -77,7 +77,7 @@ public class GraphicalSettings : MonoBehaviour
     }
     void Start () 
 	{
-        LoadGraphicalSettings();
+        //LoadGraphicalSettings();
 	}
 	
     public void LoadGraphicalSettings()

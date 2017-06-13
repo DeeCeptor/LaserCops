@@ -10,8 +10,10 @@ public class GraphicsSettings : MonoBehaviour
 {
     public Toggle windowed_toggle;
     public Dropdown resolution_dropdown;
+    public Dropdown graphics_quality_dropdown;
 
     Resolution[] resolutions;
+
 
 	void Awake () 
 	{
@@ -19,6 +21,7 @@ public class GraphicsSettings : MonoBehaviour
         windowed_toggle.isOn = !Screen.fullScreen;
 
         EvaluatePossibleResolutions();
+        EvaluatePossibleQualityLevels();
 	}
     public void EvaluatePossibleResolutions()
     {
@@ -52,8 +55,6 @@ public class GraphicsSettings : MonoBehaviour
 
         resolution_dropdown.value = cur_resolution_index;
     }
-
-
     public void ResolutionChanged(int resolution_index)
     {
         string text = resolution_dropdown.options[resolution_dropdown.value].text;
@@ -61,6 +62,20 @@ public class GraphicsSettings : MonoBehaviour
         int width = Int32.Parse(split_text[0]);
         int height = Int32.Parse(split_text[1]);
         Screen.SetResolution(width, height, !windowed_toggle.isOn);
+    }
+
+
+    public void EvaluatePossibleQualityLevels()
+    {
+        graphics_quality_dropdown.ClearOptions();
+        graphics_quality_dropdown.AddOptions(QualitySettings.names.ToList<string>());
+        graphics_quality_dropdown.value = QualitySettings.GetQualityLevel();
+        QualitySettings.GetQualityLevel();
+    }
+    public void QualityLevelChanged(int quality_index)
+    {
+        QualitySettings.SetQualityLevel(quality_index, true);
+        Debug.Log("Graphics quality changed: " + quality_index);
     }
 
 

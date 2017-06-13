@@ -4,40 +4,36 @@ using UnityEngine;
 
 public class TutorialAttachTextToTether : MonoBehaviour 
 {
-    public GameObject Destroy;
+    public GameObject Destroy_msg;
     public GameObject Save;
 
 
 	void Start () 
 	{
-        StartCoroutine(AttachHalfwayThroughTether());
-	}
-	
-    IEnumerator AttachHalfwayThroughTether()
-    {
-        yield return 0;
-        yield return new WaitForSeconds(0.5f);
 
     }
 
 
 	void Update () 
 	{
+        if (Tether.tether.middle_link == null)
+            return;
+
         this.transform.position = Tether.tether.middle_link.transform.position;
 
         if (Tether.tether.cur_tether_mode == Tether.TetherMode.Destroy)
         {
-            Destroy.SetActive(true);
+            Destroy_msg.SetActive(true);
             Save.SetActive(false);
         }
         else if (Tether.tether.cur_tether_mode == Tether.TetherMode.Capture)
         {
-            Destroy.SetActive(false);
+            Destroy_msg.SetActive(false);
             Save.SetActive(true);
         }
         else
         {
-            Destroy.SetActive(false);
+            Destroy_msg.SetActive(false);
             Save.SetActive(false);
         }
     }
