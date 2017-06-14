@@ -14,8 +14,11 @@ public class GraphicsSettings : MonoBehaviour
 
     Resolution[] resolutions;
 
+    bool ignore_first_resolution_change = true;
+    bool ignore_first_quality_change = true;
 
-	void Awake () 
+
+    void Awake () 
 	{
         // Set windowed toggle
         windowed_toggle.isOn = !Screen.fullScreen;
@@ -57,6 +60,13 @@ public class GraphicsSettings : MonoBehaviour
     }
     public void ResolutionChanged(int resolution_index)
     {
+        if (ignore_first_resolution_change)
+        {
+            ignore_first_resolution_change = false;
+            return;
+        }
+
+        Debug.Log("Resolution changed");
         string text = resolution_dropdown.options[resolution_dropdown.value].text;
         string[] split_text = text.Split('x');
         int width = Int32.Parse(split_text[0]);
@@ -74,6 +84,12 @@ public class GraphicsSettings : MonoBehaviour
     }
     public void QualityLevelChanged(int quality_index)
     {
+        if (ignore_first_quality_change)
+        {
+            ignore_first_quality_change = false;
+            return;
+        }
+
         QualitySettings.SetQualityLevel(quality_index, true);
         Debug.Log("Graphics quality changed: " + quality_index);
     }
@@ -81,13 +97,19 @@ public class GraphicsSettings : MonoBehaviour
 
     public void WindowedToggleChanged(bool enabled)
     {
+        Debug.Log("Windowed changed " + enabled);
         Screen.fullScreen = enabled;
         Screen.SetResolution(Screen.width, Screen.height, !enabled);
     }
 
 
-    public void ResolutionChanged()
+    void OnEnable()
     {
 
+    }
+    void OnDisable()
+    {
+        resolution_dropdown.Hide();
+        graphics_quality_dropdown.Hide();
     }
 }

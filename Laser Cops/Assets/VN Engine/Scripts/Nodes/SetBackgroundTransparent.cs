@@ -165,7 +165,6 @@ public class SetBackgroundTransparent : Node
     public override void Finish_Node()
 	{
         //StopAllCoroutines();
-        Debug.Log("Finishing node");
 		base.Finish_Node();
 	}
 }

@@ -626,6 +626,7 @@ public class PlayerController : PlayerInput
     // Stop grinding against the object we were pushing against
     void OnCollisionExit2D(Collision2D coll)
     {
+        // Do something about checking if object is dead
         if (in_use_grinding_sparks.ContainsKey(coll.gameObject))// && !coll.gameObject)
             {
                 ParticleSystem sparks = in_use_grinding_sparks[coll.gameObject];

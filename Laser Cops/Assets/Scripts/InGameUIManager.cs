@@ -261,6 +261,10 @@ public class InGameUIManager : MonoBehaviour
 
             int number_of_ticks = (int) (cur_bottom_bar / (float) bottom_health_bar.maxValue / 0.025f) + 1;
             bottom_health_bar.value = (float) number_of_ticks / 40f * bottom_health_bar.maxValue;
+
+            // Boss is dead, show 0 HP
+            if (GameState.game_state.players_invuln)
+                bottom_health_bar.value = 0;
         }
     }
 
