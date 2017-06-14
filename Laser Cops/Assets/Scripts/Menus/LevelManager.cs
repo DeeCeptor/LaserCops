@@ -29,7 +29,10 @@ public class LevelManager : MonoBehaviour
     public GameObject chained_mode;
     public GameObject one_hit_kill_mode;
 
+    public GameObject fade_in_black;
+
     public bool selected_level = false;
+
 
     void Awake()
     {
@@ -94,6 +97,7 @@ public class LevelManager : MonoBehaviour
     {
         try
         {
+            fade_in_black.SetActive(true);
             Mode.current_mode.Load_Level();
         }
         catch (Exception e)

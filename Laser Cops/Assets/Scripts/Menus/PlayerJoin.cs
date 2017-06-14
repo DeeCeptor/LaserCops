@@ -20,6 +20,10 @@ public class PlayerJoin : MonoBehaviour
     public List<GameObject> player_icons;
     public List<GameObject> controller_icons;
 
+    public GameObject keyboard_column_icon;
+    public GameObject player1_keyboard_icon;
+    public GameObject player2_keyboard_icon;
+
     public BossHealthBarAnimation connect_more_controllers_circle;
     public GameObject connect_more_controllers;
 
@@ -170,6 +174,15 @@ public class PlayerJoin : MonoBehaviour
                 active_icons++;
             }
         }
+
+        // Disable keyboard images if player 1 and 2 are on controllers
+        player1_keyboard_icon.SetActive(!player_icons[0].activeSelf);
+        player2_keyboard_icon.SetActive(!player_icons[1].activeSelf);
+
+        if (!player1_keyboard_icon.activeSelf && !player2_keyboard_icon.activeSelf)
+            keyboard_column_icon.SetActive(false);
+        else
+            keyboard_column_icon.SetActive(true);
 
         players_joined_text.text = "Players Joined:  " + Mathf.Max(active_icons, 2);
     }

@@ -39,8 +39,10 @@ public class AudioManager : MonoBehaviour
         // Load player preferences
         Master_Volume_Changed(PlayerPrefs.GetFloat("MasterVolume", 1));
         Voice_Volume_Changed(PlayerPrefs.GetFloat("VoiceVolume", 1));
-        Music_Volume_Changed(PlayerPrefs.GetFloat("MusicVolume", 1));
-        Effects_Volume_Changed(PlayerPrefs.GetFloat("EffectsVolume", 1));
+        if (Music_Volume_Slider != null && SoundMixer.sound_manager != null)
+            Music_Volume_Changed(PlayerPrefs.GetFloat("MusicVolume", 1));
+        if (SoundMixer.sound_manager != null)
+            Effects_Volume_Changed(PlayerPrefs.GetFloat("EffectsVolume", 1));
 
         // Set sliders
         if (Master_Volume_Slider)

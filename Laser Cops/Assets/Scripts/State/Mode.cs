@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System;
+using System.Collections;
 
 public class Mode : MonoBehaviour
 {
@@ -68,25 +69,60 @@ public class Mode : MonoBehaviour
 
     public void Load_Level()
     {
-        // Get the input settings of each player
-        //player_inputs = PlayerJoin.player_join.Finalize_Input();
-
-        // Remove any players that have no inputs
-        /*
-        for (int x = 0; x < player_inputs.Count; x++)
-        {
-            if (player_inputs[x].Count <= 0)
-            {
-                player_inputs.RemoveAt(x);
-                x--;
-            }
-        }
-
-        InputSettings.input_settings.inputs = player_inputs;
-        */
-
         Debug.Log("Loading level " + level_to_load);
         PlayerPrefs.SetString("LastLevelPlayed", level_to_load);
-        UnityEngine.SceneManagement.SceneManager.LoadScene(level_to_load);
+
+        StartCoroutine(Async_Load_Level());
     }
+
+
+    IEnumerator Async_Load_Level()
+    {
+        string active_scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        Destroy(UnityEngine.EventSystems.EventSystem.current.gameObject);
+
+        AsyncOperation AO = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(level_to_load, UnityEngine.SceneManagement.LoadSceneMode.Single);
+        AO.allowSceneActivation = false;
+
+        while (AO.progress < 0.9f)
+        {
+            yield return null;
+        }
+        AO.allowSceneActivation = true;
+        //UnityEngine.SceneManagement.SceneManager.un(active_scene);
+    }
+    /*
+        IEnumerator Async_Load_Level()
+    {
+        UIManager.ui_manager.loading_icon.SetActive(true);
+        UIManager.ui_manager.loading_text.gameObject.SetActive(true);
+        string active_scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        DestroyImmediate(UnityEngine.EventSystems.EventSystem.current.gameObject);
+
+        AsyncOperation AO = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(level_to_load, UnityEngine.SceneManagement.LoadSceneMode.Additive);
+        AO.allowSceneActivation = false;
+        int progress = (int)(AO.progress * 100f);
+        while (AO.progress < 0.9f)
+        {
+            progress = Mathf.Max(progress, (int)(AO.progress * 100f));
+            UIManager.ui_manager.loading_text.text = "Loading... " + progress + "%";
+            yield return null;
+        }
+        AO.allowSceneActivation = true;
+        while (AO.progress < 1f)
+        {
+            progress = Mathf.Max(progress, (int)(AO.progress * 100f));
+            UIManager.ui_manager.loading_text.text = "Loading... " + progress + "%";
+            yield return null;
+        }
+
+        yield return 0;
+
+        UIManager.ui_manager.loading_icon.SetActive(false);
+        UIManager.ui_manager.loading_text.gameObject.SetActive(false);
+
+        UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(active_scene);
+        Debug.Log("Done Async loading & switching levels");
+    }
+    */
 }
