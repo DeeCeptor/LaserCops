@@ -28,7 +28,6 @@ public class SoundMixer : MonoBehaviour
     }
     void Start ()
     {
-        //PlayRaiser();
         if (starting_music)
             PlayMusic(starting_music);
     }
@@ -44,6 +43,14 @@ public class SoundMixer : MonoBehaviour
     {
         //music_volume_scale = new_value;
         SoundManager.MusicVolume = new_value;
+        /*
+        music_volume_modifier = new_value;
+        if (starting_music != null)
+        {
+            starting_music.volume = new_value;
+        }
+        if (cur_music != null)
+            cur_music.volume = new_value;*/
     }
     public void EffectsVolumeChanged(float new_value)
     {
@@ -71,7 +78,6 @@ public class SoundMixer : MonoBehaviour
             FadeTextInAndOut.music_info.Start_Fading_In_Then_Out();
             FadeTextInAndOut.music_info.gameObject.SetActive(true);
         }
-
         SoundManager.StopAllLoopingSounds();
         music.PlayLoopingMusicManaged(music_volume_modifier * music_volume_scale, 1.0f, false);
     }

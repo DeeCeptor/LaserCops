@@ -18,6 +18,12 @@ public class GraphicsSettings : MonoBehaviour
     bool ignore_first_quality_change = true;
 
 
+    public void Resume()
+    {
+        GameState.game_state.Unpause();
+    }
+
+
     void Awake () 
 	{
         // Set windowed toggle
@@ -33,7 +39,6 @@ public class GraphicsSettings : MonoBehaviour
         // Set possible resolution dropdown
         resolutions = Screen.resolutions;
 
-        //resolution_dropdown.te
         // Screen.currentResolution
         // Create a list of resolution width and height
         List<string> list_of_res = new List<string>();
@@ -48,11 +53,19 @@ public class GraphicsSettings : MonoBehaviour
 
         // Set whatever our current resolution is to be the current value
         int cur_resolution_index = 0;
-        foreach (Resolution r in resolutions)
+        foreach (string r in list_of_res)
         {
-            if (r.width == Screen.currentResolution.width
-                && r.height == Screen.currentResolution.height)
+            string text = r;
+            string[] split_text = text.Split('x');
+            int width = Int32.Parse(split_text[0]);
+            int height = Int32.Parse(split_text[1]);
+
+            if (width == Screen.width
+                && height == Screen.height)
+            {
+                resolution_dropdown.captionText.text = width + "x" + height;
                 break;
+            }
             cur_resolution_index++;
         }
 
@@ -66,12 +79,12 @@ public class GraphicsSettings : MonoBehaviour
             return;
         }
 
-        Debug.Log("Resolution changed");
-        string text = resolution_dropdown.options[resolution_dropdown.value].text;
+        string text = resolution_dropdown.options[resolution_index].text;
         string[] split_text = text.Split('x');
         int width = Int32.Parse(split_text[0]);
         int height = Int32.Parse(split_text[1]);
         Screen.SetResolution(width, height, !windowed_toggle.isOn);
+        Debug.Log("Resolution index: " + resolution_index + " Resolution changed to " + width + "x" + height +". Current resolution: " + Screen.currentResolution);
     }
 
 
@@ -105,7 +118,9 @@ public class GraphicsSettings : MonoBehaviour
 
     void OnEnable()
     {
-
+        /*
+        EvaluatePossibleResolutions();
+        EvaluatePossibleQualityLevels();*/
     }
     void OnDisable()
     {

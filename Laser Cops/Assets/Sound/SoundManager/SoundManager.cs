@@ -133,7 +133,10 @@ namespace DigitalRuby.SoundManagerNamespace
         {
             if (AudioSource != null && AudioSource.isPlaying)
             {
-                if ((AudioSource.volume = Mathf.Lerp(startVolume, TargetVolume, (timestamp += Time.deltaTime) / currentMultiplier)) == 0.0f && Stopping)
+                float target = SoundMixer.music_volume_scale;
+                if (GameState.game_state != null && GameState.game_state.game_over)
+                    target = 0;
+                if ((AudioSource.volume = Mathf.Lerp(startVolume, target, (timestamp += Time.deltaTime) / currentMultiplier)) == 0.0f && Stopping)
                 {
                     AudioSource.Stop();
                     Stopping = false;
@@ -388,6 +391,7 @@ namespace DigitalRuby.SoundManagerNamespace
                 if (!s.Stopping)
                 {
                     s.TargetVolume = s.OriginalTargetVolume * musicVolume;
+                    Debug.Log(s.AudioSource.name);
                 }
             }
             foreach (AudioSource s in musicOneShot)
