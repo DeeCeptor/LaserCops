@@ -45,7 +45,7 @@ public class bounceBomb : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.layer == 12)
+        if(collision.gameObject.layer == 12|| collision.gameObject.layer == 13)
         {
             gameObject.layer = 25;
         }
