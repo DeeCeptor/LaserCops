@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using DigitalRuby.SoundManagerNamespace;
 
 public class AudioManager : MonoBehaviour
 {
@@ -38,7 +39,8 @@ public class AudioManager : MonoBehaviour
     {
         // Load player preferences
         Master_Volume_Changed(PlayerPrefs.GetFloat("MasterVolume", 1));
-        Voice_Volume_Changed(PlayerPrefs.GetFloat("VoiceVolume", 1));
+        if (Voice_Volume_Slider != null)
+            Voice_Volume_Changed(PlayerPrefs.GetFloat("VoiceVolume", 1));
         if (Music_Volume_Slider != null && SoundMixer.sound_manager != null)
             Music_Volume_Changed(PlayerPrefs.GetFloat("MusicVolume", 1));
         if (SoundMixer.sound_manager != null)
@@ -53,7 +55,15 @@ public class AudioManager : MonoBehaviour
             Voice_Volume_Slider.value = voice_volume;
         if (Effects_Volume_Slider)
             Effects_Volume_Slider.value = effects_volume;
+
+        StartCoroutine(SetSettings());
     }
+    IEnumerator SetSettings()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Music_Volume_Changed(PlayerPrefs.GetFloat("MusicVolume", 1));
+    }
+
 
 
     // Fades out the current background music over seconds_it_takes_to_fade_out
@@ -156,10 +166,24 @@ public class AudioManager : MonoBehaviour
     }
     public void Music_Volume_Changed(float new_volume)
     {
-        music_volume = new_volume;
-        background_music_audio_source.volume = new_volume;
-        SoundMixer.sound_manager.MusicVolumeChanged(new_volume);
         SavePlayerPreference("MusicVolume", new_volume);
+        music_volume = new_volume;
+        SoundManager.MusicVolume = new_volume;
+        SoundMixer.music_volume_scale = new_volume;
+        //SoundMixer.sound_manager.MusicVolumeChanged(new_volume);
+
+        /*
+        
+        background_music_audio_source.volume = new_volume;
+        if (SoundMixer.sound_manager != null)
+        {
+            if (SoundMixer.sound_manager.starting_music != null)
+            {
+                SoundMixer.sound_manager.starting_music.volume = new_volume;
+            }
+            if (SoundMixer.sound_manager.cur_music != null)
+                SoundMixer.sound_manager.cur_music.volume = new_volume;
+        }*/
     }
     public void Effects_Volume_Changed(float new_volume)
     {

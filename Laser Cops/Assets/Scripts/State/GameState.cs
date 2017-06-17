@@ -816,7 +816,12 @@ public class GameState : MonoBehaviour
             this.ChangeTimescale(Mathf.Max(Time.timeScale - Time.unscaledDeltaTime * slowdown_factor, 0.1f));
         }
 
-        if ((Input.GetButtonDown("Pause") || (InputManager.ActiveDevice !=  null && InputManager.ActiveDevice.CommandWasPressed) || (Time.timeScale == 0 && Input.GetButtonDown("Cancel"))) && !game_over)
+        if (
+            (Input.GetButtonDown("Pause") 
+            || (InputManager.ActiveDevice !=  null && (InputManager.ActiveDevice.CommandWasPressed || (InputManager.ActiveDevice.Action2.WasPressed && Time.timeScale == 0)) 
+            || (Time.timeScale == 0 && Input.GetButtonDown("Cancel")))
+            ) 
+            && !game_over)
         {
             if (Time.timeScale == 0)
             {
