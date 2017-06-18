@@ -2,6 +2,8 @@ using InControl;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class ConnectedControllers : MonoBehaviour 
 {
@@ -9,6 +11,7 @@ public class ConnectedControllers : MonoBehaviour
     public static List<InputDevice> devices = new List<InputDevice>();
 
     public AudioSource Select;
+
 
     void Start () 
 	{
@@ -26,19 +29,20 @@ public class ConnectedControllers : MonoBehaviour
 
     public void DetectControllers()
     {
-        // Check for left stick
+        /*
+        if (checking_for_next_level
+            && (Input.GetButtonDown("Submit") || InputManager.ActiveDevice.Action1.WasPressed))
+        {
+            checking_for_next_level = false;
+            ToSceneSelectActions.Invoke();
+        }
+        */
+        // Check for left stick & right stick and any button
         if (Mathf.Abs(InputManager.ActiveDevice.LeftStickX.Value) > 0.5f || Mathf.Abs(InputManager.ActiveDevice.LeftStickY.Value) > 0.5f
+                || Mathf.Abs(InputManager.ActiveDevice.RightStickX.Value) > 0.5f || Mathf.Abs(InputManager.ActiveDevice.RightStickY.Value) > 0.5f
+                || InputManager.ActiveDevice.CommandWasPressed || InputManager.ActiveDevice.Action3.WasPressed || InputManager.ActiveDevice.Action4.WasPressed
                 && !devices.Contains(InputManager.ActiveDevice))
             AddPlayerController(InputManager.ActiveDevice);
-
-        // Check for right stick
-        if (Mathf.Abs(InputManager.ActiveDevice.RightStickX.Value) > 0.5f || Mathf.Abs(InputManager.ActiveDevice.RightStickY.Value) > 0.5f
-                && !devices.Contains(InputManager.ActiveDevice))
-            AddPlayerController(InputManager.ActiveDevice);
-
-        // Stop detecting input if someone hits start
-        if (InputManager.ActiveDevice.CommandWasPressed)
-            detecting_controllers = false;
     }
     public void AddPlayerController(InputDevice device)
     {
@@ -58,7 +62,7 @@ public class ConnectedControllers : MonoBehaviour
     public void GoToSceneSelect()
     {
         PlayerJoin.player_join.SetControls();
-
+        Debug.Log("A");
     }
 }
 
