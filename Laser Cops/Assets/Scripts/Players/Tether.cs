@@ -97,6 +97,7 @@ public class Tether : MonoBehaviour
         }
 
         StartCoroutine(Delayed_Start());
+        particle_renderer.sortingLayerName = "Topmost";
     }
     IEnumerator Delayed_Start()
     {
