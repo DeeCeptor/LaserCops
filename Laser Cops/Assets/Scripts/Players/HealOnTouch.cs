@@ -8,9 +8,15 @@ public class HealOnTouch : MonoBehaviour
 
     Rigidbody2D rigid;
 
+    public bool remove_on_competitive_mode = false;
+
+
     void Awake()
     {
         rigid = this.GetComponent<Rigidbody2D>();
+
+        if (remove_on_competitive_mode && GameState.game_state.game_mode == GameState.GameMode.Competitive)
+            Destroy(this.gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D coll)

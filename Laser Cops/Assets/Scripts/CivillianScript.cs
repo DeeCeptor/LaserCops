@@ -27,6 +27,9 @@ public class CivillianScript : MonoBehaviour
 
 	void Start ()
     {
+        if (GameState.game_state.game_mode == GameState.GameMode.Competitive)
+            Destroy(this.gameObject);
+
         if (switch_tether_text)
             switch_tether_mesh = this.GetComponentInChildren<MeshRenderer>();
 	}
@@ -157,6 +160,7 @@ public class CivillianScript : MonoBehaviour
         SoundMixer.sound_manager.PlayCollectSound();
         TetherLightning.tether_lightning.BurstLightning(this.transform.position, this.transform.position + new Vector3(0, 2), 20, Color.green);
 
+        // Heal all players
         GameState.game_state.Heal_All_Players(healthToGainBack);
 
         StartCoroutine(Shrinking_Animation());

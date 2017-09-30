@@ -573,33 +573,39 @@ public class PlayerController : PlayerInput
             TransferHealth(coll.gameObject);
         }
 
+        // SPARKS
+        // Show sparks on the side of the car it was hit on
+        CollisionAt(coll.contacts[0].point);
 
-            // SPARKS
-            // Show sparks on the side of the car it was hit on
-            CollisionAt(coll.contacts[0].point);
+        ParticleSystem sparks;
+        // New collision, grab a grinding sparks if we've used one before
+        if (free_grinding_sparks.Count > 0)
+        {
+            sparks = free_grinding_sparks[0];
+            free_grinding_sparks.RemoveAt(0);
+            sparks.GetComponent<TurnOffSparks>().StartSparks();
+        }
+        else
+        {
+            // Need to spawn a new grinding sparks
+            sparks = ((GameObject)GameObject.Instantiate(grinding_sparks)).GetComponent<ParticleSystem>();
+        }
 
-            ParticleSystem sparks;
-            // New collision, grab a grinding sparks if we've used one before
-            if (free_grinding_sparks.Count > 0)
-            {
-                sparks = free_grinding_sparks[0];
-                free_grinding_sparks.RemoveAt(0);
-                sparks.GetComponent<TurnOffSparks>().StartSparks();
-            }
-            else
-            {
-                // Need to spawn a new grinding sparks
-                sparks = ((GameObject)GameObject.Instantiate(grinding_sparks)).GetComponent<ParticleSystem>();
-            }
+        // Set its position and add it to the dictionary
+        sparks.gameObject.transform.position = coll.contacts[0].point;
 
-            // Set its position and add it to the dictionary
-            sparks.gameObject.transform.position = coll.contacts[0].point;
+        if (!in_use_grinding_sparks.ContainsKey(coll.gameObject))
+        {
+            in_use_grinding_sparks.Add(coll.gameObject, sparks);
+        }
+        //sparks.GetComponent<TurnOffSparks>().time_remaining = sparks.GetComponent<TurnOffSparks>().start_time_remaining;
 
-            if (!in_use_grinding_sparks.ContainsKey(coll.gameObject))
-            {
-                in_use_grinding_sparks.Add(coll.gameObject, sparks);
-            }
-            //sparks.GetComponent<TurnOffSparks>().time_remaining = sparks.GetComponent<TurnOffSparks>().start_time_remaining;
+        // Only for spynet, needed for UPWARDS obstacles
+        if (coll.gameObject.tag == "UpObstacle")
+        {
+            touching_forward_obstacle = true;
+            cur_touching_forward_obstacle = touching_forward_obstacle_cooldown / 4f;
+        }
     }
     // Show grinding sparks when touching another object
     void OnCollisionStay2D(Collision2D coll)
@@ -612,36 +618,49 @@ public class PlayerController : PlayerInput
             TransferHealth(coll.gameObject);
         }
         
-            // SPARKS
-            // Update the position of the grinding
-            if (in_use_grinding_sparks.ContainsKey(coll.gameObject))// && in_use_grinding_sparks[coll.gameObject] != null)
-            {
-                ParticleSystem p = in_use_grinding_sparks[coll.gameObject];
-                p.gameObject.transform.position = coll.contacts[0].point;
-                p.GetComponent<TurnOffSparks>().StartSparks();
-            }
+        // SPARKS
+        // Update the position of the grinding
+        if (in_use_grinding_sparks.ContainsKey(coll.gameObject))// && in_use_grinding_sparks[coll.gameObject] != null)
+        {
+            ParticleSystem p = in_use_grinding_sparks[coll.gameObject];
+            p.gameObject.transform.position = coll.contacts[0].point;
+            p.GetComponent<TurnOffSparks>().StartSparks();
+        }
         //else
-            //  in_use_grinding_sparks.Remove(coll.gameObject);
+        //  in_use_grinding_sparks.Remove(coll.gameObject);
+
+        // Only for spynet, needed for UPWARDS obstacles
+        if (coll.gameObject.tag == "UpObstacle")
+        {
+            touching_forward_obstacle = true;
+            cur_touching_forward_obstacle = touching_forward_obstacle_cooldown / 4f;
+        }
     }
     // Stop grinding against the object we were pushing against
     void OnCollisionExit2D(Collision2D coll)
     {
         // Do something about checking if object is dead
         if (in_use_grinding_sparks.ContainsKey(coll.gameObject))// && !coll.gameObject)
-            {
-                ParticleSystem sparks = in_use_grinding_sparks[coll.gameObject];
-                sparks.GetComponent<TurnOffSparks>().StopSparks();
-                in_use_grinding_sparks.Remove(coll.gameObject);
-                free_grinding_sparks.Add(sparks);
-            }
+        {
+            ParticleSystem sparks = in_use_grinding_sparks[coll.gameObject];
+            sparks.GetComponent<TurnOffSparks>().StopSparks();
+            in_use_grinding_sparks.Remove(coll.gameObject);
+            free_grinding_sparks.Add(sparks);
+        }
         else
         {
+
+        }
+
+        if (coll.gameObject.tag == "UpObstacle")
+        {
+            cur_touching_forward_obstacle = 0;
         }
     }
     
     void OnTriggerEnter2D(Collider2D coll)
     {
-        // Check to see if we die
+        // Check to see if we die touching a normal fast obstacle and the LEFT death zone
         if (coll.gameObject.layer == LayerMask.NameToLayer("Death Zone") 
             && ((GameState.game_state.tether_touching_obstacle || touching_forward_obstacle))
             && !coll.gameObject.name.Equals("UPDeathzone")
@@ -650,12 +669,13 @@ public class PlayerController : PlayerInput
             HitDeathZone();
             return;
         }
-        //specifically for spynet
+        // Specifically for spynet, if tether is caught on UP obstacle
         else if (coll.gameObject.layer == LayerMask.NameToLayer("Death Zone")
-            && ((GameState.game_state.tether_touching_obstacle_up))
+            && ((GameState.game_state.tether_touching_obstacle_up) || touching_forward_obstacle)
             && coll.gameObject.name.Equals("UPDeathzone")
             )
         {
+            // Maybe add a few frames of invulnerability? Like 4 or 5?
             HitDeathZone();
             return;
         }

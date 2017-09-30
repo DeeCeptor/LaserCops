@@ -152,6 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healing_amount: 33
   movement_speed: 1
+  remove_on_competitive_mode: 1
 --- !u!114 &114000010233924424
 MonoBehaviour:
   m_ObjectHideFlags: 1

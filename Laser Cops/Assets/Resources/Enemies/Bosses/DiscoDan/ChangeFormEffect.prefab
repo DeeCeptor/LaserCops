@@ -43,6 +43,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secondsTillDeath: 5
+  fade: 0
+  fading: 0
+  fadeTime: 2
 --- !u!198 &19803508
 ParticleSystem:
   m_ObjectHideFlags: 1

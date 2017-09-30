@@ -73,7 +73,7 @@ public class SpynetControls : MonoBehaviour
         else if (currentForm == 3)
         {
             if (GameState.game_state.current_difficulty > GameState.Difficulty.Easy)
-                spawnDelay = 5.6f;
+                spawnDelay = 5.7f;
 
             PlayConversation(formChangeConversation3);
             currentForm = 4;
@@ -87,7 +87,7 @@ public class SpynetControls : MonoBehaviour
         else if (currentForm == 5)
         {
             if (GameState.game_state.current_difficulty > GameState.Difficulty.Easy)
-                spawnDelay = 5.3f;
+                spawnDelay = 5.5f;
 
             PlayConversation(formChangeConversation5);
             currentForm = 6;
